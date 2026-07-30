@@ -3797,6 +3797,45 @@
         let choiceCorrectCount = 0;
         let choiceWrongCount = 0;
 
+        // --- Typing quiz mode state ---
+        let quizQueue = [];
+        let quizAwaitingNext = false;
+        let currentQuizWord = null;
+
+        // --- Shared persistent test stats (typing quiz + choice mode) ---
+        // testMissCount is shared between the two testing modes: a word missed
+        // in either mode is considered "still shaky" and will come up more
+        // often in both, instead of each mode tracking difficulty separately.
+        let testMissCount = {};
+        (function loadTestStats() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('nihongo_test_stats_v1'));
+                if (saved) {
+                    quizCorrectCount = saved.quizCorrect || 0;
+                    quizWrongCount = saved.quizWrong || 0;
+                    choiceCorrectCount = saved.choiceCorrect || 0;
+                    choiceWrongCount = saved.choiceWrong || 0;
+                    testMissCount = saved.missCount || {};
+                }
+            } catch (e) {
+                // corrupted or unavailable localStorage - start fresh
+            }
+        })();
+
+        function saveTestStats() {
+            try {
+                localStorage.setItem('nihongo_test_stats_v1', JSON.stringify({
+                    quizCorrect: quizCorrectCount,
+                    quizWrong: quizWrongCount,
+                    choiceCorrect: choiceCorrectCount,
+                    choiceWrong: choiceWrongCount,
+                    missCount: testMissCount
+                }));
+            } catch (e) {
+                // storage unavailable - progress simply won't persist this session
+            }
+        }
+
         // --- Word-matching mode state ---
         let matchSize = 5;
         let matchPairs = [];
@@ -4024,36 +4063,135 @@
         }
 
         function resetProgress() {
-            if (confirm("คุณต้องการล้างข้อมูลสถิติความคืบหน้าทั้งหมดใช่หรือไม่?")) {
+            if (confirm("คุณต้องการล้างข้อมูลสถิติความคืบหน้าทั้งหมด (SRS + คะแนนทุกโหมดทดสอบ) ใช่หรือไม่?")) {
                 srsData = {};
                 localStorage.removeItem('nihongo_srs_v2');
+
+                quizCorrectCount = 0;
+                quizWrongCount = 0;
+                choiceCorrectCount = 0;
+                choiceWrongCount = 0;
+                testMissCount = {};
+                localStorage.removeItem('nihongo_test_stats_v1');
+
                 updateCardDisplay();
+                if (currentMode === 'quiz') initQuiz();
+                else if (currentMode === 'choice') initChoice();
                 alert("ล้างข้อมูลสถิติเรียบร้อยแล้ว!");
             }
         }
 
-        function initQuiz() {
-            if (filteredVocab.length > 0) {
-                const q = filteredVocab[Math.floor(Math.random() * filteredVocab.length)];
-                document.getElementById('quizJp').innerText = q.jp;
-                document.getElementById('quizThHint').innerText = q.th;
-                document.getElementById('quizLevelBadge').innerText = q.level;
-                document.getElementById('quizInput').value = "";
-                document.getElementById('quizFeedback').innerText = "";
+        function buildQuizQueue() {
+            let pool = [];
+            filteredVocab.forEach((w, i) => {
+                const key = getCardKey(w);
+                const copies = 1 + Math.min(testMissCount[key] || 0, 4);
+                for (let c = 0; c < copies; c++) pool.push(i);
+            });
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
             }
+            quizQueue = pool;
+        }
+
+        function initQuiz() {
+            document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount} \u00a0|\u00a0 ผิด: ${quizWrongCount}`;
+            buildQuizQueue();
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            quizAwaitingNext = false;
+            const input = document.getElementById('quizInput');
+            const feedback = document.getElementById('quizFeedback');
+            const submitBtn = document.getElementById('quizSubmitBtn');
+            input.value = "";
+            input.disabled = false;
+            feedback.innerText = "";
+            feedback.className = "quiz-feedback";
+            submitBtn.innerText = "ตรวจคำตอบ ✔";
+            submitBtn.onclick = checkAnswer;
+
+            if (filteredVocab.length === 0) {
+                currentQuizWord = null;
+                document.getElementById('quizJp').innerText = "❌";
+                document.getElementById('quizThHint').innerText = "กรุณาเลือกอย่างน้อย 1 เลเวลก่อนเริ่มทดสอบ";
+                document.getElementById('quizLevelBadge').innerText = "";
+                return;
+            }
+            if (quizQueue.length === 0) buildQuizQueue();
+
+            const idx = quizQueue[0];
+            currentQuizWord = filteredVocab[idx];
+            document.getElementById('quizJp').innerText = currentQuizWord.jp;
+            document.getElementById('quizThHint').innerText = currentQuizWord.th;
+            document.getElementById('quizLevelBadge').innerText = currentQuizWord.level;
+            input.focus();
+        }
+
+        // แยกคำอ่าน (ฮิรางานะ/คาตากานะ) และคำโรมันจิที่ยอมรับได้ทั้งหมดออกจาก
+        // ฟิลด์ extra เช่น "わたし (Watashi)" หรือ "いえ / うち (Ie / Uchi)"
+        // ซึ่งมีได้มากกว่า 1 คำตอบคั่นด้วย "/"
+        function getAcceptedAnswers(word) {
+            const extra = word.extra || "";
+            const match = extra.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
+            let kanaPart = extra, romajiPart = "";
+            if (match) {
+                kanaPart = match[1].trim();
+                romajiPart = match[2].trim();
+            }
+            const answers = new Set();
+            kanaPart.split("/").map(s => s.trim()).filter(Boolean).forEach(s => answers.add(s.toLowerCase()));
+            romajiPart.split("/").map(s => s.trim()).filter(Boolean).forEach(s => answers.add(s.toLowerCase()));
+            if (word.jp) answers.add(word.jp.trim().toLowerCase());
+            return answers;
         }
 
         function checkAnswer() {
-            const input = document.getElementById('quizInput').value.trim().toLowerCase();
+            if (quizAwaitingNext || !currentQuizWord) return;
+            const inputEl = document.getElementById('quizInput');
+            const input = inputEl.value.trim().toLowerCase();
             const feedback = document.getElementById('quizFeedback');
             if (!input) return;
-            
-            quizCorrectCount++;
-            feedback.innerText = "ยอดเยี่ยม! ถูกต้องครับ 🎉";
-            feedback.className = "quiz-feedback correct";
-            document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount} &nbsp;|&nbsp; ผิด: ${quizWrongCount}`;
-            
-            setTimeout(() => { initQuiz(); }, 1200);
+
+            const word = currentQuizWord;
+            const key = getCardKey(word);
+            const isCorrect = getAcceptedAnswers(word).has(input);
+
+            quizAwaitingNext = true;
+            inputEl.disabled = true;
+
+            if (isCorrect) {
+                quizCorrectCount++;
+                feedback.innerText = "ยอดเยี่ยม! ถูกต้องครับ 🎉";
+                feedback.className = "quiz-feedback correct";
+            } else {
+                quizWrongCount++;
+                testMissCount[key] = (testMissCount[key] || 0) + 1;
+                feedback.innerHTML = `ยังไม่ถูก ❌ เฉลย: <b>${word.extra}</b> = ${word.th}`;
+                feedback.className = "quiz-feedback wrong";
+            }
+            playJapaneseAudio(word.jp);
+            document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount} \u00a0|\u00a0 ผิด: ${quizWrongCount}`;
+            saveTestStats();
+
+            quizQueue.shift();
+            if (!isCorrect) {
+                // ให้คำที่ตอบผิดวนกลับมาถามซ้ำในอีก 2-4 ข้อถัดไป
+                const wIdx = filteredVocab.indexOf(word);
+                if (wIdx !== -1) {
+                    const insertPos = Math.min(2 + Math.floor(Math.random() * 3), quizQueue.length);
+                    quizQueue.splice(insertPos, 0, wIdx);
+                }
+            }
+
+            const submitBtn = document.getElementById('quizSubmitBtn');
+            submitBtn.innerText = "ข้อถัดไป ➡";
+            submitBtn.onclick = () => {
+                if (quizQueue.length === 0) buildQuizQueue();
+                loadQuizQuestion();
+            };
         }
 
         // ============================================================
@@ -4062,17 +4200,21 @@
         // ============================================================
 
         function buildChoiceQueue() {
-            choiceQueue = filteredVocab.map((_, i) => i);
-            for (let i = choiceQueue.length - 1; i > 0; i--) {
+            let pool = [];
+            filteredVocab.forEach((w, i) => {
+                const key = getCardKey(w);
+                const copies = 1 + Math.min(testMissCount[key] || 0, 4);
+                for (let c = 0; c < copies; c++) pool.push(i);
+            });
+            for (let i = pool.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [choiceQueue[i], choiceQueue[j]] = [choiceQueue[j], choiceQueue[i]];
+                [pool[i], pool[j]] = [pool[j], pool[i]];
             }
+            choiceQueue = pool;
         }
 
         function initChoice() {
-            choiceCorrectCount = 0;
-            choiceWrongCount = 0;
-            document.getElementById('choiceStats').innerText = `ถูก: 0 \u00a0|\u00a0 ผิด: 0`;
+            document.getElementById('choiceStats').innerText = `ถูก: ${choiceCorrectCount} \u00a0|\u00a0 ผิด: ${choiceWrongCount}`;
             buildChoiceQueue();
             loadChoiceQuestion();
         }
@@ -4149,6 +4291,7 @@
                 feedback.className = "quiz-feedback correct";
             } else {
                 choiceWrongCount++;
+                testMissCount[getCardKey(word)] = (testMissCount[getCardKey(word)] || 0) + 1;
                 btnEl.classList.add('choice-wrong');
                 allBtns.forEach(b => { if (b.innerText === word.th) b.classList.add('choice-correct'); });
                 feedback.innerHTML = `ผิด ❌ คำตอบที่ถูกต้องคือ <b>${word.th}</b>`;
@@ -4156,6 +4299,7 @@
             }
             playJapaneseAudio(word.jp);
             document.getElementById('choiceStats').innerText = `ถูก: ${choiceCorrectCount} \u00a0|\u00a0 ผิด: ${choiceWrongCount}`;
+            saveTestStats();
 
             choiceQueue.shift();
             if (!isCorrect) {
@@ -4339,6 +4483,14 @@
                 nextCard();
             } else if (e.code === 'ArrowLeft') {
                 prevCard();
+            }
+        });
+
+        // กด Enter ในช่องพิมพ์คำตอบ = กดปุ่ม "ตรวจคำตอบ" / "ข้อถัดไป" แทนการใช้เมาส์
+        document.getElementById('quizInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('quizSubmitBtn').click();
             }
         });
     </script>
