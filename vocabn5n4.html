@@ -179,7 +179,7 @@
             box-shadow: 0 4px 12px rgba(27, 38, 59, 0.15);
         }
 
-        /* Main Container: 2 Columns Layout คุ้มค่าพื้นที่หน้าจอ */
+        /* Main Container: 2 Columns Layout */
         .main-container {
             width: 100%;
             display: grid;
@@ -814,6 +814,126 @@
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Kana Academy Styles */
+        .new-mode {
+            background: linear-gradient(135deg, #e07a82, #d4af37);
+            color: white !important;
+            animation: kanaGlow 2s infinite;
+        }
+        .new-badge {
+            font-size: 0.65rem;
+            background: white;
+            color: #e07a82;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+        @keyframes kanaGlow {
+            0% { box-shadow: 0 0 5px #e07a82; }
+            50% { box-shadow: 0 0 18px #d4af37; }
+            100% { box-shadow: 0 0 5px #e07a82; }
+        }
+        .kana-box {
+            width: 100%;
+            max-width: 460px;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin: auto;
+        }
+        .kana-learning-card {
+            width: 100%;
+            height: 310px;
+            background: rgba(255,255,255,.92);
+            border: 2px solid var(--kinpaku-light);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(27,38,59,.12);
+            position: relative;
+        }
+        .kana-type-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(224,122,130,.15);
+            color: var(--sakura);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        .kana-character {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--kon-iro);
+            line-height: 1;
+        }
+        .kana-romaji {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--sakura);
+            margin-top: 10px;
+        }
+        .kana-example {
+            margin-top: 20px;
+            background: rgba(27,38,59,.05);
+            padding: 8px 20px;
+            border-radius: 15px;
+            font-size: .9rem;
+            color: var(--text-muted);
+        }
+        .kana-buttons {
+            display: none;
+            width: 100%;
+            max-width: 460px;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+        .kana-selector {
+            width: 100%;
+            max-width: 460px;
+            padding: 10px 15px;
+        }
+        .kana-type-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            flex-direction: row; /* แนวนอน */
+        }
+        .kana-progress {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: .85rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.6);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 10px;
+        }
+        .kana-progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(27,38,59,.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .kana-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--sakura), var(--kinpaku));
+            border-radius: 10px;
+            transition: .4s;
+        }
+        .kana-buttons button { flex: 1; }
     </style>
 </head>
 <body>
@@ -843,10 +963,11 @@
                 <button id="modeQuizBtn" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ</button>
                 <button id="modeChoiceBtn" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ</button>
                 <button id="modeMatchBtn" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ</button>
+                <button id="modeKanaBtn" class="mode-btn new-mode" onclick="setMode('kana')">🌸 あいう ตัวอักษร<span class="new-badge">NEW</span></button>
             </div>
         </header>
 
-        <!-- Main Dashboard Grid Layout (2 คอลัมน์คุ้มค่าพื้นที่หน้าจอ) -->
+        <!-- Main Dashboard Grid Layout -->
         <div class="main-container" id="mainDashboardGrid">
             
             <!-- Left Sidebar: Filter & Stats -->
@@ -877,12 +998,25 @@
                     </div>
                 </div>
                 <div class="srs-summary-details" id="srsSummary"></div>
+
+                <!-- ย้ายกล่องความคืบหน้าตัวอักษรมาไว้ที่นี่ -->
+                <div class="kana-progress" id="kanaProgressBox" style="display: none;">
+                    <div class="kana-progress-title" style="font-weight: 600; color: var(--kon-iro);">📚 ความคืบหน้าตัวอักษร</div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>ตัวอักษรปัจจุบัน</span>
+                        <span id="kanaProgressCount">1 / 46</span>
+                    </div>
+                    <div class="kana-progress-bar">
+                        <div class="kana-progress-fill" id="kanaProgressBar"></div>
+                    </div>
+                </div>
+
                 <button class="btn-reset-progress" onclick="resetProgress()">🗑 ล้างข้อมูลความคืบหน้า</button>
             </div>
 
-            <!-- Right Panel: Flashcard Stage / Quiz Stage -->
+            <!-- Right Panel: Flashcard Stage / Quiz Stage / Kana Stage -->
             <div class="panel flashcard-stage" id="stagePanel">
-                <div style="display: flex; justify-content: space-between; width: 100%; max-width: 460px; align-items: center;">
+                <div style="display: flex; justify-content: space-between; width: 100%; max-width: 460px; align-items: center;" id="stageHeaderInfo">
                     <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);" id="stageTitleInfo">โหมดฝึกซ้อมคำศัพท์</span>
                     <span style="font-size: 0.8rem; background: rgba(212,175,55,0.15); color: var(--kon-iro); padding: 3px 10px; border-radius: 10px; border: 1px solid var(--glass-border);">SRS System 🌸</span>
                 </div>
@@ -944,7 +1078,7 @@
                     <div class="quiz-stats" id="quizStats">ถูก: 0 &nbsp;|&nbsp; ผิด: 0</div>
                 </div>
 
-                <!-- Choice Box (multiple-choice recognition mode) -->
+                <!-- Choice Box -->
                 <div class="quiz-box" id="choiceBox" style="display:none;">
                     <span class="level-badge" id="choiceLevelBadge" style="position: absolute; top: 18px; left: 20px;">N5</span>
                     <div class="quiz-jp-row">
@@ -958,7 +1092,7 @@
                     <div class="quiz-stats" id="choiceStats">ถูก: 0 &nbsp;|&nbsp; ผิด: 0</div>
                 </div>
 
-                <!-- Match Box (word-matching mode) -->
+                <!-- Match Box -->
                 <div class="quiz-box match-box" id="matchBox" style="display:none;">
                     <div class="match-header">
                         <span class="match-title">จับคู่คำศัพท์ภาษาญี่ปุ่นกับความหมายภาษาไทย</span>
@@ -978,16 +1112,52 @@
                         <button class="btn-submit btn-new-round" style="width:auto; margin-top:0;" onclick="newMatchRound()">🔀 คำชุดใหม่</button>
                     </div>
                 </div>
+
+                <!-- Kana Classroom Mode -->
+                <div class="kana-box" id="kanaBox" style="display:none;">
+                    <!-- Mode Switcher inside Kana -->
+                    <div style="display: flex; gap: 8px; width: 100%; margin-bottom: 5px;">
+                        <button class="btn-submit" style="margin-top:0; background: var(--kon-iro); font-size: 0.85rem;" onclick="startKanaPractice()">📖 โหมดฝึกซ้อม</button>
+                        <button class="btn-submit" style="margin-top:0; background: var(--sakura); font-size: 0.85rem;" onclick="startKanaSpeedGame()">⚡ สปีดเทส (30วิ)</button>
+                    </div>
+
+                    <!-- Kana Type Selector (ย้ายมาอยู่ใต้ปุ่มโหมดฝึกซ้อมและจัดเรียงเป็นแนวนอน) -->
+                    <div class="kana-selector" id="kanaSelectorBox" style="max-width: 100%;">
+                        <div class="kana-type-buttons">
+                            <button class="btn-submit" style="margin-top:0;" onclick="setKanaType('hiragana')">あ Hiragana</button>
+                            <button class="btn-submit" style="margin-top:0;" onclick="setKanaType('katakana')">ア Katakana</button>
+                        </div>
+                    </div>
+
+                    <div class="kana-learning-card" id="kanaLearningCard">
+                        <span class="kana-type-badge" id="kanaType">Hiragana</span>
+                        <div class="kana-character" id="kanaCharacter">あ</div>
+                        <div class="kana-romaji" id="kanaRomaji">A</div>
+                        <button class="btn-speak-word" onclick="speakKana()" style="margin-top: 10px;">🔊 ฟังเสียง</button>
+                        <div class="kana-example" id="kanaExample">ตัวอย่าง: あさ (asa) = เช้า</div>
+                    </div>
+
+                    <!-- Kana Speed Test Container -->
+                    <div class="quiz-box" id="kanaSpeedContainer" style="display: none; max-width: 100%; padding: 25px; text-align: center;">
+                        <div style="font-size: 1.1rem; font-weight: bold; color: var(--sakura); margin-bottom: 10px;" id="speedTimer">เวลาเหลือ: 30 วินาที</div>
+                        <div style="font-size: 5rem; font-family: 'Zen Maru Gothic', sans-serif; margin: 10px 0;" id="speedChar">あ</div>
+                        <input type="text" class="quiz-input" id="speedInput" placeholder="พิมพ์โรมันจิ เช่น a, ka, shi" autocomplete="off" />
+                        <div style="font-size: 1rem; font-weight: 600; margin-top: 15px; color: var(--matcha);" id="speedScore">คะแนน: 0</div>
+                    </div>
+                </div>
+
+                <!-- Kana Navigation Buttons (Floating Bottom Bar สำหรับควบคุมการตอบ/ปุ่มกดก่อนหน้า, สุ่ม และถัดไป) -->
+                <div class="kana-buttons" id="kanaNavButtons">
+                    <button class="btn-prev" onclick="prevKana()">◀ ก่อนหน้า</button>
+                    <button class="btn-shuffle" onclick="shuffleKana()">🔀 สุ่ม</button>
+                    <button class="btn-next" onclick="nextKana()">ถัดไป ▶</button>
+                </div>
             </div>
-
         </div>
-
     </div>
 
     <script>
-        // รองรับข้อมูลคำศัพท์ขยายได้ตั้งแต่ N5 ถึง N1 ในอนาคต
         const vocabList = [
-            // --- ระดับ N5 ---
 { jp: "私", extra: "わたし (Watashi)", th: "ฉัน", level: "N5", example: { jp: "私は学生です。", th: "ฉันเป็นนักเรียน" } },
 { jp: "私", extra: "わたし (Watashi)", th: "ฉัน", level: "N5", example: { jp: "私は学生です。", th: "ฉันเป็นนักเรียน" } },
 { jp: "あなた", extra: "あなた (Anata)", th: "คุณ", level: "N5", example: { jp: "あなたは先生ですか。", th: "คุณเป็นครูหรือเปล่า" } },
@@ -2974,10 +3144,129 @@
 { jp: "選択する", extra: "せんたくする (sentakusuru)", th: "เลือก", level: "N4", example: { jp: "好きな物を選択します。", th: "เลือกสิ่งที่ชอบ" } },
 { jp: "決まる", extra: "きまる (kimaru)", th: "ถูกกำหนด / ตกลงแล้ว", level: "N4", example: { jp: "予定が決まりました。", th: "กำหนดการถูกกำหนดแล้ว" } },
 { jp: "変化する", extra: "へんかする (henkasuru)", th: "เปลี่ยนแปลง", level: "N4", example: { jp: "生活が変化しました。", th: "ชีวิตเปลี่ยนแปลง" } },
+        ];
 
+        const kanaList = [
+        // Hiragana (46 ตัว)
+        {char:"あ", romaji:"A", type:"Hiragana", example:"あさ (asa) = เช้า"},
+        {char:"い", romaji:"I", type:"Hiragana", example:"いぬ (inu) = สุนัข"},
+        {char:"う", romaji:"U", type:"Hiragana", example:"うみ (umi) = ทะเล"},
+        {char:"え", romaji:"E", type:"Hiragana", example:"えき (eki) = สถานี"},
+        {char:"お", romaji:"O", type:"Hiragana", example:"おちゃ (ocha) = ชา"},
+
+        {char:"か", romaji:"KA", type:"Hiragana", example:"かさ (kasa) = ร่ม"},
+        {char:"き", romaji:"KI", type:"Hiragana", example:"き (ki) = ต้นไม้"},
+        {char:"く", romaji:"KU", type:"Hiragana", example:"くるま (kuruma) = รถ"},
+        {char:"け", romaji:"KE", type:"Hiragana", example:"けむり (kemuri) = ควัน"},
+        {char:"こ", romaji:"KO", type:"Hiragana", example:"こえ (koe) = เสียง"},
+
+        {char:"さ", romaji:"SA", type:"Hiragana", example:"さかな (sakana) = ปลา"},
+        {char:"し", romaji:"SHI", type:"Hiragana", example:"しま (shima) = เกาะ"},
+        {char:"す", romaji:"SU", type:"Hiragana", example:"すし (sushi) = ซูชิ"},
+        {char:"せ", romaji:"SE", type:"Hiragana", example:"せかい (sekai) = โลก"},
+        {char:"そ", romaji:"SO", type:"Hiragana", example:"そら (sora) = ท้องฟ้า"},
+
+        {char:"た", romaji:"TA", type:"Hiragana", example:"たまご (tamago) = ไข่"},
+        {char:"ち", romaji:"CHI", type:"Hiragana", example:"ちず (chizu) = แผนที่"},
+        {char:"つ", romaji:"TSU", type:"Hiragana", example:"つき (tsuki) = พระจันทร์"},
+        {char:"て", romaji:"TE", type:"Hiragana", example:"て (te) = มือ"},
+        {char:"と", romaji:"TO", type:"Hiragana", example:"とり (tori) = นก"},
+
+        {char:"な", romaji:"NA", type:"Hiragana", example:"なつ (natsu) = ฤดูร้อน"},
+        {char:"に", romaji:"NI", type:"Hiragana", example:"にく (niku) = เนื้อ"},
+        {char:"ぬ", romaji:"NU", type:"Hiragana", example:"ぬの (nuno) = ผ้า"},
+        {char:"ね", romaji:"NE", type:"Hiragana", example:"ねこ (neko) = แมว"},
+        {char:"の", romaji:"NO", type:"Hiragana", example:"のみもの (nomimono) = เครื่องดื่ม"},
+
+        {char:"は", romaji:"HA", type:"Hiragana", example:"はな (hana) = ดอกไม้"},
+        {char:"ひ", romaji:"HI", type:"Hiragana", example:"ひ (hi) = ไฟ"},
+        {char:"ふ", romaji:"FU", type:"Hiragana", example:"ふね (fune) = เรือ"},
+        {char:"へ", romaji:"HE", type:"Hiragana", example:"へや (heya) = ห้อง"},
+        {char:"ほ", romaji:"HO", type:"Hiragana", example:"ほし (hoshi) = ดาว"},
+
+        {char:"ま", romaji:"MA", type:"Hiragana", example:"まど (mado) = หน้าต่าง"},
+        {char:"み", romaji:"MI", type:"Hiragana", example:"みず (mizu) = น้ำ"},
+        {char:"む", romaji:"MU", type:"Hiragana", example:"むし (mushi) = แมลง"},
+        {char:"め", romaji:"ME", type:"Hiragana", example:"め (me) = ตา"},
+        {char:"も", romaji:"MO", type:"Hiragana", example:"もも (momo) = ลูกพีช"},
+
+        {char:"や", romaji:"YA", type:"Hiragana", example:"やま (yama) = ภูเขา"},
+        {char:"ゆ", romaji:"YU", type:"Hiragana", example:"ゆき (yuki) = หิมะ"},
+        {char:"よ", romaji:"YO", type:"Hiragana", example:"よる (yoru) = กลางคืน"},
+
+        {char:"ら", romaji:"RA", type:"Hiragana", example:"らく (raku) = สบาย"},
+        {char:"り", romaji:"RI", type:"Hiragana", example:"りんご (ringo) = แอปเปิล"},
+        {char:"る", romaji:"RU", type:"Hiragana", example:"るす (rusu) = ไม่อยู่บ้าน"},
+        {char:"れ", romaji:"RE", type:"Hiragana", example:"れい (rei) = ตัวอย่าง"},
+        {char:"ろ", romaji:"RO", type:"Hiragana", example:"ろうそく (rousoku) = เทียน"},
+
+        {char:"わ", romaji:"WA", type:"Hiragana", example:"わに (wani) = จระเข้"},
+        {char:"を", romaji:"WO", type:"Hiragana", example:"を (wo) = ตัวช่วยกรรม"},
+        {char:"ん", romaji:"N", type:"Hiragana", example:"ほん (hon) = หนังสือ"},
+
+        // Katakana (46 ตัว)
+        {char:"ア", romaji:"A", type:"Katakana", example:"アイス (aisu) = ไอศกรีม"},
+        {char:"イ", romaji:"I", type:"Katakana", example:"イヌ (inu) = สุนัข"},
+        {char:"ウ", romaji:"U", type:"Katakana", example:"ウミ (umi) = ทะเล"},
+        {char:"エ", romaji:"E", type:"Katakana", example:"エキ (eki) = สถานี"},
+        {char:"オ", romaji:"O", type:"Katakana", example:"オレンジ (orenji) = ส้ม"},
+
+        {char:"カ", romaji:"KA", type:"Katakana", example:"カメラ (kamera) = กล้อง"},
+        {char:"キ", romaji:"KI", type:"Katakana", example:"キス (kisu) = จูบ"},
+        {char:"ク", romaji:"KU", type:"Katakana", example:"クラス (kurasu) = ห้องเรียน"},
+        {char:"ケ", romaji:"KE", type:"Katakana", example:"ケーキ (keeki) = เค้ก"},
+        {char:"コ", romaji:"KO", type:"Katakana", example:"コーヒー (koohii) = กาแฟ"},
+
+        {char:"サ", romaji:"SA", type:"Katakana", example:"サラダ (sarada) = สลัด"},
+        {char:"シ", romaji:"SHI", type:"Katakana", example:"シマ (shima) = เกาะ"},
+        {char:"ス", romaji:"SU", type:"Katakana", example:"スポーツ (supootsu) = กีฬา"},
+        {char:"セ", romaji:"SE", type:"Katakana", example:"セーター (seetaa) = เสื้อกันหนาว"},
+        {char:"ソ", romaji:"SO", type:"Katakana", example:"ソファ (sofa) = โซฟา"},
+
+        {char:"タ", romaji:"TA", type:"Katakana", example:"タクシー (takushii) = แท็กซี่"},
+        {char:"チ", romaji:"CHI", type:"Katakana", example:"チーズ (chiizu) = ชีส"},
+        {char:"ツ", romaji:"TSU", type:"Katakana", example:"ツアー (tsuaa) = ทัวร์"},
+        {char:"テ", romaji:"TE", type:"Katakana", example:"テレビ (terebi) = โทรทัศน์"},
+        {char:"ト", romaji:"TO", type:"Katakana", example:"トマト (tomato) = มะเขือเทศ"},
+
+        {char:"ナ", romaji:"NA", type:"Katakana", example:"ナイフ (naifu) = มีด"},
+        {char:"ニ", romaji:"NI", type:"Katakana", example:"ニュース (nyuusu) = ข่าว"},
+        {char:"ヌ", romaji:"NU", type:"Katakana", example:"ヌードル (nuudoru) = บะหมี่"},
+        {char:"ネ", romaji:"NE", type:"Katakana", example:"ネクタイ (nekutai) = เนคไท"},
+        {char:"ノ", romaji:"NO", type:"Katakana", example:"ノート (nooto) = สมุด"},
+
+        {char:"ハ", romaji:"HA", type:"Katakana", example:"ハンバーガー (hanbaagaa) = แฮมเบอร์เกอร์"},
+        {char:"ヒ", romaji:"HI", type:"Katakana", example:"ヒーター (hiitaa) = เครื่องทำความร้อน"},
+        {char:"フ", romaji:"FU", type:"Katakana", example:"フルーツ (furuutsu) = ผลไม้"},
+        {char:"ヘ", romaji:"HE", type:"Katakana", example:"ヘリコプター (herikoputaa) = เฮลิคอปเตอร์"},
+        {char:"ホ", romaji:"HO", type:"Katakana", example:"ホテル (hoteru) = โรงแรม"},
+
+        {char:"マ", romaji:"MA", type:"Katakana", example:"マスク (masuku) = หน้ากาก"},
+        {char:"ミ", romaji:"MI", type:"Katakana", example:"ミルク (miruku) = นม"},
+        {char:"ム", romaji:"MU", type:"Katakana", example:"ムービー (muubii) = หนัง"},
+        {char:"メ", romaji:"ME", type:"Katakana", example:"メニュー (menyuu) = เมนู"},
+        {char:"モ", romaji:"MO", type:"Katakana", example:"モデル (moderu) = นางแบบ"},
+
+        {char:"ヤ", romaji:"YA", type:"Katakana", example:"ヤクルト (yakuruto) = ยาคูลท์"},
+        {char:"ユ", romaji:"YU", type:"Katakana", example:"ユニット (yunitto) = หน่วย"},
+        {char:"ヨ", romaji:"YO", type:"Katakana", example:"ヨーグルト (yooguruto) = โยเกิร์ต"},
+
+        {char:"ラ", romaji:"RA", type:"Katakana", example:"ラジオ (rajio) = วิทยุ"},
+        {char:"リ", romaji:"RI", type:"Katakana", example:"リモコン (rimokon) = รีโมท"},
+        {char:"ル", romaji:"RU", type:"Katakana", example:"ルール (ruuru) = กฎ"},
+        {char:"レ", romaji:"RE", type:"Katakana", example:"レストラン (resutoran) = ร้านอาหาร"},
+        {char:"ロ", romaji:"RO", type:"Katakana", example:"ロボット (robotto) = หุ่นยนต์"},
+
+        {char:"ワ", romaji:"WA", type:"Katakana", example:"ワイン (wain) = ไวน์"},
+        {char:"ヲ", romaji:"WO", type:"Katakana", example:"ヲ (wo) = ตัวช่วยกรรม"},
+        {char:"ン", romaji:"N", type:"Katakana", example:"パン (pan) = ขนมปัง"},
         ];
 
         let currentMode = 'flashcard';
+        let kanaType = "Hiragana";
+        let kanaIndex = 0;
+        let kanaListFiltered = kanaList.filter(k => k.type === "Hiragana");
+
         let currentIndex = 0;
         let isFlipped = false;
         let filteredVocab = [...vocabList];
@@ -2985,21 +3274,15 @@
         let quizCorrectCount = 0;
         let quizWrongCount = 0;
 
-        // --- Multiple-choice mode state ---
         let choiceQueue = [];
         let choiceAwaitingNext = false;
         let choiceCorrectCount = 0;
         let choiceWrongCount = 0;
 
-        // --- Typing quiz mode state ---
         let quizQueue = [];
         let quizAwaitingNext = false;
         let currentQuizWord = null;
 
-        // --- Shared persistent test stats (typing quiz + choice mode) ---
-        // testMissCount is shared between the two testing modes: a word missed
-        // in either mode is considered "still shaky" and will come up more
-        // often in both, instead of each mode tracking difficulty separately.
         let testMissCount = {};
         (function loadTestStats() {
             try {
@@ -3011,9 +3294,7 @@
                     choiceWrongCount = saved.choiceWrong || 0;
                     testMissCount = saved.missCount || {};
                 }
-            } catch (e) {
-                // corrupted or unavailable localStorage - start fresh
-            }
+            } catch (e) {}
         })();
 
         function saveTestStats() {
@@ -3025,50 +3306,44 @@
                     choiceWrong: choiceWrongCount,
                     missCount: testMissCount
                 }));
-            } catch (e) {
-                // storage unavailable - progress simply won't persist this session
-            }
+            } catch (e) {}
         }
 
-        // --- Word-matching mode state ---
         let matchSize = 5;
         let matchPairs = [];
         let matchSelectedJp = null;
         let matchSelectedTh = null;
         let matchMatchedCount = 0;
 
-        // ฟังก์ชันระบบเสียงอ่าน Text-to-Speech (รองรับภาษาญี่ปุ่น)
         function playJapaneseAudio(text) {
-            if (!('speechSynthesis' in window)) {
-                alert("เบราว์เซอร์ของคุณไม่รองรับระบบเสียงพูด");
-                return;
-            }
-            window.speechSynthesis.cancel(); // หยุดเสียงเก่าที่ค้างอยู่
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'ja-JP';
-            utterance.rate = 0.9; // ความเร็วปกติค่อนไปทางช้าเล็กน้อยเพื่อให้ฟังชัดเจน
+            utterance.rate = 0.9;
             window.speechSynthesis.speak(utterance);
         }
 
         function speakCurrentWord() {
             if (filteredVocab.length === 0) return;
-            const card = filteredVocab[currentIndex];
-            playJapaneseAudio(card.jp);
+            playJapaneseAudio(filteredVocab[currentIndex].jp);
         }
 
         function speakExampleSentence(e) {
             e.stopPropagation();
             if (filteredVocab.length === 0) return;
             const card = filteredVocab[currentIndex];
-            if (card.example && card.example.jp) {
-                playJapaneseAudio(card.example.jp);
-            }
+            if (card.example && card.example.jp) playJapaneseAudio(card.example.jp);
         }
 
         function speakQuizWord() {
-            if (filteredVocab.length === 0) return;
             const currentJpText = document.getElementById('quizJp').innerText;
-            playJapaneseAudio(currentJpText);
+            if (currentJpText) playJapaneseAudio(currentJpText);
+        }
+
+        function speakChoiceWord() {
+            const text = document.getElementById('choiceJp').innerText;
+            if (text) playJapaneseAudio(text);
         }
 
         function updateLevelCounts() {
@@ -3080,31 +3355,34 @@
         }
 
         function setMode(mode) {
+            if (speedTimerInterval) clearInterval(speedTimerInterval);
             currentMode = mode;
             document.getElementById('modeFlashcardBtn').classList.toggle('active', mode === 'flashcard');
             document.getElementById('modeQuizBtn').classList.toggle('active', mode === 'quiz');
             document.getElementById('modeChoiceBtn').classList.toggle('active', mode === 'choice');
             document.getElementById('modeMatchBtn').classList.toggle('active', mode === 'match');
+            document.getElementById('modeKanaBtn').classList.toggle('active', mode === 'kana');
 
-            document.getElementById('flashcardContainer').style.display = mode === 'flashcard' ? 'flex' : 'none';
-            document.getElementById('navButtons').style.display = mode === 'flashcard' ? 'flex' : 'none';
-            document.getElementById('kbdHint').style.display = mode === 'flashcard' ? 'block' : 'none';
-            document.getElementById('quizBox').style.display = mode === 'quiz' ? 'flex' : 'none';
-            document.getElementById('choiceBox').style.display = mode === 'choice' ? 'flex' : 'none';
-            document.getElementById('matchBox').style.display = mode === 'match' ? 'flex' : 'none';
-
-            const titleMap = {
-                flashcard: "โหมดฝึกซ้อมคำศัพท์ (Flashcard)",
-                quiz: "โหมดทดสอบเขียน / พิมพ์ตอบ (Quiz)",
-                choice: "โหมดเลือกคำตอบ (Multiple Choice)",
-                match: "โหมดจับคู่คำศัพท์ (Matching)"
-            };
-            document.getElementById('stageTitleInfo').innerText = titleMap[mode] || "";
+            document.getElementById('flashcardContainer').style.display = (mode === 'flashcard') ? 'flex' : 'none';
+            document.getElementById('navButtons').style.display = (mode === 'flashcard') ? 'flex' : 'none';
+            document.getElementById('kbdHint').style.display = (mode === 'flashcard') ? 'block' : 'none';
+            
+            document.getElementById('quizBox').style.display = (mode === 'quiz') ? 'flex' : 'none';
+            document.getElementById('choiceBox').style.display = (mode === 'choice') ? 'flex' : 'none';
+            document.getElementById('matchBox').style.display = (mode === 'match') ? 'flex' : 'none';
+            document.getElementById('kanaBox').style.display = (mode === 'kana') ? 'flex' : 'none';
+            document.getElementById('kanaNavButtons').style.display = (mode === 'kana') ? 'flex' : 'none';
+            
+            // ควบคุมการแสดงกล่องความคืบหน้าตัวอักษรให้อยู่เฉพาะในโหมดตัวอักษรฝั่งซ้าย
+            document.getElementById('kanaProgressBox').style.display = (mode === 'kana') ? 'flex' : 'none';
+            
+            document.getElementById('stageHeaderInfo').style.display = (mode === 'kana') ? 'none' : 'flex';
 
             if (mode === 'flashcard') updateCardDisplay();
             else if (mode === 'quiz') initQuiz();
             else if (mode === 'choice') initChoice();
             else if (mode === 'match') newMatchRound();
+            else if (mode === 'kana') startKanaPractice();
         }
 
         function flipCard() {
@@ -3156,7 +3434,7 @@
                 exBox.innerHTML = `
                     <div class="example-box" onclick="speakExampleSentence(event)" title="คลิกเพื่อฟังเสียงประโยคตัวอย่าง">
                         <div class="example-label-row">
-                            <span class="example-label">💡 ตัวอย่างประโยค (คลิกเพื่อฟังเสียง)</span>
+                            <span class="example-label">💡 ตัวอย่างประโยค</span>
                             <span style="font-size: 0.65rem; color: var(--kinpaku-light);">🔊 ฟังเสียง</span>
                         </div>
                         <div class="ex-jp">${card.example.jp}</div>
@@ -3257,21 +3535,19 @@
         }
 
         function resetProgress() {
-            if (confirm("คุณต้องการล้างข้อมูลสถิติความคืบหน้าทั้งหมด (SRS + คะแนนทุกโหมดทดสอบ) ใช่หรือไม่?")) {
+            if (confirm("คุณต้องการล้างข้อมูลสถิติความคืบหน้าทั้งหมดใช่หรือไม่?")) {
                 srsData = {};
                 localStorage.removeItem('nihongo_srs_v2');
-
                 quizCorrectCount = 0;
                 quizWrongCount = 0;
                 choiceCorrectCount = 0;
                 choiceWrongCount = 0;
                 testMissCount = {};
                 localStorage.removeItem('nihongo_test_stats_v1');
-
                 updateCardDisplay();
                 if (currentMode === 'quiz') initQuiz();
                 else if (currentMode === 'choice') initChoice();
-                alert("ล้างข้อมูลสถิติเรียบร้อยแล้ว!");
+                alert("ล้างข้อมูลเรียบร้อยแล้ว!");
             }
         }
 
@@ -3290,7 +3566,7 @@
         }
 
         function initQuiz() {
-            document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount} \u00a0|\u00a0 ผิด: ${quizWrongCount}`;
+            document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount}  |  ผิด: ${quizWrongCount}`;
             buildQuizQueue();
             loadQuizQuestion();
         }
@@ -3310,7 +3586,7 @@
             if (filteredVocab.length === 0) {
                 currentQuizWord = null;
                 document.getElementById('quizJp').innerText = "❌";
-                document.getElementById('quizThHint').innerText = "กรุณาเลือกอย่างน้อย 1 เลเวลก่อนเริ่มทดสอบ";
+                document.getElementById('quizThHint').innerText = "กรุณาเลือกเลเวล";
                 document.getElementById('quizLevelBadge').innerText = "";
                 return;
             }
@@ -3324,9 +3600,6 @@
             input.focus();
         }
 
-        // แยกคำอ่าน (ฮิรางานะ/คาตากานะ) และคำโรมันจิที่ยอมรับได้ทั้งหมดออกจาก
-        // ฟิลด์ extra เช่น "わたし (Watashi)" หรือ "いえ / うち (Ie / Uchi)"
-        // ซึ่งมีได้มากกว่า 1 คำตอบคั่นด้วย "/"
         function getAcceptedAnswers(word) {
             const extra = word.extra || "";
             const match = extra.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
@@ -3358,7 +3631,7 @@
 
             if (isCorrect) {
                 quizCorrectCount++;
-                feedback.innerText = "ยอดเยี่ยม! ถูกต้องครับ 🎉";
+                feedback.innerText = "ถูกต้อง! 🎉";
                 feedback.className = "quiz-feedback correct";
             } else {
                 quizWrongCount++;
@@ -3367,12 +3640,11 @@
                 feedback.className = "quiz-feedback wrong";
             }
             playJapaneseAudio(word.jp);
-            document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount} \u00a0|\u00a0 ผิด: ${quizWrongCount}`;
+            document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount}  |  ผิด: ${quizWrongCount}`;
             saveTestStats();
 
             quizQueue.shift();
             if (!isCorrect) {
-                // ให้คำที่ตอบผิดวนกลับมาถามซ้ำในอีก 2-4 ข้อถัดไป
                 const wIdx = filteredVocab.indexOf(word);
                 if (wIdx !== -1) {
                     const insertPos = Math.min(2 + Math.floor(Math.random() * 3), quizQueue.length);
@@ -3387,11 +3659,6 @@
                 loadQuizQuestion();
             };
         }
-
-        // ============================================================
-        // โหมดเลือกคำตอบ (Multiple Choice) - ดูคำศัพท์ญี่ปุ่น แล้วเลือก
-        // ความหมายภาษาไทยที่ถูกต้องจาก 4 ตัวเลือก
-        // ============================================================
 
         function buildChoiceQueue() {
             let pool = [];
@@ -3408,7 +3675,7 @@
         }
 
         function initChoice() {
-            document.getElementById('choiceStats').innerText = `ถูก: ${choiceCorrectCount} \u00a0|\u00a0 ผิด: ${choiceWrongCount}`;
+            document.getElementById('choiceStats').innerText = `ถูก: ${choiceCorrectCount}  |  ผิด: ${choiceWrongCount}`;
             buildChoiceQueue();
             loadChoiceQuestion();
         }
@@ -3426,7 +3693,7 @@
             if (filteredVocab.length === 0) {
                 document.getElementById('choiceJp').innerText = "❌";
                 document.getElementById('choiceLevelBadge').innerText = "";
-                feedback.innerText = "กรุณาเลือกอย่างน้อย 1 เลเวลก่อนเริ่มทดสอบ";
+                feedback.innerText = "กรุณาเลือกเลเวล";
                 return;
             }
             if (choiceQueue.length === 0) buildChoiceQueue();
@@ -3436,8 +3703,6 @@
             document.getElementById('choiceJp').innerText = word.jp;
             document.getElementById('choiceLevelBadge').innerText = word.level;
 
-            // สร้างตัวลวง 3 ตัวจากคลังคำศัพท์ทั้งหมด (มีคำเยอะพอเสมอ) โดยกันไม่ให้
-            // ความหมายภาษาไทยซ้ำกับคำตอบที่ถูก หรือซ้ำกันเอง
             const seenTh = new Set([word.th]);
             let distractorPool = vocabList.filter(w => w.jp !== word.jp);
             for (let i = distractorPool.length - 1; i > 0; i--) {
@@ -3477,7 +3742,7 @@
             const allBtns = optionsEl.querySelectorAll('.choice-option');
             allBtns.forEach(b => { b.disabled = true; });
 
-            const isCorrect = pickedTh === word.th;
+            const isCorrect = (pickedTh === word.th);
             if (isCorrect) {
                 choiceCorrectCount++;
                 btnEl.classList.add('choice-correct');
@@ -3488,23 +3753,21 @@
                 testMissCount[getCardKey(word)] = (testMissCount[getCardKey(word)] || 0) + 1;
                 btnEl.classList.add('choice-wrong');
                 allBtns.forEach(b => { if (b.innerText === word.th) b.classList.add('choice-correct'); });
-                feedback.innerHTML = `ผิด ❌ คำตอบที่ถูกต้องคือ <b>${word.th}</b>`;
+                feedback.innerHTML = `ผิด ❌ เฉลย: <b>${word.th}</b>`;
                 feedback.className = "quiz-feedback wrong";
             }
             playJapaneseAudio(word.jp);
-            document.getElementById('choiceStats').innerText = `ถูก: ${choiceCorrectCount} \u00a0|\u00a0 ผิด: ${choiceWrongCount}`;
+            document.getElementById('choiceStats').innerText = `ถูก: ${choiceCorrectCount}  |  ผิด: ${choiceWrongCount}`;
             saveTestStats();
 
             choiceQueue.shift();
             if (!isCorrect) {
-                // ให้คำที่ตอบผิดวนกลับมาถามซ้ำในอีก 2-4 ข้อถัดไป
                 const wIdx = filteredVocab.indexOf(word);
                 if (wIdx !== -1) {
                     const insertPos = Math.min(2 + Math.floor(Math.random() * 3), choiceQueue.length);
                     choiceQueue.splice(insertPos, 0, wIdx);
                 }
             }
-
             document.getElementById('choiceNextBtn').style.display = 'block';
         }
 
@@ -3512,16 +3775,6 @@
             if (choiceQueue.length === 0) buildChoiceQueue();
             loadChoiceQuestion();
         }
-
-        function speakChoiceWord() {
-            const text = document.getElementById('choiceJp').innerText;
-            if (text) playJapaneseAudio(text);
-        }
-
-        // ============================================================
-        // โหมดจับคู่คำ (Matching) - คลิกคำศัพท์ญี่ปุ่นฝั่งซ้าย แล้วคลิก
-        // ความหมายภาษาไทยฝั่งขวาที่ตรงกัน เลือกได้ 5 / 7 / 10 คู่ต่อรอบ
-        // ============================================================
 
         function setMatchSize(n) {
             matchSize = n;
@@ -3543,14 +3796,11 @@
             if (filteredVocab.length === 0) {
                 matchPairs = [];
                 document.getElementById('matchProgress').innerText = `จับคู่แล้ว 0 / 0`;
-                feedback.innerText = "กรุณาเลือกอย่างน้อย 1 เลเวลก่อนเริ่มเล่น";
+                feedback.innerText = "กรุณาเลือกเลเวล";
                 return;
             }
 
             const n = Math.min(matchSize, filteredVocab.length);
-
-            // สุ่มคำจาก filteredVocab โดยกันคำที่มีความหมายไทยซ้ำกัน
-            // (ไม่งั้นจะจับคู่กับอันไหนก็ถูกทั้งคู่ สับสนผู้เล่น)
             let pool = [...filteredVocab];
             for (let i = pool.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -3612,9 +3862,7 @@
                 el.classList.add('selected');
             }
 
-            if (matchSelectedJp && matchSelectedTh) {
-                checkMatchPair();
-            }
+            if (matchSelectedJp && matchSelectedTh) checkMatchPair();
         }
 
         function checkMatchPair() {
@@ -3637,10 +3885,10 @@
                 matchSelectedTh = null;
 
                 if (matchMatchedCount === matchPairs.length) {
-                    feedback.innerText = "🎉 เก่งมาก! จับคู่ครบทุกคำแล้ว กด \"คำชุดใหม่\" เพื่อเล่นต่อ";
+                    feedback.innerText = "🎉 เก่งมาก! จับคู่ครบแล้ว";
                 }
             } else {
-                feedback.innerText = "ยังไม่ถูก ลองอีกครั้ง ❌";
+                feedback.innerText = "ยังไม่ถูก ลองใหม่ ❌";
                 feedback.className = "match-feedback wrong";
                 jpSel.el.classList.add('wrong-flash');
                 thSel.el.classList.add('wrong-flash');
@@ -3653,6 +3901,109 @@
                 matchSelectedTh = null;
             }
         }
+
+        function updateKanaCard() {
+            let k = kanaListFiltered[kanaIndex];
+            document.getElementById("kanaCharacter").innerText = k.char;
+            document.getElementById("kanaRomaji").innerText = k.romaji;
+            document.getElementById("kanaType").innerText = k.type;
+            document.getElementById("kanaExample").innerText = "ตัวอย่าง: " + k.example;
+            
+            document.getElementById("kanaProgressCount").innerText = `${kanaIndex + 1} / ${kanaListFiltered.length}`;
+            const percent = Math.round(((kanaIndex + 1) / kanaListFiltered.length) * 100);
+            document.getElementById("kanaProgressBar").style.width = percent + "%";
+        }
+
+        function nextKana() {
+            kanaIndex = (kanaIndex + 1) % kanaListFiltered.length;
+            updateKanaCard();
+        }
+
+        function prevKana() {
+            kanaIndex = (kanaIndex - 1 + kanaListFiltered.length) % kanaListFiltered.length;
+            updateKanaCard();
+        }
+
+        function shuffleKana() {
+            kanaIndex = Math.floor(Math.random() * kanaListFiltered.length);
+            updateKanaCard();
+        }
+
+        function setKanaType(type) {
+            kanaType = (type === "hiragana") ? "Hiragana" : "Katakana";
+            kanaListFiltered = kanaList.filter(k => k.type === kanaType);
+            kanaIndex = 0;
+            updateKanaCard();
+        }
+
+        function speakKana() {
+            let k = kanaListFiltered[kanaIndex];
+            playJapaneseAudio(k.char);
+        }
+
+        // Speed Test mode variables & functions
+        let speedTimerInterval = null;
+        let timeLeft = 30;
+        let speedScoreVal = 0;
+        let currentSpeedKana = null;
+
+        function startKanaPractice() {
+            if (speedTimerInterval) clearInterval(speedTimerInterval);
+            document.getElementById('kanaLearningCard').style.display = 'flex';
+            document.getElementById('kanaNavButtons').style.display = 'flex';
+            document.getElementById('kanaSpeedContainer').style.display = 'none';
+            document.getElementById('kanaSelectorBox').style.display = 'block';
+            updateKanaCard();
+        }
+
+        function startKanaSpeedGame() {
+            if (speedTimerInterval) clearInterval(speedTimerInterval);
+            document.getElementById('kanaLearningCard').style.display = 'none';
+            document.getElementById('kanaNavButtons').style.display = 'none';
+            document.getElementById('kanaSelectorBox').style.display = 'none';
+            document.getElementById('kanaSpeedContainer').style.display = 'flex';
+            
+            timeLeft = 30;
+            speedScoreVal = 0;
+            document.getElementById('speedScore').innerText = `คะแนน: ${speedScoreVal}`;
+            nextSpeedQuestion();
+
+            speedTimerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('speedTimer').innerText = `เวลาเหลือ: ${timeLeft} วินาที`;
+                if (timeLeft <= 0) {
+                    clearInterval(speedTimerInterval);
+                    document.getElementById('speedInput').disabled = true;
+                    alert(`หมดเวลา! คุณทำคะแนนได้ ${speedScoreVal} คะแนน 🎉`);
+                }
+            }, 1000);
+
+            const speedInput = document.getElementById('speedInput');
+            speedInput.disabled = false;
+            speedInput.value = '';
+            speedInput.focus();
+        }
+
+        function nextSpeedQuestion() {
+            if (timeLeft <= 0) return;
+            const randomIndex = Math.floor(Math.random() * kanaListFiltered.length);
+            currentSpeedKana = kanaListFiltered[randomIndex];
+            document.getElementById('speedChar').innerText = currentSpeedKana.char;
+            const speedInput = document.getElementById('speedInput');
+            speedInput.value = '';
+            speedInput.focus();
+        }
+
+        document.getElementById('speedInput')?.addEventListener('input', (e) => {
+            if (timeLeft <= 0 || !currentSpeedKana) return;
+            const val = e.target.value.trim().toLowerCase();
+            if (val === currentSpeedKana.romaji.toLowerCase()) {
+                speedScoreVal++;
+                document.getElementById('speedScore').innerText = `คะแนน: ${speedScoreVal}`;
+                playJapaneseAudio(currentSpeedKana.char);
+                nextSpeedQuestion();
+            }
+        });
 
         function attemptLogin() {
             const user = document.getElementById('loginUser').value.trim();
@@ -3680,8 +4031,7 @@
             }
         });
 
-        // กด Enter ในช่องพิมพ์คำตอบ = กดปุ่ม "ตรวจคำตอบ" / "ข้อถัดไป" แทนการใช้เมาส์
-        document.getElementById('quizInput').addEventListener('keydown', (e) => {
+        document.getElementById('quizInput')?.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
                 document.getElementById('quizSubmitBtn').click();
