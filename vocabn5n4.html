@@ -179,6 +179,46 @@
             box-shadow: 0 4px 12px rgba(27, 38, 59, 0.15);
         }
 
+        .voice-settings {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .voice-settings-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .voice-select {
+            font-family: 'Prompt', sans-serif;
+            font-size: 0.8rem;
+            padding: 6px 10px;
+            border-radius: 10px;
+            border: 1.5px solid var(--glass-border);
+            background: rgba(255,255,255,0.9);
+            color: var(--text-main);
+            max-width: 200px;
+            cursor: pointer;
+        }
+        .voice-warning {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            width: 280px;
+            background: #fff8f0;
+            border: 1.5px solid var(--sakura);
+            color: var(--kon-iro);
+            font-size: 0.72rem;
+            line-height: 1.5;
+            padding: 10px 12px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            z-index: 20;
+        }
+
         /* Main Container: 2 Columns Layout */
         .main-container {
             width: 100%;
@@ -838,13 +878,12 @@
             max-width: 460px;
             display: none;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
             margin: auto;
         }
         .kana-learning-card {
             width: 100%;
-            height: 310px;
             background: rgba(255,255,255,.92);
             border: 2px solid var(--kinpaku-light);
             border-radius: 24px;
@@ -852,38 +891,41 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
             box-shadow: 0 15px 35px rgba(27,38,59,.12);
             position: relative;
         }
         .kana-type-badge {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             background: rgba(224,122,130,.15);
             color: var(--sakura);
-            padding: 5px 15px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-weight: 700;
+            font-size: 0.75rem;
         }
         .kana-character {
             font-family: 'Zen Maru Gothic', sans-serif;
-            font-size: 6rem;
+            font-size: 4rem;
             font-weight: 700;
             color: var(--kon-iro);
             line-height: 1;
-        }
-        .kana-romaji {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--sakura);
             margin-top: 10px;
         }
+        .kana-romaji {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sakura);
+            margin-top: 5px;
+        }
         .kana-example {
-            margin-top: 20px;
+            margin-top: 10px;
             background: rgba(27,38,59,.05);
-            padding: 8px 20px;
-            border-radius: 15px;
-            font-size: .9rem;
+            padding: 6px 15px;
+            border-radius: 12px;
+            font-size: .85rem;
             color: var(--text-muted);
         }
         .kana-buttons {
@@ -897,14 +939,12 @@
         .kana-selector {
             width: 100%;
             max-width: 460px;
-            padding: 10px 15px;
         }
         .kana-type-buttons {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             width: 100%;
-            flex-direction: row; /* แนวนอน */
         }
         .kana-progress {
             width: 100%;
@@ -934,6 +974,120 @@
             transition: .4s;
         }
         .kana-buttons button { flex: 1; }
+
+        /* Canvas & Stroke Order Styles */
+        .canvas-container {
+            position: relative;
+            margin-top: 10px;
+            background: #fff;
+            border: 2px dashed var(--kinpaku);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+        }
+        canvas {
+            display: block;
+            touch-action: none;
+            cursor: crosshair;
+        }
+        .stroke-hud {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--kon-iro);
+            margin-top: 8px;
+        }
+        #strokeStars {
+            color: var(--kinpaku);
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+        .canvas-container.wrong-shake {
+            animation: shakeCanvas 0.35s;
+            border-color: var(--sakura) !important;
+        }
+        @keyframes shakeCanvas {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        .canvas-tools {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            width: 100%;
+        }
+        .canvas-tools button {
+            flex: 1;
+            font-size: 0.75rem;
+            padding: 6px;
+        }
+        /* ===== Gacha / Kana Monster Collection Screen ===== */
+        .gacha-screen { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+        .gacha-topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .gacha-coin-badge {
+            background: rgba(212,175,55,.15); color: var(--kinpaku); font-weight: 700;
+            padding: 8px 14px; border-radius: 14px; font-size: 0.9rem; border: 1px solid var(--kinpaku-light);
+        }
+        .gacha-note { font-size: 0.7rem; color: var(--text-muted); line-height: 1.4; }
+        .gacha-pull-result {
+            min-height: 20px; font-size: 0.85rem; font-weight: 700; text-align: center;
+            color: var(--sakura); padding: 4px;
+        }
+        .gacha-team-panel {
+            background: rgba(255,255,255,.7); border: 1px solid var(--glass-border);
+            border-radius: 16px; padding: 14px;
+        }
+        .gacha-team-panel h4 { font-size: 0.9rem; color: var(--kon-iro); margin-bottom: 8px; }
+        .gacha-team-slots { display: flex; gap: 8px; flex-wrap: wrap; }
+        .gacha-team-slot {
+            width: 56px; height: 56px; border-radius: 14px; border: 2px dashed var(--glass-border);
+            display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+            background: rgba(27,38,59,.03);
+        }
+        .gacha-team-slot.filled { border-style: solid; border-color: var(--kinpaku); background: #fff; cursor: pointer; }
+        .gacha-team-power { font-size: 0.8rem; font-weight: 700; color: var(--matcha); margin-top: 8px; }
+        .gacha-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px;
+        }
+        .gacha-card {
+            background: #fff; border-radius: 14px; padding: 10px 6px; text-align: center;
+            border: 2px solid var(--glass-border); position: relative; transition: transform .2s;
+        }
+        .gacha-card:hover { transform: translateY(-3px); }
+        .gacha-card.locked { opacity: 0.35; filter: grayscale(1); }
+        .gacha-card.rarity-N { border-color: #b0b0b0; }
+        .gacha-card.rarity-R { border-color: #4a90d9; box-shadow: 0 0 8px rgba(74,144,217,.25); }
+        .gacha-card.rarity-SR { border-color: #b06fe0; box-shadow: 0 0 10px rgba(176,111,224,.35); }
+        .gacha-card.rarity-SSR { border-color: var(--kinpaku); box-shadow: 0 0 14px rgba(212,175,55,.5); }
+        .gacha-card .gc-emoji { font-size: 1.8rem; }
+        .gacha-card .gc-char { font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--kon-iro); }
+        .gacha-card .gc-elem { font-size: 0.65rem; color: var(--text-muted); }
+        .gacha-card .gc-rarity { font-size: 0.6rem; font-weight: 700; }
+        .gacha-card .gc-mastery-bar { width: 100%; height: 5px; background: rgba(27,38,59,.08); border-radius: 4px; margin-top: 4px; overflow: hidden; }
+        .gacha-card .gc-mastery-fill { height: 100%; background: linear-gradient(90deg, var(--sakura), var(--kinpaku)); }
+        .gacha-card .gc-evolve-btn {
+            font-size: 0.62rem; margin-top: 5px; padding: 3px 6px; border-radius: 8px; border: none;
+            background: var(--matcha); color: #fff; cursor: pointer; width: 100%;
+        }
+        .gacha-card .gc-evolve-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .gacha-card .gc-count { position: absolute; top: 4px; right: 6px; font-size: 0.65rem; font-weight: 700; color: var(--sakura); }
+        .gacha-card .gc-stage { position: absolute; top: 4px; left: 6px; font-size: 0.65rem; }
+
+        /* Monster Gacha Badge */
+        .gacha-monster-badge {
+            font-size: 0.75rem;
+            background: linear-gradient(135deg, var(--kinpaku), var(--sakura));
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 6px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -964,6 +1118,13 @@
                 <button id="modeChoiceBtn" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ</button>
                 <button id="modeMatchBtn" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ</button>
                 <button id="modeKanaBtn" class="mode-btn new-mode" onclick="setMode('kana')">🌸 あいう ตัวอักษร<span class="new-badge">NEW</span></button>
+            </div>
+            <div class="voice-settings">
+                <span class="voice-settings-label">🔊 เสียงอ่าน:</span>
+                <select id="voiceSelector" class="voice-select" onchange="onVoiceSelectorChange()"></select>
+                <div class="voice-warning" id="voiceWarning" style="display:none;">
+                    ⚠️ ไม่พบเสียงพากย์ญี่ปุ่นแท้ในอุปกรณ์นี้ เสียงที่ได้ยินอาจไม่ใช่สำเนียงญี่ปุ่น — ลองติดตั้งแพ็กเสียงภาษาญี่ปุ่นในระบบปฏิบัติการ หรือใช้ Chrome ที่เชื่อมต่ออินเทอร์เน็ต (จะมีเสียง Google 日本語 คุณภาพสูงให้เลือก)
+                </div>
             </div>
         </header>
 
@@ -999,7 +1160,7 @@
                 </div>
                 <div class="srs-summary-details" id="srsSummary"></div>
 
-                <!-- ย้ายกล่องความคืบหน้าตัวอักษรมาไว้ที่นี่ -->
+                <!-- กล่องความคืบหน้าตัวอักษร -->
                 <div class="kana-progress" id="kanaProgressBox" style="display: none;">
                     <div class="kana-progress-title" style="font-weight: 600; color: var(--kon-iro);">📚 ความคืบหน้าตัวอักษร</div>
                     <div style="display: flex; justify-content: space-between;">
@@ -1113,40 +1274,84 @@
                     </div>
                 </div>
 
-                <!-- Kana Classroom Mode -->
+                <!-- Kana Classroom Mode (พร้อม 4 ฟีเจอร์ใหม่) -->
                 <div class="kana-box" id="kanaBox" style="display:none;">
-                    <!-- Mode Switcher inside Kana -->
-                    <div style="display: flex; gap: 8px; width: 100%; margin-bottom: 5px;">
-                        <button class="btn-submit" style="margin-top:0; background: var(--kon-iro); font-size: 0.85rem;" onclick="startKanaPractice()">📖 โหมดฝึกซ้อม</button>
-                        <button class="btn-submit" style="margin-top:0; background: var(--sakura); font-size: 0.85rem;" onclick="startKanaSpeedGame()">⚡ สปีดเทส (30วิ)</button>
+                    <!-- Sub-mode Selector Tabs -->
+                    <div style="display: flex; gap: 6px; width: 100%; margin-bottom: 5px; flex-wrap: wrap;">
+                        <button class="btn-submit" style="margin-top:0; background: var(--kon-iro); font-size: 0.75rem; flex: 1;" onclick="startKanaPractice()">📖 ฝึกซ้อม & ลากเส้น</button>
+                        <button class="btn-submit" style="margin-top:0; background: var(--sakura); font-size: 0.75rem; flex: 1;" onclick="startKanaSpeedGame()">⚡ สปีดเทส (30วิ)</button>
+                        <button class="btn-submit" style="margin-top:0; background: #2980b9; font-size: 0.75rem; flex: 1;" onclick="startListeningQuiz()">🎧 ทายเสียง</button>
+                        <button class="btn-submit" style="margin-top:0; background: linear-gradient(135deg, var(--kinpaku), var(--sakura)); font-size: 0.75rem; flex: 1;" onclick="startGachaScreen()">🎴 คอลเลกชัน</button>
                     </div>
 
-                    <!-- Kana Type Selector (ย้ายมาอยู่ใต้ปุ่มโหมดฝึกซ้อมและจัดเรียงเป็นแนวนอน) -->
-                    <div class="kana-selector" id="kanaSelectorBox" style="max-width: 100%;">
+                    <!-- Kana Type Selector -->
+                    <div class="kana-selector" id="kanaSelectorBox">
                         <div class="kana-type-buttons">
-                            <button class="btn-submit" style="margin-top:0;" onclick="setKanaType('hiragana')">あ Hiragana</button>
-                            <button class="btn-submit" style="margin-top:0;" onclick="setKanaType('katakana')">ア Katakana</button>
+                            <button class="btn-submit" style="margin-top:0; font-size: 0.85rem;" onclick="setKanaType('hiragana')">あ Hiragana</button>
+                            <button class="btn-submit" style="margin-top:0; font-size: 0.85rem;" onclick="setKanaType('katakana')">ア Katakana</button>
                         </div>
                     </div>
 
+                    <!-- Learning & Canvas Card -->
                     <div class="kana-learning-card" id="kanaLearningCard">
                         <span class="kana-type-badge" id="kanaType">Hiragana</span>
+                        <div class="gacha-monster-badge" id="gachaMonsterBadge">👾 มอนสเตอร์: อะสะคุง</div>
                         <div class="kana-character" id="kanaCharacter">あ</div>
                         <div class="kana-romaji" id="kanaRomaji">A</div>
-                        <button class="btn-speak-word" onclick="speakKana()" style="margin-top: 10px;">🔊 ฟังเสียง</button>
+                        <button class="btn-speak-word" onclick="speakKana()" style="margin-top: 6px;">🔊 ฟังเสียง</button>
                         <div class="kana-example" id="kanaExample">ตัวอย่าง: あさ (asa) = เช้า</div>
+
+                        <!-- 1. โหมดฝึกเขียนลากเส้นตามเส้นนำ (ไม่มีการให้คะแนน) -->
+                        <div class="stroke-hud">
+                            <span id="strokeCounter">ทั้งหมด 3 เส้น</span>
+                        </div>
+                        <div class="canvas-container" id="canvasContainer">
+                            <canvas id="strokeCanvas" width="260" height="260"></canvas>
+                        </div>
+                        <div class="canvas-tools">
+                            <button class="btn-mini" onclick="clearCanvas()">ล้างกระดาน 🔄</button>
+                        </div>
+                        <div id="canvasFeedback" style="font-size: 0.75rem; font-weight: 600; margin-top: 4px; min-height: 16px;"></div>
                     </div>
 
-                    <!-- Kana Speed Test Container -->
+                    <!-- 2. Kana Speed Test Container (30s) -->
                     <div class="quiz-box" id="kanaSpeedContainer" style="display: none; max-width: 100%; padding: 25px; text-align: center;">
                         <div style="font-size: 1.1rem; font-weight: bold; color: var(--sakura); margin-bottom: 10px;" id="speedTimer">เวลาเหลือ: 30 วินาที</div>
                         <div style="font-size: 5rem; font-family: 'Zen Maru Gothic', sans-serif; margin: 10px 0;" id="speedChar">あ</div>
                         <input type="text" class="quiz-input" id="speedInput" placeholder="พิมพ์โรมันจิ เช่น a, ka, shi" autocomplete="off" />
                         <div style="font-size: 1rem; font-weight: 600; margin-top: 15px; color: var(--matcha);" id="speedScore">คะแนน: 0</div>
                     </div>
+
+                    <!-- 4. Listening Quiz Container -->
+                    <div class="quiz-box" id="kanaListeningContainer" style="display: none; max-width: 100%; padding: 25px; text-align: center;">
+                        <div style="font-size: 1rem; font-weight: bold; color: var(--kon-iro); margin-bottom: 15px;">🎧 ฟังเสียงแล้วทายว่าคือตัวอักษรใด?</div>
+                        <button class="btn-submit" style="background: var(--kon-iro); margin: 0 auto 15px; width: auto; padding: 12px 24px;" onclick="playListeningAudio()">🔊 กดฟังเสียงอีกครั้ง</button>
+                        <div class="choice-options" id="listeningOptions"></div>
+                        <div class="quiz-feedback" id="listeningFeedback" style="margin-top: 10px;"></div>
+                    </div>
+
+                    <!-- 5. Gacha / Kana Monster Collection -->
+                    <div class="gacha-screen" id="kanaGachaContainer" style="display: none;">
+                        <div class="gacha-topbar">
+                            <div class="gacha-coin-badge">🪙 <span id="gachaCoinCount">0</span> เหรียญฝึกฝน</div>
+                            <button class="btn-mini" style="background: linear-gradient(135deg, var(--kinpaku), var(--sakura)); color:#fff; padding: 10px 18px;" onclick="pullGacha()">🎴 สุ่มการ์ด (20 เหรียญ)</button>
+                        </div>
+                        <div class="gacha-note">เก็บเหรียญได้จากการฝึกลากเส้น สปีดเทส และทายเสียง — การ์ดซ้ำจะกลายเป็นวัตถุดิบวิวัฒนาการ ✨</div>
+                        <div id="gachaPullResult" class="gacha-pull-result"></div>
+
+                        <div class="gacha-team-panel">
+                            <h4>⚔️ ทีมของคุณ (เลือกได้สูงสุด 4 ตัว)</h4>
+                            <div class="gacha-team-slots" id="gachaTeamSlots"></div>
+                            <div class="gacha-team-power" id="gachaTeamPower"></div>
+                            <div class="gacha-note" style="margin-top:4px;">* หน้าจอทีมนี้เป็นโหมดจัดทีม/โชว์พลังเบื้องต้น ยังไม่ใช่ระบบต่อสู้แบบเต็มรูปแบบ</div>
+                        </div>
+
+                        <h4 style="margin-top: 14px; color: var(--kon-iro);">📚 คอลเลกชันทั้งหมด (<span id="gachaTypeLabel">Hiragana</span>)</h4>
+                        <div class="gacha-grid" id="gachaGrid"></div>
+                    </div>
                 </div>
 
-                <!-- Kana Navigation Buttons (Floating Bottom Bar สำหรับควบคุมการตอบ/ปุ่มกดก่อนหน้า, สุ่ม และถัดไป) -->
+                <!-- Kana Navigation Buttons -->
                 <div class="kana-buttons" id="kanaNavButtons">
                     <button class="btn-prev" onclick="prevKana()">◀ ก่อนหน้า</button>
                     <button class="btn-shuffle" onclick="shuffleKana()">🔀 สุ่ม</button>
@@ -1158,6 +1363,7 @@
 
     <script>
         const vocabList = [
+            // --- ระดับ N5 ---
 { jp: "私", extra: "わたし (Watashi)", th: "ฉัน", level: "N5", example: { jp: "私は学生です。", th: "ฉันเป็นนักเรียน" } },
 { jp: "私", extra: "わたし (Watashi)", th: "ฉัน", level: "N5", example: { jp: "私は学生です。", th: "ฉันเป็นนักเรียน" } },
 { jp: "あなた", extra: "あなた (Anata)", th: "คุณ", level: "N5", example: { jp: "あなたは先生ですか。", th: "คุณเป็นครูหรือเปล่า" } },
@@ -3146,120 +3352,107 @@
 { jp: "変化する", extra: "へんかする (henkasuru)", th: "เปลี่ยนแปลง", level: "N4", example: { jp: "生活が変化しました。", th: "ชีวิตเปลี่ยนแปลง" } },
         ];
 
+        // ===== Stroke Order Data (แบบเวกเตอร์: จุดเริ่มต้น -> จุดสิ้นสุด ของแต่ละเส้น บนกริด 0-100) =====
+        // หมายเหตุ: เป็นข้อมูลโดยประมาณเพื่อใช้ตรวจสอบ "ทิศทาง" และ "ลำดับ" การลากเส้น
+        // ไม่ใช่ข้อมูลลายเส้นระดับพิกเซลจากแบบอักษรทางการ เหมาะกับการฝึกระดับเริ่มต้น
+        const STROKE_DATA = {"hiragana":{"あ":[[[18,26],[78,22]],[[58,10],[32,80]],[[52,58],[80,80]]],"い":[[[30,20],[20,75]],[[65,25],[80,80]]],"う":[[[30,20],[62,20]],[[75,35],[25,85]]],"え":[[[20,30],[80,26]],[[75,45],[20,90]]],"お":[[[18,30],[78,26]],[[55,10],[30,88]],[[65,45],[82,60]]],"か":[[[20,25],[75,22]],[[60,12],[25,85]],[[62,55],[85,68]]],"き":[[[22,26],[78,22]],[[20,45],[78,42]],[[52,10],[52,90]],[[35,68],[62,80]]],"く":[[[70,15],[25,50],[25,50],[72,85]]],"け":[[[18,35],[18,85]],[[35,20],[35,80]],[[45,55],[80,60]]],"こ":[[[20,30],[75,25]],[[20,75],[80,80]]],"さ":[[[25,20],[70,18]],[[75,30],[25,85]],[[15,55],[55,45]]],"し":[[[60,15],[25,85]]],"す":[[[30,20],[70,18]],[[65,30],[20,85]]],"せ":[[[25,20],[25,50]],[[15,55],[80,50]],[[65,20],[50,88]]],"そ":[[[20,20],[75,30],[55,45],[25,88]]],"た":[[[20,25],[75,22]],[[35,10],[35,85]],[[55,45],[85,55]],[[45,60],[70,88]]],"ち":[[[25,20],[70,18]],[[70,25],[20,88]]],"つ":[[[75,25],[20,55],[20,55],[75,85]]],"て":[[[15,25],[80,25],[80,25],[25,90]]],"と":[[[30,15],[30,60]],[[35,55],[80,88]]],"な":[[[20,25],[75,22]],[[35,10],[35,80]],[[55,35],[85,45]],[[60,55],[85,88]]],"に":[[[20,20],[20,80]],[[55,15],[55,85]],[[30,60],[80,65]]],"ぬ":[[[25,20],[75,25]],[[45,10],[45,88]]],"ね":[[[25,20],[20,80]],[[50,10],[50,85]],[[60,55],[85,88]]],"の":[[[50,15],[20,50],[80,70],[35,88]]],"は":[[[20,15],[20,85]],[[45,10],[45,85]],[[55,45],[85,60]]],"ひ":[[[30,20],[20,60],[55,80],[80,55]]],"ふ":[[[30,20],[70,25]],[[25,40],[75,35]],[[70,20],[30,60]],[[30,60],[75,85]]],"へ":[[[15,30],[50,70],[50,70],[85,25]]],"ほ":[[[20,15],[20,85]],[[45,10],[45,85]],[[55,35],[85,45]],[[60,55],[85,85]]],"ま":[[[20,25],[75,22]],[[20,50],[78,47]],[[50,10],[50,80]]],"み":[[[25,20],[75,25]],[[55,35],[20,65],[80,75],[35,90]]],"む":[[[25,20],[75,25]],[[20,45],[78,42]],[[50,10],[50,88]]],"め":[[[75,20],[25,55],[25,55],[75,88]]],"も":[[[50,10],[50,85]],[[20,30],[75,28]],[[20,55],[78,52]]],"や":[[[20,20],[25,80]],[[60,10],[60,55]],[[60,55],[88,75]]],"ゆ":[[[50,10],[50,60]],[[50,60],[25,88]]],"よ":[[[50,10],[50,50]],[[50,50],[25,88]]],"ら":[[[30,15],[70,15]],[[65,20],[25,88]]],"り":[[[35,20],[25,70]],[[65,15],[55,85]]],"る":[[[65,15],[25,55],[25,55],[80,88]]],"れ":[[[20,15],[20,85]],[[35,55],[85,88]]],"ろ":[[[65,20],[25,55],[25,55],[75,88]]],"わ":[[[25,15],[75,20]],[[65,30],[20,88]]],"を":[[[20,25],[75,22]],[[70,15],[25,55]],[[40,55],[80,85]]],"ん":[[[25,20],[55,70],[55,70],[80,88]]]},"katakana":{"ア":[[[20,20],[80,20]],[[70,25],[20,88]]],"イ":[[[30,15],[70,60]],[[65,20],[30,88]]],"ウ":[[[35,15],[65,15]],[[20,35],[80,35]],[[60,40],[30,88]]],"エ":[[[20,18],[80,18]],[[50,18],[50,80]],[[20,82],[80,82]]],"オ":[[[20,25],[80,25]],[[50,15],[50,85]],[[70,40],[25,80]]],"カ":[[[15,25],[85,20]],[[75,20],[25,88]]],"キ":[[[20,20],[80,20]],[[20,50],[80,50]],[[50,10],[50,85]]],"ク":[[[20,15],[20,85]],[[20,45],[80,88]]],"ケ":[[[15,20],[15,88]],[[30,15],[30,88]],[[45,50],[85,60]]],"コ":[[[20,20],[80,20]],[[20,80],[80,80]]],"サ":[[[20,25],[80,20]],[[50,15],[50,85]],[[75,40],[20,75]]],"シ":[[[25,25],[45,45]],[[45,20],[60,40]],[[70,20],[20,85]]],"ス":[[[20,20],[80,20]],[[70,25],[20,88]]],"セ":[[[20,20],[80,15]],[[75,20],[20,88]]],"ソ":[[[65,15],[35,45]],[[75,20],[20,88]]],"タ":[[[20,20],[80,15]],[[75,20],[25,55]],[[30,60],[80,88]]],"チ":[[[20,20],[80,15]],[[50,15],[50,55]],[[70,55],[20,88]]],"ツ":[[[25,20],[40,45]],[[45,15],[55,40]],[[70,20],[20,85]]],"テ":[[[15,20],[85,20]],[[50,20],[50,55]],[[30,55],[75,88]]],"ト":[[[30,15],[30,85]],[[35,45],[80,20]]],"ナ":[[[15,25],[85,20]],[[55,15],[45,88]]],"ニ":[[[20,30],[80,28]],[[20,75],[80,72]]],"ヌ":[[[20,15],[80,60]],[[75,15],[20,88]]],"ネ":[[[45,10],[45,25]],[[20,30],[80,28]],[[50,28],[50,60]],[[30,65],[75,88]]],"ノ":[[[70,15],[25,85]]],"ハ":[[[35,15],[20,85]],[[65,15],[80,85]]],"ヒ":[[[25,15],[25,75]],[[25,75],[80,60]]],"フ":[[[20,20],[80,20],[80,20],[25,85]]],"ヘ":[[[15,50],[50,15],[50,15],[85,60]]],"ホ":[[[50,10],[50,85]],[[20,30],[80,28]],[[30,55],[20,88]],[[70,55],[80,88]]],"マ":[[[15,20],[85,18]],[[70,20],[20,88]]],"ミ":[[[20,25],[75,20]],[[20,50],[75,45]],[[20,75],[75,70]]],"ム":[[[70,15],[20,60]],[[20,55],[80,88]]],"メ":[[[20,15],[80,85]],[[80,15],[20,85]]],"モ":[[[20,30],[80,28]],[[50,10],[50,60]],[[20,65],[80,88]]],"ヤ":[[[20,20],[75,55]],[[60,15],[60,88]]],"ユ":[[[25,15],[25,70]],[[20,72],[80,60]]],"ヨ":[[[20,20],[80,18]],[[20,50],[75,48]],[[20,80],[80,78]]],"ラ":[[[20,20],[80,18]],[[70,20],[25,88]]],"リ":[[[30,15],[30,80]],[[65,15],[65,80]]],"ル":[[[35,15],[25,85]],[[65,15],[75,85]]],"レ":[[[30,15],[75,85]]],"ロ":[[[20,20],[80,20]],[[80,20],[80,80]],[[80,80],[20,80]],[[20,80],[20,20]]],"ワ":[[[20,20],[80,18]],[[55,20],[35,88]]],"ヲ":[[[20,25],[80,22]],[[70,15],[25,55]],[[35,55],[80,85]]],"ン":[[[35,20],[60,45]],[[65,20],[25,88]]]}};
+        const ELEMENT_DATA = {"あ":"Fire","い":"Water","う":"Earth","え":"Wind","お":"Fire","か":"Water","き":"Earth","く":"Wind","け":"Fire","こ":"Water","さ":"Earth","し":"Wind","す":"Fire","せ":"Water","そ":"Wind","た":"Wind","ち":"Fire","つ":"Water","て":"Earth","と":"Wind","な":"Fire","に":"Water","ぬ":"Earth","ね":"Wind","の":"Fire","は":"Water","ひ":"Fire","ふ":"Wind","へ":"Fire","ほ":"Water","ま":"Earth","み":"Water","む":"Earth","め":"Water","も":"Earth","や":"Earth","ゆ":"Water","よ":"Water","ら":"Earth","り":"Wind","る":"Fire","れ":"Water","ろ":"Earth","わ":"Wind","を":"Fire","ん":"Water","ア":"Earth","イ":"Wind","ウ":"Fire","エ":"Water","オ":"Earth","カ":"Wind","キ":"Fire","ク":"Water","ケ":"Earth","コ":"Wind","サ":"Fire","シ":"Water","ス":"Earth","セ":"Wind","ソ":"Fire","タ":"Water","チ":"Earth","ツ":"Wind","テ":"Fire","ト":"Water","ナ":"Earth","ニ":"Wind","ヌ":"Fire","ネ":"Water","ノ":"Earth","ハ":"Wind","ヒ":"Fire","フ":"Water","ヘ":"Earth","ホ":"Wind","マ":"Fire","ミ":"Water","ム":"Earth","メ":"Wind","モ":"Fire","ヤ":"Water","ユ":"Earth","ヨ":"Wind","ラ":"Fire","リ":"Water","ル":"Earth","レ":"Wind","ロ":"Fire","ワ":"Water","ヲ":"Earth","ン":"Wind"};
+
         const kanaList = [
-        // Hiragana (46 ตัว)
-        {char:"あ", romaji:"A", type:"Hiragana", example:"あさ (asa) = เช้า"},
-        {char:"い", romaji:"I", type:"Hiragana", example:"いぬ (inu) = สุนัข"},
-        {char:"う", romaji:"U", type:"Hiragana", example:"うみ (umi) = ทะเล"},
-        {char:"え", romaji:"E", type:"Hiragana", example:"えき (eki) = สถานี"},
-        {char:"お", romaji:"O", type:"Hiragana", example:"おちゃ (ocha) = ชา"},
-
-        {char:"か", romaji:"KA", type:"Hiragana", example:"かさ (kasa) = ร่ม"},
-        {char:"き", romaji:"KI", type:"Hiragana", example:"き (ki) = ต้นไม้"},
-        {char:"く", romaji:"KU", type:"Hiragana", example:"くるま (kuruma) = รถ"},
-        {char:"け", romaji:"KE", type:"Hiragana", example:"けむり (kemuri) = ควัน"},
-        {char:"こ", romaji:"KO", type:"Hiragana", example:"こえ (koe) = เสียง"},
-
-        {char:"さ", romaji:"SA", type:"Hiragana", example:"さかな (sakana) = ปลา"},
-        {char:"し", romaji:"SHI", type:"Hiragana", example:"しま (shima) = เกาะ"},
-        {char:"す", romaji:"SU", type:"Hiragana", example:"すし (sushi) = ซูชิ"},
-        {char:"せ", romaji:"SE", type:"Hiragana", example:"せかい (sekai) = โลก"},
-        {char:"そ", romaji:"SO", type:"Hiragana", example:"そら (sora) = ท้องฟ้า"},
-
-        {char:"た", romaji:"TA", type:"Hiragana", example:"たまご (tamago) = ไข่"},
-        {char:"ち", romaji:"CHI", type:"Hiragana", example:"ちず (chizu) = แผนที่"},
-        {char:"つ", romaji:"TSU", type:"Hiragana", example:"つき (tsuki) = พระจันทร์"},
-        {char:"て", romaji:"TE", type:"Hiragana", example:"て (te) = มือ"},
-        {char:"と", romaji:"TO", type:"Hiragana", example:"とり (tori) = นก"},
-
-        {char:"な", romaji:"NA", type:"Hiragana", example:"なつ (natsu) = ฤดูร้อน"},
-        {char:"に", romaji:"NI", type:"Hiragana", example:"にく (niku) = เนื้อ"},
-        {char:"ぬ", romaji:"NU", type:"Hiragana", example:"ぬの (nuno) = ผ้า"},
-        {char:"ね", romaji:"NE", type:"Hiragana", example:"ねこ (neko) = แมว"},
-        {char:"の", romaji:"NO", type:"Hiragana", example:"のみもの (nomimono) = เครื่องดื่ม"},
-
-        {char:"は", romaji:"HA", type:"Hiragana", example:"はな (hana) = ดอกไม้"},
-        {char:"ひ", romaji:"HI", type:"Hiragana", example:"ひ (hi) = ไฟ"},
-        {char:"ふ", romaji:"FU", type:"Hiragana", example:"ふね (fune) = เรือ"},
-        {char:"へ", romaji:"HE", type:"Hiragana", example:"へや (heya) = ห้อง"},
-        {char:"ほ", romaji:"HO", type:"Hiragana", example:"ほし (hoshi) = ดาว"},
-
-        {char:"ま", romaji:"MA", type:"Hiragana", example:"まど (mado) = หน้าต่าง"},
-        {char:"み", romaji:"MI", type:"Hiragana", example:"みず (mizu) = น้ำ"},
-        {char:"む", romaji:"MU", type:"Hiragana", example:"むし (mushi) = แมลง"},
-        {char:"め", romaji:"ME", type:"Hiragana", example:"め (me) = ตา"},
-        {char:"も", romaji:"MO", type:"Hiragana", example:"もも (momo) = ลูกพีช"},
-
-        {char:"や", romaji:"YA", type:"Hiragana", example:"やま (yama) = ภูเขา"},
-        {char:"ゆ", romaji:"YU", type:"Hiragana", example:"ゆき (yuki) = หิมะ"},
-        {char:"よ", romaji:"YO", type:"Hiragana", example:"よる (yoru) = กลางคืน"},
-
-        {char:"ら", romaji:"RA", type:"Hiragana", example:"らく (raku) = สบาย"},
-        {char:"り", romaji:"RI", type:"Hiragana", example:"りんご (ringo) = แอปเปิล"},
-        {char:"る", romaji:"RU", type:"Hiragana", example:"るす (rusu) = ไม่อยู่บ้าน"},
-        {char:"れ", romaji:"RE", type:"Hiragana", example:"れい (rei) = ตัวอย่าง"},
-        {char:"ろ", romaji:"RO", type:"Hiragana", example:"ろうそく (rousoku) = เทียน"},
-
-        {char:"わ", romaji:"WA", type:"Hiragana", example:"わに (wani) = จระเข้"},
-        {char:"を", romaji:"WO", type:"Hiragana", example:"を (wo) = ตัวช่วยกรรม"},
-        {char:"ん", romaji:"N", type:"Hiragana", example:"ほん (hon) = หนังสือ"},
-
-        // Katakana (46 ตัว)
-        {char:"ア", romaji:"A", type:"Katakana", example:"アイス (aisu) = ไอศกรีม"},
-        {char:"イ", romaji:"I", type:"Katakana", example:"イヌ (inu) = สุนัข"},
-        {char:"ウ", romaji:"U", type:"Katakana", example:"ウミ (umi) = ทะเล"},
-        {char:"エ", romaji:"E", type:"Katakana", example:"エキ (eki) = สถานี"},
-        {char:"オ", romaji:"O", type:"Katakana", example:"オレンジ (orenji) = ส้ม"},
-
-        {char:"カ", romaji:"KA", type:"Katakana", example:"カメラ (kamera) = กล้อง"},
-        {char:"キ", romaji:"KI", type:"Katakana", example:"キス (kisu) = จูบ"},
-        {char:"ク", romaji:"KU", type:"Katakana", example:"クラス (kurasu) = ห้องเรียน"},
-        {char:"ケ", romaji:"KE", type:"Katakana", example:"ケーキ (keeki) = เค้ก"},
-        {char:"コ", romaji:"KO", type:"Katakana", example:"コーヒー (koohii) = กาแฟ"},
-
-        {char:"サ", romaji:"SA", type:"Katakana", example:"サラダ (sarada) = สลัด"},
-        {char:"シ", romaji:"SHI", type:"Katakana", example:"シマ (shima) = เกาะ"},
-        {char:"ス", romaji:"SU", type:"Katakana", example:"スポーツ (supootsu) = กีฬา"},
-        {char:"セ", romaji:"SE", type:"Katakana", example:"セーター (seetaa) = เสื้อกันหนาว"},
-        {char:"ソ", romaji:"SO", type:"Katakana", example:"ソファ (sofa) = โซฟา"},
-
-        {char:"タ", romaji:"TA", type:"Katakana", example:"タクシー (takushii) = แท็กซี่"},
-        {char:"チ", romaji:"CHI", type:"Katakana", example:"チーズ (chiizu) = ชีส"},
-        {char:"ツ", romaji:"TSU", type:"Katakana", example:"ツアー (tsuaa) = ทัวร์"},
-        {char:"テ", romaji:"TE", type:"Katakana", example:"テレビ (terebi) = โทรทัศน์"},
-        {char:"ト", romaji:"TO", type:"Katakana", example:"トマト (tomato) = มะเขือเทศ"},
-
-        {char:"ナ", romaji:"NA", type:"Katakana", example:"ナイフ (naifu) = มีด"},
-        {char:"ニ", romaji:"NI", type:"Katakana", example:"ニュース (nyuusu) = ข่าว"},
-        {char:"ヌ", romaji:"NU", type:"Katakana", example:"ヌードル (nuudoru) = บะหมี่"},
-        {char:"ネ", romaji:"NE", type:"Katakana", example:"ネクタイ (nekutai) = เนคไท"},
-        {char:"ノ", romaji:"NO", type:"Katakana", example:"ノート (nooto) = สมุด"},
-
-        {char:"ハ", romaji:"HA", type:"Katakana", example:"ハンバーガー (hanbaagaa) = แฮมเบอร์เกอร์"},
-        {char:"ヒ", romaji:"HI", type:"Katakana", example:"ヒーター (hiitaa) = เครื่องทำความร้อน"},
-        {char:"フ", romaji:"FU", type:"Katakana", example:"フルーツ (furuutsu) = ผลไม้"},
-        {char:"ヘ", romaji:"HE", type:"Katakana", example:"ヘリコプター (herikoputaa) = เฮลิคอปเตอร์"},
-        {char:"ホ", romaji:"HO", type:"Katakana", example:"ホテル (hoteru) = โรงแรม"},
-
-        {char:"マ", romaji:"MA", type:"Katakana", example:"マスク (masuku) = หน้ากาก"},
-        {char:"ミ", romaji:"MI", type:"Katakana", example:"ミルク (miruku) = นม"},
-        {char:"ム", romaji:"MU", type:"Katakana", example:"ムービー (muubii) = หนัง"},
-        {char:"メ", romaji:"ME", type:"Katakana", example:"メニュー (menyuu) = เมนู"},
-        {char:"モ", romaji:"MO", type:"Katakana", example:"モデル (moderu) = นางแบบ"},
-
-        {char:"ヤ", romaji:"YA", type:"Katakana", example:"ヤクルト (yakuruto) = ยาคูลท์"},
-        {char:"ユ", romaji:"YU", type:"Katakana", example:"ユニット (yunitto) = หน่วย"},
-        {char:"ヨ", romaji:"YO", type:"Katakana", example:"ヨーグルト (yooguruto) = โยเกิร์ต"},
-
-        {char:"ラ", romaji:"RA", type:"Katakana", example:"ラジオ (rajio) = วิทยุ"},
-        {char:"リ", romaji:"RI", type:"Katakana", example:"リモコン (rimokon) = รีโมท"},
-        {char:"ル", romaji:"RU", type:"Katakana", example:"ルール (ruuru) = กฎ"},
-        {char:"レ", romaji:"RE", type:"Katakana", example:"レストラン (resutoran) = ร้านอาหาร"},
-        {char:"ロ", romaji:"RO", type:"Katakana", example:"ロボット (robotto) = หุ่นยนต์"},
-
-        {char:"ワ", romaji:"WA", type:"Katakana", example:"ワイン (wain) = ไวน์"},
-        {char:"ヲ", romaji:"WO", type:"Katakana", example:"ヲ (wo) = ตัวช่วยกรรม"},
-        {char:"ン", romaji:"N", type:"Katakana", example:"パン (pan) = ขนมปัง"},
+            {char:"あ", romaji:"A", type:"Hiragana", example:"あさ (asa) = เช้า", monster:"👾 อะสะคุง (Gacha SSR)"},
+            {char:"い", romaji:"I", type:"Hiragana", example:"いぬ (inu) = สุนัข", monster:"🐶 อิรุกะด็อก (Gacha R)"},
+            {char:"う", romaji:"U", type:"Hiragana", example:"うみ (umi) = ทะเล", monster:"🌊 อุมิโกะ (Gacha R)"},
+            {char:"え", romaji:"E", type:"Hiragana", example:"えき (eki) = สถานี", monster:"🚂 เอคิโบ (Gacha N)"},
+            {char:"お", romaji:"O", type:"Hiragana", example:"おちゃ (ocha) = ชา", monster:"🍵 โอฉะมอน (Gacha R)"},
+            {char:"か", romaji:"KA", type:"Hiragana", example:"かさ (kasa) = ร่ม", monster:"☂️ คาซะร่า (Gacha N)"},
+            {char:"き", romaji:"KI", type:"Hiragana", example:"き (ki) = ต้นไม้", monster:"🌳 คิโนะโกะ (Gacha R)"},
+            {char:"く", romaji:"KU", type:"Hiragana", example:"くるま (kuruma) = รถ", monster:"🏎️ คุรุแม็กซ์ (Gacha SSR)"},
+            {char:"け", romaji:"KE", type:"Hiragana", example:"けむり (kemuri) = ควัน", monster:"💨 เคมูรอน (Gacha N)"},
+            {char:"こ", romaji:"KO", type:"Hiragana", example:"こえ (koe) = เสียง", monster:"🗣️ โคเอะจัง (Gacha R)"},
+            {char:"さ", romaji:"SA", type:"Hiragana", example:"さかな (sakana) = ปลา", monster:"🐟 ซาคานะคิง (Gacha SR)"},
+            {char:"し", romaji:"SHI", type:"Hiragana", example:"しま (shima) = เกาะ", monster:"🏝️ ชิมะจัง (Gacha R)"},
+            {char:"す", romaji:"SU", type:"Hiragana", example:"すし (sushi) = ซูชิ", monster:"🍣 ซูชิมอน (Gacha SSR)"},
+            {char:"せ", romaji:"SE", type:"Hiragana", example:"せかい (sekai) = โลก", monster:"🌍 เซไกโอ (Gacha SSR)"},
+            {char:"そ", romaji:"SO", type:"Hiragana", example:"そら (sora) = ท้องฟ้า", monster:"☁️ โซระคลาวด์ (Gacha R)"},
+            {char:"た", romaji:"TA", type:"Hiragana", example:"たまご (tamago) = ไข่", monster:"🥚 ทามาโกะ (Gacha R)"},
+            {char:"ち", romaji:"CHI", type:"Hiragana", example:"ちず (chizu) = แผนที่", monster:"🗺️ ชิสุแมป (Gacha N)"},
+            {char:"つ", romaji:"TSU", type:"Hiragana", example:"つき (tsuki) = พระจันทร์", monster:"🌙 สึคิโยมิ (Gacha SSR)"},
+            {char:"て", romaji:"TE", type:"Hiragana", example:"て (te) = มือ", monster:"✋เทฮนด์ (Gacha N)"},
+            {char:"と", romaji:"TO", type:"Hiragana", example:"とり (tori) = นก", monster:"🐦 โทริเบิร์ด (Gacha R)"},
+            {char:"な", romaji:"NA", type:"Hiragana", example:"なつ (natsu) = ฤดูร้อน", monster:"☀️ นัตสึซัน (Gacha R)"},
+            {char:"に", romaji:"NI", type:"Hiragana", example:"にく (niku) = เนื้อ", monster:"🥩 นิคุมอน (Gacha SR)"},
+            {char:"ぬ", romaji:"NU", type:"Hiragana", example:"ぬの (nuno) = ผ้า", monster:"🧵 นุโนะจัง (Gacha N)"},
+            {char:"ね", romaji:"NE", type:"Hiragana", example:"ねこ (neko) = แมว", monster:"🐱 เนโกะเนี๊ยว (Gacha SSR)"},
+            {char:"の", romaji:"NO", type:"Hiragana", example:"のみもの (nomimono) = เครื่องดื่ม", monster:"🧃 โนมิมอน (Gacha N)"},
+            {char:"は", romaji:"HA", type:"Hiragana", example:"はな (hana) = ดอกไม้", monster:"🌸 ฮานะฟลาวเวอร์ (Gacha R)"},
+            {char:"ひ", romaji:"HI", type:"Hiragana", example:"ひ (hi) = ไฟ", monster:"🔥 ฮิเฟลม (Gacha SR)"},
+            {char:"ふ", romaji:"FU", type:"Hiragana", example:"ふね (fune) = เรือ", monster:"🚢 ฟุเนะโบ๊ท (Gacha R)"},
+            {char:"へ", romaji:"HE", type:"Hiragana", example:"へや (heya) = ห้อง", monster:"🚪 เฮยะรอม (Gacha N)"},
+            {char:"ほ", romaji:"HO", type:"Hiragana", example:"ほし (hoshi) = ดาว", monster:"⭐ โฮชิสตาร์ (Gacha SR)"},
+            {char:"ま", romaji:"MA", type:"Hiragana", example:"まど (mado) = หน้าต่าง", monster:"🪟 มาโดะวินโดว์ (Gacha N)"},
+            {char:"み", romaji:"MI", type:"Hiragana", example:"みず (mizu) = น้ำ", monster:"💧 มิซึวอเตอร์ (Gacha R)"},
+            {char:"む", romaji:"MU", type:"Hiragana", example:"むし (mushi) = แมลง", monster:"🐛 มุชิบัก (Gacha N)"},
+            {char:"め", romaji:"ME", type:"Hiragana", example:"め (me) = ตา", monster:"👁️ เมะอาย (Gacha N)"},
+            {char:"も", romaji:"MO", type:"Hiragana", example:"もも (momo) = ลูกพีช", monster:"🍑 โมโมะพีช (Gacha R)"},
+            {char:"や", romaji:"YA", type:"Hiragana", example:"やま (yama) = ภูเขา", monster:"⛰️ ยามะเมาน์เทน (Gacha R)"},
+            {char:"ゆ", romaji:"YU", type:"Hiragana", example:"ゆき (yuki) = หิมะ", monster:"❄️ ยุกิสโนว์ (Gacha SR)"},
+            {char:"よ", romaji:"YO", type:"Hiragana", example:"よる (yoru) = กลางคืน", monster:"🌃 โยรุไนท์ (Gacha R)"},
+            {char:"ら", romaji:"RA", type:"Hiragana", example:"らく (raku) = สบาย", monster:"🦥 ราคุชิล (Gacha N)"},
+            {char:"り", romaji:"RI", type:"Hiragana", example:"りんご (ringo) = แอปเปิล", monster:"🍎 รินโกะแอปเปิ้ล (Gacha R)"},
+            {char:"る", romaji:"RU", type:"Hiragana", example:"るす (rusu) = ไม่อยู่บ้าน", monster:"🏠 รุสุโฮม (Gacha N)"},
+            {char:"れ", romaji:"RE", type:"Hiragana", example:"れい (rei) = ตัวอย่าง", monster:"📋 เรย์แซมเปิ้ล (Gacha N)"},
+            {char:"ろ", romaji:"RO", type:"Hiragana", example:"ろうそく (rousoku) = เทียน", monster:"🕯️ โระอุโซะคุ (Gacha N)"},
+            {char:"わ", romaji:"WA", type:"Hiragana", example:"わに (wani) = จระเข้", monster:"🐊 วานิค็อค (Gacha R)"},
+            {char:"を", romaji:"WO", type:"Hiragana", example:"を (wo) = ตัวช่วยกรรม", monster:"🔗 โอะพาร์ติเคิล (Gacha N)"},
+            {char:"ん", romaji:"N", type:"Hiragana", example:"ほん (hon) = หนังสือ", monster:"📚 ฮงบุ๊ก (Gacha SR)"},
+            
+            // Katakana (ตัวอย่างบางส่วนเพื่อให้ครบระบบ)
+            {char:"ア", romaji:"A", type:"Katakana", example:"アイス (aisu) = ไอศกรีม", monster:"🍨 ไอซ์มอน (Gacha R)"},
+            {char:"イ", romaji:"I", type:"Katakana", example:"イヌ (inu) = สุนัข", monster:"🐕 คาตากานะอิ (Gacha N)"},
+            {char:"ウ", romaji:"U", type:"Katakana", example:"ウミ (umi) = ทะเล", monster:"🌊 คาตากานะอุ (Gacha N)"},
+            {char:"エ", romaji:"E", type:"Katakana", example:"エキ (eki) = สถานี", monster:"🚉 คาตากานะเอะ (Gacha N)"},
+            {char:"オ", romaji:"O", type:"Katakana", example:"オレンジ (orenji) = ส้ม", monster:"🍊 โอเรนจิมอน (Gacha R)"},
+            {char:"カ", romaji:"KA", type:"Katakana", example:"カメラ (kamera) = กล้องถ่ายรูป", monster:"📷 คาเมระคิง (Gacha R)"},
+            {char:"キ", romaji:"KI", type:"Katakana", example:"キリン (kirin) = ยีราฟ", monster:"🦒 คิรินจัง (Gacha SR)"},
+            {char:"ク", romaji:"KU", type:"Katakana", example:"クラス (kurasu) = ชั้นเรียน", monster:"🏫 คุราสึมอน (Gacha N)"},
+            {char:"ケ", romaji:"KE", type:"Katakana", example:"ケーキ (keeki) = เค้ก", monster:"🎂 เคกิสวีท (Gacha R)"},
+            {char:"コ", romaji:"KO", type:"Katakana", example:"コーヒー (koohii) = กาแฟ", monster:"☕ โคฮีบีน (Gacha R)"},
+            {char:"サ", romaji:"SA", type:"Katakana", example:"サラダ (sarada) = สลัด", monster:"🥗 ซาราดะกรีน (Gacha N)"},
+            {char:"シ", romaji:"SHI", type:"Katakana", example:"シャツ (shatsu) = เสื้อเชิ้ต", monster:"👕 ชัตสึแฟชั่น (Gacha N)"},
+            {char:"ス", romaji:"SU", type:"Katakana", example:"スポーツ (supootsu) = กีฬา", monster:"⚽ ซุปโป๊ตซึ (Gacha R)"},
+            {char:"セ", romaji:"SE", type:"Katakana", example:"セーター (seetaa) = เสื้อกันหนาว", monster:"🧶 เซตาวูล (Gacha N)"},
+            {char:"ソ", romaji:"SO", type:"Katakana", example:"ソファ (sofa) = โซฟา", monster:"🛋️ โซฟามอน (Gacha N)"},
+            {char:"タ", romaji:"TA", type:"Katakana", example:"タクシー (takushii) = แท็กซี่", monster:"🚕 ทาคุชิไดร์ฟ (Gacha R)"},
+            {char:"チ", romaji:"CHI", type:"Katakana", example:"チーズ (chiizu) = ชีส", monster:"🧀 ชีสึจัง (Gacha SR)"},
+            {char:"ツ", romaji:"TSU", type:"Katakana", example:"ツアー (tsuaa) = ทัวร์", monster:"🧳 สึอาทริป (Gacha N)"},
+            {char:"テ", romaji:"TE", type:"Katakana", example:"テレビ (terebi) = โทรทัศน์", monster:"📺 เทเรบิสกรีน (Gacha R)"},
+            {char:"ト", romaji:"TO", type:"Katakana", example:"トマト (tomato) = มะเขือเทศ", monster:"🍅 โทมาโทเรด (Gacha SSR)"},
+            {char:"ナ", romaji:"NA", type:"Katakana", example:"ナイフ (naifu) = มีด", monster:"🔪 นาอิฟุคม (Gacha N)"},
+            {char:"ニ", romaji:"NI", type:"Katakana", example:"ニュース (nyuusu) = ข่าว", monster:"📰 นิวสึเพรส (Gacha N)"},
+            {char:"ヌ", romaji:"NU", type:"Katakana", example:"ヌードル (nuudoru) = ก๋วยเตี๋ยว", monster:"🍜 นูโดรุซุป (Gacha R)"},
+            {char:"ネ", romaji:"NE", type:"Katakana", example:"ネクタイ (nekutai) = เนคไท", monster:"👔 เนคุไทสูท (Gacha N)"},
+            {char:"ノ", romaji:"NO", type:"Katakana", example:"ノート (nooto) = สมุด", monster:"📓 โนโตะบุ๊ก (Gacha N)"},
+            {char:"ハ", romaji:"HA", type:"Katakana", example:"ハンバーガー (hanbaagaa) = แฮมเบอร์เกอร์", monster:"🍔 ฮันบากะเกอร์ (Gacha SSR)"},
+            {char:"ヒ", romaji:"HI", type:"Katakana", example:"ヒーター (hiitaa) = เครื่องทำความร้อน", monster:"🔥 ฮีตาเฟลม (Gacha R)"},
+            {char:"フ", romaji:"FU", type:"Katakana", example:"フォーク (fooku) = ส้อม", monster:"🍴 ฟอร์คุจิ้ม (Gacha N)"},
+            {char:"ヘ", romaji:"HE", type:"Katakana", example:"ヘリコプター (herikoputaa) = เฮลิคอปเตอร์", monster:"🚁 เฮริคอปตะ (Gacha SR)"},
+            {char:"ホ", romaji:"HO", type:"Katakana", example:"ホテル (hoteru) = โรงแรม", monster:"🏨 โฮเทรุอินน์ (Gacha R)"},
+            {char:"マ", romaji:"MA", type:"Katakana", example:"マスク (masuku) = หน้ากาก", monster:"😷 มาสุคุการ์ด (Gacha N)"},
+            {char:"ミ", romaji:"MI", type:"Katakana", example:"ミルク (miruku) = นม", monster:"🥛 มิรุคุมิลค์ (Gacha R)"},
+            {char:"ム", romaji:"MU", type:"Katakana", example:"ムービー (muubii) = ภาพยนตร์", monster:"🎬 มูบีฟิล์ม (Gacha R)"},
+            {char:"メ", romaji:"ME", type:"Katakana", example:"メニュー (menyuu) = เมนู", monster:"📋 เมนิวการ์ด (Gacha N)"},
+            {char:"モ", romaji:"MO", type:"Katakana", example:"モデル (moderu) = นางแบบ", monster:"💃 โมเดรุสไตล์ (Gacha SR)"},
+            {char:"ヤ", romaji:"YA", type:"Katakana", example:"ヤギ (yagi) = แพะ", monster:"🐐 ยากิฮอร์น (Gacha N)"},
+            {char:"ユ", romaji:"YU", type:"Katakana", example:"ユニフォーム (yunifoomu) = ชุดยูนิฟอร์ม", monster:"🎽 ยูนิฟอร์มจัง (Gacha N)"},
+            {char:"ヨ", romaji:"YO", type:"Katakana", example:"ヨガ (yoga) = โยคะ", monster:"🧘 โยกะเซน (Gacha R)"},
+            {char:"ラ", romaji:"RA", type:"Katakana", example:"ラジオ (rajio) = วิทยุ", monster:"📻 ราจิโอเวฟ (Gacha R)"},
+            {char:"リ", romaji:"RI", type:"Katakana", example:"リボン (ribon) = โบว์", monster:"🎀 ริบอนคิวต์ (Gacha N)"},
+            {char:"ル", romaji:"RU", type:"Katakana", example:"ルール (ruuru) = กฎ", monster:"📏 รูรุลอว์ (Gacha N)"},
+            {char:"レ", romaji:"RE", type:"Katakana", example:"レストラン (resutoran) = ร้านอาหาร", monster:"🍽️ เรสึโทรัน (Gacha R)"},
+            {char:"ロ", romaji:"RO", type:"Katakana", example:"ロボット (robotto) = หุ่นยนต์", monster:"🤖 โรบอตโต้ (Gacha SSR)"},
+            {char:"ワ", romaji:"WA", type:"Katakana", example:"ワイン (wain) = ไวน์", monster:"🍷 วาอินรูจ (Gacha SR)"},
+            {char:"ヲ", romaji:"WO", type:"Katakana", example:"ヲ (wo) = ตัวสะกดพิเศษ (พบน้อยมาก)", monster:"🔗 โวะพาร์ติเคิล (Gacha N)"},
+            {char:"ン", romaji:"N", type:"Katakana", example:"パン (pan) = ขนมปัง", monster:"📚 คาตากานะน (Gacha N)"},
         ];
 
         let currentMode = 'flashcard';
@@ -3315,12 +3508,77 @@
         let matchSelectedTh = null;
         let matchMatchedCount = 0;
 
-        function playJapaneseAudio(text) {
+        // ===== Japanese Voice Engine (แก้ปัญหาเสียงไม่ใช่ญี่ปุ่น / อ่านไม่ครบ) =====
+        let jaVoices = [];
+        let selectedJaVoiceURI = localStorage.getItem('nihongo_voice_uri') || null;
+
+        function refreshJaVoices() {
             if (!('speechSynthesis' in window)) return;
+            const all = window.speechSynthesis.getVoices();
+            jaVoices = all.filter(v => v.lang && v.lang.toLowerCase().startsWith('ja')).sort((a, b) => {
+                const score = v => (/google/i.test(v.name) ? 3 : /natural|neural/i.test(v.name) ? 2 : /kyoko|otoya|sayaka|haruka|ayumi/i.test(v.name) ? 1 : 0);
+                return score(b) - score(a);
+            });
+            populateVoiceSelector();
+        }
+
+        function populateVoiceSelector() {
+            const sel = document.getElementById('voiceSelector');
+            const warn = document.getElementById('voiceWarning');
+            if (!sel) return;
+            sel.innerHTML = '';
+            if (jaVoices.length === 0) {
+                if (warn) warn.style.display = 'block';
+                const opt = document.createElement('option');
+                opt.value = '';
+                opt.innerText = 'ไม่พบเสียงภาษาญี่ปุ่นในอุปกรณ์นี้';
+                sel.appendChild(opt);
+                return;
+            }
+            if (warn) warn.style.display = 'none';
+            jaVoices.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v.voiceURI;
+                opt.innerText = `${v.name} (${v.lang})`;
+                if (v.voiceURI === selectedJaVoiceURI) opt.selected = true;
+                sel.appendChild(opt);
+            });
+            if (!selectedJaVoiceURI) {
+                selectedJaVoiceURI = jaVoices[0].voiceURI;
+                sel.value = selectedJaVoiceURI;
+            }
+        }
+
+        function onVoiceSelectorChange() {
+            const sel = document.getElementById('voiceSelector');
+            if (!sel || !sel.value) return;
+            selectedJaVoiceURI = sel.value;
+            localStorage.setItem('nihongo_voice_uri', selectedJaVoiceURI);
+            playJapaneseAudio('こんにちは');
+        }
+
+        if ('speechSynthesis' in window) {
+            refreshJaVoices();
+            window.speechSynthesis.onvoiceschanged = refreshJaVoices;
+        }
+
+        function playJapaneseAudio(text, rate) {
+            if (!('speechSynthesis' in window) || !text) return;
             window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'ja-JP';
-            utterance.rate = 0.9;
+            utterance.rate = rate || 0.82;
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+
+            const voice = jaVoices.find(v => v.voiceURI === selectedJaVoiceURI) || jaVoices[0];
+            if (voice) {
+                utterance.voice = voice;
+            } else {
+                const warn = document.getElementById('voiceWarning');
+                if (warn) warn.style.display = 'block';
+            }
+            window.speechSynthesis.resume();
             window.speechSynthesis.speak(utterance);
         }
 
@@ -3373,9 +3631,7 @@
             document.getElementById('kanaBox').style.display = (mode === 'kana') ? 'flex' : 'none';
             document.getElementById('kanaNavButtons').style.display = (mode === 'kana') ? 'flex' : 'none';
             
-            // ควบคุมการแสดงกล่องความคืบหน้าตัวอักษรให้อยู่เฉพาะในโหมดตัวอักษรฝั่งซ้าย
             document.getElementById('kanaProgressBox').style.display = (mode === 'kana') ? 'flex' : 'none';
-            
             document.getElementById('stageHeaderInfo').style.display = (mode === 'kana') ? 'none' : 'flex';
 
             if (mode === 'flashcard') updateCardDisplay();
@@ -3902,16 +4158,19 @@
             }
         }
 
+        // Kana Classroom & Features Logic
         function updateKanaCard() {
             let k = kanaListFiltered[kanaIndex];
             document.getElementById("kanaCharacter").innerText = k.char;
             document.getElementById("kanaRomaji").innerText = k.romaji;
             document.getElementById("kanaType").innerText = k.type;
             document.getElementById("kanaExample").innerText = "ตัวอย่าง: " + k.example;
+            document.getElementById("gachaMonsterBadge").innerText = k.monster || "👾 มอนสเตอร์ประจำตัว";
             
             document.getElementById("kanaProgressCount").innerText = `${kanaIndex + 1} / ${kanaListFiltered.length}`;
             const percent = Math.round(((kanaIndex + 1) / kanaListFiltered.length) * 100);
             document.getElementById("kanaProgressBar").style.width = percent + "%";
+            clearCanvas();
         }
 
         function nextKana() {
@@ -3941,26 +4200,317 @@
             playJapaneseAudio(k.char);
         }
 
-        // Speed Test mode variables & functions
+        // ===== 1. Stroke Practice Canvas: simple trace-along, no scoring =====
+        // (ตามที่ผู้ใช้ขอ: ตัดระบบให้คะแนน/ตรวจถูกผิดออกทั้งหมด เหลือแค่กระดานฝึกเขียนตามเส้นนำ)
+        const canvas = document.getElementById('strokeCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentPoints = [];      // live points of the stroke being drawn (canvas px)
+        let allStrokes = [];         // all strokes drawn so far, just for redrawing after clear/resize
+
+        function getReferenceStrokes() {
+            const k = kanaListFiltered[kanaIndex];
+            if (!k) return [];
+            const db = k.type === 'Hiragana' ? STROKE_DATA.hiragana : STROKE_DATA.katakana;
+            return (db && db[k.char]) || [];
+        }
+
+        function initCanvas() {
+            ctx.strokeStyle = '#1b263b';
+            ctx.lineWidth = 8;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            allStrokes = [];
+            redrawCanvas();
+            updateStrokeHud();
+        }
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseleave', stopDrawing);
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousedown', { clientX: touch.clientX, clientY: touch.clientY });
+            canvas.dispatchEvent(mouseEvent);
+        });
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousemove', { clientX: touch.clientX, clientY: touch.clientY });
+            canvas.dispatchEvent(mouseEvent);
+        });
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            const mouseEvent = new MouseEvent('mouseup', {});
+            canvas.dispatchEvent(mouseEvent);
+        });
+
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return { x: (e.clientX - rect.left) * scaleX, y: (e.clientY - rect.top) * scaleY };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const pos = getMousePos(e);
+            currentPoints = [[pos.x, pos.y]];
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const pos = getMousePos(e);
+            currentPoints.push([pos.x, pos.y]);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            if (!isDrawing) return;
+            isDrawing = false;
+            if (currentPoints.length >= 2) allStrokes.push(currentPoints);
+            currentPoints = [];
+        }
+
+        function redrawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#1b263b';
+            allStrokes.forEach(pts => {
+                ctx.beginPath();
+                ctx.moveTo(pts[0][0], pts[0][1]);
+                for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+                ctx.stroke();
+            });
+        }
+
+        function updateStrokeHud() {
+            const ref = getReferenceStrokes();
+            document.getElementById('strokeCounter').innerText = `ทั้งหมด ${ref.length || '-'} เส้น`;
+        }
+
+        function clearCanvas() {
+            currentPoints = [];
+            allStrokes = [];
+            redrawCanvas();
+            document.getElementById('canvasFeedback').innerText = "";
+        }
+
+        // ===== 2. Gacha / Kana Monster Collection Engine =====
+        const GACHA_KEY = 'nihongo_gacha_v1';
+
+        function loadGachaState() {
+            try {
+                const raw = localStorage.getItem(GACHA_KEY);
+                if (raw) return JSON.parse(raw);
+            } catch (e) { /* corrupted/blocked storage - start fresh */ }
+            return { coins: 0, collection: {}, team: [] };
+        }
+        function saveGachaState() {
+            try { localStorage.setItem(GACHA_KEY, JSON.stringify(gachaState)); } catch (e) { /* storage unavailable */ }
+        }
+        let gachaState = loadGachaState();
+
+        function awardGachaCoins(n) {
+            if (!n) return;
+            gachaState.coins += n;
+            saveGachaState();
+            const el = document.getElementById('gachaCoinCount');
+            if (el) el.innerText = gachaState.coins;
+        }
+
+        // Called after correct answers / good stroke scores to raise a character's mastery (0-100)
+        function bumpMastery(char, starsOrAmount) {
+            const delta = starsOrAmount >= 1 && starsOrAmount <= 3 ? starsOrAmount * 8 : (starsOrAmount || 5);
+            if (!gachaState.collection[char]) gachaState.collection[char] = { count: 0, mastery: 0, stage: 0 };
+            const rec = gachaState.collection[char];
+            rec.mastery = Math.min(100, rec.mastery + delta);
+            saveGachaState();
+        }
+
+        function parseMonster(monsterStr) {
+            // format example: "🔥 ฮิโนะเฟลม (Gacha SSR)"
+            const rarityMatch = monsterStr.match(/Gacha\s+(N|R|SR|SSR)/);
+            const emojiMatch = monsterStr.match(/^(\S+)\s/);
+            const nameMatch = monsterStr.replace(/^(\S+)\s/, '').replace(/\(Gacha\s+\w+\)/, '').trim();
+            return {
+                emoji: emojiMatch ? emojiMatch[1] : '👾',
+                name: nameMatch || monsterStr,
+                rarity: rarityMatch ? rarityMatch[1] : 'N'
+            };
+        }
+        function rarityWeight(rarity) {
+            return { N: 50, R: 30, SR: 15, SSR: 5 }[rarity] || 40;
+        }
+        function rarityPower(rarity) {
+            return { N: 10, R: 20, SR: 35, SSR: 60 }[rarity] || 10;
+        }
+        const EVOLVE_ICON = ['', ' ★', ' ★★'];
+
+        function currentGachaPool() {
+            return kanaList.filter(k => k.type === (gachaActiveType === 'Katakana' ? 'Katakana' : 'Hiragana'));
+        }
+        let gachaActiveType = 'Hiragana';
+
+        function startGachaScreen() {
+            hideAllKanaSubModes();
+            document.getElementById('kanaGachaContainer').style.display = 'flex';
+            gachaActiveType = kanaType === 'Katakana' ? 'Katakana' : 'Hiragana';
+            document.getElementById('gachaTypeLabel').innerText = gachaActiveType;
+            document.getElementById('gachaCoinCount').innerText = gachaState.coins;
+            document.getElementById('gachaPullResult').innerText = '';
+            renderGachaGrid();
+            renderTeamSlots();
+        }
+
+        function pullGacha() {
+            const resultEl = document.getElementById('gachaPullResult');
+            const cost = 20;
+            if (gachaState.coins < cost) {
+                resultEl.style.color = 'var(--sakura)';
+                resultEl.innerText = `เหรียญไม่พอ! ต้องการ ${cost} เหรียญ (ตอนนี้มี ${gachaState.coins}) — ไปฝึกลากเส้น/สปีดเทส/ทายเสียงเพื่อเก็บเหรียญเพิ่มนะ`;
+                return;
+            }
+            gachaState.coins -= cost;
+
+            const pool = currentGachaPool();
+            // Weighted random pick by rarity (rarer monsters appear less often)
+            const weighted = pool.map(k => ({ k, w: rarityWeight(parseMonster(k.monster).rarity) }));
+            const totalW = weighted.reduce((s, x) => s + x.w, 0);
+            let r = Math.random() * totalW;
+            let picked = weighted[0].k;
+            for (const item of weighted) { r -= item.w; if (r <= 0) { picked = item.k; break; } }
+
+            const info = parseMonster(picked.monster);
+            const isNew = !gachaState.collection[picked.char];
+            if (!gachaState.collection[picked.char]) gachaState.collection[picked.char] = { count: 0, mastery: 0, stage: 0 };
+            gachaState.collection[picked.char].count++;
+            saveGachaState();
+
+            resultEl.style.color = 'var(--kinpaku)';
+            resultEl.innerText = isNew
+                ? `🎉 ได้การ์ดใหม่! ${info.emoji} ${info.name} (${info.rarity}) — ${picked.char}`
+                : `✨ ได้ซ้ำ! ${info.emoji} ${info.name} — กลายเป็นวัตถุดิบวิวัฒนาการ (${gachaState.collection[picked.char].count} ใบ)`;
+
+            document.getElementById('gachaCoinCount').innerText = gachaState.coins;
+            renderGachaGrid();
+        }
+
+        function evolveCard(char) {
+            const rec = gachaState.collection[char];
+            if (!rec) return;
+            const needCount = 3, needMastery = 70;
+            if (rec.stage >= 2) return;
+            if (rec.count < needCount || rec.mastery < needMastery) return;
+            rec.count -= needCount;
+            rec.stage++;
+            saveGachaState();
+            renderGachaGrid();
+        }
+
+        function toggleTeamMember(char) {
+            const idx = gachaState.team.indexOf(char);
+            if (idx >= 0) {
+                gachaState.team.splice(idx, 1);
+            } else {
+                if (gachaState.team.length >= 4) return;
+                gachaState.team.push(char);
+            }
+            saveGachaState();
+            renderTeamSlots();
+            renderGachaGrid();
+        }
+
+        function renderTeamSlots() {
+            const wrap = document.getElementById('gachaTeamSlots');
+            const powerEl = document.getElementById('gachaTeamPower');
+            if (!wrap) return;
+            wrap.innerHTML = '';
+            let totalPower = 0;
+            for (let i = 0; i < 4; i++) {
+                const char = gachaState.team[i];
+                const slot = document.createElement('div');
+                slot.className = 'gacha-team-slot' + (char ? ' filled' : '');
+                if (char) {
+                    const kEntry = kanaList.find(k => k.char === char);
+                    const info = kEntry ? parseMonster(kEntry.monster) : { emoji: '👾' };
+                    slot.innerText = info.emoji;
+                    slot.title = `${char} — คลิกเพื่อถอดออกจากทีม`;
+                    slot.onclick = () => toggleTeamMember(char);
+                    const rec = gachaState.collection[char] || { mastery: 0 };
+                    totalPower += rarityPower(info.rarity) + Math.round(rec.mastery / 5);
+                } else {
+                    slot.innerText = '➕';
+                }
+                wrap.appendChild(slot);
+            }
+            powerEl.innerText = gachaState.team.length
+                ? `💪 พลังทีมรวม: ${totalPower} (ธาตุ: ${gachaState.team.map(c => ELEMENT_DATA[c] || '-').join(' / ')})`
+                : 'ยังไม่มีสมาชิกในทีม — เลือกการ์ดที่คุณมีจากคอลเลกชันด้านล่าง';
+        }
+
+        function renderGachaGrid() {
+            const grid = document.getElementById('gachaGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            const pool = currentGachaPool();
+            pool.forEach(k => {
+                const rec = gachaState.collection[k.char];
+                const info = parseMonster(k.monster);
+                const card = document.createElement('div');
+                card.className = `gacha-card rarity-${info.rarity}` + (rec ? '' : ' locked');
+                const mastery = rec ? rec.mastery : 0;
+                const stage = rec ? rec.stage : 0;
+                const inTeam = gachaState.team.includes(k.char);
+                const canEvolve = rec && rec.count >= 3 && rec.mastery >= 70 && rec.stage < 2;
+
+                card.innerHTML = `
+                    ${rec ? `<div class="gc-count">x${rec.count}</div>` : ''}
+                    ${rec && stage > 0 ? `<div class="gc-stage">${EVOLVE_ICON[stage]}</div>` : ''}
+                    <div class="gc-emoji">${rec ? info.emoji : '❔'}</div>
+                    <div class="gc-char">${k.char}</div>
+                    <div class="gc-elem">${ELEMENT_DATA[k.char] || ''} ${rec ? '· ' + info.rarity : ''}</div>
+                    <div class="gc-mastery-bar"><div class="gc-mastery-fill" style="width:${mastery}%"></div></div>
+                    ${rec ? `<button class="gc-evolve-btn" ${canEvolve ? '' : 'disabled'} onclick="evolveCard('${k.char}')">${stage >= 2 ? 'สูงสุดแล้ว' : canEvolve ? 'วิวัฒนาการ! ✨' : `ต้อง x3 + ชำนาญ 70%`}</button>
+                       <button class="gc-evolve-btn" style="background:${inTeam ? 'var(--sakura)' : '#999'}; margin-top:3px;" onclick="toggleTeamMember('${k.char}')">${inTeam ? 'ถอดออกจากทีม' : 'เพิ่มเข้าทีม'}</button>` : ''}
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+
+        function hideAllKanaSubModes() {
+            if (speedTimerInterval) clearInterval(speedTimerInterval);
+            document.getElementById('kanaLearningCard').style.display = 'none';
+            document.getElementById('kanaSpeedContainer').style.display = 'none';
+            document.getElementById('kanaListeningContainer').style.display = 'none';
+            document.getElementById('kanaGachaContainer').style.display = 'none';
+            document.getElementById('kanaSelectorBox').style.display = 'none';
+            document.getElementById('kanaNavButtons').style.display = 'none';
+        }
+
+        function startKanaPractice() {
+            hideAllKanaSubModes();
+            document.getElementById('kanaLearningCard').style.display = 'flex';
+            document.getElementById('kanaSelectorBox').style.display = 'block';
+            document.getElementById('kanaNavButtons').style.display = 'flex';
+            updateKanaCard();
+            setTimeout(initCanvas, 50);
+        }
+
+        // 2. Speed Test Mode (30s)
         let speedTimerInterval = null;
         let timeLeft = 30;
         let speedScoreVal = 0;
         let currentSpeedKana = null;
 
-        function startKanaPractice() {
-            if (speedTimerInterval) clearInterval(speedTimerInterval);
-            document.getElementById('kanaLearningCard').style.display = 'flex';
-            document.getElementById('kanaNavButtons').style.display = 'flex';
-            document.getElementById('kanaSpeedContainer').style.display = 'none';
-            document.getElementById('kanaSelectorBox').style.display = 'block';
-            updateKanaCard();
-        }
-
         function startKanaSpeedGame() {
-            if (speedTimerInterval) clearInterval(speedTimerInterval);
-            document.getElementById('kanaLearningCard').style.display = 'none';
-            document.getElementById('kanaNavButtons').style.display = 'none';
-            document.getElementById('kanaSelectorBox').style.display = 'none';
+            hideAllKanaSubModes();
             document.getElementById('kanaSpeedContainer').style.display = 'flex';
             
             timeLeft = 30;
@@ -3974,7 +4524,7 @@
                 if (timeLeft <= 0) {
                     clearInterval(speedTimerInterval);
                     document.getElementById('speedInput').disabled = true;
-                    alert(`หมดเวลา! คุณทำคะแนนได้ ${speedScoreVal} คะแนน 🎉`);
+                    alert(`หมดเวลา! คุณทำคะแนนสปีดเทสได้ ${speedScoreVal} คะแนน 🎉`);
                 }
             }, 1000);
 
@@ -4001,9 +4551,80 @@
                 speedScoreVal++;
                 document.getElementById('speedScore').innerText = `คะแนน: ${speedScoreVal}`;
                 playJapaneseAudio(currentSpeedKana.char);
+                awardGachaCoins(2);
+                bumpMastery(currentSpeedKana.char, 3);
                 nextSpeedQuestion();
             }
         });
+
+        // 4. Listening Quiz Mode
+        let currentListeningKana = null;
+
+        function startListeningQuiz() {
+            hideAllKanaSubModes();
+            document.getElementById('kanaListeningContainer').style.display = 'flex';
+            loadListeningQuestion();
+        }
+
+        function loadListeningQuestion() {
+            const feedback = document.getElementById('listeningFeedback');
+            const optionsEl = document.getElementById('listeningOptions');
+            feedback.innerText = "";
+            optionsEl.innerHTML = "";
+
+            const randomIndex = Math.floor(Math.random() * kanaListFiltered.length);
+            currentListeningKana = kanaListFiltered[randomIndex];
+            playListeningAudio();
+
+            // สร้างช้อยส์หลอก 3 ตัว + ตัวจริง 1 ตัว
+            let pool = kanaListFiltered.filter(k => k.char !== currentListeningKana.char);
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            const distractors = pool.slice(0, 3);
+            const options = [currentListeningKana, ...distractors];
+            for (let i = options.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [options[i], options[j]] = [options[j], options[i]];
+            }
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'choice-option';
+                btn.innerText = `${opt.char} (${opt.romaji})`;
+                btn.onclick = () => checkListeningAnswer(opt, currentListeningKana, btn, optionsEl);
+                optionsEl.appendChild(btn);
+            });
+        }
+
+        function playListeningAudio() {
+            if (currentListeningKana) playJapaneseAudio(currentListeningKana.char);
+        }
+
+        function checkListeningAnswer(selected, correct, btnEl, optionsEl) {
+            const feedback = document.getElementById('listeningFeedback');
+            const allBtns = optionsEl.querySelectorAll('.choice-option');
+            allBtns.forEach(b => b.disabled = true);
+
+            if (selected.char === correct.char) {
+                btnEl.classList.add('choice-correct');
+                feedback.innerText = "ถูกต้อง! เสียงนี้แหละใช่เลย 🎉";
+                feedback.className = "quiz-feedback correct";
+                awardGachaCoins(3);
+                bumpMastery(correct.char, 3);
+            } else {
+                btnEl.classList.add('choice-wrong');
+                allBtns.forEach(b => {
+                    if (b.innerText.startsWith(correct.char)) b.classList.add('choice-correct');
+                });
+                feedback.innerHTML = `ยังไม่ถูก ❌ เฉลยคือ: <b>${correct.char} (${correct.romaji})</b>`;
+                feedback.className = "quiz-feedback wrong";
+            }
+
+            setTimeout(loadListeningQuestion, 2000);
+        }
 
         function attemptLogin() {
             const user = document.getElementById('loginUser').value.trim();
@@ -4015,6 +4636,7 @@
             document.getElementById('appWrap').style.display = 'flex';
             updateLevelCounts();
             onFilterChange();
+            initCanvas();
         }
 
         document.addEventListener('keydown', (e) => {
