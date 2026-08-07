@@ -291,6 +291,21 @@
             gap: 6px;
         }
 
+        .content-type-toggle {
+            display: flex; gap: 6px; margin-bottom: 4px;
+        }
+        .content-type-btn {
+            flex: 1; font-family: 'Prompt', sans-serif; font-size: 0.85rem; font-weight: 600;
+            background: rgba(255,255,255,0.7); color: var(--text-muted);
+            border: 1.5px solid var(--glass-border); border-radius: 12px;
+            padding: 9px 6px; cursor: pointer; transition: all 0.25s;
+        }
+        .content-type-btn:hover { border-color: var(--sakura); }
+        .content-type-btn.active {
+            background: linear-gradient(135deg, var(--kon-iro), #2c3e50);
+            color: var(--kinpaku-light); border-color: var(--kon-iro);
+        }
+
         .filter-chip {
             display: inline-flex;
             align-items: center;
@@ -466,6 +481,13 @@
             transform: rotateY(180deg);
             border-color: var(--kinpaku);
         }
+        .flashcard-back.rich-content {
+            overflow-y: auto;
+            justify-content: flex-start;
+            padding-top: 44px;
+        }
+        .flashcard-back::-webkit-scrollbar { width: 6px; }
+        .flashcard-back::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.4); border-radius: 4px; }
 
         .level-badge {
             position: absolute;
@@ -599,6 +621,20 @@
         }
         .ex-jp { color: #fff; font-weight: 600; font-size: 0.78rem; }
         .ex-th { color: var(--sakura-light); font-size: 0.68rem; margin-top: 1px; }
+
+        .g-explanation-text {
+            white-space: pre-line; font-size: 0.76rem; line-height: 1.6; color: rgba(255,255,255,0.85);
+        }
+        .g-mistakes-list { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+        .g-mistakes-list li {
+            font-size: 0.72rem; background: rgba(224,122,130,0.15); border-left: 3px solid var(--sakura);
+            padding: 5px 8px; border-radius: 6px; color: #fff; line-height: 1.5;
+        }
+        .g-related-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .g-related-tag {
+            background: rgba(255,255,255,0.1); color: var(--kinpaku-light); font-size: 0.68rem; font-weight: 600;
+            padding: 3px 9px; border-radius: 20px; border: 1px solid rgba(212,175,55,0.35);
+        }
 
         .hint {
             font-size: 0.75rem;
@@ -1202,6 +1238,265 @@
             margin-top: 6px;
             box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         }
+
+
+        /* ===== 🎮 Avatar / Level Widget ===== */
+        .avatar-widget {
+            display: flex; align-items: center; gap: 10px;
+            background: rgba(255,255,255,0.6); border: 1.5px solid var(--glass-border);
+            border-radius: 16px; padding: 6px 12px 6px 6px; cursor: pointer; transition: all 0.25s;
+        }
+        .avatar-widget:hover { border-color: var(--kinpaku); transform: translateY(-1px); }
+        .avatar-widget .avatar-emoji {
+            width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; background: linear-gradient(135deg, var(--kon-iro), #2c3e50);
+            border: 2px solid var(--kinpaku); flex-shrink: 0;
+        }
+        .avatar-widget .avatar-info { display: flex; flex-direction: column; gap: 3px; min-width: 108px; }
+        .avatar-widget .avatar-name-row { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--kon-iro); }
+        .avatar-widget .avatar-streak { font-size: 0.7rem; color: var(--sakura); font-weight: 600; }
+        .avatar-widget .avatar-exp-bar-bg {
+            width: 100%; height: 6px; border-radius: 4px; background: rgba(0,0,0,0.08); overflow: hidden;
+        }
+        .avatar-widget .avatar-exp-bar-fill {
+            height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--kinpaku), var(--sakura));
+            transition: width 0.5s ease-out;
+        }
+
+        .avatar-modal-overlay {
+            position: fixed; inset: 0; background: rgba(27, 38, 59, 0.75);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            display: none; align-items: center; justify-content: center; z-index: 1100;
+        }
+        .avatar-modal-overlay.open { display: flex; }
+        .avatar-modal-card {
+            background: var(--glass-bg); border: 2px solid var(--kinpaku); border-radius: 24px;
+            padding: 30px; width: 460px; max-width: 92vw; max-height: 88vh; overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: fadeInDown 0.4s ease-out;
+        }
+        .avatar-modal-card h2 { font-family: 'Zen Maru Gothic', sans-serif; color: var(--kon-iro); margin-bottom: 6px; font-size: 1.3rem; text-align: center; }
+        .avatar-modal-sub { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 18px; }
+        .avatar-modal-stats {
+            display: flex; justify-content: space-around; background: rgba(255,255,255,0.6);
+            border-radius: 14px; padding: 12px; margin-bottom: 18px; border: 1px solid var(--glass-border);
+        }
+        .avatar-modal-stats div { text-align: center; }
+        .avatar-modal-stats .stat-num { font-size: 1.1rem; font-weight: 700; color: var(--kon-iro); }
+        .avatar-modal-stats .stat-label { font-size: 0.68rem; color: var(--text-muted); }
+        .class-option-grid { display: flex; flex-direction: column; gap: 10px; }
+        .class-option {
+            display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+            border: 1.5px solid var(--glass-border); border-radius: 14px; cursor: pointer;
+            background: rgba(255,255,255,0.6); transition: all 0.25s;
+        }
+        .class-option:hover { border-color: var(--sakura); }
+        .class-option.selected { border-color: var(--kinpaku); background: rgba(212,175,55,0.12); }
+        .class-option .class-emoji { font-size: 1.6rem; }
+        .class-option .class-text { flex: 1; }
+        .class-option .class-title { font-weight: 700; color: var(--kon-iro); font-size: 0.9rem; }
+        .class-option .class-desc { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+        .avatar-modal-close {
+            display: block; margin: 18px auto 0; background: var(--kon-iro); color: var(--kinpaku-light);
+            border: none; padding: 9px 26px; border-radius: 12px; cursor: pointer; font-weight: 600;
+            font-family: 'Prompt', sans-serif;
+        }
+        .exp-toast {
+            position: fixed; top: 20px; right: 20px; z-index: 1200;
+            background: var(--glass-bg); border: 2px solid var(--kinpaku); border-radius: 14px;
+            padding: 10px 18px; font-size: 0.85rem; font-weight: 600; color: var(--kon-iro);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); animation: fadeInDown 0.3s ease-out, fadeOutUp 0.4s ease-in 1.8s forwards;
+        }
+        @keyframes fadeOutUp { to { opacity: 0; transform: translateY(-10px); } }
+
+        /* ===== 🧭 AI Roadmap Dashboard ===== */
+        .roadmap-box { width: 100%; display: flex; flex-direction: column; gap: 18px; }
+        .roadmap-card {
+            background: rgba(255,255,255,0.65); border: 1.5px solid var(--glass-border);
+            border-radius: 18px; padding: 18px 20px;
+        }
+        .roadmap-card h3 {
+            font-family: 'Zen Maru Gothic', sans-serif; font-size: 1rem; color: var(--kon-iro);
+            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+        }
+        .roadmap-overview-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+        }
+        .roadmap-stat { text-align: center; background: rgba(255,255,255,0.6); border-radius: 12px; padding: 10px 6px; border: 1px solid var(--glass-border); }
+        .roadmap-stat .num { font-size: 1.25rem; font-weight: 700; color: var(--kon-iro); }
+        .roadmap-stat .lbl { font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
+        .roadmap-progress-bg { width: 100%; height: 10px; border-radius: 6px; background: rgba(0,0,0,0.08); overflow: hidden; margin-top: 14px; display: flex; }
+        .roadmap-progress-seg.mastered { background: #4caf82; }
+        .roadmap-progress-seg.reviewing { background: var(--kinpaku); }
+        .roadmap-progress-seg.new { background: rgba(0,0,0,0.15); }
+        .roadmap-legend { display: flex; gap: 16px; margin-top: 8px; font-size: 0.72rem; color: var(--text-muted); flex-wrap: wrap; }
+        .roadmap-legend span { display: flex; align-items: center; gap: 5px; }
+        .roadmap-legend .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+        .weak-word-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .weak-word-chip {
+            background: rgba(224, 122, 130, 0.1); border: 1.5px solid var(--sakura);
+            border-radius: 12px; padding: 8px 12px; font-size: 0.8rem; min-width: 100px;
+        }
+        .weak-word-chip .wc-jp { font-weight: 700; color: var(--text-main); }
+        .weak-word-chip .wc-th { font-size: 0.72rem; color: var(--text-muted); }
+        .weak-word-chip .wc-miss { font-size: 0.68rem; color: var(--sakura); font-weight: 600; margin-top: 2px; }
+        .roadmap-empty-note { font-size: 0.8rem; color: var(--text-muted); text-align: center; padding: 10px; }
+
+        .quest-card {
+            background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(224,122,130,0.08));
+            border: 1.5px solid var(--kinpaku);
+        }
+        .quest-desc { font-size: 0.82rem; color: var(--text-main); line-height: 1.6; margin-bottom: 12px; }
+        .quest-progress-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .quest-progress-bg { flex: 1; height: 10px; border-radius: 6px; background: rgba(0,0,0,0.08); overflow: hidden; }
+        .quest-progress-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--kinpaku), var(--sakura)); transition: width 0.4s; }
+        .quest-progress-label { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
+        .quest-btn {
+            background: var(--kon-iro); color: var(--kinpaku-light); border: none;
+            padding: 10px 22px; border-radius: 12px; font-weight: 600; cursor: pointer; font-family: 'Prompt', sans-serif;
+        }
+        .quest-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .quest-done-badge { color: #4caf82; font-weight: 700; font-size: 0.85rem; }
+
+        /* ===== 🎧 Listening Comprehension Mode ===== */
+        .listen-box { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .listen-header { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 520px; }
+        .listen-title { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1rem; color: var(--kon-iro); font-weight: 700; }
+        .listen-progress-label { font-size: 0.78rem; color: var(--text-muted); }
+        .listen-play-btn {
+            background: linear-gradient(135deg, var(--kon-iro), #2c3e50); color: var(--kinpaku-light);
+            border: 2px solid var(--kinpaku); border-radius: 50%; width: 88px; height: 88px;
+            font-size: 2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s; box-shadow: 0 8px 20px rgba(27,38,59,0.2);
+        }
+        .listen-play-btn:hover { transform: scale(1.06); }
+        .listen-hint { font-size: 0.8rem; color: var(--text-muted); text-align: center; }
+        .listen-transcript-toggle {
+            font-size: 0.78rem; color: var(--kon-iro); background: rgba(255,255,255,0.7);
+            border: 1.5px solid var(--glass-border); border-radius: 12px; padding: 7px 16px; cursor: pointer;
+        }
+        .listen-transcript {
+            display: none; width: 100%; max-width: 520px; background: rgba(255,255,255,0.65);
+            border: 1.5px solid var(--glass-border); border-radius: 14px; padding: 14px 16px; text-align: left;
+        }
+        .listen-transcript.show { display: block; }
+        .listen-line { margin-bottom: 8px; }
+        .listen-line .ll-speaker { font-size: 0.7rem; font-weight: 700; color: var(--sakura); }
+        .listen-line .ll-jp { font-weight: 600; color: var(--text-main); font-size: 0.9rem; }
+        .listen-line .ll-th { font-size: 0.78rem; color: var(--text-muted); }
+        .listen-question-box {
+            width: 100%; max-width: 520px; background: rgba(255,255,255,0.7);
+            border: 1.5px solid var(--glass-border); border-radius: 16px; padding: 16px;
+        }
+        .listen-q-text { font-size: 0.92rem; font-weight: 600; color: var(--text-main); margin-bottom: 12px; text-align: center; }
+
+        /* ===== 🎤 Speaking / Pronunciation Practice Mode ===== */
+        .speak-box { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .speak-target-card {
+            width: 100%; max-width: 480px; background: rgba(255,255,255,0.7);
+            border: 1.5px solid var(--glass-border); border-radius: 20px; padding: 30px 20px; text-align: center;
+        }
+        .speak-target-jp { font-family: 'Zen Maru Gothic', sans-serif; font-size: 2rem; font-weight: 700; color: var(--kon-iro); }
+        .speak-target-reading { font-size: 0.95rem; color: var(--text-muted); margin-top: 6px; }
+        .speak-target-th { font-size: 0.85rem; color: var(--sakura); margin-top: 4px; }
+        .speak-mic-btn {
+            background: linear-gradient(135deg, var(--sakura), var(--kinpaku)); color: #fff;
+            border: none; border-radius: 50%; width: 88px; height: 88px; font-size: 2rem;
+            cursor: pointer; box-shadow: 0 8px 20px rgba(224,122,130,0.3); transition: transform 0.2s;
+        }
+        .speak-mic-btn:hover { transform: scale(1.06); }
+        .speak-mic-btn.listening { animation: speakPulse 1s infinite; }
+        @keyframes speakPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(224,122,130,0.5); } 50% { box-shadow: 0 0 0 16px rgba(224,122,130,0); } }
+        .speak-feedback { font-size: 0.88rem; font-weight: 600; text-align: center; min-height: 24px; }
+        .speak-feedback.good { color: #4caf82; }
+        .speak-feedback.close { color: var(--kinpaku); }
+        .speak-feedback.bad { color: var(--sakura); }
+        .speak-heard-text { font-size: 0.78rem; color: var(--text-muted); text-align: center; }
+        .speak-nav-row { display: flex; gap: 10px; }
+
+        /* ===== 🏆 Leaderboard Widget ===== */
+        .leaderboard-box {
+            width: 100%; max-width: 480px; background: rgba(212,175,55,0.08);
+            border: 1.5px solid rgba(212,175,55,0.35); border-radius: 14px; padding: 12px 16px; margin-bottom: 6px;
+        }
+        .leaderboard-title { font-size: 0.78rem; font-weight: 700; color: var(--kon-iro); margin-bottom: 8px; }
+        .leaderboard-list { display: flex; flex-direction: column; gap: 5px; }
+        .leaderboard-row {
+            display: flex; align-items: center; gap: 8px; font-size: 0.8rem;
+            background: rgba(255,255,255,0.5); border-radius: 8px; padding: 5px 10px;
+        }
+        .leaderboard-row.me { background: rgba(224,122,130,0.15); border: 1px solid var(--sakura); font-weight: 700; }
+        .lb-rank { font-size: 0.9rem; }
+        .lb-name { flex: 1; color: var(--text-main); }
+        .lb-score { color: var(--kinpaku); font-weight: 700; font-size: 0.75rem; }
+        .leaderboard-empty { font-size: 0.75rem; color: var(--text-muted); text-align: center; }
+
+        /* ===== 📝 JLPT Mock Exam ===== */
+        .exam-box { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .exam-intro-card {
+            width: 100%; max-width: 520px; background: rgba(255,255,255,0.7);
+            border: 1.5px solid var(--glass-border); border-radius: 20px; padding: 28px 24px; text-align: center;
+        }
+        .exam-intro-card h3 { font-family: 'Zen Maru Gothic', sans-serif; color: var(--kon-iro); font-size: 1.15rem; margin-bottom: 10px; }
+        .exam-intro-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; }
+        .exam-level-select { display: flex; gap: 10px; justify-content: center; margin-bottom: 18px; }
+        .exam-level-btn {
+            font-family: 'Prompt', sans-serif; font-weight: 700; font-size: 0.95rem;
+            background: rgba(255,255,255,0.8); color: var(--kon-iro); border: 2px solid var(--glass-border);
+            border-radius: 14px; padding: 12px 26px; cursor: pointer; transition: all 0.25s;
+        }
+        .exam-level-btn.active { background: linear-gradient(135deg, var(--kon-iro), #2c3e50); color: var(--kinpaku-light); border-color: var(--kon-iro); }
+        .exam-best-score { font-size: 0.78rem; color: var(--sakura); margin-bottom: 14px; min-height: 18px; }
+        .exam-start-btn {
+            background: linear-gradient(135deg, var(--sakura), var(--kinpaku)); color: #fff; border: none;
+            padding: 13px 36px; border-radius: 14px; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+            box-shadow: 0 8px 20px rgba(224,122,130,0.3);
+        }
+        .exam-header-row {
+            width: 100%; max-width: 560px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .exam-section-label {
+            font-size: 0.78rem; font-weight: 700; color: var(--kon-iro);
+            background: rgba(212,175,55,0.15); border-radius: 10px; padding: 4px 12px;
+        }
+        .exam-timer {
+            font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 1rem; color: var(--sakura);
+            background: rgba(255,255,255,0.7); border-radius: 10px; padding: 4px 14px; border: 1.5px solid var(--sakura);
+        }
+        .exam-timer.low-time { animation: speakPulse 1s infinite; color: #c0392b; }
+        .exam-progress-bg { width: 100%; max-width: 560px; height: 8px; border-radius: 5px; background: rgba(0,0,0,0.08); overflow: hidden; }
+        .exam-progress-fill { height: 100%; background: linear-gradient(90deg, var(--kinpaku), var(--sakura)); transition: width 0.3s; }
+        .exam-question-card {
+            width: 100%; max-width: 560px; background: rgba(255,255,255,0.75);
+            border: 1.5px solid var(--glass-border); border-radius: 18px; padding: 22px;
+        }
+        .exam-q-number { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px; }
+        .exam-q-jp { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); text-align: center; margin: 10px 0; }
+        .exam-q-hint { font-size: 0.8rem; color: var(--sakura); text-align: center; margin-bottom: 14px; }
+        .exam-listen-btn {
+            display: block; margin: 0 auto 14px; background: var(--kon-iro); color: var(--kinpaku-light);
+            border: none; border-radius: 50%; width: 56px; height: 56px; font-size: 1.3rem; cursor: pointer;
+        }
+        .exam-next-btn {
+            background: var(--kon-iro); color: var(--kinpaku-light); border: none;
+            padding: 11px 30px; border-radius: 12px; font-weight: 600; cursor: pointer; font-family: 'Prompt', sans-serif;
+        }
+        .exam-next-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .exam-result-card {
+            width: 100%; max-width: 560px; background: rgba(255,255,255,0.75);
+            border: 2px solid var(--kinpaku); border-radius: 20px; padding: 28px 24px; text-align: center;
+        }
+        .exam-result-badge { font-size: 2.2rem; margin-bottom: 6px; }
+        .exam-result-title { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+        .exam-result-title.pass { color: #4caf82; }
+        .exam-result-title.fail { color: var(--sakura); }
+        .exam-result-pct { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; }
+        .exam-section-scores { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; text-align: left; }
+        .exam-section-score-row { display: flex; justify-content: space-between; font-size: 0.85rem; background: rgba(255,255,255,0.6); border-radius: 10px; padding: 8px 14px; }
+        .exam-review-list { max-height: 260px; overflow-y: auto; text-align: left; margin-bottom: 16px; }
+        .exam-review-item { font-size: 0.78rem; padding: 8px 10px; border-radius: 8px; margin-bottom: 6px; background: rgba(224,122,130,0.08); border-left: 3px solid var(--sakura); }
+        .exam-review-item .eri-q { font-weight: 600; color: var(--text-main); }
+        .exam-review-item .eri-a { color: var(--text-muted); margin-top: 2px; }
     </style>
 </head>
 <body>
@@ -1231,8 +1526,12 @@
                 <button id="modeQuizBtn" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ</button>
                 <button id="modeChoiceBtn" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ</button>
                 <button id="modeMatchBtn" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ</button>
-                <button id="modeKanaBtn" class="mode-btn new-mode" onclick="setMode('kana')">🌸 あいう ตัวอักษร<span class="new-badge">NEW</span></button>
-                <button id="modeBossBtn" class="mode-btn new-mode" onclick="setMode('boss')">⚔️ Boss Battle<span class="new-badge">NEW</span></button>
+                <button id="modeKanaBtn" class="mode-btn" onclick="setMode('kana')">🌸 あいう ตัวอักษร</button>
+                <button id="modeBossBtn" class="mode-btn" onclick="setMode('boss')">⚔️ Boss Battle</button>
+                <button id="modeRoadmapBtn" class="mode-btn" onclick="setMode('roadmap')">🧭 Roadmap</button>
+                <button id="modeListenBtn" class="mode-btn new-mode" onclick="setMode('listen')">🎧 ฟังแล้วตอบ<span class="new-badge">NEW</span></button>
+                <button id="modeSpeakBtn" class="mode-btn new-mode" onclick="setMode('speak')">🎤 ฝึกพูด<span class="new-badge">NEW</span></button>
+                <button id="modeExamBtn" class="mode-btn new-mode" onclick="setMode('exam')">📝 JLPT Mock Exam<span class="new-badge">NEW</span></button>
             </div>
             <div class="voice-settings">
                 <span class="voice-settings-label">🔊 เสียงอ่าน:</span>
@@ -1242,16 +1541,46 @@
                 </div>
             </div>
             <div class="user-badge">
+                <div class="avatar-widget" id="avatarWidget" onclick="openAvatarModal()">
+                    <div class="avatar-emoji" id="avatarEmoji">🗡️</div>
+                    <div class="avatar-info">
+                        <div class="avatar-name-row">
+                            <span id="avatarLevelLabel">Lv.1</span>
+                            <span class="avatar-streak" id="avatarStreakLabel">🔥0</span>
+                        </div>
+                        <div class="avatar-exp-bar-bg"><div class="avatar-exp-bar-fill" id="avatarExpBar" style="width:0%;"></div></div>
+                    </div>
+                </div>
                 <span id="currentUserLabel">👤</span>
                 <button class="btn-mini" onclick="logoutUser()">ออกจากระบบ</button>
             </div>
         </header>
+
+        <!-- 🎮 Avatar / Class Selection Modal -->
+        <div class="avatar-modal-overlay" id="avatarModalOverlay" onclick="if(event.target===this) closeAvatarModal()">
+            <div class="avatar-modal-card">
+                <h2 id="avatarModalTitle">🗡️ ตัวละครของคุณ</h2>
+                <div class="avatar-modal-sub">EXP สะสมจากทุกกิจกรรมการเรียน — ยิ่งฝึกมาก ยิ่งเลเวลอัพเร็ว</div>
+                <div class="avatar-modal-stats">
+                    <div><div class="stat-num" id="avatarStatLevel">1</div><div class="stat-label">เลเวล</div></div>
+                    <div><div class="stat-num" id="avatarStatExp">0</div><div class="stat-label">EXP รวม</div></div>
+                    <div><div class="stat-num" id="avatarStatStreak">0</div><div class="stat-label">🔥 วันติดต่อกัน</div></div>
+                </div>
+                <div class="class-option-grid" id="classOptionGrid"></div>
+                <button class="avatar-modal-close" onclick="closeAvatarModal()">ปิด</button>
+            </div>
+        </div>
 
         <!-- Main Dashboard Grid Layout -->
         <div class="main-container" id="mainDashboardGrid">
             
             <!-- Left Sidebar: Filter & Stats -->
             <div class="panel">
+                <h3>🗂️ เนื้อหาที่จะฝึก</h3>
+                <div class="content-type-toggle" id="contentTypeToggle">
+                    <button type="button" class="content-type-btn active" data-type="vocab" onclick="setContentType('vocab')">📖 คำศัพท์</button>
+                    <button type="button" class="content-type-btn" data-type="grammar" onclick="setContentType('grammar')">📐 ไวยากรณ์</button>
+                </div>
                 <h3>📚 ตัวกรองระดับชั้น</h3>
                 <div class="filter-group">
                     <div class="filter-chips">
@@ -1356,6 +1685,7 @@
                     <button class="btn-submit" id="quizSubmitBtn" onclick="checkAnswer()">ตรวจคำตอบ ✔</button>
                     <div class="quiz-feedback" id="quizFeedback"></div>
                     <div class="quiz-stats" id="quizStats">ถูก: 0 &nbsp;|&nbsp; ผิด: 0</div>
+                    <div class="leaderboard-box" id="quizLeaderboard"></div>
                 </div>
 
                 <!-- Choice Box -->
@@ -1370,6 +1700,7 @@
                     <div class="quiz-feedback" id="choiceFeedback"></div>
                     <button class="btn-submit" id="choiceNextBtn" style="display:none;" onclick="nextChoiceQuestion()">ข้อถัดไป ➡</button>
                     <div class="quiz-stats" id="choiceStats">ถูก: 0 &nbsp;|&nbsp; ผิด: 0</div>
+                    <div class="leaderboard-box" id="choiceLeaderboard"></div>
                 </div>
 
                 <!-- Match Box -->
@@ -1391,6 +1722,8 @@
                         <span id="matchProgress">จับคู่แล้ว 0 / 5</span>
                         <button class="btn-submit btn-new-round" style="width:auto; margin-top:0;" onclick="newMatchRound()">🔀 คำชุดใหม่</button>
                     </div>
+                    <div class="quiz-stats" id="matchStats">คะแนนสุทธิ (ถูก - ผิด): 0</div>
+                    <div class="leaderboard-box" id="matchLeaderboard"></div>
                 </div>
 
                 <!-- Kana Classroom Mode (พร้อม 4 ฟีเจอร์ใหม่) -->
@@ -1542,6 +1875,117 @@
                         <div class="boss-result-title" id="bossResultTitle">ชนะแล้ว!</div>
                         <div class="boss-result-desc" id="bossResultDesc"></div>
                         <button class="btn-submit" style="max-width:280px;" onclick="backToBossSelect()">◀ กลับไปเลือก Boss</button>
+                    </div>
+                </div>
+
+                <!-- 🧭 AI Roadmap Dashboard -->
+                <div class="roadmap-box" id="roadmapBox" style="display:none;">
+                    <div class="roadmap-card">
+                        <h3>📊 ภาพรวมการเรียนรู้</h3>
+                        <div class="roadmap-overview-grid" id="roadmapOverviewGrid"></div>
+                        <div class="roadmap-progress-bg" id="roadmapProgressBar"></div>
+                        <div class="roadmap-legend">
+                            <span><span class="dot" style="background:#4caf82;"></span>จำได้แล้ว</span>
+                            <span><span class="dot" style="background:var(--kinpaku);"></span>กำลังทบทวน</span>
+                            <span><span class="dot" style="background:rgba(0,0,0,0.15);"></span>ยังไม่เรียน</span>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-card quest-card">
+                        <h3>🎯 ภารกิจประจำวัน (Daily Quest)</h3>
+                        <div class="quest-desc" id="questDesc">กำลังโหลดภารกิจ...</div>
+                        <div class="quest-progress-row">
+                            <div class="quest-progress-bg"><div class="quest-progress-fill" id="questProgressFill" style="width:0%;"></div></div>
+                            <div class="quest-progress-label" id="questProgressLabel">0/0</div>
+                        </div>
+                        <button class="quest-btn" id="questStartBtn" onclick="startDailyQuest()">🚀 เริ่มภารกิจ</button>
+                        <span class="quest-done-badge" id="questDoneBadge" style="display:none;">✅ ทำภารกิจวันนี้สำเร็จแล้ว! กลับมาใหม่พรุ่งนี้นะครับ</span>
+                    </div>
+
+                    <div class="roadmap-card">
+                        <h3>⚠️ จุดที่ควรฝึกเพิ่ม (Weak Points)</h3>
+                        <div class="weak-word-list" id="weakWordList"></div>
+                    </div>
+                </div>
+
+                <!-- 🎧 Listening Comprehension Mode -->
+                <div class="listen-box" id="listenBox" style="display:none;">
+                    <div class="listen-header">
+                        <span class="listen-title" id="listenTitle">กำลังโหลด...</span>
+                        <span class="listen-progress-label" id="listenProgressLabel">0/0</span>
+                    </div>
+                    <button class="listen-play-btn" id="listenPlayBtn" onclick="playCurrentDialogue()" title="ฟังบทสนทนา">▶️</button>
+                    <div class="listen-hint">กดฟังบทสนทนา แล้วตอบคำถามด้านล่าง (ฟังได้หลายรอบ)</div>
+                    <button class="listen-transcript-toggle" onclick="toggleListenTranscript()">📝 แสดง/ซ่อนบทสนทนา</button>
+                    <div class="listen-transcript" id="listenTranscript"></div>
+                    <div class="listen-question-box" id="listenQuestionBox"></div>
+                    <div class="quest-progress-label" id="listenStats">ถูก: 0 | ผิด: 0</div>
+                    <div class="leaderboard-box" id="listenLeaderboard"></div>
+                </div>
+
+                <!-- 🎤 Speaking / Pronunciation Practice Mode -->
+                <div class="speak-box" id="speakBox" style="display:none;">
+                    <div class="speak-target-card">
+                        <span class="level-badge" id="speakLevelBadge" style="position:static; display:inline-block; margin-bottom:10px;">N5</span>
+                        <div class="speak-target-jp" id="speakTargetJp">こんにちは</div>
+                        <div class="speak-target-reading" id="speakTargetReading">こんにちは (Konnichiwa)</div>
+                        <div class="speak-target-th" id="speakTargetTh">สวัสดี</div>
+                    </div>
+                    <button class="speak-mic-btn" id="speakMicBtn" onclick="startSpeakRecognition()" title="กดแล้วพูดตาม">🎤</button>
+                    <div class="speak-feedback" id="speakFeedback"></div>
+                    <div class="speak-heard-text" id="speakHeardText"></div>
+                    <div class="speak-nav-row">
+                        <button class="btn-mini" onclick="navigateSpeakPractice(-1)">◀ คำก่อนหน้า</button>
+                        <button class="btn-mini" onclick="playCurrentSpeakTarget()">🔊 ฟังตัวอย่าง</button>
+                        <button class="btn-mini" onclick="navigateSpeakPractice(1)">คำถัดไป ▶</button>
+                    </div>
+                    <div class="quest-progress-label" id="speakStats">ถูก: 0 | ผิด: 0</div>
+                </div>
+
+                <!-- 📝 JLPT Mock Exam -->
+                <div class="exam-box" id="examBox" style="display:none;">
+                    <div id="examIntroView">
+                        <div class="exam-intro-card">
+                            <h3>📝 JLPT Mock Exam</h3>
+                            <div class="exam-intro-desc">
+                                จำลองข้อสอบจริง 3 พาร์ท: 文字・語彙 (คำศัพท์) → 文法 (ไวยากรณ์) → 聴解 (ฟัง)<br>
+                                มีเวลาจำกัด ตอบครบแล้วดูผลคะแนนพร้อมสรุปข้อที่พลาด
+                            </div>
+                            <div class="exam-level-select" id="examLevelSelect">
+                                <button type="button" class="exam-level-btn active" data-level="N5" onclick="selectExamLevel('N5')">N5</button>
+                                <button type="button" class="exam-level-btn" data-level="N4" onclick="selectExamLevel('N4')">N4</button>
+                            </div>
+                            <div class="exam-best-score" id="examBestScore"></div>
+                            <button class="exam-start-btn" onclick="startMockExam()">🚀 เริ่มทำข้อสอบ</button>
+                        </div>
+                    </div>
+
+                    <div id="examRunningView" style="display:none; width:100%; display:flex; flex-direction:column; align-items:center; gap:14px;">
+                        <div class="exam-header-row">
+                            <span class="exam-section-label" id="examSectionLabel">文字・語彙</span>
+                            <span class="exam-timer" id="examTimer">15:00</span>
+                        </div>
+                        <div class="exam-progress-bg"><div class="exam-progress-fill" id="examProgressFill" style="width:0%;"></div></div>
+                        <div class="exam-question-card">
+                            <div class="exam-q-number" id="examQNumber">ข้อ 1 / 24</div>
+                            <div class="exam-q-jp" id="examQJp"></div>
+                            <div class="exam-q-hint" id="examQHint"></div>
+                            <button class="exam-listen-btn" id="examListenBtn" style="display:none;" onclick="playExamListening()">▶️</button>
+                            <div class="choice-options" id="examOptions"></div>
+                        </div>
+                        <button class="exam-next-btn" id="examNextBtn" disabled onclick="nextExamQuestion()">ข้อถัดไป ➡</button>
+                    </div>
+
+                    <div id="examResultView" style="display:none; width:100%; display:flex; flex-direction:column; align-items:center;">
+                        <div class="exam-result-card">
+                            <div class="exam-result-badge" id="examResultBadge">🎉</div>
+                            <div class="exam-result-title" id="examResultTitle">ผ่าน!</div>
+                            <div class="exam-result-pct" id="examResultPct">คะแนนรวม 80%</div>
+                            <div class="exam-section-scores" id="examSectionScores"></div>
+                            <div class="exam-review-list" id="examReviewList"></div>
+                            <button class="exam-start-btn" onclick="backToExamIntro()">🔁 ทำข้อสอบใหม่</button>
+                        </div>
+                        <div class="leaderboard-box" id="examLeaderboard" style="margin-top:16px;"></div>
                     </div>
                 </div>
             </div>
@@ -3100,7 +3544,1999 @@
             {char:"ン", romaji:"N", type:"Katakana", example:"パン (pan) = ขนมปัง", monster:"📚 คาตากานะน (Gacha N)"},
         ];
 
+        const grammarList = [
+            {
+                level: "N5",
+                pattern: "～は ～です",
+                meaning: "...คือ... / ...เป็น...",
+                structure: "N + は + N + です",
+                explanation: `
+ใช้สำหรับบอกข้อมูลพื้นฐานเกี่ยวกับสิ่งหนึ่ง
+ใช้กับ:
+- ชื่อ
+- อาชีพ
+- สัญชาติ
+- สถานะ
+คำช่วย は อ่านว่า "วะ"
+ใช้กำหนดหัวข้อของประโยค
+`,
+                examples: [
+                    { jp: "私は学生です。", romaji: "Watashi wa gakusei desu.", th: "ฉันเป็นนักเรียน" },
+                    { jp: "私はタイ人です。", romaji: "Watashi wa Tai-jin desu.", th: "ฉันเป็นคนไทย" },
+                    { jp: "田中さんは先生です。", romaji: "Tanaka-san wa sensei desu.", th: "คุณทานากะเป็นครู" }
+                ],
+                mistakes: [
+                    "อย่าอ่าน は ว่า ฮะ ในประโยคนี้",
+                    "อย่าใช้ を แทน は",
+                    "です ใช้ตามหลังคำนาม"
+                ],
+                related: ["～ではありません", "～ですか"]
+            },
+            {
+                level: "N5",
+                pattern: "～ではありません",
+                meaning: "...ไม่ใช่... (ปฏิเสธของ です)",
+                structure: "N + では(じゃ)ありません",
+                explanation: `
+ใช้ปฏิเสธประโยครูป ～は～です
+ではありません = ทางการ
+じゃありません = พูดกันในชีวิตประจำวัน (เป็นกันเอง)
+ทั้งสองแบบความหมายเหมือนกัน
+`,
+                examples: [
+                    { jp: "私は先生ではありません。", romaji: "Watashi wa sensei dewa arimasen.", th: "ฉันไม่ใช่ครู" },
+                    { jp: "これは私の本じゃありません。", romaji: "Kore wa watashi no hon ja arimasen.", th: "นี่ไม่ใช่หนังสือของฉัน" },
+                    { jp: "田中さんは学生ではありません。", romaji: "Tanaka-san wa gakusei dewa arimasen.", th: "คุณทานากะไม่ใช่นักเรียน" }
+                ],
+                mistakes: [
+                    "อย่าใช้ ないです ต่อท้าย です โดยตรง (ผิดหลักไวยากรณ์)",
+                    "ではありません กับ じゃありません ใช้แทนกันได้ ต่างแค่ระดับความเป็นทางการ"
+                ],
+                related: ["～は ～です", "～ですか"]
+            },
+            {
+                level: "N5",
+                pattern: "～ですか",
+                meaning: "...ใช่ไหม / ...หรือเปล่า (ประโยคคำถาม)",
+                structure: "N/adj + です + か",
+                explanation: `
+เติม か ท้ายประโยคเพื่อทำให้เป็นประโยคคำถาม
+ไม่ต้องเปลี่ยนโครงสร้างประโยค แค่เติม か ท้าย です
+ไม่ต้องใส่เครื่องหมาย ? เพราะ か ทำหน้าที่นั้นแล้ว
+เวลาพูดให้เสียงสูงขึ้นท้ายประโยค
+`,
+                examples: [
+                    { jp: "田中さんは先生ですか。", romaji: "Tanaka-san wa sensei desu ka.", th: "คุณทานากะเป็นครูใช่ไหม" },
+                    { jp: "これは辞書ですか。", romaji: "Kore wa jisho desu ka.", th: "นี่คือพจนานุกรมใช่ไหม" },
+                    { jp: "あなたは学生ですか。", romaji: "Anata wa gakusei desu ka.", th: "คุณเป็นนักเรียนใช่ไหม" }
+                ],
+                mistakes: [
+                    "อย่าใส่เครื่องหมาย ? ต่อท้าย か ซ้ำอีก",
+                    "か ต้องอยู่ท้ายประโยคเสมอ"
+                ],
+                related: ["～は ～です", "～ではありません"]
+            },
+            {
+                level: "N5",
+                pattern: "これ／それ／あれ／どれ",
+                meaning: "นี่ / นั่น / โน่น / อันไหน (สรรพนามชี้สิ่งของ)",
+                structure: "これ/それ/あれ/どれ + は + N + です",
+                explanation: `
+ใช้แทนสิ่งของโดยไม่ต้องระบุชื่อ
+これ = สิ่งที่อยู่ใกล้ผู้พูด
+それ = สิ่งที่อยู่ใกล้ผู้ฟัง
+あれ = สิ่งที่อยู่ไกลทั้งสองฝ่าย
+どれ = คำถาม "อันไหน" (เลือกจาก 3 อย่างขึ้นไป)
+`,
+                examples: [
+                    { jp: "これは私のカバンです。", romaji: "Kore wa watashi no kaban desu.", th: "นี่คือกระเป๋าของฉัน" },
+                    { jp: "それは何ですか。", romaji: "Sore wa nan desu ka.", th: "นั่นคืออะไร" },
+                    { jp: "あなたのカサはどれですか。", romaji: "Anata no kasa wa dore desu ka.", th: "ร่มของคุณคืออันไหน" }
+                ],
+                mistakes: [
+                    "ใช้ これ/それ/あれ กับสิ่งของเท่านั้น ไม่ใช้กับคน",
+                    "どれ ใช้เมื่อมีตัวเลือกตั้งแต่ 3 อย่างขึ้นไป ถ้ามี 2 อย่างใช้ どちら"
+                ],
+                related: ["この／その／あの + N", "～は ～です"]
+            },
+            {
+                level: "N5",
+                pattern: "この／その／あの／どの + N",
+                meaning: "N นี้ / N นั้น / N โน้น / N ไหน",
+                structure: "この/その/あの/どの + N",
+                explanation: `
+ใช้วางหน้าคำนามเพื่อชี้เฉพาะเจาะจง ต่างจาก これ/それ/あれ ที่ใช้แทนคำนามได้เลย
+この/その/あの/どの ต้องตามด้วยคำนามเสมอ ใช้ลอยๆ ไม่ได้
+`,
+                examples: [
+                    { jp: "この本は面白いです。", romaji: "Kono hon wa omoshiroi desu.", th: "หนังสือเล่มนี้น่าสนใจ" },
+                    { jp: "その靴はいくらですか。", romaji: "Sono kutsu wa ikura desu ka.", th: "รองเท้าคู่นั้นราคาเท่าไหร่" },
+                    { jp: "あの人は先生です。", romaji: "Ano hito wa sensei desu.", th: "คนนั้น(ไกล)เป็นครู" }
+                ],
+                mistakes: [
+                    "この/その/あの ต้องมีคำนามตามหลังเสมอ ห้ามใช้ตัวเดียวโดดๆ",
+                    "อย่าสับสนกับ これ/それ/あれ ที่ใช้แทนคำนามได้"
+                ],
+                related: ["これ／それ／あれ／どれ", "N1の N2"]
+            },
+            {
+                level: "N5",
+                pattern: "N1の N2",
+                meaning: "N2 ของ N1 (แสดงความเป็นเจ้าของ/ขยายความ)",
+                structure: "N1 + の + N2",
+                explanation: `
+の เชื่อมคำนาม 2 คำเข้าด้วยกัน
+ใช้บอกความเป็นเจ้าของ เช่น 私の本 (หนังสือของฉัน)
+ใช้ขยายความ เช่น 日本語の先生 (ครูสอนภาษาญี่ปุ่น)
+เรียงประโยคแบบ N2 ของ N1 ตรงข้ามกับภาษาไทย
+`,
+                examples: [
+                    { jp: "これは私の傘です。", romaji: "Kore wa watashi no kasa desu.", th: "นี่คือร่มของฉัน" },
+                    { jp: "田中さんは日本語の先生です。", romaji: "Tanaka-san wa nihongo no sensei desu.", th: "คุณทานากะเป็นครูสอนภาษาญี่ปุ่น" },
+                    { jp: "それはタイの雑誌です。", romaji: "Sore wa Tai no zasshi desu.", th: "นั่นคือนิตยสารของไทย" }
+                ],
+                mistakes: [
+                    "ลำดับคำสลับกับภาษาไทย ต้องพูด N2ของ N1 ไม่ใช่ N1ของN2",
+                    "ห้ามลืม の เวลาเชื่อมคำนาม 2 คำ"
+                ],
+                related: ["この／その／あの + N", "～は ～です"]
+            },
+            {
+                level: "N5",
+                pattern: "～も",
+                meaning: "...ก็เช่นกัน / ...ด้วย",
+                structure: "N + も + です/ます",
+                explanation: `
+ใช้แทนที่ は เมื่อต้องการบอกว่าสิ่งนี้ก็เหมือนกับสิ่งก่อนหน้า
+ไม่ใช้ は と も พร้อมกัน ให้ใช้ も แทน は ไปเลย
+`,
+                examples: [
+                    { jp: "私は学生です。田中さんも学生です。", romaji: "Watashi wa gakusei desu. Tanaka-san mo gakusei desu.", th: "ฉันเป็นนักเรียน คุณทานากะก็เป็นนักเรียนเช่นกัน" },
+                    { jp: "これはペンです。それもペンです。", romaji: "Kore wa pen desu. Sore mo pen desu.", th: "นี่คือปากกา นั่นก็เป็นปากกาเหมือนกัน" },
+                    { jp: "彼女もタイ人です。", romaji: "Kanojo mo Tai-jin desu.", th: "เธอก็เป็นคนไทยเหมือนกัน" }
+                ],
+                mistakes: [
+                    "も มาแทนที่ は ไม่ใช่ใช้ควบคู่กัน",
+                    "も ใช้ได้กับทั้งประโยคบอกเล่าและปฏิเสธ"
+                ],
+                related: ["～は ～です", "N1の N2"]
+            },
+            {
+                level: "N5",
+                pattern: "～があります",
+                meaning: "มี... (สิ่งของ/สถานที่ไม่มีชีวิต)",
+                structure: "N(สิ่งของ) + が + あります",
+                explanation: `
+ใช้บอกว่ามีสิ่งของหรือสถานที่อยู่
+ใช้กับสิ่งไม่มีชีวิต เช่น ของ อาคาร ต้นไม้
+รูปอดีตคือ ありました รูปปฏิเสธคือ ありません
+`,
+                examples: [
+                    { jp: "机の上に本があります。", romaji: "Tsukue no ue ni hon ga arimasu.", th: "มีหนังสืออยู่บนโต๊ะ" },
+                    { jp: "駅の近くに銀行があります。", romaji: "Eki no chikaku ni ginkou ga arimasu.", th: "มีธนาคารอยู่ใกล้สถานี" },
+                    { jp: "私は車がありません。", romaji: "Watashi wa kuruma ga arimasen.", th: "ฉันไม่มีรถยนต์" }
+                ],
+                mistakes: [
+                    "あります ใช้กับสิ่งไม่มีชีวิตเท่านั้น สิ่งมีชีวิตใช้ います",
+                    "อย่าใช้ は แทน が ในประโยคบอกตำแหน่ง"
+                ],
+                related: ["～がいます", "～は～にあります／います"]
+            },
+            {
+                level: "N5",
+                pattern: "～がいます",
+                meaning: "มี.../อยู่... (คน/สัตว์ที่มีชีวิต)",
+                structure: "N(สิ่งมีชีวิต) + が + います",
+                explanation: `
+ใช้บอกว่ามีคนหรือสัตว์อยู่
+ใช้กับสิ่งมีชีวิตเท่านั้น เช่น คน สัตว์
+รูปอดีตคือ いました รูปปฏิเสธคือ いません
+`,
+                examples: [
+                    { jp: "教室に学生がいます。", romaji: "Kyoushitsu ni gakusei ga imasu.", th: "มีนักเรียนอยู่ในห้องเรียน" },
+                    { jp: "公園に犬がいます。", romaji: "Kouen ni inu ga imasu.", th: "มีสุนัขอยู่ในสวนสาธารณะ" },
+                    { jp: "私は兄弟がいません。", romaji: "Watashi wa kyoudai ga imasen.", th: "ฉันไม่มีพี่น้อง" }
+                ],
+                mistakes: [
+                    "います ใช้กับสิ่งมีชีวิตเท่านั้น ของสิ่งของใช้ あります",
+                    "ต้นไม้ทางไวยากรณ์นับเป็นสิ่งไม่มีชีวิต ใช้ あります"
+                ],
+                related: ["～があります", "～は～にあります／います"]
+            },
+            {
+                level: "N5",
+                pattern: "～は～にあります／います",
+                meaning: "...อยู่ที่... (บอกตำแหน่งของสิ่งที่รู้จักอยู่แล้ว)",
+                structure: "N + は + สถานที่ + に + あります/います",
+                explanation: `
+ต่างจาก があります/がいます ตรงที่ประโยคนี้เน้นบอกว่า "สิ่งที่รู้จักอยู่แล้ว" อยู่ที่ไหน
+โครงสร้างสลับตำแหน่ง は กับ に เทียบกับ があります
+`,
+                examples: [
+                    { jp: "私の家は駅の近くにあります。", romaji: "Watashi no ie wa eki no chikaku ni arimasu.", th: "บ้านของฉันอยู่ใกล้สถานี" },
+                    { jp: "田中さんは教室にいます。", romaji: "Tanaka-san wa kyoushitsu ni imasu.", th: "คุณทานากะอยู่ในห้องเรียน" },
+                    { jp: "猫はベッドの下にいます。", romaji: "Neko wa beddo no shita ni imasu.", th: "แมวอยู่ใต้เตียง" }
+                ],
+                mistakes: [
+                    "อย่าสลับ は กับ が โดยไม่คิดถึงบริบท (は=สิ่งที่รู้จักแล้ว, が=สิ่งใหม่ที่เพิ่งพูดถึง)",
+                    "に บอกตำแหน่ง ต้องอยู่หน้า あります/います เสมอ"
+                ],
+                related: ["～があります", "～がいます"]
+            },
+            {
+                level: "N5",
+                pattern: "～へ行きます／来ます／帰ります",
+                meaning: "ไปที่.../มาที่.../กลับที่...",
+                structure: "สถานที่ + へ(に) + 行きます/来ます/帰ります",
+                explanation: `
+へ อ่านว่า "เอะ" เมื่อใช้เป็นคำช่วย ไม่ใช่ "เฮะ"
+บอกทิศทางการเคลื่อนที่ไปยังสถานที่
+สามารถใช้ に แทน へ ได้ ความหมายเหมือนกันในกรณีนี้
+`,
+                examples: [
+                    { jp: "明日、学校へ行きます。", romaji: "Ashita, gakkou e ikimasu.", th: "พรุ่งนี้จะไปโรงเรียน" },
+                    { jp: "友達が私の家へ来ます。", romaji: "Tomodachi ga watashi no ie e kimasu.", th: "เพื่อนจะมาที่บ้านฉัน" },
+                    { jp: "七時に家へ帰ります。", romaji: "Shichiji ni ie e kaerimasu.", th: "จะกลับบ้านตอนเจ็ดโมง" }
+                ],
+                mistakes: [
+                    "へ ในที่นี้อ่านว่า え ไม่ใช่ へ(เฮะ)",
+                    "อย่าใช้ を แทน へ ในการบอกทิศทาง"
+                ],
+                related: ["～で", "～から～まで"]
+            },
+            {
+                level: "N5",
+                pattern: "～で (สถานที่)",
+                meaning: "ที่... (สถานที่ที่เกิดการกระทำ)",
+                structure: "สถานที่ + で + Vます",
+                explanation: `
+で บอกสถานที่ที่การกระทำเกิดขึ้น ต่างจาก に ที่บอกตำแหน่งที่มีอยู่/มีชีวิตอยู่
+ใช้กับกริยาที่แสดงการกระทำ เช่น กิน ดู เรียน ทำงาน
+`,
+                examples: [
+                    { jp: "レストランでご飯を食べます。", romaji: "Resutoran de gohan wo tabemasu.", th: "กินข้าวที่ร้านอาหาร" },
+                    { jp: "図書館で勉強します。", romaji: "Toshokan de benkyou shimasu.", th: "เรียนหนังสือที่ห้องสมุด" },
+                    { jp: "会社で働きます。", romaji: "Kaisha de hatarakimasu.", th: "ทำงานที่บริษัท" }
+                ],
+                mistakes: [
+                    "で ใช้กับกริยาการกระทำ ส่วน に ใช้กับกริยาแสดงการมีอยู่ (あります/います)",
+                    "ห้ามใช้ で กับกริยา あります/います ที่บอกตำแหน่ง"
+                ],
+                related: ["～へ行きます／来ます／帰ります", "～を"]
+            },
+            {
+                level: "N5",
+                pattern: "～を",
+                meaning: "(คำช่วยกรรมตรง - ไม่มีคำแปลตรงตัว)",
+                structure: "N(กรรม) + を + Vます",
+                explanation: `
+を วางหลังคำนามที่เป็นกรรมของกริยา
+ใช้กับกริยาที่มีกรรมโดยตรง เช่น กิน ดื่ม ซื้อ อ่าน เขียน
+`,
+                examples: [
+                    { jp: "水を飲みます。", romaji: "Mizu wo nomimasu.", th: "ดื่มน้ำ" },
+                    { jp: "新聞を読みます。", romaji: "Shinbun wo yomimasu.", th: "อ่านหนังสือพิมพ์" },
+                    { jp: "パンを買います。", romaji: "Pan wo kaimasu.", th: "ซื้อขนมปัง" }
+                ],
+                mistakes: [
+                    "を อ่านว่า お เวลาพูด แต่เขียนด้วยตัว を เสมอ",
+                    "อย่าสับสน を กับ は หรือ が"
+                ],
+                related: ["～で (สถานที่)", "～に (เวลา)"]
+            },
+            {
+                level: "N5",
+                pattern: "～に (เวลา)",
+                meaning: "ตอน... / เวลา... (ระบุเวลาที่แน่นอน)",
+                structure: "เวลา + に + Vます",
+                explanation: `
+に ใช้ระบุเวลาที่แน่นอน เช่น ตัวเลขนาฬิกา วันที่ วันในสัปดาห์
+ไม่ใช้ に กับคำเวลาสัมพัทธ์ เช่น 今日 明日 毎日 (ไม่ต้องมี に ก็ได้)
+`,
+                examples: [
+                    { jp: "七時に起きます。", romaji: "Shichiji ni okimasu.", th: "ตื่นตอนเจ็ดโมง" },
+                    { jp: "月曜日に会議があります。", romaji: "Getsuyoubi ni kaigi ga arimasu.", th: "มีประชุมวันจันทร์" },
+                    { jp: "十二月に日本へ行きます。", romaji: "Juunigatsu ni Nihon e ikimasu.", th: "จะไปญี่ปุ่นเดือนธันวาคม" }
+                ],
+                mistakes: [
+                    "คำอย่าง 今日/明日/毎日/今 ปกติไม่ใช้ に ตามหลัง",
+                    "に ในที่นี้ใช้กับเวลาที่ชัดเจนเท่านั้น"
+                ],
+                related: ["～から～まで", "～へ行きます／来ます／帰ります"]
+            },
+            {
+                level: "N5",
+                pattern: "～から～まで",
+                meaning: "จาก...ถึง...",
+                structure: "N(เริ่มต้น) + から + N(สิ้นสุด) + まで",
+                explanation: `
+から บอกจุดเริ่มต้น まで บอกจุดสิ้นสุด
+ใช้ได้ทั้งกับเวลาและสถานที่
+สามารถใช้ から หรือ まで แยกกันตัวเดียวก็ได้ ไม่จำเป็นต้องมาคู่กันเสมอ
+`,
+                examples: [
+                    { jp: "九時から五時まで働きます。", romaji: "Kuji kara goji made hatarakimasu.", th: "ทำงานตั้งแต่เก้าโมงถึงห้าโมง" },
+                    { jp: "うちから駅まで歩きます。", romaji: "Uchi kara eki made arukimasu.", th: "เดินจากบ้านถึงสถานี" },
+                    { jp: "月曜日から金曜日まで学校があります。", romaji: "Getsuyoubi kara kinyoubi made gakkou ga arimasu.", th: "มีเรียนตั้งแต่วันจันทร์ถึงวันศุกร์" }
+                ],
+                mistakes: [
+                    "から ต้องมาก่อน まで เสมอในการเรียงคำ",
+                    "ใช้ได้ทั้งเวลาและสถานที่ ไม่ใช่แค่เวลาอย่างเดียว"
+                ],
+                related: ["～に (เวลา)", "～へ行きます／来ます／帰ります"]
+            },
+            {
+                level: "N5",
+                pattern: "Vます／ません／ました／ませんでした",
+                meaning: "รูปแบบสุภาพของกริยา (ปัจจุบัน/อดีต บอกเล่า/ปฏิเสธ)",
+                structure: "V(stem) + ます/ません/ました/ませんでした",
+                explanation: `
+ます = ปัจจุบัน/อนาคต บอกเล่า
+ません = ปัจจุบัน/อนาคต ปฏิเสธ
+ました = อดีต บอกเล่า
+ませんでした = อดีต ปฏิเสธ
+เป็นรูปสุภาพที่ใช้พูดกับคนทั่วไปหรือคนที่ไม่สนิท
+`,
+                examples: [
+                    { jp: "毎日勉強します。", romaji: "Mainichi benkyou shimasu.", th: "เรียนหนังสือทุกวัน" },
+                    { jp: "昨日は勉強しませんでした。", romaji: "Kinou wa benkyou shimasen deshita.", th: "เมื่อวานไม่ได้เรียนหนังสือ" },
+                    { jp: "先週、映画を見ました。", romaji: "Senshuu, eiga wo mimashita.", th: "สัปดาห์ที่แล้วได้ดูหนัง" }
+                ],
+                mistakes: [
+                    "ます ใช้ได้ทั้งความหมายปัจจุบันและอนาคต ขึ้นกับบริบท",
+                    "ませんでした ยาวกว่าที่คิด อย่าลืม でした ท้ายประโยค"
+                ],
+                related: ["～ませんか", "～ましょう"]
+            },
+            {
+                level: "N5",
+                pattern: "～ませんか",
+                meaning: "...ไหม / ไม่...หรือ (คำชักชวน)",
+                structure: "Vます-stem + ませんか",
+                explanation: `
+ใช้ชักชวนอีกฝ่ายอย่างสุภาพ
+ความหมายใกล้เคียง "อยากจะ...ไหม" แสดงถึงการให้อีกฝ่ายเลือกได้
+สุภาพกว่า ましょう เพราะเป็นการถามความสมัครใจ
+`,
+                examples: [
+                    { jp: "一緒に映画を見ませんか。", romaji: "Issho ni eiga wo mimasen ka.", th: "ไปดูหนังด้วยกันไหม" },
+                    { jp: "お茶を飲みませんか。", romaji: "Ocha wo nomimasen ka.", th: "ดื่มชาด้วยกันไหม" },
+                    { jp: "週末、旅行に行きませんか。", romaji: "Shuumatsu, ryokou ni ikimasen ka.", th: "สุดสัปดาห์ไปเที่ยวด้วยกันไหม" }
+                ],
+                mistakes: [
+                    "ませんか เป็นคำชวน ไม่ใช่คำถามปฏิเสธธรรมดา",
+                    "อย่าสับสนกับ ましょうか ที่ใช้เมื่อผู้พูดมั่นใจว่าจะไปด้วยกันอยู่แล้ว"
+                ],
+                related: ["Vます／ません／ました／ませんでした", "～ましょう"]
+            },
+            {
+                level: "N5",
+                pattern: "～ましょう",
+                meaning: "...กันเถอะ",
+                structure: "Vます-stem + ましょう",
+                explanation: `
+ใช้ชวนทำสิ่งใดสิ่งหนึ่งร่วมกัน มั่นใจว่าอีกฝ่ายน่าจะเห็นด้วย
+ましょうか ใช้ถามความเห็นก่อนชวนอย่างสุภาพกว่า
+`,
+                examples: [
+                    { jp: "そろそろ帰りましょう。", romaji: "Sorosoro kaerimashou.", th: "กลับกันเถอะ" },
+                    { jp: "一緒に昼ご飯を食べましょう。", romaji: "Issho ni hirugohan wo tabemashou.", th: "ไปกินข้าวเที่ยงด้วยกันเถอะ" },
+                    { jp: "少し休みましょう。", romaji: "Sukoshi yasumimashou.", th: "พักสักหน่อยเถอะ" }
+                ],
+                mistakes: [
+                    "ましょう ต่างจาก ませんか ตรงที่ ましょう มั่นใจกว่าว่าอีกฝ่ายจะเห็นด้วย",
+                    "ควรใช้ ませんか แทนถ้าไม่มั่นใจว่าอีกฝ่ายจะเห็นด้วยหรือไม่"
+                ],
+                related: ["～ませんか", "Vます／ません／ました／ませんでした"]
+            },
+            {
+                level: "N5",
+                pattern: "～たいです",
+                meaning: "อยาก...",
+                structure: "Vます-stem + たいです",
+                explanation: `
+ใช้บอกความต้องการของผู้พูดเอง (บุรุษที่ 1) เป็นหลัก
+ใช้กับบุรุษที่ 2/3 ในประโยคคำถามหรือรายงานคำพูดเท่านั้น
+ผันเป็นคำคุณศัพท์ い ได้ เช่น たくないです たかったです
+`,
+                examples: [
+                    { jp: "日本へ行きたいです。", romaji: "Nihon e ikitai desu.", th: "อยากไปญี่ปุ่น" },
+                    { jp: "コーヒーが飲みたいです。", romaji: "Koohii ga nomitai desu.", th: "อยากดื่มกาแฟ" },
+                    { jp: "今日は何も食べたくないです。", romaji: "Kyou wa nanimo tabetakunai desu.", th: "วันนี้ไม่อยากกินอะไรเลย" }
+                ],
+                mistakes: [
+                    "กรรมของ たいです มักใช้ が แทน を ได้ (ไม่บังคับ)",
+                    "たいです ปกติใช้บอกความต้องการของตัวเองเท่านั้น ไม่ใช้บอกความต้องการของคนอื่นตรงๆ"
+                ],
+                related: ["Vます／ません／ました／ませんでした", "～が好きです／嫌いです"]
+            },
+            {
+                level: "N5",
+                pattern: "い-adjective (ปัจจุบัน/อดีต)",
+                meaning: "การผันคำคุณศัพท์กลุ่ม い",
+                structure: "い-adj (ตัด い) + いです/くないです/かったです/くなかったです",
+                explanation: `
+คำคุณศัพท์ที่ลงท้ายด้วย い เช่น 高い 安い 大きい
+ปัจจุบันบอกเล่า: ～いです
+ปัจจุบันปฏิเสธ: ตัด い ออก แล้วเติม くないです
+อดีตบอกเล่า: ตัด い แล้วเติม かったです
+อดีตปฏิเสธ: ตัด い แล้วเติม くなかったです
+ข้อยกเว้น: いい(ดี) ผันเป็น よくない よかった よくなかった
+`,
+                examples: [
+                    { jp: "この本は面白いです。", romaji: "Kono hon wa omoshiroi desu.", th: "หนังสือเล่มนี้น่าสนใจ" },
+                    { jp: "昨日は寒くなかったです。", romaji: "Kinou wa samukunakatta desu.", th: "เมื่อวานไม่หนาว" },
+                    { jp: "その映画は面白くなかったです。", romaji: "Sono eiga wa omoshirokunakatta desu.", th: "หนังเรื่องนั้นไม่สนุก" }
+                ],
+                mistakes: [
+                    "รูป くない/かった ไม่ต้องมี です ตามหลักไวยากรณ์ดั้งเดิม แต่พูดสุภาพนิยมเติม です ท้ายประโยคด้วย",
+                    "いい(ดี) เป็นข้อยกเว้น ต้องผันจาก よい ไม่ใช่ いい"
+                ],
+                related: ["な-adjective (ปัจจุบัน/อดีต)", "～は ～です"]
+            },
+            {
+                level: "N5",
+                pattern: "な-adjective (ปัจจุบัน/อดีต)",
+                meaning: "การผันคำคุณศัพท์กลุ่ม な",
+                structure: "な-adj + です/じゃありません/でした/じゃなかったです",
+                explanation: `
+คำคุณศัพท์กลุ่ม な ผันเหมือนคำนามที่ตามด้วย です
+ปัจจุบันบอกเล่า: ～です
+ปัจจุบันปฏิเสธ: ～じゃありません
+อดีตบอกเล่า: ～でした
+อดีตปฏิเสธ: ～じゃなかったです / じゃありませんでした
+เมื่อขยายคำนามโดยตรงต้องเติม な เช่น 静かな部屋
+`,
+                examples: [
+                    { jp: "この町は静かです。", romaji: "Kono machi wa shizuka desu.", th: "เมืองนี้เงียบสงบ" },
+                    { jp: "昔、この辺りは賑やかじゃありませんでした。", romaji: "Mukashi, kono atari wa nigiyaka ja arimasen deshita.", th: "แต่ก่อนแถวนี้ไม่ครึกครื้น" },
+                    { jp: "彼は親切な人です。", romaji: "Kare wa shinsetsu na hito desu.", th: "เขาเป็นคนใจดี" }
+                ],
+                mistakes: [
+                    "เวลาขยายคำนามต้องเติม な เช่น 静かな町 ไม่ใช่ 静か町",
+                    "ห้ามสับสนกับ い-adjective ที่ไม่ต้องเติม な เวลาขยายคำนาม"
+                ],
+                related: ["い-adjective (ปัจจุบัน/อดีต)", "N1の N2"]
+            },
+            {
+                level: "N5",
+                pattern: "～が好きです／嫌いです",
+                meaning: "ชอบ.../ไม่ชอบ...",
+                structure: "N + が + 好きです／嫌いです",
+                explanation: `
+好き/嫌い เป็นคำคุณศัพท์กลุ่ม な แม้ลงท้ายด้วยเสียง い
+สิ่งที่ชอบ/ไม่ชอบ ใช้ が ไม่ใช่ を
+`,
+                examples: [
+                    { jp: "私は日本料理が好きです。", romaji: "Watashi wa nihon ryouri ga suki desu.", th: "ฉันชอบอาหารญี่ปุ่น" },
+                    { jp: "彼は虫が大嫌いです。", romaji: "Kare wa mushi ga daikirai desu.", th: "เขาเกลียดแมลงมาก" },
+                    { jp: "妹は野菜が嫌いです。", romaji: "Imouto wa yasai ga kirai desu.", th: "น้องสาวไม่ชอบผัก" }
+                ],
+                mistakes: [
+                    "好き/嫌い ไม่ใช่กริยา แต่เป็นคำคุณศัพท์กลุ่ม な อย่าผันแบบกริยา",
+                    "ใช้ が กับสิ่งที่ชอบ/ไม่ชอบ ไม่ใช่ を"
+                ],
+                related: ["な-adjective (ปัจจุบัน/อดีต)", "～は～が上手です／下手です"]
+            },
+            {
+                level: "N5",
+                pattern: "～は～が上手です／下手です",
+                meaning: "...เก่ง.../...ไม่เก่ง...",
+                structure: "N(คน) + は + N(สิ่งที่ทำ) + が + 上手です／下手です",
+                explanation: `
+ใช้บอกความสามารถหรือความถนัด
+ประธานที่เป็นคนใช้ は ส่วนสิ่งที่ทำ/ทักษะใช้ が
+ไม่ควรใช้ 上手です พูดถึงความสามารถของตัวเอง เพราะฟังดูโอ้อวด ควรใช้คำอื่นแทนเช่น 得意です
+`,
+                examples: [
+                    { jp: "田中さんはピアノが上手です。", romaji: "Tanaka-san wa piano ga jouzu desu.", th: "คุณทานากะเล่นเปียโนเก่ง" },
+                    { jp: "私は歌が下手です。", romaji: "Watashi wa uta ga heta desu.", th: "ฉันร้องเพลงไม่เก่ง" },
+                    { jp: "彼女は料理が上手です。", romaji: "Kanojo wa ryouri ga jouzu desu.", th: "เธอทำอาหารเก่ง" }
+                ],
+                mistakes: [
+                    "上手/下手 เป็นคำคุณศัพท์กลุ่ม な เช่นกัน อย่าผันแบบกริยา",
+                    "การชมตัวเองว่า上手 ฟังดูไม่ถ่อมตัวในวัฒนธรรมญี่ปุ่น"
+                ],
+                related: ["～が好きです／嫌いです", "な-adjective (ปัจจุบัน/อดีต)"]
+            },
+            {
+                level: "N5",
+                pattern: "～と一緒に",
+                meaning: "...ด้วยกันกับ...",
+                structure: "N(คน) + と一緒に + V",
+                explanation: `
+一緒に หมายถึง "ด้วยกัน" ส่วน と บอกว่าทำร่วมกับใคร
+วางไว้หน้ากริยาที่บรรยายการกระทำร่วมกัน
+`,
+                examples: [
+                    { jp: "友達と一緒に映画を見ます。", romaji: "Tomodachi to issho ni eiga wo mimasu.", th: "ดูหนังด้วยกันกับเพื่อน" },
+                    { jp: "家族と一緒に旅行します。", romaji: "Kazoku to issho ni ryokou shimasu.", th: "เดินทางท่องเที่ยวด้วยกันกับครอบครัว" },
+                    { jp: "先生と一緒に勉強しました。", romaji: "Sensei to issho ni benkyou shimashita.", th: "เรียนหนังสือด้วยกันกับอาจารย์" }
+                ],
+                mistakes: [
+                    "一緒に ต้องมี と นำหน้าเสมอเมื่อระบุว่าทำร่วมกับใคร",
+                    "一緒に ลอยๆ ไม่มี と ก็ใช้ได้ถ้าบริบทเข้าใจอยู่แล้วว่าทำกับใคร"
+                ],
+                related: ["～と", "～や～など"]
+            },
+            {
+                level: "N5",
+                pattern: "～や～など",
+                meaning: "...และ...เป็นต้น (ยกตัวอย่างไม่หมด)",
+                structure: "N1 + や + N2 + など",
+                explanation: `
+や ใช้เชื่อมคำนามเมื่อยกตัวอย่างบางส่วน ไม่ใช่รายการที่ครบทั้งหมด
+など แปลว่า "เป็นต้น" ใส่ท้ายเพื่อบอกว่ายังมีอย่างอื่นอีก (ใส่หรือไม่ใส่ก็ได้)
+ต่างจาก と ที่ใช้เชื่อมรายการทั้งหมดแบบครบถ้วน
+`,
+                examples: [
+                    { jp: "机の上に本やノートなどがあります。", romaji: "Tsukue no ue ni hon ya nooto nado ga arimasu.", th: "บนโต๊ะมีหนังสือ สมุด และอื่นๆ" },
+                    { jp: "果物はりんごやバナナが好きです。", romaji: "Kudamono wa ringo ya banana ga suki desu.", th: "ผลไม้ชอบแอปเปิ้ล กล้วย เป็นต้น" },
+                    { jp: "週末は掃除や洗濯をします。", romaji: "Shuumatsu wa souji ya sentaku wo shimasu.", th: "วันหยุดสุดสัปดาห์ทำความสะอาด ซักผ้า และอื่นๆ" }
+                ],
+                mistakes: [
+                    "や ใช้เมื่อยกตัวอย่างไม่ครบ ต่างจาก と ที่ยกมาครบทุกอย่าง",
+                    "など ไม่จำเป็นต้องมีเสมอ แต่ช่วยให้ชัดเจนว่ายังมีอย่างอื่น"
+                ],
+                related: ["～と", "～と一緒に"]
+            },
+            {
+                level: "N5",
+                pattern: "～と",
+                meaning: "และ.../กับ... (เชื่อมคำนามแบบครบถ้วน)",
+                structure: "N1 + と + N2",
+                explanation: `
+と ใช้เชื่อมคำนามตั้งแต่ 2 คำขึ้นไปแบบครบถ้วนทุกรายการ
+ยังใช้ในความหมาย "กับ" บอกคู่กระทำร่วมได้ด้วย (เหมือน ～と一緒に แบบย่อ)
+`,
+                examples: [
+                    { jp: "机の上にペンとノートがあります。", romaji: "Tsukue no ue ni pen to nooto ga arimasu.", th: "บนโต๊ะมีปากกาและสมุด" },
+                    { jp: "友達と映画を見ます。", romaji: "Tomodachi to eiga wo mimasu.", th: "ดูหนังกับเพื่อน" },
+                    { jp: "肉と魚、どちらが好きですか。", romaji: "Niku to sakana, dochira ga suki desu ka.", th: "เนื้อกับปลาชอบอันไหนมากกว่า" }
+                ],
+                mistakes: [
+                    "と ใช้เชื่อมคำนามเท่านั้น เชื่อมประโยคใช้คำอื่น เช่น そして",
+                    "อย่าสับสนกับ や ที่ยกตัวอย่างแค่บางส่วน"
+                ],
+                related: ["～や～など", "～と一緒に"]
+            },
+            {
+                level: "N5",
+                pattern: "て-form + ください",
+                meaning: "กรุณา... / ช่วย...",
+                structure: "V-て + ください",
+                explanation: `
+て-form ของกริยาเป็นรูปที่ใช้เชื่อมประโยคหรือขอร้องให้ทำสิ่งใดสิ่งหนึ่ง
+ください ทำให้เป็นคำขอร้องอย่างสุภาพ
+กฎการผันเป็น て-form ขึ้นกับกลุ่มกริยา (グループ1/2/3)
+`,
+                examples: [
+                    { jp: "ここに名前を書いてください。", romaji: "Koko ni namae wo kaite kudasai.", th: "กรุณาเขียนชื่อตรงนี้" },
+                    { jp: "ちょっと待ってください。", romaji: "Chotto matte kudasai.", th: "กรุณารอสักครู่" },
+                    { jp: "窓を開けてください。", romaji: "Mado wo akete kudasai.", th: "กรุณาเปิดหน้าต่าง" }
+                ],
+                mistakes: [
+                    "การผัน て-form ต้องดูกลุ่มกริยาให้ถูกต้อง (う→って, く→いて, ぐ→いで เป็นต้น)",
+                    "ください เป็นคำขอร้อง แต่ยังมีน้ำเสียงออกคำสั่งอยู่บ้าง ระวังใช้กับผู้ใหญ่มาก"
+                ],
+                related: ["～ています", "～てもいいです"]
+            },
+            {
+                level: "N5",
+                pattern: "～ています",
+                meaning: "กำลัง.../อยู่ในสภาพที่...",
+                structure: "V-て + います",
+                explanation: `
+ใช้บอกการกระทำที่กำลังดำเนินอยู่ (progressive) เช่น กำลังกิน กำลังอ่าน
+ใช้บอกสภาพที่เป็นผลจากการกระทำ (state) เช่น 結婚しています (แต่งงานแล้ว/อยู่ในสถานะแต่งงาน)
+`,
+                examples: [
+                    { jp: "今、ご飯を食べています。", romaji: "Ima, gohan wo tabete imasu.", th: "ตอนนี้กำลังกินข้าวอยู่" },
+                    { jp: "彼は結婚しています。", romaji: "Kare wa kekkon shite imasu.", th: "เขาแต่งงานแล้ว" },
+                    { jp: "田中さんは今、電話をしています。", romaji: "Tanaka-san wa ima, denwa wo shite imasu.", th: "คุณทานากะกำลังโทรศัพท์อยู่ตอนนี้" }
+                ],
+                mistakes: [
+                    "ています มีทั้งความหมาย 'กำลังทำ' และ 'อยู่ในสภาพ' ต้องดูบริบทกริยาประกอบ",
+                    "กริยาบางตัวเช่น 結婚する ใช้ ています แสดงสถานะ ไม่ใช่กำลังทำอยู่ขณะนั้น"
+                ],
+                related: ["て-form + ください", "～てもいいです"]
+            },
+            {
+                level: "N5",
+                pattern: "～てもいいです",
+                meaning: "...ก็ได้ (อนุญาต)",
+                structure: "V-て + もいいです",
+                explanation: `
+ใช้ขออนุญาตหรือให้อนุญาตทำสิ่งใดสิ่งหนึ่ง
+ประโยคคำถาม ～てもいいですか ใช้ขออนุญาต
+`,
+                examples: [
+                    { jp: "ここに座ってもいいですか。", romaji: "Koko ni suwattemo ii desu ka.", th: "นั่งตรงนี้ได้ไหม" },
+                    { jp: "写真を撮ってもいいです。", romaji: "Shashin wo tottemo ii desu.", th: "ถ่ายรูปได้" },
+                    { jp: "エアコンをつけてもいいですか。", romaji: "Eakon wo tsuketemo ii desu ka.", th: "เปิดแอร์ได้ไหม" }
+                ],
+                mistakes: [
+                    "も ในที่นี้แปลว่า 'ก็' ไม่ใช่ 'ด้วย' ตามปกติ",
+                    "อย่าลืมเติม か ท้ายประโยคเมื่อต้องการขออนุญาต (ถามคำถาม)"
+                ],
+                related: ["て-form + ください", "～てはいけません"]
+            },
+            {
+                level: "N5",
+                pattern: "～てはいけません",
+                meaning: "ห้าม.../...ไม่ได้",
+                structure: "V-て + はいけません",
+                explanation: `
+ใช้ห้ามหรือบอกว่าสิ่งนั้นไม่ได้รับอนุญาต
+เป็นคำที่ให้ความรู้สึกหนักแน่น จริงจัง ใช้ในกฎระเบียบ ป้ายเตือน
+`,
+                examples: [
+                    { jp: "ここでタバコを吸ってはいけません。", romaji: "Koko de tabako wo suttewa ikemasen.", th: "ห้ามสูบบุหรี่ตรงนี้" },
+                    { jp: "教室で食べてはいけません。", romaji: "Kyoushitsu de tabetewa ikemasen.", th: "ห้ามกินอาหารในห้องเรียน" },
+                    { jp: "写真を撮ってはいけません。", romaji: "Shashin wo tottewa ikemasen.", th: "ห้ามถ่ายรูป" }
+                ],
+                mistakes: [
+                    "てはいけません หนักแน่นกว่า ないでください ระวังใช้กับสถานการณ์ที่เหมาะสม",
+                    "は ในที่นี้ออกเสียง わ (เหมือน は ปกติที่เป็นคำช่วย)"
+                ],
+                related: ["～てもいいです", "～ないでください"]
+            },
+            {
+                level: "N5",
+                pattern: "～から (เหตุผล)",
+                meaning: "เพราะว่า... (บอกเหตุผล)",
+                structure: "ประโยคเหตุผล + から + ประโยคผล",
+                explanation: `
+から วางท้ายประโยคที่เป็นเหตุผล แล้วตามด้วยผลลัพธ์
+ต่างจาก から ที่แปลว่า 'จาก' (จุดเริ่มต้น) ต้องดูบริบท
+`,
+                examples: [
+                    { jp: "今日は忙しいから、行けません。", romaji: "Kyou wa isogashii kara, ikemasen.", th: "วันนี้ยุ่งเลยไปไม่ได้" },
+                    { jp: "雨が降っていますから、傘を持って行きます。", romaji: "Ame ga futte imasu kara, kasa wo motte ikimasu.", th: "ฝนกำลังตกอยู่ เลยเอาร่มไปด้วย" },
+                    { jp: "疲れましたから、少し休みます。", romaji: "Tsukaremashita kara, sukoshi yasumimasu.", th: "เหนื่อยแล้ว เลยพักสักหน่อย" }
+                ],
+                mistakes: [
+                    "から ในความหมายเหตุผลวางท้ายประโยคเหตุผล ไม่ใช่หน้าประโยค",
+                    "อย่าสับสนกับ ので ที่ใช้บอกเหตุผลเช่นกัน แต่ ので ฟังดูสุภาพกว่าเล็กน้อย"
+                ],
+                related: ["～から～まで", "Vます／ません／ました／ませんでした"]
+            },
+            {
+                level: "N5",
+                pattern: "ない-form (พื้นฐาน)",
+                meaning: "รูปปฏิเสธธรรมดาของกริยา (ไม่สุภาพ/รูปพจนานุกรมปฏิเสธ)",
+                structure: "V(stem เปลี่ยนเป็นเสียง あ) + ない",
+                explanation: `
+เป็นรูปปฏิเสธแบบธรรมดา (plain form) ใช้พูดกับเพื่อนสนิท หรือใช้ผันต่อเป็นไวยากรณ์อื่น เช่น なければなりません ないでください
+กริยากลุ่ม1 เปลี่ยนเสียงท้ายจาก う-column เป็น あ-column แล้วเติม ない
+กริยากลุ่ม2 ตัด る แล้วเติม ない
+กริยากลุ่ม3 する→しない, 来る→来ない
+`,
+                examples: [
+                    { jp: "今日は勉強しない。", romaji: "Kyou wa benkyou shinai.", th: "วันนี้ไม่เรียนหนังสือ" },
+                    { jp: "彼は肉を食べない。", romaji: "Kare wa niku wo tabenai.", th: "เขาไม่กินเนื้อ" },
+                    { jp: "明日は学校へ行かない。", romaji: "Ashita wa gakkou e ikanai.", th: "พรุ่งนี้ไม่ไปโรงเรียน" }
+                ],
+                mistakes: [
+                    "ない-form เป็นรูปไม่สุภาพ (plain form) ใช้กับคนสนิทเท่านั้น หรือใช้ผันเป็นไวยากรณ์อื่นต่อ",
+                    "กริยากลุ่ม1 ต้องเปลี่ยนเสียงท้ายให้ถูกกลุ่มเสียง ไม่ใช่แค่เติม ない ต่อท้ายเฉยๆ"
+                ],
+                related: ["～ないでください", "～なければなりません"]
+            },
+            {
+                level: "N5",
+                pattern: "～ないでください",
+                meaning: "กรุณาอย่า...",
+                structure: "V-ない + でください",
+                explanation: `
+ใช้ขอร้องอย่างสุภาพให้อีกฝ่ายไม่ทำสิ่งใดสิ่งหนึ่ง
+สุภาพกว่า てはいけません เหมาะกับการขอร้องทั่วไปในชีวิตประจำวัน
+`,
+                examples: [
+                    { jp: "ここに座らないでください。", romaji: "Koko ni suwaranaide kudasai.", th: "กรุณาอย่านั่งตรงนี้" },
+                    { jp: "写真を撮らないでください。", romaji: "Shashin wo toranaide kudasai.", th: "กรุณาอย่าถ่ายรูป" },
+                    { jp: "心配しないでください。", romaji: "Shinpai shinaide kudasai.", th: "กรุณาอย่ากังวล" }
+                ],
+                mistakes: [
+                    "ต้องผันกริยาเป็น ない-form ก่อน แล้วตัด い ออกเติม でください",
+                    "ないでください สุภาพและใช้ทั่วไปได้มากกว่า てはいけません ที่ให้ความรู้สึกจริงจัง/เป็นกฎ"
+                ],
+                related: ["ない-form (พื้นฐาน)", "～てはいけません"]
+            },
+            {
+                level: "N5",
+                pattern: "～なければなりません",
+                meaning: "ต้อง...",
+                structure: "V-ない (ตัด い) + ければなりません",
+                explanation: `
+ใช้บอกว่าจำเป็นต้องทำสิ่งใดสิ่งหนึ่ง เป็นข้อบังคับ
+โครงสร้างมาจากรูปปฏิเสธ ない ตัด い ออกแล้วเติม ければなりません (แปลตรงตัวประมาณ "ถ้าไม่ทำ...จะไม่ดี")
+มีรูปย่อที่ใช้พูดทั่วไปคือ なきゃ / なければ
+`,
+                examples: [
+                    { jp: "毎日薬を飲まなければなりません。", romaji: "Mainichi kusuri wo nomanakereba narimasen.", th: "ต้องกินยาทุกวัน" },
+                    { jp: "宿題をしなければなりません。", romaji: "Shukudai wo shinakereba narimasen.", th: "ต้องทำการบ้าน" },
+                    { jp: "明日、早く起きなければなりません。", romaji: "Ashita, hayaku okinakereba narimasen.", th: "พรุ่งนี้ต้องตื่นเช้า" }
+                ],
+                mistakes: [
+                    "โครงสร้างยาวและซับซ้อน ต้องผันจาก ない-form ให้ถูกต้องก่อน",
+                    "ければ ในที่นี้เป็นรูปเงื่อนไข ต่างจากคำคุณศัพท์ い ที่ผันเป็น ければ เหมือนกันแต่คนละบริบท"
+                ],
+                related: ["ない-form (พื้นฐาน)", "～ことができます"]
+            },
+            {
+                level: "N5",
+                pattern: "～ことができます",
+                meaning: "สามารถ...ได้",
+                structure: "V(รูปพจนานุกรม) + ことができます",
+                explanation: `
+ใช้บอกความสามารถหรือสิ่งที่ทำได้
+วางหลังกริยารูปพจนานุกรม (dictionary form) ไม่ใช่ ます-form
+`,
+                examples: [
+                    { jp: "私は日本語を話すことができます。", romaji: "Watashi wa nihongo wo hanasu koto ga dekimasu.", th: "ฉันพูดภาษาญี่ปุ่นได้" },
+                    { jp: "田中さんは車を運転することができません。", romaji: "Tanaka-san wa kuruma wo unten suru koto ga dekimasen.", th: "คุณทานากะขับรถไม่ได้" },
+                    { jp: "ここで泳ぐことができます。", romaji: "Koko de oyogu koto ga dekimasu.", th: "ว่ายน้ำที่นี่ได้" }
+                ],
+                mistakes: [
+                    "ต้องใช้กริยารูปพจนานุกรม (基本形) ไม่ใช่รูป ます หน้า ことができます",
+                    "ประโยคยาว สามารถย่อเป็นรูปกริยาความสามารถ (可能形) ได้ในระดับที่สูงขึ้น"
+                ],
+                related: ["～なければなりません", "Vます／ません／ました／ませんでした"]
+            },
+            {
+                level: "N5",
+                pattern: "～前に／～た後で",
+                meaning: "ก่อนที่จะ.../หลังจากที่...",
+                structure: "V(พจนานุกรม)+前に , V(た-form)+後で",
+                explanation: `
+前に ใช้กับกริยารูปพจนานุกรม (ไม่ผันเป็นอดีต) แม้ประโยคหลักจะเป็นอดีตก็ตาม
+後で ใช้กับกริยารูปอดีตธรรมดา (た-form)
+`,
+                examples: [
+                    { jp: "寝る前に歯を磨きます。", romaji: "Neru mae ni ha wo migakimasu.", th: "แปรงฟันก่อนนอน" },
+                    { jp: "ご飯を食べた後で、宿題をします。", romaji: "Gohan wo tabeta ato de, shukudai wo shimasu.", th: "ทำการบ้านหลังจากกินข้าวแล้ว" },
+                    { jp: "働く前に、コーヒーを飲みます。", romaji: "Hataraku mae ni, koohii wo nomimasu.", th: "ดื่มกาแฟก่อนทำงาน" }
+                ],
+                mistakes: [
+                    "前に ใช้กริยารูปพจนานุกรมเสมอ แม้จะพูดถึงอดีต",
+                    "後で ต้องใช้กริยารูป た (อดีต) ไม่ใช่รูปพจนานุกรม"
+                ],
+                related: ["～とき", "ない-form (พื้นฐาน)"]
+            },
+            {
+                level: "N5",
+                pattern: "～とき",
+                meaning: "ตอนที่.../เมื่อ...",
+                structure: "V/adj/N + とき",
+                explanation: `
+ใช้บอกช่วงเวลาที่เกิดเหตุการณ์
+ถ้าใช้กับกริยารูปพจนานุกรม = ก่อน/พร้อมกับเหตุการณ์หลัง
+ถ้าใช้กับกริยารูปอดีต(た) = หลังจากเหตุการณ์นั้นเสร็จแล้ว
+ถ้าใช้กับคำนาม ต้องเติม の ก่อน とき เช่น 子供のとき
+`,
+                examples: [
+                    { jp: "日本へ行くとき、パスポートを持って行きます。", romaji: "Nihon e iku toki, pasupooto wo motte ikimasu.", th: "ตอนจะไปญี่ปุ่นจะเอาพาสปอร์ตไปด้วย" },
+                    { jp: "暇なとき、映画を見ます。", romaji: "Hima na toki, eiga wo mimasu.", th: "ตอนว่างจะดูหนัง" },
+                    { jp: "子供のとき、よく公園で遊びました。", romaji: "Kodomo no toki, yoku kouen de asobimashita.", th: "ตอนเด็กๆ เล่นที่สวนสาธารณะบ่อยๆ" }
+                ],
+                mistakes: [
+                    "คำนามต้องเติม の ก่อน とき เสมอ (子供のとき ไม่ใช่ 子供とき)",
+                    "な-adjective ต้องเติม な ก่อน とき (暇なとき ไม่ใช่ 暇とき)"
+                ],
+                related: ["～前に／～た後で", "な-adjective (ปัจจุบัน/อดีต)"]
+            },
+            {
+                level: "N5",
+                pattern: "～たり～たりします",
+                meaning: "ทำโน่นทำนี่ (ยกตัวอย่างกิจกรรมที่ทำสลับกัน)",
+                structure: "V-た + り + V-た + り + します",
+                explanation: `
+ใช้ยกตัวอย่างกิจกรรมหลายอย่างที่ทำ โดยไม่เน้นลำดับก่อนหลัง
+โครงสร้างมาจาก た-form เติม り
+จบประโยคด้วย します/ます เสมอ
+`,
+                examples: [
+                    { jp: "週末は本を読んだり、映画を見たりします。", romaji: "Shuumatsu wa hon wo yondari, eiga wo mitari shimasu.", th: "สุดสัปดาห์อ่านหนังสือบ้าง ดูหนังบ้าง" },
+                    { jp: "休みの日は掃除したり、洗濯したりします。", romaji: "Yasumi no hi wa souji shitari, sentaku shitari shimasu.", th: "วันหยุดทำความสะอาดบ้าง ซักผ้าบ้าง" },
+                    { jp: "公園で歌ったり、踊ったりしました。", romaji: "Kouen de utattari, odottari shimashita.", th: "ที่สวนสาธารณะร้องเพลงบ้าง เต้นบ้าง" }
+                ],
+                mistakes: [
+                    "ต้องเติม り หลังกริยารูป た ทุกตัวในประโยค ไม่ใช่แค่ตัวสุดท้าย",
+                    "ประโยคต้องจบด้วย します/しました เสมอ ห้ามละไว้"
+                ],
+                related: ["～ながら", "Vます／ません／ました／ませんでした"]
+            },
+            {
+                level: "N5",
+                pattern: "～ながら",
+                meaning: "ทำ...ไปพร้อมกับ...",
+                structure: "Vます-stem + ながら + V",
+                explanation: `
+ใช้บอกว่าประธานคนเดียวกันทำ 2 กิจกรรมพร้อมกัน
+กริยาหลัง ながら เป็นกริยาหลักของประโยค กริยาหน้า ながら เป็นกริยารอง
+`,
+                examples: [
+                    { jp: "音楽を聞きながら、勉強します。", romaji: "Ongaku wo kikinagara, benkyou shimasu.", th: "ฟังเพลงไปพร้อมกับเรียนหนังสือ" },
+                    { jp: "テレビを見ながら、ご飯を食べます。", romaji: "Terebi wo minagara, gohan wo tabemasu.", th: "ดูทีวีไปพร้อมกับกินข้าว" },
+                    { jp: "歩きながら、電話で話しました。", romaji: "Arukinagara, denwa de hanashimashita.", th: "เดินไปพร้อมกับคุยโทรศัพท์" }
+                ],
+                mistakes: [
+                    "ประธานของทั้งสองกิจกรรมต้องเป็นคนเดียวกันเท่านั้น",
+                    "กริยาหลัก(สิ่งที่ตั้งใจทำจริงๆ)ต้องอยู่หลัง ながら เสมอ"
+                ],
+                related: ["～たり～たりします", "て-form + ください"]
+            },
+            {
+                level: "N5",
+                pattern: "～でしょう",
+                meaning: "คงจะ.../น่าจะ... (คาดการณ์)",
+                structure: "V/adj/N(plain form) + でしょう",
+                explanation: `
+ใช้คาดเดาหรือคาดการณ์สิ่งที่ยังไม่แน่นอน มีความมั่นใจปานกลางถึงค่อนข้างมั่นใจ
+เวลาพูดมักลงเสียงต่ำท้ายประโยค (คาดการณ์) ต่างจากตอนใช้ถามความเห็น
+มักใช้คู่กับคำวิเศษณ์ เช่น たぶん (คงจะ) เพื่อเน้นความไม่แน่นอน
+`,
+                examples: [
+                    { jp: "明日は雨が降るでしょう。", romaji: "Ashita wa ame ga furu deshou.", th: "พรุ่งนี้ฝนคงจะตก" },
+                    { jp: "彼はもう寝ているでしょう。", romaji: "Kare wa mou nete iru deshou.", th: "ตอนนี้เขาคงนอนหลับแล้ว" },
+                    { jp: "たぶん、彼女は来ないでしょう。", romaji: "Tabun, kanojo wa konai deshou.", th: "เธอคงจะไม่มาหรอก" }
+                ],
+                mistakes: [
+                    "でしょう ตามหลังรูปพจนานุกรม/รูปธรรมดา ไม่ใช่รูป です/ます โดยตรงในบางกรณี",
+                    "อย่าใช้ でしょう เมื่อพูดถึงสิ่งที่แน่นอน 100% ควรใช้กับสิ่งที่ยังไม่แน่ใจเท่านั้น"
+                ],
+                related: ["Vます／ません／ました／ませんでした", "～から (เหตุผล)"]
+            },
+            {
+    level: "N4",
+    pattern: "～と思います",
+    meaning: "คิดว่า... / ผมคิดว่า...",
+    structure: "Plain Form + と思います",
+    explanation: `
+ใช้แสดงความคิดเห็น ความรู้สึก หรือการคาดเดาของผู้พูด
+ใช้กับกริยา คำคุณศัพท์ และคำนาม (คำนามต้องใช้ ～だ ก่อน と思います)
+สุภาพและใช้บ่อยมากในการสนทนา
+`,
+    examples: [
+        { jp: "日本語は難しいと思います。", romaji: "Nihongo wa muzukashii to omoimasu.", th: "คิดว่าภาษาญี่ปุ่นยาก" },
+        { jp: "明日は雨が降ると思います。", romaji: "Ashita wa ame ga furu to omoimasu.", th: "คิดว่าพรุ่งนี้ฝนจะตก" },
+        { jp: "田中さんは先生だと思います。", romaji: "Tanaka-san wa sensei da to omoimasu.", th: "คิดว่าคุณทานากะเป็นครู" }
+    ],
+    mistakes: [
+        "คำนามและ な-adjective ต้องใช้ ～だ ก่อน と思います",
+        "อย่าสับสนกับ ～と言います ที่แปลว่า 'พูดว่า'"
+    ],
+    related: ["～と言います", "～でしょう"]
+},
+
+{
+    level: "N4",
+    pattern: "～と言います",
+    meaning: "พูดว่า... / กล่าวว่า...",
+    structure: "Plain Form + と言います",
+    explanation: `
+ใช้รายงานคำพูดของผู้อื่น
+ใช้ได้ทั้งคำพูดตรงและคำพูดอ้อม
+ใช้บ่อยในการเล่าเหตุการณ์
+`,
+    examples: [
+        { jp: "先生は宿題があると言いました。", romaji: "Sensei wa shukudai ga aru to iimashita.", th: "ครูบอกว่ามีการบ้าน" },
+        { jp: "父は明日帰ると言っています。", romaji: "Chichi wa ashita kaeru to itte imasu.", th: "พ่อบอกว่าจะกลับพรุ่งนี้" },
+        { jp: "彼は大丈夫だと言いました。", romaji: "Kare wa daijoubu da to iimashita.", th: "เขาบอกว่าไม่เป็นไร" }
+    ],
+    mistakes: [
+        "คำนามและ な-adjective ต้องใช้ ～だ ก่อน と言います",
+        "ต่างจาก ～と思います ซึ่งใช้แสดงความคิดเห็น"
+    ],
+    related: ["～と思います"]
+},
+
+{
+    level: "N4",
+    pattern: "～つもりです",
+    meaning: "ตั้งใจจะ...",
+    structure: "Dictionary Form + つもりです",
+    explanation: `
+ใช้บอกความตั้งใจของผู้พูด
+แสดงว่ามีแผนหรือได้ตัดสินใจไว้แล้ว
+ใช้กับกริยารูปพจนานุกรม
+`,
+    examples: [
+        { jp: "来年日本へ行くつもりです。", romaji: "Rainen Nihon e iku tsumori desu.", th: "ตั้งใจว่าจะไปญี่ปุ่นปีหน้า" },
+        { jp: "今日は早く寝るつもりです。", romaji: "Kyou wa hayaku neru tsumori desu.", th: "ตั้งใจว่าจะนอนเร็ววันนี้" },
+        { jp: "大学で日本語を勉強するつもりです。", romaji: "Daigaku de nihongo wo benkyou suru tsumori desu.", th: "ตั้งใจจะเรียนภาษาญี่ปุ่นที่มหาวิทยาลัย" }
+    ],
+    mistakes: [
+        "ใช้เฉพาะเมื่อผู้พูดมีความตั้งใจจริง",
+        "อย่าใช้กับเหตุการณ์ที่เกิดขึ้นเองโดยไม่ได้ตั้งใจ"
+    ],
+    related: ["～予定です", "～ようと思います"]
+},
+
+{
+    level: "N4",
+    pattern: "～予定です",
+    meaning: "มีแผนว่า... / มีกำหนดจะ...",
+    structure: "Dictionary Form + 予定です",
+    explanation: `
+ใช้บอกกำหนดการหรือแผนที่ค่อนข้างแน่นอน
+มักใช้กับตารางงาน การเดินทาง หรือกิจกรรมที่กำหนดไว้แล้ว
+เป็นทางการกว่า ～つもりです
+`,
+    examples: [
+        { jp: "来週大阪へ行く予定です。", romaji: "Raishuu Osaka e iku yotei desu.", th: "สัปดาห์หน้ามีกำหนดจะไปโอซาก้า" },
+        { jp: "午後会議をする予定です。", romaji: "Gogo kaigi wo suru yotei desu.", th: "ช่วงบ่ายมีกำหนดประชุม" },
+        { jp: "来月引っ越す予定です。", romaji: "Raigetsu hikkosu yotei desu.", th: "เดือนหน้ามีกำหนดย้ายบ้าน" }
+    ],
+    mistakes: [
+        "予定です เป็นแผนที่กำหนดไว้แล้ว ไม่ใช่แค่ความตั้งใจ",
+        "อย่าสับสนกับ つもりです"
+    ],
+    related: ["～つもりです"]
+},
+
+{
+    level: "N4",
+    pattern: "～ようと思います",
+    meaning: "คิดว่าจะ... / ตั้งใจว่าจะ...",
+    structure: "Volitional Form + と思います",
+    explanation: `
+ใช้บอกการตัดสินใจที่เพิ่งเกิดขึ้นหรือเริ่มคิดว่าจะทำ
+ต่างจาก ～つもりです ที่เป็นความตั้งใจที่ชัดเจนกว่า
+ใช้บ่อยในการพูดถึงแผนในอนาคต
+`,
+    examples: [
+        { jp: "今年から毎日運動しようと思います。", romaji: "Kotoshi kara mainichi undou shiyou to omoimasu.", th: "คิดว่าปีนี้จะออกกำลังกายทุกวัน" },
+        { jp: "もっと日本語を勉強しようと思います。", romaji: "Motto nihongo wo benkyou shiyou to omoimasu.", th: "คิดว่าจะเรียนภาษาญี่ปุ่นให้มากขึ้น" },
+        { jp: "明日先生に聞こうと思います。", romaji: "Ashita sensei ni kikou to omoimasu.", th: "คิดว่าพรุ่งนี้จะถามอาจารย์" }
+    ],
+    mistakes: [
+        "ต้องใช้กริยารูป意向形 (Volitional Form)",
+        "ต่างจาก つもりです ที่แสดงความตั้งใจชัดเจนกว่า"
+    ],
+    related: ["～つもりです", "～と思います"]
+},
+{
+    level: "N4",
+    pattern: "～ようになります",
+    meaning: "เริ่มสามารถ...ได้ / กลายเป็นว่า...",
+    structure: "Dictionary Form + ようになります",
+    explanation: `
+ใช้บอกการเปลี่ยนแปลงของความสามารถ นิสัย หรือสภาพ
+มักหมายถึงการเปลี่ยนแปลงที่ค่อย ๆ เกิดขึ้น
+ใช้บ่อยกับความสามารถ เช่น พูดได้ อ่านได้ ตื่นเช้าได้
+`,
+    examples: [
+        { jp: "日本語が話せるようになりました。", romaji: "Nihongo ga hanaseru you ni narimashita.", th: "พูดภาษาญี่ปุ่นได้แล้ว" },
+        { jp: "早く起きられるようになりました。", romaji: "Hayaku okirareru you ni narimashita.", th: "ตื่นเช้าได้แล้ว" },
+        { jp: "野菜も食べられるようになりました。", romaji: "Yasai mo taberareru you ni narimashita.", th: "กินผักได้แล้ว" }
+    ],
+    mistakes: [
+        "ใช้กับการเปลี่ยนแปลงที่เกิดขึ้นเอง ไม่ใช่ความตั้งใจ",
+        "อย่าสับสนกับ ようにします"
+    ],
+    related: ["～ようにします", "～ことができます"]
+},
+
+{
+    level: "N4",
+    pattern: "～ようにします",
+    meaning: "พยายามที่จะ... / ตั้งใจจะทำให้เป็นนิสัย",
+    structure: "Dictionary Form + ようにします",
+    explanation: `
+ใช้เมื่อผู้พูดพยายามทำบางอย่างให้เป็นนิสัย
+มักใช้กับสิ่งที่ทำเป็นประจำ เช่น ออกกำลังกาย อ่านหนังสือ
+แสดงถึงความพยายามอย่างต่อเนื่อง
+`,
+    examples: [
+        { jp: "毎日日本語を勉強するようにしています。", romaji: "Mainichi nihongo wo benkyou suru you ni shiteimasu.", th: "พยายามเรียนภาษาญี่ปุ่นทุกวัน" },
+        { jp: "野菜を食べるようにしています。", romaji: "Yasai wo taberu you ni shiteimasu.", th: "พยายามกินผัก" },
+        { jp: "早く寝るようにしています。", romaji: "Hayaku neru you ni shiteimasu.", th: "พยายามนอนเร็ว" }
+    ],
+    mistakes: [
+        "ใช้กับความตั้งใจของผู้พูด",
+        "ไม่ใช่การเปลี่ยนแปลงที่เกิดขึ้นเอง"
+    ],
+    related: ["～ようになります", "～つもりです"]
+},
+
+{
+    level: "N4",
+    pattern: "～なければなりません",
+    meaning: "จำเป็นต้อง...",
+    structure: "ない-form + なければなりません",
+    explanation: `
+ใช้แสดงความจำเป็นหรือหน้าที่ที่ต้องทำ
+สุภาพและใช้ได้ในทุกสถานการณ์
+สามารถย่อในภาษาพูดเป็น ～なきゃ หรือ ～なくちゃ
+`,
+    examples: [
+        { jp: "宿題をしなければなりません。", romaji: "Shukudai wo shinakereba narimasen.", th: "ต้องทำการบ้าน" },
+        { jp: "明日早く起きなければなりません。", romaji: "Ashita hayaku okinakereba narimasen.", th: "พรุ่งนี้ต้องตื่นเช้า" },
+        { jp: "薬を飲まなければなりません。", romaji: "Kusuri wo nomanakereba narimasen.", th: "ต้องกินยา" }
+    ],
+    mistakes: [
+        "อย่าลืมผันเป็น ない-form ก่อน",
+        "ใช้กับเรื่องที่จำเป็น ไม่ใช่ความต้องการ"
+    ],
+    related: ["～なくてもいいです", "～ないでください"]
+},
+
+{
+    level: "N4",
+    pattern: "～なくてもいいです",
+    meaning: "ไม่...ก็ได้ / ไม่จำเป็นต้อง...",
+    structure: "ない-form + なくてもいいです",
+    explanation: `
+ใช้บอกว่าไม่จำเป็นต้องทำสิ่งนั้น
+มักใช้ตอบคำถามหรือบอกว่าทำหรือไม่ทำก็ได้
+ตรงข้ามกับ なければなりません
+`,
+    examples: [
+        { jp: "明日は来なくてもいいです。", romaji: "Ashita wa konakutemo ii desu.", th: "พรุ่งนี้ไม่มาก็ได้" },
+        { jp: "急がなくてもいいですよ。", romaji: "Isoganakutemo ii desu yo.", th: "ไม่ต้องรีบก็ได้" },
+        { jp: "全部食べなくてもいいです。", romaji: "Zenbu tabenakutemo ii desu.", th: "ไม่จำเป็นต้องกินทั้งหมด" }
+    ],
+    mistakes: [
+        "ไม่ได้แปลว่า 'ห้าม'",
+        "ใช้เมื่อไม่มีความจำเป็นต้องทำ"
+    ],
+    related: ["～なければなりません", "～てもいいです"]
+},
+
+{
+    level: "N4",
+    pattern: "～たことがあります",
+    meaning: "เคย...มาก่อน",
+    structure: "た-form + ことがあります",
+    explanation: `
+ใช้พูดถึงประสบการณ์ที่ผ่านมา
+มักใช้กับเหตุการณ์ที่เคยเกิดขึ้นอย่างน้อยหนึ่งครั้ง
+ถ้าไม่เคย ใช้ ～たことがありません
+`,
+    examples: [
+        { jp: "日本へ行ったことがあります。", romaji: "Nihon e itta koto ga arimasu.", th: "เคยไปญี่ปุ่น" },
+        { jp: "寿司を食べたことがあります。", romaji: "Sushi wo tabeta koto ga arimasu.", th: "เคยกินซูชิ" },
+        { jp: "富士山を見たことがあります。", romaji: "Fujisan wo mita koto ga arimasu.", th: "เคยเห็นภูเขาไฟฟูจิ" }
+    ],
+    mistakes: [
+        "ต้องใช้กริยารูป た-form",
+        "ใช้พูดถึงประสบการณ์ ไม่ใช่เหตุการณ์ที่เพิ่งเกิด"
+    ],
+    related: ["～た後で", "～たら"]
+},
+{
+    level: "N4",
+    pattern: "～し～し",
+    meaning: "...ทั้ง...และ... / ทั้ง...อีกทั้ง...",
+    structure: "Plain Form + し + Plain Form + し",
+    explanation: `
+ใช้ยกเหตุผลหลายข้อ หรือบอกลักษณะหลายอย่างพร้อมกัน
+สามารถพูดแค่ประโยคเดียวแล้วจบ หรือมีผลลัพธ์ตามมาก็ได้
+มักใช้ในภาษาพูดและภาษาเขียนทั่วไป
+`,
+    examples: [
+        { jp: "この店は安いし、おいしいし、よく行きます。", romaji: "Kono mise wa yasui shi, oishii shi, yoku ikimasu.", th: "ร้านนี้ทั้งถูกทั้งอร่อย เลยไปบ่อย" },
+        { jp: "今日は暇だし、一緒に映画を見ませんか。", romaji: "Kyou wa hima da shi, issho ni eiga wo mimasen ka.", th: "วันนี้ก็ว่าง ไปดูหนังด้วยกันไหม" },
+        { jp: "彼は親切だし、仕事も上手です。", romaji: "Kare wa shinsetsu da shi, shigoto mo jouzu desu.", th: "เขาทั้งใจดีและทำงานเก่ง" }
+    ],
+    mistakes: [
+        "คำนามและ な-adjective ต้องใช้ ～だし",
+        "ไม่จำเป็นต้องมีเหตุผลแค่สองข้อ สามารถมีหลายข้อได้"
+    ],
+    related: ["～から", "～ので"]
+},
+
+{
+    level: "N4",
+    pattern: "～そうです (เห็นแล้วน่าจะ...)",
+    meaning: "ดูเหมือนจะ... / น่าจะ...",
+    structure: "Verb Stem / い-adj(ตัดい) / な-adj + そうです",
+    explanation: `
+ใช้คาดเดาจากสิ่งที่เห็นตรงหน้า
+แตกต่างจาก ～そうです (ได้ยินว่า...) ซึ่งเป็นการเล่าข่าว
+ใช้กับสิ่งที่สังเกตได้ด้วยตา
+`,
+    examples: [
+        { jp: "雨が降りそうです。", romaji: "Ame ga furisou desu.", th: "ดูเหมือนฝนจะตก" },
+        { jp: "このケーキはおいしそうです。", romaji: "Kono keeki wa oishisou desu.", th: "เค้กนี้ดูน่าอร่อย" },
+        { jp: "この仕事は大変そうです。", romaji: "Kono shigoto wa taihen sou desu.", th: "งานนี้ดูเหมือนจะลำบาก" }
+    ],
+    mistakes: [
+        "い-adjective ต้องตัด い ก่อนเติม そうです",
+        "いい เปลี่ยนเป็น よさそうです ไม่ใช่ いいそうです"
+    ],
+    related: ["～そうです (ได้ยินว่า...)", "～ようです"]
+},
+
+{
+    level: "N4",
+    pattern: "～そうです (ได้ยินว่า...)",
+    meaning: "ได้ยินมาว่า... / เขาว่า...",
+    structure: "Plain Form + そうです",
+    explanation: `
+ใช้รายงานข่าวหรือข้อมูลที่ได้ยินมาจากผู้อื่น
+ไม่ได้แสดงความเห็นของผู้พูด
+มักแปลว่า 'ได้ยินว่า...'
+`,
+    examples: [
+        { jp: "天気予報では明日は雨だそうです。", romaji: "Tenki yohou de wa ashita wa ame da sou desu.", th: "พยากรณ์อากาศบอกว่าพรุ่งนี้ฝนจะตก" },
+        { jp: "田中さんは結婚したそうです。", romaji: "Tanaka-san wa kekkon shita sou desu.", th: "ได้ยินว่าคุณทานากะแต่งงานแล้ว" },
+        { jp: "あの店は安いそうです。", romaji: "Ano mise wa yasui sou desu.", th: "ได้ยินว่าร้านนั้นราคาถูก" }
+    ],
+    mistakes: [
+        "ต่างจาก そうです แบบคาดเดา",
+        "ใช้ข้อมูลที่ได้ยิน ไม่ใช่สิ่งที่มองเห็น"
+    ],
+    related: ["～と言います", "～そうです (เห็นแล้วน่าจะ...)"]
+},
+
+{
+    level: "N4",
+    pattern: "～てしまいます",
+    meaning: "...จนหมด / เผลอ... / เสร็จสิ้น",
+    structure: "V-て + しまいます",
+    explanation: `
+ใช้เมื่อการกระทำเสร็จสมบูรณ์
+อีกความหมายคือทำบางอย่างโดยไม่ตั้งใจ หรือรู้สึกเสียดาย
+ภาษาพูดย่อเป็น ～ちゃいます / ～じゃいます
+`,
+    examples: [
+        { jp: "宿題を全部してしまいました。", romaji: "Shukudai wo zenbu shite shimaimashita.", th: "ทำการบ้านเสร็จหมดแล้ว" },
+        { jp: "財布を忘れてしまいました。", romaji: "Saifu wo wasurete shimaimashita.", th: "เผลอลืมกระเป๋าสตางค์" },
+        { jp: "ケーキを全部食べてしまいました。", romaji: "Keeki wo zenbu tabete shimaimashita.", th: "กินเค้กหมดแล้ว" }
+    ],
+    mistakes: [
+        "ไม่ได้แปลว่า 'เสร็จ' อย่างเดียว",
+        "ใช้แสดงความเสียใจหรือไม่ตั้งใจได้ด้วย"
+    ],
+    related: ["～ておきます", "～ています"]
+},
+
+{
+    level: "N4",
+    pattern: "～ておきます",
+    meaning: "ทำไว้ล่วงหน้า / เตรียมไว้",
+    structure: "V-て + おきます",
+    explanation: `
+ใช้เมื่อทำบางอย่างไว้ก่อนเพื่อเตรียมสำหรับอนาคต
+มักใช้ในการเตรียมงาน การจอง การจัดของ
+ภาษาพูดย่อเป็น ～ときます
+`,
+    examples: [
+        { jp: "旅行の前にホテルを予約しておきます。", romaji: "Ryokou no mae ni hoteru wo yoyaku shite okimasu.", th: "จะจองโรงแรมไว้ก่อนเดินทาง" },
+        { jp: "コピーを取っておいてください。", romaji: "Kopii wo totte oite kudasai.", th: "กรุณาถ่ายเอกสารเตรียมไว้" },
+        { jp: "明日の会議の資料を作っておきます。", romaji: "Ashita no kaigi no shiryou wo tsukutte okimasu.", th: "จะเตรียมเอกสารสำหรับประชุมวันพรุ่งนี้ไว้ก่อน" }
+    ],
+    mistakes: [
+        "ใช้เมื่อมีจุดประสงค์ในการเตรียมไว้ล่วงหน้า",
+        "ต่างจาก ～てしまいます ที่เน้นการทำเสร็จ"
+    ],
+    related: ["～てしまいます", "～ために"]
+},
+{
+    level: "N4",
+    pattern: "～てみます",
+    meaning: "ลอง...",
+    structure: "V-て + みます",
+    explanation: `
+ใช้เมื่อผู้พูดต้องการลองทำบางสิ่งเพื่อดูผลลัพธ์
+ไม่ได้หมายถึง "มองเห็น" เหมือนกริยา 見ます
+ใช้บ่อยมากในการสนทนา
+`,
+    examples: [
+        { jp: "この料理を食べてみます。", romaji: "Kono ryouri wo tabete mimasu.", th: "จะลองกินอาหารจานนี้" },
+        { jp: "日本語で話してみてください。", romaji: "Nihongo de hanashite mite kudasai.", th: "ลองพูดภาษาญี่ปุ่นดู" },
+        { jp: "もう一度やってみます。", romaji: "Mou ichido yatte mimasu.", th: "จะลองทำอีกครั้ง" }
+    ],
+    mistakes: [
+        "～てみます ไม่ได้แปลว่า 'เห็น'",
+        "ใช้เมื่อทดลองทำจริง"
+    ],
+    related: ["～てしまいます", "～ようと思います"]
+},
+
+{
+    level: "N4",
+    pattern: "～てくれます",
+    meaning: "...ให้ฉัน / ทำให้ฉัน",
+    structure: "คน + が + V-て + くれます",
+    explanation: `
+ใช้เมื่อมีคนทำสิ่งดี ๆ ให้ผู้พูดหรือคนในกลุ่มของผู้พูด
+เน้นว่าผู้พูดได้รับประโยชน์
+`,
+    examples: [
+        { jp: "友達が宿題を手伝ってくれました。", romaji: "Tomodachi ga shukudai wo tetsudatte kuremashita.", th: "เพื่อนช่วยทำการบ้านให้ฉัน" },
+        { jp: "母がケーキを作ってくれました。", romaji: "Haha ga keeki wo tsukutte kuremashita.", th: "แม่ทำเค้กให้ฉัน" },
+        { jp: "先生が教えてくれました。", romaji: "Sensei ga oshiete kuremashita.", th: "ครูสอนให้ฉัน" }
+    ],
+    mistakes: [
+        "ผู้พูดต้องเป็นผู้ได้รับประโยชน์",
+        "อย่าสับสนกับ あげます"
+    ],
+    related: ["～てもらいます", "～てあげます"]
+},
+
+{
+    level: "N4",
+    pattern: "～てもらいます",
+    meaning: "ได้รับการ...จาก...",
+    structure: "คน + に + V-て + もらいます",
+    explanation: `
+ใช้เมื่อผู้พูดได้รับความช่วยเหลือจากผู้อื่น
+เน้นมุมมองของผู้รับ
+`,
+    examples: [
+        { jp: "先生に日本語を教えてもらいました。", romaji: "Sensei ni nihongo wo oshiete moraimashita.", th: "ได้รับการสอนภาษาญี่ปุ่นจากครู" },
+        { jp: "友達に駅まで送ってもらいました。", romaji: "Tomodachi ni eki made okutte moraimashita.", th: "ให้เพื่อนไปส่งที่สถานี" },
+        { jp: "父に車を直してもらいました。", romaji: "Chichi ni kuruma wo naoshite moraimashita.", th: "ให้พ่อซ่อมรถให้" }
+    ],
+    mistakes: [
+        "ผู้ช่วยใช้ に",
+        "เน้นว่าผู้พูดเป็นฝ่ายได้รับ"
+    ],
+    related: ["～てくれます", "～てあげます"]
+},
+
+{
+    level: "N4",
+    pattern: "～てあげます",
+    meaning: "ทำ...ให้...",
+    structure: "คน + に + V-て + あげます",
+    explanation: `
+ใช้เมื่อผู้พูดทำบางอย่างให้ผู้อื่น
+เน้นว่าผู้พูดเป็นฝ่ายให้ความช่วยเหลือ
+ใช้กับคนที่สถานะเท่ากันหรือต่ำกว่า
+`,
+    examples: [
+        { jp: "妹に宿題を教えてあげました。", romaji: "Imouto ni shukudai wo oshiete agemashita.", th: "ฉันสอนการบ้านให้น้องสาว" },
+        { jp: "友達に本を貸してあげます。", romaji: "Tomodachi ni hon wo kashite agemasu.", th: "จะให้เพื่อนยืมหนังสือ" },
+        { jp: "子どもにお菓子を買ってあげました。", romaji: "Kodomo ni okashi wo katte agemashita.", th: "ซื้อขนมให้เด็ก" }
+    ],
+    mistakes: [
+        "ไม่ควรใช้กับผู้ใหญ่หรือผู้มีสถานะสูงกว่า",
+        "ระวังความรู้สึกเหมือนอวดบุญคุณ"
+    ],
+    related: ["～てくれます", "～てもらいます"]
+},
+
+{
+    level: "N4",
+    pattern: "～たら",
+    meaning: "ถ้า... / เมื่อ...",
+    structure: "V-た + ら",
+    explanation: `
+ใช้สร้างประโยคเงื่อนไข
+ใช้ได้ทั้งความหมาย 'ถ้า' และ 'เมื่อ'
+ใช้ได้กับกริยา คำคุณศัพท์ และคำนาม
+เป็นรูปเงื่อนไขที่ใช้บ่อยที่สุดในภาษาพูด
+`,
+    examples: [
+        { jp: "時間があったら行きます。", romaji: "Jikan ga attara ikimasu.", th: "ถ้ามีเวลาจะไป" },
+        { jp: "日本へ行ったら寿司を食べたいです。", romaji: "Nihon e ittara sushi wo tabetai desu.", th: "ถ้าไปญี่ปุ่นอยากกินซูชิ" },
+        { jp: "雨だったら家にいます。", romaji: "Ame dattara ie ni imasu.", th: "ถ้าฝนตกจะอยู่บ้าน" }
+    ],
+    mistakes: [
+        "ต้องผันเป็นรูปอดีตก่อนเติม ら",
+        "ใช้ได้กับทุกชนิดของคำ ไม่ใช่เฉพาะกริยา"
+    ],
+    related: ["～なら", "～と", "～ば"]
+},
+{
+    level: "N4",
+    pattern: "～なら",
+    meaning: "ถ้าหากว่า... / ถ้าเป็นเรื่องของ...",
+    structure: "N / Plain Form + なら",
+    explanation: `
+ใช้เมื่อพูดโดยอ้างอิงจากข้อมูลที่อีกฝ่ายพูดมาก่อน
+มักใช้เสนอคำแนะนำหรือความคิดเห็น
+ต่างจาก ～たら ตรงที่ ～なら ใช้ตอบสนองต่อสถานการณ์หรือหัวข้อที่กล่าวถึง
+`,
+    examples: [
+        { jp: "日本へ行くなら、京都も行ったほうがいいです。", romaji: "Nihon e iku nara, Kyoto mo itta hou ga ii desu.", th: "ถ้าจะไปญี่ปุ่น ควรไปเกียวโตด้วย" },
+        { jp: "暇なら、一緒に昼ご飯を食べませんか。", romaji: "Hima nara, issho ni hirugohan wo tabemasen ka.", th: "ถ้าว่าง ไปกินข้าวกลางวันด้วยกันไหม" },
+        { jp: "車なら、二時間ぐらいで着きます。", romaji: "Kuruma nara, nijikan gurai de tsukimasu.", th: "ถ้าไปด้วยรถ ใช้เวลาประมาณสองชั่วโมง" }
+    ],
+    mistakes: [
+        "ใช้กับข้อมูลที่คู่สนทนาพูดมาก่อน",
+        "อย่าสับสนกับ ～たら ซึ่งเน้นเงื่อนไขทั่วไป"
+    ],
+    related: ["～たら", "～ば"]
+},
+
+{
+    level: "N4",
+    pattern: "～ば",
+    meaning: "ถ้า... / หาก...",
+    structure: "Conditional Form + ば",
+    explanation: `
+ใช้สร้างประโยคเงื่อนไข
+ให้ความรู้สึกเป็นทางการกว่า ～たら
+มักใช้เมื่อพูดถึงผลลัพธ์ที่เป็นเหตุเป็นผล
+`,
+    examples: [
+        { jp: "早く寝れば、元気になります。", romaji: "Hayaku nereba, genki ni narimasu.", th: "ถ้านอนเร็ว ก็จะสดชื่น" },
+        { jp: "勉強すれば、日本語が上手になります。", romaji: "Benkyou sureba, nihongo ga jouzu ni narimasu.", th: "ถ้าตั้งใจเรียน ก็จะเก่งภาษาญี่ปุ่น" },
+        { jp: "時間があれば、行きます。", romaji: "Jikan ga areba, ikimasu.", th: "ถ้ามีเวลา จะไป" }
+    ],
+    mistakes: [
+        "ต้องผันกริยาเป็นรูป ば",
+        "อย่าใช้กับเหตุการณ์ที่เกิดขึ้นในอดีต"
+    ],
+    related: ["～たら", "～なら", "～と"]
+},
+
+{
+    level: "N4",
+    pattern: "～と (เงื่อนไข)",
+    meaning: "เมื่อ...ก็... / ถ้า...ก็...",
+    structure: "Dictionary Form + と",
+    explanation: `
+ใช้กับเหตุการณ์ที่เกิดขึ้นเป็นประจำหรือเป็นธรรมชาติ
+ผลลัพธ์ต้องเกิดขึ้นแน่นอนทุกครั้ง
+ไม่ใช้กับความตั้งใจ คำสั่ง หรือคำเชิญชวน
+`,
+    examples: [
+        { jp: "春になると、桜が咲きます。", romaji: "Haru ni naru to, sakura ga sakimasu.", th: "พอถึงฤดูใบไม้ผลิ ดอกซากุระก็จะบาน" },
+        { jp: "このボタンを押すと、ドアが開きます。", romaji: "Kono botan wo osu to, doa ga akimasu.", th: "เมื่อกดปุ่มนี้ ประตูก็จะเปิด" },
+        { jp: "水は零度になると凍ります。", romaji: "Mizu wa reido ni naru to koorimasu.", th: "เมื่อน้ำถึงศูนย์องศา ก็จะแข็งตัว" }
+    ],
+    mistakes: [
+        "ห้ามใช้คำสั่งหรือความตั้งใจหลัง と",
+        "ใช้กับสิ่งที่เกิดขึ้นแน่นอนเท่านั้น"
+    ],
+    related: ["～たら", "～ば"]
+},
+
+{
+    level: "N4",
+    pattern: "～ほうがいいです",
+    meaning: "ควรจะ...",
+    structure: "V-た / V-ない + ほうがいいです",
+    explanation: `
+ใช้ให้คำแนะนำ
+รูปอดีต (た) หมายถึงควรทำ
+รูปปฏิเสธ (ない) หมายถึงไม่ควรทำ
+ใช้บ่อยในชีวิตประจำวัน
+`,
+    examples: [
+        { jp: "早く寝たほうがいいです。", romaji: "Hayaku neta hou ga ii desu.", th: "ควรนอนเร็ว" },
+        { jp: "薬を飲んだほうがいいですよ。", romaji: "Kusuri wo nonda hou ga ii desu yo.", th: "ควรกินยานะ" },
+        { jp: "無理をしないほうがいいです。", romaji: "Muri wo shinai hou ga ii desu.", th: "ไม่ควรฝืนตัวเอง" }
+    ],
+    mistakes: [
+        "ใช้รูปอดีตของกริยา แม้พูดถึงอนาคต",
+        "รูปปฏิเสธใช้ ないほうがいい"
+    ],
+    related: ["～たら", "～なら"]
+},
+
+{
+    level: "N4",
+    pattern: "～より～のほうが～",
+    meaning: "...กว่า...",
+    structure: "A より B のほうが Adj",
+    explanation: `
+ใช้เปรียบเทียบสองสิ่ง
+B เป็นสิ่งที่เด่นกว่า A
+เป็นรูปประโยคที่ใช้บ่อยที่สุดในการเปรียบเทียบ
+`,
+    examples: [
+        { jp: "電車より車のほうが速いです。", romaji: "Densha yori kuruma no hou ga hayai desu.", th: "รถยนต์เร็วกว่ารถไฟ" },
+        { jp: "日本語より英語のほうが簡単です。", romaji: "Nihongo yori eigo no hou ga kantan desu.", th: "ภาษาอังกฤษง่ายกว่าภาษาญี่ปุ่น" },
+        { jp: "犬より猫のほうが好きです。", romaji: "Inu yori neko no hou ga suki desu.", th: "ชอบแมวมากกว่าสุนัข" }
+    ],
+    mistakes: [
+        "สิ่งที่ดีกว่าจะอยู่หน้า のほうが",
+        "より ใช้เป็นจุดอ้างอิงในการเปรียบเทียบ"
+    ],
+    related: ["～ほど～ない", "～が一番"]
+},
+{
+    level: "N4",
+    pattern: "可能形 (Potential Form)",
+    meaning: "สามารถ...ได้",
+    structure: "Verb → Potential Form",
+    explanation: `
+ใช้บอกความสามารถหรือความเป็นไปได้ในการทำบางสิ่ง
+ต่างจาก ～ことができます ตรงที่ใช้รูปกริยาโดยตรง ทำให้พูดเป็นธรรมชาติกว่า
+กริยากลุ่ม1 เปลี่ยนเสียง う เป็น え + る
+กริยากลุ่ม2 ตัด る เติม られる
+する → できる
+来る → 来られる
+`,
+    examples: [
+        { jp: "私は日本語が話せます。", romaji: "Watashi wa nihongo ga hanasemasu.", th: "ฉันพูดภาษาญี่ปุ่นได้" },
+        { jp: "今日は来られません。", romaji: "Kyou wa koraremasen.", th: "วันนี้มาไม่ได้" },
+        { jp: "一人でできます。", romaji: "Hitori de dekimasu.", th: "ทำคนเดียวได้" }
+    ],
+    mistakes: [
+        "รูปสามารถใช้ が แทน を ได้",
+        "する เปลี่ยนเป็น できる ไม่ใช่ しられる"
+    ],
+    related: ["～ことができます", "～ようになります"]
+},
+
+{
+    level: "N4",
+    pattern: "～しか～ない",
+    meaning: "มีเพียง...เท่านั้น",
+    structure: "N + しか + Negative",
+    explanation: `
+ใช้เมื่อมีเพียงสิ่งเดียว
+ประโยคหลังต้องเป็นรูปปฏิเสธเสมอ
+ความหมายเท่ากับ 'แค่...เท่านั้น'
+`,
+    examples: [
+        { jp: "千円しかありません。", romaji: "Sen-en shika arimasen.", th: "มีแค่หนึ่งพันเยนเท่านั้น" },
+        { jp: "水しか飲みません。", romaji: "Mizu shika nomimasen.", th: "ดื่มแต่น้ำเท่านั้น" },
+        { jp: "一人しか来ませんでした。", romaji: "Hitori shika kimasen deshita.", th: "มีมาเพียงคนเดียว" }
+    ],
+    mistakes: [
+        "หลัง しか ต้องเป็นรูปปฏิเสธเสมอ",
+        "อย่าสับสนกับ だけ"
+    ],
+    related: ["～だけ", "～ばかり"]
+},
+
+{
+    level: "N4",
+    pattern: "～だけ",
+    meaning: "เพียง... / เท่านั้น",
+    structure: "N / V / Adj + だけ",
+    explanation: `
+ใช้แสดงการจำกัดจำนวนหรือขอบเขต
+สามารถใช้กับรูปบอกเล่าหรือปฏิเสธก็ได้
+ใช้ได้กว้างกว่า しか
+`,
+    examples: [
+        { jp: "今日は日本語だけ勉強します。", romaji: "Kyou wa nihongo dake benkyou shimasu.", th: "วันนี้เรียนแต่ภาษาญี่ปุ่น" },
+        { jp: "一つだけください。", romaji: "Hitotsu dake kudasai.", th: "ขอแค่อันเดียว" },
+        { jp: "できるだけ頑張ります。", romaji: "Dekiru dake ganbarimasu.", th: "จะพยายามให้มากที่สุด" }
+    ],
+    mistakes: [
+        "หลัง だけ ไม่จำเป็นต้องเป็นรูปปฏิเสธ",
+        "ต่างจาก しか"
+    ],
+    related: ["～しか～ない"]
+},
+
+{
+    level: "N4",
+    pattern: "～まだ～ていません",
+    meaning: "ยังไม่ได้...",
+    structure: "まだ + V-ていません",
+    explanation: `
+ใช้เมื่อสิ่งนั้นยังไม่เกิดขึ้น แต่คาดว่าจะเกิดในอนาคต
+มักใช้ตอบคำถามหรืออธิบายสถานการณ์ปัจจุบัน
+`,
+    examples: [
+        { jp: "まだ昼ご飯を食べていません。", romaji: "Mada hirugohan wo tabete imasen.", th: "ยังไม่ได้กินข้าวกลางวัน" },
+        { jp: "宿題はまだ終わっていません。", romaji: "Shukudai wa mada owatte imasen.", th: "การบ้านยังไม่เสร็จ" },
+        { jp: "まだ日本へ行っていません。", romaji: "Mada Nihon e itte imasen.", th: "ยังไม่เคยไปญี่ปุ่น (จนถึงตอนนี้)" }
+    ],
+    mistakes: [
+        "ต้องใช้ まだ คู่กับ ていません",
+        "อย่าใช้ まだ กับ ません ธรรมดาในกรณีนี้"
+    ],
+    related: ["～ています", "～もう"]
+},
+
+{
+    level: "N4",
+    pattern: "～そうにない",
+    meaning: "ดูเหมือนจะไม่...",
+    structure: "Verb Stem + そうにない",
+    explanation: `
+ใช้คาดเดาจากสิ่งที่เห็นว่าคงไม่เกิดขึ้น
+เป็นการสังเกตจากสถานการณ์ปัจจุบัน
+ใช้ในภาษาพูดและข้อสอบบ่อย
+`,
+    examples: [
+        { jp: "雨はやみそうにありません。", romaji: "Ame wa yamisou ni arimasen.", th: "ดูเหมือนฝนจะไม่หยุด" },
+        { jp: "彼は来そうにないです。", romaji: "Kare wa kisou ni nai desu.", th: "ดูเหมือนเขาจะไม่มา" },
+        { jp: "この仕事は終わりそうにありません。", romaji: "Kono shigoto wa owarisou ni arimasen.", th: "งานนี้ดูเหมือนจะไม่เสร็จ" }
+    ],
+    mistakes: [
+        "ต่างจาก ～ないそうです (ได้ยินว่าไม่...)",
+        "ใช้การสังเกต ไม่ใช่ข่าวที่ได้ยิน"
+    ],
+    related: ["～そうです", "～ようです"]
+},
+{
+    level: "N4",
+    pattern: "受身形 (Passive Form)",
+    meaning: "ถูก... / ได้รับการ...",
+    structure: "N1 は N2 に V-られます",
+    explanation: `
+ใช้เมื่อประธานเป็นผู้ได้รับการกระทำ
+มักใช้เมื่อไม่ต้องการเน้นผู้กระทำ หรือเน้นผลที่เกิดขึ้นกับผู้ถูกกระทำ
+กริยากลุ่ม 1 เปลี่ยนเสียง う เป็น あ + れる
+กริยากลุ่ม 2 ตัด る เติม られる
+する → される
+来る → 来られる
+`,
+    examples: [
+        { jp: "私は先生にほめられました。", romaji: "Watashi wa sensei ni homeraremashita.", th: "ฉันถูกครูชม" },
+        { jp: "弟は母にしかられました。", romaji: "Otouto wa haha ni shikararemashita.", th: "น้องชายถูกแม่ดุ" },
+        { jp: "財布が盗まれました。", romaji: "Saifu ga nusumaremashita.", th: "กระเป๋าสตางค์ถูกขโมย" }
+    ],
+    mistakes: [
+        "Passive ไม่ได้แปลว่า 'โดน' เสมอไป",
+        "ใช้ に เพื่อบอกผู้กระทำ"
+    ],
+    related: ["使役形", "可能形"]
+},
+
+{
+    level: "N4",
+    pattern: "～によって",
+    meaning: "โดย... / ด้วย...",
+    structure: "N + によって",
+    explanation: `
+ใช้บอกผู้กระทำในประโยค Passive หรือใช้บอกวิธีการและสาเหตุ
+พบได้บ่อยในภาษาเขียน ข่าว และบทความ
+`,
+    examples: [
+        { jp: "この絵は有名な画家によって描かれました。", romaji: "Kono e wa yuumei na gaka ni yotte kakaremashita.", th: "ภาพนี้ถูกวาดโดยจิตรกรชื่อดัง" },
+        { jp: "地震によって橋が壊れました。", romaji: "Jishin ni yotte hashi ga kowaremashita.", th: "สะพานพังเพราะแผ่นดินไหว" },
+        { jp: "国によって文化が違います。", romaji: "Kuni ni yotte bunka ga chigaimasu.", th: "วัฒนธรรมแตกต่างกันไปตามประเทศ" }
+    ],
+    mistakes: [
+        "ไม่ใช้แทน に ได้ทุกกรณี",
+        "ใช้บ่อยในภาษาเขียนมากกว่าภาษาพูด"
+    ],
+    related: ["受身形", "～で"]
+},
+
+{
+    level: "N4",
+    pattern: "～ようです",
+    meaning: "ดูเหมือนว่า...",
+    structure: "Plain Form + ようです",
+    explanation: `
+ใช้คาดเดาจากหลักฐานหรือสิ่งที่สังเกตเห็น
+มั่นใจมากกว่า ～そうです (คาดเดาจากภาพภายนอก)
+ใช้ได้ทั้งภาษาพูดและภาษาเขียน
+`,
+    examples: [
+        { jp: "彼は疲れているようです。", romaji: "Kare wa tsukarete iru you desu.", th: "ดูเหมือนว่าเขาจะเหนื่อย" },
+        { jp: "雨が降ったようです。", romaji: "Ame ga futta you desu.", th: "ดูเหมือนว่าฝนตกแล้ว" },
+        { jp: "この店は人気があるようです。", romaji: "Kono mise wa ninki ga aru you desu.", th: "ดูเหมือนว่าร้านนี้จะได้รับความนิยม" }
+    ],
+    mistakes: [
+        "ใช้เมื่อมีหลักฐานสนับสนุน",
+        "ต่างจาก ～らしい ที่เป็นข้อมูลจากการได้ยิน"
+    ],
+    related: ["～そうです", "～らしい"]
+},
+
+{
+    level: "N4",
+    pattern: "～らしい",
+    meaning: "ได้ยินว่า... / สมกับเป็น...",
+    structure: "Plain Form + らしい",
+    explanation: `
+ใช้เมื่อข้อมูลมาจากการได้ยินหรือข่าว
+อีกความหมายคือ 'สมกับเป็น...'
+บริบทจะเป็นตัวกำหนดความหมาย
+`,
+    examples: [
+        { jp: "明日は雪が降るらしいです。", romaji: "Ashita wa yuki ga furu rashii desu.", th: "ได้ยินว่าพรุ่งนี้หิมะจะตก" },
+        { jp: "彼は医者らしいです。", romaji: "Kare wa isha rashii desu.", th: "ได้ยินว่าเขาเป็นหมอ" },
+        { jp: "今日は春らしい天気です。", romaji: "Kyou wa haru rashii tenki desu.", th: "วันนี้อากาศสมกับเป็นฤดูใบไม้ผลิ" }
+    ],
+    mistakes: [
+        "ต่างจาก ようです ที่ใช้หลักฐาน",
+        "ต่างจาก そうです ที่เป็นการรายงานคำพูด"
+    ],
+    related: ["～ようです", "～そうです"]
+},
+
+{
+    level: "N4",
+    pattern: "～みたいです",
+    meaning: "เหมือนว่า... / คล้ายกับ...",
+    structure: "Plain Form + みたいです",
+    explanation: `
+ใช้คาดเดาแบบไม่เป็นทางการ
+ความหมายใกล้กับ ようです แต่ใช้ในบทสนทนามากกว่า
+ไม่เหมาะกับเอกสารทางการ
+`,
+    examples: [
+        { jp: "彼は忙しいみたいです。", romaji: "Kare wa isogashii mitai desu.", th: "ดูเหมือนว่าเขาจะยุ่ง" },
+        { jp: "雨が降るみたいです。", romaji: "Ame ga furu mitai desu.", th: "ดูเหมือนฝนจะตก" },
+        { jp: "この料理はおいしいみたいです。", romaji: "Kono ryouri wa oishii mitai desu.", th: "ดูเหมือนว่าอาหารจานนี้อร่อย" }
+    ],
+    mistakes: [
+        "ใช้ในภาษาพูดเป็นหลัก",
+        "ไม่ควรใช้ในงานเขียนทางการ"
+    ],
+    related: ["～ようです", "～らしい"]
+},
+{
+    level: "N4",
+    pattern: "使役形 (Causative Form)",
+    meaning: "ให้...ทำ... / ทำให้...",
+    structure: "N1 は N2 に V-させます",
+    explanation: `
+ใช้เมื่อผู้พูดหรือประธานทำให้ผู้อื่นทำบางสิ่ง
+อาจหมายถึง 'สั่ง', 'อนุญาต', หรือ 'ปล่อยให้' แล้วแต่บริบท
+กริยากลุ่ม1 เปลี่ยนเสียง う เป็น あ + せる
+กริยากลุ่ม2 ตัด る เติม させる
+する → させる
+来る → 来させる
+`,
+    examples: [
+        { jp: "先生は学生に本を読ませました。", romaji: "Sensei wa gakusei ni hon wo yomasemashita.", th: "ครูให้นักเรียนอ่านหนังสือ" },
+        { jp: "母は子どもを遊ばせました。", romaji: "Haha wa kodomo wo asobasemashita.", th: "แม่ปล่อยให้ลูกเล่น" },
+        { jp: "社長は社員に残業させました。", romaji: "Shachou wa shain ni zangyou sasemashita.", th: "ผู้จัดการให้พนักงานทำโอที" }
+    ],
+    mistakes: [
+        "อาจหมายถึง 'บังคับ' หรือ 'อนุญาต' ต้องดูบริบท",
+        "ระวังการผันกริยาแต่ละกลุ่ม"
+    ],
+    related: ["受身形", "使役受身"]
+},
+
+{
+    level: "N4",
+    pattern: "～させてください",
+    meaning: "ขออนุญาต...",
+    structure: "Causative-て + ください",
+    explanation: `
+ใช้ขออนุญาตทำบางสิ่ง
+สุภาพและใช้บ่อยในการทำงานและชีวิตประจำวัน
+`,
+    examples: [
+        { jp: "少し休ませてください。", romaji: "Sukoshi yasumasete kudasai.", th: "ขอพักสักครู่ครับ/ค่ะ" },
+        { jp: "説明させてください。", romaji: "Setsumei sasete kudasai.", th: "ขออนุญาตอธิบาย" },
+        { jp: "先に帰らせてください。", romaji: "Saki ni kaerasete kudasai.", th: "ขออนุญาตกลับก่อน" }
+    ],
+    mistakes: [
+        "ใช้เมื่อขออนุญาต ไม่ใช่ออกคำสั่ง",
+        "ต้องใช้รูป Causative"
+    ],
+    related: ["使役形", "～てもいいです"]
+},
+
+{
+    level: "N4",
+    pattern: "使役受身形",
+    meaning: "ถูกบังคับให้...",
+    structure: "N は N に V-させられます",
+    explanation: `
+ใช้เมื่อผู้พูดถูกบังคับให้ทำบางสิ่ง
+มักแสดงความรู้สึกไม่เต็มใจ
+เป็นการรวมระหว่าง Causative และ Passive
+`,
+    examples: [
+        { jp: "毎日残業させられます。", romaji: "Mainichi zangyou saseraremasu.", th: "ถูกบังคับให้ทำโอทีทุกวัน" },
+        { jp: "子どもの時、野菜を食べさせられました。", romaji: "Kodomo no toki, yasai wo tabesaseraremashita.", th: "ตอนเด็กถูกบังคับให้กินผัก" },
+        { jp: "先生に作文を書かせられました。", romaji: "Sensei ni sakubun wo kakasaseraremashita.", th: "ถูกครูบังคับให้เขียนเรียงความ" }
+    ],
+    mistakes: [
+        "อย่าสับสนกับ Passive ธรรมดา",
+        "ใช้เมื่อไม่เต็มใจทำ"
+    ],
+    related: ["使役形", "受身形"]
+},
+
+{
+    level: "N4",
+    pattern: "～ことになります",
+    meaning: "ถูกกำหนดให้... / กลายเป็นว่า...",
+    structure: "Dictionary Form + ことになります",
+    explanation: `
+ใช้เมื่อผลลัพธ์หรือการตัดสินใจมาจากกฎ ระเบียบ หรือผู้อื่น
+ผู้พูดไม่ได้เป็นผู้ตัดสินใจเอง
+ใช้บ่อยในการทำงานและประกาศ
+`,
+    examples: [
+        { jp: "来月大阪へ転勤することになりました。", romaji: "Raigetsu Osaka e tenkin suru koto ni narimashita.", th: "ถูกกำหนดให้ย้ายไปทำงานที่โอซาก้าเดือนหน้า" },
+        { jp: "会議は中止になることになりました。", romaji: "Kaigi wa chuushi ni naru koto ni narimashita.", th: "มีการกำหนดให้ยกเลิกการประชุม" },
+        { jp: "四月から新しい制度が始まることになります。", romaji: "Shigatsu kara atarashii seido ga hajimaru koto ni narimasu.", th: "มีการกำหนดให้เริ่มระบบใหม่ตั้งแต่เดือนเมษายน" }
+    ],
+    mistakes: [
+        "ผู้พูดไม่ได้เป็นคนตัดสินใจ",
+        "ต่างจาก ことにします"
+    ],
+    related: ["～ことにします", "～予定です"]
+},
+
+{
+    level: "N4",
+    pattern: "～ことにします",
+    meaning: "ตัดสินใจว่าจะ...",
+    structure: "Dictionary Form + ことにします",
+    explanation: `
+ใช้เมื่อผู้พูดเป็นผู้ตัดสินใจเอง
+ใช้พูดถึงการเลือกหรือการตั้งใจทำบางสิ่ง
+ตรงข้ามกับ ことになります
+`,
+    examples: [
+        { jp: "毎日運動することにしました。", romaji: "Mainichi undou suru koto ni shimashita.", th: "ตัดสินใจว่าจะออกกำลังกายทุกวัน" },
+        { jp: "今年日本へ行くことにしました。", romaji: "Kotoshi Nihon e iku koto ni shimashita.", th: "ตัดสินใจว่าจะไปญี่ปุ่นปีนี้" },
+        { jp: "今日は電車で帰ることにします。", romaji: "Kyou wa densha de kaeru koto ni shimasu.", th: "วันนี้ตัดสินใจว่าจะกลับด้วยรถไฟ" }
+    ],
+    mistakes: [
+        "ผู้พูดเป็นผู้ตัดสินใจเอง",
+        "อย่าสับสนกับ ことになります"
+    ],
+    related: ["～ことになります", "～つもりです"]
+},
+{
+    level: "N4",
+    pattern: "～ために",
+    meaning: "เพื่อ... / สำหรับ...",
+    structure: "N + のために / Dictionary Form + ために",
+    explanation: `
+ใช้แสดงวัตถุประสงค์หรือเป้าหมายของการกระทำ
+ถ้าหน้า ために เป็นกริยา ต้องเป็นกริยาที่แสดงเจตนา (Volitional Verb)
+ถ้าเป็นคำนาม ใช้ N + のために
+ต่างจาก ～ように ซึ่งใช้กับสิ่งที่ควบคุมไม่ได้
+`,
+    examples: [
+        { jp: "日本へ行くために、お金をためています。", romaji: "Nihon e iku tame ni, okane wo tameteimasu.", th: "เก็บเงินเพื่อไปญี่ปุ่น" },
+        { jp: "家族のために働いています。", romaji: "Kazoku no tame ni hataraiteimasu.", th: "ทำงานเพื่อครอบครัว" },
+        { jp: "試験に合格するために毎日勉強します。", romaji: "Shiken ni goukaku suru tame ni mainichi benkyou shimasu.", th: "เรียนทุกวันเพื่อสอบให้ผ่าน" }
+    ],
+    mistakes: [
+        "ใช้กับการกระทำที่ผู้พูดควบคุมได้",
+        "ไม่ใช้กับความสามารถหรือสิ่งที่เกิดเอง"
+    ],
+    related: ["～ように", "～ので"]
+},
+
+{
+    level: "N4",
+    pattern: "～ように",
+    meaning: "เพื่อให้... / เพื่อที่จะ...",
+    structure: "Dictionary Form / Negative Form + ように",
+    explanation: `
+ใช้เมื่อจุดประสงค์เกี่ยวข้องกับความสามารถ การเปลี่ยนแปลง หรือสิ่งที่ควบคุมไม่ได้
+มักใช้กับกริยารูปสามารถ (Potential Form)
+ต่างจาก ～ために
+`,
+    examples: [
+        { jp: "日本語が話せるように毎日勉強します。", romaji: "Nihongo ga hanaseru you ni mainichi benkyou shimasu.", th: "เรียนทุกวันเพื่อให้พูดภาษาญี่ปุ่นได้" },
+        { jp: "忘れないようにメモします。", romaji: "Wasurenai you ni memo shimasu.", th: "จดไว้เพื่อจะได้ไม่ลืม" },
+        { jp: "遅れないように早く出ます。", romaji: "Okurenai you ni hayaku demasu.", th: "ออกจากบ้านเร็วเพื่อจะได้ไม่สาย" }
+    ],
+    mistakes: [
+        "ใช้กับ Potential หรือ Negative Form ได้บ่อย",
+        "ต่างจาก ～ために"
+    ],
+    related: ["～ために", "～ようになります"]
+},
+
+{
+    level: "N4",
+    pattern: "～間（あいだ）",
+    meaning: "ระหว่างที่...",
+    structure: "V-ている / N + の + 間",
+    explanation: `
+ใช้เมื่อเหตุการณ์หนึ่งดำเนินต่อเนื่องตลอดช่วงเวลาที่อีกเหตุการณ์เกิดขึ้น
+ทั้งสองเหตุการณ์เกิดขึ้นพร้อมกันตลอดช่วงเวลา
+`,
+    examples: [
+        { jp: "日本にいる間、日本語を勉強しました。", romaji: "Nihon ni iru aida, nihongo wo benkyou shimashita.", th: "ระหว่างที่อยู่ญี่ปุ่น ได้เรียนภาษาญี่ปุ่น" },
+        { jp: "母が料理している間、宿題をしました。", romaji: "Haha ga ryouri shiteiru aida, shukudai wo shimashita.", th: "ระหว่างที่แม่ทำอาหาร ฉันทำการบ้าน" },
+        { jp: "夏休みの間、アルバイトをします。", romaji: "Natsuyasumi no aida, arubaito wo shimasu.", th: "ระหว่างปิดเทอมฤดูร้อน จะทำงานพิเศษ" }
+    ],
+    mistakes: [
+        "เหตุการณ์เกิดขึ้นตลอดช่วงเวลา",
+        "ต่างจาก ～間に"
+    ],
+    related: ["～間に"]
+},
+
+{
+    level: "N4",
+    pattern: "～間に",
+    meaning: "ในช่วงที่... / ระหว่างที่...",
+    structure: "V-ている / N + の + 間に",
+    explanation: `
+ใช้เมื่ออีกเหตุการณ์หนึ่งเกิดขึ้นเพียงครั้งเดียวภายในช่วงเวลาหนึ่ง
+ต่างจาก ～間 ที่หมายถึงเกิดตลอดช่วงเวลา
+`,
+    examples: [
+        { jp: "寝ている間に雨が降りました。", romaji: "Neteiru aida ni ame ga furimashita.", th: "ฝนตกตอนที่กำลังนอนอยู่" },
+        { jp: "留守の間に泥棒が入りました。", romaji: "Rusu no aida ni dorobou ga hairimashita.", th: "ขโมยเข้าบ้านตอนที่ไม่อยู่" },
+        { jp: "日本にいる間に富士山へ行きました。", romaji: "Nihon ni iru aida ni Fujisan e ikimashita.", th: "ระหว่างอยู่ญี่ปุ่น ได้ไปภูเขาไฟฟูจิ" }
+    ],
+    mistakes: [
+        "เหตุการณ์เกิดเพียงครั้งเดียว",
+        "ต่างจาก ～間"
+    ],
+    related: ["～間"]
+},
+
+{
+    level: "N4",
+    pattern: "～ばかり",
+    meaning: "เอาแต่... / มีแต่...",
+    structure: "N / V-て + ばかり",
+    explanation: `
+ใช้เมื่อมีสิ่งใดสิ่งหนึ่งมากผิดปกติ หรือทำสิ่งเดิมซ้ำ ๆ
+บางครั้งสื่อความรู้สึกตำหนิหรือไม่พอใจ
+`,
+    examples: [
+        { jp: "弟はゲームばかりしています。", romaji: "Otouto wa geemu bakari shiteimasu.", th: "น้องชายเอาแต่เล่นเกม" },
+        { jp: "甘い物ばかり食べています。", romaji: "Amai mono bakari tabeteimasu.", th: "เอาแต่กินของหวาน" },
+        { jp: "彼は文句ばかり言います。", romaji: "Kare wa monku bakari iimasu.", th: "เขาเอาแต่บ่น" }
+    ],
+    mistakes: [
+        "มักมีความหมายเชิงลบตามบริบท",
+        "ไม่เหมือน だけ ที่เป็นเพียงการจำกัด"
+    ],
+    related: ["～だけ", "～しか～ない"]
+},
+{
+    level: "N4",
+    pattern: "～ところです",
+    meaning: "กำลัง... (ณ จุดเวลาเพิ่งจะเริ่ม, กำลังทำอยู่, หรือเพิ่งเสร็จ)",
+    structure: "V-辞書形 / V-ている / V-た + ところです",
+    explanation: `
+ใช้บอกสถานะหรือจุดเวลาที่เหตุการณ์กำลังจะเกิดขึ้น กำลังดำเนินอยู่ หรือเพิ่งจะสิ้นสุดลงไปเมื่อครู่
+โดยความหมายจะเปลี่ยนไปตามรูปกริยาที่นำมาเชื่อมข้างหน้า
+`,
+    examples: [
+        { jp: "今から出かけるところです。", romaji: "Ima kara dekakeru tokoro desu.", th: "กำลังจะออกไปข้างนอกตอนนี้เลย" },
+        { jp: "今、宿題をしているところです。", romaji: "Ima, shukudai o shite iru tokoro desu.", th: "ตอนนี้กำลังทำการบ้านอยู่พอดี" },
+        { jp: "たった今、電車が着いたところです。", romaji: "Tatta ima, densha ga tsuita tokoro desu.", th: "รถไฟเพิ่งจะมาถึงเมื่อสักครู่นี้เอง" }
+    ],
+    mistakes: [
+        "ต้องระวังรูปกริยาข้างหน้าที่เปลี่ยนไปตามช่วงเวลา (จะทำ กำลังทำ เพิ่งทำเสร็จ)",
+        "มักใช้ร่วมกับคำบอกเวลา เช่น 今 (ตอนนี้) หรือ たった今 (เพิ่งจะ... เมื่อกี้)"
+    ],
+    related: ["～たばかりです", "～ところだ"]
+},
+{
+    level: "N4",
+    pattern: "～たばかりです",
+    meaning: "เพิ่งจะ... (เพิ่งทำสิ่งนั้นเสร็จไปไม่นาน)",
+    structure: "V-た + ばかりです",
+    explanation: `
+ใช้แสดงว่าการกระทำหรือเหตุการณ์เพิ่งจะเสร็จสิ้นไปเมื่อไม่นานมานี้ (ความรู้สึกของผู้พูดคือเหตุการณ์ยังใหม่อยู่มาก)
+`,
+    examples: [
+        { jp: "日本に来たばかりです。", romaji: "Nihon ni kita bakari desu.", th: "เพิ่งมาถึงประเทศญี่ปุ่นได้ไม่นาน" },
+        { jp: "さっきご飯を食べたばかりです。", romaji: "Sakki gohan o tabeta bakari desu.", th: "เพิ่งจะกินข้าวไปเมื่อกี้เอง" },
+        { jp: "買ったばかりのパソコンが壊れました。", romaji: "Katta bakari no pasokon ga kowaremashita.", th: "คอมพิวเตอร์ที่เพิ่งซื้อมาแท้ๆ พังซะแล้ว" }
+    ],
+    mistakes: [
+        "ต่างจาก ～ところです ตรงที่ ～たばかり เน้นความรู้สึกว่าเวลาเพิ่งผ่านไปสั้นๆ นับจากเหตุการณ์จบลง",
+        "ไม่สามารถใช้กับเหตุการณ์ที่เกิดขึ้นนานแล้วแม้จะรู้สึกเสียดายก็ตาม"
+    ],
+    related: ["～ところです", "さっき"]
+},
+{
+    level: "N4",
+    pattern: "～はじめます",
+    meaning: "เริ่ม... (เริ่มลงมือทำสิ่งใดสิ่งหนึ่ง)",
+    structure: "V-ます (ตัด ます) + はじめます",
+    explanation: `
+ใช้บอกจุดเริ่มต้นของการกระทำหรือการเปลี่ยนแปลงบางอย่าง โดยเน้นที่การลงมือทำกิจกรรมนั้นๆ เป็นครั้งแรกหรือเริ่มทำตามเวลาที่กำหนด
+`,
+    examples: [
+        { jp: "日本語の本を読みはじめました。", romaji: "Nihonngo no hon o yomihajimemashita.", th: "เริ่มอ่านหนังสือภาษาญี่ปุ่นแล้ว" },
+        { jp: "雨が降りはじめました。", romaji: "Ame ga furihajimemashita.", th: "ฝนเริ่มตกแล้ว" },
+        { jp: "赤ちゃんが歩きはじめました。", romaji: "Akachan ga arukinajimemashita.", th: "เด็กทารกเริ่มหัดเดินแล้ว" }
+    ],
+    mistakes: [
+        "ต้องเปลี่ยนคำกริยาเป็นรูป ます ก่อนแล้วตัด ます ทิ้ง ถึงจะเติม はじめます ได้",
+        "คำกริยาบางตัวที่ไม่ใช่การกระทำต่อเนื่องอาจใช้ในรูปอื่น แต่ส่วนใหญ่ใช้กับ V-ます"
+    ],
+    related: ["～おわります", "～つづけます"]
+},
+{
+    level: "N4",
+    pattern: "～おわります",
+    meaning: "M... (ทำสิ่งนั้นจนเสร็จสิ้น)",
+    structure: "V-ます (ตัด ます) + おわります",
+    explanation: `
+ใช้แสดงว่าการกระทำหรือกิจกรรมที่ทำอยู่ได้ดำเนินมาจนถึงจุดสิ้นสุดหรือเสร็จสมบูรณ์แล้ว
+`,
+    examples: [
+        { jp: "宿題を書きおわりました。", romaji: "Shukudai o kakiowarimashita.", th: "ทำการบ้านเสร็จเรียบร้อยแล้ว" },
+        { jp: "本を読みおわったら、貸してください。", romaji: "Hon o yomiowattara, kashite kudasai.", th: "ถ้าอ่านหนังสือเล่มนี้จบแล้ว ช่วยให้ฉันยืมหน่อยนะ" },
+        { jp: "この仕事は今日中にやりおわります。", romaji: "Kono shigoto wa kyoujyu ni yariowarimasu.", th: "งานนี้จะทำให้เสร็จภายในวันนี้" }
+    ],
+    mistakes: [
+        "ใช้เฉพาะกับการกระทำที่มีจุดเริ่มต้นและจุดสิ้นสุดชัดเจน",
+        "ระวังการใช้ร่วมกับคำนามตรงกรรม (มักใช้ particle を)"
+    ],
+    related: ["～はじめます", "～つづけます"]
+},
+{
+    level: "N4",
+    pattern: "～つづけます",
+    meaning: "ทำ... ต่อไป / ทำ... อย่างต่อเนื่อง",
+    structure: "V-ます (ตัด ます) + つづけます",
+    explanation: `
+ใช้แสดงว่าการกระทำหรือกิจกรรมนั้นยังคงดำเนินต่อไปเรื่อยๆ โดยไม่มีการหยุดชะงัก
+`,
+    examples: [
+        { jp: "雨が降りつづけています。", romaji: "Ame ga furitsudzukete imasu.", th: "ฝนยังคงตกติดต่อกันเรื่อยๆ" },
+        { jp: "諦めないで、日本語を勉強しつづけましょう。", romaji: "Akiramenaide, nihongo o benkyoushitsudzukemashou.", th: "อย่าเพิ่งยอมแพ้ มาเรียนภาษาญี่ปุ่นกันต่อไปเถอะ" },
+        { jp: "彼は走りつづけました。", romaji: "Kare wa hashiritsudzukemashita.", th: "เขาวิ่งต่อไปเรื่อยๆ ไม่หยุด" }
+    ],
+    mistakes: [
+        "เป็นการเน้นความต่อเนื่องของกริยานั้นๆ ในระยะเวลาหนึ่ง",
+        "ต้องแปลงเป็นรูป V-ます (ตัด ます) ก่อนเช่นเดียวกับกลุ่มคำกริยา compound อื่นๆ"
+    ],
+    related: ["～はじめます", "～おわります"]
+},
+        ];
+
+        // ===== 🎧 ข้อมูลบทสนทนาสำหรับฝึกฟัง (seed เริ่มต้น — ควรเพิ่มเติมภายหลังให้ครอบคลุมทุกเลเวล) =====
+        const listeningList = [
+            {
+                id: 'ls1', level: 'N5', title: 'ทักทายตอนเช้า',
+                lines: [
+                    { speaker: 'A', jp: 'おはようございます。今日はいい天気ですね。', th: 'อรุณสวัสดิ์ครับ วันนี้อากาศดีนะครับ' },
+                    { speaker: 'B', jp: 'おはようございます。そうですね。とても暑いです。', th: 'อรุณสวัสดิ์ค่ะ ใช่แล้วค่ะ ร้อนมากเลย' },
+                    { speaker: 'A', jp: '午後は雨が降りますよ。', th: 'ตอนบ่ายฝนจะตกนะครับ' }
+                ],
+                questions: [
+                    { q: 'วันนี้อากาศตอนเช้าเป็นอย่างไร?', choices: ['ฝนตก', 'อากาศดีแต่ร้อน', 'หนาวมาก', 'มีหิมะ'], answerIndex: 1 },
+                    { q: 'ตอนบ่ายจะเป็นอย่างไร?', choices: ['แดดออก', 'ฝนจะตก', 'ลมแรง', 'ไม่พูดถึง'], answerIndex: 1 }
+                ]
+            },
+            {
+                id: 'ls2', level: 'N5', title: 'สั่งอาหารที่ร้าน',
+                lines: [
+                    { speaker: 'A', jp: 'いらっしゃいませ。何になさいますか。', th: 'ยินดีต้อนรับครับ รับอะไรดีครับ' },
+                    { speaker: 'B', jp: 'ラーメンを一つお願いします。それから、水も一つください。', th: 'ขอราเมง 1 ที่ค่ะ แล้วก็ขอน้ำเปล่า 1 แก้วด้วยค่ะ' },
+                    { speaker: 'A', jp: 'かしこまりました。少々お待ちください。', th: 'รับทราบครับ กรุณารอสักครู่ครับ' }
+                ],
+                questions: [
+                    { q: 'ลูกค้าสั่งอะไรบ้าง?', choices: ['ราเมงกับน้ำ', 'ข้าวกับซุป', 'แค่ราเมง', 'น้ำอย่างเดียว'], answerIndex: 0 },
+                    { q: 'ลูกค้าสั่งราเมงกี่ที่?', choices: ['2 ที่', '1 ที่', '3 ที่', 'ไม่ได้บอก'], answerIndex: 1 }
+                ]
+            },
+            {
+                id: 'ls3', level: 'N5', title: 'ถามทางไปสถานี',
+                lines: [
+                    { speaker: 'A', jp: 'すみません、駅はどこですか。', th: 'ขอโทษนะครับ สถานีอยู่ที่ไหนครับ' },
+                    { speaker: 'B', jp: 'この道をまっすぐ行って、右に曲がってください。', th: 'เดินตรงไปตามถนนนี้ แล้วเลี้ยวขวานะคะ' },
+                    { speaker: 'A', jp: 'ありがとうございます。歩いてどのくらいかかりますか。', th: 'ขอบคุณครับ เดินไปใช้เวลาประมาณเท่าไหร่ครับ' },
+                    { speaker: 'B', jp: '五分ぐらいです。', th: 'ประมาณ 5 นาทีค่ะ' }
+                ],
+                questions: [
+                    { q: 'ต้องเลี้ยวทางไหนหลังจากเดินตรงไป?', choices: ['เลี้ยวซ้าย', 'เลี้ยวขวา', 'กลับหลัง', 'ไม่ต้องเลี้ยว'], answerIndex: 1 },
+                    { q: 'ใช้เวลาเดินไปสถานีประมาณเท่าไหร่?', choices: ['15 นาที', '5 นาที', '30 นาที', '1 ชั่วโมง'], answerIndex: 1 }
+                ]
+            },
+            {
+                id: 'ls4', level: 'N4', title: 'นัดหมายเพื่อน',
+                lines: [
+                    { speaker: 'A', jp: '明日、映画を見に行きませんか。', th: 'พรุ่งนี้ไปดูหนังกันไหม' },
+                    { speaker: 'B', jp: 'いいですね。何時に会いましょうか。', th: 'ดีเลย จะนัดเจอกันกี่โมงดี' },
+                    { speaker: 'A', jp: '午後三時に駅の前で会いましょう。', th: 'เจอกันตอนบ่าย 3 โมงหน้าสถานีนะ' },
+                    { speaker: 'B', jp: 'わかりました。楽しみにしています。', th: 'โอเค ตั้งตารอเลย' }
+                ],
+                questions: [
+                    { q: 'ทั้งสองคนจะไปทำอะไรกัน?', choices: ['ดูหนัง', 'กินข้าว', 'ช้อปปิ้ง', 'เล่นกีฬา'], answerIndex: 0 },
+                    { q: 'นัดเจอกันกี่โมง ที่ไหน?', choices: ['บ่าย 3 โมง หน้าสถานี', 'เช้า 9 โมง ที่บ้าน', 'เย็น 6 โมง ที่ร้าน', 'ไม่ได้นัด'], answerIndex: 0 }
+                ]
+            }
+        ];
+
         let currentMode = 'flashcard';
+        let contentType = 'vocab'; // 'vocab' | 'grammar'
+
+        // ===== ตัวช่วยกลาง: ให้ flashcard/quiz/choice/match ใช้ได้ทั้งคำศัพท์และไวยากรณ์ =====
+        function isGrammarCard(card) { return !!card && card.pattern !== undefined; }
+        function cardFront(card) { return isGrammarCard(card) ? card.pattern : card.jp; }
+        function cardBack(card) { return isGrammarCard(card) ? card.meaning : card.th; }
+        function cardHint(card) { return isGrammarCard(card) ? card.structure : card.extra; }
+        function cardAudioSample(card) {
+            if (isGrammarCard(card)) return (card.examples && card.examples[0]) ? card.examples[0].jp : card.pattern;
+            return card.jp;
+        }
         let kanaType = "Hiragana";
         let kanaIndex = 0;
         let kanaListFiltered = kanaList.filter(k => k.type === "Hiragana");
@@ -3132,9 +5568,14 @@
                 quizWrongCount = saved?.quizWrong || 0;
                 choiceCorrectCount = saved?.choiceCorrect || 0;
                 choiceWrongCount = saved?.choiceWrong || 0;
+                matchCorrectCount = saved?.matchCorrect || 0;
+                matchWrongCount = saved?.matchWrong || 0;
+                listenCorrectCount = saved?.listenCorrect || 0;
+                listenWrongCount = saved?.listenWrong || 0;
                 testMissCount = saved?.missCount || {};
             } catch (e) {
-                quizCorrectCount = 0; quizWrongCount = 0; choiceCorrectCount = 0; choiceWrongCount = 0; testMissCount = {};
+                quizCorrectCount = 0; quizWrongCount = 0; choiceCorrectCount = 0; choiceWrongCount = 0;
+                matchCorrectCount = 0; matchWrongCount = 0; listenCorrectCount = 0; listenWrongCount = 0; testMissCount = {};
             }
         }
 
@@ -3145,6 +5586,10 @@
                     quizWrong: quizWrongCount,
                     choiceCorrect: choiceCorrectCount,
                     choiceWrong: choiceWrongCount,
+                    matchCorrect: matchCorrectCount,
+                    matchWrong: matchWrongCount,
+                    listenCorrect: listenCorrectCount,
+                    listenWrong: listenWrongCount,
                     missCount: testMissCount
                 }));
             } catch (e) {}
@@ -3156,6 +5601,9 @@
             srsData = JSON.parse(localStorage.getItem(storageKey('nihongo_srs_v2'))) || {};
             loadTestStats();
             gachaState = loadGachaState();
+            avatarState = loadAvatarState();
+            updateStreak();
+            renderAvatarWidget();
         }
 
         let matchSize = 5;
@@ -3163,6 +5611,8 @@
         let matchSelectedJp = null;
         let matchSelectedTh = null;
         let matchMatchedCount = 0;
+        let matchCorrectCount = 0; // นับสะสมตลอด (ไม่รีเซ็ตทุกรอบ) ใช้สำหรับ Leaderboard
+        let matchWrongCount = 0;   // นับสะสมตลอด ใช้หักคะแนนกันการเดาสุ่มเพื่อไต่ leaderboard
 
         // ===== Japanese Voice Engine (แก้ปัญหาเสียงไม่ใช่ญี่ปุ่น / อ่านไม่ครบ) =====
         let jaVoices = [];
@@ -3240,7 +5690,7 @@
 
         function speakCurrentWord() {
             if (filteredVocab.length === 0) return;
-            playJapaneseAudio(filteredVocab[currentIndex].jp);
+            playJapaneseAudio(cardAudioSample(filteredVocab[currentIndex]));
         }
 
         function speakExampleSentence(e) {
@@ -3251,6 +5701,7 @@
         }
 
         function speakQuizWord() {
+            if (currentQuizWord) { playJapaneseAudio(cardAudioSample(currentQuizWord)); return; }
             const currentJpText = document.getElementById('quizJp').innerText;
             if (currentJpText) playJapaneseAudio(currentJpText);
         }
@@ -3270,6 +5721,10 @@
 
         function setMode(mode) {
             if (speedTimerInterval) clearInterval(speedTimerInterval);
+            if (mode !== 'exam' && mockExamState && mockExamState.timerHandle) {
+                clearInterval(mockExamState.timerHandle);
+                mockExamState.timerHandle = null;
+            }
             currentMode = mode;
             document.getElementById('modeFlashcardBtn').classList.toggle('active', mode === 'flashcard');
             document.getElementById('modeQuizBtn').classList.toggle('active', mode === 'quiz');
@@ -3277,6 +5732,10 @@
             document.getElementById('modeMatchBtn').classList.toggle('active', mode === 'match');
             document.getElementById('modeKanaBtn').classList.toggle('active', mode === 'kana');
             document.getElementById('modeBossBtn').classList.toggle('active', mode === 'boss');
+            document.getElementById('modeRoadmapBtn').classList.toggle('active', mode === 'roadmap');
+            document.getElementById('modeListenBtn').classList.toggle('active', mode === 'listen');
+            document.getElementById('modeSpeakBtn').classList.toggle('active', mode === 'speak');
+            document.getElementById('modeExamBtn').classList.toggle('active', mode === 'exam');
 
             document.getElementById('flashcardContainer').style.display = (mode === 'flashcard') ? 'flex' : 'none';
             document.getElementById('navButtons').style.display = (mode === 'flashcard') ? 'flex' : 'none';
@@ -3288,9 +5747,13 @@
             document.getElementById('kanaBox').style.display = (mode === 'kana') ? 'flex' : 'none';
             document.getElementById('kanaNavButtons').style.display = (mode === 'kana') ? 'flex' : 'none';
             document.getElementById('bossBox').style.display = (mode === 'boss') ? 'flex' : 'none';
+            document.getElementById('roadmapBox').style.display = (mode === 'roadmap') ? 'flex' : 'none';
+            document.getElementById('listenBox').style.display = (mode === 'listen') ? 'flex' : 'none';
+            document.getElementById('speakBox').style.display = (mode === 'speak') ? 'flex' : 'none';
+            document.getElementById('examBox').style.display = (mode === 'exam') ? 'flex' : 'none';
             
             document.getElementById('kanaProgressBox').style.display = (mode === 'kana') ? 'flex' : 'none';
-            document.getElementById('stageHeaderInfo').style.display = (mode === 'kana' || mode === 'boss') ? 'none' : 'flex';
+            document.getElementById('stageHeaderInfo').style.display = (mode === 'kana' || mode === 'boss' || mode === 'roadmap' || mode === 'listen' || mode === 'speak' || mode === 'exam') ? 'none' : 'flex';
 
             if (mode === 'flashcard') updateCardDisplay();
             else if (mode === 'quiz') initQuiz();
@@ -3298,6 +5761,10 @@
             else if (mode === 'match') newMatchRound();
             else if (mode === 'kana') startKanaPractice();
             else if (mode === 'boss') renderBossSelect();
+            else if (mode === 'roadmap') renderRoadmap();
+            else if (mode === 'listen') initListening();
+            else if (mode === 'speak') initSpeakPractice();
+            else if (mode === 'exam') initMockExamView();
         }
 
         function flipCard() {
@@ -3308,18 +5775,33 @@
         }
 
         function getCardKey(card) {
+            if (isGrammarCard(card)) return card.level + "_GR_" + card.pattern;
             return card.level + "_" + card.jp;
+        }
+
+        // เนื่องจากข้อมูล vocabList บางคำมี level+jp ซ้ำกัน (ความหมาย/ตัวอย่างต่างกันเล็กน้อย)
+        // ใช้ map นี้เพื่อให้ทุกฟีเจอร์ที่อ้างอิงด้วย key (Roadmap, Daily Quest) ได้คำละ 1 รายการเสมอ ไม่ซ้ำ
+        // รวมทั้งคำศัพท์และไวยากรณ์เข้าด้วยกัน เพราะ key ไม่ชนกัน (getCardKey แยก namespace ให้แล้ว)
+        let _vocabByKeyCache = null;
+        function getVocabByKeyMap() {
+            if (_vocabByKeyCache) return _vocabByKeyCache;
+            const map = new Map();
+            vocabList.forEach(v => { const k = getCardKey(v); if (!map.has(k)) map.set(k, v); });
+            grammarList.forEach(v => { const k = getCardKey(v); if (!map.has(k)) map.set(k, v); });
+            _vocabByKeyCache = map;
+            return map;
         }
 
         function updateCardDisplay() {
             if (filteredVocab.length === 0) {
+                const emptyMsg = contentType === 'grammar' ? "ไม่พบ pattern ในเลเวลที่เลือก" : "ไม่พบคำศัพท์ในเลเวลที่เลือก";
                 document.getElementById('wordJp').innerText = "❌";
-                document.getElementById('wordExtraFront').innerText = "ไม่พบคำศัพท์ในเลเวลที่เลือก";
+                document.getElementById('wordExtraFront').innerText = emptyMsg;
                 document.getElementById('wordTh').innerText = "กรุณาติ๊กเลเวลด้านซ้าย";
                 document.getElementById('counter').innerText = "การ์ดที่ 0 / 0";
                 document.getElementById('percentLabel').innerText = "0%";
                 document.getElementById('progressBar').style.width = "0%";
-                document.getElementById('srsSummary').innerHTML = "<span>ไม่มีข้อมูลคำศัพท์ในตัวกรองนี้</span>";
+                document.getElementById('srsSummary').innerHTML = "<span>ไม่มีข้อมูลในตัวกรองนี้</span>";
                 return;
             }
 
@@ -3329,35 +5811,75 @@
             const card = filteredVocab[currentIndex];
             const cardKey = getCardKey(card);
             const status = srsData[cardKey] || 'new';
-
-            document.getElementById('wordJp').innerText = card.jp;
-            document.getElementById('wordExtraFront').innerText = card.extra;
-            document.getElementById('wordJpBack').innerText = card.jp + " (" + card.extra.split(" ")[0] + ")";
-            document.getElementById('wordExtra').innerText = card.extra;
-            document.getElementById('wordTh').innerText = card.th;
-            document.getElementById('levelBadge').innerText = card.level;
-            document.getElementById('levelBadgeBack').innerText = card.level;
-            
-            updateSrsBadgeDisplay(status, 'srsBadgeFront');
-            updateSrsBadgeDisplay(status, 'srsBadgeBack');
-
-            document.getElementById('srsActions').style.display = 'none';
-
+            document.querySelector('.flashcard-back').classList.toggle('rich-content', isGrammarCard(card));
             const exBox = document.getElementById('wordExampleBox');
-            if (card.example) {
+
+            if (isGrammarCard(card)) {
+                document.getElementById('wordJp').innerText = card.pattern;
+                document.getElementById('wordExtraFront').innerText = card.structure || "";
+                document.getElementById('wordJpBack').innerText = card.pattern;
+                document.getElementById('wordExtra').innerText = card.structure || "";
+                document.getElementById('wordTh').innerText = card.meaning;
+                document.getElementById('levelBadge').innerText = card.level;
+                document.getElementById('levelBadgeBack').innerText = card.level;
+
+                updateSrsBadgeDisplay(status, 'srsBadgeFront');
+                updateSrsBadgeDisplay(status, 'srsBadgeBack');
+                document.getElementById('srsActions').style.display = 'none';
+
                 exBox.style.display = 'block';
-                exBox.innerHTML = `
-                    <div class="example-box" onclick="speakExampleSentence(event)" title="คลิกเพื่อฟังเสียงประโยคตัวอย่าง">
+                const explanationHtml = (card.explanation || '').trim().split('\n').filter(Boolean)
+                    .map(line => `<div>${line}</div>`).join('');
+                const examplesHtml = (card.examples || []).map(ex => `
+                    <div class="example-box" onclick="playJapaneseAudio('${ex.jp.replace(/'/g, "\\'")}')" title="คลิกเพื่อฟังเสียง">
                         <div class="example-label-row">
-                            <span class="example-label">💡 ตัวอย่างประโยค</span>
-                            <span style="font-size: 0.65rem; color: var(--kinpaku-light);">🔊 ฟังเสียง</span>
+                            <span style="font-size:0.65rem; color: var(--kinpaku-light);">🔊 ฟังเสียง</span>
                         </div>
-                        <div class="ex-jp">${card.example.jp}</div>
-                        <div class="ex-th">${card.example.th}</div>
+                        <div class="ex-jp">${ex.jp}</div>
+                        <div class="ex-th">${ex.romaji || ''}</div>
+                        <div class="ex-th">${ex.th}</div>
+                    </div>`).join('');
+                const mistakesHtml = (card.mistakes || []).map(m => `<li>${m}</li>`).join('');
+                const relatedHtml = (card.related || []).map(r => `<span class="g-related-tag">${r}</span>`).join('');
+
+                exBox.innerHTML = `
+                    <div class="example-box" style="cursor:default;">
+                        <div class="example-label-row"><span class="example-label">📘 คำอธิบาย</span></div>
+                        <div class="g-explanation-text">${explanationHtml}</div>
                     </div>
+                    ${examplesHtml ? `<div class="example-label" style="margin:10px 0 6px;">✨ ตัวอย่างประโยค</div>${examplesHtml}` : ''}
+                    ${mistakesHtml ? `<div class="example-label" style="margin:10px 0 6px;">⚠️ ข้อควรระวัง</div><ul class="g-mistakes-list">${mistakesHtml}</ul>` : ''}
+                    ${relatedHtml ? `<div class="example-label" style="margin:10px 0 6px;">🔗 pattern ที่เกี่ยวข้อง</div><div class="g-related-tags">${relatedHtml}</div>` : ''}
                 `;
             } else {
-                exBox.style.display = 'none';
+                document.getElementById('wordJp').innerText = card.jp;
+                document.getElementById('wordExtraFront').innerText = card.extra;
+                document.getElementById('wordJpBack').innerText = card.jp + " (" + card.extra.split(" ")[0] + ")";
+                document.getElementById('wordExtra').innerText = card.extra;
+                document.getElementById('wordTh').innerText = card.th;
+                document.getElementById('levelBadge').innerText = card.level;
+                document.getElementById('levelBadgeBack').innerText = card.level;
+                
+                updateSrsBadgeDisplay(status, 'srsBadgeFront');
+                updateSrsBadgeDisplay(status, 'srsBadgeBack');
+
+                document.getElementById('srsActions').style.display = 'none';
+
+                if (card.example) {
+                    exBox.style.display = 'block';
+                    exBox.innerHTML = `
+                        <div class="example-box" onclick="speakExampleSentence(event)" title="คลิกเพื่อฟังเสียงประโยคตัวอย่าง">
+                            <div class="example-label-row">
+                                <span class="example-label">💡 ตัวอย่างประโยค</span>
+                                <span style="font-size: 0.65rem; color: var(--kinpaku-light);">🔊 ฟังเสียง</span>
+                            </div>
+                            <div class="ex-jp">${card.example.jp}</div>
+                            <div class="ex-th">${card.example.th}</div>
+                        </div>
+                    `;
+                } else {
+                    exBox.style.display = 'none';
+                }
             }
 
             document.getElementById('counter').innerText = `การ์ดที่ ${currentIndex + 1} / ${filteredVocab.length}`;
@@ -3422,12 +5944,28 @@
         function onFilterChange() {
             const checkboxes = document.querySelectorAll('.filter-chips input[type="checkbox"]');
             const selectedLevels = Array.from(checkboxes).filter(i => i.checked).map(i => i.value);
-            filteredVocab = vocabList.filter(v => selectedLevels.includes(v.level));
+            const sourceList = contentType === 'grammar' ? grammarList : vocabList;
+            filteredVocab = sourceList.filter(v => selectedLevels.includes(v.level));
             currentIndex = 0;
             if (currentMode === 'flashcard') updateCardDisplay();
             else if (currentMode === 'quiz') initQuiz();
             else if (currentMode === 'choice') initChoice();
             else if (currentMode === 'match') newMatchRound();
+        }
+
+        function setContentType(type) {
+            if (type === contentType) return;
+            if ((currentMode === 'kana' || currentMode === 'boss')) {
+                // โหมด Kana และ Boss Battle ใช้คำศัพท์เท่านั้น ไม่ต้องสลับเนื้อหาที่นี่
+            }
+            contentType = type;
+            document.querySelectorAll('.content-type-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.type === type);
+            });
+            currentQuizWord = null;
+            quizQueue = [];
+            choiceQueue = [];
+            onFilterChange();
         }
 
         function selectAllLevels() {
@@ -3444,8 +5982,10 @@
             if (filteredVocab.length === 0) return;
             const card = filteredVocab[currentIndex];
             const key = getCardKey(card);
+            const wasAlreadyMastered = srsData[key] === 'mastered';
             srsData[key] = known ? 'mastered' : 'reviewing';
             localStorage.setItem(storageKey('nihongo_srs_v2'), JSON.stringify(srsData));
+            if (known && !wasAlreadyMastered) awardExp(8, 'srs');
             nextCard();
         }
 
@@ -3482,6 +6022,7 @@
 
         function initQuiz() {
             document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount}  |  ผิด: ${quizWrongCount}`;
+            renderLeaderboard('quizLeaderboard', 'quiz');
             buildQuizQueue();
             loadQuizQuestion();
         }
@@ -3509,13 +6050,37 @@
 
             const idx = quizQueue[0];
             currentQuizWord = filteredVocab[idx];
-            document.getElementById('quizJp').innerText = currentQuizWord.jp;
-            document.getElementById('quizThHint').innerText = currentQuizWord.th;
-            document.getElementById('quizLevelBadge').innerText = currentQuizWord.level;
+            const word = currentQuizWord;
+            if (isGrammarCard(word)) {
+                document.getElementById('quizJp').innerText = word.structure || word.pattern;
+                document.getElementById('quizThHint').innerText = word.meaning;
+                input.placeholder = "พิมพ์ pattern เช่น は です";
+            } else {
+                document.getElementById('quizJp').innerText = word.jp;
+                document.getElementById('quizThHint').innerText = word.th;
+                input.placeholder = "พิมพ์คำตอบ: โรมันจิหรือฮิรางานะ";
+            }
+            document.getElementById('quizLevelBadge').innerText = word.level;
             input.focus();
         }
 
+        function extractPatternCore(patternStr) {
+            return patternStr.split('～').map(s => s.trim()).filter(Boolean).join(' ');
+        }
+
         function getAcceptedAnswers(word) {
+            if (isGrammarCard(word)) {
+                const core = extractPatternCore(word.pattern);
+                const answers = new Set();
+                if (core) {
+                    answers.add(core.toLowerCase());
+                    answers.add(core.replace(/\s+/g, '').toLowerCase());
+                }
+                answers.add(word.pattern.trim().toLowerCase());
+                answers.add(word.pattern.replace(/～/g, '').trim().toLowerCase());
+                answers.add(word.pattern.replace(/～/g, '').replace(/\s+/g, '').trim().toLowerCase());
+                return answers;
+            }
             const extra = word.extra || "";
             const match = extra.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
             let kanaPart = extra, romajiPart = "";
@@ -3548,15 +6113,22 @@
                 quizCorrectCount++;
                 feedback.innerText = "ถูกต้อง! 🎉";
                 feedback.className = "quiz-feedback correct";
+                awardExp(5, 'quiz');
+                registerQuestCorrectAnswer();
             } else {
                 quizWrongCount++;
                 testMissCount[key] = (testMissCount[key] || 0) + 1;
-                feedback.innerHTML = `ยังไม่ถูก ❌ เฉลย: <b>${word.extra}</b> = ${word.th}`;
+                if (isGrammarCard(word)) {
+                    feedback.innerHTML = `ยังไม่ถูก ❌ เฉลย: <b>${word.pattern}</b> = ${word.meaning}`;
+                } else {
+                    feedback.innerHTML = `ยังไม่ถูก ❌ เฉลย: <b>${word.extra}</b> = ${word.th}`;
+                }
                 feedback.className = "quiz-feedback wrong";
             }
-            playJapaneseAudio(word.jp);
+            playJapaneseAudio(cardAudioSample(word));
             document.getElementById('quizStats').innerText = `ถูก: ${quizCorrectCount}  |  ผิด: ${quizWrongCount}`;
             saveTestStats();
+            renderLeaderboard('quizLeaderboard', 'quiz');
 
             quizQueue.shift();
             if (!isCorrect) {
@@ -3591,6 +6163,7 @@
 
         function initChoice() {
             document.getElementById('choiceStats').innerText = `ถูก: ${choiceCorrectCount}  |  ผิด: ${choiceWrongCount}`;
+            renderLeaderboard('choiceLeaderboard', 'choice');
             buildChoiceQueue();
             loadChoiceQuestion();
         }
@@ -3615,24 +6188,27 @@
 
             const idx = choiceQueue[0];
             const word = filteredVocab[idx];
-            document.getElementById('choiceJp').innerText = word.jp;
+            document.getElementById('choiceJp').innerText = cardFront(word);
             document.getElementById('choiceLevelBadge').innerText = word.level;
 
-            const seenTh = new Set([word.th]);
-            let distractorPool = vocabList.filter(w => w.jp !== word.jp);
+            const wordBack = cardBack(word);
+            const seenBack = new Set([wordBack]);
+            const distractorSource = isGrammarCard(word) ? grammarList : vocabList;
+            let distractorPool = distractorSource.filter(w => cardFront(w) !== cardFront(word));
             for (let i = distractorPool.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [distractorPool[i], distractorPool[j]] = [distractorPool[j], distractorPool[i]];
             }
             const distractors = [];
             for (const w of distractorPool) {
-                if (seenTh.has(w.th)) continue;
-                seenTh.add(w.th);
-                distractors.push(w.th);
+                const wBack = cardBack(w);
+                if (seenBack.has(wBack)) continue;
+                seenBack.add(wBack);
+                distractors.push(wBack);
                 if (distractors.length === 3) break;
             }
 
-            const options = [word.th, ...distractors];
+            const options = [wordBack, ...distractors];
             for (let i = options.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [options[i], options[j]] = [options[j], options[i]];
@@ -3657,23 +6233,27 @@
             const allBtns = optionsEl.querySelectorAll('.choice-option');
             allBtns.forEach(b => { b.disabled = true; });
 
-            const isCorrect = (pickedTh === word.th);
+            const wordBack = cardBack(word);
+            const isCorrect = (pickedTh === wordBack);
             if (isCorrect) {
                 choiceCorrectCount++;
                 btnEl.classList.add('choice-correct');
                 feedback.innerText = "ถูกต้อง! ✅";
                 feedback.className = "quiz-feedback correct";
+                awardExp(5, 'quiz');
+                registerQuestCorrectAnswer();
             } else {
                 choiceWrongCount++;
                 testMissCount[getCardKey(word)] = (testMissCount[getCardKey(word)] || 0) + 1;
                 btnEl.classList.add('choice-wrong');
-                allBtns.forEach(b => { if (b.innerText === word.th) b.classList.add('choice-correct'); });
-                feedback.innerHTML = `ผิด ❌ เฉลย: <b>${word.th}</b>`;
+                allBtns.forEach(b => { if (b.innerText === wordBack) b.classList.add('choice-correct'); });
+                feedback.innerHTML = `ผิด ❌ เฉลย: <b>${wordBack}</b>`;
                 feedback.className = "quiz-feedback wrong";
             }
-            playJapaneseAudio(word.jp);
+            playJapaneseAudio(cardAudioSample(word));
             document.getElementById('choiceStats').innerText = `ถูก: ${choiceCorrectCount}  |  ผิด: ${choiceWrongCount}`;
             saveTestStats();
+            renderLeaderboard('choiceLeaderboard', 'choice');
 
             choiceQueue.shift();
             if (!isCorrect) {
@@ -3707,6 +6287,8 @@
             matchSelectedJp = null;
             matchSelectedTh = null;
             matchMatchedCount = 0;
+            renderLeaderboard('matchLeaderboard', 'match');
+            updateMatchStatsDisplay();
 
             if (filteredVocab.length === 0) {
                 matchPairs = [];
@@ -3724,13 +6306,14 @@
             const seenTh = new Set();
             const chosen = [];
             for (const w of pool) {
-                if (seenTh.has(w.th)) continue;
-                seenTh.add(w.th);
+                const wBack = cardBack(w);
+                if (seenTh.has(wBack)) continue;
+                seenTh.add(wBack);
                 chosen.push(w);
                 if (chosen.length === n) break;
             }
 
-            matchPairs = chosen.map((w, i) => ({ id: i, jp: w.jp, th: w.th }));
+            matchPairs = chosen.map((w, i) => ({ id: i, jp: cardFront(w), th: cardBack(w), audio: cardAudioSample(w) }));
             document.getElementById('matchProgress').innerText = `จับคู่แล้ว 0 / ${matchPairs.length}`;
 
             const jpShuffled = [...matchPairs];
@@ -3780,6 +6363,11 @@
             if (matchSelectedJp && matchSelectedTh) checkMatchPair();
         }
 
+        function updateMatchStatsDisplay() {
+            const el = document.getElementById('matchStats');
+            if (el) el.innerText = `คะแนนสุทธิ (ถูก - ผิด): ${Math.max(0, matchCorrectCount - matchWrongCount)}  (ถูก: ${matchCorrectCount} | ผิด: ${matchWrongCount})`;
+        }
+
         function checkMatchPair() {
             const feedback = document.getElementById('matchFeedback');
             const jpSel = matchSelectedJp;
@@ -3792,10 +6380,15 @@
                 jpSel.el.classList.add('matched');
                 thSel.el.classList.add('matched');
                 matchMatchedCount++;
+                matchCorrectCount++;
                 feedback.innerText = "ถูกต้อง! ✅";
                 feedback.className = "match-feedback correct";
-                if (pair) playJapaneseAudio(pair.jp);
+                awardExp(4, 'match');
+                if (pair) playJapaneseAudio(pair.audio || pair.jp);
                 document.getElementById('matchProgress').innerText = `จับคู่แล้ว ${matchMatchedCount} / ${matchPairs.length}`;
+                saveTestStats();
+                renderLeaderboard('matchLeaderboard', 'match');
+                updateMatchStatsDisplay();
                 matchSelectedJp = null;
                 matchSelectedTh = null;
 
@@ -3812,6 +6405,10 @@
                     jpElRef.classList.remove('selected', 'wrong-flash');
                     thElRef.classList.remove('selected', 'wrong-flash');
                 }, 400);
+                matchWrongCount++;
+                saveTestStats();
+                renderLeaderboard('matchLeaderboard', 'match');
+                updateMatchStatsDisplay();
                 matchSelectedJp = null;
                 matchSelectedTh = null;
             }
@@ -3975,13 +6572,139 @@
         }
         let gachaState = { coins: 0, collection: {}, team: [], bossesDefeated: [] }; // ค่าเริ่มต้น จะถูกโหลดใหม่ตาม username หลัง login
 
+        // ===== 🎮 Avatar / EXP / Level / Class / Streak System =====
+        const CLASS_DEFS = {
+            samurai: { emoji: '🗡️', title: '侍 Samurai', desc: 'สายบู๊ เน้นการต่อสู้ — EXP จาก Boss Battle +20%', bonusModes: ['boss'] },
+            ninja:   { emoji: '🥷', title: '忍者 Ninja',   desc: 'สายเร็ว เน้นไหวพริบ — EXP จากฝึกตัวอักษร (あいう) +20%', bonusModes: ['kana'] },
+            scholar: { emoji: '📖', title: '学者 Scholar', desc: 'สายปัญญา เน้นจำศัพท์ — EXP จากทดสอบ/จับคู่/ท่องจำ +20%', bonusModes: ['quiz', 'match', 'srs'] }
+        };
 
-        function awardGachaCoins(n) {
+        function avatarKey() { return storageKey('nihongo_avatar_v1'); }
+
+        function loadAvatarState() {
+            try {
+                const raw = localStorage.getItem(avatarKey());
+                if (raw) return Object.assign({ exp: 0, classKey: 'samurai', streak: 0, lastActiveDate: '' }, JSON.parse(raw));
+            } catch (e) { /* corrupted/blocked storage - start fresh */ }
+            return { exp: 0, classKey: 'samurai', streak: 0, lastActiveDate: '' };
+        }
+        function saveAvatarState() {
+            try { localStorage.setItem(avatarKey(), JSON.stringify(avatarState)); } catch (e) { /* storage unavailable */ }
+        }
+        let avatarState = { exp: 0, classKey: 'samurai', streak: 0, lastActiveDate: '' };
+
+        // สูตรเลเวล: ค่อยๆ ต้องการ EXP มากขึ้นทุกเลเวล (โค้งขึ้นแบบ RPG ทั่วไป)
+        function getLevelInfo(exp) {
+            let level = 1, remaining = exp, needed = 100;
+            while (remaining >= needed) {
+                remaining -= needed;
+                level++;
+                needed = Math.round(100 * Math.pow(level, 1.15));
+            }
+            return { level, currentExp: remaining, neededExp: needed };
+        }
+
+        function showExpToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'exp-toast';
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2300);
+        }
+
+        function awardExp(baseAmount, modeKey) {
+            if (!baseAmount) return;
+            const cls = CLASS_DEFS[avatarState.classKey] || CLASS_DEFS.samurai;
+            const bonus = (modeKey && cls.bonusModes.includes(modeKey)) ? 1.2 : 1;
+            const amount = Math.round(baseAmount * bonus);
+
+            const before = getLevelInfo(avatarState.exp).level;
+            avatarState.exp += amount;
+            const after = getLevelInfo(avatarState.exp).level;
+            saveAvatarState();
+            renderAvatarWidget();
+
+            if (after > before) {
+                showExpToast(`🎉 เลเวลอัพ! ตอนนี้คุณคือ Lv.${after} แล้ว`);
+            }
+        }
+
+        function updateStreak() {
+            const today = new Date().toISOString().slice(0, 10);
+            if (avatarState.lastActiveDate === today) return; // เข้ามาแล้ววันนี้
+            const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+            avatarState.streak = (avatarState.lastActiveDate === yesterday) ? (avatarState.streak + 1) : 1;
+            avatarState.lastActiveDate = today;
+            saveAvatarState();
+        }
+
+        function renderAvatarWidget() {
+            const info = getLevelInfo(avatarState.exp);
+            const cls = CLASS_DEFS[avatarState.classKey] || CLASS_DEFS.samurai;
+            const pct = Math.min(100, Math.round((info.currentExp / info.neededExp) * 100));
+
+            const emojiEl = document.getElementById('avatarEmoji');
+            const lvlEl = document.getElementById('avatarLevelLabel');
+            const streakEl = document.getElementById('avatarStreakLabel');
+            const barEl = document.getElementById('avatarExpBar');
+            if (emojiEl) emojiEl.innerText = cls.emoji;
+            if (lvlEl) lvlEl.innerText = `Lv.${info.level}`;
+            if (streakEl) streakEl.innerText = `🔥${avatarState.streak}`;
+            if (barEl) barEl.style.width = pct + '%';
+
+            const statLevel = document.getElementById('avatarStatLevel');
+            const statExp = document.getElementById('avatarStatExp');
+            const statStreak = document.getElementById('avatarStatStreak');
+            const modalTitle = document.getElementById('avatarModalTitle');
+            if (statLevel) statLevel.innerText = info.level;
+            if (statExp) statExp.innerText = avatarState.exp;
+            if (statStreak) statStreak.innerText = avatarState.streak;
+            if (modalTitle) modalTitle.innerText = `${cls.emoji} ${cls.title} — Lv.${info.level}`;
+        }
+
+        function renderClassOptions() {
+            const grid = document.getElementById('classOptionGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            Object.keys(CLASS_DEFS).forEach(key => {
+                const cls = CLASS_DEFS[key];
+                const div = document.createElement('div');
+                div.className = 'class-option' + (avatarState.classKey === key ? ' selected' : '');
+                div.onclick = () => selectAvatarClass(key);
+                div.innerHTML = `<div class="class-emoji">${cls.emoji}</div>
+                    <div class="class-text">
+                        <div class="class-title">${cls.title}</div>
+                        <div class="class-desc">${cls.desc}</div>
+                    </div>
+                    ${avatarState.classKey === key ? '<div style="color:var(--kinpaku); font-weight:700;">✓</div>' : ''}`;
+                grid.appendChild(div);
+            });
+        }
+
+        function selectAvatarClass(key) {
+            if (!CLASS_DEFS[key]) return;
+            avatarState.classKey = key;
+            saveAvatarState();
+            renderAvatarWidget();
+            renderClassOptions();
+        }
+
+        function openAvatarModal() {
+            renderClassOptions();
+            renderAvatarWidget();
+            document.getElementById('avatarModalOverlay').classList.add('open');
+        }
+        function closeAvatarModal() {
+            document.getElementById('avatarModalOverlay').classList.remove('open');
+        }
+
+        function awardGachaCoins(n, modeKey = null) {
             if (!n) return;
             gachaState.coins += n;
             saveGachaState();
             const el = document.getElementById('gachaCoinCount');
             if (el) el.innerText = gachaState.coins;
+            awardExp(n * 4, modeKey);
         }
 
         // Called after correct answers / good stroke scores to raise a character's mastery (0-100)
@@ -4461,7 +7184,7 @@
             gachaState.bossesDefeated = gachaState.bossesDefeated || [];
             if (!gachaState.bossesDefeated.includes(boss.id)) gachaState.bossesDefeated.push(boss.id);
             saveGachaState();
-            awardGachaCoins(boss.reward);
+            awardGachaCoins(boss.reward, 'boss');
 
             document.getElementById('bossBattleView').style.display = 'none';
             document.getElementById('bossResultView').style.display = 'block';
@@ -4549,7 +7272,7 @@
                 speedScoreVal++;
                 document.getElementById('speedScore').innerText = `คะแนน: ${speedScoreVal}`;
                 playJapaneseAudio(currentSpeedKana.char);
-                awardGachaCoins(2);
+                awardGachaCoins(2, 'kana');
                 bumpMastery(currentSpeedKana.char, 3);
                 nextSpeedQuestion();
             }
@@ -4610,7 +7333,7 @@
                 btnEl.classList.add('choice-correct');
                 feedback.innerText = "ถูกต้อง! เสียงนี้แหละใช่เลย 🎉";
                 feedback.className = "quiz-feedback correct";
-                awardGachaCoins(3);
+                awardGachaCoins(3, 'kana');
                 bumpMastery(correct.char, 3);
             } else {
                 btnEl.classList.add('choice-wrong');
@@ -4622,6 +7345,646 @@
             }
 
             setTimeout(loadListeningQuestion, 2000);
+        }
+
+        // ===== 🧭 AI Roadmap: ภาพรวม / จุดอ่อน / ภารกิจประจำวัน =====
+        let questActive = false;
+        let dailyQuest = { date: '', keys: [], progress: 0, completed: false };
+        let preQuestFilteredVocab = null;
+
+        function todayStr() { return new Date().toISOString().slice(0, 10); }
+
+        function computeOverviewCounts() {
+            let mastered = 0, reviewing = 0;
+            const uniqueVocab = Array.from(getVocabByKeyMap().values());
+            uniqueVocab.forEach(v => {
+                const st = srsData[getCardKey(v)];
+                if (st === 'mastered') mastered++;
+                else if (st === 'reviewing') reviewing++;
+            });
+            const total = uniqueVocab.length;
+            const fresh = total - mastered - reviewing;
+            return { total, mastered, reviewing, fresh };
+        }
+
+        function computeWeakWords(limit = 8) {
+            const uniqueVocab = Array.from(getVocabByKeyMap().values());
+            return uniqueVocab
+                .filter(v => (testMissCount[getCardKey(v)] || 0) > 0 && srsData[getCardKey(v)] !== 'mastered')
+                .sort((a, b) => (testMissCount[getCardKey(b)] || 0) - (testMissCount[getCardKey(a)] || 0))
+                .slice(0, limit);
+        }
+
+        function renderRoadmapOverview() {
+            const c = computeOverviewCounts();
+            const grid = document.getElementById('roadmapOverviewGrid');
+            grid.innerHTML = `
+                <div class="roadmap-stat"><div class="num">${c.total}</div><div class="lbl">รายการทั้งหมด (ศัพท์+ไวยากรณ์)</div></div>
+                <div class="roadmap-stat"><div class="num">${c.mastered}</div><div class="lbl">จำได้แล้ว</div></div>
+                <div class="roadmap-stat"><div class="num">${c.reviewing}</div><div class="lbl">กำลังทบทวน</div></div>
+                <div class="roadmap-stat"><div class="num">${c.fresh}</div><div class="lbl">ยังไม่เรียน</div></div>`;
+            const bar = document.getElementById('roadmapProgressBar');
+            const pct = n => c.total ? (n / c.total * 100) : 0;
+            bar.innerHTML = `
+                <div class="roadmap-progress-seg mastered" style="width:${pct(c.mastered)}%;"></div>
+                <div class="roadmap-progress-seg reviewing" style="width:${pct(c.reviewing)}%;"></div>
+                <div class="roadmap-progress-seg new" style="width:${pct(c.fresh)}%;"></div>`;
+        }
+
+        function renderWeakWords() {
+            const list = document.getElementById('weakWordList');
+            const weak = computeWeakWords();
+            if (weak.length === 0) {
+                list.innerHTML = '<div class="roadmap-empty-note">ยังไม่พบจุดอ่อนชัดเจน ลองทำแบบทดสอบ (ทดสอบ/เลือกคำตอบ) เพิ่มเติมเพื่อให้ระบบวิเคราะห์ได้แม่นยำขึ้นนะครับ 🌸</div>';
+                return;
+            }
+            list.innerHTML = weak.map(v => `
+                <div class="weak-word-chip">
+                    <div class="wc-jp">${cardFront(v)}${isGrammarCard(v) ? ' <span style="font-size:0.6em;">📐</span>' : ''}</div>
+                    <div class="wc-th">${cardBack(v)}</div>
+                    <div class="wc-miss">พลาด ${testMissCount[getCardKey(v)]} ครั้ง</div>
+                </div>`).join('');
+        }
+
+        function buildOrLoadDailyQuest() {
+            const qKey = storageKey('nihongo_quest_v1');
+            try {
+                const saved = JSON.parse(localStorage.getItem(qKey));
+                if (saved && saved.date === todayStr()) { dailyQuest = saved; return; }
+            } catch (e) { /* start fresh */ }
+
+            const weak = computeWeakWords(6);
+            const weakKeys = new Set(weak.map(getCardKey));
+            const checkboxes = document.querySelectorAll('.filter-chips input[type="checkbox"]');
+            const selectedLevels = Array.from(checkboxes).filter(i => i.checked).map(i => i.value);
+            const uniqueVocab = Array.from(getVocabByKeyMap().values());
+            const pool = uniqueVocab.filter(v => selectedLevels.includes(v.level) && !srsData[getCardKey(v)] && !weakKeys.has(getCardKey(v)));
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            const filler = pool.slice(0, Math.max(0, 10 - weak.length));
+            const questWords = [...weak, ...filler];
+
+            dailyQuest = { date: todayStr(), keys: questWords.map(getCardKey), progress: 0, completed: false };
+            saveDailyQuest();
+        }
+
+        function saveDailyQuest() {
+            try { localStorage.setItem(storageKey('nihongo_quest_v1'), JSON.stringify(dailyQuest)); } catch (e) {}
+        }
+
+        function getQuestWords() {
+            const map = getVocabByKeyMap();
+            return dailyQuest.keys.map(k => map.get(k)).filter(Boolean);
+        }
+
+        function renderDailyQuest() {
+            buildOrLoadDailyQuest();
+            const words = getQuestWords();
+            const preview = words.slice(0, 3).map(w => cardFront(w)).join('、');
+            const more = words.length > 3 ? ` และอีก ${words.length - 3} คำ` : '';
+            document.getElementById('questDesc').innerText = words.length
+                ? `วันนี้ฝึก ${words.length} คำ เน้นจุดที่คุณพลาดบ่อยและคำใหม่ที่ยังไม่เคยเรียน: ${preview}${more}`
+                : 'ยอดเยี่ยม! ตอนนี้ไม่มีคำใหม่หรือจุดอ่อนให้ฝึกเพิ่มในตัวกรองที่เลือกไว้ครับ 🎉';
+
+            const total = dailyQuest.keys.length || 1;
+            const pct = Math.min(100, Math.round((dailyQuest.progress / total) * 100));
+            document.getElementById('questProgressFill').style.width = pct + '%';
+            document.getElementById('questProgressLabel').innerText = `${Math.min(dailyQuest.progress, total)}/${total}`;
+
+            const btn = document.getElementById('questStartBtn');
+            const badge = document.getElementById('questDoneBadge');
+            if (dailyQuest.completed || words.length === 0) {
+                btn.style.display = 'none';
+                badge.style.display = dailyQuest.completed ? 'inline' : 'none';
+            } else {
+                btn.style.display = 'inline-block';
+                badge.style.display = 'none';
+            }
+        }
+
+        function startDailyQuest() {
+            const words = getQuestWords();
+            if (words.length === 0) return;
+            preQuestFilteredVocab = filteredVocab;
+            filteredVocab = words;
+            questActive = true;
+            setMode('quiz');
+        }
+
+        function registerQuestCorrectAnswer() {
+            if (!questActive || dailyQuest.completed) return;
+            dailyQuest.progress++;
+            if (dailyQuest.progress >= dailyQuest.keys.length) {
+                dailyQuest.completed = true;
+                questActive = false;
+                awardExp(20, 'quest');
+                showExpToast('🎯 ภารกิจประจำวันสำเร็จ! ได้รับ EXP โบนัส');
+                if (preQuestFilteredVocab) { filteredVocab = preQuestFilteredVocab; preQuestFilteredVocab = null; }
+                else { onFilterChange(); }
+            }
+            saveDailyQuest();
+        }
+
+        function renderRoadmap() {
+            renderRoadmapOverview();
+            renderWeakWords();
+            renderDailyQuest();
+        }
+
+        // ===== 🎧 Listening Comprehension: ฟังบทสนทนาแล้วตอบคำถาม =====
+        let listenQueue = [];
+        let currentListenIndex = 0;
+        let currentListenQIndex = 0;
+        let listenCorrectCount = 0;
+        let listenWrongCount = 0;
+
+        function playDialogueLines(lines) {
+            if (!('speechSynthesis' in window) || !lines || lines.length === 0) return;
+            window.speechSynthesis.cancel();
+            const voice = jaVoices.find(v => v.voiceURI === selectedJaVoiceURI) || jaVoices[0];
+            lines.forEach(line => {
+                const utter = new SpeechSynthesisUtterance(line.jp);
+                utter.lang = 'ja-JP';
+                utter.rate = 0.85;
+                utter.pitch = 1.0;
+                if (voice) utter.voice = voice;
+                window.speechSynthesis.speak(utter);
+            });
+            window.speechSynthesis.resume();
+        }
+
+        function playCurrentDialogue() {
+            const dlg = listenQueue[currentListenIndex];
+            if (dlg) playDialogueLines(dlg.lines);
+        }
+
+        function toggleListenTranscript() {
+            document.getElementById('listenTranscript').classList.toggle('show');
+        }
+
+        function initListening() {
+            const checkboxes = document.querySelectorAll('.filter-chips input[type="checkbox"]');
+            const selectedLevels = Array.from(checkboxes).filter(i => i.checked).map(i => i.value);
+            listenQueue = listeningList.filter(d => selectedLevels.includes(d.level));
+            currentListenIndex = 0;
+            document.getElementById('listenStats').innerText = `ถูก: ${listenCorrectCount} | ผิด: ${listenWrongCount}`;
+            renderLeaderboard('listenLeaderboard', 'listen');
+            loadCurrentDialogue();
+        }
+
+        function loadCurrentDialogue() {
+            const transcript = document.getElementById('listenTranscript');
+            transcript.classList.remove('show');
+            if (listenQueue.length === 0) {
+                document.getElementById('listenTitle').innerText = 'ไม่พบบทสนทนาในเลเวลที่เลือก';
+                document.getElementById('listenProgressLabel').innerText = '0/0';
+                document.getElementById('listenQuestionBox').innerHTML = '';
+                transcript.innerHTML = '';
+                return;
+            }
+            const dlg = listenQueue[currentListenIndex];
+            currentListenQIndex = 0;
+            document.getElementById('listenTitle').innerText = `[${dlg.level}] ${dlg.title}`;
+            document.getElementById('listenProgressLabel').innerText = `บทที่ ${currentListenIndex + 1}/${listenQueue.length}`;
+            transcript.innerHTML = dlg.lines.map(l => `
+                <div class="listen-line">
+                    <div class="ll-speaker">${l.speaker}</div>
+                    <div class="ll-jp">${l.jp}</div>
+                    <div class="ll-th">${l.th}</div>
+                </div>`).join('');
+            loadListenQuestion();
+        }
+
+        function loadListenQuestion() {
+            const dlg = listenQueue[currentListenIndex];
+            const qBox = document.getElementById('listenQuestionBox');
+            if (!dlg || currentListenQIndex >= dlg.questions.length) {
+                qBox.innerHTML = `<div class="listen-q-text">🎉 ฟังจบบทนี้แล้ว! ${currentListenIndex < listenQueue.length - 1 ? 'ไปบทถัดไปกันเลย' : 'ครบทุกบทแล้ว เก่งมาก!'}</div>
+                    ${currentListenIndex < listenQueue.length - 1 ? '<button class="btn-submit" onclick="goToNextDialogue()">บทถัดไป ➡</button>' : ''}`;
+                return;
+            }
+            const q = dlg.questions[currentListenQIndex];
+            qBox.innerHTML = `
+                <div class="listen-q-text">${q.q}</div>
+                <div class="choice-options" id="listenChoiceOptions"></div>
+                <div class="quiz-feedback" id="listenFeedback"></div>`;
+            const optionsEl = document.getElementById('listenChoiceOptions');
+            q.choices.forEach((choice, i) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'choice-option';
+                btn.innerText = choice;
+                btn.onclick = () => selectListenAnswer(i, q, btn);
+                optionsEl.appendChild(btn);
+            });
+        }
+
+        function selectListenAnswer(pickedIndex, q, btnEl) {
+            const optionsEl = document.getElementById('listenChoiceOptions');
+            const feedback = document.getElementById('listenFeedback');
+            optionsEl.querySelectorAll('.choice-option').forEach(b => { b.disabled = true; });
+
+            const isCorrect = pickedIndex === q.answerIndex;
+            if (isCorrect) {
+                listenCorrectCount++;
+                btnEl.classList.add('choice-correct');
+                feedback.innerText = "ถูกต้อง! ✅";
+                feedback.className = "quiz-feedback correct";
+                awardExp(6, 'listen');
+            } else {
+                listenWrongCount++;
+                btnEl.classList.add('choice-wrong');
+                optionsEl.querySelectorAll('.choice-option').forEach(b => { if (b.innerText === q.choices[q.answerIndex]) b.classList.add('choice-correct'); });
+                feedback.innerText = "ยังไม่ถูก ❌";
+                feedback.className = "quiz-feedback wrong";
+            }
+            document.getElementById('listenStats').innerText = `ถูก: ${listenCorrectCount} | ผิด: ${listenWrongCount}`;
+            saveTestStats();
+            renderLeaderboard('listenLeaderboard', 'listen');
+
+            setTimeout(() => {
+                currentListenQIndex++;
+                loadListenQuestion();
+            }, 1100);
+        }
+
+        function goToNextDialogue() {
+            if (currentListenIndex < listenQueue.length - 1) {
+                currentListenIndex++;
+                loadCurrentDialogue();
+            }
+        }
+
+        // ===== 🎤 Speaking / Pronunciation Practice: พูดตามแล้วให้คะแนนการออกเสียง =====
+        let speakPool = [];
+        let currentSpeakIndex = 0;
+        let speakCorrectCount = 0;
+        let speakWrongCount = 0;
+        let speakRecognitionActive = null;
+
+        function normalizeForSpeech(text) {
+            return (text || '').replace(/[\s、。！？~～・「」『』]/g, '').toLowerCase();
+        }
+
+        // เทียบความคล้ายของสองข้อความแบบง่าย (สัดส่วนตัวอักษรที่ตรงกันตามตำแหน่ง + ความยาวใกล้เคียง)
+        function textSimilarity(a, b) {
+            if (!a || !b) return 0;
+            if (a === b) return 1;
+            const longer = a.length > b.length ? a : b;
+            const shorter = a.length > b.length ? b : a;
+            if (longer.length === 0) return 1;
+            let matches = 0;
+            for (let i = 0; i < shorter.length; i++) {
+                if (longer.includes(shorter[i])) matches++;
+            }
+            const lengthPenalty = shorter.length / longer.length;
+            return (matches / longer.length) * 0.6 + lengthPenalty * 0.4;
+        }
+
+        function initSpeakPractice() {
+            speakPool = filteredVocab.length > 0 ? filteredVocab : [];
+            currentSpeakIndex = 0;
+            speakCorrectCount = 0;
+            speakWrongCount = 0;
+            document.getElementById('speakStats').innerText = `ถูก: 0 | ผิด: 0`;
+            renderSpeakTarget();
+        }
+
+        function renderSpeakTarget() {
+            const feedback = document.getElementById('speakFeedback');
+            const heard = document.getElementById('speakHeardText');
+            feedback.innerText = '';
+            feedback.className = 'speak-feedback';
+            heard.innerText = '';
+
+            if (speakPool.length === 0) {
+                document.getElementById('speakTargetJp').innerText = '❌';
+                document.getElementById('speakTargetReading').innerText = 'ไม่พบข้อมูลในตัวกรองนี้';
+                document.getElementById('speakTargetTh').innerText = '';
+                return;
+            }
+            const card = speakPool[currentSpeakIndex];
+            document.getElementById('speakLevelBadge').innerText = card.level;
+            document.getElementById('speakTargetJp').innerText = cardFront(card);
+            document.getElementById('speakTargetReading').innerText = cardHint(card) || '';
+            document.getElementById('speakTargetTh').innerText = cardBack(card);
+        }
+
+        function playCurrentSpeakTarget() {
+            if (speakPool.length === 0) return;
+            playJapaneseAudio(cardAudioSample(speakPool[currentSpeakIndex]));
+        }
+
+        function navigateSpeakPractice(dir) {
+            if (speakPool.length === 0) return;
+            currentSpeakIndex = (currentSpeakIndex + dir + speakPool.length) % speakPool.length;
+            renderSpeakTarget();
+        }
+
+        function startSpeakRecognition() {
+            if (speakPool.length === 0) return;
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const micBtn = document.getElementById('speakMicBtn');
+            const feedback = document.getElementById('speakFeedback');
+            const heard = document.getElementById('speakHeardText');
+            if (!SR) {
+                feedback.innerText = 'เบราว์เซอร์นี้ไม่รองรับการพูด ลองใช้ Chrome บนคอมพิวเตอร์หรือ Android แทนนะครับ';
+                feedback.className = 'speak-feedback bad';
+                return;
+            }
+            const card = speakPool[currentSpeakIndex];
+            const targetText = cardFront(card);
+            const recognition = new SR();
+            speakRecognitionActive = recognition;
+            recognition.lang = 'ja-JP';
+            recognition.maxAlternatives = 3;
+            micBtn.classList.add('listening');
+            feedback.innerText = '🎙️ กำลังฟัง... พูดตามได้เลย';
+            feedback.className = 'speak-feedback';
+
+            recognition.onresult = (e) => {
+                const alts = Array.from(e.results[0]).map(r => r.transcript.trim());
+                const normTarget = normalizeForSpeech(targetText);
+                let bestScore = 0;
+                let bestAlt = alts[0] || '';
+                alts.forEach(alt => {
+                    const score = textSimilarity(normalizeForSpeech(alt), normTarget);
+                    if (score > bestScore) { bestScore = score; bestAlt = alt; }
+                });
+                heard.innerText = `ได้ยิน: "${bestAlt}"`;
+
+                if (bestScore >= 0.85) {
+                    speakCorrectCount++;
+                    feedback.innerText = '🎉 ออกเสียงถูกต้อง เยี่ยมมาก!';
+                    feedback.className = 'speak-feedback good';
+                    awardExp(5, 'speak');
+                } else if (bestScore >= 0.5) {
+                    speakWrongCount++;
+                    feedback.innerText = '👍 ใกล้เคียงแล้ว ลองออกเสียงให้ชัดขึ้นอีกนิด';
+                    feedback.className = 'speak-feedback close';
+                } else {
+                    speakWrongCount++;
+                    feedback.innerText = '🔁 ยังไม่ตรง ลองฟังตัวอย่างแล้วพูดตามอีกครั้ง';
+                    feedback.className = 'speak-feedback bad';
+                }
+                document.getElementById('speakStats').innerText = `ถูก: ${speakCorrectCount} | ผิด: ${speakWrongCount}`;
+            };
+            recognition.onerror = () => {
+                feedback.innerText = 'ไม่ได้ยินเสียงชัดเจน ลองกดไมค์แล้วพูดใหม่อีกครั้ง';
+                feedback.className = 'speak-feedback bad';
+            };
+            recognition.onend = () => { micBtn.classList.remove('listening'); };
+            recognition.start();
+        }
+
+        // ===== 📝 JLPT Mock Exam: จำลองข้อสอบจริง 3 พาร์ท (คำศัพท์/ไวยากรณ์/ฟัง) จับเวลา พร้อมสรุปผล =====
+        let examLevel = 'N5';
+        let mockExamState = null; // { questions, currentIndex, answers, selectedOption, timeLeftSec, timerHandle }
+        const EXAM_TIME_LIMIT_SEC = 900; // 15 นาที
+        const EXAM_PASS_THRESHOLD = 0.6; // ผ่านเมื่อคะแนนรวม >= 60%
+
+        function selectExamLevel(level) {
+            examLevel = level;
+            document.querySelectorAll('.exam-level-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.level === level);
+            });
+            renderExamBestScore();
+        }
+
+        function getExamStats() {
+            try { return JSON.parse(localStorage.getItem(storageKey('nihongo_test_stats_v1'))) || {}; } catch (e) { return {}; }
+        }
+
+        function renderExamBestScore() {
+            const stats = getExamStats();
+            const field = 'examBest' + examLevel;
+            const best = stats[field];
+            const el = document.getElementById('examBestScore');
+            el.innerText = best ? `คะแนนที่ดีที่สุดของคุณ (${examLevel}): ${best}%` : `ยังไม่เคยทำข้อสอบระดับ ${examLevel} มาก่อน`;
+        }
+
+        function initMockExamView() {
+            if (mockExamState && mockExamState.timerHandle) clearInterval(mockExamState.timerHandle);
+            mockExamState = null;
+            document.getElementById('examIntroView').style.display = 'block';
+            document.getElementById('examRunningView').style.display = 'none';
+            document.getElementById('examResultView').style.display = 'none';
+            renderExamBestScore();
+        }
+
+        function backToExamIntro() {
+            initMockExamView();
+        }
+
+        function shuffleArr(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function buildExamOptions(correctText, pool, excludeText) {
+            const seen = new Set([correctText]);
+            let distractorPool = shuffleArr(pool.filter(t => t !== excludeText));
+            const distractors = [];
+            for (const t of distractorPool) {
+                if (seen.has(t)) continue;
+                seen.add(t);
+                distractors.push(t);
+                if (distractors.length === 3) break;
+            }
+            const options = shuffleArr([correctText, ...distractors]);
+            return { options, correctIndex: options.indexOf(correctText) };
+        }
+
+        function buildMockExamQuestions(level) {
+            const questions = [];
+
+            // พาร์ท 1: 文字・語彙 (คำศัพท์) — 8 ข้อ
+            const vocabPool = Array.from(getVocabByKeyMap().values()).filter(v => !isGrammarCard(v) && v.level === level);
+            const vocabPicks = shuffleArr(vocabPool).slice(0, 8);
+            const vocabBackPool = vocabPool.map(v => v.th);
+            vocabPicks.forEach(card => {
+                const { options, correctIndex } = buildExamOptions(card.th, vocabBackPool, card.th);
+                questions.push({ section: 'vocab', sectionLabel: '文字・語彙 (คำศัพท์)', prompt: card.jp, hint: '', options, correctIndex, isListening: false });
+            });
+
+            // พาร์ท 2: 文法 (ไวยากรณ์) — 8 ข้อ
+            const grammarPool = grammarList.filter(g => g.level === level);
+            const grammarPicks = shuffleArr(grammarPool).slice(0, 8);
+            const grammarBackPool = grammarPool.map(g => g.meaning);
+            grammarPicks.forEach(card => {
+                const { options, correctIndex } = buildExamOptions(card.meaning, grammarBackPool, card.meaning);
+                questions.push({ section: 'grammar', sectionLabel: '文法 (ไวยากรณ์)', prompt: card.pattern, hint: card.structure || '', options, correctIndex, isListening: false });
+            });
+
+            // พาร์ท 3: 聴解 (ฟัง) — ทุกคำถามจากบทสนทนาระดับนี้
+            const dialogues = listeningList.filter(d => d.level === level);
+            dialogues.forEach(dlg => {
+                dlg.questions.forEach(q => {
+                    questions.push({
+                        section: 'listen', sectionLabel: '聴解 (ฟัง)', prompt: q.q, hint: '',
+                        options: q.choices, correctIndex: q.answerIndex, isListening: true, dialogue: dlg
+                    });
+                });
+            });
+
+            return questions;
+        }
+
+        function startMockExam() {
+            const questions = buildMockExamQuestions(examLevel);
+            if (questions.length === 0) {
+                alert('ยังไม่มีข้อมูลเพียงพอสำหรับระดับนี้ครับ');
+                return;
+            }
+            mockExamState = {
+                questions,
+                currentIndex: 0,
+                answers: new Array(questions.length).fill(null),
+                selectedOption: null,
+                timeLeftSec: EXAM_TIME_LIMIT_SEC,
+                timerHandle: null
+            };
+            document.getElementById('examIntroView').style.display = 'none';
+            document.getElementById('examResultView').style.display = 'none';
+            document.getElementById('examRunningView').style.display = 'flex';
+            startExamTimer();
+            loadExamQuestion();
+        }
+
+        function startExamTimer() {
+            updateExamTimerDisplay();
+            mockExamState.timerHandle = setInterval(() => {
+                mockExamState.timeLeftSec--;
+                updateExamTimerDisplay();
+                if (mockExamState.timeLeftSec <= 0) {
+                    clearInterval(mockExamState.timerHandle);
+                    finishExam();
+                }
+            }, 1000);
+        }
+
+        function updateExamTimerDisplay() {
+            const t = mockExamState.timeLeftSec;
+            const m = Math.floor(t / 60);
+            const s = t % 60;
+            const el = document.getElementById('examTimer');
+            el.innerText = `${m}:${s.toString().padStart(2, '0')}`;
+            el.classList.toggle('low-time', t <= 60);
+        }
+
+        function loadExamQuestion() {
+            const st = mockExamState;
+            const q = st.questions[st.currentIndex];
+            st.selectedOption = st.answers[st.currentIndex];
+
+            document.getElementById('examSectionLabel').innerText = q.sectionLabel;
+            document.getElementById('examQNumber').innerText = `ข้อ ${st.currentIndex + 1} / ${st.questions.length}`;
+            document.getElementById('examProgressFill').style.width = Math.round((st.currentIndex / st.questions.length) * 100) + '%';
+            document.getElementById('examQJp').innerText = q.prompt;
+            document.getElementById('examQHint').innerText = q.hint;
+            document.getElementById('examListenBtn').style.display = q.isListening ? 'block' : 'none';
+
+            const optionsEl = document.getElementById('examOptions');
+            optionsEl.innerHTML = '';
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'choice-option' + (st.selectedOption === i ? ' choice-correct' : '');
+                btn.innerText = opt;
+                btn.onclick = () => selectExamOption(i, btn);
+                optionsEl.appendChild(btn);
+            });
+            document.getElementById('examNextBtn').disabled = (st.selectedOption === null);
+            document.getElementById('examNextBtn').innerText = (st.currentIndex === st.questions.length - 1) ? 'ส่งข้อสอบ ✔' : 'ข้อถัดไป ➡';
+
+            if (q.isListening) playExamListening();
+        }
+
+        function selectExamOption(index, btnEl) {
+            const st = mockExamState;
+            st.selectedOption = index;
+            st.answers[st.currentIndex] = index;
+            document.querySelectorAll('#examOptions .choice-option').forEach(b => b.classList.remove('choice-correct'));
+            btnEl.classList.add('choice-correct');
+            document.getElementById('examNextBtn').disabled = false;
+        }
+
+        function playExamListening() {
+            const q = mockExamState.questions[mockExamState.currentIndex];
+            if (q && q.dialogue) playDialogueLines(q.dialogue.lines);
+        }
+
+        function nextExamQuestion() {
+            const st = mockExamState;
+            if (st.currentIndex < st.questions.length - 1) {
+                st.currentIndex++;
+                loadExamQuestion();
+            } else {
+                clearInterval(st.timerHandle);
+                finishExam();
+            }
+        }
+
+        function finishExam() {
+            const st = mockExamState;
+            const sectionStats = { vocab: { correct: 0, total: 0 }, grammar: { correct: 0, total: 0 }, listen: { correct: 0, total: 0 } };
+            const wrongList = [];
+
+            st.questions.forEach((q, i) => {
+                sectionStats[q.section].total++;
+                const isCorrect = st.answers[i] === q.correctIndex;
+                if (isCorrect) sectionStats[q.section].correct++;
+                else wrongList.push({ prompt: q.prompt, correctAnswer: q.options[q.correctIndex], yourAnswer: st.answers[i] !== null ? q.options[st.answers[i]] : 'ไม่ได้ตอบ' });
+            });
+
+            const totalCorrect = sectionStats.vocab.correct + sectionStats.grammar.correct + sectionStats.listen.correct;
+            const totalQuestions = st.questions.length;
+            const pct = totalQuestions ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+            const passed = (totalCorrect / totalQuestions) >= EXAM_PASS_THRESHOLD;
+
+            // บันทึกคะแนนที่ดีที่สุด
+            try {
+                const key = storageKey('nihongo_test_stats_v1');
+                const stats = JSON.parse(localStorage.getItem(key)) || {};
+                const field = 'examBest' + examLevel;
+                if (!stats[field] || pct > stats[field]) stats[field] = pct;
+                localStorage.setItem(key, JSON.stringify(stats));
+            } catch (e) {}
+
+            if (passed) awardExp(30, 'exam'); else awardExp(10, 'exam');
+
+            document.getElementById('examRunningView').style.display = 'none';
+            document.getElementById('examResultView').style.display = 'flex';
+            document.getElementById('examResultBadge').innerText = passed ? '🎉' : '📖';
+            const titleEl = document.getElementById('examResultTitle');
+            titleEl.innerText = passed ? `ผ่าน! (${examLevel})` : `ยังไม่ผ่าน (${examLevel})`;
+            titleEl.className = 'exam-result-title ' + (passed ? 'pass' : 'fail');
+            document.getElementById('examResultPct').innerText = `คะแนนรวม ${totalCorrect}/${totalQuestions} (${pct}%) — เกณฑ์ผ่าน ${Math.round(EXAM_PASS_THRESHOLD * 100)}%`;
+
+            document.getElementById('examSectionScores').innerHTML = `
+                <div class="exam-section-score-row"><span>文字・語彙 (คำศัพท์)</span><span>${sectionStats.vocab.correct}/${sectionStats.vocab.total}</span></div>
+                <div class="exam-section-score-row"><span>文法 (ไวยากรณ์)</span><span>${sectionStats.grammar.correct}/${sectionStats.grammar.total}</span></div>
+                <div class="exam-section-score-row"><span>聴解 (ฟัง)</span><span>${sectionStats.listen.correct}/${sectionStats.listen.total}</span></div>`;
+
+            const reviewEl = document.getElementById('examReviewList');
+            if (wrongList.length === 0) {
+                reviewEl.innerHTML = '<div class="roadmap-empty-note">ตอบถูกทุกข้อเลย เยี่ยมมากครับ! 🌟</div>';
+            } else {
+                reviewEl.innerHTML = `<div class="example-label" style="margin-bottom:8px;">📋 ข้อที่ควรทบทวน</div>` +
+                    wrongList.map(w => `
+                        <div class="exam-review-item">
+                            <div class="eri-q">${w.prompt}</div>
+                            <div class="eri-a">คำตอบที่ถูก: <b>${w.correctAnswer}</b> ${w.yourAnswer !== 'ไม่ได้ตอบ' ? `(คุณตอบ: ${w.yourAnswer})` : '(ไม่ได้ตอบ)'}</div>
+                        </div>`).join('');
+            }
+
+            renderLeaderboard('examLeaderboard', 'exam' + examLevel);
         }
 
         // ===== ระบบผู้ใช้: บันทึกความคืบหน้าแยกตาม Username (เก็บในเบราว์เซอร์เครื่องนี้) =====
@@ -4655,6 +8018,53 @@
                 cards = Object.keys(g.collection || {}).length;
             } catch (e) {}
             return { known, coins, bosses, cards };
+        }
+
+        // ===== 🏆 Leaderboard: จัดอันดับคะแนนสูงสุด 3 อันดับต่อโหมด ข้ามผู้ใช้ทุกคนในเครื่องนี้ =====
+        const LEADERBOARD_SCORE_FIELD = { quiz: 'quizCorrect', choice: 'choiceCorrect', match: 'matchCorrect', listen: 'listenCorrect', examN5: 'examBestN5', examN4: 'examBestN4' };
+        const LEADERBOARD_MEDALS = ['🥇', '🥈', '🥉'];
+
+        function computeLeaderboard(modeKey) {
+            const field = LEADERBOARD_SCORE_FIELD[modeKey];
+            if (!field) return [];
+            const reg = loadUsersRegistry();
+            const names = Object.keys(reg).filter(n => n.toLowerCase() !== HOST_USERNAME);
+            const rows = names.map(name => {
+                let score = 0;
+                try {
+                    const stats = JSON.parse(localStorage.getItem('nihongo_test_stats_v1::' + name) || '{}');
+                    if (modeKey === 'match') {
+                        // คะแนนสุทธิ = ถูก - ผิด เพื่อกันการเดาสุ่มไต่คะแนน (จับคู่คำเดาถูกได้เสมอถ้าลองไปเรื่อยๆ)
+                        score = Math.max(0, (stats.matchCorrect || 0) - (stats.matchWrong || 0));
+                    } else {
+                        score = stats[field] || 0;
+                    }
+                } catch (e) {}
+                return { name, score };
+            }).filter(r => r.score > 0);
+            rows.sort((a, b) => b.score - a.score);
+            return rows.slice(0, 3);
+        }
+
+        function renderLeaderboard(containerId, modeKey) {
+            const el = document.getElementById(containerId);
+            if (!el) return;
+            const top3 = computeLeaderboard(modeKey);
+            const unit = modeKey.startsWith('exam') ? '%' : ' คะแนน';
+            if (top3.length === 0) {
+                el.innerHTML = `<div class="leaderboard-empty">ยังไม่มีใครทำคะแนนโหมดนี้เลย เป็นคนแรกกันเถอะ! 🌟</div>`;
+                return;
+            }
+            el.innerHTML = `
+                <div class="leaderboard-title">🏆 Top 3 คะแนนสูงสุด</div>
+                <div class="leaderboard-list">
+                    ${top3.map((r, i) => `
+                        <div class="leaderboard-row ${r.name === currentUser ? 'me' : ''}">
+                            <span class="lb-rank">${LEADERBOARD_MEDALS[i]}</span>
+                            <span class="lb-name">${r.name}${r.name === currentUser ? ' (คุณ)' : ''}</span>
+                            <span class="lb-score">${r.score}${unit}</span>
+                        </div>`).join('')}
+                </div>`;
         }
 
         function formatDT(iso) {
