@@ -155,11 +155,28 @@
         .mode-toggle {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            align-items: center;
+            gap: 10px;
             background: rgba(27, 38, 59, 0.05);
-            padding: 4px;
+            padding: 8px;
             border-radius: 14px;
             border: 1px solid var(--glass-border);
+        }
+        .mode-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            padding-right: 10px;
+            border-right: 1px solid var(--glass-border);
+        }
+        .mode-group:last-child { border-right: none; padding-right: 0; }
+        .mode-group-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            white-space: nowrap;
+            margin-right: 2px;
         }
 
         .mode-btn {
@@ -218,9 +235,16 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             z-index: 20;
         }
+        @media (max-width: 640px) {
+            .voice-warning {
+                position: static;
+                width: 100%;
+                margin-top: 8px;
+            }
+        }
 
         .user-badge {
-            display: flex; align-items: center; gap: 8px;
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
             font-size: 0.82rem; font-weight: 700; color: var(--kon-iro);
         }
 
@@ -359,6 +383,7 @@
             border: 1px solid var(--glass-border);
             font-weight: 500;
             cursor: pointer;
+            white-space: nowrap;
         }
         .btn-mini:hover { background: #fff; border-color: var(--sakura); }
 
@@ -1380,9 +1405,23 @@
             border: 1.5px solid var(--glass-border); border-radius: 14px; padding: 14px 16px; text-align: left;
         }
         .listen-transcript.show { display: block; }
-        .listen-line { margin-bottom: 8px; }
+        .listen-transcript { max-height: 320px; overflow-y: auto; }
+        .listen-line {
+            margin-bottom: 8px; padding: 6px 8px; border-radius: 8px; border-left: 3px solid transparent;
+            transition: background 0.25s, border-color 0.25s;
+        }
+        .listen-line.speaking {
+            background: rgba(212,175,55,0.15); border-left-color: var(--kinpaku);
+        }
         .listen-line .ll-speaker { font-size: 0.7rem; font-weight: 700; color: var(--sakura); }
-        .listen-line .ll-jp { font-weight: 600; color: var(--text-main); font-size: 0.9rem; }
+        .ll-speaker-row { display: flex; justify-content: space-between; align-items: center; }
+        .ll-replay-btn {
+            background: none; border: none; cursor: pointer; font-size: 0.85rem; opacity: 0.6; transition: opacity 0.2s;
+        }
+        .ll-replay-btn:hover { opacity: 1; }
+        .listen-line .ll-jp { font-weight: 600; color: var(--text-main); font-size: 0.9rem; line-height: 2.1; }
+        .listen-line .ll-jp ruby { ruby-align: center; }
+        .listen-line .ll-jp rt { font-size: 0.55em; color: var(--sakura); font-weight: 600; user-select: none; }
         .listen-line .ll-th { font-size: 0.78rem; color: var(--text-muted); }
         .listen-question-box {
             width: 100%; max-width: 520px; background: rgba(255,255,255,0.7);
@@ -1522,16 +1561,26 @@
                 <p>ระบบฝึกฝนคำศัพท์และคันจิระดับพรีเมียม (N5-N1 Ready)</p>
             </div>
             <div class="mode-toggle">
-                <button id="modeFlashcardBtn" class="mode-btn active" onclick="setMode('flashcard')">🗂 ท่องจำ</button>
-                <button id="modeQuizBtn" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ</button>
-                <button id="modeChoiceBtn" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ</button>
-                <button id="modeMatchBtn" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ</button>
-                <button id="modeKanaBtn" class="mode-btn" onclick="setMode('kana')">🌸 あいう ตัวอักษร</button>
-                <button id="modeBossBtn" class="mode-btn" onclick="setMode('boss')">⚔️ Boss Battle</button>
-                <button id="modeRoadmapBtn" class="mode-btn" onclick="setMode('roadmap')">🧭 Roadmap</button>
-                <button id="modeListenBtn" class="mode-btn new-mode" onclick="setMode('listen')">🎧 ฟังแล้วตอบ<span class="new-badge">NEW</span></button>
-                <button id="modeSpeakBtn" class="mode-btn new-mode" onclick="setMode('speak')">🎤 ฝึกพูด<span class="new-badge">NEW</span></button>
-                <button id="modeExamBtn" class="mode-btn new-mode" onclick="setMode('exam')">📝 JLPT Mock Exam<span class="new-badge">NEW</span></button>
+                <div class="mode-group">
+                    <span class="mode-group-label">📚 เรียน</span>
+                    <button id="modeFlashcardBtn" class="mode-btn active" onclick="setMode('flashcard')">🗂 ท่องจำ</button>
+                    <button id="modeKanaBtn" class="mode-btn" onclick="setMode('kana')">🌸 あいう ตัวอักษร</button>
+                    <button id="modeListenStudyBtn" class="mode-btn" onclick="setMode('listenstudy')">📖 เรียนฟัง</button>
+                </div>
+                <div class="mode-group">
+                    <span class="mode-group-label">🎯 ฝึก/ทดสอบ</span>
+                    <button id="modeQuizBtn" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ</button>
+                    <button id="modeChoiceBtn" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ</button>
+                    <button id="modeMatchBtn" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ</button>
+                    <button id="modeListenBtn" class="mode-btn" onclick="setMode('listen')">🎧 ฟังแล้วตอบ</button>
+                    <button id="modeSpeakBtn" class="mode-btn" onclick="setMode('speak')">🎤 ฝึกพูด</button>
+                    <button id="modeBossBtn" class="mode-btn" onclick="setMode('boss')">⚔️ Boss Battle</button>
+                    <button id="modeExamBtn" class="mode-btn" onclick="setMode('exam')">📝 JLPT Mock Exam</button>
+                </div>
+                <div class="mode-group">
+                    <span class="mode-group-label">📊 ภาพรวม</span>
+                    <button id="modeRoadmapBtn" class="mode-btn" onclick="setMode('roadmap')">🧭 Roadmap</button>
+                </div>
             </div>
             <div class="voice-settings">
                 <span class="voice-settings-label">🔊 เสียงอ่าน:</span>
@@ -1908,6 +1957,21 @@
                     </div>
                 </div>
 
+                <!-- 📖 Listening Study Mode (เรียนฟังแบบไม่มีข้อสอบ) -->
+                <div class="listen-box" id="listenStudyBox" style="display:none;">
+                    <div class="listen-header">
+                        <span class="listen-title" id="lsTitle">กำลังโหลด...</span>
+                        <span class="listen-progress-label" id="lsProgressLabel">0/0</span>
+                    </div>
+                    <button class="listen-play-btn" id="lsPlayBtn" onclick="playStudyDialogue()" title="ฟังทั้งบท">▶️</button>
+                    <div class="listen-hint">ฟังทั้งบทสนทนา หรือกดไอคอน 🔊 ที่แต่ละประโยคเพื่อฟังทีละประโยคซ้ำๆ ได้เลย — คำแปลและคำอ่านโชว์ตลอดเวลาเพื่อการเรียนรู้</div>
+                    <div class="listen-transcript show" id="lsTranscript"></div>
+                    <div class="speak-nav-row">
+                        <button class="btn-mini" onclick="navigateStudyDialogue(-1)">◀ บทก่อนหน้า</button>
+                        <button class="btn-mini" onclick="navigateStudyDialogue(1)">บทถัดไป ▶</button>
+                    </div>
+                </div>
+
                 <!-- 🎧 Listening Comprehension Mode -->
                 <div class="listen-box" id="listenBox" style="display:none;">
                     <div class="listen-header">
@@ -1915,7 +1979,7 @@
                         <span class="listen-progress-label" id="listenProgressLabel">0/0</span>
                     </div>
                     <button class="listen-play-btn" id="listenPlayBtn" onclick="playCurrentDialogue()" title="ฟังบทสนทนา">▶️</button>
-                    <div class="listen-hint">กดฟังบทสนทนา แล้วตอบคำถามด้านล่าง (ฟังได้หลายรอบ)</div>
+                    <div class="listen-hint">กดฟังบทสนทนา — คำบรรยาย (ฮิรางานะ/คันจิ) จะขึ้นให้ทีละประโยคขณะฟัง เพื่อเช็คว่าฟังถูกไหม แล้วตอบคำถามด้านล่าง (ฟังได้หลายรอบ)</div>
                     <button class="listen-transcript-toggle" onclick="toggleListenTranscript()">📝 แสดง/ซ่อนบทสนทนา</button>
                     <div class="listen-transcript" id="listenTranscript"></div>
                     <div class="listen-question-box" id="listenQuestionBox"></div>
@@ -2784,7 +2848,6 @@
   { jp: "眼鏡", extra: "めがね (Megane)", th: "แว่นตา", level: "N4", example: { jp: "眼鏡をかけて本を読みます。", th: "สวมแว่นตาแล้วอ่านหนังสือ" } },
   { jp: "手袋", extra: "てぶくろ (Tebukuro)", th: "ถุงมือ", level: "N4", example: { jp: "寒いので手袋をします。", th: "เพราะอากาศหนาวจึงสวมถุงมือ" } },
   { jp: "時計", extra: "とけい (Tokei)", th: "นาฬิกา", level: "N5", example: { jp: "時計を見て時間を確かめます。", th: "ดูนาฬิกาเพื่อเช็กเวลา" } },
-  { jp: "傘", extra: "かさ (Kasa)", th: "ร่ม", level: "N5", example: { jp: "雨が降っているので傘をさします。", th: "เพราะฝนตกจึงกางร่ม" } },
   { jp: "箱", extra: "はこ (Hako)", th: "กล่อง", level: "N4", example: { jp: "古い箱の中に写真があります。", th: "มีรูปถ่ายอยู่ในกล่องเก่า" } },
   { jp: "棚", extra: "たな (Tana)", th: "ชั้นวางของ", level: "N4", example: { jp: "本を棚に片付けます。", th: "เก็บหนังสือเข้าชั้นวาง" } },
   { jp: "階段", extra: "かいだん (Kaidan)", th: "บันได", level: "N4", example: { jp: "階段を上って2階に行きます。", th: "เดินขึ้นบันไดไปชั้น 2" } },
@@ -2827,7 +2890,6 @@
   { jp: "小説", extra: "しょうせつ (Shousetsu)", th: "นวนิยาย", level: "N4", example: { jp: "面白い小説を読んでいます。", th: "กำลังอ่านนวนิยายที่สนุกสนาน" } },
   { jp: "漫画", extra: "まんが (Manga)", th: "การ์ตูน", level: "N5", example: { jp: "休日に漫画を読みます。", th: "อ่านการ์ตูนในวันหยุด" } },
   { jp: "記事", extra: "きじ (Kiji)", th: "บทความ, ข่าวในหนังสือพิมพ์", level: "N4", example: { jp: "新聞の面白い記事を読みました。", th: "อ่านบทความที่น่าสนใจในหนังสือพิมพ์" } },
-  { jp: "手紙", extra: "てがみ (Tegami)", th: "จดหมาย", level: "N5", example: { jp: "友達に手紙を書きます。", th: "เขียนจดหมายหาเพื่อน" } },
   { jp: "葉書", extra: "はがき (Hagaki)", th: "ไปรษณียบัตร", level: "N5", example: { jp: "旅行先から葉書を出しました。", th: "ส่งไปรษณียบัตรมาจากสถานที่ท่องเที่ยว" } },
   { jp: "切符", extra: "きっぷ (Kippu)", th: "ตั๋ว, 2ตั๋วโดยสาร", level: "N5", example: { jp: "駅で切符を買います。", th: "ซื้อตั๋วที่สถานีรถไฟ" } },
   { jp: "乗車券", extra: "じょうしゃけん (Joushaken)", th: "ตั๋วโดยสารรถ", level: "N4", example: { jp: "自動券売機で乗車券を買います。", th: "ซื้อตั๋วโดยสารที่เครื่องขายตั๋วอัตโนมัติ" } },
@@ -3214,7 +3276,6 @@
 
   // 5. คำเกี่ยวกับชีวิตประจำวัน (บ้าน อาหาร เสื้อผ้า) - 70 คำ (461-530)
   { jp: "茶碗", extra: "ちゃわん (Chawan)", th: "ถ้วยข้าว", level: "N5", example: { jp: "ご飯をお茶碗によそいます。", th: "ตักข้าวใส่ถ้วยข้าว" } },
-  { jp: "皿", extra: "さら (Sara)", th: "จาน", level: "N5", example: { jp: "料理を皿に盛り付けます。", th: "จัดอาหารใส่จาน" } },
   { jp: "箸", extra: "はし (Hashi)", th: "ตะเกียบ", level: "N5", example: { jp: "日本人上手に箸を使います。", th: "คนญี่ปุ่นใช้ตะเกียบได้อย่างคล่องแคล่ว" } },
   { jp: "フォーク", extra: "ふぉーく (Fooku)", th: "ส้อม", level: "N5", example: { jp: "パスタをフォークで食べます。", th: "ทานพาสต้าด้วยส้อม" } },
   { jp: "ナイフ", extra: "ないふ (Naifu)", th: "มีด", level: "N5", example: { jp: "ステーキをナイフで切ります。", th: "ตัดสเต๊กด้วยมีด" } },
@@ -3224,7 +3285,6 @@
   { jp: "冷蔵庫", extra: "れいぞうこ (Reizouko)", th: "ตู้เย็น", level: "N5", example: { jp: "肉を冷蔵庫に保存します。", th: "เก็บเนื้อสัตว์ไว้ในตู้เย็น" } },
   { jp: "電子レンジ", extra: "でんしれんじ (Denshi renji)", th: "เตาไมโครเวฟ", level: "N4", example: { jp: "お弁当を電子レンジで温めます。", th: "อุ่นข้าวกล่องด้วยเตาไมโครเวฟ" } },
   { jp: "炊飯器", extra: "すいはんき (Suihanki)", th: "หม้อหุงข้าว", level: "N4", example: { jp: "炊飯器でご飯を炊きます。", th: "หุงข้าวด้วยหม้อหุงข้าว" } },
-  { jp: "洗濯機", extra: "せんたくき (Sentakuki)", th: "เครื่องซักผ้า", level: "N5", example: { jp: "洗濯機で服を洗います。", th: "ซักเสื้อผ้าด้วยเครื่องซักผ้า" } },
   { jp: "掃除機", extra: "そうじき (Soujiki)", th: "เครื่องดูดฝุ่น", level: "N4", example: { jp: "掃除機をかけて部屋をきれいにします。", th: "ดูดฝุ่นทำความสะอาดห้อง" } },
   { jp: "エアコン", extra: "えあこん (Eakon)", th: "เครื่องปรับอากาศ", level: "N5", example: { jp: "暑いのでエアコンをつけます。", th: "เพราะอากาศร้อนจึงเปิดแอร์" } },
   { jp: "扇風機", extra: "せんぷうき (Senpuuki)", th: "พัดลม", level: "N4", example: { jp: "扇風機の風にあたります。", th: "รับลมจากพัดลม" } },
@@ -3236,7 +3296,6 @@
   { jp: "カーテン", extra: "かーてん (Kaaten)", th: "ผ้าม่าน", level: "N4", example: { jp: "朝になったらカーテンを開けます。", th: "พอถึงตอนเช้าก็เปิดผ้าม่าน" } },
   { jp: "畳", extra: "たたみ (Tatami)", th: "เสื่อทาทามิ", level: "N4", example: { jp: "日本的部屋には畳が敷いてあります。", th: "ห้องสไตล์ญี่ปุ่นปูเสื่อทาทามิไว้" } },
   { jp: "押し入れ", extra: "おしいれ (Oshiire)", th: "ตู้เก็บของบิวท์อินแบบญี่ปุ่น", level: "N4", example: { jp: "布団を押し入れに片付けます。", th: "เก็บฟูกนอนเข้าตู้เก็บของ" } },
-  { jp: "玄関", extra: "げんかん (Genkan)", th: "บริเวณทางเข้าบ้าน", level: "N5", example: { jp: "玄関で靴を脱ぎます。", th: "ถอดรองเท้าที่บริเวณทางเข้าบ้าน" } },
   { jp: "廊下", extra: "ろうか (Rouka)", th: "ทางเดิน", level: "N4", example: { jp: "廊下の電気を消してください。", th: "กรุณาปิดไฟตรงทางเดินด้วย" } },
   { jp: "台所", extra: "だいどころ (Daidokoro)", th: "ห้องครัว", level: "N5", example: { jp: "母が台所で夕食を作っています。", th: "คุณแม่กำลังทำอาหารเย็นอยู่ในครัว" } },
   { jp: "居間", extra: "いま (Ima)", th: "ห้องนั่งเล่น", level: "N4", example: { jp: "家族みんなで居間でテレビを見ます。", th: "ทุกคนในครอบครัวดูทีวีด้วยกันในห้องนั่งเล่น" } },
@@ -3391,7 +3450,6 @@
   // 8. คำเชื่อม คำช่วย คำลงท้าย และสำนวน - 50 คำ (630-700)
   { jp: "しかし", extra: "しかし (Shikashi)", th: "แต่, อย่างไรก็ตาม", level: "N5", example: { jp: "一生懸命勉強しました。しかし試験に落ちました。", th: "ตั้งใจเรียนอย่างเต็มที่ แต่กลับสอบตก" } },
   { jp: "ところが", extra: "ところが (Tokoroga)", th: "แต่ทว่า (เหตุการณ์พลิกผันจากคาดการณ์)", level: "N4", example: { jp: "晴れると思いました。ところが雨が降りました。", th: "คิดว่าอากาศจะแจ่มใส แต่ทว่าฝนกลับตก" } },
-  { jp: "それに", extra: "それに (Sore ni)", th: "ยิ่งไปกว่านั้น, แถมยัง...", level: "N4", example: { jp: "この店は安いです。それにとても美味しいです。", th: "ร้านนี้ราคาถูก แถมยังอร่อยมากๆ อีกด้วย" } },
   { jp: "それにしても", extra: "それにしても (Soreni shimo)", th: "ถึงกระนั้นก็ตาม, ขนาดนั้นก็เถอะ", level: "N4", example: { jp: "それにしても、今日は暑いですね。", th: "ถึงกระนั้นก็ตาม วันนี้อากาศร้อนจริงๆ นะ" } },
   { jp: "そのため", extra: "そのため (Sonotame)", th: "ด้วยเหตุนั้น, เพราะฉะนั้น", level: "N4", example: { jp: "寝坊しました。そのため授業に遅れました。", th: "ตื่นสาย ด้วยเหตุนั้นจึงเข้าเรียนสาย" } },
   { jp: "したがって", extra: "したがって (Shitagatte)", th: "ดังนั้น, เพราะฉะนั้น", level: "N4", example: { jp: "ルール違反です。したがって失格です。", th: "เป็นการทำผิดกฎ ดังนั้นจึงถูกปรับแพ้คัดออก" } },
@@ -5476,9 +5534,9 @@ B เป็นสิ่งที่เด่นกว่า A
             {
                 id: 'ls1', level: 'N5', title: 'ทักทายตอนเช้า',
                 lines: [
-                    { speaker: 'A', jp: 'おはようございます。今日はいい天気ですね。', th: 'อรุณสวัสดิ์ครับ วันนี้อากาศดีนะครับ' },
-                    { speaker: 'B', jp: 'おはようございます。そうですね。とても暑いです。', th: 'อรุณสวัสดิ์ค่ะ ใช่แล้วค่ะ ร้อนมากเลย' },
-                    { speaker: 'A', jp: '午後は雨が降りますよ。', th: 'ตอนบ่ายฝนจะตกนะครับ' }
+                    { speaker: 'A', jp: 'おはようございます。今日はいい天気ですね。', furigana: 'おはようございます。今日[きょう]はいい天気[てんき]ですね。', th: 'อรุณสวัสดิ์ครับ วันนี้อากาศดีนะครับ' },
+                    { speaker: 'B', jp: 'おはようございます。そうですね。とても暑いです。', furigana: 'おはようございます。そうですね。とても暑[あつ]いです。', th: 'อรุณสวัสดิ์ค่ะ ใช่แล้วค่ะ ร้อนมากเลย' },
+                    { speaker: 'A', jp: '午後は雨が降りますよ。', furigana: '午後[ごご]は雨[あめ]が降[ふ]りますよ。', th: 'ตอนบ่ายฝนจะตกนะครับ' }
                 ],
                 questions: [
                     { q: 'วันนี้อากาศตอนเช้าเป็นอย่างไร?', choices: ['ฝนตก', 'อากาศดีแต่ร้อน', 'หนาวมาก', 'มีหิมะ'], answerIndex: 1 },
@@ -5488,9 +5546,9 @@ B เป็นสิ่งที่เด่นกว่า A
             {
                 id: 'ls2', level: 'N5', title: 'สั่งอาหารที่ร้าน',
                 lines: [
-                    { speaker: 'A', jp: 'いらっしゃいませ。何になさいますか。', th: 'ยินดีต้อนรับครับ รับอะไรดีครับ' },
-                    { speaker: 'B', jp: 'ラーメンを一つお願いします。それから、水も一つください。', th: 'ขอราเมง 1 ที่ค่ะ แล้วก็ขอน้ำเปล่า 1 แก้วด้วยค่ะ' },
-                    { speaker: 'A', jp: 'かしこまりました。少々お待ちください。', th: 'รับทราบครับ กรุณารอสักครู่ครับ' }
+                    { speaker: 'A', jp: 'いらっしゃいませ。何になさいますか。', furigana: 'いらっしゃいませ。何[なに]になさいますか。', th: 'ยินดีต้อนรับครับ รับอะไรดีครับ' },
+                    { speaker: 'B', jp: 'ラーメンを一つお願いします。それから、水も一つください。', furigana: 'ラーメンを一[ひと]つお願[ねが]いします。それから、水[みず]も一[ひと]つください。', th: 'ขอราเมง 1 ที่ค่ะ แล้วก็ขอน้ำเปล่า 1 แก้วด้วยค่ะ' },
+                    { speaker: 'A', jp: 'かしこまりました。少々お待ちください。', furigana: 'かしこまりました。少々[しょうしょう]お待[ま]ちください。', th: 'รับทราบครับ กรุณารอสักครู่ครับ' }
                 ],
                 questions: [
                     { q: 'ลูกค้าสั่งอะไรบ้าง?', choices: ['ราเมงกับน้ำ', 'ข้าวกับซุป', 'แค่ราเมง', 'น้ำอย่างเดียว'], answerIndex: 0 },
@@ -5500,10 +5558,10 @@ B เป็นสิ่งที่เด่นกว่า A
             {
                 id: 'ls3', level: 'N5', title: 'ถามทางไปสถานี',
                 lines: [
-                    { speaker: 'A', jp: 'すみません、駅はどこですか。', th: 'ขอโทษนะครับ สถานีอยู่ที่ไหนครับ' },
-                    { speaker: 'B', jp: 'この道をまっすぐ行って、右に曲がってください。', th: 'เดินตรงไปตามถนนนี้ แล้วเลี้ยวขวานะคะ' },
-                    { speaker: 'A', jp: 'ありがとうございます。歩いてどのくらいかかりますか。', th: 'ขอบคุณครับ เดินไปใช้เวลาประมาณเท่าไหร่ครับ' },
-                    { speaker: 'B', jp: '五分ぐらいです。', th: 'ประมาณ 5 นาทีค่ะ' }
+                    { speaker: 'A', jp: 'すみません、駅はどこですか。', furigana: 'すみません、駅[えき]はどこですか。', th: 'ขอโทษนะครับ สถานีอยู่ที่ไหนครับ' },
+                    { speaker: 'B', jp: 'この道をまっすぐ行って、右に曲がってください。', furigana: 'この道[みち]をまっすぐ行[い]って、右[みぎ]に曲[ま]がってください。', th: 'เดินตรงไปตามถนนนี้ แล้วเลี้ยวขวานะคะ' },
+                    { speaker: 'A', jp: 'ありがとうございます。歩いてどのくらいかかりますか。', furigana: 'ありがとうございます。歩[ある]いてどのくらいかかりますか。', th: 'ขอบคุณครับ เดินไปใช้เวลาประมาณเท่าไหร่ครับ' },
+                    { speaker: 'B', jp: '五分ぐらいです。', furigana: '五分[ごふん]ぐらいです。', th: 'ประมาณ 5 นาทีค่ะ' }
                 ],
                 questions: [
                     { q: 'ต้องเลี้ยวทางไหนหลังจากเดินตรงไป?', choices: ['เลี้ยวซ้าย', 'เลี้ยวขวา', 'กลับหลัง', 'ไม่ต้องเลี้ยว'], answerIndex: 1 },
@@ -5513,14 +5571,98 @@ B เป็นสิ่งที่เด่นกว่า A
             {
                 id: 'ls4', level: 'N4', title: 'นัดหมายเพื่อน',
                 lines: [
-                    { speaker: 'A', jp: '明日、映画を見に行きませんか。', th: 'พรุ่งนี้ไปดูหนังกันไหม' },
-                    { speaker: 'B', jp: 'いいですね。何時に会いましょうか。', th: 'ดีเลย จะนัดเจอกันกี่โมงดี' },
-                    { speaker: 'A', jp: '午後三時に駅の前で会いましょう。', th: 'เจอกันตอนบ่าย 3 โมงหน้าสถานีนะ' },
-                    { speaker: 'B', jp: 'わかりました。楽しみにしています。', th: 'โอเค ตั้งตารอเลย' }
+                    { speaker: 'A', jp: '明日、映画を見に行きませんか。', furigana: '明日[あした]、映画[えいが]を見[み]に行[い]きませんか。', th: 'พรุ่งนี้ไปดูหนังกันไหม' },
+                    { speaker: 'B', jp: 'いいですね。何時に会いましょうか。', furigana: 'いいですね。何時[なんじ]に会[あ]いましょうか。', th: 'ดีเลย จะนัดเจอกันกี่โมงดี' },
+                    { speaker: 'A', jp: '午後三時に駅の前で会いましょう。', furigana: '午後[ごご]三時[さんじ]に駅[えき]の前[まえ]で会[あ]いましょう。', th: 'เจอกันตอนบ่าย 3 โมงหน้าสถานีนะ' },
+                    { speaker: 'B', jp: 'わかりました。楽しみにしています。', furigana: 'わかりました。楽[たの]しみにしています。', th: 'โอเค ตั้งตารอเลย' }
                 ],
                 questions: [
                     { q: 'ทั้งสองคนจะไปทำอะไรกัน?', choices: ['ดูหนัง', 'กินข้าว', 'ช้อปปิ้ง', 'เล่นกีฬา'], answerIndex: 0 },
                     { q: 'นัดเจอกันกี่โมง ที่ไหน?', choices: ['บ่าย 3 โมง หน้าสถานี', 'เช้า 9 โมง ที่บ้าน', 'เย็น 6 โมง ที่ร้าน', 'ไม่ได้นัด'], answerIndex: 0 }
+                ]
+            },
+            {
+                id: 'ls5', level: 'N5', title: 'ซื้อของที่ร้านสะดวกซื้อ',
+                lines: [
+                    { speaker: 'A', jp: 'いらっしゃいませ。', furigana: 'いらっしゃいませ。', th: 'ยินดีต้อนรับค่ะ' },
+                    { speaker: 'B', jp: 'すみません、この弁当を温めてもらえますか。', furigana: 'すみません、この弁当[べんとう]を温[あたた]めてもらえますか。', th: 'ขอโทษนะครับ ช่วยอุ่นเบนโตะนี้ให้หน่อยได้ไหมครับ' },
+                    { speaker: 'A', jp: 'はい、かしこまりました。お箸は要りますか。', furigana: 'はい、かしこまりました。お箸[はし]は要[い]りますか。', th: 'ได้ค่ะ รับตะเกียบไหมคะ' },
+                    { speaker: 'B', jp: 'はい、一つお願いします。全部でいくらですか。', furigana: 'はい、一[ひと]つお願[ねが]いします。全部[ぜんぶ]でいくらですか。', th: 'รับครับ ขอ 1 คู่ ทั้งหมดเท่าไหร่ครับ' },
+                    { speaker: 'A', jp: '550円です。', furigana: '550円[えん]です。', th: '550 เยนค่ะ' }
+                ],
+                questions: [
+                    { q: 'ลูกค้าขอให้พนักงานทำอะไร?', choices: ['อุ่นเบนโตะ', 'ห่อของขวัญ', 'คิดเงินแยก', 'ใส่ถุง 2 ใบ'], answerIndex: 0 },
+                    { q: 'ราคาทั้งหมดเท่าไหร่?', choices: ['500 เยน', '550 เยน', '600 เยน', '450 เยน'], answerIndex: 1 }
+                ]
+            },
+            {
+                id: 'ls6', level: 'N5', title: 'โทรศัพท์จองร้านอาหาร',
+                lines: [
+                    { speaker: 'A', jp: 'もしもし、レストランやまとです。', furigana: 'もしもし、レストランやまとです。', th: 'ฮัลโหล ร้านอาหารยามาโตะค่ะ' },
+                    { speaker: 'B', jp: 'すみません、今晩七時に二人で予約したいんですが。', furigana: 'すみません、今晩[こんばん]七時[しちじ]に二人[ふたり]で予約[よやく]したいんですが。', th: 'ขอโทษนะครับ อยากจองโต๊ะคืนนี้ 1 ทุ่ม 2 ท่านครับ' },
+                    { speaker: 'A', jp: '少々お待ちください…はい、大丈夫です。お名前をお願いします。', furigana: '少々[しょうしょう]お待[ま]ちください…はい、大丈夫[だいじょうぶ]です。お名前[なまえ]をお願[ねが]いします。', th: 'รอสักครู่นะคะ...ได้ค่ะ ขอชื่อด้วยค่ะ' },
+                    { speaker: 'B', jp: '田中です。', furigana: '田中[たなか]です。', th: 'ทานากะครับ' },
+                    { speaker: 'A', jp: '田中様、七時に二名様ですね。お待ちしております。', furigana: '田中様[たなかさま]、七時[しちじ]に二名様[にめいさま]ですね。お待[ま]ちしております。', th: 'คุณทานากะ 1 ทุ่ม 2 ท่าน นะคะ รอต้อนรับค่ะ' }
+                ],
+                questions: [
+                    { q: 'จองร้านอาหารเวลาไหน?', choices: ['เที่ยง', '1 ทุ่ม', 'บ่าย 3 โมง', '2 ทุ่ม'], answerIndex: 1 },
+                    { q: 'จองกี่ท่าน?', choices: ['1 ท่าน', '2 ท่าน', '3 ท่าน', '4 ท่าน'], answerIndex: 1 }
+                ]
+            },
+            {
+                id: 'ls7', level: 'N5', title: 'คุยเรื่องงานอดิเรก',
+                lines: [
+                    { speaker: 'A', jp: '休みの日は何をしますか。', furigana: '休[やす]みの日[ひ]は何[なに]をしますか。', th: 'วันหยุดคุณทำอะไรบ้างคะ' },
+                    { speaker: 'B', jp: '私は本を読んだり、音楽を聞いたりします。田中さんは。', furigana: '私[わたし]は本[ほん]を読[よ]んだり、音楽[おんがく]を聞[き]いたりします。田中[たなか]さんは。', th: 'ผมอ่านหนังสือบ้าง ฟังเพลงบ้างครับ แล้วทานากะซังล่ะครับ' },
+                    { speaker: 'A', jp: '私はスポーツが好きです。よくテニスをします。', furigana: '私[わたし]はスポーツが好[す]きです。よくテニスをします。', th: 'ฉันชอบกีฬาค่ะ เล่นเทนนิสบ่อยๆ' },
+                    { speaker: 'B', jp: 'いいですね。今度一緒にテニスをしませんか。', furigana: 'いいですね。今度[こんど]一緒[いっしょ]にテニスをしませんか。', th: 'ดีจังครับ ครั้งหน้าเล่นเทนนิสด้วยกันไหมครับ' },
+                    { speaker: 'A', jp: 'ぜひ、お願いします。', furigana: 'ぜひ、お願[ねが]いします。', th: 'ได้เลยค่ะ ยินดีค่ะ' }
+                ],
+                questions: [
+                    { q: 'B ทำอะไรตอนวันหยุด?', choices: ['อ่านหนังสือกับฟังเพลง', 'เล่นเทนนิส', 'ดูหนัง', 'ทำอาหาร'], answerIndex: 0 },
+                    { q: 'B ชวน A ไปทำอะไร?', choices: ['ไปดูหนัง', 'เล่นเทนนิสด้วยกัน', 'ไปกินข้าว', 'ไปเที่ยว'], answerIndex: 1 }
+                ]
+            },
+            {
+                id: 'ls8', level: 'N4', title: 'ไปหาหมอ',
+                lines: [
+                    { speaker: 'A', jp: 'どうしましたか。', furigana: 'どうしましたか。', th: 'เป็นอะไรมาคะ' },
+                    { speaker: 'B', jp: '昨日から頭が痛くて、熱もあります。', furigana: '昨日[きのう]から頭[あたま]が痛[いた]くて、熱[ねつ]もあります。', th: 'ตั้งแต่เมื่อวานปวดหัว แล้วก็มีไข้ด้วยครับ' },
+                    { speaker: 'A', jp: 'そうですか。では、体温を測りましょう。…三十八度ありますね。お薬を出しますので、一日三回、食後に飲んでください。', furigana: 'そうですか。では、体温[たいおん]を測[はか]りましょう。…三十八度[さんじゅうはちど]ありますね。お薬[くすり]を出[だ]しますので、一日三回[いちにちさんかい]、食後[しょくご]に飲[の]んでください。', th: 'งั้นวัดไข้กันนะคะ...38 องศาเลยนะคะ จะจ่ายยาให้ กินวันละ 3 ครั้งหลังอาหารนะคะ' },
+                    { speaker: 'B', jp: 'わかりました。どのくらいで治りますか。', furigana: 'わかりました。どのくらいで治[なお]りますか。', th: 'เข้าใจแล้วครับ จะหายประมาณกี่วันครับ' },
+                    { speaker: 'A', jp: '三日ぐらい休めば、良くなると思います。', furigana: '三日[みっか]ぐらい休[やす]めば、良[よ]くなると思います。', th: 'พักประมาณ 3 วันน่าจะดีขึ้นค่ะ' }
+                ],
+                questions: [
+                    { q: 'คนไข้มีอาการอะไร?', choices: ['ปวดท้อง', 'ปวดหัวและมีไข้', 'ไอ', 'เจ็บคอ'], answerIndex: 1 },
+                    { q: 'หมอบอกให้พักกี่วัน?', choices: ['1 วัน', 'ประมาณ 3 วัน', '1 สัปดาห์', 'ไม่ต้องพัก'], answerIndex: 1 }
+                ]
+            },
+            {
+                id: 'ls9', level: 'N5', title: 'คุยเรื่องครอบครัว',
+                lines: [
+                    { speaker: 'A', jp: '田中さんは何人家族ですか。', furigana: '田中[たなか]さんは何人家族[なんにんかぞく]ですか。', th: 'ครอบครัวทานากะซังมีกี่คนคะ' },
+                    { speaker: 'B', jp: '四人家族です。両親と兄が一人います。鈴木さんは。', furigana: '四人家族[よにんかぞく]です。両親[りょうしん]と兄[あに]が一人[ひとり]います。鈴木[すずき]さんは。', th: 'ครอบครัวผม 4 คนครับ มีพ่อแม่กับพี่ชาย 1 คน แล้วซูซูกิซังล่ะครับ' },
+                    { speaker: 'A', jp: '私は三人家族です。妹が一人います。今、大学生です。', furigana: '私[わたし]は三人家族[さんにんかぞく]です。妹[いもうと]が一人[ひとり]います。今[いま]、大学生[だいがくせい]です。', th: 'ครอบครัวฉัน 3 คนค่ะ มีน้องสาว 1 คน ตอนนี้เป็นนักศึกษามหาวิทยาลัยค่ะ' },
+                    { speaker: 'B', jp: 'そうですか。妹さんは何を勉強していますか。', furigana: 'そうですか。妹[いもうと]さんは何[なに]を勉強[べんきょう]していますか。', th: 'อย่างนั้นเหรอครับ น้องสาวเรียนอะไรอยู่ครับ' },
+                    { speaker: 'A', jp: '経済学を勉強しています。', furigana: '経済学[けいざいがく]を勉強[べんきょう]しています。', th: 'เรียนเศรษฐศาสตร์อยู่ค่ะ' }
+                ],
+                questions: [
+                    { q: 'ครอบครัวทานากะซังมีพี่น้องแบบไหน?', choices: ['พี่ชาย 1 คน', 'น้องสาว 1 คน', 'พี่ชาย 2 คน', 'ไม่มีพี่น้อง'], answerIndex: 0 },
+                    { q: 'น้องสาวของซูซูกิซังเรียนอะไร?', choices: ['แพทยศาสตร์', 'เศรษฐศาสตร์', 'วิศวกรรม', 'ภาษาญี่ปุ่น'], answerIndex: 1 }
+                ]
+            },
+            {
+                id: 'ls10', level: 'N4', title: 'ซื้อตั๋วรถไฟ',
+                lines: [
+                    { speaker: 'A', jp: 'すみません、東京駅までの切符はどこで買えますか。', furigana: 'すみません、東京駅[とうきょうえき]までの切符[きっぷ]はどこで買[か]えますか。', th: 'ขอโทษนะครับ ตั๋วไปสถานีโตเกียวซื้อที่ไหนครับ' },
+                    { speaker: 'B', jp: 'あの券売機で買えますよ。片道ですか、往復ですか。', furigana: 'あの券売機[けんばいき]で買[か]えますよ。片道[かたみち]ですか、往復[おうふく]ですか。', th: 'ซื้อที่เครื่องขายตั๋วนั้นได้เลยค่ะ เที่ยวเดียวหรือไป-กลับคะ' },
+                    { speaker: 'A', jp: '片道です。急行に乗りたいんですが、時間はどのくらいかかりますか。', furigana: '片道[かたみち]です。急行[きゅうこう]に乗[の]りたいんですが、時間[じかん]はどのくらいかかりますか。', th: 'เที่ยวเดียวครับ อยากขึ้นรถด่วน ใช้เวลาประมาณเท่าไหร่ครับ' },
+                    { speaker: 'B', jp: '急行なら、四十分ぐらいで着きます。次の急行は十時十五分に出発しますよ。', furigana: '急行[きゅうこう]なら、四十分[よんじゅっぷん]ぐらいで着[つ]きます。次[つぎ]の急行[きゅうこう]は十時十五分[じゅうじじゅうごふん]に出発[しゅっぱつ]しますよ。', th: 'ถ้ารถด่วนใช้เวลาประมาณ 40 นาทีค่ะ ขบวนต่อไปออก 10:15 นะคะ' },
+                    { speaker: 'A', jp: 'ありがとうございます。', furigana: 'ありがとうございます。', th: 'ขอบคุณครับ' }
+                ],
+                questions: [
+                    { q: 'ผู้ถามต้องการตั๋วแบบไหน?', choices: ['ไป-กลับ', 'เที่ยวเดียว', 'รายเดือน', 'รายสัปดาห์'], answerIndex: 1 },
+                    { q: 'รถด่วนขบวนต่อไปออกกี่โมง?', choices: ['10:00', '10:15', '10:30', '10:45'], answerIndex: 1 }
                 ]
             }
         ];
@@ -5733,6 +5875,7 @@ B เป็นสิ่งที่เด่นกว่า A
             document.getElementById('modeKanaBtn').classList.toggle('active', mode === 'kana');
             document.getElementById('modeBossBtn').classList.toggle('active', mode === 'boss');
             document.getElementById('modeRoadmapBtn').classList.toggle('active', mode === 'roadmap');
+            document.getElementById('modeListenStudyBtn').classList.toggle('active', mode === 'listenstudy');
             document.getElementById('modeListenBtn').classList.toggle('active', mode === 'listen');
             document.getElementById('modeSpeakBtn').classList.toggle('active', mode === 'speak');
             document.getElementById('modeExamBtn').classList.toggle('active', mode === 'exam');
@@ -5748,12 +5891,13 @@ B เป็นสิ่งที่เด่นกว่า A
             document.getElementById('kanaNavButtons').style.display = (mode === 'kana') ? 'flex' : 'none';
             document.getElementById('bossBox').style.display = (mode === 'boss') ? 'flex' : 'none';
             document.getElementById('roadmapBox').style.display = (mode === 'roadmap') ? 'flex' : 'none';
+            document.getElementById('listenStudyBox').style.display = (mode === 'listenstudy') ? 'flex' : 'none';
             document.getElementById('listenBox').style.display = (mode === 'listen') ? 'flex' : 'none';
             document.getElementById('speakBox').style.display = (mode === 'speak') ? 'flex' : 'none';
             document.getElementById('examBox').style.display = (mode === 'exam') ? 'flex' : 'none';
             
             document.getElementById('kanaProgressBox').style.display = (mode === 'kana') ? 'flex' : 'none';
-            document.getElementById('stageHeaderInfo').style.display = (mode === 'kana' || mode === 'boss' || mode === 'roadmap' || mode === 'listen' || mode === 'speak' || mode === 'exam') ? 'none' : 'flex';
+            document.getElementById('stageHeaderInfo').style.display = (mode === 'kana' || mode === 'boss' || mode === 'roadmap' || mode === 'listenstudy' || mode === 'listen' || mode === 'speak' || mode === 'exam') ? 'none' : 'flex';
 
             if (mode === 'flashcard') updateCardDisplay();
             else if (mode === 'quiz') initQuiz();
@@ -5762,6 +5906,7 @@ B เป็นสิ่งที่เด่นกว่า A
             else if (mode === 'kana') startKanaPractice();
             else if (mode === 'boss') renderBossSelect();
             else if (mode === 'roadmap') renderRoadmap();
+            else if (mode === 'listenstudy') initListenStudy();
             else if (mode === 'listen') initListening();
             else if (mode === 'speak') initSpeakPractice();
             else if (mode === 'exam') initMockExamView();
@@ -7050,15 +7195,28 @@ B เป็นสิ่งที่เด่นกว่า A
             const boss = bossState.boss;
             const levelPool = vocabList.filter(w => w.level === boss.level);
             const vocabPool = levelPool.length > 0 ? levelPool : vocabList; // fallback ถ้าระดับนี้ยังไม่มีคำศัพท์
-            const useVocab = vocabPool.length > 0 && Math.random() < (boss.vocabProb ?? 0.4);
+            const grammarPool = grammarList.filter(g => g.level === boss.level);
+            const hasGrammar = grammarPool.length > 0; // ตอนนี้มีข้อมูลไวยากรณ์แค่ N5/N4
+
+            const vocabProb = boss.vocabProb ?? 0.4;
+            const grammarProb = hasGrammar ? Math.min(0.25, 1 - vocabProb) : 0;
+            const roll = Math.random();
+
             let q;
-            if (useVocab) {
+            if (roll < vocabProb) {
                 const word = vocabPool[Math.floor(Math.random() * vocabPool.length)];
                 const accepted = getAcceptedAnswers(word);
                 let distractors = vocabList.filter(w => w.th !== word.th).map(w => w.th);
                 distractors = shuffleArr(distractors).slice(0, 3);
                 const options = shuffleArr([word.th, ...distractors]);
                 q = { type: 'vocab', prompt: word.jp, label: 'คำนี้แปลว่าอะไร?', accepted, correctLabel: word.th, options, raw: word };
+            } else if (hasGrammar && roll < vocabProb + grammarProb) {
+                const card = grammarPool[Math.floor(Math.random() * grammarPool.length)];
+                const accepted = getAcceptedAnswers(card);
+                let distractors = grammarList.filter(g => g.meaning !== card.meaning).map(g => g.meaning);
+                distractors = shuffleArr(distractors).slice(0, 3);
+                const options = shuffleArr([card.meaning, ...distractors]);
+                q = { type: 'grammar', prompt: card.pattern, label: 'pattern นี้แปลว่าอะไร?', accepted, correctLabel: card.meaning, options, raw: card };
             } else {
                 const pool = kanaList;
                 const item = pool[Math.floor(Math.random() * pool.length)];
@@ -7133,7 +7291,7 @@ B เป็นสิ่งที่เด่นกว่า A
             }
             const q = bossState.question;
             bossRecognition = new SR();
-            bossRecognition.lang = q.type === 'vocab' ? 'th-TH' : 'en-US';
+            bossRecognition.lang = (q.type === 'vocab' || q.type === 'grammar') ? 'th-TH' : 'en-US';
             bossRecognition.maxAlternatives = 3;
             hint.innerText = '🎙️ กำลังฟัง... พูดคำตอบได้เลย';
             bossRecognition.onresult = (e) => {
@@ -7500,16 +7658,87 @@ B เป็นสิ่งที่เด่นกว่า A
         let listenCorrectCount = 0;
         let listenWrongCount = 0;
 
-        function playDialogueLines(lines) {
+        function renderFurigana(text) {
+            // แปลงข้อความรูปแบบ 漢字[かんじ] เป็น <ruby>漢字<rt>かんじ</rt></ruby> สำหรับแสดงคำอ่านเหนือคันจิ
+            if (!text) return '';
+            return text.replace(/([一-龯々]+)\[([^\]]+)\]/g, '<ruby>$1<rt>$2</rt></ruby>');
+        }
+
+        // ===== 📖 Listening Study Mode: เรียนฟังอิสระแบบไม่มีข้อสอบกดดัน (เหมือนโหมดท่องจำของคำศัพท์) =====
+        let listenStudyQueue = [];
+        let currentStudyIndex = 0;
+
+        function initListenStudy() {
+            const checkboxes = document.querySelectorAll('.filter-chips input[type="checkbox"]');
+            const selectedLevels = Array.from(checkboxes).filter(i => i.checked).map(i => i.value);
+            listenStudyQueue = listeningList.filter(d => selectedLevels.includes(d.level));
+            currentStudyIndex = 0;
+            loadStudyDialogue();
+        }
+
+        function loadStudyDialogue() {
+            const transcript = document.getElementById('lsTranscript');
+            if (listenStudyQueue.length === 0) {
+                document.getElementById('lsTitle').innerText = 'ไม่พบบทสนทนาในเลเวลที่เลือก';
+                document.getElementById('lsProgressLabel').innerText = '0/0';
+                transcript.innerHTML = '';
+                return;
+            }
+            const dlg = listenStudyQueue[currentStudyIndex];
+            document.getElementById('lsTitle').innerText = `[${dlg.level}] ${dlg.title}`;
+            document.getElementById('lsProgressLabel').innerText = `บทที่ ${currentStudyIndex + 1}/${listenStudyQueue.length}`;
+            transcript.innerHTML = dlg.lines.map((l, idx) => `
+                <div class="listen-line" data-line-index="${idx}">
+                    <div class="ll-speaker-row">
+                        <span class="ll-speaker">${l.speaker}</span>
+                        <button type="button" class="ll-replay-btn" onclick="replayStudyLine(${idx})" title="ฟังประโยคนี้อีกครั้ง">🔊</button>
+                    </div>
+                    <div class="ll-jp">${renderFurigana(l.furigana || l.jp)}</div>
+                    <div class="ll-th">${l.th}</div>
+                </div>`).join('');
+        }
+
+        function playStudyDialogue() {
+            const dlg = listenStudyQueue[currentStudyIndex];
+            if (!dlg) return;
+            const transcript = document.getElementById('lsTranscript');
+            playDialogueLines(
+                dlg.lines,
+                (idx) => {
+                    transcript.querySelectorAll('.listen-line').forEach((el, i) => el.classList.toggle('speaking', i === idx));
+                    const activeLine = transcript.querySelector(`.listen-line[data-line-index="${idx}"]`);
+                    if (activeLine) activeLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                },
+                () => { transcript.querySelectorAll('.listen-line').forEach(el => el.classList.remove('speaking')); }
+            );
+        }
+
+        function replayStudyLine(idx) {
+            const dlg = listenStudyQueue[currentStudyIndex];
+            if (!dlg || !dlg.lines[idx]) return;
+            playJapaneseAudio(dlg.lines[idx].jp);
+            const transcript = document.getElementById('lsTranscript');
+            transcript.querySelectorAll('.listen-line').forEach((el, i) => el.classList.toggle('speaking', i === idx));
+        }
+
+        function navigateStudyDialogue(dir) {
+            if (listenStudyQueue.length === 0) return;
+            currentStudyIndex = (currentStudyIndex + dir + listenStudyQueue.length) % listenStudyQueue.length;
+            loadStudyDialogue();
+        }
+
+        function playDialogueLines(lines, onLineStart, onAllDone) {
             if (!('speechSynthesis' in window) || !lines || lines.length === 0) return;
             window.speechSynthesis.cancel();
             const voice = jaVoices.find(v => v.voiceURI === selectedJaVoiceURI) || jaVoices[0];
-            lines.forEach(line => {
+            lines.forEach((line, idx) => {
                 const utter = new SpeechSynthesisUtterance(line.jp);
                 utter.lang = 'ja-JP';
                 utter.rate = 0.85;
                 utter.pitch = 1.0;
                 if (voice) utter.voice = voice;
+                if (onLineStart) utter.onstart = () => onLineStart(idx);
+                if (idx === lines.length - 1 && onAllDone) utter.onend = onAllDone;
                 window.speechSynthesis.speak(utter);
             });
             window.speechSynthesis.resume();
@@ -7517,7 +7746,22 @@ B เป็นสิ่งที่เด่นกว่า A
 
         function playCurrentDialogue() {
             const dlg = listenQueue[currentListenIndex];
-            if (dlg) playDialogueLines(dlg.lines);
+            if (!dlg) return;
+            const transcript = document.getElementById('listenTranscript');
+            transcript.classList.add('show'); // เปิดคำบรรยายอัตโนมัติตอนกดฟัง ให้เช็คได้ทันทีว่าฟังถูกไหม
+            playDialogueLines(
+                dlg.lines,
+                (idx) => {
+                    transcript.querySelectorAll('.listen-line').forEach((el, i) => {
+                        el.classList.toggle('speaking', i === idx);
+                    });
+                    const activeLine = transcript.querySelector(`.listen-line[data-line-index="${idx}"]`);
+                    if (activeLine) activeLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                },
+                () => {
+                    transcript.querySelectorAll('.listen-line').forEach(el => el.classList.remove('speaking'));
+                }
+            );
         }
 
         function toggleListenTranscript() {
@@ -7548,10 +7792,10 @@ B เป็นสิ่งที่เด่นกว่า A
             currentListenQIndex = 0;
             document.getElementById('listenTitle').innerText = `[${dlg.level}] ${dlg.title}`;
             document.getElementById('listenProgressLabel').innerText = `บทที่ ${currentListenIndex + 1}/${listenQueue.length}`;
-            transcript.innerHTML = dlg.lines.map(l => `
-                <div class="listen-line">
+            transcript.innerHTML = dlg.lines.map((l, idx) => `
+                <div class="listen-line" data-line-index="${idx}">
                     <div class="ll-speaker">${l.speaker}</div>
-                    <div class="ll-jp">${l.jp}</div>
+                    <div class="ll-jp">${renderFurigana(l.furigana || l.jp)}</div>
                     <div class="ll-th">${l.th}</div>
                 </div>`).join('');
             loadListenQuestion();
@@ -7776,15 +8020,6 @@ B เป็นสิ่งที่เด่นกว่า A
 
         function backToExamIntro() {
             initMockExamView();
-        }
-
-        function shuffleArr(arr) {
-            const a = [...arr];
-            for (let i = a.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
-            }
-            return a;
         }
 
         function buildExamOptions(correctText, pool, excludeText) {
