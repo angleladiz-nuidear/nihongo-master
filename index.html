@@ -2142,6 +2142,7 @@
                 </div>
                 <h3>📚 ตัวกรองระดับชั้น</h3>
                 <div class="filter-group">
+                    <div style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px;">✅ ใช้ได้กับทุกโหมด (การ์ดคำศัพท์, ทดสอบ, จับคู่, ฟัง, อ่าน, พูด) — ยกเว้น Mock Exam ที่เลือกระดับแยกในหน้านั้น</div>
                     <div class="filter-chips">
                         <label class="filter-chip"><input type="checkbox" value="N5" checked onchange="onFilterChange()"> N5 <span class="chip-count" id="countN5"></span></label>
                         <label class="filter-chip"><input type="checkbox" value="N4" checked onchange="onFilterChange()"> N4 <span class="chip-count" id="countN4"></span></label>
@@ -2556,6 +2557,7 @@
                             <div class="exam-level-select" id="examLevelSelect">
                                 <button type="button" class="exam-level-btn active" data-level="N5" onclick="selectExamLevel('N5')">N5</button>
                                 <button type="button" class="exam-level-btn" data-level="N4" onclick="selectExamLevel('N4')">N4</button>
+                                <button type="button" class="exam-level-btn" data-level="N3" onclick="selectExamLevel('N3')">N3</button>
                             </div>
                             <div class="exam-best-score" id="examBestScore"></div>
                             <button class="exam-start-btn" onclick="startMockExam()">🚀 เริ่มทำข้อสอบ</button>
@@ -14423,6 +14425,11 @@ Aを問わずB
             else if (currentMode === 'quiz') initQuiz();
             else if (currentMode === 'choice') initChoice();
             else if (currentMode === 'match') newMatchRound();
+            else if (currentMode === 'listenstudy') initListenStudy();
+            else if (currentMode === 'readstudy') initReadStudy();
+            else if (currentMode === 'listen') initListening();
+            else if (currentMode === 'read') initReading();
+            else if (currentMode === 'speak') initSpeakPractice();
         }
 
         function setContentType(type) {
