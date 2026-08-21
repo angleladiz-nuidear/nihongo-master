@@ -1663,6 +1663,323 @@
         .exam-review-item { font-size: 0.78rem; padding: 8px 10px; border-radius: 8px; margin-bottom: 6px; background: rgba(224,122,130,0.08); border-left: 3px solid var(--sakura); }
         .exam-review-item .eri-q { font-weight: 600; color: var(--text-main); }
         .exam-review-item .eri-a { color: var(--text-muted); margin-top: 2px; }
+
+        /* ============ 🗺️ Kana Quest (embedded mini-game world) ============ */
+
+  #kanaQuestScreen{
+    --kq-ink:#2B2118;
+    --kq-night:#1B2340;
+    --kq-night-deep:#12182E;
+    --kq-parchment:#F7EFDD;
+    --kq-parchment-2:#EFE3C8;
+    --kq-torii:#B23A2E;
+    --kq-torii-dark:#8C2C22;
+    --kq-gold:#E3A33B;
+    --kq-jade:#3F9179;
+    --kq-jade-dark:#2C6B57;
+    --kq-stone:#6B6455;
+  }
+  #kanaQuestScreen *{box-sizing:border-box; margin:0; padding:0;}
+  #kanaQuestScreen{
+    font-family:'M PLUS 1p', sans-serif;
+    background:
+      radial-gradient(ellipse at 20% 0%, #26305a 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 100%, #23305c 0%, transparent 50%),
+      var(--kq-night);
+    color:var(--kq-parchment);
+    min-height:100vh;
+    overflow-x:hidden;
+    display:none;
+  }
+  #kanaQuestScreen h1, #kanaQuestScreen h2, #kanaQuestScreen h3, #kanaQuestScreen .display{ font-family:'Zen Maru Gothic', sans-serif; }
+
+  #kqApp{ max-width:720px; margin:0 auto; padding:18px 16px 40px; position:relative; }
+
+  /* ---------- HUD ---------- */
+  #kqHud{
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    background:rgba(18,24,46,0.7);
+    border:1px solid rgba(227,163,59,0.35);
+    border-radius:16px;
+    padding:10px 14px;
+    margin-bottom:18px;
+    backdrop-filter:blur(4px);
+  }
+  #kqAvatar{
+    width:44px; height:44px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #ffe3b0, var(--kq-gold));
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; flex-shrink:0;
+    border:2px solid var(--kq-parchment);
+  }
+  #kqHudInfo{ flex:1; min-width:0; }
+  #kqHudName{ font-size:13px; color:var(--kq-parchment-2); display:flex; justify-content:space-between; margin-bottom:4px;}
+  #kqExpBarTrack{ height:7px; background:rgba(255,255,255,0.12); border-radius:6px; overflow:hidden; }
+  #kqExpBarFill{ height:100%; background:linear-gradient(90deg, var(--kq-jade), #6cc9a8); transition:width .5s ease; }
+  #kqHudCoins{
+    display:flex; align-items:center; gap:5px;
+    background:rgba(227,163,59,0.15);
+    border:1px solid var(--kq-gold);
+    color:var(--kq-gold);
+    font-weight:700;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:14px;
+    flex-shrink:0;
+  }
+  .kq-exit-btn{
+    background:none; border:1px solid rgba(247,239,221,0.3); color:var(--kq-parchment);
+    border-radius:20px; padding:6px 12px; font-size:11px; cursor:pointer; font-family:inherit;
+    flex-shrink:0; white-space:nowrap;
+  }
+  .kq-exit-btn:hover{ border-color:var(--kq-gold); color:var(--kq-gold); }
+  .kq-hud-right{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+
+  /* ---------- HUB / MAP ---------- */
+  #kqMapTitle{ text-align:center; margin-bottom:4px; }
+  #kqMapTitle h1{ font-size:26px; color:var(--kq-parchment); font-weight:900; }
+  #kqMapTitle p{ text-align:center; color:var(--kq-parchment-2); font-size:13px; margin-bottom:22px; opacity:0.85; }
+
+  .kq-zones{ display:flex; flex-direction:column; gap:14px; }
+  .kq-zone-card{
+    position:relative;
+    background:linear-gradient(135deg, rgba(247,239,221,0.06), rgba(247,239,221,0.02));
+    border:1px solid rgba(247,239,221,0.18);
+    border-radius:18px;
+    padding:18px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .kq-zone-card.unlocked{ cursor:pointer; border-color:rgba(227,163,59,0.5); }
+  .kq-zone-card.unlocked:hover{ transform:translateY(-2px); border-color:var(--kq-gold); }
+  .kq-zone-card.locked{ opacity:0.55; }
+  .kq-zone-icon{
+    width:56px; height:56px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:28px; flex-shrink:0;
+  }
+  .kq-zone-card:nth-child(1) .kq-zone-icon{ background:rgba(178,58,46,0.25); }
+  .kq-zone-card:nth-child(2) .kq-zone-icon{ background:rgba(63,145,121,0.22); }
+  .kq-zone-card:nth-child(3) .kq-zone-icon{ background:rgba(107,100,85,0.3); }
+  .kq-zone-card:nth-child(4) .kq-zone-icon{ background:rgba(227,163,59,0.22); }
+  .kq-zone-body{ flex:1; min-width:0; }
+  .kq-zone-card.locked .kq-zone-body{ padding-right:56px; }
+  .kq-zone-body h3{ font-size:16px; margin-bottom:3px; color:var(--kq-parchment); line-height:1.35; }
+  .kq-zone-body .kq-zone-sub{ font-size:12px; color:var(--kq-gold); margin-bottom:6px; }
+  .kq-zone-body .kq-zone-desc{ font-size:12.5px; color:var(--kq-parchment-2); line-height:1.55; opacity:0.85; }
+  .kq-zone-progress{ margin-top:10px; height:6px; background:rgba(255,255,255,0.1); border-radius:6px; overflow:hidden; }
+  .kq-zone-progress-fill{ height:100%; background:var(--kq-torii); }
+  .kq-zone-lock-tag{
+    position:absolute; top:14px; right:14px;
+    font-size:11px; background:rgba(0,0,0,0.3);
+    padding:3px 9px; border-radius:20px; color:var(--kq-parchment-2);
+    max-width:calc(100% - 100px); text-align:right;
+  }
+  .kq-zone-go{
+    display:inline-flex; align-items:center; gap:4px;
+    font-size:12px; color:var(--kq-night); background:var(--kq-gold);
+    padding:8px 16px; border-radius:20px; font-weight:700;
+    box-shadow:0 3px 8px rgba(227,163,59,0.35);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .kq-zone-go-row{ display:flex; justify-content:flex-end; margin-top:12px; }
+  .kq-zone-card.unlocked:hover .kq-zone-go{ transform:translateX(2px); box-shadow:0 4px 12px rgba(227,163,59,0.5); }
+  .kq-zone-go::after{ content:"▶"; font-size:9px; }
+
+  /* ---------- GAME SCREEN ---------- */
+  #kqGameScreen{ display:none; }
+  .kq-game-hud{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:10px; font-size:13px; color:var(--kq-parchment-2);
+  }
+  #kqBackBtn{
+    background:none; border:1px solid rgba(247,239,221,0.3); color:var(--kq-parchment);
+    border-radius:20px; padding:6px 14px; font-size:12px; cursor:pointer; font-family:inherit;
+  }
+  .kq-progress-track{
+    height:8px; background:rgba(255,255,255,0.1); border-radius:6px; overflow:hidden; margin-bottom:16px;
+  }
+  #kqProgressFill{ height:100%; background:var(--kq-jade); transition:width .3s ease; }
+
+  #kqArena, #kqKanjiArena, #kqVocabArena{
+    position:relative;
+    height:300px;
+    background:linear-gradient(180deg, rgba(63,145,121,0.08), rgba(178,58,46,0.05));
+    border:1px solid rgba(247,239,221,0.15);
+    border-radius:18px;
+    overflow:hidden;
+    margin-bottom:18px;
+  }
+  .kq-prompt-label{
+    position:absolute; top:8px; left:0; right:0; text-align:center;
+    font-size:11px; color:var(--kq-parchment-2); opacity:0.7; letter-spacing:1px;
+  }
+  .kq-falling-bubble{
+    position:absolute;
+    left:50%;
+    top:-70px;
+    transform:translateX(-50%);
+    width:76px; height:76px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff7e6, var(--kq-gold));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-size:34px; font-weight:700; color:var(--kq-torii-dark);
+    box-shadow:0 4px 14px rgba(0,0,0,0.35);
+    transition:top linear, opacity .25s ease, transform .25s ease;
+  }
+  .kq-falling-bubble.pop{ opacity:0; transform:translateX(-50%) scale(1.4); }
+
+  .kq-radical-bubble{
+    position:absolute; left:50%; top:-70px; transform:translateX(-50%);
+    width:70px; height:70px; border-radius:16px;
+    background:radial-gradient(circle at 35% 30%, #ffe9c9, var(--kq-stone));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Zen Maru Gothic', sans-serif; font-size:32px; font-weight:700; color:var(--kq-ink);
+    box-shadow:0 4px 14px rgba(0,0,0,0.35);
+    transition:top linear, opacity .25s ease, transform .25s ease;
+  }
+  .kq-radical-bubble.pop{ opacity:0; transform:translateX(-50%) scale(1.4); }
+
+  #kqKanjiSlots{ display:flex; align-items:center; justify-content:center; gap:14px; margin:14px 0 6px; }
+  .kq-kanji-slot{
+    width:70px; height:70px; border-radius:16px;
+    border:2px dashed rgba(247,239,221,0.35);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Zen Maru Gothic'; font-size:30px; color:var(--kq-parchment);
+    cursor:pointer; transition:border-color .15s, background .15s;
+  }
+  .kq-kanji-slot.filled{ border-style:solid; border-color:var(--kq-gold); background:rgba(227,163,59,0.12); }
+  .kq-kanji-slot.success{ border-color:var(--kq-jade); background:rgba(63,145,121,0.25); }
+  .kq-kanji-slot.fail{ border-color:var(--kq-torii); background:rgba(178,58,46,0.2); }
+  #kqKanjiPlus{ font-size:22px; color:var(--kq-parchment-2); }
+  #kqKanjiHint{ text-align:center; font-size:11px; color:var(--kq-parchment-2); opacity:0.75; margin-bottom:4px; }
+  #kqKanjiResult{ text-align:center; min-height:56px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  #kqKanjiResult .rk{ font-family:'Zen Maru Gothic'; font-size:36px; color:var(--kq-gold); font-weight:900; }
+  #kqKanjiResult .rd{ font-size:12px; color:var(--kq-parchment-2); margin-top:4px; }
+  .kq-dev-preview-btn{
+    display:inline-block; margin-top:8px; font-size:11px; color:var(--kq-jade);
+    background:rgba(63,145,121,0.15); border:1px solid var(--kq-jade);
+    padding:3px 10px; border-radius:12px; cursor:pointer;
+  }
+
+  #kqParticleArena, .kq-bridge-wrap{ position:relative; }
+  #kqBridgeTrack{
+    height:34px; background:rgba(255,255,255,0.08); border-radius:17px; position:relative;
+    margin-bottom:22px; overflow:hidden; border:1px solid rgba(247,239,221,0.15);
+  }
+  #kqBridgeFill{ height:100%; background:linear-gradient(90deg, var(--kq-torii), var(--kq-gold)); width:0%; transition:width .4s ease; }
+  #kqBridgeWalker{
+    position:absolute; top:50%; left:0%; transform:translate(-50%,-50%); font-size:22px;
+    transition:left .4s ease;
+  }
+  #kqSentenceCard{
+    background:rgba(247,239,221,0.06); border:1px solid rgba(247,239,221,0.18);
+    border-radius:18px; padding:26px 18px; text-align:center; margin-bottom:16px; min-height:110px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  #kqSentenceText{ font-size:19px; line-height:1.9; }
+  .kq-blank-slot{
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:44px; height:32px; padding:0 6px; margin:0 4px;
+    border-radius:8px; border:2px dashed var(--kq-gold); color:var(--kq-gold);
+    font-family:'Zen Maru Gothic'; font-weight:700; font-size:17px;
+    vertical-align:middle;
+  }
+  .kq-blank-slot.correct{ border-style:solid; border-color:var(--kq-jade); color:#fff; background:var(--kq-jade); }
+  .kq-blank-slot.wrong{ border-style:solid; border-color:var(--kq-torii); color:#fff; background:var(--kq-torii); }
+
+  #kqParticleOptions{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:10px; }
+  .kq-particle-option{
+    border-radius:14px; border:2px solid rgba(247,239,221,0.25);
+    background:rgba(247,239,221,0.06); color:var(--kq-parchment);
+    font-family:'Zen Maru Gothic', sans-serif; font-size:20px; font-weight:700;
+    padding:10px 22px; cursor:pointer; transition:transform .1s ease, background .15s ease, border-color .15s ease;
+  }
+  .kq-particle-option:active{ transform:scale(0.94); }
+  .kq-particle-option.correct{ background:var(--kq-jade); border-color:var(--kq-jade); color:#fff; }
+  .kq-particle-option.wrong{ background:var(--kq-torii); border-color:var(--kq-torii); color:#fff; }
+  .kq-particle-option[disabled]{ opacity:0.5; pointer-events:none; }
+
+  #kqParticleExplain{
+    text-align:center; font-size:12.5px; color:var(--kq-parchment-2); min-height:38px;
+    padding:0 8px; line-height:1.6;
+  }
+
+  #kqOptions{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;
+  }
+  .kq-option-bubble{
+    aspect-ratio:1/1;
+    border-radius:50%;
+    border:2px solid rgba(247,239,221,0.25);
+    background:rgba(247,239,221,0.06);
+    color:var(--kq-parchment);
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-size:26px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    transition:transform .1s ease, background .15s ease, border-color .15s ease;
+  }
+  .kq-option-bubble:active{ transform:scale(0.92); }
+  .kq-option-bubble.correct{ background:var(--kq-jade); border-color:var(--kq-jade); color:#fff; }
+  .kq-option-bubble.wrong{ background:var(--kq-torii); border-color:var(--kq-torii); color:#fff; }
+
+  #kqFeedback{
+    min-height:34px; text-align:center; font-size:13px; color:var(--kq-parchment-2); margin-top:10px;
+  }
+  #kqFeedback.good{ color:#8be0c4; }
+  #kqFeedback.bad{ color:#ef9a90; }
+
+  /* ---------- ZONE 2: VOCABULARY FOREST (Word Catch) ---------- */
+  .kq-vocab-bubble{ font-size:26px; width:88px; height:88px; }
+  #kqVocabOptions{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:10px; }
+  .kq-vocab-option{
+    border-radius:14px; border:2px solid rgba(247,239,221,0.25);
+    background:rgba(247,239,221,0.06); color:var(--kq-parchment);
+    font-family:'M PLUS 1p', sans-serif; font-size:14px; font-weight:700;
+    padding:10px 18px; cursor:pointer; transition:transform .1s ease, background .15s ease, border-color .15s ease;
+  }
+  .kq-vocab-option:active{ transform:scale(0.94); }
+  .kq-vocab-option.correct{ background:var(--kq-jade); border-color:var(--kq-jade); color:#fff; }
+  .kq-vocab-option.wrong{ background:var(--kq-torii); border-color:var(--kq-torii); color:#fff; }
+  #kqVocabFeedback{
+    min-height:34px; text-align:center; font-size:13px; color:var(--kq-parchment-2); margin-top:10px;
+  }
+  #kqVocabFeedback.good{ color:#8be0c4; }
+  #kqVocabFeedback.bad{ color:#ef9a90; }
+  #kqVocabGameScreen{ display:none; }
+
+  /* ---------- SUMMARY ---------- */
+  #kqSummaryScreen{ display:none; text-align:center; padding-top:20px; }
+  #kqVocabSummaryScreen{ display:none; text-align:center; padding-top:20px; }
+  #kqKanjiGameScreen{ display:none; }
+  #kqKanjiSummaryScreen{ display:none; text-align:center; padding-top:20px; }
+  #kqParticleGameScreen{ display:none; }
+  #kqParticleSummaryScreen{ display:none; text-align:center; padding-top:20px; }
+  #kqSummaryScreen h2{ font-size:24px; margin-bottom:6px; }
+  #kqSummaryScreen p{ color:var(--kq-parchment-2); font-size:13px; margin-bottom:20px; }
+  .kq-summary-stats{ display:flex; justify-content:center; gap:14px; margin-bottom:22px; flex-wrap:wrap; }
+  .kq-stat-pill{
+    background:rgba(247,239,221,0.07); border:1px solid rgba(247,239,221,0.18);
+    border-radius:14px; padding:12px 18px; min-width:96px;
+  }
+  .kq-stat-pill .num{ font-family:'Zen Maru Gothic'; font-size:22px; color:var(--kq-gold); font-weight:900; }
+  .kq-stat-pill .lbl{ font-size:11px; color:var(--kq-parchment-2); margin-top:2px; }
+  #kqUnlockBanner, #kqKanjiUnlockBanner, #kqVocabUnlockBanner{
+    background:rgba(63,145,121,0.15); border:1px solid var(--kq-jade);
+    border-radius:14px; padding:14px; margin-bottom:20px; font-size:13px; display:none;
+  }
+  .kq-primary-btn{
+    background:var(--kq-torii); color:#fff; border:none; padding:12px 28px;
+    border-radius:24px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit;
+  }
+  .kq-primary-btn:hover{ background:var(--kq-torii-dark); }
+
+  .kq-footnote{ text-align:center; font-size:11px; color:rgba(247,239,221,0.4); margin-top:26px; }
+
     </style>
 </head>
 <body>
@@ -1733,6 +2050,7 @@
                     </div>
                 </div>
                 <span id="currentUserLabel">👤</span>
+                <button class="btn-mini" onclick="openKanaQuest()">🗺️ Kana Quest</button>
                 <button class="btn-mini" onclick="openBackupModal()">💾 สำรอง/กู้คืน</button>
                 <button class="btn-mini" onclick="logoutUser()">ออกจากระบบ</button>
             </div>
@@ -2301,6 +2619,158 @@
             </table>
         </div>
         <button class="btn-mini" style="margin-top:18px; max-width:200px;" onclick="logoutUser()">◀ ออกจากระบบ</button>
+    </div>
+
+    <!-- 🗺️ Kana Quest: embedded mini-game world, shares username/EXP/coins with the main app -->
+    <div id="kanaQuestScreen">
+<div id="kqApp">
+
+  <div id="kqHud">
+    <div id="kqAvatar">🧑‍🎓</div>
+    <div id="kqHudInfo">
+      <div id="kqHudName"><span id="kqHudLevel">Lv.1 นักผจญภัย</span><span id="kqHudExpText">0/50 EXP</span></div>
+      <div id="kqExpBarTrack"><div id="kqExpBarFill" style="width:0%"></div></div>
+    </div>
+    <div class="kq-hud-right">
+      <div id="kqHudCoins">🪙 <span id="kqCoinCount">0</span></div>
+      <button type="button" class="kq-exit-btn" onclick="closeKanaQuest()">🚪 ออก</button>
+    </div>
+  </div>
+
+  <!-- HUB SCREEN -->
+  <div id="kqHubScreen">
+    <div id="kqMapTitle">
+      <h1>🗺️ Kana Quest</h1>
+      <p>เดินทางผ่าน 4 โซนเพื่อพิชิตภาษาญี่ปุ่น N5–N3</p>
+    </div>
+    <div class="kq-zones" id="kqZonesContainer"></div>
+    <p class="kq-footnote">ทั้ง 4 โซนเล่นได้เต็มรูปแบบ — ปลดล็อกตามลำดับด้วยค่าความชำนาญเฉลี่ยของโซนก่อนหน้า (Kana ≥70% → Vocab ≥60% → Kanji ≥60%) เหรียญ/EXP ที่ได้ใช้ระบบเดียวกับแอปหลักทั้งหมด</p>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="kqGameScreen">
+    <div class="kq-game-hud">
+      <button id="kqBackBtn">← กลับแผนที่</button>
+      <span id="kqQuestionCounter">ข้อ 1/15</span>
+    </div>
+    <div class="kq-progress-track"><div id="kqProgressFill" style="width:0%"></div></div>
+
+    <div id="kqArena">
+      <div class="kq-prompt-label">แตะฮิระงะนะที่ออกเสียงตรงกัน</div>
+    </div>
+
+    <div id="kqOptions"></div>
+    <div id="kqFeedback"></div>
+  </div>
+
+  <!-- SUMMARY SCREEN -->
+  <div id="kqSummaryScreen">
+    <h2>🎉 จบรอบแล้ว!</h2>
+    <p id="kqSummarySub">สรุปผลการเดินทางในหมู่บ้าน Kana Village</p>
+    <div class="kq-summary-stats">
+      <div class="kq-stat-pill"><div class="num" id="kqSumCorrect">-</div><div class="lbl">ตอบถูก</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqSumCoins">-</div><div class="lbl">เหรียญที่ได้</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqSumExp">-</div><div class="lbl">EXP ที่ได้</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqSumMastery">-</div><div class="lbl">ความแม่นยำรวม</div></div>
+    </div>
+    <div id="kqUnlockBanner">🔓 ความแม่นยำวรรค A–SA ถึง 70% แล้ว! Zone 2: Vocabulary Forest ปลดล็อกแล้ว กลับไปที่แผนที่เพื่อเข้าเล่นได้เลย</div>
+    <button class="kq-primary-btn" id="kqContinueBtn">กลับสู่แผนที่</button>
+  </div>
+
+  <!-- VOCABULARY FOREST SCREEN (Zone 2: Word Catch) -->
+  <div id="kqVocabGameScreen">
+    <div class="kq-game-hud">
+      <button id="kqVocabBackBtn">← กลับแผนที่</button>
+      <span id="kqVocabQuestionCounter">ข้อ 1/12</span>
+    </div>
+    <div class="kq-progress-track"><div id="kqVocabProgressFill" style="width:0%"></div></div>
+
+    <div id="kqVocabArena">
+      <div class="kq-prompt-label">แตะความหมายภาษาไทยที่ตรงกับคำที่ร่วงลงมา</div>
+    </div>
+
+    <div id="kqVocabOptions"></div>
+    <div id="kqVocabFeedback"></div>
+  </div>
+
+  <!-- VOCABULARY FOREST SUMMARY SCREEN -->
+  <div id="kqVocabSummaryScreen">
+    <h2>🌲 ออกจากป่าแล้ว!</h2>
+    <p>สรุปผลการเก็บคำศัพท์ใน Vocabulary Forest</p>
+    <div class="kq-summary-stats">
+      <div class="kq-stat-pill"><div class="num" id="kqVsumCorrect">-</div><div class="lbl">ตอบถูก</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqVsumCoins">-</div><div class="lbl">เหรียญที่ได้</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqVsumExp">-</div><div class="lbl">EXP ที่ได้</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqVsumMastery">-</div><div class="lbl">ความแม่นยำรวม</div></div>
+    </div>
+    <div id="kqVocabUnlockBanner">🔓 คำศัพท์เฉลี่ยถึง 60% แล้ว! Zone 3: Kanji Mine ปลดล็อกแล้ว กลับไปที่แผนที่เพื่อเข้าเล่นได้เลย</div>
+    <button class="kq-primary-btn" id="kqVocabContinueBtn">กลับสู่แผนที่</button>
+  </div>
+
+  <!-- KANJI TETRIS SCREEN -->
+  <div id="kqKanjiGameScreen">
+    <div class="kq-game-hud">
+      <button id="kqKanjiBackBtn">← กลับแผนที่</button>
+      <span id="kqKanjiQuestionCounter">ประกอบแล้ว 0/10</span>
+    </div>
+    <div class="kq-progress-track"><div id="kqKanjiProgressFill" style="width:0%"></div></div>
+
+    <div id="kqKanjiArena">
+      <div class="kq-prompt-label">แตะช่องซ้าย/ขวาเพื่อจับส่วนประกอบที่ร่วงลงมา</div>
+    </div>
+
+    <div id="kqKanjiHint">ประกอบ 2 ส่วนให้ถูกตำแหน่ง (ซ้าย + ขวา) เพื่อรวมเป็นคันจิ</div>
+    <div id="kqKanjiSlots">
+      <div class="kq-kanji-slot" id="kqSlotLeft" data-slot="left"></div>
+      <div id="kqKanjiPlus">+</div>
+      <div class="kq-kanji-slot" id="kqSlotRight" data-slot="right"></div>
+    </div>
+    <div id="kqKanjiResult"></div>
+  </div>
+
+  <!-- KANJI SUMMARY SCREEN -->
+  <div id="kqKanjiSummaryScreen">
+    <h2>⛏️ ออกจากเหมืองแล้ว!</h2>
+    <p>สรุปผลการขุด Kanji ใน Kanji Mine</p>
+    <div class="kq-summary-stats">
+      <div class="kq-stat-pill"><div class="num" id="kqKsumCorrect">-</div><div class="lbl">ประกอบสำเร็จ</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqKsumCoins">-</div><div class="lbl">เหรียญที่ได้</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqKsumExp">-</div><div class="lbl">EXP ที่ได้</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqKsumMastery">-</div><div class="lbl">ความแม่นยำรวม</div></div>
+    </div>
+    <div id="kqKanjiUnlockBanner">🔓 Kanji เฉลี่ยถึง 60% แล้ว! Zone 4: Grammar Castle ปลดล็อกแล้ว กลับไปที่แผนที่เพื่อเข้าเล่นได้เลย</div>
+    <button class="kq-primary-btn" id="kqKanjiContinueBtn">กลับสู่แผนที่</button>
+  </div>
+
+  <!-- PARTICLE BRIDGE SCREEN -->
+  <div id="kqParticleGameScreen">
+    <div class="kq-game-hud">
+      <button id="kqParticleBackBtn">← กลับแผนที่</button>
+      <span id="kqParticleQuestionCounter">ข้อ 1/13</span>
+    </div>
+
+    <div id="kqBridgeTrack"><div id="kqBridgeFill"></div><div id="kqBridgeWalker">🚶</div></div>
+
+    <div id="kqSentenceCard"><div id="kqSentenceText"></div></div>
+
+    <div id="kqParticleOptions"></div>
+    <div id="kqParticleExplain"></div>
+  </div>
+
+  <!-- PARTICLE SUMMARY SCREEN -->
+  <div id="kqParticleSummaryScreen">
+    <h2>🏯 ข้ามสะพานสำเร็จ!</h2>
+    <p>สรุปผลการฝึกใน Grammar Castle</p>
+    <div class="kq-summary-stats">
+      <div class="kq-stat-pill"><div class="num" id="kqPsumCorrect">-</div><div class="lbl">ตอบถูก</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqPsumCoins">-</div><div class="lbl">เหรียญที่ได้</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqPsumExp">-</div><div class="lbl">EXP ที่ได้</div></div>
+      <div class="kq-stat-pill"><div class="num" id="kqPsumMastery">-</div><div class="lbl">ความแม่นยำรวม</div></div>
+    </div>
+    <button class="kq-primary-btn" id="kqParticleContinueBtn">กลับสู่แผนที่</button>
+  </div>
+
+</div>
     </div>
 
     <script>
@@ -13493,7 +13963,20 @@ Aを問わずB
 
         // ===== 💾 สำรอง/กู้คืนข้อมูล: รวมทุก key ที่ผูกกับ username เดียว แล้ว export/import เป็นไฟล์ .json =====
         // (แอปนี้เก็บข้อมูลใน localStorage ของเบราว์เซอร์เครื่องนี้เท่านั้น ไม่มีเซิร์ฟเวอร์ — ฟีเจอร์นี้คือทางเดียวที่ย้าย/กู้คืนข้อมูลข้ามเครื่องหรือข้ามเบราว์เซอร์ได้)
-        const PER_USER_BACKUP_KEYS = ['nihongo_srs_v2', 'nihongo_test_stats_v1', 'nihongo_gacha_v1', 'nihongo_avatar_v1', 'nihongo_quest_v1', 'nihongo_howto_seen_v1'];
+        const PER_USER_BACKUP_KEYS = ['nihongo_srs_v2', 'nihongo_test_stats_v1', 'nihongo_gacha_v1', 'nihongo_avatar_v1', 'nihongo_quest_v1', 'nihongo_howto_seen_v1', 'nihongo_kanaquest_v1'];
+
+        // ===== 🗺️ Kana Quest: เปิด/ปิดหน้าจอเกม (ใช้ username/EXP/เหรียญชุดเดียวกับแอปหลัก) =====
+        function openKanaQuest() {
+            document.getElementById('appWrap').style.display = 'none';
+            document.getElementById('kanaQuestScreen').style.display = 'block';
+            if (typeof window.kqOpen === 'function') window.kqOpen();
+        }
+        function closeKanaQuest() {
+            document.getElementById('kanaQuestScreen').style.display = 'none';
+            document.getElementById('appWrap').style.display = 'flex';
+            renderAvatarWidget();
+            updateModeCoinBadges();
+        }
 
         function openBackupModal() {
             document.getElementById('backupUserLabel').innerText = currentUser || '-';
@@ -14720,7 +15203,10 @@ Aを問わずB
             kana:  { cap: 20, label: '🌸 ตัวอักษร (ลากเส้น/สปีดเทส/ทายเสียง)' },
             quest: { cap: 10, label: '🎯 ภารกิจประจำวัน' },
             exam:  { cap: 30, label: '📝 JLPT Mock Exam' },
-            boss:  { cap: 60, label: '⚔️ Boss Battle' }
+            boss:  { cap: 60, label: '⚔️ Boss Battle' },
+            kqpop:     { cap: 15, label: '🗺️ Kana Quest: Kana Village' },
+            kqkanji:   { cap: 20, label: '🗺️ Kana Quest: Kanji Mine' },
+            kqparticle:{ cap: 20, label: '🗺️ Kana Quest: Grammar Castle' }
         };
 
         function todayStr() { return new Date().toISOString().slice(0, 10); }
@@ -16593,6 +17079,839 @@ Aを問わずB
                 document.getElementById('quizSubmitBtn').click();
             }
         });
+
+        // ============ 🗺️ Kana Quest (embedded mini-game world) ============
+        // ห่อไว้ใน IIFE ของตัวเอง กันชื่อตัวแปร/ฟังก์ชันภายในชนกับส่วนอื่นของแอป
+        // แต่ตั้งใจอ้างอิง awardExp / addPracticeCoins / avatarState / gachaState / storageKey
+        // จาก scope ภายนอกโดยตรง เพื่อให้ตัวละคร EXP และเหรียญเป็นชุดเดียวกันกับแอปหลักทั้งหมด
+(function(){
+  "use strict";
+
+  // ---------- Data ----------
+  var KANA = [
+    ["あ","ア","a"],["い","イ","i"],["う","ウ","u"],["え","エ","e"],["お","オ","o"],
+    ["か","カ","ka"],["き","キ","ki"],["く","ク","ku"],["け","ケ","ke"],["こ","コ","ko"],
+    ["さ","サ","sa"],["し","シ","shi"],["す","ス","su"],["せ","セ","se"],["そ","ソ","so"],
+    ["た","タ","ta"],["ち","チ","chi"],["つ","ツ","tsu"],["て","テ","te"],["と","ト","to"],
+    ["な","ナ","na"],["に","ニ","ni"],["ぬ","ヌ","nu"],["ね","ネ","ne"],["の","ノ","no"],
+    ["は","ハ","ha"],["ひ","ヒ","hi"],["ふ","フ","fu"],["へ","ヘ","he"],["ほ","ホ","ho"],
+    ["ま","マ","ma"],["み","ミ","mi"],["む","ム","mu"],["め","メ","me"],["も","モ","mo"],
+    ["や","ヤ","ya"],["ゆ","ユ","yu"],["よ","ヨ","yo"],
+    ["ら","ラ","ra"],["り","リ","ri"],["る","ル","ru"],["れ","レ","re"],["ろ","ロ","ro"],
+    ["わ","ワ","wa"],["を","ヲ","wo"],["ん","ン","n"]
+  ];
+  var BASIC_15 = KANA.slice(0,15); // วรรค A–SA ตามเงื่อนไขปลดล็อก Zone 2
+
+  var ROUND_LEN = 15;
+  var FALL_MS = 4500;
+
+  // combo: [id, left radical, right radical, reading, meaning]
+  var KANJI_COMBOS = [
+    ["明","日","月","あかるい / めい","สว่าง"],
+    ["林","木","木","はやし","ป่าโปร่ง"],
+    ["好","女","子","すき","ชอบ"],
+    ["休","人","木","やすむ","พักผ่อน"],
+    ["男","田","力","おとこ","ผู้ชาย"],
+    ["思","田","心","おもう","คิด"],
+    ["早","日","十","はやい","เร็ว/แต่เช้า"],
+    ["岩","山","石","いわ","หิน/ภูเขาหิน"],
+    ["花","艹","化","はな","ดอกไม้"]
+  ];
+  var KANJI_ROUND_LEN = 10;
+  var RADICAL_FALL_MS = 5200;
+
+  var ALL_PARTICLES = ["は","が","を","に","で","と","の"];
+  // sentence: [before, answer, after, explanation]
+  var SENTENCES = [
+    ["わたし","は","にほんじん です。","ใช้ は บอกหัวข้อของประโยค (สิ่งที่กำลังพูดถึง)"],
+    ["これ","は","ほん です。","は บอกหัวข้อ — “นี่” คือสิ่งที่กำลังอธิบาย"],
+    ["あれ","が","わたしの かばん です。","が เน้นว่า “อันนั้น” คือคำตอบ/ประธานใหม่ที่เพิ่งพูดถึง"],
+    ["だれ","が","きました か。","คำถาม だれ (ใคร) ใช้คู่กับ が เสมอ"],
+    ["パン","を","たべます。","を บอกกรรมตรงของกริยา (สิ่งที่ถูกกระทำ)"],
+    ["ほん","を","よみます。","を บอกกรรมตรง — สิ่งที่ถูก “อ่าน”"],
+    ["なに","を","たべますか。","なに (อะไร) ที่เป็นกรรมของกริยา ใช้คู่กับ を"],
+    ["がっこう","に","いきます。","に บอกจุดหมายปลายทางของการเดินทาง"],
+    ["うち","に","います。","に บอกสถานที่ที่มีอยู่/อาศัยอยู่ (คู่กับ いる/ある)"],
+    ["としょかん","で","べんきょうします。","で บอกสถานที่ที่เกิดการกระทำ/กิจกรรม"],
+    ["レストラン","で","たべます。","で บอกสถานที่ที่กำลังทำกิจกรรม (กินข้าวที่ร้าน)"],
+    ["せんせい","と","はなします。","と บอกคนที่ทำกิจกรรมด้วยกัน"],
+    ["これ","の","ほん です か。","の แสดงความเป็นเจ้าของ / ขยายคำนาม"]
+  ];
+  var PARTICLE_ROUND_LEN = SENTENCES.length;
+
+  // ---------- State ----------
+  var player = null;
+
+  // player object เก็บเฉพาะข้อมูลเฉพาะของ Kana Quest (ความชำนาญ/ความคืบหน้าโซน)
+  // เลเวล/EXP/เหรียญ ใช้ระบบเดียวกับแอปหลักทั้งหมด (avatarState / gachaState) ไม่มีของตัวเองแยกอีกต่อไป
+  function defaultPlayer(){
+    return { kanaMastery:{}, kanjiMastery:{}, particleMastery:{}, vocabMastery:{}, zone2Unlocked:false, zone3Unlocked:false, zone4Unlocked:false, roundsPlayed:0, vocabRoundsPlayed:0, kanjiRoundsPlayed:0, particleRoundsPlayed:0 };
+  }
+
+  // ให้รางวัลผ่านระบบกลางของแอปหลัก: เหรียญฝึกฝน (มีเพดานรายวันของตัวเอง) + EXP ตัวละครเดียวกันทั้งแอป
+  function addRewards(coins, exp, coinModeKey, expModeKey){
+    if (typeof addPracticeCoins === 'function') addPracticeCoins(coins, coinModeKey);
+    if (typeof awardExp === 'function') awardExp(exp, expModeKey);
+  }
+
+  function getMastery(char){
+    return (player.kanaMastery[char] && player.kanaMastery[char].confidence) || 0;
+  }
+  function bumpMastery(char, delta){
+    if(!player.kanaMastery[char]) player.kanaMastery[char] = { confidence:0, seen:0 };
+    var m = player.kanaMastery[char];
+    m.seen += 1;
+    m.confidence = Math.max(0, Math.min(100, m.confidence + delta));
+  }
+  function avgMastery(list){
+    var seen = list.filter(function(k){ return player.kanaMastery[k[0]]; });
+    if(seen.length === 0) return 0;
+    var sum = seen.reduce(function(a,k){ return a + getMastery(k[0]); }, 0);
+    return Math.round(sum / seen.length);
+  }
+
+  // ---------- Zone 2: Vocabulary Forest (คำศัพท์ N5 ชุดเริ่มต้น หยิบจาก vocabList ของแอปหลัก) ----------
+  // ใช้ vocabList ตัวเดียวกับที่แอปหลักใช้สอนคำศัพท์ทุกโหมด (ประกาศไว้ scope นอก จึงมองเห็นได้จากตรงนี้)
+  var VOCAB_POOL = (typeof vocabList !== 'undefined')
+    ? vocabList.filter(function(v){ return v.level === 'N5'; }).slice(0, 40)
+    : [];
+  var VOCAB_ROUND_LEN = Math.min(12, VOCAB_POOL.length);
+  var VOCAB_FALL_MS = 5200;
+
+  function getVocabMastery(jp){
+    return (player.vocabMastery[jp] && player.vocabMastery[jp].confidence) || 0;
+  }
+  function bumpVocabMastery(jp, delta){
+    if(!player.vocabMastery[jp]) player.vocabMastery[jp] = { confidence:0, seen:0 };
+    var m = player.vocabMastery[jp];
+    m.seen += 1;
+    m.confidence = Math.max(0, Math.min(100, m.confidence + delta));
+  }
+  function avgVocabMastery(){
+    var seen = VOCAB_POOL.filter(function(v){ return player.vocabMastery[v.jp]; });
+    if(seen.length === 0) return 0;
+    var sum = seen.reduce(function(a,v){ return a + getVocabMastery(v.jp); }, 0);
+    return Math.round(sum / seen.length);
+  }
+  function pickWeightedVocab(){
+    var weights = VOCAB_POOL.map(function(v){ return (100 - getVocabMastery(v.jp)) + 10; });
+    var total = weights.reduce(function(a,b){ return a+b; }, 0);
+    var r = Math.random() * total;
+    for(var i=0;i<VOCAB_POOL.length;i++){
+      r -= weights[i];
+      if(r <= 0) return VOCAB_POOL[i];
+    }
+    return VOCAB_POOL[VOCAB_POOL.length-1];
+  }
+
+  var COMBO_LOOKUP = {};
+  KANJI_COMBOS.forEach(function(c){ COMBO_LOOKUP[c[1] + "|" + c[2]] = c; });
+
+  function getKanjiConfidence(id){
+    var m = player.kanjiMastery[id];
+    if(!m || !m.attempts) return 0;
+    return Math.round((m.success / m.attempts) * 100);
+  }
+  function bumpKanjiAttempt(id, wasSuccess){
+    if(!player.kanjiMastery[id]) player.kanjiMastery[id] = { attempts:0, success:0 };
+    var m = player.kanjiMastery[id];
+    m.attempts += 1;
+    if(wasSuccess) m.success += 1;
+  }
+  function avgKanjiMastery(){
+    var withAttempts = KANJI_COMBOS.filter(function(c){ return player.kanjiMastery[c[0]] && player.kanjiMastery[c[0]].attempts; });
+    if(withAttempts.length === 0) return 0;
+    var sum = withAttempts.reduce(function(a,c){ return a + getKanjiConfidence(c[0]); }, 0);
+    return Math.round(sum / withAttempts.length);
+  }
+  function pickWeightedCombo(){
+    var weights = KANJI_COMBOS.map(function(c){ return (100 - getKanjiConfidence(c[0])) + 10; });
+    var total = weights.reduce(function(a,b){ return a+b; }, 0);
+    var r = Math.random() * total;
+    for(var i=0;i<KANJI_COMBOS.length;i++){
+      r -= weights[i];
+      if(r <= 0) return KANJI_COMBOS[i];
+    }
+    return KANJI_COMBOS[KANJI_COMBOS.length-1];
+  }
+
+  function getParticleConfidence(p){
+    var m = player.particleMastery[p];
+    if(!m || !m.attempts) return 0;
+    return Math.round((m.success / m.attempts) * 100);
+  }
+  function bumpParticleAttempt(p, wasSuccess){
+    if(!player.particleMastery[p]) player.particleMastery[p] = { attempts:0, success:0 };
+    var m = player.particleMastery[p];
+    m.attempts += 1;
+    if(wasSuccess) m.success += 1;
+  }
+  function avgParticleMastery(){
+    var used = ALL_PARTICLES.filter(function(p){ return player.particleMastery[p] && player.particleMastery[p].attempts; });
+    if(used.length === 0) return 0;
+    var sum = used.reduce(function(a,p){ return a + getParticleConfidence(p); }, 0);
+    return Math.round(sum / used.length);
+  }
+  function pickWeightedSentenceIdx(usedIdx){
+    var candidates = SENTENCES.map(function(s,i){ return i; }).filter(function(i){ return usedIdx.indexOf(i) === -1; });
+    var weights = candidates.map(function(i){ return (100 - getParticleConfidence(SENTENCES[i][1])) + 10; });
+    var total = weights.reduce(function(a,b){ return a+b; }, 0);
+    var r = Math.random() * total;
+    for(var k=0;k<candidates.length;k++){
+      r -= weights[k];
+      if(r <= 0) return candidates[k];
+    }
+    return candidates[candidates.length-1];
+  }
+
+  // บันทึกด้วย localStorage เหมือนส่วนอื่นๆ ของแอปหลัก (แยกต่อ username ด้วย storageKey() ที่มีอยู่แล้ว)
+  // ไม่ใช้ window.storage อีกต่อไป เพราะ API นั้นใช้ได้เฉพาะตอนรันในแซนด์บ็อกซ์ Artifact ของ Claude เท่านั้น
+  // ถ้าดาวน์โหลดไฟล์ไปเปิดเองข้อมูลจะไม่ถูกบันทึกเลย
+  function saveState(){
+    try{ localStorage.setItem(storageKey('nihongo_kanaquest_v1'), JSON.stringify(player)); }
+    catch(e){ console.error("save failed", e); }
+  }
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(storageKey('nihongo_kanaquest_v1'));
+      if(raw){
+        player = JSON.parse(raw);
+        if(!player.kanaMastery) player.kanaMastery = {};
+        if(!player.kanjiMastery) player.kanjiMastery = {};
+        if(!player.particleMastery) player.particleMastery = {};
+        if(!player.vocabMastery) player.vocabMastery = {};
+        if(typeof player.zone3Unlocked !== "boolean") player.zone3Unlocked = false;
+        if(typeof player.zone4Unlocked !== "boolean") player.zone4Unlocked = false;
+        if(typeof player.roundsPlayed !== "number") player.roundsPlayed = 0;
+        if(typeof player.vocabRoundsPlayed !== "number") player.vocabRoundsPlayed = 0;
+        if(typeof player.kanjiRoundsPlayed !== "number") player.kanjiRoundsPlayed = 0;
+        if(typeof player.particleRoundsPlayed !== "number") player.particleRoundsPlayed = 0;
+        return;
+      }
+    }catch(e){ /* no saved state yet */ }
+    player = defaultPlayer();
+  }
+
+  // ---------- HUD render ----------
+  // ดึงเลเวล/EXP/เหรียญจากระบบกลางของแอปหลักโดยตรง (avatarState / gachaState) ไม่มีค่าของตัวเองอีกต่อไป
+  function renderHud(){
+    var info = getLevelInfo(avatarState.exp);
+    var cls = CLASS_DEFS[avatarState.classKey] || CLASS_DEFS.samurai;
+    document.getElementById("kqAvatar").textContent = cls.emoji;
+    document.getElementById("kqHudLevel").textContent = "Lv." + info.level + " นักผจญภัย";
+    document.getElementById("kqHudExpText").textContent = info.currentExp + "/" + info.neededExp + " EXP";
+    document.getElementById("kqExpBarFill").style.width = Math.min(100, (info.currentExp / info.neededExp) * 100) + "%";
+    document.getElementById("kqCoinCount").textContent = gachaState.coins;
+  }
+
+  // ---------- Hub / map ----------
+  function renderHub(){
+    var basicAvg = avgMastery(BASIC_15);
+    var fullAvg = avgMastery(KANA);
+    var vocabAvg = avgVocabMastery();
+    var kanjiAvg = avgKanjiMastery();
+    var particleAvg = avgParticleMastery();
+
+    // เงื่อนไขปลดล็อกจริง: ต้องทำมาสเตอรี่เฉลี่ยของโซนก่อนหน้าถึงเกณฑ์ ไม่ใช่แค่กดเข้าเล่นเฉยๆ
+    player.zone2Unlocked = basicAvg >= 70;
+    player.zone3Unlocked = player.zone2Unlocked && vocabAvg >= 60;
+    player.zone4Unlocked = player.zone3Unlocked && kanjiAvg >= 60;
+
+    var zonesData = [
+      {
+        icon:"⛩️", title:"Zone 1: Kana Village", sub:"Kana Pop",
+        desc:"จับคู่เสียง Hiragana ↔ Katakana และสะกดคำง่ายๆ ปลดล็อกตัวอักษรไปใช้ใน Zone 2",
+        unlocked:true, progress:fullAvg, action:"เข้าเกม", lockTag:null
+      },
+      {
+        icon:"🌲", title:"Zone 2: Vocabulary Forest", sub:"Word Catch",
+        desc:"จับคำศัพท์ N5 ที่ร่วงลงมาให้ตรงความหมาย เก็บคำศัพท์พื้นฐานไว้ใช้ต่อใน Zone 3",
+        unlocked:player.zone2Unlocked, progress: player.zone2Unlocked ? vocabAvg : basicAvg,
+        action:"เข้าเกม",
+        lockTag: player.zone2Unlocked ? null : "ต้องการวรรค A–SA ≥70% จาก Zone 1 (ตอนนี้ " + basicAvg + "%)"
+      },
+      {
+        icon:"⛏️", title:"Zone 3: Kanji Mine", sub:"Kanji Tetris",
+        desc:"ประกอบ Radical เป็น Kanji N5–N4 ต่อยอดจากคำศัพท์ที่เก็บได้ใน Zone 2",
+        unlocked:player.zone3Unlocked, progress: player.zone3Unlocked ? kanjiAvg : vocabAvg,
+        action:"เข้าเกม",
+        lockTag: player.zone3Unlocked ? null : "ต้องการคำศัพท์ Zone 2 เฉลี่ย ≥60% (ตอนนี้ " + vocabAvg + "%)"
+      },
+      {
+        icon:"🏯", title:"Zone 4: Grammar Castle", sub:"Particle Bridge",
+        desc:"เติมคำเชื่อม (は/が/を/に ฯลฯ) เพื่อข้ามสะพาน ใช้ Kanji พื้นฐานจาก Zone 3",
+        unlocked:player.zone4Unlocked, progress: player.zone4Unlocked ? particleAvg : kanjiAvg,
+        action:"เข้าเกม",
+        lockTag: player.zone4Unlocked ? null : "ต้องการ Kanji Zone 3 เฉลี่ย ≥60% (ตอนนี้ " + kanjiAvg + "%)"
+      }
+    ];
+
+    var html = zonesData.map(function(z, i){
+      var cls = z.unlocked ? "unlocked" : "locked";
+      return '' +
+        '<div class="kq-zone-card ' + cls + '" data-zone="' + i + '">' +
+          (z.lockTag ? '<div class="kq-zone-lock-tag">🔒 ' + z.lockTag + '</div>' : '') +
+          '<div class="kq-zone-icon">' + z.icon + '</div>' +
+          '<div class="kq-zone-body">' +
+            '<h3>' + z.title + '</h3>' +
+            '<div class="kq-zone-sub">' + z.sub + '</div>' +
+            '<div class="kq-zone-desc">' + z.desc + '</div>' +
+            '<div class="kq-zone-progress"><div class="kq-zone-progress-fill" style="width:' + z.progress + '%"></div></div>' +
+            (z.unlocked ? '<div class="kq-zone-go-row"><span class="kq-zone-go">' + z.action + '</span></div>' : '') +
+          '</div>' +
+        '</div>';
+    }).join("");
+
+    document.getElementById("kqZonesContainer").innerHTML = html;
+    document.querySelectorAll(".kq-zone-card.unlocked").forEach(function(el){
+      el.addEventListener("click", function(){
+        var idx = this.getAttribute("data-zone");
+        if(idx === "0") startRound();
+        else if(idx === "1") startVocabRound();
+        else if(idx === "2") startKanjiRound();
+        else if(idx === "3") startParticleRound();
+      });
+    });
+  }
+
+  // ---------- Kana Pop game ----------
+  var round = null; // { idx, correct, coinsEarned, expEarned, missedTimeout, fallTimer }
+
+  function pickWeightedChar(){
+    // ถ่วงน้ำหนักให้ตัวที่ confidence ต่ำโผล่บ่อยกว่า (spaced-repetition แบบเบา)
+    var weights = KANA.map(function(k){ return (100 - getMastery(k[0])) + 10; });
+    var total = weights.reduce(function(a,b){ return a+b; }, 0);
+    var r = Math.random() * total;
+    for(var i=0;i<KANA.length;i++){
+      r -= weights[i];
+      if(r <= 0) return KANA[i];
+    }
+    return KANA[KANA.length-1];
+  }
+
+  function startRound(){
+    round = { idx:0, correct:0, coinsEarned:0, expEarned:0 };
+    document.getElementById("kqHubScreen").style.display = "none";
+    document.getElementById("kqSummaryScreen").style.display = "none";
+    document.getElementById("kqGameScreen").style.display = "block";
+    nextQuestion();
+  }
+
+  var currentTimeoutId = null;
+
+  function nextQuestion(){
+    if(round.idx >= ROUND_LEN){ return finishRound(); }
+    round.idx += 1;
+    document.getElementById("kqQuestionCounter").textContent = "ข้อ " + round.idx + "/" + ROUND_LEN;
+    document.getElementById("kqProgressFill").style.width = ((round.idx-1)/ROUND_LEN*100) + "%";
+    document.getElementById("kqFeedback").textContent = "";
+    document.getElementById("kqFeedback").className = "";
+
+    var target = pickWeightedChar();
+    round.current = target;
+    round.startTime = performance.now();
+
+    var kqArena = document.getElementById("kqArena");
+    kqArena.querySelectorAll(".kq-falling-bubble").forEach(function(b){ b.remove(); });
+
+    var bubble = document.createElement("div");
+    bubble.className = "kq-falling-bubble";
+    bubble.textContent = target[1]; // katakana prompt
+    kqArena.appendChild(bubble);
+
+    var arenaHeight = kqArena.clientHeight;
+    requestAnimationFrame(function(){
+      bubble.style.transitionDuration = FALL_MS + "ms";
+      bubble.style.top = (arenaHeight - 90) + "px";
+    });
+    round.bubbleEl = bubble;
+
+    currentTimeoutId = setTimeout(function(){ handleAnswer(null); }, FALL_MS + 80);
+
+    // build kqOptions: correct hiragana + 3 distractors
+    var pool = KANA.filter(function(k){ return k[0] !== target[0]; });
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=pool[i]; pool[i]=pool[j]; pool[j]=t; }
+    var opts = [target].concat(pool.slice(0,3));
+    for(i=opts.length-1;i>0;i--){ j=Math.floor(Math.random()*(i+1)); t=opts[i]; opts[i]=opts[j]; opts[j]=t; }
+
+    var optsHtml = opts.map(function(o){
+      return '<div class="kq-option-bubble" data-char="' + o[0] + '">' + o[0] + '</div>';
+    }).join("");
+    document.getElementById("kqOptions").innerHTML = optsHtml;
+    document.querySelectorAll(".kq-option-bubble").forEach(function(el){
+      el.addEventListener("click", function(){ handleAnswer(this.getAttribute("data-char")); });
+    });
+  }
+
+  function handleAnswer(chosenChar){
+    if(!round || round.answered) return;
+    round.answered = true;
+    clearTimeout(currentTimeoutId);
+
+    var target = round.current;
+    var elapsed = performance.now() - round.startTime;
+    var isCorrect = chosenChar === target[0];
+    var isTimeout = chosenChar === null;
+
+    var fb = document.getElementById("kqFeedback");
+    document.querySelectorAll(".kq-option-bubble").forEach(function(el){
+      var c = el.getAttribute("data-char");
+      if(c === target[0]) el.classList.add("correct");
+      else if(c === chosenChar) el.classList.add("wrong");
+    });
+
+    if(isCorrect){
+      round.correct += 1;
+      var fast = elapsed < FALL_MS * 0.5;
+      bumpMastery(target[0], fast ? 15 : 8);
+      fb.textContent = "✅ ถูกต้อง! " + target[0] + " = " + target[2];
+      fb.className = "good";
+    } else if(isTimeout){
+      bumpMastery(target[0], -15);
+      fb.textContent = "⌛ หมดเวลา! คำตอบคือ " + target[0] + " (" + target[2] + ")";
+      fb.className = "bad";
+    } else {
+      bumpMastery(target[0], -20);
+      fb.textContent = "❌ ยังไม่ถูก คำตอบคือ " + target[0] + " (" + target[2] + ")";
+      fb.className = "bad";
+    }
+
+    if(round.bubbleEl) round.bubbleEl.classList.add("pop");
+
+    saveState();
+    setTimeout(function(){
+      round.answered = false;
+      nextQuestion();
+    }, 900);
+  }
+
+  function finishRound(){
+    // ปรับสัดส่วนรางวัลให้อยู่ในเรทเดียวกับโหมดอื่นในแอปหลัก (เพดานรายวันของ kqpop = 15 เหรียญ)
+    var coins = round.correct * 1;
+    var exp = round.correct * 4;
+    addRewards(coins, exp, 'kqpop', 'kqpop');
+    player.roundsPlayed += 1;
+
+    document.getElementById("kqGameScreen").style.display = "none";
+    document.getElementById("kqSummaryScreen").style.display = "block";
+    document.getElementById("kqSumCorrect").textContent = round.correct + "/" + ROUND_LEN;
+    document.getElementById("kqSumCoins").textContent = "+" + coins;
+    document.getElementById("kqSumExp").textContent = "+" + exp;
+    var basicAvg = avgMastery(BASIC_15);
+    document.getElementById("kqSumMastery").textContent = basicAvg + "%";
+
+    var banner = document.getElementById("kqUnlockBanner");
+    var wasUnlocked = player.zone2Unlocked;
+    player.zone2Unlocked = basicAvg >= 70;
+    banner.style.display = (player.zone2Unlocked && !wasUnlocked) ? "block" : "none";
+
+    renderHud();
+    saveState();
+  }
+
+  document.getElementById("kqBackBtn").addEventListener("click", function(){
+    document.getElementById("kqGameScreen").style.display = "none";
+    document.getElementById("kqHubScreen").style.display = "block";
+    renderHud();
+    renderHub();
+  });
+  document.getElementById("kqContinueBtn").addEventListener("click", function(){
+    document.getElementById("kqSummaryScreen").style.display = "none";
+    document.getElementById("kqHubScreen").style.display = "block";
+    renderHud();
+    renderHub();
+  });
+
+  // ---------- Zone 2: Vocabulary Forest (Word Catch) ----------
+  var vround = null;
+  var vocabTimeoutId = null;
+
+  function startVocabRound(){
+    vround = { idx:0, correct:0 };
+    document.getElementById("kqHubScreen").style.display = "none";
+    document.getElementById("kqVocabSummaryScreen").style.display = "none";
+    document.getElementById("kqVocabGameScreen").style.display = "block";
+    nextVocabQuestion();
+  }
+
+  function nextVocabQuestion(){
+    if(vround.idx >= VOCAB_ROUND_LEN){ return finishVocabRound(); }
+    vround.idx += 1;
+    document.getElementById("kqVocabQuestionCounter").textContent = "ข้อ " + vround.idx + "/" + VOCAB_ROUND_LEN;
+    document.getElementById("kqVocabProgressFill").style.width = ((vround.idx-1)/VOCAB_ROUND_LEN*100) + "%";
+    document.getElementById("kqVocabFeedback").textContent = "";
+    document.getElementById("kqVocabFeedback").className = "";
+
+    var target = pickWeightedVocab();
+    vround.current = target;
+    vround.startTime = performance.now();
+
+    var arena = document.getElementById("kqVocabArena");
+    arena.querySelectorAll(".kq-falling-bubble").forEach(function(b){ b.remove(); });
+
+    var bubble = document.createElement("div");
+    bubble.className = "kq-falling-bubble kq-vocab-bubble";
+    bubble.textContent = target.jp;
+    arena.appendChild(bubble);
+
+    var arenaHeight = arena.clientHeight;
+    requestAnimationFrame(function(){
+      bubble.style.transitionDuration = VOCAB_FALL_MS + "ms";
+      bubble.style.top = (arenaHeight - 96) + "px";
+    });
+    vround.bubbleEl = bubble;
+
+    vocabTimeoutId = setTimeout(function(){ handleVocabAnswer(null); }, VOCAB_FALL_MS + 80);
+
+    // ตัวเลือก: ความหมายไทยที่ถูก + สุ่มตัวลวงอีก 3 จากคลังคำเดียวกัน
+    var pool = VOCAB_POOL.filter(function(v){ return v.th !== target.th; });
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=pool[i]; pool[i]=pool[j]; pool[j]=t; }
+    var opts = [target].concat(pool.slice(0,3));
+    for(i=opts.length-1;i>0;i--){ j=Math.floor(Math.random()*(i+1)); t=opts[i]; opts[i]=opts[j]; opts[j]=t; }
+
+    var optsHtml = opts.map(function(o){
+      return '<div class="kq-vocab-option" data-th="' + o.th.replace(/"/g,'&quot;') + '">' + o.th + '</div>';
+    }).join("");
+    document.getElementById("kqVocabOptions").innerHTML = optsHtml;
+    document.querySelectorAll(".kq-vocab-option").forEach(function(el){
+      el.addEventListener("click", function(){ handleVocabAnswer(this.getAttribute("data-th")); });
+    });
+  }
+
+  function handleVocabAnswer(chosenTh){
+    if(!vround || vround.answered) return;
+    vround.answered = true;
+    clearTimeout(vocabTimeoutId);
+
+    var target = vround.current;
+    var elapsed = performance.now() - vround.startTime;
+    var isCorrect = chosenTh === target.th;
+    var isTimeout = chosenTh === null;
+
+    var fb = document.getElementById("kqVocabFeedback");
+    document.querySelectorAll(".kq-vocab-option").forEach(function(el){
+      var t = el.getAttribute("data-th");
+      if(t === target.th) el.classList.add("correct");
+      else if(t === chosenTh) el.classList.add("wrong");
+    });
+
+    if(isCorrect){
+      vround.correct += 1;
+      var fast = elapsed < VOCAB_FALL_MS * 0.5;
+      bumpVocabMastery(target.jp, fast ? 15 : 8);
+      fb.textContent = "✅ ถูกต้อง! " + target.jp + " (" + target.extra + ") = " + target.th;
+      fb.className = "good";
+    } else if(isTimeout){
+      bumpVocabMastery(target.jp, -15);
+      fb.textContent = "⌛ หมดเวลา! " + target.jp + " (" + target.extra + ") แปลว่า " + target.th;
+      fb.className = "bad";
+    } else {
+      bumpVocabMastery(target.jp, -20);
+      fb.textContent = "❌ ยังไม่ถูก " + target.jp + " (" + target.extra + ") แปลว่า " + target.th;
+      fb.className = "bad";
+    }
+
+    if(vround.bubbleEl) vround.bubbleEl.classList.add("pop");
+
+    saveState();
+    setTimeout(function(){
+      vround.answered = false;
+      nextVocabQuestion();
+    }, 900);
+  }
+
+  function finishVocabRound(){
+    // เพดานรายวันของ kqvocab = 15 เหรียญ
+    var coins = vround.correct * 1;
+    var exp = vround.correct * 4;
+    addRewards(coins, exp, 'kqvocab', 'kqvocab');
+    player.vocabRoundsPlayed += 1;
+
+    document.getElementById("kqVocabGameScreen").style.display = "none";
+    document.getElementById("kqVocabSummaryScreen").style.display = "block";
+    document.getElementById("kqVsumCorrect").textContent = vround.correct + "/" + VOCAB_ROUND_LEN;
+    document.getElementById("kqVsumCoins").textContent = "+" + coins;
+    document.getElementById("kqVsumExp").textContent = "+" + exp;
+    var vocabAvg = avgVocabMastery();
+    document.getElementById("kqVsumMastery").textContent = vocabAvg + "%";
+
+    var vBanner = document.getElementById("kqVocabUnlockBanner");
+    var wasZone3Unlocked = player.zone3Unlocked;
+    player.zone3Unlocked = player.zone2Unlocked && vocabAvg >= 60;
+    if (vBanner) vBanner.style.display = (player.zone3Unlocked && !wasZone3Unlocked) ? "block" : "none";
+
+    renderHud();
+    saveState();
+  }
+
+  document.getElementById("kqVocabBackBtn").addEventListener("click", function(){
+    document.getElementById("kqVocabGameScreen").style.display = "none";
+    document.getElementById("kqHubScreen").style.display = "block";
+    renderHud();
+    renderHub();
+  });
+  document.getElementById("kqVocabContinueBtn").addEventListener("click", function(){
+    document.getElementById("kqVocabSummaryScreen").style.display = "none";
+    document.getElementById("kqHubScreen").style.display = "block";
+    renderHud();
+    renderHub();
+  });
+
+  // ---------- Kanji Tetris game ----------
+  var kround = null; // { idx, correct, current, timeoutId, bubbleEl }
+  var kslots = { left:null, right:null };
+
+  function startKanjiRound(){
+    kround = { idx:0, correct:0 };
+    document.getElementById("kqHubScreen").style.display = "none";
+    document.getElementById("kqKanjiSummaryScreen").style.display = "none";
+    document.getElementById("kqKanjiGameScreen").style.display = "block";
+    kslots = { left:null, right:null };
+    updateSlotsUI();
+    document.getElementById("kqKanjiResult").innerHTML = "";
+    nextRadical();
+  }
+
+  function updateSlotsUI(){
+    var l = document.getElementById("kqSlotLeft");
+    var r = document.getElementById("kqSlotRight");
+    l.textContent = kslots.left || "";
+    r.textContent = kslots.right || "";
+    l.className = "kq-kanji-slot" + (kslots.left ? " filled" : "");
+    r.className = "kq-kanji-slot" + (kslots.right ? " filled" : "");
+  }
+
+  function nextRadical(){
+    if(kround.idx >= KANJI_ROUND_LEN){ return finishKanjiRound(); }
+    kround.idx += 1;
+    document.getElementById("kqKanjiQuestionCounter").textContent = "ประกอบแล้ว " + kround.correct + "/" + KANJI_ROUND_LEN;
+    document.getElementById("kqKanjiProgressFill").style.width = ((kround.idx-1)/KANJI_ROUND_LEN*100) + "%";
+
+    var combo = pickWeightedCombo();
+    var side = Math.random() < 0.5 ? 1 : 2; // สุ่มว่าจะหล่นส่วนซ้ายหรือขวาของคอมโบนี้
+    var radicalChar = combo[side];
+    kround.current = radicalChar;
+    kround.comboHint = combo;
+
+    var kqArena = document.getElementById("kqKanjiArena");
+    kqArena.querySelectorAll(".kq-radical-bubble").forEach(function(b){ b.remove(); });
+
+    var bubble = document.createElement("div");
+    bubble.className = "kq-radical-bubble";
+    bubble.textContent = radicalChar;
+    kqArena.appendChild(bubble);
+    kround.bubbleEl = bubble;
+
+    var arenaHeight = kqArena.clientHeight;
+    requestAnimationFrame(function(){
+      bubble.style.transitionDuration = RADICAL_FALL_MS + "ms";
+      bubble.style.top = (arenaHeight - 84) + "px";
+    });
+
+    kround.timeoutId = setTimeout(function(){
+      if(kround.bubbleEl) kround.bubbleEl.classList.add("pop");
+      nextRadical();
+    }, RADICAL_FALL_MS + 80);
+  }
+
+  function catchRadical(side){
+    if(!kround || !kround.current) return;
+    if(kslots[side]) return; // ช่องนี้มีของอยู่แล้ว
+    clearTimeout(kround.timeoutId);
+    kslots[side] = kround.current;
+    if(kround.bubbleEl) kround.bubbleEl.classList.add("pop");
+    kround.current = null;
+    updateSlotsUI();
+
+    if(kslots.left && kslots.right){
+      checkCombo();
+    } else {
+      nextRadical();
+    }
+  }
+
+  function checkCombo(){
+    var key = kslots.left + "|" + kslots.right;
+    var combo = COMBO_LOOKUP[key];
+    var l = document.getElementById("kqSlotLeft");
+    var r = document.getElementById("kqSlotRight");
+    var resultEl = document.getElementById("kqKanjiResult");
+
+    if(combo){
+      kround.correct += 1;
+      bumpKanjiAttempt(combo[0], true);
+      l.classList.add("success"); r.classList.add("success");
+      resultEl.innerHTML = '<div class="rk">' + combo[0] + '</div><div class="rd">' + combo[3] + ' — ' + combo[4] + '</div>';
+    } else {
+      // เดายังไม่ตรง — เช็คว่าจะสำเร็จถ้าสลับตำแหน่งไหม เพื่อบันทึกความพยายามของคอมโบที่ใกล้เคียง
+      var swapped = COMBO_LOOKUP[kslots.right + "|" + kslots.left];
+      if(swapped) bumpKanjiAttempt(swapped[0], false);
+      l.classList.add("fail"); r.classList.add("fail");
+      resultEl.innerHTML = '<div class="rd">ยังไม่ตรงลองใหม่ — สังเกตตำแหน่งซ้าย/ขวาของส่วนประกอบ</div>';
+    }
+
+    saveState();
+    document.getElementById("kqKanjiQuestionCounter").textContent = "ประกอบแล้ว " + kround.correct + "/" + KANJI_ROUND_LEN;
+
+    setTimeout(function(){
+      kslots = { left:null, right:null };
+      updateSlotsUI();
+      resultEl.innerHTML = "";
+      nextRadical();
+    }, 1300);
+  }
+
+  function finishKanjiRound(){
+    // เพดานรายวันของ kqkanji = 20 เหรียญ (10 ข้อ x 2 เหรียญ/ข้อ)
+    var coins = kround.correct * 2;
+    var exp = kround.correct * 6;
+    addRewards(coins, exp, 'kqkanji', 'kqkanji');
+    player.kanjiRoundsPlayed += 1;
+
+    document.getElementById("kqKanjiGameScreen").style.display = "none";
+    document.getElementById("kqKanjiSummaryScreen").style.display = "block";
+    document.getElementById("kqKsumCorrect").textContent = kround.correct + "/" + KANJI_ROUND_LEN;
+    document.getElementById("kqKsumCoins").textContent = "+" + coins;
+    document.getElementById("kqKsumExp").textContent = "+" + exp;
+    var kanjiAvg = avgKanjiMastery();
+    document.getElementById("kqKsumMastery").textContent = kanjiAvg + "%";
+
+    var kBanner = document.getElementById("kqKanjiUnlockBanner");
+    var wasZone4Unlocked = player.zone4Unlocked;
+    player.zone4Unlocked = player.zone3Unlocked && kanjiAvg >= 60;
+    if (kBanner) kBanner.style.display = (player.zone4Unlocked && !wasZone4Unlocked) ? "block" : "none";
+
+    renderHud();
+    saveState();
+  }
+
+  document.getElementById("kqSlotLeft").addEventListener("click", function(){ catchRadical("left"); });
+  document.getElementById("kqSlotRight").addEventListener("click", function(){ catchRadical("right"); });
+  document.getElementById("kqKanjiBackBtn").addEventListener("click", function(){
+    document.getElementById("kqKanjiGameScreen").style.display = "none";
+    document.getElementById("kqHubScreen").style.display = "block";
+    renderHud();
+    renderHub();
+  });
+  document.getElementById("kqKanjiContinueBtn").addEventListener("click", function(){
+    document.getElementById("kqKanjiSummaryScreen").style.display = "none";
+    document.getElementById("kqHubScreen").style.display = "block";
+    renderHud();
+    renderHub();
+  });
+
+  // ---------- Particle Bridge game ----------
+  var pround = null; // { idx, correct, usedIdx, current, timeoutId }
+
+  function startParticleRound(){
+    pround = { idx:0, correct:0, usedIdx:[] };
+    document.getElementById("kqHubScreen").style.display = "none";
+    document.getElementById("kqParticleSummaryScreen").style.display = "none";
+    document.getElementById("kqParticleGameScreen").style.display = "block";
+    document.getElementById("kqBridgeFill").style.width = "0%";
+    document.getElementById("kqBridgeWalker").style.left = "0%";
+    nextSentence();
+  }
+
+  function nextSentence(){
+    if(pround.idx >= PARTICLE_ROUND_LEN){ return finishParticleRound(); }
+    pround.idx += 1;
+    document.getElementById("kqParticleQuestionCounter").textContent = "ข้อ " + pround.idx + "/" + PARTICLE_ROUND_LEN;
+    var pct = ((pround.idx-1)/PARTICLE_ROUND_LEN*100);
+    document.getElementById("kqBridgeFill").style.width = pct + "%";
+    document.getElementById("kqBridgeWalker").style.left = pct + "%";
+    document.getElementById("kqParticleExplain").textContent = "";
+
+    var sIdx = pickWeightedSentenceIdx(pround.usedIdx);
+    pround.usedIdx.push(sIdx);
+    var s = SENTENCES[sIdx];
+    pround.current = s;
+    pround.answered = false;
+
+    document.getElementById("kqSentenceText").innerHTML =
+      s[0] + ' <span class="kq-blank-slot" id="kq-blank-slot">？</span> ' + s[2];
+
+    var pool = ALL_PARTICLES.filter(function(p){ return p !== s[1]; });
+    for(var i=pool.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=pool[i]; pool[i]=pool[j]; pool[j]=t; }
+    var opts = [s[1]].concat(pool.slice(0,2));
+    for(i=opts.length-1;i>0;i--){ j=Math.floor(Math.random()*(i+1)); t=opts[i]; opts[i]=opts[j]; opts[j]=t; }
+
+    document.getElementById("kqParticleOptions").innerHTML = opts.map(function(p){
+      return '<div class="kq-particle-option" data-p="' + p + '">' + p + '</div>';
+    }).join("");
+    document.querySelectorAll(".kq-particle-option").forEach(function(el){
+      el.addEventListener("click", function(){ handleParticleAnswer(this.getAttribute("data-p")); });
+    });
+  }
+
+  function handleParticleAnswer(chosen){
+    if(!pround || pround.answered) return;
+    pround.answered = true;
+
+    var s = pround.current;
+    var isCorrect = chosen === s[1];
+    var blank = document.getElementById("kq-blank-slot");
+    blank.textContent = s[1];
+    blank.classList.add(isCorrect ? "correct" : "wrong");
+
+    document.querySelectorAll(".kq-particle-option").forEach(function(el){
+      el.setAttribute("disabled", "true");
+      if(el.getAttribute("data-p") === s[1]) el.classList.add("correct");
+      else if(el.getAttribute("data-p") === chosen) el.classList.add("wrong");
+    });
+
+    bumpParticleAttempt(s[1], isCorrect);
+    document.getElementById("kqParticleExplain").textContent = (isCorrect ? "✅ " : "❌ ") + s[3];
+    if(isCorrect) pround.correct += 1;
+
+    saveState();
+    setTimeout(nextSentence, 1600);
+  }
+
+  function finishParticleRound(){
+    // เพดานรายวันของ kqparticle = 20 เหรียญ
+    var coins = pround.correct * 2;
+    var exp = pround.correct * 6;
+    addRewards(coins, exp, 'kqparticle', 'kqparticle');
+    player.particleRoundsPlayed += 1;
+
+    document.getElementById("kqBridgeFill").style.width = "100%";
+    document.getElementById("kqBridgeWalker").style.left = "100%";
+
+    document.getElementById("kqParticleGameScreen").style.display = "none";
+    document.getElementById("kqParticleSummaryScreen").style.display = "block";
+    document.getElementById("kqPsumCorrect").textContent = pround.correct + "/" + PARTICLE_ROUND_LEN;
+    document.getElementById("kqPsumCoins").textContent = "+" + coins;
+    document.getElementById("kqPsumExp").textContent = "+" + exp;
+    document.getElementById("kqPsumMastery").textContent = avgParticleMastery() + "%";
+
+    renderHud();
+    saveState();
+  }
+
+  document.getElementById("kqParticleBackBtn").addEventListener("click", function(){
+    document.getElementById("kqParticleGameScreen").style.display = "none";
+    document.getElementById("kqHubScreen").style.display = "block";
+    renderHud();
+    renderHub();
+  });
+  document.getElementById("kqParticleContinueBtn").addEventListener("click", function(){
+    document.getElementById("kqParticleSummaryScreen").style.display = "none";
+    document.getElementById("kqHubScreen").style.display = "block";
+    renderHud();
+    renderHub();
+  });
+
+  // ---------- Boot ----------
+  // ไม่ init ทันทีตอนโหลดสคริปต์ เพราะตอนนั้นผู้ใช้อาจยังไม่ได้ล็อกอิน (currentUser ยังไม่รู้ค่า)
+  // แอปหลักจะเรียก window.kqOpen() ทุกครั้งที่กดปุ่ม "🗺️ Kana Quest" แทน
+  window.kqOpen = function(){
+    loadState();
+    renderHud();
+    renderHub();
+  };
+
+})();
     </script>
 </body>
 </html>
