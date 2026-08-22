@@ -539,10 +539,22 @@
         }
 
         .flashcard-back {
-            background: rgba(27, 38, 59, 0.96);
-            color: #fff;
+            background: #FDFBF7;
+            color: var(--text-main);
             transform: rotateY(180deg);
             border-color: var(--kinpaku);
+        }
+
+        /* Particle / grammar-point highlight (auto-applied to JP text) */
+        .particle {
+            color: #E74C3C;
+            font-weight: 800;
+            background-color: #FCECEB;
+            padding: 0px 4px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0 1px;
+            transform: translateY(-1px);
         }
         .flashcard-back.rich-content {
             overflow-y: auto;
@@ -601,11 +613,17 @@
             font-size: 3.2rem;
             font-weight: 700;
             color: var(--kon-iro);
-            line-height: 1;
+            line-height: 1.15;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            white-space: normal;
         }
 
+        .word-jp.jp-auto-fit { font-size: 1.7rem; }
+
         .flashcard-back .word-jp {
-            color: #fff;
+            color: var(--kon-iro);
             font-size: 1.9rem;
         }
 
@@ -621,21 +639,24 @@
         }
         .btn-speak-audio:hover { background: #fff; transform: scale(1.1); border-color: var(--sakura); }
         .flashcard-back .btn-speak-audio {
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--kinpaku-light);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(27, 38, 59, 0.06);
+            color: var(--kon-iro);
+            border-color: var(--glass-border);
         }
-        .flashcard-back .btn-speak-audio:hover { background: rgba(255, 255, 255, 0.3); }
+        .flashcard-back .btn-speak-audio:hover { background: #fff; border-color: var(--sakura); }
 
         .word-extra {
             font-size: 1rem;
             color: var(--text-muted);
             font-weight: 500;
             margin-bottom: 4px;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
         .flashcard-back .word-extra {
-            color: var(--kinpaku-light);
+            color: #b8860b;
             font-size: 1rem;
             margin-bottom: 4px;
         }
@@ -651,24 +672,32 @@
             margin-bottom: 4px;
         }
 
+        .flashcard-back .word-th {
+            color: var(--sakura);
+            font-weight: 700;
+            background: rgba(224, 122, 130, 0.08);
+            border: 1px solid rgba(224, 122, 130, 0.25);
+        }
+
         #wordExampleBox {
             width: 100%;
             margin-bottom: 4px;
             display: none;
         }
         .example-box {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-left: 3px solid var(--kinpaku);
             border-radius: 8px;
             padding: 4px 8px;
             text-align: left;
             font-size: 0.75rem;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, box-shadow 0.2s;
         }
         .example-box:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: #fffdf7;
+            box-shadow: 0 2px 8px rgba(27,38,59,0.06);
         }
         .example-label-row {
             display: flex;
@@ -679,24 +708,24 @@
         .example-label {
             font-size: 0.55rem;
             font-weight: bold;
-            color: var(--kinpaku-light);
+            color: #b8860b;
             text-transform: uppercase;
         }
-        .ex-jp { color: #fff; font-weight: 600; font-size: 0.78rem; }
-        .ex-th { color: var(--sakura-light); font-size: 0.68rem; margin-top: 1px; }
+        .ex-jp { color: var(--kon-iro); font-weight: 600; font-size: 0.78rem; }
+        .ex-th { color: #4a4a4a; font-size: 0.68rem; margin-top: 1px; }
 
         .g-explanation-text {
-            white-space: pre-line; font-size: 0.76rem; line-height: 1.6; color: rgba(255,255,255,0.85);
+            white-space: pre-line; font-size: 0.76rem; line-height: 1.6; color: #333;
         }
         .g-mistakes-list { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
         .g-mistakes-list li {
-            font-size: 0.72rem; background: rgba(224,122,130,0.15); border-left: 3px solid var(--sakura);
-            padding: 5px 8px; border-radius: 6px; color: #fff; line-height: 1.5;
+            font-size: 0.72rem; background: rgba(224,122,130,0.08); border-left: 3px solid var(--sakura);
+            padding: 5px 8px; border-radius: 6px; color: #c0392b; line-height: 1.5;
         }
         .g-related-tags { display: flex; flex-wrap: wrap; gap: 5px; }
         .g-related-tag {
-            background: rgba(255,255,255,0.1); color: var(--kinpaku-light); font-size: 0.68rem; font-weight: 600;
-            padding: 3px 9px; border-radius: 20px; border: 1px solid rgba(212,175,55,0.35);
+            background: #ffffff; color: var(--text-muted); font-size: 0.68rem; font-weight: 600;
+            padding: 3px 9px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.15);
         }
 
         .hint {
@@ -722,8 +751,8 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
-        .btn-dont-know { background: rgba(224, 122, 130, 0.25); color: var(--sakura-light); border: 1px solid rgba(224, 122, 130, 0.4); }
-        .btn-know { background: rgba(74, 107, 93, 0.35); color: #d3f2e2; border: 1px solid rgba(74, 107, 93, 0.5); }
+        .btn-dont-know { background: rgba(224, 122, 130, 0.12); color: #c0392b; border: 1px solid rgba(224, 122, 130, 0.4); }
+        .btn-know { background: rgba(74, 107, 93, 0.12); color: var(--matcha); border: 1px solid rgba(74, 107, 93, 0.4); }
 
         /* Navigation Buttons */
         .buttons {
@@ -1451,6 +1480,9 @@
         .roadmap-overview-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
         }
+        @media (max-width: 480px) {
+            .roadmap-overview-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         .roadmap-stat { text-align: center; background: rgba(255,255,255,0.6); border-radius: 12px; padding: 10px 6px; border: 1px solid var(--glass-border); }
         .roadmap-stat .num { font-size: 1.25rem; font-weight: 700; color: var(--kon-iro); }
         .roadmap-stat .lbl { font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
@@ -1534,10 +1566,10 @@
             border: 1.5px solid var(--glass-border); border-radius: 16px; padding: 18px 20px;
             text-align: left; max-height: 320px; overflow-y: auto;
         }
-        .passage-box .passage-jp { font-size: 1rem; line-height: 2.2; color: var(--text-main); }
+        .passage-box .passage-jp { font-size: 1rem; line-height: 2.2; color: var(--kon-iro); font-weight: 600; }
         .passage-box .passage-jp ruby { ruby-align: center; }
         .passage-box .passage-jp rt { font-size: 0.55em; color: var(--sakura); font-weight: 600; user-select: none; }
-        .passage-box .passage-th { font-size: 0.8rem; color: var(--text-muted); margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--glass-border); line-height: 1.7; }
+        .passage-box .passage-th { font-size: 0.8rem; color: var(--matcha); font-weight: 600; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--glass-border); line-height: 1.7; }
         .passage-translate-toggle {
             font-size: 0.78rem; color: var(--kon-iro); background: rgba(255,255,255,0.7);
             border: 1.5px solid var(--glass-border); border-radius: 12px; padding: 7px 16px; cursor: pointer;
@@ -1546,10 +1578,10 @@
             background: none; border: none; cursor: pointer; font-size: 1rem; opacity: 0.6; transition: opacity 0.2s;
         }
         .read-listen-btn:hover { opacity: 1; }
-        .listen-line .ll-jp { font-weight: 600; color: var(--text-main); font-size: 0.9rem; line-height: 2.1; }
+        .listen-line .ll-jp { font-weight: 700; color: var(--kon-iro); font-size: 0.9rem; line-height: 2.1; }
         .listen-line .ll-jp ruby { ruby-align: center; }
         .listen-line .ll-jp rt { font-size: 0.55em; color: var(--sakura); font-weight: 600; user-select: none; }
-        .listen-line .ll-th { font-size: 0.78rem; color: var(--text-muted); }
+        .listen-line .ll-th { font-size: 0.78rem; color: var(--matcha); font-weight: 600; }
         .listen-question-box {
             width: 100%; max-width: 520px; background: rgba(255,255,255,0.7);
             border: 1.5px solid var(--glass-border); border-radius: 16px; padding: 16px;
@@ -1667,24 +1699,29 @@
         /* ============ 🗺️ Kana Quest (embedded mini-game world) ============ */
 
   #kanaQuestScreen{
+    /* Re-themed to share the main app's washi/sakura/kinpaku palette so the
+       game world reads as "night-time chapter of the same book", not a
+       different app. --kq-night ties directly to --kon-iro (already the
+       app's dark accent), --kq-gold to --kinpaku, --kq-jade to --matcha,
+       and --kq-torii is now a deepened sakura instead of an unrelated red. */
     --kq-ink:#2B2118;
-    --kq-night:#1B2340;
-    --kq-night-deep:#12182E;
-    --kq-parchment:#F7EFDD;
-    --kq-parchment-2:#EFE3C8;
-    --kq-torii:#B23A2E;
-    --kq-torii-dark:#8C2C22;
-    --kq-gold:#E3A33B;
-    --kq-jade:#3F9179;
-    --kq-jade-dark:#2C6B57;
-    --kq-stone:#6B6455;
+    --kq-night: var(--kon-iro);
+    --kq-night-deep:#111a2c;
+    --kq-parchment:#f7f4ee;
+    --kq-parchment-2:#efe8d8;
+    --kq-torii:#c9636c;
+    --kq-torii-dark:#a84852;
+    --kq-gold: var(--kinpaku);
+    --kq-jade: var(--matcha);
+    --kq-jade-dark:#35504a;
+    --kq-stone:#6b6355;
   }
   #kanaQuestScreen *{box-sizing:border-box; margin:0; padding:0;}
   #kanaQuestScreen{
-    font-family:'M PLUS 1p', sans-serif;
+    font-family:'Prompt', sans-serif;
     background:
-      radial-gradient(ellipse at 20% 0%, #26305a 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 100%, #23305c 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 0%, #26314f 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 100%, #232e4d 0%, transparent 50%),
       var(--kq-night);
     color:var(--kq-parchment);
     min-height:100vh;
@@ -1707,7 +1744,7 @@
   }
   #kqAvatar{
     width:44px; height:44px; border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #ffe3b0, var(--kq-gold));
+    background:radial-gradient(circle at 35% 30%, var(--kinpaku-light), var(--kq-gold));
     display:flex; align-items:center; justify-content:center;
     font-size:22px; flex-shrink:0;
     border:2px solid var(--kq-parchment);
@@ -1715,7 +1752,7 @@
   #kqHudInfo{ flex:1; min-width:0; }
   #kqHudName{ font-size:13px; color:var(--kq-parchment-2); display:flex; justify-content:space-between; margin-bottom:4px;}
   #kqExpBarTrack{ height:7px; background:rgba(255,255,255,0.12); border-radius:6px; overflow:hidden; }
-  #kqExpBarFill{ height:100%; background:linear-gradient(90deg, var(--kq-jade), #6cc9a8); transition:width .5s ease; }
+  #kqExpBarFill{ height:100%; background:linear-gradient(90deg, var(--kq-jade), #7fa695); transition:width .5s ease; }
   #kqHudCoins{
     display:flex; align-items:center; gap:5px;
     background:rgba(227,163,59,0.15);
@@ -1728,7 +1765,7 @@
     flex-shrink:0;
   }
   .kq-exit-btn{
-    background:none; border:1px solid rgba(247,239,221,0.3); color:var(--kq-parchment);
+    background:none; border:1px solid rgba(247,244,238,0.3); color:var(--kq-parchment);
     border-radius:20px; padding:6px 12px; font-size:11px; cursor:pointer; font-family:inherit;
     flex-shrink:0; white-space:nowrap;
   }
@@ -1743,8 +1780,8 @@
   .kq-zones{ display:flex; flex-direction:column; gap:14px; }
   .kq-zone-card{
     position:relative;
-    background:linear-gradient(135deg, rgba(247,239,221,0.06), rgba(247,239,221,0.02));
-    border:1px solid rgba(247,239,221,0.18);
+    background:linear-gradient(135deg, rgba(247,244,238,0.06), rgba(247,244,238,0.02));
+    border:1px solid rgba(247,244,238,0.18);
     border-radius:18px;
     padding:18px;
     display:flex;
@@ -1795,7 +1832,7 @@
     margin-bottom:10px; font-size:13px; color:var(--kq-parchment-2);
   }
   #kqBackBtn{
-    background:none; border:1px solid rgba(247,239,221,0.3); color:var(--kq-parchment);
+    background:none; border:1px solid rgba(247,244,238,0.3); color:var(--kq-parchment);
     border-radius:20px; padding:6px 14px; font-size:12px; cursor:pointer; font-family:inherit;
   }
   .kq-progress-track{
@@ -1807,7 +1844,7 @@
     position:relative;
     height:300px;
     background:linear-gradient(180deg, rgba(63,145,121,0.08), rgba(178,58,46,0.05));
-    border:1px solid rgba(247,239,221,0.15);
+    border:1px solid rgba(247,244,238,0.15);
     border-radius:18px;
     overflow:hidden;
     margin-bottom:18px;
@@ -1846,7 +1883,7 @@
   #kqKanjiSlots{ display:flex; align-items:center; justify-content:center; gap:14px; margin:14px 0 6px; }
   .kq-kanji-slot{
     width:70px; height:70px; border-radius:16px;
-    border:2px dashed rgba(247,239,221,0.35);
+    border:2px dashed rgba(247,244,238,0.35);
     display:flex; align-items:center; justify-content:center;
     font-family:'Zen Maru Gothic'; font-size:30px; color:var(--kq-parchment);
     cursor:pointer; transition:border-color .15s, background .15s;
@@ -1868,7 +1905,7 @@
   #kqParticleArena, .kq-bridge-wrap{ position:relative; }
   #kqBridgeTrack{
     height:34px; background:rgba(255,255,255,0.08); border-radius:17px; position:relative;
-    margin-bottom:22px; overflow:hidden; border:1px solid rgba(247,239,221,0.15);
+    margin-bottom:22px; overflow:hidden; border:1px solid rgba(247,244,238,0.15);
   }
   #kqBridgeFill{ height:100%; background:linear-gradient(90deg, var(--kq-torii), var(--kq-gold)); width:0%; transition:width .4s ease; }
   #kqBridgeWalker{
@@ -1876,7 +1913,7 @@
     transition:left .4s ease;
   }
   #kqSentenceCard{
-    background:rgba(247,239,221,0.06); border:1px solid rgba(247,239,221,0.18);
+    background:rgba(247,244,238,0.06); border:1px solid rgba(247,244,238,0.18);
     border-radius:18px; padding:26px 18px; text-align:center; margin-bottom:16px; min-height:110px;
     display:flex; align-items:center; justify-content:center;
   }
@@ -1893,8 +1930,8 @@
 
   #kqParticleOptions{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:10px; }
   .kq-particle-option{
-    border-radius:14px; border:2px solid rgba(247,239,221,0.25);
-    background:rgba(247,239,221,0.06); color:var(--kq-parchment);
+    border-radius:14px; border:2px solid rgba(247,244,238,0.25);
+    background:rgba(247,244,238,0.06); color:var(--kq-parchment);
     font-family:'Zen Maru Gothic', sans-serif; font-size:20px; font-weight:700;
     padding:10px 22px; cursor:pointer; transition:transform .1s ease, background .15s ease, border-color .15s ease;
   }
@@ -1911,11 +1948,14 @@
   #kqOptions{
     display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;
   }
+  @media (max-width: 480px) {
+    #kqOptions{ grid-template-columns:repeat(2, 1fr); }
+  }
   .kq-option-bubble{
     aspect-ratio:1/1;
     border-radius:50%;
-    border:2px solid rgba(247,239,221,0.25);
-    background:rgba(247,239,221,0.06);
+    border:2px solid rgba(247,244,238,0.25);
+    background:rgba(247,244,238,0.06);
     color:var(--kq-parchment);
     font-family:'Zen Maru Gothic', sans-serif;
     font-size:26px; font-weight:700;
@@ -1930,16 +1970,16 @@
   #kqFeedback{
     min-height:34px; text-align:center; font-size:13px; color:var(--kq-parchment-2); margin-top:10px;
   }
-  #kqFeedback.good{ color:#8be0c4; }
-  #kqFeedback.bad{ color:#ef9a90; }
+  #kqFeedback.good{ color:#8fbfae; }
+  #kqFeedback.bad{ color:var(--sakura); }
 
   /* ---------- ZONE 2: VOCABULARY FOREST (Word Catch) ---------- */
   .kq-vocab-bubble{ font-size:26px; width:88px; height:88px; }
   #kqVocabOptions{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:10px; }
   .kq-vocab-option{
-    border-radius:14px; border:2px solid rgba(247,239,221,0.25);
-    background:rgba(247,239,221,0.06); color:var(--kq-parchment);
-    font-family:'M PLUS 1p', sans-serif; font-size:14px; font-weight:700;
+    border-radius:14px; border:2px solid rgba(247,244,238,0.25);
+    background:rgba(247,244,238,0.06); color:var(--kq-parchment);
+    font-family:'Prompt', sans-serif; font-size:14px; font-weight:700;
     padding:10px 18px; cursor:pointer; transition:transform .1s ease, background .15s ease, border-color .15s ease;
   }
   .kq-vocab-option:active{ transform:scale(0.94); }
@@ -1948,8 +1988,8 @@
   #kqVocabFeedback{
     min-height:34px; text-align:center; font-size:13px; color:var(--kq-parchment-2); margin-top:10px;
   }
-  #kqVocabFeedback.good{ color:#8be0c4; }
-  #kqVocabFeedback.bad{ color:#ef9a90; }
+  #kqVocabFeedback.good{ color:#8fbfae; }
+  #kqVocabFeedback.bad{ color:var(--sakura); }
   #kqVocabGameScreen{ display:none; }
 
   /* ---------- SUMMARY ---------- */
@@ -1963,7 +2003,7 @@
   #kqSummaryScreen p{ color:var(--kq-parchment-2); font-size:13px; margin-bottom:20px; }
   .kq-summary-stats{ display:flex; justify-content:center; gap:14px; margin-bottom:22px; flex-wrap:wrap; }
   .kq-stat-pill{
-    background:rgba(247,239,221,0.07); border:1px solid rgba(247,239,221,0.18);
+    background:rgba(247,244,238,0.07); border:1px solid rgba(247,244,238,0.18);
     border-radius:14px; padding:12px 18px; min-width:96px;
   }
   .kq-stat-pill .num{ font-family:'Zen Maru Gothic'; font-size:22px; color:var(--kq-gold); font-weight:900; }
@@ -1978,7 +2018,7 @@
   }
   .kq-primary-btn:hover{ background:var(--kq-torii-dark); }
 
-  .kq-footnote{ text-align:center; font-size:11px; color:rgba(247,239,221,0.4); margin-top:26px; }
+  .kq-footnote{ text-align:center; font-size:11px; color:rgba(247,244,238,0.4); margin-top:26px; }
 
     </style>
 </head>
@@ -1987,12 +2027,11 @@
     <!-- Login Overlay -->
     <div class="login-overlay" id="loginOverlay">
         <div class="login-card">
-            <h2>🏫 เข้าสู่ห้องเรียนญี่ปุ่น</h2>
-            <input type="text" id="loginUser" placeholder="Username (เช่น student)" autocomplete="off" />
-            <input type="password" id="loginPass" placeholder="Password" autocomplete="off" />
+            <h2 id="loginTitle">🏫 เข้าสู่ห้องเรียนญี่ปุ่น</h2>
+            <input type="text" id="loginUser" placeholder="Username (เช่น student)" autocomplete="off" aria-label="ชื่อผู้ใช้" aria-describedby="loginError" />
             <button onclick="attemptLogin()">เข้าห้องเรียน</button>
-            <div class="login-error" id="loginError"></div>
-            <div class="login-note">✨ ระบบแฟลชการ์ดพรีเมียม บันทึกความคืบหน้าอัตโนมัติ</div>
+            <div class="login-error" id="loginError" role="alert" aria-live="assertive"></div>
+            <div class="login-note">✨ ระบบแฟลชการ์ดพรีเมียม บันทึกความคืบหน้าอัตโนมัติ (ไม่ต้องใช้รหัสผ่าน — พิมพ์ชื่อผู้ใช้เพื่อแยกข้อมูลของแต่ละคน)</div>
         </div>
     </div>
 
@@ -2005,30 +2044,30 @@
                 <p>ระบบฝึกฝนคำศัพท์และคันจิระดับพรีเมียม (N5-N1 Ready)</p>
                 <button type="button" class="btn-mini howto-btn" onclick="openHowToModal()">ℹ️ วิธีเล่น</button>
             </div>
-            <div class="mode-category-bar">
-                <button type="button" id="catBtnLearn" class="category-btn active" onclick="selectModeCategory('learn')">📚 เรียน</button>
-                <button type="button" id="catBtnPractice" class="category-btn" onclick="selectModeCategory('practice')">🎯 ฝึก/ทดสอบ</button>
-                <button type="button" id="catBtnOverview" class="category-btn" onclick="selectModeCategory('overview')">📊 ภาพรวม</button>
+            <div class="mode-category-bar" role="tablist" aria-label="หมวดหมู่โหมดการเรียน">
+                <button type="button" id="catBtnLearn" class="category-btn active" onclick="selectModeCategory('learn')" role="tab" aria-selected="true">📚 เรียน</button>
+                <button type="button" id="catBtnPractice" class="category-btn" onclick="selectModeCategory('practice')" role="tab" aria-selected="false">🎯 ฝึก/ทดสอบ</button>
+                <button type="button" id="catBtnOverview" class="category-btn" onclick="selectModeCategory('overview')" role="tab" aria-selected="false">📊 ภาพรวม</button>
             </div>
             <div class="mode-toggle">
                 <div class="mode-group" id="modeGroupLearn">
-                    <button id="modeFlashcardBtn" class="mode-btn active" onclick="setMode('flashcard')">🗂 ท่องจำ</button>
-                    <button id="modeKanaBtn" class="mode-btn" onclick="setMode('kana')">🌸 あいう ตัวอักษร<span class="mode-coin-badge">+2~3🪙</span></button>
-                    <button id="modeListenStudyBtn" class="mode-btn" onclick="setMode('listenstudy')">📖 เรียนฟัง</button>
-                    <button id="modeReadStudyBtn" class="mode-btn" onclick="setMode('readstudy')">📗 เรียนอ่าน</button>
+                    <button id="modeFlashcardBtn" aria-pressed="true" class="mode-btn active" onclick="setMode('flashcard')">🗂 ท่องจำ</button>
+                    <button id="modeKanaBtn" aria-pressed="false" class="mode-btn" onclick="setMode('kana')">🌸 あいう ตัวอักษร<span class="mode-coin-badge">+2~3🪙</span></button>
+                    <button id="modeListenStudyBtn" aria-pressed="false" class="mode-btn" onclick="setMode('listenstudy')">📖 เรียนฟัง</button>
+                    <button id="modeReadStudyBtn" aria-pressed="false" class="mode-btn" onclick="setMode('readstudy')">📗 เรียนอ่าน</button>
                 </div>
                 <div class="mode-group" id="modeGroupPractice" style="display:none;">
-                    <button id="modeQuizBtn" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ<span class="mode-coin-badge">+1🪙</span></button>
-                    <button id="modeChoiceBtn" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ<span class="mode-coin-badge">+1🪙</span></button>
-                    <button id="modeMatchBtn" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ<span class="mode-coin-badge">+1🪙</span></button>
-                    <button id="modeListenBtn" class="mode-btn" onclick="setMode('listen')">🎧 ฟังแล้วตอบ<span class="mode-coin-badge">+2🪙</span></button>
-                    <button id="modeReadBtn" class="mode-btn" onclick="setMode('read')">📝 อ่านแล้วตอบ<span class="mode-coin-badge">+2🪙</span></button>
-                    <button id="modeSpeakBtn" class="mode-btn" onclick="setMode('speak')">🎤 ฝึกพูด<span class="mode-coin-badge">+1🪙</span></button>
-                    <button id="modeBossBtn" class="mode-btn" onclick="setMode('boss')">⚔️ Boss Battle<span class="mode-coin-badge">15~120🪙</span></button>
-                    <button id="modeExamBtn" class="mode-btn" onclick="setMode('exam')">📝 JLPT Mock Exam<span class="mode-coin-badge">+5~15🪙</span></button>
+                    <button id="modeQuizBtn" aria-pressed="false" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ<span class="mode-coin-badge">+1🪙</span></button>
+                    <button id="modeChoiceBtn" aria-pressed="false" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ<span class="mode-coin-badge">+1🪙</span></button>
+                    <button id="modeMatchBtn" aria-pressed="false" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ<span class="mode-coin-badge">+1🪙</span></button>
+                    <button id="modeListenBtn" aria-pressed="false" class="mode-btn" onclick="setMode('listen')">🎧 ฟังแล้วตอบ<span class="mode-coin-badge">+2🪙</span></button>
+                    <button id="modeReadBtn" aria-pressed="false" class="mode-btn" onclick="setMode('read')">📝 อ่านแล้วตอบ<span class="mode-coin-badge">+2🪙</span></button>
+                    <button id="modeSpeakBtn" aria-pressed="false" class="mode-btn" onclick="setMode('speak')">🎤 ฝึกพูด<span class="mode-coin-badge">+1🪙</span></button>
+                    <button id="modeBossBtn" aria-pressed="false" class="mode-btn" onclick="setMode('boss')">⚔️ Boss Battle<span class="mode-coin-badge">15~120🪙</span></button>
+                    <button id="modeExamBtn" aria-pressed="false" class="mode-btn" onclick="setMode('exam')">📝 JLPT Mock Exam<span class="mode-coin-badge">+5~15🪙</span></button>
                 </div>
                 <div class="mode-group" id="modeGroupOverview" style="display:none;">
-                    <button id="modeRoadmapBtn" class="mode-btn" onclick="setMode('roadmap')">🧭 Roadmap</button>
+                    <button id="modeRoadmapBtn" aria-pressed="false" class="mode-btn" onclick="setMode('roadmap')">🧭 Roadmap</button>
                 </div>
             </div>
             <div class="voice-settings">
@@ -2131,17 +2170,17 @@
 
 
         <!-- Main Dashboard Grid Layout -->
-        <div class="main-container" id="mainDashboardGrid">
+        <div class="main-container" id="mainDashboardGrid" role="main">
             
             <!-- Left Sidebar: Filter & Stats -->
-            <div class="panel">
+            <div class="panel" role="complementary" aria-label="ตัวกรองเนื้อหาและระดับชั้น">
                 <h3>🗂️ เนื้อหาที่จะฝึก</h3>
-                <div class="content-type-toggle" id="contentTypeToggle">
-                    <button type="button" class="content-type-btn active" data-type="vocab" onclick="setContentType('vocab')">📖 คำศัพท์</button>
-                    <button type="button" class="content-type-btn" data-type="grammar" onclick="setContentType('grammar')">📐 ไวยากรณ์</button>
+                <div class="content-type-toggle" id="contentTypeToggle" role="group" aria-label="ประเภทเนื้อหา">
+                    <button type="button" class="content-type-btn active" data-type="vocab" onclick="setContentType('vocab')" aria-pressed="true">📖 คำศัพท์</button>
+                    <button type="button" class="content-type-btn" data-type="grammar" onclick="setContentType('grammar')" aria-pressed="false">📐 ไวยากรณ์</button>
                 </div>
                 <h3>📚 ตัวกรองระดับชั้น</h3>
-                <div class="filter-group">
+                <div class="filter-group" role="group" aria-label="ตัวกรองระดับ JLPT">
                     <div style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px;">✅ ใช้ได้กับทุกโหมด (การ์ดคำศัพท์, ทดสอบ, จับคู่, ฟัง, อ่าน, พูด) — ยกเว้น Mock Exam ที่เลือกระดับแยกในหน้านั้น</div>
                     <div class="filter-chips">
                         <label class="filter-chip"><input type="checkbox" value="N5" checked onchange="onFilterChange()"> N5 <span class="chip-count" id="countN5"></span></label>
@@ -2243,7 +2282,7 @@
                     <div class="quiz-th-hint" id="quizThHint">แมว</div>
                     <input type="text" class="quiz-input" id="quizInput" placeholder="พิมพ์คำตอบ: โรมันจิหรือฮิรางานะ" autocomplete="off" autocapitalize="off" spellcheck="false" />
                     <button class="btn-submit" id="quizSubmitBtn" onclick="checkAnswer()">ตรวจคำตอบ ✔</button>
-                    <div class="quiz-feedback" id="quizFeedback"></div>
+                    <div class="quiz-feedback" id="quizFeedback" role="status" aria-live="polite"></div>
                     <div class="quiz-stats" id="quizStats">ถูก: 0 &nbsp;|&nbsp; ผิด: 0</div>
                     <div class="leaderboard-box" id="quizLeaderboard"></div>
                 </div>
@@ -2257,7 +2296,7 @@
                     </div>
                     <div class="quiz-th-hint">แปลว่าอะไร? เลือกคำตอบที่ถูกต้อง</div>
                     <div class="choice-options" id="choiceOptions"></div>
-                    <div class="quiz-feedback" id="choiceFeedback"></div>
+                    <div class="quiz-feedback" id="choiceFeedback" role="status" aria-live="polite"></div>
                     <button class="btn-submit" id="choiceNextBtn" style="display:none;" onclick="nextChoiceQuestion()">ข้อถัดไป ➡</button>
                     <div class="quiz-stats" id="choiceStats">ถูก: 0 &nbsp;|&nbsp; ผิด: 0</div>
                     <div class="leaderboard-box" id="choiceLeaderboard"></div>
@@ -2277,7 +2316,7 @@
                         <div class="match-column" id="matchJpColumn"></div>
                         <div class="match-column" id="matchThColumn"></div>
                     </div>
-                    <div class="match-feedback" id="matchFeedback"></div>
+                    <div class="match-feedback" id="matchFeedback" role="status" aria-live="polite"></div>
                     <div class="match-footer">
                         <span id="matchProgress">จับคู่แล้ว 0 / 5</span>
                         <button class="btn-submit btn-new-round" style="width:auto; margin-top:0;" onclick="newMatchRound()">🔀 คำชุดใหม่</button>
@@ -2424,7 +2463,7 @@
                                 <div class="boss-speak-hint" id="bossSpeakHint"></div>
                             </div>
 
-                            <div class="quiz-feedback" id="bossFeedback"></div>
+                            <div class="quiz-feedback" id="bossFeedback" role="status" aria-live="polite"></div>
                         </div>
 
                         <button class="btn-mini" style="margin-top:10px;" onclick="backToBossSelect()">◀ กลับไปเลือก Boss</button>
@@ -2535,7 +2574,7 @@
                         <div class="speak-target-th" id="speakTargetTh">สวัสดี</div>
                     </div>
                     <button class="speak-mic-btn" id="speakMicBtn" onclick="startSpeakRecognition()" title="กดแล้วพูดตาม">🎤</button>
-                    <div class="speak-feedback" id="speakFeedback"></div>
+                    <div class="speak-feedback" id="speakFeedback" role="status" aria-live="polite"></div>
                     <div class="speak-heard-text" id="speakHeardText"></div>
                     <div class="speak-nav-row">
                         <button class="btn-mini" onclick="navigateSpeakPractice(-1)">◀ คำก่อนหน้า</button>
@@ -2581,7 +2620,7 @@
                         <button class="exam-next-btn" id="examNextBtn" disabled onclick="nextExamQuestion()">ข้อถัดไป ➡</button>
                     </div>
 
-                    <div id="examResultView" style="display:none; width:100%; display:flex; flex-direction:column; align-items:center;">
+                    <div id="examResultView" style="display:none; width:100%; display:flex; flex-direction:column; align-items:center;" role="status" aria-live="polite">
                         <div class="exam-result-card">
                             <div class="exam-result-badge" id="examResultBadge">🎉</div>
                             <div class="exam-result-title" id="examResultTitle">ผ่าน!</div>
@@ -2662,7 +2701,7 @@
     </div>
 
     <div id="kqOptions"></div>
-    <div id="kqFeedback"></div>
+    <div id="kqFeedback" role="status" aria-live="polite"></div>
   </div>
 
   <!-- SUMMARY SCREEN -->
@@ -2692,7 +2731,7 @@
     </div>
 
     <div id="kqVocabOptions"></div>
-    <div id="kqVocabFeedback"></div>
+    <div id="kqVocabFeedback" role="status" aria-live="polite"></div>
   </div>
 
   <!-- VOCABULARY FOREST SUMMARY SCREEN -->
@@ -13879,6 +13918,51 @@ Aを問わずB
         let currentMode = 'flashcard';
         let contentType = 'vocab'; // 'vocab' | 'grammar'
 
+        // ===== Auto-highlight: ห่อคำช่วย (particle) ในประโยค/pattern ด้วย <span class="particle"> =====
+        // เรียงจากยาว→สั้น กันปัญหา で ไปแมตช์ทับ では / ですか ฯลฯ
+        const AUTO_HIGHLIGHT_PARTICLES = [
+            "ではありません", "でした", "ましょう", "たいです", "でしょう",
+            "ながら", "ばかり", "けれど", "ですか", "じゃあ", "って",
+            "から", "まで", "より", "ので", "のに", "しか", "だけ", "ほど", "ぐらい", "くらい",
+            "は", "が", "を", "に", "で", "と", "も", "の", "へ", "や", "か", "ね", "よ", "な", "わ"
+        ];
+        function autoHighlightJp(text) {
+            if (!text) return text;
+            // ถ้ามี <span class="particle"> อยู่แล้วในข้อมูล (เช่น pattern ที่ทำมือ) ให้ใช้ตามนั้นไม่แตะซ้ำ
+            if (text.indexOf('class="particle"') !== -1) return text;
+            let result = text;
+            AUTO_HIGHLIGHT_PARTICLES.forEach(p => {
+                const escaped = p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                result = result.replace(new RegExp(escaped, 'g'), '<span class="particle">' + p + '</span>');
+            });
+            return result;
+        }
+
+        // ===== ปรับขนาดตัวอักษรอัตโนมัติสำหรับ pattern ไวยากรณ์ที่ยาว กันข้อความล้นการ์ด =====
+        function jpPlainLength(html) { return (html || '').replace(/<[^>]+>/g, '').length; }
+        function fitJpFrontText(el, html) {
+            const len = jpPlainLength(html);
+            el.innerHTML = html;
+            el.classList.add('jp-auto-fit');
+            let size;
+            if (len <= 5) size = '2.6rem';
+            else if (len <= 9) size = '2.1rem';
+            else if (len <= 14) size = '1.7rem';
+            else if (len <= 20) size = '1.35rem';
+            else size = '1.1rem';
+            el.style.fontSize = size;
+        }
+        function fitJpBackText(el, html) {
+            const len = jpPlainLength(html);
+            el.innerHTML = html;
+            let size;
+            if (len <= 9) size = '1.9rem';
+            else if (len <= 16) size = '1.5rem';
+            else if (len <= 24) size = '1.2rem';
+            else size = '1rem';
+            el.style.fontSize = size;
+        }
+
         // ===== ตัวช่วยกลาง: ให้ flashcard/quiz/choice/match ใช้ได้ทั้งคำศัพท์และไวยากรณ์ =====
         function isGrammarCard(card) { return !!card && card.pattern !== undefined; }
         function cardFront(card) { return isGrammarCard(card) ? card.pattern : card.jp; }
@@ -14176,10 +14260,20 @@ Aを問わずB
             roadmap: 'overview'
         };
 
+        const MODE_BUTTON_MAP = {
+            flashcard: 'modeFlashcardBtn', kana: 'modeKanaBtn', listenstudy: 'modeListenStudyBtn', readstudy: 'modeReadStudyBtn',
+            quiz: 'modeQuizBtn', choice: 'modeChoiceBtn', match: 'modeMatchBtn', listen: 'modeListenBtn', read: 'modeReadBtn',
+            speak: 'modeSpeakBtn', boss: 'modeBossBtn', exam: 'modeExamBtn', roadmap: 'modeRoadmapBtn'
+        };
+
         function selectModeCategory(category) {
-            document.getElementById('catBtnLearn').classList.toggle('active', category === 'learn');
-            document.getElementById('catBtnPractice').classList.toggle('active', category === 'practice');
-            document.getElementById('catBtnOverview').classList.toggle('active', category === 'overview');
+            const cats = { learn: 'catBtnLearn', practice: 'catBtnPractice', overview: 'catBtnOverview' };
+            Object.entries(cats).forEach(([key, id]) => {
+                const el = document.getElementById(id);
+                const isActive = key === category;
+                el.classList.toggle('active', isActive);
+                el.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
             document.getElementById('modeGroupLearn').style.display = (category === 'learn') ? 'flex' : 'none';
             document.getElementById('modeGroupPractice').style.display = (category === 'practice') ? 'flex' : 'none';
             document.getElementById('modeGroupOverview').style.display = (category === 'overview') ? 'flex' : 'none';
@@ -14193,17 +14287,13 @@ Aを問わずB
             }
             currentMode = mode;
             selectModeCategory(MODE_CATEGORY_MAP[mode] || 'learn');
-            document.getElementById('modeFlashcardBtn').classList.toggle('active', mode === 'flashcard');
-            document.getElementById('modeQuizBtn').classList.toggle('active', mode === 'quiz');
-            document.getElementById('modeChoiceBtn').classList.toggle('active', mode === 'choice');
-            document.getElementById('modeMatchBtn').classList.toggle('active', mode === 'match');
-            document.getElementById('modeKanaBtn').classList.toggle('active', mode === 'kana');
-            document.getElementById('modeBossBtn').classList.toggle('active', mode === 'boss');
-            document.getElementById('modeRoadmapBtn').classList.toggle('active', mode === 'roadmap');
-            document.getElementById('modeListenStudyBtn').classList.toggle('active', mode === 'listenstudy');
-            document.getElementById('modeListenBtn').classList.toggle('active', mode === 'listen');
-            document.getElementById('modeSpeakBtn').classList.toggle('active', mode === 'speak');
-            document.getElementById('modeExamBtn').classList.toggle('active', mode === 'exam');
+            Object.entries(MODE_BUTTON_MAP).forEach(([key, id]) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const isActive = key === mode;
+                el.classList.toggle('active', isActive);
+                el.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
 
             document.getElementById('flashcardContainer').style.display = (mode === 'flashcard') ? 'flex' : 'none';
             document.getElementById('navButtons').style.display = (mode === 'flashcard') ? 'flex' : 'none';
@@ -14289,10 +14379,10 @@ Aを問わずB
             const exBox = document.getElementById('wordExampleBox');
 
             if (isGrammarCard(card)) {
-                document.getElementById('wordJp').innerText = card.pattern;
-                document.getElementById('wordExtraFront').innerText = card.structure || "";
-                document.getElementById('wordJpBack').innerText = card.pattern;
-                document.getElementById('wordExtra').innerText = card.structure || "";
+                fitJpFrontText(document.getElementById('wordJp'), autoHighlightJp(card.pattern));
+                document.getElementById('wordExtraFront').innerHTML = autoHighlightJp(card.structure || "");
+                fitJpBackText(document.getElementById('wordJpBack'), autoHighlightJp(card.pattern));
+                document.getElementById('wordExtra').innerHTML = autoHighlightJp(card.structure || "");
                 document.getElementById('wordTh').innerText = card.meaning;
                 document.getElementById('levelBadge').innerText = card.level;
                 document.getElementById('levelBadgeBack').innerText = card.level;
@@ -14307,9 +14397,9 @@ Aを問わずB
                 const examplesHtml = (card.examples || []).map(ex => `
                     <div class="example-box" onclick="playJapaneseAudio('${ex.jp.replace(/'/g, "\\'")}')" title="คลิกเพื่อฟังเสียง">
                         <div class="example-label-row">
-                            <span style="font-size:0.65rem; color: var(--kinpaku-light);">🔊 ฟังเสียง</span>
+                            <span style="font-size:0.65rem; color: #b8860b;">🔊 ฟังเสียง</span>
                         </div>
-                        <div class="ex-jp">${ex.jp}</div>
+                        <div class="ex-jp">${autoHighlightJp(ex.jp)}</div>
                         <div class="ex-th">${ex.romaji || ''}</div>
                         <div class="ex-th">${ex.th}</div>
                     </div>`).join('');
@@ -14326,9 +14416,14 @@ Aを問わずB
                     ${relatedHtml ? `<div class="example-label" style="margin:10px 0 6px;">🔗 pattern ที่เกี่ยวข้อง</div><div class="g-related-tags">${relatedHtml}</div>` : ''}
                 `;
             } else {
-                document.getElementById('wordJp').innerText = card.jp;
+                const wordJpEl = document.getElementById('wordJp');
+                const wordJpBackEl = document.getElementById('wordJpBack');
+                wordJpEl.classList.remove('jp-auto-fit');
+                wordJpEl.style.fontSize = '';
+                wordJpBackEl.style.fontSize = '';
+                wordJpEl.innerText = card.jp;
                 document.getElementById('wordExtraFront').innerText = card.extra;
-                document.getElementById('wordJpBack').innerText = card.jp + " (" + card.extra.split(" ")[0] + ")";
+                wordJpBackEl.innerText = card.jp + " (" + card.extra.split(" ")[0] + ")";
                 document.getElementById('wordExtra').innerText = card.extra;
                 document.getElementById('wordTh').innerText = card.th;
                 document.getElementById('levelBadge').innerText = card.level;
@@ -14345,9 +14440,9 @@ Aを問わずB
                         <div class="example-box" onclick="speakExampleSentence(event)" title="คลิกเพื่อฟังเสียงประโยคตัวอย่าง">
                             <div class="example-label-row">
                                 <span class="example-label">💡 ตัวอย่างประโยค</span>
-                                <span style="font-size: 0.65rem; color: var(--kinpaku-light);">🔊 ฟังเสียง</span>
+                                <span style="font-size: 0.65rem; color: #b8860b;">🔊 ฟังเสียง</span>
                             </div>
-                            <div class="ex-jp">${card.example.jp}</div>
+                            <div class="ex-jp">${autoHighlightJp(card.example.jp)}</div>
                             <div class="ex-th">${card.example.th}</div>
                         </div>
                     `;
@@ -14439,7 +14534,9 @@ Aを問わずB
             }
             contentType = type;
             document.querySelectorAll('.content-type-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.type === type);
+                const isActive = btn.dataset.type === type;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
             });
             currentQuizWord = null;
             quizQueue = [];
@@ -15089,6 +15186,8 @@ Aを問わずB
         function showExpToast(msg) {
             const toast = document.createElement('div');
             toast.className = 'exp-toast';
+            toast.setAttribute('role', 'status');
+            toast.setAttribute('aria-live', 'polite');
             toast.innerText = msg;
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 2300);
@@ -16310,7 +16409,7 @@ Aを問わずB
             qBox.innerHTML = `
                 <div class="listen-q-text">${q.q}</div>
                 <div class="choice-options" id="listenChoiceOptions"></div>
-                <div class="quiz-feedback" id="listenFeedback"></div>`;
+                <div class="quiz-feedback" id="listenFeedback" role="status" aria-live="polite"></div>`;
             const optionsEl = document.getElementById('listenChoiceOptions');
             q.choices.forEach((choice, i) => {
                 const btn = document.createElement('button');
@@ -16451,7 +16550,7 @@ Aを問わずB
             qBox.innerHTML = `
                 <div class="listen-q-text">${q.q}</div>
                 <div class="choice-options" id="readChoiceOptions"></div>
-                <div class="quiz-feedback" id="readFeedback"></div>`;
+                <div class="quiz-feedback" id="readFeedback" role="status" aria-live="polite"></div>`;
             const optionsEl = document.getElementById('readChoiceOptions');
             q.choices.forEach((choice, i) => {
                 const btn = document.createElement('button');
@@ -17037,7 +17136,6 @@ Aを問わずB
             document.getElementById('hostDashboard').style.display = 'none';
             document.getElementById('loginOverlay').style.display = 'flex';
             document.getElementById('loginUser').value = '';
-            document.getElementById('loginPass').value = '';
             document.getElementById('loginError').innerText = '';
         }
 
@@ -17065,6 +17163,13 @@ Aを問わずB
             initCanvas();
             maybeAutoOpenHowTo();
         }
+
+        document.getElementById('loginUser')?.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                attemptLogin();
+            }
+        });
 
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('loginOverlay').style.display !== 'none') return;
