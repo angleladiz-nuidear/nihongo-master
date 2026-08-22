@@ -13921,20 +13921,39 @@ Aを問わずB
         // ===== Auto-highlight: ห่อคำช่วย (particle) ในประโยค/pattern ด้วย <span class="particle"> =====
         // เรียงจากยาว→สั้น กันปัญหา で ไปแมตช์ทับ では / ですか ฯลฯ
         const AUTO_HIGHLIGHT_PARTICLES = [
-            "ではありません", "でした", "ましょう", "たいです", "でしょう",
-            "ながら", "ばかり", "けれど", "ですか", "じゃあ", "って",
+            "ではありません", "でしょう", "でした", "ですから", "ですけど", "ですが",
+            "ですね", "ですよ", "ですか", "です",
+            "ましょう", "たいです",
+            "ながら", "ばかり", "けれど", "じゃあ", "って",
             "から", "まで", "より", "ので", "のに", "しか", "だけ", "ほど", "ぐらい", "くらい",
             "は", "が", "を", "に", "で", "と", "も", "の", "へ", "や", "か", "ね", "よ", "な", "わ"
         ];
+        // Rev6: เดิมใช้ .replace() วน pattern ทีละตัว ทำให้เกิด 2 บั๊ก —
+        // (1) です เปล่าๆ ไม่อยู่ใน list เลยโดน で (คำช่วย) แย่งไฮไลท์แทน
+        // (2) pattern ยาวที่ถูกห่อ span ไปแล้ว (เช่น でした, から, まで) ยังมีตัวอักษรคำช่วยเดี่ยว
+        //     ซ่อนอยู่ข้างในเป็น text ธรรมดา พอวนมาถึงคำช่วยเดี่ยวท้าย list มันแมตช์ซ้ำเข้าไปข้างใน กลายเป็น span ซ้อน span
+        // แก้ด้วยการ scan ข้อความครั้งเดียวจากซ้ายไปขวา จับ pattern ที่ยาวที่สุดที่ match ได้ ณ ตำแหน่งนั้นก่อนเสมอ
+        // แต่ละตัวอักษรถูก "ใช้" แค่ครั้งเดียว จึงไม่มีทางเกิดการแมตช์ซ้ำหรือแมตช์ผิดจุดอีก
+        const SORTED_AUTO_HIGHLIGHT_PARTICLES = [...AUTO_HIGHLIGHT_PARTICLES].sort((a, b) => b.length - a.length);
         function autoHighlightJp(text) {
             if (!text) return text;
             // ถ้ามี <span class="particle"> อยู่แล้วในข้อมูล (เช่น pattern ที่ทำมือ) ให้ใช้ตามนั้นไม่แตะซ้ำ
             if (text.indexOf('class="particle"') !== -1) return text;
-            let result = text;
-            AUTO_HIGHLIGHT_PARTICLES.forEach(p => {
-                const escaped = p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                result = result.replace(new RegExp(escaped, 'g'), '<span class="particle">' + p + '</span>');
-            });
+            let result = '';
+            let i = 0;
+            while (i < text.length) {
+                let matched = null;
+                for (const p of SORTED_AUTO_HIGHLIGHT_PARTICLES) {
+                    if (text.startsWith(p, i)) { matched = p; break; }
+                }
+                if (matched) {
+                    result += '<span class="particle">' + matched + '</span>';
+                    i += matched.length;
+                } else {
+                    result += text[i];
+                    i += 1;
+                }
+            }
             return result;
         }
 
