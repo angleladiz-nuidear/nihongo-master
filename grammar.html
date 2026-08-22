@@ -16775,50 +16775,83 @@ Aを問わずB
             return { options, correctIndex: options.indexOf(correctText) };
         }
 
+        // เดิมเคยรวมข้อสอบทุกข้อจากทุกบทความ/บทสนทนา ทำให้ข้อสอบยาวเกินไปจนท้อ
+        // ตอนนี้จำกัดไว้ 30-40 ข้อ/ครั้ง สุ่มตามสัดส่วน 4 พาร์ทเท่า ๆ กัน (คำศัพท์/ไวยากรณ์/อ่าน/ฟัง)
+        const EXAM_TOTAL_MIN = 30;
+        const EXAM_TOTAL_MAX = 40;
+
         function buildMockExamQuestions(level) {
-            const questions = [];
+            const totalTarget = EXAM_TOTAL_MIN + Math.floor(Math.random() * (EXAM_TOTAL_MAX - EXAM_TOTAL_MIN + 1));
+            const baseQuota = Math.floor(totalTarget / 4);
+            const remainder = totalTarget - baseQuota * 4;
+            // ส่วนเกินจากการหารลงตัว แจกให้พาร์ทแรก ๆ ก่อน (vocab, grammar, read, listen)
+            const quota = {
+                vocab: baseQuota + (remainder > 0 ? 1 : 0),
+                grammar: baseQuota + (remainder > 1 ? 1 : 0),
+                read: baseQuota + (remainder > 2 ? 1 : 0),
+                listen: baseQuota
+            };
 
-            // พาร์ท 1: 文字・語彙 (คำศัพท์) — 8 ข้อ
+            // เตรียม "คลัง" ข้อสอบทั้งหมดของแต่ละพาร์ท (สุ่มลำดับไว้ก่อน) แล้วค่อยตัดตามโควตา
             const vocabPool = Array.from(getVocabByKeyMap().values()).filter(v => !isGrammarCard(v) && v.level === level);
-            const vocabPicks = shuffleArr(vocabPool).slice(0, 8);
             const vocabBackPool = vocabPool.map(v => v.th);
-            vocabPicks.forEach(card => {
+            const vocabCandidates = shuffleArr(vocabPool).map(card => {
                 const { options, correctIndex } = buildExamOptions(card.th, vocabBackPool, card.th);
-                questions.push({ section: 'vocab', sectionLabel: '文字・語彙 (คำศัพท์)', prompt: card.jp, hint: '', options, correctIndex, isListening: false });
+                return { section: 'vocab', sectionLabel: '文字・語彙 (คำศัพท์)', prompt: card.jp, hint: '', options, correctIndex, isListening: false };
             });
 
-            // พาร์ท 2: 文法 (ไวยากรณ์) — 8 ข้อ
             const grammarPool = grammarList.filter(g => g.level === level);
-            const grammarPicks = shuffleArr(grammarPool).slice(0, 8);
             const grammarBackPool = grammarPool.map(g => g.meaning);
-            grammarPicks.forEach(card => {
+            const grammarCandidates = shuffleArr(grammarPool).map(card => {
                 const { options, correctIndex } = buildExamOptions(card.meaning, grammarBackPool, card.meaning);
-                questions.push({ section: 'grammar', sectionLabel: '文法 (ไวยากรณ์)', prompt: card.pattern, hint: card.structure || '', options, correctIndex, isListening: false });
+                return { section: 'grammar', sectionLabel: '文法 (ไวยากรณ์)', prompt: card.pattern, hint: card.structure || '', options, correctIndex, isListening: false };
             });
 
-            // พาร์ท 3: 読解 (อ่านจับใจความ) — ทุกคำถามจากบทความระดับนี้
-            const passages = readingList.filter(r => r.level === level);
-            passages.forEach(r => {
+            const readCandidatesRaw = [];
+            readingList.filter(r => r.level === level).forEach(r => {
                 r.questions.forEach(q => {
-                    questions.push({
+                    readCandidatesRaw.push({
                         section: 'read', sectionLabel: '読解 (อ่านจับใจความ)', prompt: q.q, hint: '',
                         options: q.choices, correctIndex: q.answerIndex, isListening: false, passage: r
                     });
                 });
             });
+            const readCandidates = shuffleArr(readCandidatesRaw);
 
-            // พาร์ท 4: 聴解 (ฟัง) — ทุกคำถามจากบทสนทนาระดับนี้
-            const dialogues = listeningList.filter(d => d.level === level);
-            dialogues.forEach(dlg => {
+            const listenCandidatesRaw = [];
+            listeningList.filter(d => d.level === level).forEach(dlg => {
                 dlg.questions.forEach(q => {
-                    questions.push({
+                    listenCandidatesRaw.push({
                         section: 'listen', sectionLabel: '聴解 (ฟัง)', prompt: q.q, hint: '',
                         options: q.choices, correctIndex: q.answerIndex, isListening: true, dialogue: dlg
                     });
                 });
             });
+            const listenCandidates = shuffleArr(listenCandidatesRaw);
 
-            return questions;
+            const pools = { vocab: vocabCandidates, grammar: grammarCandidates, read: readCandidates, listen: listenCandidates };
+            const picked = { vocab: [], grammar: [], read: [], listen: [] };
+            Object.keys(pools).forEach(key => {
+                picked[key] = pools[key].slice(0, Math.min(quota[key], pools[key].length));
+            });
+
+            // ถ้าบางพาร์ทมีข้อสอบไม่พอตามโควตา ให้ดึงจากพาร์ทอื่นที่ยังมีเหลือมาเติมแทน จนครบ totalTarget (หรือจนหมดคลังจริง ๆ)
+            let currentTotal = Object.values(picked).reduce((sum, arr) => sum + arr.length, 0);
+            let deficit = totalTarget - currentTotal;
+            if (deficit > 0) {
+                const keysBySpare = Object.keys(pools).sort((a, b) => (pools[b].length - picked[b].length) - (pools[a].length - picked[a].length));
+                for (const key of keysBySpare) {
+                    if (deficit <= 0) break;
+                    const spare = pools[key].length - picked[key].length;
+                    const take = Math.min(spare, deficit);
+                    if (take > 0) {
+                        picked[key] = picked[key].concat(pools[key].slice(picked[key].length, picked[key].length + take));
+                        deficit -= take;
+                    }
+                }
+            }
+
+            return [].concat(picked.vocab, picked.grammar, picked.read, picked.listen);
         }
 
         function startMockExam() {
