@@ -545,11 +545,22 @@
             border-color: var(--kinpaku);
         }
 
-        /* Particle / grammar-point highlight (auto-applied to JP text) */
+        /* Particle / grammar-point highlight (auto-applied to JP text in Grammar mode) */
         .particle {
             color: #E74C3C;
             font-weight: 800;
             background-color: #FCECEB;
+            padding: 0px 4px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0 1px;
+            transform: translateY(-1px);
+        }
+        /* Target vocabulary word highlight (auto-applied to JP example sentences in Vocab mode) */
+        .vocab-word {
+            color: #1B6FA8;
+            font-weight: 800;
+            background-color: #E9F3FA;
             padding: 0px 4px;
             border-radius: 4px;
             display: inline-block;
@@ -13957,6 +13968,15 @@ Aを問わずB
             return result;
         }
 
+        // ===== โหมดเรียนคำศัพท์ (Vocab mode): ไฮไลท์เฉพาะ "คำศัพท์เป้าหมาย" ในประโยคตัวอย่าง =====
+        // ไม่แตะคำช่วย/คำลงท้าย เลย ต่างจาก autoHighlightJp() ที่ใช้ในโหมดไวยากรณ์
+        function highlightVocabWord(text, word) {
+            if (!text || !word) return text;
+            if (text.indexOf('class="vocab-word"') !== -1) return text;
+            const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            return text.replace(new RegExp(escaped, 'g'), '<span class="vocab-word">' + word + '</span>');
+        }
+
         // ===== ปรับขนาดตัวอักษรอัตโนมัติสำหรับ pattern ไวยากรณ์ที่ยาว กันข้อความล้นการ์ด =====
         function jpPlainLength(html) { return (html || '').replace(/<[^>]+>/g, '').length; }
         function fitJpFrontText(el, html) {
@@ -14461,7 +14481,7 @@ Aを問わずB
                                 <span class="example-label">💡 ตัวอย่างประโยค</span>
                                 <span style="font-size: 0.65rem; color: #b8860b;">🔊 ฟังเสียง</span>
                             </div>
-                            <div class="ex-jp">${autoHighlightJp(card.example.jp)}</div>
+                            <div class="ex-jp">${highlightVocabWord(card.example.jp, card.jp)}</div>
                             <div class="ex-th">${card.example.th}</div>
                         </div>
                     `;
