@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>อุจิฮะ ยูซึรุ - นิยาย</title>
+
+<style>
+
+/* =========================================================
+   BASIC
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family:
+        "Noto Sans Thai",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            rgba(15, 18, 25, 0.94),
+            rgba(15, 18, 25, 0.97)
+        );
+
+    color: #eeeeee;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(20, 23, 30, 0.96);
+    border-bottom: 1px solid #3b3f48;
+
+    backdrop-filter: blur(10px);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 16px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-symbol {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #15171d;
+    border: 2px solid #9a2020;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+.logo-text {
+    line-height: 1.2;
+}
+
+.logo-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logo-subtitle {
+    font-size: 12px;
+    color: #9ea4af;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px 80px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    text-align: center;
+    padding: 35px 20px 30px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size: clamp(28px, 5vw, 46px);
+    letter-spacing: 1px;
+}
+
+.hero p {
+    margin: 10px 0 0;
+
+    color: #aeb4bf;
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   FILE CONTROL
+   ========================================================= */
+
+.file-panel {
+    background: #1c1f26;
+
+    border: 1px solid #363a44;
+    border-radius: 14px;
+
+    padding: 18px;
+
+    margin-bottom: 25px;
+}
+
+.file-panel-title {
+    font-size: 14px;
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.file-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+button,
+select {
+    font-family: inherit;
+}
+
+button {
+    border: 1px solid #454a55;
+
+    background: #272b34;
+    color: #eeeeee;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.1s,
+        border-color 0.2s;
+}
+
+button:hover {
+    background: #333844;
+    border-color: #666d7b;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button.primary {
+    background: #7d1d1d;
+    border-color: #9d2929;
+}
+
+button.primary:hover {
+    background: #982525;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.file-status {
+    margin-top: 12px;
+
+    color: #9ea4af;
+    font-size: 13px;
+
+    min-height: 20px;
+}
+
+
+/* =========================================================
+   CHAPTER SELECTOR
+   ========================================================= */
+
+.chapter-panel {
+    background: #1c1f26;
+
+    border: 1px solid #363a44;
+    border-radius: 14px;
+
+    padding: 18px;
+
+    margin-bottom: 25px;
+}
+
+.chapter-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chapter-select {
+    flex: 1;
+
+    background: #272b34;
+    color: #eeeeee;
+
+    border: 1px solid #454a55;
+
+    padding: 11px 14px;
+
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.chapter-select:focus {
+    border-color: #777f8e;
+}
+
+
+/* =========================================================
+   STORY
+   ========================================================= */
+
+.story-card {
+    background: #191c22;
+
+    border: 1px solid #363a44;
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+}
+
+.story-header {
+    padding: 25px 28px 18px;
+
+    border-bottom: 1px solid #30343d;
+}
+
+.story-chapter {
+    color: #a32929;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    margin-bottom: 6px;
+}
+
+.story-title {
+    margin: 0;
+
+    font-size: clamp(24px, 4vw, 34px);
+}
+
+.story-content {
+    padding: 30px;
+
+    font-size: 18px;
+    line-height: 2;
+
+    white-space: pre-wrap;
+
+    color: #eeeeee;
+
+    min-height: 400px;
+}
+
+.story-content.empty {
+    color: #858b96;
+    text-align: center;
+
+    padding-top: 100px;
+}
+
+
+/* =========================================================
+   READING CONTROLS
+   ========================================================= */
+
+.reading-controls {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 18px 25px;
+
+    border-top: 1px solid #30343d;
+    border-bottom: 1px solid #30343d;
+
+    background: #171a20;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-label {
+    color: #9ea4af;
+    font-size: 13px;
+}
+
+.speed-select {
+    background: #272b34;
+    color: #eeeeee;
+
+    border: 1px solid #454a55;
+
+    padding: 8px 10px;
+
+    border-radius: 7px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 20px 25px;
+}
+
+.navigation button {
+    min-width: 130px;
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.progress-panel {
+    padding: 0 25px 22px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    color: #8f96a2;
+
+    font-size: 12px;
+
+    margin-bottom: 7px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+
+    background: #30343d;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+
+    background: #8f2424;
+
+    transition: width 0.3s;
+}
+
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+.settings {
+    margin-top: 25px;
+
+    background: #1c1f26;
+
+    border: 1px solid #363a44;
+
+    border-radius: 14px;
+
+    padding: 20px;
+}
+
+.settings-title {
+    font-size: 15px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #2c3038;
+}
+
+.setting-row:last-child {
+    border-bottom: none;
+}
+
+.setting-name {
+    font-size: 14px;
+}
+
+.setting-description {
+    color: #858c98;
+    font-size: 12px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   TOGGLE
+   ========================================================= */
+
+.switch {
+    position: relative;
+
+    width: 46px;
+    height: 24px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+
+    inset: 0;
+
+    background: #3b3f48;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.slider:before {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    left: 3px;
+    top: 3px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    transition: 0.2s;
+}
+
+.switch input:checked + .slider {
+    background: #8f2424;
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    text-align: center;
+
+    color: #686f7b;
+
+    font-size: 12px;
+
+    padding: 30px 20px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .header-inner {
+        padding: 12px 15px;
+    }
+
+    .logo-subtitle {
+        display: none;
+    }
+
+    .container {
+        padding: 20px 12px 60px;
+    }
+
+    .hero {
+        padding: 25px 10px;
+    }
+
+    .chapter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .story-header {
+        padding: 20px;
+    }
+
+    .story-content {
+        padding: 22px 20px;
+
+        font-size: 17px;
+        line-height: 1.9;
+    }
+
+    .reading-controls {
+        padding: 15px 20px;
+    }
+
+    .navigation {
+        padding: 15px 20px;
+    }
+
+    .navigation button {
+        min-width: 0;
+        flex: 1;
+    }
+
+}
+
+
+/* =========================================================
+   READING MODE
+   ========================================================= */
+
+body.reading-mode .header,
+body.reading-mode .hero,
+body.reading-mode .file-panel,
+body.reading-mode .chapter-panel,
+body.reading-mode .settings,
+body.reading-mode .footer {
+
+    display: none;
+}
+
+body.reading-mode .container {
+    max-width: 900px;
+    padding-top: 30px;
+}
+
+body.reading-mode .story-content {
+    font-size: 21px;
+    line-height: 2.15;
+}
+
+
+/* =========================================================
+   DARK READING FOCUS
+   ========================================================= */
+
+body.focus-mode {
+    background: #08090b;
+}
+
+body.focus-mode .story-card {
+    border-color: #24272d;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <div class="logo">
+
+            <div class="logo-symbol">
+                う
+            </div>
+
+            <div class="logo-text">
+
+                <div class="logo-title">
+                    อุจิฮะ ยูซึรุ
+                </div>
+
+                <div class="logo-subtitle">
+                    ผู้เขียนตอนจบด้วยตัวเอง
+                </div>
+
+            </div>
+
+        </div>
+
+        <button id="readingModeButton">
+            โหมดอ่าน
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =======================================================
+     MAIN
+     ======================================================= -->
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            อุจิฮะ ยูซึรุ
+        </h1>
+
+        <p>
+            ผู้พาตระกูลออกจากโคโนฮะ
+        </p>
+
+    </section>
+
+
+    <!-- ===================================================
+         FILE PANEL
+         =================================================== -->
+
+    <section class="file-panel">
+
+        <div class="file-panel-title">
+            📁 การเชื่อมต่อโฟลเดอร์นิยาย
+        </div>
+
+        <div class="file-buttons">
+
+            <button
+                id="selectFolderButton"
+                class="primary">
+
+                เลือกโฟลเดอร์ Chapter
+
+            </button>
+
+            <button
+                id="resetFolderButton">
+
+                ล้างการเชื่อมต่อ
+
+            </button>
+
+        </div>
+
+        <div
+            id="fileStatus"
+            class="file-status">
+
+            กรุณาเลือกโฟลเดอร์ chapter เพื่อเริ่มต้น
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         CHAPTER SELECTOR
+         =================================================== -->
+
+    <section class="chapter-panel">
+
+        <div class="file-panel-title">
+            📖 เลือกบท
+        </div>
+
+        <div class="chapter-row">
+
+            <select
+                id="chapterSelect"
+                class="chapter-select">
+
+                <option value="">
+                    ยังไม่ได้โหลด Chapter
+                </option>
+
+            </select>
+
+            <button
+                id="loadChapterButton"
+                class="primary">
+
+                เปิดบท
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         STORY CARD
+         =================================================== -->
+
+    <section class="story-card">
+
+
+        <!-- STORY HEADER -->
+
+        <div class="story-header">
+
+            <div
+                id="storyChapter"
+                class="story-chapter">
+
+                ยังไม่ได้เลือกบท
+
+            </div>
+
+            <h2
+                id="storyTitle"
+                class="story-title">
+
+                อุจิฮะ ยูซึรุ
+
+            </h2>
+
+        </div>
+
+
+        <!-- STORY CONTENT -->
+
+        <div
+            id="storyContent"
+            class="story-content empty">
+
+            กรุณาเลือกโฟลเดอร์ Chapter
+            แล้วเลือกบทที่ต้องการอ่าน
+
+        </div>
+
+
+        <!-- =================================================
+             READING CONTROLS
+             ================================================= -->
+
+        <div class="reading-controls">
+
+            <button id="playButton">
+                🔊 อ่าน
+            </button>
+
+            <button id="pauseButton">
+                ⏸ หยุดชั่วคราว
+            </button>
+
+            <button id="resumeButton">
+                ▶ อ่านต่อ
+            </button>
+
+            <button id="stopButton">
+                ⏹ หยุด
+            </button>
+
+
+            <div class="control-group">
+
+                <span class="control-label">
+                    ความเร็ว
+                </span>
+
+                <select
+                    id="speedSelect"
+                    class="speed-select">
+
+                    <option value="0.7">
+                        0.7x
+                    </option>
+
+                    <option value="0.8">
+                        0.8x
+                    </option>
+
+                    <option value="0.9">
+                        0.9x
+                    </option>
+
+                    <option value="1" selected>
+                        1.0x
+                    </option>
+
+                    <option value="1.1">
+                        1.1x
+                    </option>
+
+                    <option value="1.2">
+                        1.2x
+                    </option>
+
+                    <option value="1.3">
+                        1.3x
+                    </option>
+
+                    <option value="1.5">
+                        1.5x
+                    </option>
+
+                    <option value="1.75">
+                        1.75x
+                    </option>
+
+                    <option value="2">
+                        2.0x
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <span class="control-label">
+                    เสียงอ่าน
+                </span>
+
+                <select
+                    id="voiceSelect"
+                    class="speed-select">
+
+                    <option value="">
+                        กำลังโหลดเสียง...
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PROGRESS
+             ================================================= -->
+
+        <div class="progress-panel">
+
+            <div class="progress-info">
+
+                <span>
+                    ความคืบหน้าการอ่าน
+                </span>
+
+                <span id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVIGATION
+             ================================================= -->
+
+        <div class="navigation">
+
+            <button id="previousButton">
+
+                ◀ บทก่อนหน้า
+
+            </button>
+
+            <button id="nextButton">
+
+                บทถัดไป ▶
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ===================================================
+         SETTINGS
+         =================================================== -->
+
+    <section class="settings">
+
+        <div class="settings-title">
+            ⚙️ ตั้งค่าการอ่าน
+        </div>
+
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+                    อ่านต่ออัตโนมัติ
+                </div>
+
+                <div class="setting-description">
+                    เมื่อจบบท ให้เปิดบทถัดไปโดยอัตโนมัติ
+                </div>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="autoNext">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+                    โหมดโฟกัส
+                </div>
+
+                <div class="setting-description">
+                    ลดสิ่งรบกวนบนหน้าจอขณะฟังนิยาย
+                </div>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="focusMode">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+                    จำบทล่าสุด
+                </div>
+
+                <div class="setting-description">
+                    บันทึกบทล่าสุดที่เปิดไว้ในเครื่อง
+                </div>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="rememberChapter"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer class="footer">
+
+    อุจิฮะ ยูซึรุ
+    •
+    Audio Novel
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   UCHIHA YUZURU
+   AUDIO NOVEL SYSTEM
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+let chapterFolder = null;
+
+let chapters = [];
+
+let currentChapterIndex = -1;
+
+let currentText = "";
+
+let speechQueue = [];
+
+let speechIndex = 0;
+
+let isSpeaking = false;
+
+let isPaused = false;
+
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const selectFolderButton =
+    document.getElementById("selectFolderButton");
+
+const resetFolderButton =
+    document.getElementById("resetFolderButton");
+
+const fileStatus =
+    document.getElementById("fileStatus");
+
+const chapterSelect =
+    document.getElementById("chapterSelect");
+
+const loadChapterButton =
+    document.getElementById("loadChapterButton");
+
+const storyChapter =
+    document.getElementById("storyChapter");
+
+const storyTitle =
+    document.getElementById("storyTitle");
+
+const storyContent =
+    document.getElementById("storyContent");
+
+const playButton =
+    document.getElementById("playButton");
+
+const pauseButton =
+    document.getElementById("pauseButton");
+
+const resumeButton =
+    document.getElementById("resumeButton");
+
+const stopButton =
+    document.getElementById("stopButton");
+
+const previousButton =
+    document.getElementById("previousButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const speedSelect =
+    document.getElementById("speedSelect");
+
+const voiceSelect =
+    document.getElementById("voiceSelect");
+
+let availableVoices = [];
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const progressText =
+    document.getElementById("progressText");
+
+const autoNext =
+    document.getElementById("autoNext");
+
+const focusMode =
+    document.getElementById("focusMode");
+
+const rememberChapter =
+    document.getElementById("rememberChapter");
+
+const readingModeButton =
+    document.getElementById("readingModeButton");
+
+
+/* =========================================================
+   SELECT FOLDER
+   ========================================================= */
+
+selectFolderButton.addEventListener(
+    "click",
+    async () => {
+
+        if (!window.showDirectoryPicker) {
+
+            fileStatus.textContent =
+                "เบราว์เซอร์นี้ไม่รองรับการเลือกโฟลเดอร์โดยตรง กรุณาใช้ Google Chrome หรือ Microsoft Edge";
+
+            return;
+        }
+
+        try {
+
+            const folder =
+                await window.showDirectoryPicker();
+
+            chapterFolder = folder;
+
+            fileStatus.textContent =
+                "กำลังค้นหาไฟล์ Chapter...";
+
+            await scanChapterFolder();
+
+        } catch (error) {
+
+            console.log(error);
+
+            fileStatus.textContent =
+                "ยกเลิกการเลือกโฟลเดอร์";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SCAN CHAPTER FOLDER
+   ========================================================= */
+
+async function scanChapterFolder() {
+
+    chapters = [];
+
+    for await (
+        const [name, handle]
+        of chapterFolder.entries()
+    ) {
+
+        if (
+            handle.kind === "file" &&
+            /^chapter\d+\.txt$/i.test(name)
+        ) {
+
+            const match =
+                name.match(/chapter(\d+)\.txt/i);
+
+            const number =
+                parseInt(match[1], 10);
+
+            chapters.push({
+                number: number,
+                name: name,
+                handle: handle
+            });
+
+        }
+
+    }
+
+
+    chapters.sort(
+        (a, b) => a.number - b.number
+    );
+
+
+    chapterSelect.innerHTML = "";
+
+
+    if (chapters.length === 0) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = "";
+
+        option.textContent =
+            "ไม่พบไฟล์ Chapter";
+
+        chapterSelect.appendChild(option);
+
+        fileStatus.textContent =
+            "ไม่พบ chapter01.txt, chapter02.txt หรือไฟล์ Chapter ที่มีรูปแบบถูกต้อง";
+
+        return;
+    }
+
+
+    chapters.forEach(
+        (chapter, index) => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = index;
+
+            option.textContent =
+                `บทที่ ${chapter.number}`;
+
+            chapterSelect.appendChild(option);
+
+        }
+    );
+
+
+    fileStatus.textContent =
+        `พบทั้งหมด ${chapters.length} บท`;
+
+    
+    const savedChapter =
+        localStorage.getItem(
+            "yuzuru_last_chapter"
+        );
+
+
+    if (
+        rememberChapter.checked &&
+        savedChapter !== null
+    ) {
+
+        const savedIndex =
+            chapters.findIndex(
+                chapter =>
+                    chapter.number ===
+                    parseInt(savedChapter, 10)
+            );
+
+
+        if (savedIndex >= 0) {
+
+            chapterSelect.value =
+                savedIndex;
+
+            await loadChapter(savedIndex);
+
+            return;
+        }
+
+    }
+
+
+    chapterSelect.value = 0;
+
+    await loadChapter(0);
+
+}
+
+
+/* =========================================================
+   LOAD CHAPTER
+   ========================================================= */
+
+loadChapterButton.addEventListener(
+    "click",
+    async () => {
+
+        const index =
+            parseInt(
+                chapterSelect.value,
+                10
+            );
+
+        if (Number.isNaN(index)) {
+            return;
+        }
+
+        await loadChapter(index);
+
+    }
+);
+
+
+async function loadChapter(index) {
+
+    if (
+        !chapters[index] ||
+        !chapterFolder
+    ) {
+        return;
+    }
+
+
+    stopSpeech();
+
+
+    currentChapterIndex = index;
+
+
+    const chapter =
+        chapters[index];
+
+
+    try {
+
+        const file =
+            await chapter.handle.getFile();
+
+        currentText =
+            await file.text();
+
+
+        displayChapter(
+            chapter,
+            currentText
+        );
+
+
+        if (rememberChapter.checked) {
+
+            localStorage.setItem(
+                "yuzuru_last_chapter",
+                chapter.number
+            );
+
+        }
+
+
+        chapterSelect.value =
+            index;
+
+
+        updateNavigation();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        storyContent.textContent =
+            "ไม่สามารถอ่านไฟล์ Chapter ได้";
+
+    }
+
+}
+
+
+/* =========================================================
+   DISPLAY CHAPTER
+   ========================================================= */
+
+function displayChapter(
+    chapter,
+    text
+) {
+
+    storyChapter.textContent =
+        `บทที่ ${chapter.number}`;
+
+
+    let title =
+        extractTitle(text);
+
+
+    storyTitle.textContent =
+        title ||
+        `บทที่ ${chapter.number}`;
+
+
+    storyContent.classList.remove(
+        "empty"
+    );
+
+
+    storyContent.textContent =
+        cleanStoryText(text);
+
+
+    updateProgress(0);
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   EXTRACT TITLE
+   ========================================================= */
+
+function extractTitle(text) {
+
+    const lines =
+        text
+            .split(/\r?\n/)
+            .map(line => line.trim())
+            .filter(line => line.length > 0);
+
+
+    if (lines.length === 0) {
+        return "";
+    }
+
+
+    const firstLine =
+        lines[0];
+
+
+    if (
+        /^บทที่\s*\d+/i.test(firstLine)
+    ) {
+
+        if (lines.length > 1) {
+
+            return lines[1]
+                .replace(
+                    /^[-—:：]\s*/,
+                    ""
+                )
+                .trim();
+
+        }
+
+        return firstLine;
+    }
+
+
+    return firstLine;
+
+}
+
+
+/* =========================================================
+   CLEAN STORY TEXT
+   ========================================================= */
+
+function cleanStoryText(text) {
+
+    return text
+        .replace(
+            /^\uFEFF/,
+            ""
+        )
+        .trim();
+
+}
+
+
+/* =========================================================
+   CHAPTER NAVIGATION
+   ========================================================= */
+
+previousButton.addEventListener(
+    "click",
+    async () => {
+
+        if (
+            currentChapterIndex <= 0
+        ) {
+            return;
+        }
+
+        await loadChapter(
+            currentChapterIndex - 1
+        );
+
+    }
+);
+
+
+nextButton.addEventListener(
+    "click",
+    async () => {
+
+        if (
+            currentChapterIndex <
+            chapters.length - 1
+        ) {
+
+            await loadChapter(
+                currentChapterIndex + 1
+            );
+
+        }
+
+    }
+);
+
+
+function updateNavigation() {
+
+    previousButton.disabled =
+        currentChapterIndex <= 0;
+
+
+    nextButton.disabled =
+        currentChapterIndex >=
+        chapters.length - 1;
+
+}
+
+
+/* =========================================================
+   TEXT TO SPEECH
+   ========================================================= */
+
+playButton.addEventListener(
+    "click",
+    () => {
+
+        if (!currentText) {
+            return;
+        }
+
+        startSpeech();
+
+    }
+);
+
+
+pauseButton.addEventListener(
+    "click",
+    () => {
+
+        if (
+            speechSynthesis.speaking &&
+            !speechSynthesis.paused
+        ) {
+
+            speechSynthesis.pause();
+
+            isPaused = true;
+
+        }
+
+    }
+);
+
+
+resumeButton.addEventListener(
+    "click",
+    () => {
+
+        if (
+            speechSynthesis.paused
+        ) {
+
+            speechSynthesis.resume();
+
+            isPaused = false;
+
+        }
+
+    }
+);
+
+
+stopButton.addEventListener(
+    "click",
+    () => {
+
+        stopSpeech();
+
+    }
+);
+
+
+/* =========================================================
+   START SPEECH
+   ========================================================= */
+
+function startSpeech() {
+
+    stopSpeech();
+
+
+    const text =
+        cleanStoryText(
+            currentText
+        );
+
+
+    speechQueue =
+        splitTextForSpeech(text);
+
+
+    speechIndex = 0;
+
+    isSpeaking = true;
+
+    isPaused = false;
+
+    speakNextPart();
+
+}
+
+
+/* =========================================================
+   SPLIT TEXT
+   ========================================================= */
+
+function splitTextForSpeech(text) {
+
+    // เดิมโค้ดนี้รวมทั้งย่อหน้าให้ยาวถึง 700 ตัวอักษรต่อประโยคเสียง
+    // ซึ่งทำให้เอนจิน TTS ของเบราว์เซอร์ค้าง/หยุดกลางคันได้บ่อย
+    // จึงตัดเป็นท่อนสั้นลง โดยพยายามตัดตรงจุดหยุดตามธรรมชาติ
+    // (จุลภาค มหัพภาค ฯลฯ) เพื่อให้เสียงลื่นไหลและฟังเป็นธรรมชาติกว่าเดิม
+
+    const MAX_CHUNK_LENGTH = 220;
+    const MIN_CHUNK_LENGTH = 60;
+    const PAUSE_PUNCTUATION = /[,.!?…”"ๆฯ]$/;
+
+    const paragraphs =
+        text
+            .split(/\n+/)
+            .map(paragraph => paragraph.trim())
+            .filter(paragraph => paragraph.length > 0);
+
+    const result = [];
+
+    for (const paragraph of paragraphs) {
+
+        const words =
+            paragraph
+                .split(/\s+/)
+                .filter(Boolean);
+
+        let buffer = "";
+
+        for (const word of words) {
+
+            if (word.length > MAX_CHUNK_LENGTH) {
+
+                if (buffer) {
+                    result.push(buffer);
+                    buffer = "";
+                }
+
+                let remaining = word;
+
+                while (remaining.length > MAX_CHUNK_LENGTH) {
+                    result.push(remaining.slice(0, MAX_CHUNK_LENGTH));
+                    remaining = remaining.slice(MAX_CHUNK_LENGTH);
+                }
+
+                buffer = remaining;
+                continue;
+
+            }
+
+            const candidate =
+                buffer
+                    ? buffer + " " + word
+                    : word;
+
+            if (candidate.length > MAX_CHUNK_LENGTH && buffer) {
+                result.push(buffer);
+                buffer = word;
+            } else {
+                buffer = candidate;
+            }
+
+            if (
+                buffer.length >= MIN_CHUNK_LENGTH &&
+                PAUSE_PUNCTUATION.test(word)
+            ) {
+                result.push(buffer);
+                buffer = "";
+            }
+
+        }
+
+        if (buffer) {
+            result.push(buffer);
+        }
+
+    }
+
+    return result;
+
+}
+
+
+/* =========================================================
+   SPEAK NEXT PART
+   ========================================================= */
+
+function speakNextPart() {
+
+    if (!isSpeaking) {
+        return;
+    }
+
+
+    if (
+        speechIndex >=
+        speechQueue.length
+    ) {
+
+        finishSpeech();
+
+        return;
+
+    }
+
+
+    const text =
+        speechQueue[
+            speechIndex
+        ];
+
+
+    const utterance =
+        new SpeechSynthesisUtterance(
+            text
+        );
+
+
+    utterance.lang =
+        "th-TH";
+
+
+    utterance.rate =
+        parseFloat(
+            speedSelect.value
+        );
+
+
+    utterance.pitch =
+        0.95;
+
+
+    utterance.volume =
+        1;
+
+
+    const selectedVoice =
+        availableVoices.find(
+            voice =>
+                voice.voiceURI ===
+                voiceSelect.value
+        );
+
+    if (selectedVoice) {
+        utterance.voice =
+            selectedVoice;
+    }
+
+
+    utterance.onstart =
+        () => {
+
+            updateProgress(
+                speechIndex /
+                speechQueue.length
+                * 100
+            );
+
+        };
+
+
+    utterance.onend =
+        () => {
+
+            if (!isSpeaking) {
+                return;
+            }
+
+            speechIndex++;
+
+            updateProgress(
+                speechIndex /
+                speechQueue.length
+                * 100
+            );
+
+            setTimeout(
+                speakNextPart,
+                100
+            );
+
+        };
+
+
+    utterance.onerror =
+        error => {
+
+            console.error(
+                "Speech error:",
+                error
+            );
+
+            isSpeaking = false;
+
+        };
+
+
+    speechSynthesis.speak(
+        utterance
+    );
+
+}
+
+
+/* =========================================================
+   FINISH SPEECH
+   ========================================================= */
+
+function finishSpeech() {
+
+    isSpeaking = false;
+
+    isPaused = false;
+
+    updateProgress(100);
+
+
+    if (
+        autoNext.checked &&
+        currentChapterIndex <
+        chapters.length - 1
+    ) {
+
+        setTimeout(
+            async () => {
+
+                await loadChapter(
+                    currentChapterIndex + 1
+                );
+
+                setTimeout(
+                    startSpeech,
+                    500
+                );
+
+            },
+            800
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   STOP SPEECH
+   ========================================================= */
+
+function stopSpeech() {
+
+    speechSynthesis.cancel();
+
+    isSpeaking = false;
+
+    isPaused = false;
+
+    speechQueue = [];
+
+    speechIndex = 0;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+function updateProgress(percent) {
+
+    const safePercent =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                percent
+            )
+        );
+
+
+    progressFill.style.width =
+        `${safePercent}%`;
+
+
+    progressText.textContent =
+        `${Math.round(
+            safePercent
+        )}%`;
+
+}
+
+
+/* =========================================================
+   SPEED
+   ========================================================= */
+
+speedSelect.addEventListener(
+    "change",
+    () => {
+
+        if (
+            speechSynthesis.speaking
+        ) {
+
+            speechSynthesis.cancel();
+
+            isSpeaking = false;
+
+            setTimeout(
+                startSpeech,
+                100
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   READING MODE
+   ========================================================= */
+
+readingModeButton.addEventListener(
+    "click",
+    () => {
+
+        document.body.classList.toggle(
+            "reading-mode"
+        );
+
+
+        if (
+            document.body.classList.contains(
+                "reading-mode"
+            )
+        ) {
+
+            readingModeButton.textContent =
+                "ออกจากโหมดอ่าน";
+
+        } else {
+
+            readingModeButton.textContent =
+                "โหมดอ่าน";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FOCUS MODE
+   ========================================================= */
+
+focusMode.addEventListener(
+    "change",
+    () => {
+
+        document.body.classList.toggle(
+            "focus-mode",
+            focusMode.checked
+        );
+
+    }
+);
+
+
+/* =========================================================
+   RESET FOLDER
+   ========================================================= */
+
+resetFolderButton.addEventListener(
+    "click",
+    () => {
+
+        stopSpeech();
+
+        chapterFolder = null;
+
+        chapters = [];
+
+        currentChapterIndex = -1;
+
+        currentText = "";
+
+        chapterSelect.innerHTML =
+            `<option value="">
+                ยังไม่ได้โหลด Chapter
+             </option>`;
+
+
+        storyChapter.textContent =
+            "ยังไม่ได้เลือกบท";
+
+
+        storyTitle.textContent =
+            "อุจิฮะ ยูซึรุ";
+
+
+        storyContent.textContent =
+            "กรุณาเลือกโฟลเดอร์ Chapter แล้วเลือกบทที่ต้องการอ่าน";
+
+
+        storyContent.classList.add(
+            "empty"
+        );
+
+
+        fileStatus.textContent =
+            "กรุณาเลือกโฟลเดอร์ chapter เพื่อเริ่มต้น";
+
+
+        updateProgress(0);
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.target.tagName ===
+            "SELECT"
+        ) {
+            return;
+        }
+
+
+        if (
+            event.code ===
+            "Space"
+        ) {
+
+            event.preventDefault();
+
+
+            if (
+                speechSynthesis.speaking &&
+                !speechSynthesis.paused
+            ) {
+
+                speechSynthesis.pause();
+
+                isPaused = true;
+
+            } else if (
+                speechSynthesis.paused
+            ) {
+
+                speechSynthesis.resume();
+
+                isPaused = false;
+
+            } else {
+
+                startSpeech();
+
+            }
+
+        }
+
+
+        if (
+            event.code ===
+            "ArrowRight"
+        ) {
+
+            nextButton.click();
+
+        }
+
+
+        if (
+            event.code ===
+            "ArrowLeft"
+        ) {
+
+            previousButton.click();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LOAD VOICES
+   ========================================================= */
+
+function loadVoices() {
+
+    availableVoices =
+        speechSynthesis.getVoices();
+
+    if (availableVoices.length === 0) {
+        return;
+    }
+
+    const thaiVoices =
+        availableVoices.filter(
+            voice =>
+                voice.lang &&
+                voice.lang
+                    .toLowerCase()
+                    .startsWith("th")
+        );
+
+    // ถ้าพบเสียงภาษาไทย ให้แสดงเฉพาะเสียงเหล่านั้นก่อน
+    // (มักจะฟังเป็นธรรมชาติกว่าเสียงระบบทั่วไปที่ไม่รองรับภาษาไทยโดยตรง)
+    const listedVoices =
+        thaiVoices.length > 0
+            ? thaiVoices
+            : availableVoices;
+
+    const previouslySelected =
+        voiceSelect.value ||
+        localStorage.getItem(
+            "novelReaderVoiceURI"
+        );
+
+    voiceSelect.innerHTML = "";
+
+    listedVoices.forEach(voice => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = voice.voiceURI;
+
+        option.textContent =
+            voice.name +
+            (voice.lang ? ` (${voice.lang})` : "");
+
+        voiceSelect.appendChild(option);
+
+    });
+
+    // เลือก Google/เสียงคุณภาพสูงเป็นค่าเริ่มต้นถ้ามี เพราะมักฟังลื่นไหล
+    // เป็นธรรมชาติกว่าเสียงสังเคราะห์พื้นฐานของระบบปฏิบัติการ
+    const preferredVoice =
+        listedVoices.find(
+            voice =>
+                voice.voiceURI === previouslySelected
+        ) ||
+        listedVoices.find(
+            voice =>
+                /google/i.test(voice.name)
+        ) ||
+        listedVoices[0];
+
+    if (preferredVoice) {
+        voiceSelect.value =
+            preferredVoice.voiceURI;
+    }
+
+}
+
+speechSynthesis.onvoiceschanged = loadVoices;
+
+loadVoices();
+
+voiceSelect.addEventListener(
+    "change",
+    () => {
+
+        localStorage.setItem(
+            "novelReaderVoiceURI",
+            voiceSelect.value
+        );
+
+        if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+            isSpeaking = false;
+            setTimeout(startSpeech, 100);
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL STATE
+   ========================================================= */
+
+updateNavigation();
+
+updateProgress(0);
+
+
+/* =========================================================
+   CHECK SPEECH SUPPORT
+   ========================================================= */
+
+if (
+    !("speechSynthesis" in window)
+) {
+
+    fileStatus.textContent =
+        "เบราว์เซอร์นี้ไม่รองรับระบบอ่านออกเสียง";
+
+}
+
+
+/* =========================================================
+   END
+   ========================================================= */
+
+</script>
+
+</body>
+</html>
