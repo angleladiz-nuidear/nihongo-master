@@ -19617,5 +19617,304 @@ window.JP_SUPPORT_POLICY={
 
 </script>
 
+
+/* ============================================================
+   V5.2 — MOBILE VISUAL QA / FINAL CONTRAST & LAYOUT PASS
+   Based on mobile screenshot review.
+   Main goals:
+   1) Remove dark side gutters on mobile Home
+   2) Force readable text on light Morning Home cards
+   3) Prevent inherited legacy "night" colors from washing out text
+   4) Improve mobile card spacing / action-button placement
+   5) Keep the existing learning/game logic unchanged
+   ============================================================ */
+
+/* ---- Home: authoritative light-theme colors ---- */
+#kqHubScreen{
+  color:#3f3832 !important;
+  background:
+    radial-gradient(circle at 8% 8%,rgba(245,207,216,.28),transparent 24%),
+    radial-gradient(circle at 92% 10%,rgba(219,232,211,.36),transparent 27%),
+    linear-gradient(180deg,#fffdf8 0%,#f8f3e8 55%,#eef2e9 100%) !important;
+}
+
+#kqHubScreen #kqMapTitle{
+  color:#3f3832 !important;
+}
+#kqHubScreen #kqMapTitle h1{
+  color:#4a4038 !important;
+  text-shadow:none !important;
+}
+#kqHubScreen #kqMapTitle h1::after{
+  color:#74685d !important;
+}
+#kqHubScreen #kqMapTitle p{
+  color:#655b52 !important;
+  opacity:1 !important;
+}
+
+/* ---- Daily card: stronger readable hierarchy ---- */
+#kqDailyCard,
+#kqDailyCard *{
+  text-shadow:none !important;
+}
+#kqDailyCard{
+  color:#3f3832 !important;
+}
+#kqDailyCard .kq-daily-title{
+  color:#40372f !important;
+  font-weight:800 !important;
+}
+#kqDailyCard .kq-daily-sub,
+#kqDailyCard .kq-daily-status{
+  color:#62584f !important;
+  opacity:1 !important;
+}
+#kqDailyCard .kq-stamp{
+  color:#766b60 !important;
+}
+#kqDailyCard .kq-stamp.done{
+  color:#52664a !important;
+}
+#kqDailyCard .kq-daily-actions button{
+  color:#4b4138 !important;
+  background:#fffdf8 !important;
+}
+#kqDailyCard .kq-daily-actions .primary{
+  color:#fffdf8 !important;
+  background:#657d5b !important;
+  border-color:#657d5b !important;
+}
+
+/* ---- Summary cards above the worlds ---- */
+#kqHubScreen .kq-home-stat{
+  color:#40372f !important;
+  background:rgba(255,253,248,.94) !important;
+  border:1px solid #ddd3c6 !important;
+}
+#kqHubScreen .kq-home-stat b{
+  color:#40372f !important;
+  opacity:1 !important;
+}
+#kqHubScreen .kq-home-stat span{
+  color:#665c53 !important;
+  opacity:1 !important;
+}
+
+/* ---- "Today's learning" heading ---- */
+#kqZonesContainer::before{
+  color:#4f463e !important;
+  opacity:1 !important;
+}
+
+/* ============================================================
+   Zone cards — override ALL legacy night-theme text colors
+   These selectors are intentionally at the END of the file so
+   they win the older V4.x rules in the cascade.
+   ============================================================ */
+#kqZonesContainer .kq-zone-card,
+#kqZonesContainer .kq-zone{
+  color:#3f3832 !important;
+  opacity:1 !important;
+  background:#fffdf8 !important;
+  border-color:#ddd3c6 !important;
+}
+
+#kqZonesContainer .kq-zone-card .kq-zone-body,
+#kqZonesContainer .kq-zone .kq-zone-body{
+  color:#3f3832 !important;
+  opacity:1 !important;
+}
+
+#kqZonesContainer .kq-zone-card .kq-zone-body h3,
+#kqZonesContainer .kq-zone .kq-zone-body h3{
+  color:#3f3832 !important;
+  opacity:1 !important;
+  font-weight:800 !important;
+  text-shadow:none !important;
+}
+
+#kqZonesContainer .kq-zone-card .kq-zone-sub,
+#kqZonesContainer .kq-zone .kq-zone-sub{
+  color:#9a6b16 !important;
+  opacity:1 !important;
+  font-weight:700 !important;
+  text-shadow:none !important;
+}
+
+#kqZonesContainer .kq-zone-card .kq-zone-desc,
+#kqZonesContainer .kq-zone .kq-zone-desc{
+  color:#62584f !important;
+  opacity:1 !important;
+  font-weight:400 !important;
+  line-height:1.55 !important;
+  text-shadow:none !important;
+}
+
+#kqZonesContainer .kq-zone-card .kq-zone-progress,
+#kqZonesContainer .kq-zone .kq-zone-progress{
+  background:#e9e1d6 !important;
+}
+#kqZonesContainer .kq-zone-card .kq-zone-progress-fill,
+#kqZonesContainer .kq-zone .kq-zone-progress-fill{
+  background:#7d9a70 !important;
+}
+
+#kqZonesContainer .kq-zone-icon{
+  border-color:#d9cbbb !important;
+  box-shadow:none !important;
+}
+#kqZonesContainer .kq-zone-card:nth-child(1) .kq-zone-icon{
+  background:#f3d9dc !important;
+}
+#kqZonesContainer .kq-zone-card:nth-child(2) .kq-zone-icon{
+  background:#dfead9 !important;
+}
+#kqZonesContainer .kq-zone-card:nth-child(3) .kq-zone-icon{
+  background:#e8e1d3 !important;
+}
+#kqZonesContainer .kq-zone-card:nth-child(4) .kq-zone-icon{
+  background:#e5ddea !important;
+}
+
+#kqZonesContainer .kq-zone-go{
+  color:#fffdf8 !important;
+  background:#657d5b !important;
+  border:0 !important;
+  box-shadow:0 3px 8px rgba(72,58,43,.14) !important;
+  text-shadow:none !important;
+}
+#kqZonesContainer .kq-zone-go::after{
+  color:#fffdf8 !important;
+}
+
+/* Footnote */
+#kqHubScreen .kq-footnote{
+  color:#665c53 !important;
+  opacity:1 !important;
+}
+
+/* ---- Mobile Home: use the full viewport visually ---- */
+@media(max-width:600px){
+  #kanaQuestScreen{
+    background:#f4f0e7 !important;
+  }
+
+  #kqApp{
+    width:100% !important;
+    max-width:none !important;
+    padding:10px 0 30px !important;
+  }
+
+  #kqHud{
+    margin-left:10px !important;
+    margin-right:10px !important;
+  }
+
+  #kqHubScreen{
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding:0 10px 26px !important;
+    border-radius:0 !important;
+  }
+
+  #kqHubScreen #kqMapTitle{
+    padding:18px 14px 14px !important;
+    border-radius:18px !important;
+  }
+
+  #kqDailyCard{
+    margin:12px 0 12px !important;
+    padding:15px !important;
+    border-radius:18px !important;
+  }
+
+  #kqZonesContainer{
+    width:100% !important;
+    padding:0 0 12px !important;
+    gap:11px !important;
+  }
+
+  #kqZonesContainer .kq-zone-card,
+  #kqZonesContainer .kq-zone{
+    width:100% !important;
+    max-width:100% !important;
+    padding:14px !important;
+    gap:11px !important;
+    border-radius:18px !important;
+  }
+
+  #kqZonesContainer .kq-zone-icon{
+    width:52px !important;
+    height:52px !important;
+    min-width:52px !important;
+    border-radius:13px !important;
+    font-size:25px !important;
+  }
+
+  #kqZonesContainer .kq-zone-body h3{
+    font-size:15px !important;
+    line-height:1.35 !important;
+  }
+
+  #kqZonesContainer .kq-zone-sub{
+    font-size:12px !important;
+    line-height:1.4 !important;
+  }
+
+  #kqZonesContainer .kq-zone-desc{
+    font-size:12px !important;
+    line-height:1.55 !important;
+  }
+
+  #kqZonesContainer .kq-zone-go-row{
+    margin-top:9px !important;
+  }
+
+  #kqZonesContainer .kq-zone-go{
+    min-height:40px !important;
+    padding:8px 13px !important;
+    font-size:12px !important;
+  }
+}
+
+/* ---- Very small phones ---- */
+@media(max-width:360px){
+  #kqHubScreen{
+    padding-left:8px !important;
+    padding-right:8px !important;
+  }
+
+  #kqDailyCard{
+    padding:13px !important;
+  }
+
+  #kqHubScreen .kq-home-summary{
+    gap:7px !important;
+  }
+
+  #kqHubScreen .kq-home-stat{
+    padding:10px !important;
+  }
+
+  #kqZonesContainer .kq-zone-card,
+  #kqZonesContainer .kq-zone{
+    padding:12px !important;
+    gap:9px !important;
+  }
+
+  #kqZonesContainer .kq-zone-icon{
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    font-size:23px !important;
+  }
+}
+
+/* ============================================================
+   V5.2 — End
+   ============================================================ */
+
 </body>
 </html>
