@@ -11,159 +11,6 @@
 
 
 
-
-/* V5.1 Mobile UX / Contrast Fix
-   Goal: no clipped text, no horizontal overflow, readable contrast on small screens. */
-html,body{max-width:100%;overflow-x:hidden}
-#kqHubScreen,#kqGameScreen,#kqVocabGameScreen,#kqKanjiGameScreen,#kqParticleGameScreen{
-  width:100%;max-width:100%;box-sizing:border-box;overflow-x:hidden;
-}
-#kqHubScreen *,#kqGameScreen *,#kqVocabGameScreen *,#kqKanjiGameScreen *,#kqParticleGameScreen *,
-#kqDailyMissionOverlay *{box-sizing:border-box;min-width:0}
-#kqHubScreen button,#kqGameScreen button,#kqVocabGameScreen button,#kqKanjiGameScreen button,#kqParticleGameScreen button{
-  white-space:normal;overflow-wrap:anywhere;word-break:normal;
-}
-#kqHubScreen h1,#kqHubScreen h2,#kqHubScreen h3,#kqHubScreen p,
-#kqGameScreen h1,#kqGameScreen h2,#kqGameScreen h3,#kqGameScreen p,
-#kqVocabGameScreen h1,#kqVocabGameScreen h2,#kqVocabGameScreen h3,#kqVocabGameScreen p,
-#kqKanjiGameScreen h1,#kqKanjiGameScreen h2,#kqKanjiGameScreen h3,#kqKanjiGameScreen p,
-#kqParticleGameScreen h1,#kqParticleGameScreen h2,#kqParticleGameScreen h3,#kqParticleGameScreen p{
-  overflow-wrap:anywhere;
-  word-break:normal;
-}
-#kqHubScreen .kq-zone-card,#kqHubScreen .kq-zone{
-  min-width:0;width:100%;max-width:100%;overflow:hidden;
-}
-#kqHubScreen .kq-zone-card *,
-#kqHubScreen .kq-zone *{max-width:100%}
-#kqDailyMissionOverlay{
-  padding:10px !important;
-  align-items:flex-start !important;
-}
-#kqDailyMission{
-  width:min(720px,100%) !important;
-  max-width:100% !important;
-  max-height:calc(100vh - 20px);
-  overflow:auto;
-}
-#kqDailyMission .kq-dm-top,
-#kqDailyMission .kq-dm-body{min-width:0}
-#kqDailyMission .kq-dm-question{
-  max-width:100%;overflow-wrap:anywhere;word-break:normal;
-}
-#kqDailyMission .kq-dm-option{
-  width:100%;min-width:0;
-}
-#kqDailyMission .kq-dm-type input{
-  min-width:0;width:100%;
-}
-#kqDailyMission .kq-dm-type{
-  width:100%;max-width:100%;
-}
-#kqDailyMission .kq-dm-message,
-#kqDailyMission .kq-dm-submessage,
-#kqDailyMission .kq-dm-result-label,
-#kqDailyMission .kq-dm-review-item,
-#kqDailyMission .kq-dm-review-note{
-  overflow-wrap:anywhere;
-}
-@media(max-width:600px){
-  #kqHubScreen #kqMapTitle h1{
-    font-size:clamp(1.4rem,7vw,1.8rem);
-    line-height:1.25;
-  }
-  #kqHubScreen #kqMapTitle h1::after{
-    font-size:.5em;
-    margin-left:3px;
-  }
-  #kqHubScreen #kqMapTitle p{
-    font-size:.9rem;line-height:1.65;
-  }
-  #kqZonesContainer{
-    grid-template-columns:1fr !important;
-    display:grid !important;
-    width:100%;
-  }
-  #kqZonesContainer .kq-zone-card,
-  #kqZonesContainer .kq-zone{
-    width:100% !important;
-    margin:0 !important;
-  }
-  #kqDailyCard{
-    width:100%;max-width:100%;
-    overflow:hidden;
-  }
-  .kq-daily-head{
-    align-items:flex-start !important;
-  }
-  .kq-daily-title{
-    font-size:.98rem !important;
-  }
-  .kq-daily-sub{
-    font-size:.8rem !important;
-  }
-  .kq-home-summary{
-    grid-template-columns:1fr 1fr !important;
-  }
-  .kq-home-stat:last-child{grid-column:1/-1}
-  #kqDailyMission{
-    border-radius:18px !important;
-  }
-  .kq-dm-top{padding:15px 14px 12px !important}
-  .kq-dm-body{padding:16px 14px 20px !important}
-  .kq-dm-title{font-size:1.12rem !important;line-height:1.35}
-  .kq-dm-meta{font-size:.78rem !important}
-  .kq-dm-question{
-    font-size:1.25rem !important;
-    line-height:1.5 !important;
-    min-height:60px !important;
-  }
-  .kq-dm-options{grid-template-columns:1fr !important;gap:9px !important}
-  .kq-dm-option{
-    min-height:52px !important;
-    padding:11px 12px !important;
-    font-size:.96rem !important;
-    line-height:1.35 !important;
-  }
-  .kq-dm-feedback{font-size:.84rem !important}
-  .kq-dm-next{min-height:46px !important}
-  .kq-dm-score{font-size:2.55rem !important}
-  .kq-dm-message{font-size:1.22rem !important;line-height:1.4}
-  .kq-dm-submessage{font-size:.88rem;line-height:1.6}
-  .kq-dm-stamp{width:72px;height:72px;font-size:1.9rem}
-  .kq-dm-summary-actions{flex-direction:column}
-  .kq-dm-summary-actions button{width:100%}
-}
-@media(max-width:360px){
-  #kqHubScreen #kqMapTitle{padding:17px 13px 13px !important}
-  #kqDailyCard{padding:14px !important}
-  .kq-home-summary{grid-template-columns:1fr !important}
-  .kq-home-stat:last-child{grid-column:auto}
-  #kqDailyMissionOverlay{padding:6px !important}
-  #kqDailyMission{max-height:calc(100vh - 12px) !important}
-  .kq-dm-kicker{font-size:.68rem !important}
-  .kq-dm-question{font-size:1.1rem !important}
-}
-
-
-/* V5.1 Contrast tokens — dark text on light surfaces */
-#kqHubScreen,#kqGameScreen,#kqVocabGameScreen,#kqKanjiGameScreen,#kqParticleGameScreen{
-  --kq-text:#3f3832;
-  --kq-muted:#655b52;
-  --kq-border:#d9cfc2;
-}
-#kqHubScreen .kq-zone-card p,#kqHubScreen .kq-zone p,
-#kqHubScreen .kq-zone-card small,#kqHubScreen .kq-zone small{
-  color:#5f554c !important;
-}
-#kqHubScreen .kq-zone-card h1,#kqHubScreen .kq-zone-card h2,#kqHubScreen .kq-zone-card h3,
-#kqHubScreen .kq-zone h1,#kqHubScreen .kq-zone h2,#kqHubScreen .kq-zone h3{
-  color:#40372f !important;
-}
-#kqHubScreen .kq-footnote{color:#665c53 !important}
-#kqDailyCard .kq-daily-title{color:#40372f !important}
-#kqDailyCard .kq-daily-sub,#kqDailyCard .kq-daily-status{color:#62584f !important}
-
 /* V5.0 Daily Mission — Mixed 15: Remember → Read → Choose → Type → Listen → Review */
 .kq-dm-type{
   display:flex;gap:9px;max-width:560px;margin:0 auto;flex-wrap:wrap
@@ -502,37 +349,9 @@ html,body{max-width:100%;overflow-x:hidden}
   background:rgba(70,61,52,.28) !important;
   backdrop-filter:blur(5px);
 }
-#kqRemixOverlay .kq-remix-modal{
-  background:#fffdf8 !important;
-  color:#3e352d !important;
-  border:1px solid #e7dfd4 !important;
-  border-radius:24px !important;
-  box-shadow:0 18px 50px rgba(62,53,45,.18) !important;
-}
-#kqRemixOverlay .kq-remix-mode{
-  background:#f7f3e8 !important;
-  border:1px solid #e4dbcf !important;
-  color:#4d433a !important;
-  border-radius:16px !important;
-}
-#kqRemixOverlay .kq-remix-mode:hover{
-  background:#f1eadc !important;
-  border-color:#d4c5b4 !important;
-}
-#kqRemixOverlay .kq-remix-mode.active{
-  background:#edf2e7 !important;
-  border-color:#a9bea0 !important;
-}
-#kqRemixOverlay .kq-remix-play{
-  background:#6f8664 !important;
-  color:#fffdf8 !important;
-  border:0 !important;
-}
-#kqRemixOverlay .kq-remix-close{
-  color:#756a60 !important;
-}
 @media (max-width:640px){
   #kqHubScreen #kqMapTitle{padding:20px 15px 14px;border-radius:19px}
+
   #kqZonesContainer{gap:12px !important}
 }
 @media (prefers-reduced-motion:reduce){
@@ -2507,7 +2326,7 @@ html,body{max-width:100%;overflow-x:hidden}
   .kq-radical-bubble{
     position:absolute; left:50%; top:-70px; transform:translateX(-50%);
     width:70px; height:70px; border-radius:16px;
-    background:radial-gradient(circle at 35% 30%, #ffe9c9, var(--kq-stone));
+    background:radial-gradient(circle at 35% 30%, #ffe9c9, #d8cfbe);
     display:flex; align-items:center; justify-content:center;
     font-family:'Zen Maru Gothic', sans-serif; font-size:32px; font-weight:700; color:var(--kq-ink);
     box-shadow:0 4px 14px rgba(0,0,0,0.35);
@@ -2531,11 +2350,6 @@ html,body{max-width:100%;overflow-x:hidden}
   #kqKanjiResult{ text-align:center; min-height:56px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
   #kqKanjiResult .rk{ font-family:'Zen Maru Gothic'; font-size:36px; color:var(--kq-gold); font-weight:900; }
   #kqKanjiResult .rd{ font-size:12px; color:var(--kq-parchment-2); margin-top:4px; }
-  .kq-dev-preview-btn{
-    display:inline-block; margin-top:8px; font-size:11px; color:var(--kq-jade);
-    background:rgba(63,145,121,0.15); border:1px solid var(--kq-jade);
-    padding:3px 10px; border-radius:12px; cursor:pointer;
-  }
 
   #kqParticleArena, .kq-bridge-wrap{ position:relative; }
   #kqBridgeTrack{
@@ -2654,6 +2468,86 @@ html,body{max-width:100%;overflow-x:hidden}
   .kq-primary-btn:hover{ background:var(--kq-torii-dark); }
 
   .kq-footnote{ text-align:center; font-size:11px; color:rgba(247,244,238,0.4); margin-top:26px; }
+
+  /* ===== V5.1 Light-theme completion patch for Kana Quest =====
+     The Morning/Daily-loop redesign (V4.5–V5.0) switched the Hub's zone cards and all four
+     gameplay screens (Kana Shrine / Word Garden / Kanji Mountain / Grammar Dojo) to a light
+     washi background, but several inner text/border colors were left over from the earlier
+     dark night theme (built for a navy background). On the new light background those same
+     colors read as near-white-on-white or near-invisible borders — this is why text looked
+     "blended into the background" and screens looked unfinished. This block finishes that
+     migration so every element on these light screens has proper contrast, and gives the
+     three back buttons (Word Garden / Kanji Mountain / Grammar Dojo) styling they were
+     missing entirely — they were rendering as unstyled default browser buttons. Placed last
+     so it wins the cascade cleanly without needing !important almost anywhere. */
+
+  /* -- Zone cards on the Hub map -- */
+  .kq-zone-body h3{ color:#3e352d; }
+  .kq-zone-body .kq-zone-sub{ color:#96721c; }
+  .kq-zone-body .kq-zone-desc{ color:#6b6055; opacity:1; }
+  .kq-zone-progress{ background:#ece4d8; }
+
+  /* -- Shared header row (back button + question counter) on every gameplay screen -- */
+  .kq-game-hud{ color:#8a7f73; }
+  #kqBackBtn, #kqVocabBackBtn, #kqKanjiBackBtn, #kqParticleBackBtn{
+    background:#fffdf8; border:1px solid #ded5c8; color:#55483d;
+    border-radius:20px; padding:6px 14px; font-size:12px; cursor:pointer; font-family:inherit;
+  }
+  #kqBackBtn:hover, #kqVocabBackBtn:hover, #kqKanjiBackBtn:hover, #kqParticleBackBtn:hover{
+    border-color:#96721c; color:#96721c;
+  }
+
+  /* -- Progress bar track (Kana Shrine / Word Garden / Kanji Mountain) -- */
+  .kq-progress-track{ background:#ece4d8; }
+
+  /* -- Arena boxes (falling-bubble zones) -- */
+  #kqArena, #kqKanjiArena, #kqVocabArena{
+    background:linear-gradient(180deg, rgba(111,134,100,0.07), rgba(233,184,195,0.09));
+    border:1px solid #e7dfd4;
+  }
+  .kq-prompt-label{ color:#8a7f73; opacity:1; }
+
+  /* -- Answer bubbles: default/unanswered state (scoped under their container so
+        .correct / .wrong keep priority over this default styling) -- */
+  #kqOptions .kq-option-bubble,
+  #kqVocabOptions .kq-vocab-option,
+  #kqParticleOptions .kq-particle-option{
+    border:2px solid #e2d8c8; background:#fffdf8; color:#40372f;
+    box-shadow:0 2px 8px rgba(72,58,43,0.06);
+  }
+  #kqOptions .kq-option-bubble:hover,
+  #kqVocabOptions .kq-vocab-option:hover,
+  #kqParticleOptions .kq-particle-option:hover{ border-color:#96721c; }
+  #kqOptions .kq-option-bubble.correct,
+  #kqVocabOptions .kq-vocab-option.correct,
+  #kqParticleOptions .kq-particle-option.correct{ background:#4a6b5d; border-color:#4a6b5d; color:#fff; }
+  #kqOptions .kq-option-bubble.wrong,
+  #kqVocabOptions .kq-vocab-option.wrong,
+  #kqParticleOptions .kq-particle-option.wrong{ background:#c9636c; border-color:#c9636c; color:#fff; }
+
+  /* -- Feedback text -- */
+  #kqFeedback, #kqVocabFeedback, #kqParticleExplain{ color:#6b6055; }
+  #kqFeedback.good, #kqVocabFeedback.good{ color:#5c7853; }
+  #kqFeedback.bad, #kqVocabFeedback.bad{ color:#b25c5c; }
+
+  /* -- Particle Bridge (Grammar Dojo) -- */
+  #kqBridgeTrack{ background:#ece4d8; border:1px solid #e7dfd4; }
+  #kqSentenceCard{ background:#fffdf8; border:1px solid #e7dfd4; box-shadow:0 4px 14px rgba(72,58,43,0.06); }
+  .kq-blank-slot{ border-color:#96721c; color:#96721c; }
+
+  /* -- Kanji Mountain slots: default state (scoped so .filled/.success/.fail keep priority) -- */
+  #kqKanjiSlots .kq-kanji-slot{ border-color:#ded0ba; color:#40372f; background:#fffdf8; }
+  #kqKanjiSlots .kq-kanji-slot.filled{ border-color:var(--kq-gold); background:rgba(227,163,59,0.12); }
+  #kqKanjiSlots .kq-kanji-slot.success{ border-color:var(--kq-jade); background:rgba(63,145,121,0.25); }
+  #kqKanjiSlots .kq-kanji-slot.fail{ border-color:var(--kq-torii); background:rgba(178,58,46,0.2); }
+  #kqKanjiPlus{ color:#8a7f73; }
+  #kqKanjiHint{ color:#8a7f73; }
+  #kqKanjiResult .rk{ color:#96721c; }
+  #kqKanjiResult .rd{ color:#6b6055; }
+
+  @media (prefers-reduced-motion:reduce){
+    #kqOptions .kq-option-bubble, #kqVocabOptions .kq-vocab-option, #kqParticleOptions .kq-particle-option{ transition:none; }
+  }
 
     </style>
 </head>
@@ -5704,7 +5598,85 @@ html,body{max-width:100%;overflow-x:hidden}
         { jp: "把握", extra: "はあく (Haaku)", th: "การทำความเข้าใจ / จับประเด็น", level: "N3", example: { jp: "状況を把握しています。", th: "เข้าใจสถานการณ์อยู่" } },
         { jp: "区別", extra: "くべつ (Kubetsu)", th: "การแยกแยะ", level: "N3", example: { jp: "二つの意味を区別します。", th: "แยกแยะความหมายสองอย่าง" } },
         { jp: "共同", extra: "きょうどう (Kyoudou)", th: "การร่วมกันทำ", level: "N3", example: { jp: "共同で研究しています。", th: "ทำวิจัยร่วมกัน" } },
-        { jp: "個別", extra: "こべつ (Kobetsu)", th: "แยกเป็นรายบุคคล", level: "N3", example: { jp: "個別に説明します。", th: "จะอธิบายเป็นรายบุคคล" } }
+        { jp: "個別", extra: "こべつ (Kobetsu)", th: "แยกเป็นรายบุคคล", level: "N3", example: { jp: "個別に説明します。", th: "จะอธิบายเป็นรายบุคคล" } },
+        // --- เพิ่มเติม N5: คำที่ยังขาด (คำพื้นฐานที่ตกหล่น / ลักษณนาม / คำสุภาพ) ---
+        { jp: "自分", extra: "じぶん (Jibun)", th: "ตัวเอง", level: "N5", example: { jp: "自分で決めます。", th: "ตัดสินใจด้วยตัวเอง" } },
+        { jp: "個", extra: "こ (Ko)", th: "ชิ้น (ลักษณนามสิ่งของทั่วไป)", level: "N5", example: { jp: "りんごを二個買いました。", th: "ซื้อแอปเปิ้ลสองลูก" } },
+        { jp: "枚", extra: "まい (Mai)", th: "แผ่น (ลักษณนามของแบน)", level: "N5", example: { jp: "切符を一枚ください。", th: "ขอตั๋วหนึ่งใบ" } },
+        { jp: "冊", extra: "さつ (Satsu)", th: "เล่ม (ลักษณนามหนังสือ)", level: "N5", example: { jp: "本を三冊借りました。", th: "ยืมหนังสือมาสามเล่ม" } },
+        { jp: "匹", extra: "ひき (Hiki)", th: "ตัว (ลักษณนามสัตว์เล็ก)", level: "N5", example: { jp: "猫が二匹います。", th: "มีแมวสองตัว" } },
+        { jp: "台", extra: "だい (Dai)", th: "เครื่อง (ลักษณนามเครื่องจักร)", level: "N5", example: { jp: "車が三台あります。", th: "มีรถสามคัน" } },
+        { jp: "杯", extra: "はい (Hai)", th: "แก้ว/ถ้วย", level: "N5", example: { jp: "水を一杯ください。", th: "ขอน้ำหนึ่งแก้ว" } },
+        { jp: "回", extra: "かい (Kai)", th: "ครั้ง", level: "N5", example: { jp: "一日に三回薬を飲みます。", th: "กินยาวันละสามครั้ง" } },
+        { jp: "歳", extra: "さい (Sai)", th: "ปี (อายุ)", level: "N5", example: { jp: "今年二十歳になりました。", th: "ปีนี้อายุครบยี่สิบปี" } },
+        { jp: "週間", extra: "しゅうかん (Shuukan)", th: "สัปดาห์ (จำนวน)", level: "N5", example: { jp: "一週間旅行します。", th: "จะไปเที่ยวหนึ่งสัปดาห์" } },
+        { jp: "ヶ月", extra: "かげつ (Kagetsu)", th: "เดือน (จำนวน)", level: "N5", example: { jp: "三ヶ月勉強しました。", th: "เรียนมาสามเดือนแล้ว" } },
+        // --- เพิ่มเติม N4: คำที่ยังขาด (คำพื้นฐานที่ตกหล่น / ลักษณนาม / คำสุภาพ) ---
+        { jp: "欠点", extra: "けってん (Ketten)", th: "ข้อเสีย", level: "N4", example: { jp: "誰にでも欠点があります。", th: "ทุกคนมีข้อเสีย" } },
+        { jp: "互い", extra: "たがい (Tagai)", th: "ซึ่งกันและกัน", level: "N4", example: { jp: "お互いに助け合います。", th: "ช่วยเหลือกันและกัน" } },
+        { jp: "最高", extra: "さいこう (Saikou)", th: "ดีที่สุด", level: "N4", example: { jp: "今日は最高の天気です。", th: "วันนี้อากาศดีที่สุด" } },
+        { jp: "最低", extra: "さいてい (Saitei)", th: "แย่ที่สุด/ต่ำสุด", level: "N4", example: { jp: "最低気温は五度です。", th: "อุณหภูมิต่ำสุดคือห้าองศา" } },
+        { jp: "専門", extra: "せんもん (Senmon)", th: "สาขาเฉพาะทาง", level: "N4", example: { jp: "専門は経済学です。", th: "สาขาเฉพาะทางคือเศรษฐศาสตร์" } },
+        { jp: "渡す", extra: "わたす (Watasu)", th: "ส่งมอบ", level: "N4", example: { jp: "鍵を渡します。", th: "จะส่งมอบกุญแจ" } },
+        { jp: "配る", extra: "くばる (Kubaru)", th: "แจกจ่าย", level: "N4", example: { jp: "チラシを配ります。", th: "จะแจกใบปลิว" } },
+        { jp: "両替", extra: "りょうがえ (Ryougae)", th: "การแลกเงิน", level: "N4", example: { jp: "円に両替します。", th: "จะแลกเป็นเงินเยน" } },
+        { jp: "人気", extra: "にんき (Ninki)", th: "ความนิยม", level: "N4", example: { jp: "この歌手は人気があります。", th: "นักร้องคนนี้เป็นที่นิยม" } },
+        { jp: "命", extra: "いのち (Inochi)", th: "ชีวิต", level: "N4", example: { jp: "命を大切にします。", th: "จะทะนุถนอมชีวิต" } },
+        { jp: "キロ", extra: "きろ (Kiro)", th: "กิโล(กรัม/เมตร)", level: "N4", example: { jp: "二キロ痩せました。", th: "ผอมลงสองกิโล" } },
+        { jp: "メートル", extra: "めーとる (Meetoru)", th: "เมตร", level: "N4", example: { jp: "五メートル泳ぎました。", th: "ว่ายน้ำไปห้าเมตร" } },
+        { jp: "グラム", extra: "ぐらむ (Guramu)", th: "กรัม", level: "N4", example: { jp: "肉を三百グラム買いました。", th: "ซื้อเนื้อสามร้อยกรัม" } },
+        { jp: "パーセント", extra: "ぱーせんと (Paasento)", th: "เปอร์เซ็นต์", level: "N4", example: { jp: "割引は二十パーセントです。", th: "ส่วนลดยี่สิบเปอร์เซ็นต์" } },
+        { jp: "度", extra: "ど (Do)", th: "องศา/ครั้ง", level: "N4", example: { jp: "気温は三十度です。", th: "อุณหภูมิสามสิบองศา" } },
+        // --- เพิ่มเติม N3: คำที่ยังขาด (คำพื้นฐานที่ตกหล่น / ลักษณนาม / คำสุภาพ) ---
+        { jp: "我々", extra: "われわれ (Wareware)", th: "พวกเรา (ทางการ)", level: "N3", example: { jp: "我々は協力します。", th: "พวกเราจะร่วมมือกัน" } },
+        { jp: "徐々に", extra: "じょじょに (Jojoni)", th: "ค่อยเป็นค่อยไป", level: "N3", example: { jp: "徐々に良くなります。", th: "จะดีขึ้นทีละน้อย" } },
+        { jp: "関する", extra: "かんする (Kansuru)", th: "เกี่ยวกับ", level: "N3", example: { jp: "日本に関する本です。", th: "หนังสือเกี่ยวกับญี่ปุ่น" } },
+        { jp: "向上", extra: "こうじょう (Koujou)", th: "การพัฒนาให้ดีขึ้น", level: "N3", example: { jp: "技術が向上しました。", th: "เทคโนโลยีพัฒนาขึ้น" } },
+        { jp: "発達", extra: "はったつ (Hattatsu)", th: "การเจริญเติบโต", level: "N3", example: { jp: "子供の発達は早いです。", th: "พัฒนาการของเด็กเร็ว" } },
+        { jp: "解説", extra: "かいせつ (Kaisetsu)", th: "การอธิบาย", level: "N3", example: { jp: "ニュースを解説します。", th: "จะอธิบายข่าว" } },
+        { jp: "態勢", extra: "たいせい (Taisei)", th: "ท่าที/สถานการณ์", level: "N3", example: { jp: "受け入れ態勢を整えます。", th: "จะจัดเตรียมความพร้อมรับมือ" } },
+        { jp: "身分", extra: "みぶん (Mibun)", th: "สถานะ/ฐานะ", level: "N3", example: { jp: "身分証明書が必要です。", th: "ต้องใช้บัตรประจำตัว" } },
+        { jp: "試み", extra: "こころみ (Kokoromi)", th: "ความพยายาม/การทดลอง", level: "N3", example: { jp: "新しい試みをします。", th: "จะลองทำสิ่งใหม่" } },
+        { jp: "敗北", extra: "はいぼく (Haiboku)", th: "ความพ่ายแพ้", level: "N3", example: { jp: "敗北を認めます。", th: "ยอมรับความพ่ายแพ้" } },
+        { jp: "損", extra: "そん (Son)", th: "ขาดทุน/เสียประโยชน์", level: "N3", example: { jp: "損をしました。", th: "ขาดทุน" } },
+        { jp: "得", extra: "とく (Toku)", th: "ได้กำไร/คุ้ม", level: "N3", example: { jp: "得をしました。", th: "ได้กำไร" } },
+        { jp: "契約", extra: "けいやく (Keiyaku)", th: "สัญญา", level: "N3", example: { jp: "契約を結びます。", th: "จะทำสัญญา" } },
+        { jp: "借金", extra: "しゃっきん (Shakkin)", th: "หนี้สิน", level: "N3", example: { jp: "借金を返します。", th: "จะใช้หนี้" } },
+        { jp: "経費", extra: "けいひ (Keihi)", th: "ค่าใช้จ่าย(ธุรกิจ)", level: "N3", example: { jp: "経費を計算します。", th: "จะคำนวณค่าใช้จ่าย" } },
+        { jp: "投資", extra: "とうし (Toushi)", th: "การลงทุน", level: "N3", example: { jp: "株に投資します。", th: "จะลงทุนในหุ้น" } },
+        { jp: "設置", extra: "せっち (Secchi)", th: "การติดตั้ง", level: "N3", example: { jp: "エアコンを設置します。", th: "จะติดตั้งแอร์" } },
+        { jp: "装置", extra: "そうち (Souchi)", th: "อุปกรณ์", level: "N3", example: { jp: "新しい装置を導入します。", th: "จะนำอุปกรณ์ใหม่มาใช้" } },
+        { jp: "機能", extra: "きのう (Kinou)", th: "ฟังก์ชัน", level: "N3", example: { jp: "便利な機能があります。", th: "มีฟังก์ชันที่สะดวก" } },
+        { jp: "操作", extra: "そうさ (Sousa)", th: "การใช้งาน/ควบคุม", level: "N3", example: { jp: "機械を操作します。", th: "จะควบคุมเครื่องจักร" } },
+        { jp: "普及", extra: "ふきゅう (Fukyuu)", th: "การแพร่หลาย", level: "N3", example: { jp: "スマホが普及しました。", th: "สมาร์ทโฟนแพร่หลาย" } },
+        { jp: "流行", extra: "りゅうこう (Ryuukou)", th: "แฟชั่น/กระแสนิยม", level: "N3", example: { jp: "流行の服です。", th: "เป็นเสื้อผ้าตามแฟชั่น" } },
+        { jp: "評判", extra: "ひょうばん (Hyouban)", th: "ชื่อเสียง/คำวิจารณ์", level: "N3", example: { jp: "評判がいい店です。", th: "ร้านที่มีชื่อเสียงดี" } },
+        { jp: "提案", extra: "ていあん (Teian)", th: "ข้อเสนอ", level: "N3", example: { jp: "新しい提案をします。", th: "จะเสนอความคิดใหม่" } },
+        { jp: "命令", extra: "めいれい (Meirei)", th: "คำสั่ง", level: "N3", example: { jp: "命令に従います。", th: "จะทำตามคำสั่ง" } },
+        { jp: "指示", extra: "しじ (Shiji)", th: "การชี้แนะ", level: "N3", example: { jp: "上司の指示を待ちます。", th: "จะรอคำชี้แนะจากหัวหน้า" } },
+        { jp: "運命", extra: "うんめい (Unmei)", th: "โชคชะตา", level: "N3", example: { jp: "運命だと思います。", th: "คิดว่าเป็นโชคชะตา" } },
+        { jp: "幸運", extra: "こううん (Kouun)", th: "โชคดี", level: "N3", example: { jp: "幸運を祈ります。", th: "ขอให้โชคดี" } },
+        { jp: "不運", extra: "ふうん (Fuun)", th: "โชคร้าย", level: "N3", example: { jp: "不運な出来事でした。", th: "เป็นเหตุการณ์ที่โชคร้าย" } },
+        { jp: "防止", extra: "ぼうし (Boushi)", th: "การป้องกัน", level: "N3", example: { jp: "事故防止に努めます。", th: "จะพยายามป้องกันอุบัติเหตุ" } },
+        { jp: "診断", extra: "しんだん (Shindan)", th: "การวินิจฉัย", level: "N3", example: { jp: "医者に診断してもらいます。", th: "จะให้หมอวินิจฉัย" } },
+        { jp: "いらっしゃる", extra: "いらっしゃる (Irassharu)", th: "มา/อยู่/ไป (ยกย่อง)", level: "N3", example: { jp: "社長はもう会社にいらっしゃいます。", th: "ท่านประธานอยู่ที่บริษัทแล้ว (สุภาพยกย่อง)" } },
+        { jp: "おっしゃる", extra: "おっしゃる (Ossharu)", th: "พูด (ยกย่อง)", level: "N3", example: { jp: "先生がそうおっしゃいました。", th: "อาจารย์พูดอย่างนั้น (สุภาพยกย่อง)" } },
+        { jp: "召し上がる", extra: "めしあがる (Meshiagaru)", th: "กิน/ดื่ม (ยกย่อง)", level: "N3", example: { jp: "どうぞ召し上がってください。", th: "เชิญรับประทานได้เลยครับ/ค่ะ" } },
+        { jp: "なさる", extra: "なさる (Nasaru)", th: "ทำ (ยกย่อง)", level: "N3", example: { jp: "何をなさっていますか。", th: "ท่านกำลังทำอะไรอยู่ครับ/คะ" } },
+        { jp: "ご覧になる", extra: "ごらんになる (Goran ni naru)", th: "ดู (ยกย่อง)", level: "N3", example: { jp: "こちらをご覧になってください。", th: "เชิญดูทางนี้ครับ/ค่ะ" } },
+        { jp: "いただく", extra: "いただく (Itadaku)", th: "ได้รับ/กิน (ถ่อมตัว)", level: "N3", example: { jp: "お土産をいただきました。", th: "ได้รับของฝากมา (ถ่อมตัว)" } },
+        { jp: "伺う", extra: "うかがう (Ukagau)", th: "ไป/ถาม/ฟัง (ถ่อมตัว)", level: "N3", example: { jp: "明日お宅に伺います。", th: "พรุ่งนี้จะไปเยี่ยมที่บ้าน (ถ่อมตัว)" } },
+        { jp: "申す", extra: "もうす (Mousu)", th: "พูด/ชื่อว่า (ถ่อมตัว)", level: "N3", example: { jp: "田中と申します。", th: "ผม/ดิฉันชื่อทานากะครับ/ค่ะ (ถ่อมตัว)" } },
+        { jp: "参る", extra: "まいる (Mairu)", th: "ไป/มา (ถ่อมตัว)", level: "N3", example: { jp: "すぐ参ります。", th: "จะไปเดี๋ยวนี้เลยครับ/ค่ะ (ถ่อมตัว)" } },
+        { jp: "おる", extra: "おる (Oru)", th: "อยู่ (ถ่อมตัว)", level: "N3", example: { jp: "ただいま席におります。", th: "ตอนนี้อยู่ที่โต๊ะครับ/ค่ะ (ถ่อมตัว)" } },
+        { jp: "くださる", extra: "くださる (Kudasaru)", th: "ให้ (ยกย่อง)", level: "N3", example: { jp: "先生が本をくださいました。", th: "อาจารย์ให้หนังสือมา (ยกย่อง)" } },
+        { jp: "差し上げる", extra: "さしあげる (Sashiageru)", th: "ให้ (ถ่อมตัว)", level: "N3", example: { jp: "お土産を差し上げます。", th: "ขอมอบของฝากให้ครับ/ค่ะ (ถ่อมตัว)" } },
+        { jp: "ございます", extra: "ございます (Gozaimasu)", th: "มี/เป็น (สุภาพมาก)", level: "N3", example: { jp: "こちらにございます。", th: "อยู่ตรงนี้ครับ/ค่ะ (สุภาพมาก)" } },
+        { jp: "拝見する", extra: "はいけんする (Haiken suru)", th: "ดู (ถ่อมตัว)", level: "N3", example: { jp: "資料を拝見しました。", th: "ได้ดูเอกสารแล้วครับ/ค่ะ (ถ่อมตัว)" } },
+        { jp: "申し上げる", extra: "もうしあげる (Moushiageru)", th: "พูด (ถ่อมตัว)", level: "N3", example: { jp: "お礼を申し上げます。", th: "ขอกล่าวขอบคุณครับ/ค่ะ (ถ่อมตัว)" } },
+        { jp: "お目にかかる", extra: "おめにかかる (Ome ni kakaru)", th: "พบ (ถ่อมตัว)", level: "N3", example: { jp: "お目にかかれて嬉しいです。", th: "ดีใจที่ได้พบท่านครับ/ค่ะ (ถ่อมตัว)" } },
+
+
 ];
 
         // ===== Stroke Order Data (แบบเวกเตอร์: จุดเริ่มต้น -> จุดสิ้นสุด ของแต่ละเส้น บนกริด 0-100) =====
@@ -5811,7 +5783,7 @@ html,body{max-width:100%;overflow-x:hidden}
         ];
 
         const grammarList = [
-            {
+             {
                 level: "N5",
                 pattern: "～は ～です",
                 meaning: "...คือ... / ...เป็น...",
@@ -6368,6 +6340,51 @@ html,body{max-width:100%;overflow-x:hidden}
             },
             {
                 level: "N5",
+                pattern: "て-form (การผันกริยาเป็นรูป て) — โมดูลพื้นฐานสำคัญ",
+                meaning: "รูปเชื่อมของกริยา ใช้เป็นฐานสำหรับไวยากรณ์อีกหลายสิบแพทเทิร์นตั้งแต่ N5 ถึง N4",
+                structure: "กริยากลุ่ม 1/2/3 (グループ1/2/3) → て-form",
+                explanation: `
+ก่อนเรียนแพทเทิร์นที่ขึ้นต้นด้วย て (てください、ています ฯลฯ) ต้องผันกริยาให้เป็น て-form ให้คล่องก่อน กฎการผันแบ่งตามกลุ่มกริยาดังนี้
+
+【กริยากลุ่ม 1 (u-verbs)】ดูพยางค์สุดท้ายของรูป -ます
+う/つ/る → って : 買います→買って, 待ちます→待って, 帰ります→帰って
+む/ぬ/ぶ → んで : 飲みます→飲んで, 死にます→死んで, 遊びます→遊んで
+く → いて : 書きます→書いて (ยกเว้น 行きます→行って)
+ぐ → いで : 泳ぎます→泳いで
+す → して : 話します→話して
+
+【กริยากลุ่ม 2 (ru-verbs)】ตัด ます แล้วเติม て ได้เลย ไม่ต้องดูพยางค์ท้าย
+食べます→食べて
+見ます→見て
+
+【กริยากลุ่ม 3 (กริยาไม่ปกติ)】ต้องท่องจำ
+します→して
+来ます→来て
+
+ผันให้คล่องแล้วค่อยนำไปต่อกับแพทเทิร์นเหล่านี้ (เรียงตามลำดับที่ควรเรียน):
+1. ～てください (ขอร้อง)
+2. ～ています (กำลังทำ/สภาพ)
+3. ～てもいいです (ขออนุญาต)
+4. ～てはいけません (ห้าม)
+5. ～てから (N4 — หลังจากที่...แล้ว)
+
+นี่คือจุดเชื่อมสำคัญที่สุดจุดหนึ่งระหว่าง N5 กับ N4 ถ้าผัน て-form ไม่คล่อง จะเรียนแพทเทิร์นข้างต้นได้ยากทั้งหมด
+`,
+                examples: [
+                    { jp: "食べます → 食べて", romaji: "Tabemasu → Tabete", th: "กิน (て-form กลุ่ม 2)" },
+                    { jp: "飲みます → 飲んで", romaji: "Nomimasu → Nonde", th: "ดื่ม (て-form กลุ่ม 1: む→んで)" },
+                    { jp: "行きます → 行って", romaji: "Ikimasu → Itte", th: "ไป (て-form ข้อยกเว้นของกลุ่ม 1)" }
+                ],
+                mistakes: [
+                    "行きます เป็นข้อยกเว้น: ผันเป็น 行って ไม่ใช่ 行いて ตามกฎ く→いて ปกติ",
+                    "กริยากลุ่ม 2 (ru-verbs) จำง่ายกว่า: ตัด ます แล้วเติม て ได้เลย ไม่ต้องแยกพยางค์ท้ายเหมือนกลุ่ม 1",
+                    "します→して และ 来ます→来て เป็นกริยาไม่ปกติ ต้องท่องจำแยกต่างหาก ไม่มีกฎตายตัว",
+                    "ผันกลุ่ม 1 ผิดกลุ่มบ่อย: ต้องเช็คว่าเป็น -iます (กลุ่ม 2 ส่วนใหญ่) หรือ -uます (กลุ่ม 1) ก่อนผัน"
+                ],
+                related: ["て-form + ください", "～ています", "～てもいいです", "～てはいけません", "～てから"]
+            },
+            {
+                level: "N5",
                 pattern: "て-form + ください",
                 meaning: "กรุณา... / ช่วย...",
                 structure: "V-て + ください",
@@ -6636,6 +6653,7 @@ html,body{max-width:100%;overflow-x:hidden}
             },
             {
     level: "N4",
+    unit: "ความคิดเห็น・ความตั้งใจ",
     pattern: "～と思います",
     meaning: "คิดว่า... / ผมคิดว่า...",
     structure: "Plain Form + と思います",
@@ -6658,6 +6676,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "ความคิดเห็น・ความตั้งใจ",
     pattern: "～と言います",
     meaning: "พูดว่า... / กล่าวว่า...",
     structure: "Plain Form + と言います",
@@ -6680,6 +6699,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "ความคิดเห็น・ความตั้งใจ",
     pattern: "～つもりです",
     meaning: "ตั้งใจจะ...",
     structure: "Dictionary Form + つもりです",
@@ -6702,6 +6722,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "ความคิดเห็น・ความตั้งใจ",
     pattern: "～予定です",
     meaning: "มีแผนว่า... / มีกำหนดจะ...",
     structure: "Dictionary Form + 予定です",
@@ -6724,6 +6745,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "ความคิดเห็น・ความตั้งใจ",
     pattern: "～ようと思います",
     meaning: "คิดว่าจะ... / ตั้งใจว่าจะ...",
     structure: "Volitional Form + と思います",
@@ -6745,6 +6767,7 @@ html,body{max-width:100%;overflow-x:hidden}
 },
 {
     level: "N4",
+    unit: "การเปลี่ยนแปลง",
     pattern: "～ようになります",
     meaning: "เริ่มสามารถ...ได้ / กลายเป็นว่า...",
     structure: "Dictionary Form + ようになります",
@@ -6767,6 +6790,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การเปลี่ยนแปลง",
     pattern: "～ようにします",
     meaning: "พยายามที่จะ... / ตั้งใจจะทำให้เป็นนิสัย",
     structure: "Dictionary Form + ようにします",
@@ -6789,6 +6813,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การอนุญาต・ข้อบังคับ (ต่อยอดจาก N5)",
     pattern: "～なくてもいいです",
     meaning: "ไม่...ก็ได้ / ไม่จำเป็นต้อง...",
     structure: "ない-form + なくてもいいです",
@@ -6811,6 +6836,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "ประสบการณ์",
     pattern: "～たことがあります",
     meaning: "เคย...มาก่อน",
     structure: "た-form + ことがあります",
@@ -6832,6 +6858,7 @@ html,body{max-width:100%;overflow-x:hidden}
 },
 {
     level: "N4",
+    unit: "การเชื่อมประโยค",
     pattern: "～し～し",
     meaning: "...ทั้ง...และ... / ทั้ง...อีกทั้ง...",
     structure: "Plain Form + し + Plain Form + し",
@@ -6854,6 +6881,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การคาดเดา・การได้ยินมา",
     pattern: "～そうです (เห็นแล้วน่าจะ...)",
     meaning: "ดูเหมือนจะ... / น่าจะ...",
     structure: "Verb Stem / い-adj(ตัดい) / な-adj + そうです",
@@ -6876,6 +6904,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การคาดเดา・การได้ยินมา",
     pattern: "～そうです (ได้ยินว่า...)",
     meaning: "ได้ยินมาว่า... / เขาว่า...",
     structure: "Plain Form + そうです",
@@ -6898,6 +6927,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "て-form ขยายความ",
     pattern: "～てしまいます",
     meaning: "...จนหมด / เผลอ... / เสร็จสิ้น",
     structure: "V-て + しまいます",
@@ -6920,6 +6950,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "て-form ขยายความ",
     pattern: "～ておきます",
     meaning: "ทำไว้ล่วงหน้า / เตรียมไว้",
     structure: "V-て + おきます",
@@ -6941,6 +6972,7 @@ html,body{max-width:100%;overflow-x:hidden}
 },
 {
     level: "N4",
+    unit: "て-form ขยายความ",
     pattern: "～てみます",
     meaning: "ลอง...",
     structure: "V-て + みます",
@@ -6963,6 +6995,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การให้-รับ (やり・もらい)",
     pattern: "～てくれます",
     meaning: "...ให้ฉัน / ทำให้ฉัน",
     structure: "คน + が + V-て + くれます",
@@ -6984,6 +7017,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การให้-รับ (やり・もらい)",
     pattern: "～てもらいます",
     meaning: "ได้รับการ...จาก...",
     structure: "คน + に + V-て + もらいます",
@@ -7005,6 +7039,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การให้-รับ (やり・もらい)",
     pattern: "～てあげます",
     meaning: "ทำ...ให้...",
     structure: "คน + に + V-て + あげます",
@@ -7027,6 +7062,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "เงื่อนไข",
     pattern: "～と (เงื่อนไข)",
     meaning: "เมื่อ...ก็... / ถ้า...ก็...",
     structure: "Dictionary Form + と",
@@ -7049,6 +7085,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การเปรียบเทียบ・คำแนะนำ",
     pattern: "～ほうがいいです",
     meaning: "ควรจะ...",
     structure: "V-た / V-ない + ほうがいいです",
@@ -7072,6 +7109,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 {
     level: "N4",
+    unit: "การเปรียบเทียบ・คำแนะนำ",
     pattern: "～より～のほうが～",
     meaning: "...กว่า...",
     structure: "A より B のほうが Adj",
@@ -7093,6 +7131,7 @@ B เป็นสิ่งที่เด่นกว่า A
 },
 {
     level: "N4",
+    unit: "การผันรูปกริยาขั้นสูง",
     pattern: "可能形 (Potential Form)",
     meaning: "สามารถ...ได้",
     structure: "Verb → Potential Form",
@@ -7118,6 +7157,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "คำช่วยจำกัดความ",
     pattern: "～だけ",
     meaning: "เพียง... / เท่านั้น",
     structure: "N / V / Adj + だけ",
@@ -7140,6 +7180,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "สถานะ・ความคืบหน้า",
     pattern: "～まだ～ていません",
     meaning: "ยังไม่ได้...",
     structure: "まだ + V-ていません",
@@ -7161,6 +7202,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "การคาดเดา・การได้ยินมา",
     pattern: "～そうにない",
     meaning: "ดูเหมือนจะไม่...",
     structure: "Verb Stem + そうにない",
@@ -7182,6 +7224,7 @@ B เป็นสิ่งที่เด่นกว่า A
 },
 {
     level: "N4",
+    unit: "การผันรูปกริยาขั้นสูง",
     pattern: "受身形 (Passive Form)",
     meaning: "ถูก... / ได้รับการ...",
     structure: "N1 は N2 に V-られます",
@@ -7207,6 +7250,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "การคาดเดา・การได้ยินมา",
     pattern: "～ようです",
     meaning: "ดูเหมือนว่า...",
     structure: "Plain Form + ようです",
@@ -7229,6 +7273,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "การคาดเดา・การได้ยินมา",
     pattern: "～みたいです",
     meaning: "เหมือนว่า... / คล้ายกับ...",
     structure: "Plain Form + みたいです",
@@ -7250,6 +7295,7 @@ B เป็นสิ่งที่เด่นกว่า A
 },
 {
     level: "N4",
+    unit: "การผันรูปกริยาขั้นสูง",
     pattern: "使役形 (Causative Form)",
     meaning: "ให้...ทำ... / ทำให้...",
     structure: "N1 は N2 に V-させます",
@@ -7275,6 +7321,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "การผันรูปกริยาขั้นสูง",
     pattern: "～させてください",
     meaning: "ขออนุญาต...",
     structure: "Causative-て + ください",
@@ -7296,6 +7343,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "การผันรูปกริยาขั้นสูง",
     pattern: "使役受身形",
     meaning: "ถูกบังคับให้...",
     structure: "N は N に V-させられます",
@@ -7318,6 +7366,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "การตัดสินใจ・ผลลัพธ์ที่กำหนด",
     pattern: "～ことになります",
     meaning: "ถูกกำหนดให้... / กลายเป็นว่า...",
     structure: "Dictionary Form + ことになります",
@@ -7340,6 +7389,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "การตัดสินใจ・ผลลัพธ์ที่กำหนด",
     pattern: "～ことにします",
     meaning: "ตัดสินใจว่าจะ...",
     structure: "Dictionary Form + ことにします",
@@ -7361,6 +7411,7 @@ B เป็นสิ่งที่เด่นกว่า A
 },
 {
     level: "N4",
+    unit: "ช่วงเวลา",
     pattern: "～間（あいだ）",
     meaning: "ระหว่างที่...",
     structure: "V-ている / N + の + 間",
@@ -7382,6 +7433,7 @@ B เป็นสิ่งที่เด่นกว่า A
 
 {
     level: "N4",
+    unit: "ช่วงเวลา",
     pattern: "～ところです",
     meaning: "กำลัง... (ณ จุดเวลาเพิ่งจะเริ่ม, กำลังทำอยู่, หรือเพิ่งเสร็จ)",
     structure: "V-辞書形 / V-ている / V-た + ところです",
@@ -7402,6 +7454,7 @@ B เป็นสิ่งที่เด่นกว่า A
 },
 {
     level: "N4",
+    unit: "ช่วงเวลา",
     pattern: "～たばかりです",
     meaning: "เพิ่งจะ... (เพิ่งทำสิ่งนั้นเสร็จไปไม่นาน)",
     structure: "V-た + ばかりです",
@@ -7421,6 +7474,7 @@ B เป็นสิ่งที่เด่นกว่า A
 },
 {
     level: "N4",
+    unit: "ระยะของการกระทำ (เริ่ม/จบ/ต่อเนื่อง)",
     pattern: "～はじめます",
     meaning: "เริ่ม... (เริ่มลงมือทำสิ่งใดสิ่งหนึ่ง)",
     structure: "V-ます (ตัด ます) + はじめます",
@@ -7440,6 +7494,7 @@ B เป็นสิ่งที่เด่นกว่า A
 },
 {
     level: "N4",
+    unit: "ระยะของการกระทำ (เริ่ม/จบ/ต่อเนื่อง)",
     pattern: "～おわります",
     meaning: "M... (ทำสิ่งนั้นจนเสร็จสิ้น)",
     structure: "V-ます (ตัด ます) + おわります",
@@ -7459,6 +7514,7 @@ B เป็นสิ่งที่เด่นกว่า A
 },
 {
     level: "N4",
+    unit: "ระยะของการกระทำ (เริ่ม/จบ/ต่อเนื่อง)",
     pattern: "～つづけます",
     meaning: "ทำ... ต่อไป / ทำ... อย่างต่อเนื่อง",
     structure: "V-ます (ตัด ます) + つづけます",
@@ -10584,6 +10640,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "ลำดับเหตุการณ์ (จุดเชื่อม N5→N4)",
                 pattern: "～てから",
                 meaning: "หลังจาก...แล้วจึง...",
                 structure: "V て-form + から",
@@ -10606,6 +10663,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "ช่วงเวลา",
                 pattern: "～ている間に",
                 meaning: "ในระหว่างที่กำลัง...",
                 structure: "V ている + 間に",
@@ -10780,6 +10838,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "การคาดเดา・การได้ยินมา",
                 pattern: "～そうにする",
                 meaning: "ทำท่าเหมือนจะ...",
                 structure: "A / V ます-stem + そうにする",
@@ -10801,6 +10860,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "ความถี่・ประสบการณ์",
                 pattern: "～ことがある",
                 meaning: "มีบางครั้งที่...",
                 structure: "V plain + ことがある",
@@ -10823,6 +10883,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "ทิศทาง・การเปลี่ยนแปลงต่อเนื่อง",
                 pattern: "～てくる",
                 meaning: "...มา (เริ่มเป็นขึ้นมา / ไปแล้วกลับมา)",
                 structure: "V て-form + くる",
@@ -10846,6 +10907,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "ทิศทาง・การเปลี่ยนแปลงต่อเนื่อง",
                 pattern: "～ていく",
                 meaning: "...ไป (ค่อยๆ เป็นไปในอนาคต)",
                 structure: "V て-form + いく",
@@ -11089,6 +11151,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "การถ่ายทอดคำสั่ง・คำขอ",
                 pattern: "～ように言う",
                 meaning: "บอกให้...",
                 structure: "V plain / V ない + ように言う",
@@ -11111,6 +11174,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "การถ่ายทอดคำสั่ง・คำขอ",
                 pattern: "～てほしい",
                 meaning: "อยากให้ (คนอื่น)...",
                 structure: "V て-form + ほしい",
@@ -11133,6 +11197,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "คำถามทางอ้อม",
                 pattern: "～かどうか",
                 meaning: "ว่า...หรือไม่",
                 structure: "V / A plain + かどうか",
@@ -11589,6 +11654,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "คำแนะนำ",
                 pattern: "～たらどうですか",
                 meaning: "ลอง...ดูไหม (คำแนะนำ)",
                 structure: "V た-form + らどうですか",
@@ -11611,6 +11677,7 @@ Aを問わずB
             },
             {
                 level: "N4",
+                unit: "ความเสียใจ・สมมติในอดีต",
                 pattern: "～ばよかった",
                 meaning: "น่าจะ...ก็ดี (เสียใจภายหลัง)",
                 structure: "V ば-form + よかった",
@@ -11784,7 +11851,168 @@ Aを問わずB
                     "เป็นภาษาทางการ"
                 ],
                 related: ["～において", "～によって"]
-            }
+            },
+        {
+            level: "N3",
+            pattern: "🔍 เปรียบเทียบ: ～次第 vs ～次第で vs ～によって vs ～に応じて",
+            meaning: "ทั้ง 4 ตัวแปลว่า \"ขึ้นอยู่กับ...\" ได้เหมือนกัน แต่ใช้คนละสถานการณ์",
+            structure: "ดูคำอธิบายแต่ละแบบด้านล่าง",
+            explanation: `
+นี่คือกลุ่มไวยากรณ์ที่ผู้เรียน N3 สับสนมากที่สุด เพราะแปลไทยคล้ายกันหมดว่า "ขึ้นอยู่กับ..." ให้จำจากสถานการณ์ที่ใช้ ไม่ใช่จากคำแปล
+
+1. Vます-stem + 次第 (ความหมายที่ 1 ไม่เกี่ยวกับกลุ่มนี้)
+   = ทันทีที่ทำ A เสร็จ จะทำ B ทันที (ไม่ใช่ "ขึ้นอยู่กับ")
+   例: 着き次第、電話します。(ถึงแล้วจะโทรทันที)
+
+2. N + 次第だ / 次第です
+   = ผลลัพธ์สุดท้ายขึ้นอยู่กับ N เพียงอย่างเดียว เป็นตัวตัดสิน
+   例: 合格するかどうかは実力次第です。(ติดหรือไม่ ขึ้นอยู่กับความสามารถล้วนๆ)
+
+3. N + 次第で(は)
+   = ผลลัพธ์จะเปลี่ยนไปตาม N (เน้นว่า "แปรผันได้")
+   例: 天気次第で、予定を変更します。(จะเปลี่ยนแผนหรือไม่ แล้วแต่สภาพอากาศ)
+
+4. N + によって
+   = ความหมายกว้างกว่า มี 3 นัย: (ก) โดย/ด้วย N (วิธีการ-ผู้กระทำ) (ข) เนื่องจาก N (สาเหตุ) (ค) แตกต่างกันไปตาม N
+   例: 人によって考え方が違います。(แต่ละคนคิดต่างกัน — เน้น "ความหลากหลาย" ไม่ใช่ "ผลลัพธ์เดียวที่เปลี่ยนตาม")
+
+5. N + に応じて
+   = ปรับ B ให้ "สอดคล้อง" กับ A อย่างเป็นระบบ/มีสัดส่วน มักใช้ทางการ (เกณฑ์ นโยบาย การจัดสรร)
+   例: 収入に応じて税金が変わります。(ภาษีถูกปรับให้สอดคล้องกับรายได้ตามอัตราที่กำหนด)
+
+สรุปวิธีเลือกใช้:
+- พูดถึง "ผลลัพธ์เดียวที่ขึ้นอยู่กับปัจจัยเดียว" แบบเป็นกลาง → 次第で
+- พูดถึง "ความหลากหลาย/สาเหตุ/ผู้กระทำ" แบบทั่วไป → によって
+- พูดถึง "การปรับให้สอดคล้องอย่างเป็นระบบ" (เกณฑ์ นโยบาย) → に応じて
+- พูดถึง "ทันทีที่เสร็จ" → Vます-stem + 次第 (คนละความหมายเลย ระวังสับสน)
+`,
+            examples: [
+                { jp: "結果次第で、ボーナスの金額が変わります。", romaji: "Kekka shidai de, bonasu no kingaku ga kawarimasu.", th: "จำนวนโบนัสจะเปลี่ยนไปขึ้นอยู่กับผลลัพธ์ (ปัจจัยเดียวชัดเจน)" },
+                { jp: "国によって、法律が違います。", romaji: "Kuni ni yotte, houritsu ga chigaimasu.", th: "กฎหมายแตกต่างกันไปในแต่ละประเทศ (เน้นความหลากหลาย)" },
+                { jp: "年齢に応じて、料金が変わります。", romaji: "Nenrei ni oujite, ryoukin ga kawarimasu.", th: "ค่าบริการปรับตามช่วงอายุอย่างเป็นระบบ (มีตารางเกณฑ์)" }
+            ],
+            mistakes: [
+                "Vます-stem+次第 (ทันทีที่...) กับ N+次第だ (ขึ้นอยู่กับ...) เป็นคนละไวยากรณ์ อย่าสับสนแค่เพราะหน้าตาเหมือนกัน",
+                "によって ใช้ได้กว้างที่สุดในกลุ่มนี้ ถ้าไม่แน่ใจว่าจะใช้ตัวไหน มักใช้ によって แทนได้แบบปลอดภัยที่สุด (แต่ความหมายจะกว้างกว่า ไม่เจาะจงเท่า)",
+                "に応じて มักมี \"เกณฑ์/ตาราง\" แฝงอยู่เสมอ ถ้าไม่มีเกณฑ์ชัดเจนไม่ควรใช้ตัวนี้"
+            ],
+            related: ["～次第", "～次第で", "～によって", "～に応じて"]
+        },
+        {
+            level: "N3",
+            pattern: "🔍 เปรียบเทียบ: ～ば vs ～たら vs ～なら vs ～と",
+            meaning: "เงื่อนไข 4 แบบ ที่แปลว่า \"ถ้า...\" ได้ทั้งหมด แต่ใช้ต่างสถานการณ์กัน",
+            structure: "ดูคำอธิบายแต่ละแบบด้านล่าง",
+            explanation: `
+ทั้ง 4 ตัวแปลว่า "ถ้า...(ก็จะ)..." ได้ แต่จุดต่างคือ "ธรรมชาติของเงื่อนไข"
+
+1. ～と
+   = เกิด A แล้ว B ตามมาโดยอัตโนมัติ/เป็นกฎธรรมชาติ/เป็นนิสัยประจำ ห้ามใช้กับคำสั่ง/คำเชิญชวนในประโยคหลัง
+   例: 春になると、桜が咲きます。(พอถึงฤดูใบไม้ผลิ ซากุระก็บานเป็นธรรมชาติ)
+
+2. ～ば
+   = เน้น "เงื่อนไขที่จำเป็น" เพื่อให้เกิดผล มักใช้กับเงื่อนไขทั่วไป/สมมติ ไม่เน้นเวลาที่แน่นอน
+   例: 安ければ、買います。(ถ้าถูกก็จะซื้อ — เน้นเงื่อนไขราคา)
+
+3. ～たら
+   = ใช้ได้กว้างที่สุด ทั้งเงื่อนไขสมมติและเหตุการณ์ที่จะเกิดขึ้นแน่ในอนาคต (แปลได้ทั้ง "ถ้า" และ "พอ...แล้ว") ประโยคหลังใช้คำสั่ง/คำเชิญชวนได้
+   例: 駅に着いたら、電話してください。(พอถึงสถานีแล้วโทรมานะ — ใช้คำสั่งได้)
+
+4. ～なら
+   = เงื่อนไขที่อ้างอิงจาก "สิ่งที่อีกฝ่ายพูดมา/สถานการณ์ที่รู้อยู่แล้ว" มักให้คำแนะนำตามหลัง มักมาก่อนเหตุการณ์ในประโยคหลัง (ต่างจาก 3 ตัวข้างบนที่เหตุการณ์ในเงื่อนไขมักเกิดก่อน)
+   例: 京都へ行くなら、絶対清水寺に行くべきです。(ถ้าจะไปเกียวโต [ตามที่พูดมา] ควรไปวัดคิโยมิสึ)
+
+สรุปวิธีเลือกใช้:
+- กฎธรรมชาติ/นิสัยประจำ ห้ามลงท้ายด้วยคำสั่ง → と
+- เงื่อนไขทั่วไป/สมมติ เน้นปัจจัย → ば
+- ใช้ได้กว้างที่สุด ลงท้ายด้วยคำสั่งได้ → たら
+- ตอบสนองสิ่งที่อีกฝ่ายพูดมา ให้คำแนะนำ → なら
+`,
+            examples: [
+                { jp: "ボタンを押すと、ドアが開きます。", romaji: "Botan wo osu to, doa ga akimasu.", th: "พอกดปุ่ม ประตูก็เปิด (กลไกอัตโนมัติ)" },
+                { jp: "時間があったら、映画を見に行きませんか。", romaji: "Jikan ga attara, eiga wo mi ni ikimasenka.", th: "ถ้ามีเวลา ไปดูหนังกันไหม (ชักชวนได้)" },
+                { jp: "頭が痛いなら、薬を飲んだほうがいいですよ。", romaji: "Atama ga itai nara, kusuri wo nonda hou ga ii desu yo.", th: "ถ้าปวดหัว [ตามที่บอกมา] กินยาดีกว่านะ" }
+            ],
+            mistakes: [
+                "と ห้ามลงท้ายประโยคหลังด้วยคำสั่ง/คำเชิญชวน/ความตั้งใจ (เช่น ～てください、～ましょう) ผิดหลักไวยากรณ์",
+                "なら ต่างจากอีก 3 ตัวตรงที่มักพูดถึงสิ่งที่ \"รู้อยู่แล้วจากบทสนทนา\" ไม่ใช่สมมติขึ้นมาลอยๆ",
+                "たら ใช้แทนอีก 3 ตัวได้เกือบทุกกรณีในภาษาพูด แต่ในข้อสอบต้องแยกให้ถูกตามสถานการณ์ที่โจทย์กำหนด"
+            ],
+            related: ["～ば", "～たら", "～なら", "～と (เงื่อนไข)"]
+        },
+        {
+            level: "N3",
+            pattern: "🔍 เปรียบเทียบ: ～はずだ vs ～べきだ vs ～わけだ",
+            meaning: "แปลคล้าย \"น่าจะ/ควรจะ/ก็เพราะแบบนั้นเอง\" แต่ความหมายต่างกันโดยสิ้นเชิง",
+            structure: "ดูคำอธิบายแต่ละแบบด้านล่าง",
+            explanation: `
+กลุ่มนี้ผู้เรียนมักสับสนเพราะทั้งหมดแปลไทยได้ว่า "น่าจะ" ในบางบริบท แต่จริงๆ แต่ละตัวสื่อ "มุมมอง" คนละแบบ
+
+1. ～はずだ
+   = ผู้พูด "คาดการณ์อย่างมั่นใจ" จากข้อมูล/เหตุผลที่มีอยู่ ว่าน่าจะเป็นแบบนั้นจริงๆ (ความมั่นใจสูง ไม่ใช่แค่เดา)
+   例: 田中さんはもう出発したはずです。(คุณทานากะน่าจะออกเดินทางไปแล้วแน่ๆ — มีเหตุผลรองรับ)
+
+2. ～べきだ
+   = แสดง "หน้าที่/สิ่งที่ควรทำตามหลักการ ศีลธรรม หรือเหตุผล" ไม่ใช่การคาดเดา แต่เป็นความเห็นว่า "ควรทำ"
+   例: 約束は守るべきです。(สัญญาต้องรักษา — เป็นหลักการ ไม่ใช่การเดา)
+
+3. ～わけだ
+   = สรุปผลแบบ "อ๋อ ก็เพราะแบบนี้นี่เอง" เชื่อมโยงเหตุผลที่เพิ่งทราบกับผลที่เห็นอยู่ ใช้ตอนเข้าใจที่มาแล้ว
+   例: 彼は10年アメリカに住んでいた。道理で英語が上手なわけだ。(เขาอยู่อเมริกา 10 ปี มิน่าล่ะถึงเก่งภาษาอังกฤษ)
+
+สรุปวิธีเลือกใช้:
+- คาดการณ์อย่างมั่นใจจากข้อมูล → はずだ
+- ความเห็นว่า "ควรทำ" ตามหลักการ → べきだ
+- เพิ่งเข้าใจที่มาของเหตุผล "อ๋อ เพราะแบบนี้นี่เอง" → わけだ
+`,
+            examples: [
+                { jp: "彼女は日本人だから、日本語ができるはずです。", romaji: "Kanojo wa Nihonjin dakara, Nihongo ga dekiru hazu desu.", th: "เธอเป็นคนญี่ปุ่น ดังนั้นน่าจะพูดภาษาญี่ปุ่นได้แน่ๆ" },
+                { jp: "学生は勉強すべきです。", romaji: "Gakusei wa benkyou subeki desu.", th: "นักเรียนควรตั้งใจเรียน (หลักการ)" },
+                { jp: "毎日練習しているから、上手なわけだ。", romaji: "Mainichi renshuu shite iru kara, jouzu na wake da.", th: "ฝึกซ้อมทุกวัน มิน่าล่ะถึงเก่ง" }
+            ],
+            mistakes: [
+                "はずだ ไม่ใช่การคาดเดาแบบสุ่มๆ ต้องมีเหตุผล/ข้อมูลรองรับเสมอ ต่างจาก ～かもしれない ที่ไม่มั่นใจ",
+                "べきだ เป็นความเห็นส่วนตัวเรื่องหน้าที่/ศีลธรรม ห้ามใช้กับเหตุการณ์ธรรมชาติที่ควบคุมไม่ได้ (เช่น 明日雨が降るべきだ ผิด)",
+                "わけだ ใช้ตอน \"เพิ่งเข้าใจที่มา\" เท่านั้น ถ้ายังไม่มีข้อมูลอะไรมาก่อนหน้า ใช้ わけだ ไม่ได้"
+            ],
+            related: ["～はずだ", "～べきだ", "～わけだ", "～わけではない"]
+        },
+        {
+            level: "N3",
+            pattern: "🔍 เปรียบเทียบ: ～ように vs ～ために",
+            meaning: "ทั้งคู่แปลว่า \"เพื่อที่จะ...\" แต่ใช้กับกริยาคนละประเภท",
+            structure: "ดูคำอธิบายแต่ละแบบด้านล่าง",
+            explanation: `
+จุดสับสนหลักคือ "กริยานำหน้าเป็นกริยาที่ควบคุมได้ (ตั้งใจทำ) หรือควบคุมไม่ได้"
+
+1. ～ために
+   = ตามด้วยกริยาที่ "ตั้งใจทำเอง" (วิริยะกริยา) ประธานสองประโยคมักเป็นคนเดียวกัน
+   例: 日本語を勉強するために、日本に来ました。(มาญี่ปุ่นเพื่อจะเรียนภาษาญี่ปุ่น — ตั้งใจทำเอง)
+
+2. ～ように
+   = ตามด้วยกริยาที่ "ควบคุมไม่ได้โดยตรง" เช่น กริยาสภาพ (わかる、聞こえる、できる) หรือกริยารูปปฏิเสธ ปกติ ある/ない หรือกริยาปกติ (ไม่ใช่ますform) ประธานสองประโยคมักเป็นคนละคน
+   例: 忘れないように、メモします。(จะจดไว้เพื่อจะได้ไม่ลืม — "ไม่ลืม" ควบคุมโดยตรงไม่ได้)
+
+สรุปวิธีเลือกใช้:
+- กริยานำหน้าเป็นกริยาที่ตั้งใจทำได้เอง (จะไป จะซื้อ จะเรียน) → ために
+- กริยานำหน้าเป็นกริยาสภาพ/ปฏิเสธ/ควบคุมไม่ได้โดยตรง (มองเห็น ได้ยิน ไม่ลืม เข้าใจ) → ように
+`,
+            examples: [
+                { jp: "健康のために、毎日運動しています。", romaji: "Kenkou no tame ni, mainichi undou shite imasu.", th: "ออกกำลังกายทุกวันเพื่อสุขภาพ" },
+                { jp: "後ろの人にも聞こえるように、大きい声で話してください。", romaji: "Ushiro no hito nimo kikoeru you ni, ookii koe de hanashite kudasai.", th: "พูดเสียงดังเพื่อให้คนข้างหลังได้ยินด้วย" },
+                { jp: "遅刻しないように、早く家を出ます。", romaji: "Chikoku shinai you ni, hayaku ie wo demasu.", th: "ออกจากบ้านแต่เช้าเพื่อจะได้ไม่มาสาย" }
+            ],
+            mistakes: [
+                "ために ตามด้วยกริยารูป ます-stem หรือ dictionary form ที่เป็นวิริยะกริยาเท่านั้น ห้ามตามด้วยกริยาปฏิเสธ ないために ใช้ไม่ได้ในความหมายจุดประสงค์นี้",
+                "ように ใช้กับกริยาปฏิเสธได้ปกติ (～ないように) ต่างจาก ために ตรงนี้ชัดเจน",
+                "N + のために (เพื่อ N) เป็นอีกรูปหนึ่งที่ต้องแยกจาก V+ために (เพื่อที่จะ V) อย่าสับสนโครงสร้าง"
+            ],
+            related: ["～ように", "～ために", "～ように言う", "～ようにする"]
+        },           
+
+
+
+
         ];
 
         // ===== 🎧 ข้อมูลบทสนทนาสำหรับฝึกฟัง (seed เริ่มต้น — ควรเพิ่มเติมภายหลังให้ครอบคลุมทุกเลเวล) =====
@@ -19616,305 +19844,6 @@ window.JP_SUPPORT_POLICY={
 })();
 
 </script>
-
-
-/* ============================================================
-   V5.2 — MOBILE VISUAL QA / FINAL CONTRAST & LAYOUT PASS
-   Based on mobile screenshot review.
-   Main goals:
-   1) Remove dark side gutters on mobile Home
-   2) Force readable text on light Morning Home cards
-   3) Prevent inherited legacy "night" colors from washing out text
-   4) Improve mobile card spacing / action-button placement
-   5) Keep the existing learning/game logic unchanged
-   ============================================================ */
-
-/* ---- Home: authoritative light-theme colors ---- */
-#kqHubScreen{
-  color:#3f3832 !important;
-  background:
-    radial-gradient(circle at 8% 8%,rgba(245,207,216,.28),transparent 24%),
-    radial-gradient(circle at 92% 10%,rgba(219,232,211,.36),transparent 27%),
-    linear-gradient(180deg,#fffdf8 0%,#f8f3e8 55%,#eef2e9 100%) !important;
-}
-
-#kqHubScreen #kqMapTitle{
-  color:#3f3832 !important;
-}
-#kqHubScreen #kqMapTitle h1{
-  color:#4a4038 !important;
-  text-shadow:none !important;
-}
-#kqHubScreen #kqMapTitle h1::after{
-  color:#74685d !important;
-}
-#kqHubScreen #kqMapTitle p{
-  color:#655b52 !important;
-  opacity:1 !important;
-}
-
-/* ---- Daily card: stronger readable hierarchy ---- */
-#kqDailyCard,
-#kqDailyCard *{
-  text-shadow:none !important;
-}
-#kqDailyCard{
-  color:#3f3832 !important;
-}
-#kqDailyCard .kq-daily-title{
-  color:#40372f !important;
-  font-weight:800 !important;
-}
-#kqDailyCard .kq-daily-sub,
-#kqDailyCard .kq-daily-status{
-  color:#62584f !important;
-  opacity:1 !important;
-}
-#kqDailyCard .kq-stamp{
-  color:#766b60 !important;
-}
-#kqDailyCard .kq-stamp.done{
-  color:#52664a !important;
-}
-#kqDailyCard .kq-daily-actions button{
-  color:#4b4138 !important;
-  background:#fffdf8 !important;
-}
-#kqDailyCard .kq-daily-actions .primary{
-  color:#fffdf8 !important;
-  background:#657d5b !important;
-  border-color:#657d5b !important;
-}
-
-/* ---- Summary cards above the worlds ---- */
-#kqHubScreen .kq-home-stat{
-  color:#40372f !important;
-  background:rgba(255,253,248,.94) !important;
-  border:1px solid #ddd3c6 !important;
-}
-#kqHubScreen .kq-home-stat b{
-  color:#40372f !important;
-  opacity:1 !important;
-}
-#kqHubScreen .kq-home-stat span{
-  color:#665c53 !important;
-  opacity:1 !important;
-}
-
-/* ---- "Today's learning" heading ---- */
-#kqZonesContainer::before{
-  color:#4f463e !important;
-  opacity:1 !important;
-}
-
-/* ============================================================
-   Zone cards — override ALL legacy night-theme text colors
-   These selectors are intentionally at the END of the file so
-   they win the older V4.x rules in the cascade.
-   ============================================================ */
-#kqZonesContainer .kq-zone-card,
-#kqZonesContainer .kq-zone{
-  color:#3f3832 !important;
-  opacity:1 !important;
-  background:#fffdf8 !important;
-  border-color:#ddd3c6 !important;
-}
-
-#kqZonesContainer .kq-zone-card .kq-zone-body,
-#kqZonesContainer .kq-zone .kq-zone-body{
-  color:#3f3832 !important;
-  opacity:1 !important;
-}
-
-#kqZonesContainer .kq-zone-card .kq-zone-body h3,
-#kqZonesContainer .kq-zone .kq-zone-body h3{
-  color:#3f3832 !important;
-  opacity:1 !important;
-  font-weight:800 !important;
-  text-shadow:none !important;
-}
-
-#kqZonesContainer .kq-zone-card .kq-zone-sub,
-#kqZonesContainer .kq-zone .kq-zone-sub{
-  color:#9a6b16 !important;
-  opacity:1 !important;
-  font-weight:700 !important;
-  text-shadow:none !important;
-}
-
-#kqZonesContainer .kq-zone-card .kq-zone-desc,
-#kqZonesContainer .kq-zone .kq-zone-desc{
-  color:#62584f !important;
-  opacity:1 !important;
-  font-weight:400 !important;
-  line-height:1.55 !important;
-  text-shadow:none !important;
-}
-
-#kqZonesContainer .kq-zone-card .kq-zone-progress,
-#kqZonesContainer .kq-zone .kq-zone-progress{
-  background:#e9e1d6 !important;
-}
-#kqZonesContainer .kq-zone-card .kq-zone-progress-fill,
-#kqZonesContainer .kq-zone .kq-zone-progress-fill{
-  background:#7d9a70 !important;
-}
-
-#kqZonesContainer .kq-zone-icon{
-  border-color:#d9cbbb !important;
-  box-shadow:none !important;
-}
-#kqZonesContainer .kq-zone-card:nth-child(1) .kq-zone-icon{
-  background:#f3d9dc !important;
-}
-#kqZonesContainer .kq-zone-card:nth-child(2) .kq-zone-icon{
-  background:#dfead9 !important;
-}
-#kqZonesContainer .kq-zone-card:nth-child(3) .kq-zone-icon{
-  background:#e8e1d3 !important;
-}
-#kqZonesContainer .kq-zone-card:nth-child(4) .kq-zone-icon{
-  background:#e5ddea !important;
-}
-
-#kqZonesContainer .kq-zone-go{
-  color:#fffdf8 !important;
-  background:#657d5b !important;
-  border:0 !important;
-  box-shadow:0 3px 8px rgba(72,58,43,.14) !important;
-  text-shadow:none !important;
-}
-#kqZonesContainer .kq-zone-go::after{
-  color:#fffdf8 !important;
-}
-
-/* Footnote */
-#kqHubScreen .kq-footnote{
-  color:#665c53 !important;
-  opacity:1 !important;
-}
-
-/* ---- Mobile Home: use the full viewport visually ---- */
-@media(max-width:600px){
-  #kanaQuestScreen{
-    background:#f4f0e7 !important;
-  }
-
-  #kqApp{
-    width:100% !important;
-    max-width:none !important;
-    padding:10px 0 30px !important;
-  }
-
-  #kqHud{
-    margin-left:10px !important;
-    margin-right:10px !important;
-  }
-
-  #kqHubScreen{
-    width:100% !important;
-    max-width:none !important;
-    margin:0 !important;
-    padding:0 10px 26px !important;
-    border-radius:0 !important;
-  }
-
-  #kqHubScreen #kqMapTitle{
-    padding:18px 14px 14px !important;
-    border-radius:18px !important;
-  }
-
-  #kqDailyCard{
-    margin:12px 0 12px !important;
-    padding:15px !important;
-    border-radius:18px !important;
-  }
-
-  #kqZonesContainer{
-    width:100% !important;
-    padding:0 0 12px !important;
-    gap:11px !important;
-  }
-
-  #kqZonesContainer .kq-zone-card,
-  #kqZonesContainer .kq-zone{
-    width:100% !important;
-    max-width:100% !important;
-    padding:14px !important;
-    gap:11px !important;
-    border-radius:18px !important;
-  }
-
-  #kqZonesContainer .kq-zone-icon{
-    width:52px !important;
-    height:52px !important;
-    min-width:52px !important;
-    border-radius:13px !important;
-    font-size:25px !important;
-  }
-
-  #kqZonesContainer .kq-zone-body h3{
-    font-size:15px !important;
-    line-height:1.35 !important;
-  }
-
-  #kqZonesContainer .kq-zone-sub{
-    font-size:12px !important;
-    line-height:1.4 !important;
-  }
-
-  #kqZonesContainer .kq-zone-desc{
-    font-size:12px !important;
-    line-height:1.55 !important;
-  }
-
-  #kqZonesContainer .kq-zone-go-row{
-    margin-top:9px !important;
-  }
-
-  #kqZonesContainer .kq-zone-go{
-    min-height:40px !important;
-    padding:8px 13px !important;
-    font-size:12px !important;
-  }
-}
-
-/* ---- Very small phones ---- */
-@media(max-width:360px){
-  #kqHubScreen{
-    padding-left:8px !important;
-    padding-right:8px !important;
-  }
-
-  #kqDailyCard{
-    padding:13px !important;
-  }
-
-  #kqHubScreen .kq-home-summary{
-    gap:7px !important;
-  }
-
-  #kqHubScreen .kq-home-stat{
-    padding:10px !important;
-  }
-
-  #kqZonesContainer .kq-zone-card,
-  #kqZonesContainer .kq-zone{
-    padding:12px !important;
-    gap:9px !important;
-  }
-
-  #kqZonesContainer .kq-zone-icon{
-    width:48px !important;
-    height:48px !important;
-    min-width:48px !important;
-    font-size:23px !important;
-  }
-}
-
-/* ============================================================
-   V5.2 — End
-   ============================================================ */
 
 </body>
 </html>
