@@ -971,7 +971,7 @@ D('d11','A1','Weather and weekend','อากาศและสุดสัป�
  [['วันนี้อากาศเป็นอย่างไร?',['มีเมฆมากและหนาวเล็กน้อย','ร้อนและแดดจัด','ฝนตกหนัก'],0,'It is cloudy and a little cold.'],['โรสอยากทำอะไรสุดสัปดาห์นี้?',['อยู่บ้านอ่านหนังสือ','ไปเยี่ยมคุณยาย','ไปว่ายน้ำ'],0,'Rose พูดว่า I want to stay at home and read a book.']]),
 D('d12','A1','At school','ที่โรงเรียน',['Teacher','Pim'],[[0,'Pim, where is your homework?','พิม การบ้านของเธออยู่ไหน'],[1,'I am sorry, teacher. I forgot it at home.','ขอโทษค่ะคุณครู หนูลืมไว้ที่บ้าน'],[0,'Please bring it tomorrow.','พรุ่งนี้เอามาด้วยนะ'],[1,'Yes, teacher. Can I borrow a pen?','ค่ะคุณครู หนูขอยืมปากกาได้ไหม'],[0,'Sure. Here you are.','ได้สิ นี่จ้ะ'],[1,'Thank you very much.','ขอบคุณมากค่ะ']],
  [['พิมลืมการบ้านไว้ที่ไหน?',['ที่บ้าน','ที่โรงเรียน','บนรถบัส'],0,'I forgot it at home.'],['พิมขอยืมอะไรจากครู?',['ปากกา','หนังสือ','ดินสอ'],0,'Can I borrow a pen?']]),
-D('d13','A2','Job interview','สัมภาษณ์งาน',['Ms. Gray','Ken'],[[0,'Please tell me about yourself.','ช่วยเล่าเกี่ยวกับตัวคุณหน่อย'],[1,'I am Ken. I studied business and I have two years of experience in sales.','ผมชื่อเคน ผมเรียนด้านธุรกิจและมีประสบการณ์ด้านการขายสองปี'],[0,'Why do you want to work here?','ทำไมคุณถึงอยากทำงานที่นี่'],[1,'I like your company, and I want to improve my skills.','ผมชอบบริษัทของคุณ และอยากพัฒนาทักษะของผม'],[0,'What are you good at?','คุณเก่งเรื่องอะไร'],[1,'I am good at talking to customers and working in a team.','ผมเก่งเรื่องคุยกับลูกค้าและทำงานเป็นทีม'],[0,'Thank you. When can you start?','ขอบคุณ คุณเริ่มงานได้เมื่อไร'],[1,'I can start next Monday.','ผมเริ่มได้วันจันทร์หน้า']],
+D('d13','A2','First job interview','สัมภาษณ์งาน',['Ms. Gray','Ken'],[[0,'Please tell me about yourself.','ช่วยเล่าเกี่ยวกับตัวคุณหน่อย'],[1,'I am Ken. I studied business and I have two years of experience in sales.','ผมชื่อเคน ผมเรียนด้านธุรกิจและมีประสบการณ์ด้านการขายสองปี'],[0,'Why do you want to work here?','ทำไมคุณถึงอยากทำงานที่นี่'],[1,'I like your company, and I want to improve my skills.','ผมชอบบริษัทของคุณ และอยากพัฒนาทักษะของผม'],[0,'What are you good at?','คุณเก่งเรื่องอะไร'],[1,'I am good at talking to customers and working in a team.','ผมเก่งเรื่องคุยกับลูกค้าและทำงานเป็นทีม'],[0,'Thank you. When can you start?','ขอบคุณ คุณเริ่มงานได้เมื่อไร'],[1,'I can start next Monday.','ผมเริ่มได้วันจันทร์หน้า']],
  [['เคนมีประสบการณ์ด้านอะไร?',['การขาย','การสอน','การทำอาหาร'],0,'two years of experience in sales'],['เคนเริ่มงานได้เมื่อไร?',['วันจันทร์หน้า','พรุ่งนี้','เดือนหน้า'],0,'I can start next Monday.']]),
 D('d14','A2','Weekend plans','แผนวันหยุด',['Amy','Chris'],[[0,'What are you going to do this weekend?','สุดสัปดาห์นี้คุณจะทำอะไร'],[1,'I am going to visit my cousin in Chiang Mai.','ฉันจะไปเยี่ยมญาติที่เชียงใหม่'],[0,'That sounds fun. How are you going to travel?','ฟังดูสนุก คุณจะเดินทางอย่างไร'],[1,'I am going to take the night train.','ฉันจะนั่งรถไฟกลางคืน'],[0,'Will you stay long?','คุณจะพักนานไหม'],[1,'No, I will come back on Sunday evening.','ไม่นานหรอก ฉันจะกลับเย็นวันอาทิตย์']],
  [['คริสจะเดินทางไปเชียงใหม่อย่างไร?',['รถไฟกลางคืน','เครื่องบิน','รถบัส'],0,'I am going to take the night train.'],['คริสจะกลับเมื่อไร?',['เย็นวันอาทิตย์','เช้าวันเสาร์','วันจันทร์'],0,'I will come back on Sunday evening.']]),
@@ -1253,6 +1253,177 @@ UNITS.push(
  {t:'Formal email phrases',goal:'เขียนอีเมลทางการให้เป็นมืออาชีพ',p:[['I am writing in response to your inquiry.','ฉันเขียนมาตอบข้อสอบถามของคุณ'],['Please find the report attached.','โปรดดูรายงานที่แนบมา'],['I would appreciate your feedback by Friday.','ขอบคุณหากได้ความเห็นภายในวันศุกร์'],['Should you have any questions, please let me know.','หากมีคำถาม แจ้งได้เลย']],tip:'อีเมลทางการ: เปิดด้วย I am writing… · ขอสุภาพด้วย I would appreciate… · ปิดด้วย Should you have any questions…',q:['ประโยคใดสุภาพและเป็นทางการที่สุด?',['Send me feedback now.','I would appreciate your feedback by Friday.','Give me your opinion.'],1]}]}
 );
 UNITS.slice(16).forEach((u,k)=>u.ls.forEach(l=>l.p.forEach(p=>PHRASES.push({en:p[0],th:p[1],u:16+k}))));
+
+DIALOGS.push(
+D('d41','B1','Calling in sick','โทรลาป่วย',['Tom','Boss'],[[0,'Good morning. I am afraid I cannot come to work today.','สวัสดีครับ วันนี้ผมไปทำงานไม่ได้'],[1,'Oh no. What is the matter?','อ้าว เป็นอะไร'],[0,'I have a high temperature and a sore throat. I will see a doctor this morning.','ไข้สูงและเจ็บคอ เช้านี้จะไปหาหมอ'],[1,'Take care. Do you need anyone to cover your work?','ดูแลตัวเองนะ ต้องการให้ใครช่วยงานไหม'],[0,'Yes, could Mia handle the client call at two? The notes are in the shared folder.','ครับ ให้มีอารับสายลูกค้าบ่ายสองได้ไหม โน้ตอยู่ในโฟลเดอร์ที่แชร์'],[1,'No problem. Get well soon.','ได้เลย หายไวไวนะ']],[['ทำไมทอมไปทำงานไม่ได้?',['ไข้สูงและเจ็บคอ','รถเสีย','ลาพักร้อน'],0,'a high temperature and a sore throat'],['ทอมขอให้ใครช่วยอะไร?',['มีอารับสายลูกค้า','ผู้จัดการทำรายงาน','เลื่อนประชุม'],0,'Mia handle the client call']]),
+D('d42','B1','Ordering office supplies','สั่งอุปกรณ์สำนักงาน',['Ploy','Supplier'],[[0,'Hello, I would like to place an order for office supplies.','สวัสดีค่ะ ขอสั่งอุปกรณ์สำนักงาน'],[1,'Certainly. What do you need?','ได้ค่ะ ต้องการอะไรบ้าง'],[0,'Ten boxes of paper, twenty pens and five folders, please.','กระดาษสิบกล่อง ปากกายี่สิบด้าม แฟ้มห้าอัน'],[1,'We have everything in stock. When do you need them?','มีของครบ ต้องการเมื่อไร'],[0,'By Thursday if possible. Could you send an invoice by email?','วันพฤหัสถ้าเป็นไปได้ ส่งใบแจ้งหนี้ทางอีเมลได้ไหม'],[1,'Of course. Delivery will be free for orders over two thousand baht.','ได้ค่ะ ส่งฟรีถ้าสั่งเกินสองพันบาท']],[['พลอยสั่งอะไร?',['กระดาษ ปากกา และแฟ้ม','คอมพิวเตอร์','เก้าอี้'],0,'paper, pens and folders'],['เงื่อนไขส่งฟรีคืออะไร?',['สั่งเกินสองพันบาท','สั่งวันพฤหัส','จ่ายเงินสด'],0,'free for orders over two thousand baht']]),
+D('d43','B2','Explaining a delay','ชี้แจงความล่าช้ากับลูกค้า',['Mia','Client'],[[0,'Thank you for your patience. I would like to explain why the delivery has been delayed.','ขอบคุณที่รอ ดิฉันขออธิบายสาเหตุที่ส่งล่าช้า'],[1,'Please do. We were expecting it last week.','เชิญเลย เราคาดว่าจะได้สัปดาห์ที่แล้ว'],[0,'A key component was held up at customs, which was beyond our control.','ชิ้นส่วนสำคัญติดที่ศุลกากร ซึ่งอยู่นอกเหนือการควบคุม'],[1,'I understand, but this affects our own schedule.','เข้าใจ แต่กระทบตารางของเรา'],[0,'We apologise. To make up for it, we will deliver on Monday and cover the shipping cost.','ขออภัย เพื่อชดเชย เราจะส่งวันจันทร์และออกค่าส่งให้'],[1,'That is acceptable. Please confirm in writing.','รับได้ ช่วยยืนยันเป็นลายลักษณ์อักษร']],[['สาเหตุของความล่าช้าคืออะไร?',['ชิ้นส่วนสำคัญติดที่ศุลกากร','ลืมสั่ง','โรงงานปิด'],0,'held up at customs'],['บริษัทชดเชยอย่างไร?',['ส่งวันจันทร์และออกค่าส่ง','คืนเงินเต็ม','ให้ส่วนลดครั้งหน้า'],0,'deliver on Monday and cover the shipping cost']]),
+D('d44','B2','Requesting a salary review','ขอทบทวนเงินเดือน',['Mia','Manager'],[[0,'Thank you for meeting me. I would like to discuss my role and salary.','ขอบคุณที่นัดคุย อยากคุยเรื่องบทบาทและเงินเดือน'],[1,'Of course. What would you like to raise?','ได้ อยากพูดเรื่องอะไร'],[0,'Over the past year, I have taken on more responsibility and led two major projects.','ปีที่ผ่านมารับผิดชอบเพิ่มและนำสองโครงการใหญ่'],[1,'I agree your performance has been strong. What do you have in mind?','เห็นด้วยว่าผลงานดีมาก คิดไว้เท่าไร'],[0,'Based on the market, I believe a ten percent increase would be reasonable.','ตามตลาด คิดว่าเพิ่มสิบเปอร์เซ็นต์สมเหตุสมผล'],[1,'Let me discuss it with HR and get back to you by next week.','ขอคุยกับ HR แล้วติดต่อกลับสัปดาห์หน้า']],[['มีอาใช้เหตุผลอะไร?',['รับผิดชอบเพิ่มและนำสองโครงการ','อยู่มานาน','ค่าครองชีพสูง'],0,'more responsibility … two major projects'],['ผู้จัดการสัญญาว่าจะทำอะไร?',['คุยกับ HR แล้วตอบสัปดาห์หน้า','ปฏิเสธ','ขึ้นเงินทันที'],0,'discuss it with HR … by next week']])
+);
+READS.push(
+{id:'r19',lv:'B1',t:'Why Learn English for Work',th:'ทำไมต้องเรียนอังกฤษเพื่อการทำงาน',x:'English is often called the language of business. Many companies use it in emails, meetings and reports, even when the staff are not native speakers. People who speak English well usually have more job opportunities and can work with international clients. You do not need perfect grammar, though. Clear, polite and simple sentences are often more useful than complicated ones.',q:[['ทำไมคนที่พูดอังกฤษได้ดีจึงได้เปรียบ?',['มีโอกาสงานมากกว่า','เงินเดือนเท่ากันเสมอ','ไม่ต้องประชุม'],0,'more job opportunities'],['บทความแนะนำเรื่องประโยคอย่างไร?',['ใช้ประโยคสั้น สุภาพ ชัดเจน','ใช้ประโยคซับซ้อนเสมอ','พูดเร็ว ๆ'],0,'Clear, polite and simple sentences']]},
+{id:'r20',lv:'B1',t:'Getting Around Bangkok',th:'เดินทางในกรุงเทพ',x:'Traffic in Bangkok is famous for being heavy, so many people choose the Skytrain or the metro. Both are fast, air-conditioned and easy to use, although they can be crowded at rush hour. For short trips, motorcycle taxis are popular, but they are not always safe. If you are in a hurry, it is usually better to leave early and use public transport.',q:[['ทำไมคนจำนวนมากเลือกรถไฟฟ้า?',['เร็วและแอร์เย็น','ถูกที่สุด','ไม่มีคนเยอะ'],0,'fast, air-conditioned and easy to use'],['ข้อแนะนำเมื่อรีบคืออะไร?',['ออกเร็วและใช้ขนส่งสาธารณะ','ขับรถเอง','เรียกมอเตอร์ไซค์'],0,'leave early and use public transport']]},
+{id:'r21',lv:'B2',t:'The Four-Day Week',th:'ทำงานสี่วันต่อสัปดาห์',x:'Several companies have recently tested a four-day working week with no cut in pay. Supporters argue that staff become more focused and that burnout falls, which in turn reduces staff turnover. Critics, however, point out that the model does not suit every industry, particularly those that depend on constant customer contact. Most trials conclude that results depend largely on how carefully the change is planned.',q:[['ข้อดีที่ผู้สนับสนุนเสนอคือ?',['พนักงานมีสมาธิและหมดไฟน้อยลง','ได้เงินเดือนเพิ่ม','ลูกค้ามากขึ้น'],0,'more focused … burnout falls'],['ผลทดลองส่วนใหญ่สรุปว่าอย่างไร?',['ขึ้นอยู่กับการวางแผนอย่างรอบคอบ','ใช้ได้ทุกอุตสาหกรรม','ไม่ได้ผลเลย'],0,'depend largely on how carefully the change is planned']]},
+{id:'r22',lv:'B2',t:'Why Customer Reviews Matter',th:'ทำไมรีวิวลูกค้าสำคัญ',x:'Before buying a product, most people read online reviews. A single negative comment can discourage potential customers, whereas a prompt and polite response often turns criticism into an opportunity. Companies that monitor reviews regularly are therefore better placed to improve their service. Nevertheless, they should avoid defensive replies, which tend to damage trust.',q:[['บริษัทควรตอบรีวิวลบอย่างไร?',['เร็วและสุภาพ','เพิกเฉย','โต้แย้งทันที'],0,'a prompt and polite response'],['ทำไมไม่ควรตอบแบบป้องกันตัว?',['ทำลายความไว้วางใจ','เสียเวลา','ผิดกฎหมาย'],0,'defensive replies … damage trust']]}
+);
+
+/* ===== vocab pack 5: B1 society/news + A2 home ===== */
+addW(B1B,`community|ชุมชน|n.|Our community is very friendly.|ชุมชนของเราเป็นมิตร
+society|สังคม|n.|Technology changes society.|เทคโนโลยีเปลี่ยนสังคม
+culture|วัฒนธรรม|n.|I love Thai culture.|ฉันรักวัฒนธรรมไทย
+tradition|ประเพณี|n.|It is a family tradition.|เป็นประเพณีของครอบครัว
+population|ประชากร|n.|The population is growing.|ประชากรเพิ่มขึ้น
+government|รัฐบาล|n.|The government announced a new law.|รัฐบาลประกาศกฎหมายใหม่
+law|กฎหมาย|n.|It is against the law.|ผิดกฎหมาย
+crime|อาชญากรรม|n.|Crime is falling in the city.|อาชญากรรมในเมืองลดลง
+police|ตำรวจ|n.|Call the police.|โทรเรียกตำรวจ
+accident|อุบัติเหตุ|n.|There was a car accident.|มีอุบัติเหตุรถชน
+emergency|เหตุฉุกเฉิน|n.|Call 191 in an emergency.|โทรเรียกในเหตุฉุกเฉิน
+charity|การกุศล|n.|They raised money for charity.|เขาระดมเงินการกุศล
+volunteer|อาสาสมัคร|n.|I volunteer at a shelter.|ฉันเป็นอาสาสมัครที่ศูนย์พักพิง
+donate|บริจาค|v.|We donated old clothes.|เราบริจาคเสื้อผ้าเก่า
+environment|สิ่งแวดล้อม|n.|We must protect the environment.|เราต้องปกป้องสิ่งแวดล้อม
+pollution|มลพิษ|n.|Pollution is a serious problem.|มลพิษเป็นปัญหาร้ายแรง
+recycle|รีไซเคิล|v.|Please recycle plastic bottles.|กรุณารีไซเคิลขวดพลาสติก
+energy|พลังงาน|n.|We save energy at home.|เราประหยัดพลังงานที่บ้าน
+climate|ภูมิอากาศ|n.|Climate change is real.|การเปลี่ยนแปลงสภาพอากาศเป็นเรื่องจริง
+disaster|ภัยพิบัติ|n.|The flood was a disaster.|น้ำท่วมเป็นภัยพิบัติ
+news|ข่าว|n.|Did you watch the news?|คุณดูข่าวไหม
+article|บทความ|n.|I read an interesting article.|ฉันอ่านบทความน่าสนใจ
+headline|พาดหัวข่าว|n.|The headline shocked everyone.|พาดหัวข่าวทำให้ทุกคนตกใจ
+media|สื่อ|n.|Social media is popular.|โซเชียลมีเดียได้รับความนิยม
+advertisement|โฆษณา|n.|I saw an advertisement online.|ฉันเห็นโฆษณาออนไลน์
+entertainment|ความบันเทิง|n.|Music is great entertainment.|ดนตรีเป็นความบันเทิงที่ดี
+review|รีวิว|n.|I read a review before buying.|ฉันอ่านรีวิวก่อนซื้อ
+persuade|ชักชวน|v.|She persuaded me to join.|เธอชักชวนให้ฉันเข้าร่วม
+convince|ทำให้เชื่อ|v.|He convinced the boss.|เขาทำให้เจ้านายเชื่อ
+encourage|ให้กำลังใจ|v.|My teacher encouraged me.|ครูให้กำลังใจฉัน
+warn|เตือน|v.|They warned us about the storm.|เขาเตือนเราเรื่องพายุ
+admit|ยอมรับ|v.|He admitted his mistake.|เขายอมรับความผิดพลาด
+deny|ปฏิเสธ|v.|She denied the rumour.|เธอปฏิเสธข่าวลือ
+forgive|ให้อภัย|v.|Please forgive me.|ขอให้อภัยฉันด้วย
+blame|โทษ|v.|Do not blame yourself.|อย่าโทษตัวเอง
+friendship|มิตรภาพ|n.|Friendship is important.|มิตรภาพสำคัญ
+generation|คนรุ่น|n.|The younger generation uses apps.|คนรุ่นใหม่ใช้แอป
+custom|ธรรมเนียม|n.|It is a local custom.|เป็นธรรมเนียมท้องถิ่น`);
+addW(20,`kitchen|ห้องครัว|n.|She is in the kitchen.|เธออยู่ในครัว
+bathroom|ห้องน้ำ|n.|The bathroom is upstairs.|ห้องน้ำอยู่ชั้นบน
+bedroom|ห้องนอน|n.|My bedroom is small.|ห้องนอนฉันเล็ก
+furniture|เฟอร์นิเจอร์|n.|We bought new furniture.|เราซื้อเฟอร์นิเจอร์ใหม่
+sofa|โซฟา|n.|The sofa is comfortable.|โซฟานั่งสบาย
+fridge|ตู้เย็น|n.|The milk is in the fridge.|นมอยู่ในตู้เย็น
+cupboard|ตู้เก็บของ|n.|Put the plates in the cupboard.|เก็บจานในตู้
+towel|ผ้าเช็ดตัว|n.|I need a clean towel.|ฉันต้องการผ้าเช็ดตัวสะอาด
+soap|สบู่|n.|Wash your hands with soap.|ล้างมือด้วยสบู่
+shower|อาบน้ำฝักบัว|n.|I take a shower every morning.|ฉันอาบน้ำทุกเช้า
+mirror|กระจก|n.|Look in the mirror.|ส่องกระจกดู
+wardrobe|ตู้เสื้อผ้า|n.|My clothes are in the wardrobe.|เสื้อผ้าอยู่ในตู้
+curtain|ผ้าม่าน|n.|Please close the curtains.|กรุณาปิดม่าน
+garden|สวน|n.|They have a small garden.|เขามีสวนเล็ก ๆ
+balcony|ระเบียง|n.|We drink coffee on the balcony.|เราดื่มกาแฟที่ระเบียง
+stairs|บันได|n.|Take the stairs.|ใช้บันได
+elevator|ลิฟต์|n.|The elevator is broken.|ลิฟต์เสีย
+rent|ค่าเช่า / เช่า|n.|The rent is cheap.|ค่าเช่าถูก
+landlord|เจ้าของห้องเช่า|n.|My landlord is kind.|เจ้าของห้องใจดี
+apartment|อพาร์ตเมนต์|n.|I live in an apartment.|ฉันอยู่อพาร์ตเมนต์
+move|ย้าย|v.|We moved last month.|เราย้ายบ้านเดือนที่แล้ว
+pack|แพ็ก|v.|I need to pack my bags.|ฉันต้องแพ็กกระเป๋า
+lend|ให้ยืม|v.|Can you lend me a pen?|ให้ยืมปากกาได้ไหม
+carry|ถือ / แบก|v.|Can you carry this bag?|ช่วยถือกระเป๋านี้ได้ไหม
+throw away|ทิ้ง|v.|Do not throw away that paper.|อย่าทิ้งกระดาษนั้น
+wash|ล้าง|v.|I wash the dishes after dinner.|ฉันล้างจานหลังอาหารเย็น
+dry|ตาก / แห้ง|v.|Dry the clothes outside.|ตากผ้าข้างนอก
+switch off|ปิด|v.|Please switch off the light.|กรุณาปิดไฟ
+switch on|เปิด|v.|Switch on the fan.|เปิดพัดลม
+upstairs|ชั้นบน|adv.|He went upstairs.|เขาขึ้นไปชั้นบน
+downstairs|ชั้นล่าง|adv.|Wait downstairs.|รอที่ชั้นล่าง`);
+
+/* ===== B1/B2 vocab pack 4: tech, finance, legal, abstract ===== */
+addW(B1B,`software|ซอฟต์แวร์|n.|We use new software for invoices.|เราใช้ซอฟต์แวร์ใหม่ทำใบแจ้งหนี้
+website|เว็บไซต์|n.|Please check our website.|กรุณาดูเว็บไซต์ของเรา
+password|รหัสผ่าน|n.|I forgot my password.|ฉันลืมรหัสผ่าน
+download|ดาวน์โหลด|v.|You can download the file here.|ดาวน์โหลดไฟล์ได้ที่นี่
+upload|อัปโหลด|v.|Please upload the document.|กรุณาอัปโหลดเอกสาร
+install|ติดตั้ง|v.|I need to install the program.|ฉันต้องติดตั้งโปรแกรม
+update|อัปเดต|v.|Please update the software.|กรุณาอัปเดตซอฟต์แวร์
+online|ออนไลน์|adj.|We have an online meeting.|เรามีประชุมออนไลน์
+screen|หน้าจอ|n.|Can you share your screen?|แชร์หน้าจอได้ไหม
+file|ไฟล์|n.|I sent you the file.|ฉันส่งไฟล์ให้คุณแล้ว
+folder|โฟลเดอร์|n.|It is in the shared folder.|อยู่ในโฟลเดอร์ที่แชร์
+backup|สำรองข้อมูล|n.|Always make a backup.|สำรองข้อมูลไว้เสมอ
+network|เครือข่าย|n.|The network is down.|เครือข่ายล่ม
+battery|แบตเตอรี่|n.|My battery is low.|แบตเตอรี่ของฉันใกล้หมด
+search|ค้นหา|v.|Search for the report.|ค้นหารายงาน
+click|คลิก|v.|Click the link below.|คลิกลิงก์ด้านล่าง
+login|เข้าสู่ระบบ|n.|I cannot log in.|ฉันเข้าสู่ระบบไม่ได้
+bonus|โบนัส|n.|She received a bonus.|เธอได้โบนัส
+insurance|ประกัน|n.|The company provides insurance.|บริษัทมีประกันให้
+shift|กะงาน|n.|I work the night shift.|ฉันทำกะกลางคืน
+holiday|วันหยุด|n.|Monday is a public holiday.|วันจันทร์เป็นวันหยุดนักขัตฤกษ์
+stress|ความเครียด|n.|Work causes a lot of stress.|งานทำให้เครียดมาก
+exercise|ออกกำลังกาย|v.|I exercise three times a week.|ฉันออกกำลังกายสัปดาห์ละสามครั้ง
+habit|นิสัย|n.|Reading is a good habit.|การอ่านเป็นนิสัยที่ดี
+healthy|สุขภาพดี|adj.|Try to eat healthy food.|พยายามกินอาหารสุขภาพ
+rest|พัก|v.|You should rest this weekend.|คุณควรพักสุดสัปดาห์นี้
+course|คอร์สเรียน|n.|I am taking an English course.|ฉันเรียนคอร์สภาษาอังกฤษ
+lecture|การบรรยาย|n.|The lecture starts at ten.|การบรรยายเริ่มสิบโมง
+certificate|ใบรับรอง|n.|She has a language certificate.|เธอมีใบรับรองภาษา
+progress|ความก้าวหน้า|n.|You are making good progress.|คุณก้าวหน้าดี
+improve|ปรับปรุง|v.|I want to improve my speaking.|ฉันอยากพัฒนาการพูด
+practise|ฝึก|v.|You need to practise every day.|ต้องฝึกทุกวัน
+mistake|ข้อผิดพลาด|n.|Everyone makes mistakes.|ทุกคนทำพลาดได้
+correct|ถูกต้อง / แก้ไข|v.|Please correct the typo.|กรุณาแก้คำพิมพ์ผิด
+translate|แปล|v.|Can you translate this email?|ช่วยแปลอีเมลนี้ได้ไหม
+pronounce|ออกเสียง|v.|How do you pronounce this word?|คำนี้ออกเสียงอย่างไร`);
+addW(B2B,`analytics|การวิเคราะห์ข้อมูล|n.|Analytics show a clear trend.|ข้อมูลวิเคราะห์แสดงแนวโน้มชัดเจน
+database|ฐานข้อมูล|n.|The database stores customer records.|ฐานข้อมูลเก็บข้อมูลลูกค้า
+encryption|การเข้ารหัส|n.|Encryption protects our data.|การเข้ารหัสปกป้องข้อมูล
+integrate|รวมระบบ|v.|We will integrate the two systems.|เราจะรวมสองระบบ
+automate|ทำให้อัตโนมัติ|v.|We want to automate reporting.|เราอยากทำรายงานอัตโนมัติ
+platform|แพลตฟอร์ม|n.|It is a cloud platform.|เป็นแพลตฟอร์มคลาวด์
+scalable|ขยายได้|adj.|The solution is scalable.|โซลูชันนี้ขยายได้
+cash flow|กระแสเงินสด|n.|Cash flow is a problem.|กระแสเงินสดเป็นปัญหา
+asset|สินทรัพย์|n.|The building is an asset.|อาคารเป็นสินทรัพย์
+liability|หนี้สิน / ความรับผิด|n.|The company has large liabilities.|บริษัทมีหนี้สินมาก
+invest|ลงทุน|v.|They invested in new equipment.|เขาลงทุนซื้ออุปกรณ์ใหม่
+investment|การลงทุน|n.|It is a good investment.|เป็นการลงทุนที่ดี
+inflation|เงินเฟ้อ|n.|Inflation raised our costs.|เงินเฟ้อทำให้ต้นทุนสูงขึ้น
+debt|หนี้|n.|We reduced our debt.|เราลดหนี้ลง
+interest rate|อัตราดอกเบี้ย|n.|The interest rate rose.|อัตราดอกเบี้ยเพิ่ม
+audit|การตรวจสอบบัญชี|n.|The audit is next week.|ตรวจสอบบัญชีสัปดาห์หน้า
+shareholder|ผู้ถือหุ้น|n.|Shareholders approved the plan.|ผู้ถือหุ้นอนุมัติแผน
+bankruptcy|การล้มละลาย|n.|The firm went into bankruptcy.|บริษัทล้มละลาย
+clause|ข้อสัญญา|n.|Please read clause five.|กรุณาอ่านข้อห้า
+terms|เงื่อนไข|n.|Do you agree to the terms?|คุณยอมรับเงื่อนไขไหม
+confidentiality|การรักษาความลับ|n.|Confidentiality is essential.|การรักษาความลับสำคัญมาก
+copyright|ลิขสิทธิ์|n.|The image is under copyright.|ภาพนี้มีลิขสิทธิ์
+breach|การละเมิด|n.|It was a breach of contract.|เป็นการผิดสัญญา
+dispute|ข้อพิพาท|n.|They settled the dispute.|เขาไกล่เกลี่ยข้อพิพาทได้
+liable|ต้องรับผิด|adj.|The company is liable for damage.|บริษัทต้องรับผิดชอบความเสียหาย
+viable|ทำได้จริง|adj.|Is this plan viable?|แผนนี้ทำได้จริงไหม
+substantial|มาก / สำคัญ|adj.|We made substantial progress.|เราก้าวหน้ามาก
+inevitable|หลีกเลี่ยงไม่ได้|adj.|Some delay is inevitable.|ความล่าช้าบางอย่างหลีกเลี่ยงไม่ได้
+comprehensive|ครอบคลุม|adj.|It is a comprehensive report.|เป็นรายงานที่ครอบคลุม
+thorough|ละเอียดถี่ถ้วน|adj.|She did a thorough check.|เธอตรวจอย่างละเอียด
+coherent|สอดคล้อง|adj.|The plan is coherent.|แผนสอดคล้องกัน
+versatile|หลากหลายความสามารถ|adj.|He is a versatile employee.|เขาเป็นพนักงานที่ทำได้หลายอย่าง
+resilient|ยืดหยุ่น / ฟื้นตัวเร็ว|adj.|The team is resilient.|ทีมฟื้นตัวเร็ว
+ambitious|มีความทะเยอทะยาน|adj.|It is an ambitious goal.|เป็นเป้าหมายที่ท้าทาย
+supervise|ควบคุมดูแล|v.|She supervises ten staff.|เธอดูแลพนักงานสิบคน
+monitor|ติดตามตรวจสอบ|v.|We monitor progress weekly.|เราติดตามความก้าวหน้ารายสัปดาห์`);
+
+READS.push(
+{id:'r16',lv:'A1',t:'My Family',th:'ครอบครัวของฉัน',x:'My name is Nok. I am twenty-five years old. I live in Bangkok with my mother, my father and my little brother. My mother is a teacher. My father works in a bank. My brother is a student. We have a cat. Her name is Mimi. I love my family.',q:[['พ่อของนกทำงานที่ไหน?',['ธนาคาร','โรงเรียน','โรงพยาบาล'],0,'works in a bank'],['ครอบครัวเลี้ยงอะไร?',['แมว','หมา','ปลา'],0,'We have a cat']]},
+{id:'r17',lv:'A1',t:'At the Market',th:'ที่ตลาด',x:'Every Saturday, I go to the market. I buy vegetables, fruit and eggs. The vegetables are cheap. The mangoes are sweet. I pay in cash. Then I go home and cook lunch for my family.',q:[['ผู้เขียนไปตลาดวันไหน?',['วันเสาร์','วันอาทิตย์','วันจันทร์'],0,'Every Saturday'],['ผู้เขียนจ่ายอย่างไร?',['เงินสด','บัตร','โอน'],0,'I pay in cash']]},
+{id:'r18',lv:'A1',t:'My Office',th:'ที่ทำงานของฉัน',x:'I work in an office near the station. There are ten people in my team. My desk is next to the window. I have a computer, a phone and a lamp. I start at nine and finish at six. I like my job.',q:[['ในทีมมีกี่คน?',['สิบคน','หกคน','เก้าคน'],0,'ten people'],['โต๊ะอยู่ข้างอะไร?',['หน้าต่าง','ประตู','ผนัง'],0,'next to the window']]}
+);
+DIALOGS.push(
+D('d37','B1','Rescheduling a meeting','เลื่อนนัดประชุม',['Mia','Client'],[[0,'Hello, Mr. Lee. I am afraid I need to reschedule our meeting.','สวัสดีค่ะ คุณลี ดิฉันต้องขอเลื่อนประชุมค่ะ'],[1,'Oh, is there a problem?','อ้าว มีปัญหาหรือเปล่า'],[0,'Yes, I have to attend an urgent client call on Thursday.','ค่ะ ต้องรับสายลูกค้าด่วนวันพฤหัส'],[1,'I see. Would Friday morning suit you?','เข้าใจครับ เช้าวันศุกร์สะดวกไหม'],[0,'Friday at ten would be perfect. I will send a new invitation.','วันศุกร์สิบโมงเหมาะมากค่ะ จะส่งคำเชิญใหม่'],[1,'Great. Thank you for letting me know.','ดีครับ ขอบคุณที่แจ้ง']],[['ทำไมมีอาต้องเลื่อน?',['มีสายลูกค้าด่วน','ป่วย','ลืมนัด'],0,'urgent client call'],['นัดใหม่คือเมื่อไร?',['เช้าวันศุกร์ สิบโมง','เย็นวันพฤหัส','วันจันทร์'],0,'Friday at ten']]),
+D('d38','B1','IT help desk','แจ้งปัญหาที่ฝ่ายไอที',['Tom','IT Support'],[[0,'Hi, my laptop will not connect to the Wi-Fi.','สวัสดี โน้ตบุ๊กต่อ Wi-Fi ไม่ได้'],[1,'Have you tried restarting it?','ลองรีสตาร์ตหรือยัง'],[0,'Yes, twice, but it still does not work.','ลองสองครั้งแล้ว ยังใช้ไม่ได้'],[1,'Could you check if other devices can connect?','ลองดูว่าอุปกรณ์อื่นต่อได้ไหม'],[0,'My phone connects fine, so it must be the laptop.','มือถือต่อได้ปกติ แสดงว่าเป็นที่โน้ตบุ๊ก'],[1,'I will send someone to look at it this afternoon.','ผมจะส่งคนไปดูบ่ายนี้']],[['ปัญหาของทอมคืออะไร?',['โน้ตบุ๊กต่อ Wi-Fi ไม่ได้','ลืมรหัส','จอเสีย'],0,'will not connect to the Wi-Fi'],['ทอมสรุปว่าปัญหาอยู่ที่ไหน?',['โน้ตบุ๊ก','เราเตอร์','มือถือ'],0,'it must be the laptop']]),
+D('d39','B2','Proposing an idea to the boss','เสนอไอเดียกับหัวหน้า',['Mia','Boss'],[[0,'Do you have a few minutes? I would like to propose a change to our onboarding process.','ว่างไหมคะ อยากเสนอปรับขั้นตอนปฐมนิเทศ'],[1,'Go ahead. What exactly do you have in mind?','เชิญ คิดไว้อย่างไร'],[0,'At the moment, new staff receive too much information in the first week, which leaves them overwhelmed.','ตอนนี้พนักงานใหม่ได้ข้อมูลเยอะในสัปดาห์แรกจนท่วมท้น'],[1,'That is a valid concern. What would you suggest?','ประเด็นสมเหตุสมผล เสนอว่าอย่างไร'],[0,'I suggest spreading the training over a month and assigning each newcomer a mentor.','เสนอให้กระจายอบรมเป็นหนึ่งเดือนและให้มีพี่เลี้ยง'],[1,'Interesting. Prepare a short proposal and we will discuss costs on Monday.','น่าสนใจ ทำข้อเสนอสั้น ๆ แล้วคุยเรื่องค่าใช้จ่ายวันจันทร์']],[['มีอาเห็นปัญหาอะไร?',['พนักงานใหม่ได้ข้อมูลมากจนท่วมท้น','อบรมสั้นไป','ไม่มีพี่เลี้ยง'],0,'too much information … overwhelmed'],['หัวหน้าให้ทำอะไรต่อ?',['เตรียมข้อเสนอสั้น ๆ','ยกเลิกแผน','ประชุมวันนี้'],0,'Prepare a short proposal']]),
+D('d40','B2','Resolving a team conflict','คลี่คลายความขัดแย้งในทีม',['Mia','Ben'],[[0,'Ben, I would like to clear the air about yesterday’s meeting.','เบน อยากคุยเรื่องประชุมเมื่อวานให้กระจ่าง'],[1,'Sure. I felt that my ideas were ignored.','ได้ ผมรู้สึกว่าไอเดียถูกเมินเฉย'],[0,'I am sorry you felt that way. I did not mean to dismiss them.','ขอโทษที่ทำให้รู้สึกอย่างนั้น ไม่ได้ตั้งใจปัดตก'],[1,'I appreciate that. I just wish we had more time to discuss them.','ขอบคุณ แค่อยากให้มีเวลาคุยมากกว่านี้'],[0,'Let us schedule a separate session so that each idea gets proper attention.','นัดคุยแยกเพื่อให้ทุกไอเดียได้รับความสนใจ'],[1,'That would be great. Thank you for listening.','ดีมาก ขอบคุณที่รับฟัง']],[['เบนรู้สึกอย่างไร?',['ไอเดียถูกเมินเฉย','โกรธหัวหน้า','เบื่อประชุม'],0,'my ideas were ignored'],['มีอาเสนออะไร?',['นัดคุยแยกอีกครั้ง','เปลี่ยนทีม','ยกเลิกประชุม'],0,'schedule a separate session']])
+);
+
 /* ===== B1/B2 general vocab pack ===== */
 addW(B1B,`believe|เชื่อว่า|v.|I believe we can finish on time.|ฉันเชื่อว่าเราเสร็จทัน
 imagine|จินตนาการ|v.|Imagine working from a beach.|ลองนึกภาพทำงานจากชายหาด
@@ -1334,7 +1505,7 @@ D('d36','B2','Giving feedback to a colleague','ให้ฟีดแบ็กเ
 DIALOGS.push(
 D('d29','A2','At a restaurant','สั่งอาหารที่ร้าน',['Ann','Waiter'],[[1,'Good evening. Are you ready to order?','สวัสดีครับ พร้อมสั่งหรือยังครับ'],[0,'Yes. I would like the chicken soup, please.','ค่ะ ขอซุปไก่ค่ะ'],[1,'Would you like something to drink?','รับเครื่องดื่มไหมครับ'],[0,'A glass of water, please.','น้ำเปล่าหนึ่งแก้วค่ะ'],[1,'Anything else?','รับอะไรเพิ่มไหมครับ'],[0,'No, thank you. Could I have the bill later?','ไม่ค่ะ ขอบคุณ ขอเช็คบิลทีหลังได้ไหมคะ']],[['แอนสั่งอะไร?',['ซุปไก่','สเต็ก','สลัด'],0,'“the chicken soup”'],['แอนขอเครื่องดื่มอะไร?',['น้ำเปล่า','กาแฟ','ชา'],0,'A glass of water']]),
 D('d30','A2','Asking for directions','ถามทาง',['Tom','Stranger'],[[0,'Excuse me, where is the post office?','ขอโทษครับ ไปรษณีย์อยู่ที่ไหน'],[1,'Go straight and turn left at the bank.','ตรงไปแล้วเลี้ยวซ้ายตรงธนาคาร'],[0,'Is it far from here?','ไกลจากที่นี่ไหมครับ'],[1,'No, it is about five minutes on foot.','ไม่ไกล เดินประมาณห้านาที'],[0,'Thank you very much.','ขอบคุณมากครับ'],[1,'You are welcome.','ยินดีครับ']],[['ต้องเลี้ยวซ้ายตรงไหน?',['ธนาคาร','ร้านกาแฟ','โรงเรียน'],0,'turn left at the bank'],['เดินไปไกลแค่ไหน?',['ประมาณห้านาที','ครึ่งชั่วโมง','หนึ่งชั่วโมง'],0,'about five minutes on foot']]),
-D('d31','A2','At the doctor','พบแพทย์',['Doctor','Mia'],[[0,'What seems to be the problem?','เป็นอะไรมาครับ'],[1,'I have a headache and a sore throat.','ปวดหัวและเจ็บคอค่ะ'],[0,'How long have you felt like this?','เป็นมานานแค่ไหนแล้ว'],[1,'Since Monday.','ตั้งแต่วันจันทร์ค่ะ'],[0,'Take this medicine twice a day and drink a lot of water.','กินยานี้วันละสองครั้งและดื่มน้ำมาก ๆ'],[1,'Thank you, doctor.','ขอบคุณค่ะหมอ']],[['มีอามีอาการอะไร?',['ปวดหัวและเจ็บคอ','ปวดท้อง','ไอ'],0,'a headache and a sore throat'],['หมอแนะนำอะไร?',['กินยาวันละสองครั้งและดื่มน้ำ','ผ่าตัด','ไม่ต้องทำอะไร'],0,'twice a day and drink a lot of water']]),
+D('d31','A2','Describing symptoms','พบแพทย์',['Doctor','Mia'],[[0,'What seems to be the problem?','เป็นอะไรมาครับ'],[1,'I have a headache and a sore throat.','ปวดหัวและเจ็บคอค่ะ'],[0,'How long have you felt like this?','เป็นมานานแค่ไหนแล้ว'],[1,'Since Monday.','ตั้งแต่วันจันทร์ค่ะ'],[0,'Take this medicine twice a day and drink a lot of water.','กินยานี้วันละสองครั้งและดื่มน้ำมาก ๆ'],[1,'Thank you, doctor.','ขอบคุณค่ะหมอ']],[['มีอามีอาการอะไร?',['ปวดหัวและเจ็บคอ','ปวดท้อง','ไอ'],0,'a headache and a sore throat'],['หมอแนะนำอะไร?',['กินยาวันละสองครั้งและดื่มน้ำ','ผ่าตัด','ไม่ต้องทำอะไร'],0,'twice a day and drink a lot of water']]),
 D('d32','B1','Returning an item','คืนสินค้า',['Customer','Staff'],[[0,'Hello, I would like to return this shirt.','สวัสดีค่ะ ขอคืนเสื้อตัวนี้'],[1,'Is there a problem with it?','มีปัญหาอะไรไหมคะ'],[0,'It is too small, and I bought it three days ago.','เล็กไปค่ะ และซื้อมาสามวันแล้ว'],[1,'Do you have the receipt?','มีใบเสร็จไหมคะ'],[0,'Yes, here it is. Could I exchange it for a larger size?','มีค่ะ นี่ค่ะ เปลี่ยนเป็นไซส์ใหญ่ขึ้นได้ไหมคะ'],[1,'Of course. Let me check if we have one in stock.','ได้ค่ะ ขอเช็คว่ามีของไหม']],[['ลูกค้าอยากคืนเพราะอะไร?',['เสื้อเล็กเกินไป','สีไม่สวย','แพงเกินไป'],0,'It is too small'],['ลูกค้าต้องการอะไร?',['เปลี่ยนเป็นไซส์ใหญ่ขึ้น','ขอเงินคืน','ไม่ต้องการอะไร'],0,'exchange it for a larger size']]),
 D('d33','B1','Hotel booking problem','ปัญหาการจองโรงแรม',['Guest','Receptionist'],[[0,'Good afternoon. I have a reservation under the name Park.','สวัสดีครับ ผมจองในชื่อพาร์ค'],[1,'I am sorry, but I cannot find your booking.','ขออภัยค่ะ ไม่พบการจอง'],[0,'I booked a single room online last week. I have the confirmation email.','ผมจองห้องเดี่ยวออนไลน์สัปดาห์ที่แล้ว มีอีเมลยืนยัน'],[1,'Thank you. Ah, I see the problem. It was booked for next month.','ขอบคุณค่ะ เจอปัญหาแล้ว จองไว้เดือนหน้า'],[0,'That is a mistake. Do you have any rooms available tonight?','นั่นผิดพลาด คืนนี้มีห้องว่างไหม'],[1,'Yes, we do. I will change it for you at no extra cost.','มีค่ะ จะแก้ให้โดยไม่คิดเพิ่ม']],[['ปัญหาคืออะไร?',['การจองระบุเป็นเดือนหน้า','ห้องเต็มทุกห้อง','ไม่มีอีเมลยืนยัน'],0,'booked for next month'],['โรงแรมแก้ปัญหาอย่างไร?',['เปลี่ยนให้โดยไม่คิดเพิ่ม','คืนเงิน','ให้ไปโรงแรมอื่น'],0,'change it … at no extra cost']]),
 D('d34','B2','Overdue invoice','ทวงใบแจ้งหนี้ที่เลยกำหนด',['Mia','Client'],[[0,'Good morning. I am calling about invoice 2043, which was due last week.','สวัสดีค่ะ โทรเรื่องใบแจ้งหนี้ 2043 ที่ครบกำหนดสัปดาห์ที่แล้ว'],[1,'Oh, I apologise. I thought it had already been paid.','ขออภัย ผมคิดว่าจ่ายไปแล้ว'],[0,'Our records show that the payment is still pending.','ในระบบยังเป็นสถานะรอชำระค่ะ'],[1,'Let me check with our finance team and get back to you.','ขอตรวจกับฝ่ายการเงินแล้วติดต่อกลับ'],[0,'Thank you. Could you confirm by Friday so that we can update our records?','ขอบคุณค่ะ ช่วยยืนยันภายในวันศุกร์เพื่อเราจะอัปเดตข้อมูลได้ไหม'],[1,'Certainly. I will send you the transfer slip as soon as possible.','ได้ครับ จะส่งหลักฐานการโอนให้โดยเร็ว']],[['ทำไมมีอาโทรหา?',['ใบแจ้งหนี้เลยกำหนด','สั่งสินค้าใหม่','ขอส่วนลด'],0,'invoice … due last week'],['ลูกค้าจะทำอะไรต่อ?',['เช็กกับฝ่ายการเงินและส่งหลักฐานการโอน','ยกเลิกคำสั่งซื้อ','ปฏิเสธการจ่าย'],0,'check with finance and send the transfer slip']])
@@ -1742,11 +1913,12 @@ const H=(t,s,r)=>`<div class="pgtitle"><div><h2>${t}</h2>${s?`<p>${s}</p>`:''}</
 const pane=h=>{$('#pane').innerHTML=h};
 
 /* ================= HOME ================= */
-function nextLesson(){for(let u=0;u<UNITS.length;u++)for(let l=0;l<UNITS[u].ls.length;l++)if(!S.courseDone.includes(u+'-'+l))return[u,l];return null}
+const ulv=u=>u<6?'A1':u<12?'A2':/\(B2\)/.test(UNITS[u].th)?'B2':'B1';
+function nextLesson(){const k=GR[(S.set&&S.set.level)||'A1']||0;const pass=(u,strict)=>!strict||GR[ulv(u)]>=k;for(const strict of [true,false])for(let u=0;u<UNITS.length;u++){if(!pass(u,strict))continue;for(let l=0;l<UNITS[u].ls.length;l++)if(!S.courseDone.includes(u+'-'+l))return[u,l]}return null}
 function openLesson(u,l){if(Sess)closeSession(true);nav.sec='learn';nav.tab.learn='course';nav.lesson=[u,l];render();scrollTo(0,0)}
 function startDaily(){openSession({title:'ภารกิจวันนี้',qs:buildDaily(),again:startDaily,onDone:res=>{const first=!(S.quest.date===today()&&S.quest.done);S.quest={date:today(),done:true,score:res.ok+'/'+res.total};dayLog().q+=res.total;const xp=res.ok*10+(first?50:0);gain(xp);return`ได้ +${xp} XP${first?' รวมโบนัสภารกิจประจำวัน 50':''}`}})}
 function pageHome(){const t=today(),done=S.quest.date===t&&S.quest.done,due=dueWords().length,weak=weakWords(),nl=nextLesson(),hr=new Date().getHours();
- const dnext=DIALOGS.find(d=>!S.dlg[d.id]);const greet=hr<12?'สวัสดีตอนเช้า':hr<17?'สวัสดีตอนบ่าย':'สวัสดีตอนเย็น';
+ const dnext=DIALOGS.find(d=>!S.dlg[d.id]&&d.lv===((S.set&&S.set.level)||'A1'))||DIALOGS.find(d=>!S.dlg[d.id]);const greet=hr<12?'สวัสดีตอนเช้า':hr<17?'สวัสดีตอนบ่าย':'สวัสดีตอนเย็น';
  const dt=new Date().toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long'});
  const steps=['จำคำใหม่ 3 คำ','อ่านประโยค 3 ข้อ','เลือกคำตอบ 4 ข้อ','พิมพ์คำศัพท์ 3 คำ','ฟังเสียง 2 ข้อ'];
  const dots=[...Array(14)].map((_,i)=>{const d=addDays(i-13);return`<i class="${S.days[d]?'on':''} ${i===13?'t':''}" title="${d}"></i>`}).join('');
@@ -1777,9 +1949,10 @@ PANES['learn.course']=()=>{if(nav.lesson)return lessonPage(...nav.lesson);const 
  return`<section class="card unit"><header><span class="ic">${u.ic}</span><div style="flex:1"><h3>Unit ${ui+1}: ${esc(u.t)}</h3><span class="muted small">${esc(u.th)}</span></div><span class="pill ${n===3?'g':''}">${n}/3</span></header>
  ${u.ls.map((l,li)=>`<button class="lrow" onclick="openLesson(${ui},${li})"><span class="box ${S.courseDone.includes(ui+'-'+li)?'ok':''}"></span><span style="flex:1"><b>${esc(l.t)}</b><small>${esc(l.goal)}</small></span></button>`).join('')}
  <button class="lrow ${unlocked?'':'lock'}" onclick="${unlocked?`startBoss(${ui})`:`toast('จบครบ 3 บทเรียนก่อน เพื่อปลดล็อกบอส')`}"><span style="font-size:22px">${unlocked?u.boss.e:'🔒'}</span><span style="flex:1"><b>บอส: ${esc(u.boss.n)}</b><small>${S.bossBest[ui]?'ชนะแล้ว '+'⭐'.repeat(S.bossBest[ui]):unlocked?'พร้อมท้าดวล':'ยังล็อกอยู่'}</small></span></button></section>`};
+ const sec=(lv,title,note,idxs)=>{const dn=idxs.reduce((x,i)=>x+UNITS[i].ls.filter((_,l)=>S.courseDone.includes(i+'-'+l)).length,0),tl=idxs.length*3;return`<details class="card" style="padding:0;margin-bottom:14px" ${((S.set&&S.set.level)||'A1')===lv?'open':''}><summary style="cursor:pointer;padding:16px 18px;list-style:none"><b>${title}</b> <span class="pill">${idxs.length} unit · เรียนจบ ${dn}/${tl}</span>${note?`<div class="small muted" style="margin-top:4px">${note}</div>`:''}</summary><div class="list" style="padding:0 14px 14px">${idxs.map(i=>unitCard(UNITS[i],i)).join('')}</div></details>`};
+ const byLv=l=>UNITS.map((_,i)=>i).filter(i=>i>=12&&ulv(i)===l);
  pane(H('หลักสูตรภาษาอังกฤษ',`${UNITS.length} หน่วย ${tot} บทเรียน · เรียนจบ ${d}/${tot} บท`,`<div style="min-width:180px"><div class="bar"><i style="width:${d/tot*100}%"></i></div></div>`)+
- `<h3 style="margin:6px 0 12px">A1 เริ่มต้น <span class="pill">Unit 1–6</span></h3><div class="list">${UNITS.slice(0,6).map((u,i)=>unitCard(u,i)).join('')}</div>
- <h3 style="margin:28px 0 4px">A2 ต่อยอด <span class="pill">Unit 7–12</span></h3><p class="small muted" style="margin-bottom:12px">ควรเรียน A1 ให้คล่องก่อน · ถ้าอยากให้เกมฝึกและภารกิจประจำวันใช้คำ A2 ให้เลือกระดับ “A1 + A2” ที่หน้า ฉัน</p><div class="list">${UNITS.slice(6,12).map((u,i)=>unitCard(u,i+6)).join('')}</div><h3 style="margin:22px 0 10px">อังกฤษเพื่อการทำงาน <span class="pill">Unit 13–19 · B1–B2</span></h3><div class="list">${UNITS.slice(12).map((u,i)=>unitCard(u,i+12)).join('')}</div>`)};
+ [sec('A1','A1 เริ่มต้น','',[0,1,2,3,4,5]),sec('A2','A2 ต่อยอด','ควรเรียน A1 ให้คล่องก่อน',[6,7,8,9,10,11]),sec('B1','B1 อังกฤษเพื่อการทำงานระดับกลาง','',byLv('B1')),sec('B2','B2 อังกฤษเพื่อการทำงานระดับสูง','',byLv('B2'))].join(''))};
 function lessonPage(u,li){const U=UNITS[u],l=U.ls[li],done=S.courseDone.includes(u+'-'+li);
  const prev=li>0?[u,li-1]:u>0?[u-1,2]:null,next=li<2?[u,li+1]:u<UNITS.length-1?[u+1,0]:null;
  pane(`<button class="btn s sm" onclick="nav.lesson=null;render()">กลับหลักสูตร</button><div style="height:14px"></div>
@@ -1790,6 +1963,743 @@ function lessonPage(u,li){const U=UNITS[u],l=U.ls[li],done=S.courseDone.includes
  <div class="row" style="justify-content:space-between;margin-top:16px"><button class="btn s sm" ${prev?`onclick="openLesson(${prev})"`:'disabled'}>บทก่อนหน้า</button><button class="btn s sm" ${next?`onclick="openLesson(${next})"`:'disabled'}>บทถัดไป</button></div>`)}
 function startLesson(u,li){const l=UNITS[u].ls[li],ph=pick(l.p.map(p=>({en:p[0],th:p[1]})),2);
  openSession({title:'Unit '+(u+1)+': '+l.t,qs:[mkAuthored(l),...ph.map(mkPhrase)],again:()=>startLesson(u,li),onDone:r=>{const id=u+'-'+li;if(r.ok>=2){const first=!S.courseDone.includes(id);if(first)S.courseDone.push(id);gain(first?30+r.ok*5:r.ok*3);return first?'เรียนจบบทนี้แล้ว +'+(30+r.ok*5)+' XP':'ผ่านอีกครั้ง'}return'ต้องตอบถูกอย่างน้อย 2 ข้อ ลองอีกครั้งนะ'}})}
+
+
+/* ===== B1 grammar pack 2 + B1 verbs/adjectives ===== */
+GX('B1','might / may / could (possibility)','ความเป็นไปได้','ใช้ <b>might / may / could + V1</b> บอกว่าบางสิ่ง "อาจจะ" เกิดขึ้น (มั่นใจน้อยกว่า will)','might / may / could + V1',[['The meeting might be cancelled.','การประชุมอาจถูกยกเลิก'],['She may be late because of the traffic.','เธออาจมาสายเพราะรถติด'],['It could rain this afternoon.','บ่ายนี้ฝนอาจตก']],[['I ___ be late. Please start without me.',['might','will be','am'],0,'ไม่แน่ใจ ใช้ might'],['He ___ know the answer.',['may','is may','mays'],0,'may + V1'],['It ___ snow tomorrow.',['could','coulds','is could'],0,'could + V1']]);
+GX('B1','Indirect questions','คำถามอ้อมเพื่อความสุภาพ','ขึ้นต้นด้วยวลีสุภาพ (Could you tell me…) แล้วใช้ลำดับประโยคบอกเล่า ไม่ต้องใช้ do/does','Could you tell me + wh + S + V',[['Could you tell me where the office is?','ช่วยบอกได้ไหมว่าสำนักงานอยู่ที่ไหน'],['Do you know what time it starts?','คุณรู้ไหมว่าเริ่มกี่โมง'],['I wonder if he is available.','ฉันสงสัยว่าเขาว่างไหม']],[['Could you tell me where ___?',['is the station','the station is','does the station'],1,'ลำดับ S + V ไม่ใช่คำถาม'],['Do you know what time ___?',['does it open','it opens','opens it'],1,'ใช้ลำดับบอกเล่า'],['I wonder ___ she is free.',['if','that','what'],0,'คำถาม yes/no ใช้ if']]);
+GX('B1','so / such','จนกระทั่ง / ช่างเหลือเกิน','<b>so + adjective/adverb</b> · <b>such + (a/an) + adjective + noun</b> มักตามด้วย that เพื่อบอกผลลัพธ์','so + adj · such + adj + noun',[['The report was so long that I could not finish it.','รายงานยาวมากจนฉันอ่านไม่จบ'],['It was such a long meeting.','ช่างเป็นประชุมที่ยาวนาน'],['She spoke so quickly that nobody understood.','เธอพูดเร็วจนไม่มีใครเข้าใจ']],[['It was ___ a good idea.',['so','such','very'],1,'such a + adj + noun'],['The room was ___ small that we moved.',['so','such','too'],0,'so + adj'],['He is ___ a kind manager.',['such','so','too'],0,'such + a + adj + noun']]);
+GX('B1','both / either / neither','ทั้งคู่ / อย่างใดอย่างหนึ่ง / ไม่ทั้งคู่','<b>both</b> = ทั้งสอง · <b>either</b> = อย่างใดอย่างหนึ่ง · <b>neither</b> = ไม่ใช่ทั้งสอง (ความหมายปฏิเสธอยู่แล้ว ห้ามเติม not)','both … and · either … or · neither … nor',[['Both options are good.','ทั้งสองตัวเลือกดี'],['You can pay by cash or by card. Either is fine.','จ่ายเงินสดหรือบัตรก็ได้ อย่างไหนก็ได้'],['Neither of us was late.','ไม่มีใครในพวกเราสาย']],[['___ of them speak French.',['Both','Either','Neither not'],0,'ทั้งสอง'],['___ answer is wrong.',['Neither','Neither not','Not neither'],0,'neither มีความหมายปฏิเสธ'],['You can choose ___ the red one or the blue one.',['both','either','neither'],1,'either … or']]);
+GX('B1','be used to / get used to','คุ้นเคยกับ','<b>be used to + V-ing/noun</b> = คุ้นเคยแล้ว · <b>get used to</b> = กำลังปรับตัว (ต่างจาก used to + V1 ที่เล่าอดีต)','be/get used to + V-ing',[['I am used to working long hours.','ฉันชินกับการทำงานนาน ๆ'],['She is getting used to the new system.','เธอกำลังปรับตัวกับระบบใหม่'],['We are not used to the heat.','เราไม่ชินกับอากาศร้อน']],[['I am used to ___ early.',['get up','getting up','got up'],1,'be used to + V-ing'],['He is getting used to ___ in Bangkok.',['live','living','lived'],1,'+ V-ing'],['I ___ used to living alone, so I enjoy it.',['am','did','use'],0,'คุ้นเคยตอนนี้ ใช้ be used to + V-ing']]);
+addW(B1B,`accept|ยอมรับ|v.|We accept credit cards.|เรารับบัตรเครดิต
+refuse|ปฏิเสธ|v.|She refused the offer.|เธอปฏิเสธข้อเสนอ
+allow|อนุญาต|v.|Phones are not allowed here.|ห้ามใช้โทรศัพท์ที่นี่
+prevent|ป้องกัน|v.|We must prevent mistakes.|เราต้องป้องกันความผิดพลาด
+protect|ปกป้อง|v.|Protect your data.|ปกป้องข้อมูลของคุณ
+replace|แทนที่|v.|We will replace the old printer.|เราจะเปลี่ยนเครื่องพิมพ์เก่า
+remove|ลบออก|v.|Please remove the file.|กรุณาลบไฟล์
+repair|ซ่อม|v.|Can you repair my laptop?|ช่วยซ่อมโน้ตบุ๊กได้ไหม
+fix|แก้ไข|v.|We fixed the problem quickly.|เราแก้ปัญหาได้เร็ว
+prove|พิสูจน์|v.|The data proves our point.|ข้อมูลพิสูจน์ประเด็นของเรา
+shout|ตะโกน|v.|Do not shout at customers.|อย่าตะโกนใส่ลูกค้า
+collect|รวบรวม|v.|We collect feedback every month.|เรารวบรวมข้อเสนอแนะทุกเดือน
+produce|ผลิต|v.|The factory produces toys.|โรงงานผลิตของเล่น
+develop|พัฒนา|v.|They develop software.|เขาพัฒนาซอฟต์แวร์
+spread|แพร่กระจาย|v.|The news spread quickly.|ข่าวแพร่เร็ว
+connect|เชื่อมต่อ|v.|Connect to the Wi-Fi.|เชื่อมต่อ Wi-Fi
+reach|ไปถึง|v.|We reached our goal.|เราบรรลุเป้า
+remain|ยังคงอยู่|v.|Please remain seated.|กรุณานั่งอยู่กับที่
+appear|ปรากฏ|v.|An error message appeared.|ข้อความผิดพลาดปรากฏขึ้น
+seem|ดูเหมือน|v.|It seems a good idea.|ดูเป็นความคิดที่ดี
+belong|เป็นของ|v.|This bag belongs to Tom.|กระเป๋านี้เป็นของทอม
+contain|มี / บรรจุ|v.|The box contains documents.|กล่องมีเอกสาร
+involve|เกี่ยวข้อง|v.|The job involves travel.|งานนี้เกี่ยวกับการเดินทาง
+suit|เหมาะกับ|v.|Friday suits me.|วันศุกร์เหมาะกับฉัน
+obvious|ชัดเจน|adj.|The answer is obvious.|คำตอบชัดเจน
+impossible|เป็นไปไม่ได้|adj.|It is impossible to finish today.|เป็นไปไม่ได้ที่จะเสร็จวันนี้
+necessary|จำเป็น|adj.|Is it necessary to sign?|จำเป็นต้องเซ็นไหม
+similar|คล้ายกัน|adj.|The two plans are similar.|สองแผนคล้ายกัน
+different|แตกต่าง|adj.|This is a different approach.|นี่เป็นแนวทางที่ต่างออกไป
+common|พบบ่อย|adj.|This mistake is common.|ความผิดพลาดนี้พบบ่อย
+rare|หายาก|adj.|It is rare to see him angry.|เห็นเขาโกรธเป็นเรื่องหายาก
+typical|ทั่วไป|adj.|It is a typical example.|เป็นตัวอย่างทั่วไป
+especially|โดยเฉพาะ|adv.|I like coffee, especially in the morning.|ฉันชอบกาแฟโดยเฉพาะตอนเช้า
+recently|เมื่อไม่นานมานี้|adv.|I recently changed jobs.|ฉันเพิ่งเปลี่ยนงาน
+eventually|ในที่สุด|adv.|Eventually, we finished.|ในที่สุดเราก็ทำเสร็จ
+immediately|ทันที|adv.|Please reply immediately.|กรุณาตอบทันที
+suddenly|ทันใดนั้น|adv.|The power suddenly went out.|ไฟดับทันใดนั้น
+finally|ในที่สุด|adv.|We finally agreed.|ในที่สุดเราก็ตกลง`);
+
+/* ===== content pack: readings A1/A2 + dialogs B1/B2 ===== */
+READS.push(
+{id:'r23',lv:'A1',t:'My Day',th:'วันของฉัน',x:'I get up at six. I wash my face and eat breakfast. I go to work by bus. I work from eight to five. After work, I buy food and cook dinner. I watch TV and go to bed at ten.',q:[['ผู้เขียนตื่นกี่โมง?',['หกโมง','เจ็ดโมง','แปดโมง'],0,'I get up at six'],['เขาไปทำงานอย่างไร?',['รถเมล์','รถไฟ','เดิน'],0,'by bus']]},
+{id:'r24',lv:'A1',t:'The Weather Today',th:'อากาศวันนี้',x:'It is hot today. The sun is bright and there are no clouds. I wear a T-shirt and shorts. I drink a lot of water. Tomorrow it will rain, so I will take an umbrella.',q:[['วันนี้อากาศเป็นอย่างไร?',['ร้อน','หนาว','ฝนตก'],0,'It is hot today'],['พรุ่งนี้ผู้เขียนจะทำอะไร?',['พกร่ม','ใส่เสื้อกันหนาว','ไม่ออกจากบ้าน'],0,'take an umbrella']]},
+{id:'r25',lv:'A2',t:'A New Job',th:'งานใหม่',x:'Last month, Nina started a new job at a travel company. She was nervous on the first day, but her colleagues were very friendly. They showed her the office and explained her tasks. Now she answers customer emails and helps to plan trips. She likes the job because every day is different.',q:[['นีน่าเริ่มงานเมื่อไร?',['เดือนที่แล้ว','ปีที่แล้ว','สัปดาห์หน้า'],0,'Last month'],['เธอชอบงานเพราะอะไร?',['ทุกวันไม่เหมือนกัน','เงินเดือนสูง','งานน้อย'],0,'every day is different']]},
+{id:'r26',lv:'A2',t:'Visiting the Doctor',th:'ไปหาหมอ',x:'Tom had a bad cough for a week, so he went to the doctor. The doctor listened to his chest and asked some questions. She said it was only a cold. She gave him some medicine and told him to rest and drink water. After three days, Tom felt much better.',q:[['หมอบอกว่าทอมเป็นอะไร?',['หวัด','ปอดบวม','ภูมิแพ้'],0,'only a cold'],['หมอแนะนำอะไร?',['พักและดื่มน้ำ','ออกกำลังกายหนัก','อดอาหาร'],0,'rest and drink water']]},
+{id:'r27',lv:'A2',t:'Planning a Party',th:'วางแผนงานปาร์ตี้',x:'Mia is planning a birthday party for her friend. She will invite twenty people and order a cake. First, she needs to find a place. Her cousin has a garden, so the party will be there. Mia will cook some food, and her friends will bring drinks. She hopes it will not rain.',q:[['งานปาร์ตี้จะจัดที่ไหน?',['ที่สวนของญาติ','ร้านอาหาร','โรงแรม'],0,'Her cousin has a garden'],['เพื่อน ๆ จะนำอะไรมา?',['เครื่องดื่ม','เค้ก','ของขวัญใหญ่'],0,'her friends will bring drinks']]}
+);
+DIALOGS.push(
+D('d45','B1','Asking for feedback','ขอฟีดแบ็กจากหัวหน้า',['Mia','Manager'],[[0,'Do you have time to give me some feedback on my report?','ว่างให้ฟีดแบ็กรายงานไหมคะ'],[1,'Sure. Overall it is well written, but the conclusion is a bit weak.','ได้ โดยรวมเขียนดี แต่บทสรุปค่อนข้างอ่อน'],[0,'Thank you. What would you suggest I change?','ขอบคุณค่ะ ควรปรับอย่างไร'],[1,'Add two or three clear recommendations and a short summary.','เพิ่มข้อเสนอชัด ๆ สองสามข้อและสรุปสั้น ๆ'],[0,'I will do that and send you a new version by Wednesday.','ดิฉันจะทำและส่งฉบับใหม่ภายในวันพุธ'],[1,'Great. I look forward to reading it.','ดี รอติดตามอ่านนะ']],[['จุดอ่อนของรายงานคืออะไร?',['บทสรุป','หัวข้อ','ตัวเลข'],0,'the conclusion is a bit weak'],['มีอาจะส่งฉบับใหม่เมื่อไร?',['วันพุธ','วันนี้','ปลายเดือน'],0,'by Wednesday']]),
+D('d46','B1','Booking a taxi','จองแท็กซี่',['Guest','Receptionist'],[[0,'Excuse me, could you book a taxi for me, please?','ขอโทษครับ ช่วยจองแท็กซี่ให้ได้ไหม'],[1,'Of course. Where would you like to go?','ได้ครับ ไปที่ไหนครับ'],[0,'To the airport. My flight leaves at six this evening.','สนามบินครับ เที่ยวบินออกหกโมงเย็น'],[1,'Then I suggest leaving at two to avoid the traffic.','งั้นแนะนำให้ออกบ่ายสองเพื่อเลี่ยงรถติด'],[0,'Good idea. How much will it cost?','ดีครับ ค่าโดยสารเท่าไร'],[1,'About four hundred baht. I will arrange it for two o’clock.','ประมาณสี่ร้อยบาท จะเรียกให้บ่ายสองครับ']],[['แขกต้องการไปไหน?',['สนามบิน','สถานีรถไฟ','ห้างสรรพสินค้า'],0,'To the airport'],['พนักงานแนะนำให้ออกกี่โมง?',['บ่ายสอง','บ่ายสี่','เช้า'],0,'leaving at two']]),
+D('d47','B2','Raising a concern with a colleague','ยกประเด็นกังวลกับเพื่อนร่วมงาน',['Mia','Ben'],[[0,'Ben, could we talk about the deadline? I am concerned that we may not meet it.','เบน ขอคุยเรื่องกำหนดส่ง ฉันกังวลว่าเราอาจไม่ทัน'],[1,'I see. What exactly are you worried about?','เข้าใจ กังวลเรื่องอะไรเป็นพิเศษ'],[0,'The data analysis is taking longer than expected, and we still have to prepare the presentation.','วิเคราะห์ข้อมูลใช้เวลานานกว่าคาด และยังต้องเตรียมนำเสนอ'],[1,'Fair point. Perhaps we could ask for help from the analytics team.','ประเด็นถูก บางทีเราขอทีมวิเคราะห์ช่วยได้'],[0,'That would help. Shall I send them an email today?','ช่วยได้ ให้ฉันส่งอีเมลหาพวกเขาวันนี้ไหม'],[1,'Yes, please, and copy our manager so that she is aware of the situation.','ได้ แล้ว cc ผู้จัดการด้วยจะได้ทราบสถานการณ์']],[['มีอากังวลเรื่องอะไร?',['อาจส่งไม่ทันกำหนด','เงินเดือน','ลูกค้า'],0,'may not meet it'],['เบนแนะนำให้ทำอะไร?',['ขอความช่วยเหลือจากทีมวิเคราะห์','เลื่อนกำหนดส่ง','ลดเนื้อหา'],0,'ask for help from the analytics team']]),
+D('d48','B2','Declining a request politely','ปฏิเสธคำขออย่างสุภาพ',['Mia','Colleague'],[[1,'Mia, could you take over my client presentation on Friday?','มีอา ช่วยรับงานนำเสนอลูกค้าวันศุกร์แทนได้ไหม'],[0,'I would like to help, but I am afraid I am fully booked that day.','อยากช่วยแต่วันนั้นคิวเต็ม'],[1,'I see. It is quite urgent, though.','เข้าใจ แต่ค่อนข้างด่วน'],[0,'I understand. Perhaps I could prepare the slides, and someone else could present.','เข้าใจค่ะ บางทีฉันเตรียมสไลด์ให้ แล้วให้คนอื่นนำเสนอ'],[1,'That is a good compromise. I will ask Ben to present.','เป็นทางประนีประนอมที่ดี ฉันจะให้เบนนำเสนอ'],[0,'Great. I will send the slides by Thursday morning.','ดีค่ะ จะส่งสไลด์เช้าวันพฤหัส']],[['ทำไมมีอารับงานไม่ได้?',['คิวเต็มวันนั้น','ไม่ถนัด','ลาพักร้อน'],0,'fully booked that day'],['ข้อประนีประนอมคืออะไร?',['มีอาทำสไลด์ คนอื่นนำเสนอ','เลื่อนนำเสนอ','ยกเลิกงาน'],0,'prepare the slides, and someone else could present']])
+);
+
+
+/* ===== vocab pack 6 ===== */
+addW(25,`jacket|แจ็คเก็ต|n.|Take a jacket. It is cold.|พกแจ็คเก็ตไปด้วย อากาศหนาว
+jeans|กางเกงยีนส์|n.|I wear jeans on Fridays.|ฉันใส่ยีนส์วันศุกร์
+skirt|กระโปรง|n.|She bought a red skirt.|เธอซื้อกระโปรงสีแดง
+dress|ชุดเดรส|n.|That dress looks great.|ชุดนั้นสวยมาก
+sweater|เสื้อสเวตเตอร์|n.|Wear a sweater tonight.|คืนนี้ใส่สเวตเตอร์
+scarf|ผ้าพันคอ|n.|She wore a warm scarf.|เธอพันผ้าพันคออุ่น ๆ
+boots|รองเท้าบูท|n.|My boots are wet.|รองเท้าบูทฉันเปียก
+sandals|รองเท้าแตะ|n.|I wear sandals in summer.|ฉันใส่รองเท้าแตะหน้าร้อน
+wallet|กระเป๋าสตางค์|n.|I lost my wallet.|ฉันทำกระเป๋าสตางค์หาย
+uniform|ชุดเครื่องแบบ|n.|Staff wear a uniform.|พนักงานใส่เครื่องแบบ
+umbrella|ร่ม|n.|Bring an umbrella.|เอาร่มไปด้วย
+try on|ลองใส่|v.|Can I try this on?|ขอลองใส่ได้ไหม
+fit|พอดี|v.|These shoes do not fit.|รองเท้านี้ไม่พอดี`);
+addW(27,`hobby|งานอดิเรก|n.|My hobby is painting.|งานอดิเรกของฉันคือวาดรูป
+hiking|เดินป่า|n.|We go hiking every month.|เราไปเดินป่าทุกเดือน
+camping|ตั้งแคมป์|n.|They enjoy camping.|เขาชอบตั้งแคมป์
+fishing|ตกปลา|n.|My father likes fishing.|พ่อฉันชอบตกปลา
+swimming|ว่ายน้ำ|n.|Swimming is good exercise.|ว่ายน้ำเป็นการออกกำลังที่ดี
+gym|ฟิตเนส|n.|I go to the gym after work.|ฉันไปฟิตเนสหลังเลิกงาน
+concert|คอนเสิร์ต|n.|We went to a concert.|เราไปคอนเสิร์ต
+museum|พิพิธภัณฑ์|n.|The museum opens at nine.|พิพิธภัณฑ์เปิดเก้าโมง
+festival|เทศกาล|n.|Songkran is a big festival.|สงกรานต์เป็นเทศกาลใหญ่
+cinema|โรงภาพยนตร์|n.|Let us go to the cinema.|ไปดูหนังกันเถอะ
+join a club|เข้าร่วมชมรม|v.|I joined a book club.|ฉันเข้าชมรมหนังสือ
+collect stamps|สะสมแสตมป์|v.|He collects stamps.|เขาสะสมแสตมป์`);
+addW(23,`bus stop|ป้ายรถเมล์|n.|The bus stop is near my house.|ป้ายรถเมล์อยู่ใกล้บ้าน
+platform|ชานชาลา|n.|The train leaves from platform two.|รถไฟออกจากชานชาลาสอง
+traffic jam|รถติด|n.|We were stuck in a traffic jam.|เราติดรถติด
+motorbike|มอเตอร์ไซค์|n.|He rides a motorbike.|เขาขี่มอเตอร์ไซค์
+ferry|เรือข้ามฟาก|n.|Take the ferry across the river.|นั่งเรือข้ามฟากข้ามแม่น้ำ
+helmet|หมวกกันน็อก|n.|Always wear a helmet.|สวมหมวกกันน็อกเสมอ
+bridge|สะพาน|n.|Cross the bridge and turn right.|ข้ามสะพานแล้วเลี้ยวขวา
+corner|หัวมุม|n.|The bank is on the corner.|ธนาคารอยู่หัวมุม
+traffic light|ไฟจราจร|n.|Stop at the traffic light.|หยุดที่ไฟจราจร
+crossing|ทางข้าม|n.|Use the pedestrian crossing.|ใช้ทางม้าลาย`);
+addW(B1B,`shy|ขี้อาย|adj.|She is shy at first.|เธอขี้อายตอนแรก
+generous|ใจกว้าง|adj.|He is a generous boss.|เขาเป็นเจ้านายที่ใจกว้าง
+honest|ซื่อสัตย์|adj.|Please be honest.|กรุณาพูดตามตรง
+patient|อดทน|adj.|She is patient with customers.|เธออดทนกับลูกค้า
+rude|หยาบคาย|adj.|It is rude to interrupt.|การขัดจังหวะเป็นเรื่องไม่สุภาพ
+selfish|เห็นแก่ตัว|adj.|Do not be selfish.|อย่าเห็นแก่ตัว
+serious|จริงจัง|adj.|This is a serious problem.|นี่เป็นปัญหาร้ายแรง
+strict|เข้มงวด|adj.|Our manager is strict.|ผู้จัดการเข้มงวด
+cheerful|ร่าเริง|adj.|She is always cheerful.|เธอร่าเริงเสมอ
+reason|เหตุผล|n.|What is the reason?|เหตุผลคืออะไร
+result|ผลลัพธ์|n.|The result was good.|ผลลัพธ์ดี
+difference|ความแตกต่าง|n.|What is the difference?|ต่างกันอย่างไร
+example|ตัวอย่าง|n.|Can you give an example?|ยกตัวอย่างได้ไหม
+fact|ข้อเท็จจริง|n.|That is a fact.|นั่นคือข้อเท็จจริง
+information|ข้อมูล|n.|I need more information.|ฉันต้องการข้อมูลเพิ่ม
+knowledge|ความรู้|n.|He has good knowledge.|เขามีความรู้ดี
+opportunity|โอกาส|n.|It is a great opportunity.|เป็นโอกาสที่ดี
+situation|สถานการณ์|n.|The situation is difficult.|สถานการณ์ยาก
+subject|หัวข้อ / วิชา|n.|Change the subject.|เปลี่ยนหัวข้อ
+topic|หัวข้อ|n.|Today’s topic is travel.|หัวข้อวันนี้คือการเดินทาง
+success|ความสำเร็จ|n.|The event was a success.|งานประสบความสำเร็จ
+failure|ความล้มเหลว|n.|Failure is part of learning.|ความล้มเหลวเป็นส่วนของการเรียนรู้
+effort|ความพยายาม|n.|Thank you for your effort.|ขอบคุณสำหรับความพยายาม
+attempt|พยายาม|v.|We attempted to call you.|เราพยายามโทรหาคุณ
+wish|ปรารถนา|v.|I wish you good luck.|ขอให้โชคดี`);
+addW(B2B,`overcome|เอาชนะ|v.|We overcame many obstacles.|เราฝ่าฟันอุปสรรคมากมาย
+struggle|ดิ้นรน|v.|She struggled with the deadline.|เธอลำบากกับกำหนดส่ง
+cope|รับมือ|v.|How do you cope with stress?|คุณรับมือกับความเครียดอย่างไร
+adapt|ปรับตัว|v.|We must adapt to change.|เราต้องปรับตัวตามการเปลี่ยนแปลง
+adjust|ปรับ|v.|Please adjust the schedule.|กรุณาปรับตารางเวลา
+enable|ทำให้เป็นไปได้|v.|This tool enables faster work.|เครื่องมือนี้ทำให้ทำงานเร็วขึ้น
+ensure|ทำให้แน่ใจ|v.|Please ensure the data is correct.|กรุณาตรวจให้แน่ใจว่าข้อมูลถูกต้อง
+evaluate|ประเมิน|v.|We evaluate each proposal.|เราประเมินทุกข้อเสนอ
+generate|สร้าง|v.|The campaign generated leads.|แคมเปญสร้างลูกค้าเป้าหมาย
+maintain|รักษา|v.|We maintain high standards.|เรารักษามาตรฐานสูง
+obtain|ได้รับ|v.|You can obtain a permit online.|ขอใบอนุญาตออนไลน์ได้
+participate|เข้าร่วม|v.|Everyone should participate.|ทุกคนควรเข้าร่วม
+pursue|ไล่ตาม|v.|She wants to pursue a career in law.|เธออยากเดินสายอาชีพกฎหมาย
+restrict|จำกัด|v.|We restrict access to the file.|เราจำกัดการเข้าถึงไฟล์
+tackle|จัดการ (ปัญหา)|v.|We need to tackle this issue.|เราต้องจัดการเรื่องนี้
+criteria|เกณฑ์|n.|What are the criteria?|เกณฑ์คืออะไร
+framework|กรอบการทำงาน|n.|We follow a clear framework.|เราทำตามกรอบที่ชัดเจน
+mindset|กรอบความคิด|n.|A positive mindset helps.|ทัศนคติเชิงบวกช่วยได้
+outcome|ผลที่ได้|n.|The outcome was positive.|ผลที่ได้เป็นบวก
+output|ผลผลิต|n.|Output increased last year.|ผลผลิตเพิ่มปีที่แล้ว
+trend|แนวโน้ม|n.|Online sales are a growing trend.|ยอดขายออนไลน์เป็นแนวโน้มที่โตขึ้น
+workflow|ขั้นตอนการทำงาน|n.|We improved the workflow.|เราปรับขั้นตอนการทำงาน
+expertise|ความเชี่ยวชาญ|n.|She has expertise in finance.|เธอเชี่ยวชาญด้านการเงิน
+insight|ความเข้าใจลึกซึ้ง|n.|The data gave us insight.|ข้อมูลทำให้เราเข้าใจลึกขึ้น
+leverage|ใช้ประโยชน์|v.|We can leverage our network.|เราใช้ประโยชน์จากเครือข่ายได้`);
+
+
+/* ===== vocab pack 7 ===== */
+addW(25,`bank|ธนาคาร|n.|I went to the bank.|ฉันไปธนาคาร
+account|บัญชี|n.|I opened a new account.|ฉันเปิดบัญชีใหม่
+save|เก็บออม|v.|I save money every month.|ฉันออมเงินทุกเดือน
+spend|ใช้จ่าย|v.|I spend too much on food.|ฉันใช้จ่ายเรื่องอาหารมาก
+cost|มีราคา|v.|How much does it cost?|ราคาเท่าไร
+coin|เหรียญ|n.|I have a few coins.|ฉันมีเหรียญไม่กี่เหรียญ
+pay back|จ่ายคืน|v.|I will pay you back tomorrow.|พรุ่งนี้ฉันจ่ายคืน
+price tag|ป้ายราคา|n.|Check the price tag.|ดูป้ายราคา
+refund|เงินคืน|n.|I want a refund.|ฉันขอเงินคืน
+receipt|ใบเสร็จ|n.|Can I have the receipt?|ขอใบเสร็จได้ไหม
+brand|ยี่ห้อ|n.|It is a famous brand.|เป็นยี่ห้อที่มีชื่อเสียง
+fashionable|ทันสมัย|adj.|These shoes are fashionable.|รองเท้านี้ทันสมัย`);
+addW(24,`message|ข้อความ|n.|I left you a message.|ฉันฝากข้อความไว้
+voicemail|ข้อความเสียง|n.|Please leave a voicemail.|กรุณาฝากข้อความเสียง
+signal|สัญญาณ|n.|I have no signal here.|ที่นี่ไม่มีสัญญาณ
+charger|ที่ชาร์จ|n.|Do you have a phone charger?|มีที่ชาร์จมือถือไหม
+call back|โทรกลับ|v.|I will call you back.|ฉันจะโทรกลับ
+hang up|วางสาย|v.|He hung up suddenly.|เขาวางสายกะทันหัน
+leave a message|ฝากข้อความ|v.|Can I leave a message?|ขอฝากข้อความได้ไหม
+printer|เครื่องพิมพ์|n.|The printer is out of paper.|เครื่องพิมพ์กระดาษหมด
+photocopy|ถ่ายเอกสาร|v.|Please photocopy this page.|กรุณาถ่ายเอกสารหน้านี้
+stapler|ที่เย็บกระดาษ|n.|Where is the stapler?|ที่เย็บกระดาษอยู่ไหน
+notebook|สมุดจด|n.|I write notes in a notebook.|ฉันจดบันทึกในสมุด
+break time|เวลาพัก|n.|Break time is at noon.|เวลาพักตอนเที่ยง
+overtime pay|ค่าล่วงเวลา|n.|Overtime pay is double.|ค่าล่วงเวลาสองเท่า
+team leader|หัวหน้าทีม|n.|My team leader is helpful.|หัวหน้าทีมช่วยเหลือดี
+business card|นามบัตร|n.|Here is my business card.|นี่คือนามบัตรของฉัน`);
+addW(23,`opposite|ตรงข้าม|prep.|The bank is opposite the school.|ธนาคารอยู่ตรงข้ามโรงเรียน
+behind|ข้างหลัง|prep.|The parking is behind the building.|ที่จอดรถอยู่ข้างหลังตึก
+between|ระหว่าง|prep.|The cafe is between two banks.|ร้านกาแฟอยู่ระหว่างสองธนาคาร
+next to|ติดกับ|prep.|The shop is next to the bank.|ร้านอยู่ติดธนาคาร
+north|ทิศเหนือ|n.|Go north for two miles.|ไปทางเหนือสองไมล์
+south|ทิศใต้|n.|The beach is in the south.|ชายหาดอยู่ทางใต้
+east|ทิศตะวันออก|n.|The sun rises in the east.|ดวงอาทิตย์ขึ้นทางตะวันออก
+west|ทิศตะวันตก|n.|They live in the west.|เขาอยู่ทางตะวันตก
+far|ไกล|adj.|Is it far from here?|ไกลจากที่นี่ไหม
+near|ใกล้|adj.|The station is near.|สถานีอยู่ใกล้
+roundabout|วงเวียน|n.|Turn left at the roundabout.|เลี้ยวซ้ายตรงวงเวียน
+pedestrian|คนเดินเท้า|n.|Pedestrians must wait.|คนเดินเท้าต้องรอ`);
+addW(27,`tall|สูง|adj.|He is tall.|เขาสูง
+slim|ผอมเพรียว|adj.|She is slim.|เธอผอมเพรียว
+curly|หยิก|adj.|She has curly hair.|เธอผมหยิก
+beard|เครา|n.|He has a beard.|เขามีเครา
+polite|สุภาพ|adj.|The staff are polite.|พนักงานสุภาพ
+funny|ตลก|adj.|He is a funny person.|เขาเป็นคนตลก
+friendly|เป็นมิตร|adj.|The team is friendly.|ทีมเป็นมิตร
+kind|ใจดี|adj.|She is very kind.|เธอใจดีมาก
+quiet|เงียบ|adj.|He is quiet in meetings.|เขาเงียบในที่ประชุม
+careful|ระมัดระวัง|adj.|Be careful with the data.|ระวังข้อมูลด้วย
+lucky|โชคดี|adj.|You are lucky.|คุณโชคดี
+proud|ภูมิใจ|adj.|I am proud of you.|ฉันภูมิใจในตัวคุณ`);
+addW(B1B,`confirm your booking|ยืนยันการจอง|v.|Please confirm your booking.|กรุณายืนยันการจอง
+approve a request|อนุมัติคำขอ|v.|The boss approved my request.|เจ้านายอนุมัติคำขอ
+miss a deadline|ไม่ทันกำหนด|v.|We missed the deadline.|เราส่งไม่ทันกำหนด
+meet a deadline|ทันกำหนด|v.|We met the deadline.|เราส่งทันกำหนด
+make an appointment|นัดหมาย|v.|I made an appointment with the doctor.|ฉันนัดหมอไว้
+take notes|จดบันทึก|v.|Please take notes in the meeting.|กรุณาจดบันทึกในประชุม
+give a presentation|นำเสนอ|v.|I will give a presentation tomorrow.|พรุ่งนี้ฉันจะนำเสนอ
+reach an agreement|ตกลงกันได้|v.|We reached an agreement.|เราตกลงกันได้
+make a decision|ตัดสินใจ|v.|We must make a decision today.|เราต้องตัดสินใจวันนี้
+take responsibility|รับผิดชอบ|v.|I will take responsibility.|ฉันจะรับผิดชอบ
+solve a problem|แก้ปัญหา|v.|Let us solve the problem.|มาแก้ปัญหากัน
+keep in touch|ติดต่อกันไว้|v.|Let us keep in touch.|ติดต่อกันนะ
+catch up|ตามทัน / พบปะ|v.|Let us catch up next week.|ไว้เจอคุยกันสัปดาห์หน้า
+work out|หาคำตอบ / ออกกำลัง|v.|We will work out a plan.|เราจะหาแผนร่วมกัน
+sort out|จัดการให้เรียบร้อย|v.|I will sort out the problem.|ฉันจะจัดการปัญหา
+point out|ชี้ให้เห็น|v.|She pointed out an error.|เธอชี้ข้อผิดพลาด
+bring up|หยิบยกขึ้นมา|v.|He brought up a good point.|เขาหยิบประเด็นดี ๆ ขึ้นมา
+turn down|ปฏิเสธ|v.|They turned down the offer.|เขาปฏิเสธข้อเสนอ
+fill in|กรอก|v.|Please fill in the form.|กรุณากรอกแบบฟอร์ม
+hand in|ส่ง (งาน)|v.|Hand in your report on Friday.|ส่งรายงานวันศุกร์
+pick up|รับ / เก็บ|v.|I will pick you up at eight.|ฉันจะไปรับคุณแปดโมง
+put off|เลื่อน|v.|We put off the meeting.|เราเลื่อนประชุม
+back up|สำรอง / สนับสนุน|v.|Please back up your files.|กรุณาสำรองไฟล์`);
+addW(B2B,`drive growth|ขับเคลื่อนการเติบโต|v.|New products drive growth.|ผลิตภัณฑ์ใหม่ขับเคลื่อนการเติบโต
+cut costs|ลดต้นทุน|v.|We need to cut costs.|เราต้องลดต้นทุน
+meet expectations|ตรงตามความคาดหวัง|v.|The results met expectations.|ผลลัพธ์ตรงตามความคาดหวัง
+exceed expectations|เกินความคาดหวัง|v.|Sales exceeded expectations.|ยอดขายเกินความคาดหวัง
+fall short of|ต่ำกว่า|v.|We fell short of the target.|เราต่ำกว่าเป้า
+bear in mind|คำนึงถึง|v.|Bear in mind the budget.|คำนึงถึงงบประมาณ
+take into account|นำมาพิจารณา|v.|We took the risks into account.|เรานำความเสี่ยงมาพิจารณา
+come to a conclusion|สรุปได้|v.|We came to a conclusion.|เราสรุปได้
+raise a concern|ยกประเด็นกังวล|v.|I would like to raise a concern.|ฉันขอยกประเด็นกังวล
+reach a compromise|หาทางประนีประนอม|v.|We reached a compromise.|เราหาทางประนีประนอมได้
+draw attention to|ดึงความสนใจ|v.|Let me draw attention to this chart.|ขอดึงความสนใจมาที่กราฟนี้
+in the long run|ในระยะยาว|adv.|It will save money in the long run.|ในระยะยาวจะประหยัดเงิน
+on behalf of|ในนามของ|prep.|I am writing on behalf of the team.|ฉันเขียนในนามของทีม
+with regard to|เกี่ยวกับ|prep.|With regard to your request, we agree.|เกี่ยวกับคำขอ เราเห็นด้วย
+in terms of|ในแง่ของ|prep.|In terms of cost, it is fine.|ในแง่ต้นทุนไม่มีปัญหา
+as a result of|ผลจาก|prep.|As a result of the delay, we lost clients.|ผลจากความล่าช้า เราเสียลูกค้า`);
+
+
+/* ===== content pack 3 ===== */
+READS.push(
+{id:'r28',lv:'A2',t:'A Day at the Beach',th:'วันที่ชายหาด',x:'Last Sunday, my family went to the beach. We left home early because the traffic is bad on weekends. The weather was hot and sunny, so we swam in the sea and played football on the sand. We had seafood for lunch. In the evening, we were tired but happy. We want to go again next month.',q:[['ทำไมครอบครัวออกจากบ้านเช้า?',['เพราะรถติดวันหยุด','เพราะฝนจะตก','เพราะร้านปิดเร็ว'],0,'the traffic is bad on weekends'],['พวกเขากินอะไรตอนเที่ยง?',['อาหารทะเล','ก๋วยเตี๋ยว','พิซซ่า'],0,'seafood for lunch']]},
+{id:'r29',lv:'B1',t:'Dealing with Stress at Work',th:'รับมือความเครียดในที่ทำงาน',x:'Almost everyone feels stressed at work from time to time. The important thing is how you deal with it. First, try to organise your tasks and decide which ones are urgent. Second, take short breaks during the day, even if it is only five minutes. Finally, do not be afraid to ask for help. Talking to a colleague or manager can make a big difference.',q:[['ขั้นแรกที่แนะนำคือ?',['จัดระเบียบงานและเลือกงานเร่งด่วน','ลาพักร้อน','ทำงานเร็วขึ้น'],0,'organise your tasks'],['ไม่ควรกลัวอะไร?',['การขอความช่วยเหลือ','การพักสั้น ๆ','การปฏิเสธงาน'],0,'ask for help']]},
+{id:'r30',lv:'B2',t:'Hiring Remotely',th:'สรรหาบุคลากรแบบทางไกล',x:'Recruiting staff without meeting them in person has become common. Companies now conduct interviews by video, test candidates with practical tasks and rely on written references. However, recruiters admit that it is harder to assess personality online. As a result, many include a short trial period, during which both sides can decide whether the arrangement works.',q:[['บริษัทประเมินผู้สมัครอย่างไร?',['ผ่านวิดีโอ งานปฏิบัติ และหนังสือรับรอง','พบตัวต่อตัวเท่านั้น','ทดสอบข้อเขียนอย่างเดียว'],0,'interviews by video … practical tasks … written references'],['ทำไมหลายแห่งมีช่วงทดลองงาน?',['ประเมินบุคลิกทางออนไลน์ยาก','ประหยัดเงินเดือน','กฎหมายบังคับ'],0,'harder to assess personality online']]},
+{id:'r31',lv:'B2',t:'Protecting Customer Data',th:'การปกป้องข้อมูลลูกค้า',x:'Companies hold large amounts of personal data, and a single breach can seriously damage their reputation. To reduce the risk, they restrict access to sensitive files, use strong passwords and encrypt information that is sent online. Staff should also be trained to recognise suspicious emails, since human error remains the most common cause of data leaks.',q:[['ข้อใดไม่ใช่มาตรการที่กล่าวถึง?',['ยกเลิกการเก็บข้อมูลทั้งหมด','จำกัดการเข้าถึงไฟล์สำคัญ','เข้ารหัสข้อมูล'],0,'ไม่มีการกล่าวถึงการยกเลิกเก็บข้อมูล'],['สาเหตุที่พบบ่อยที่สุดของข้อมูลรั่วคืออะไร?',['ความผิดพลาดของมนุษย์','ไวรัส','ระบบเก่า'],0,'human error remains the most common cause']]}
+);
+DIALOGS.push(
+D('d49','B1','Asking for help with a task','ขอความช่วยเหลือเรื่องงาน',['Mia','Ben'],[[0,'Ben, are you busy? I am stuck on this spreadsheet.','เบน ยุ่งไหม ฉันติดเรื่องสเปรดชีตนี้'],[1,'Not really. What is the problem?','ไม่ค่อย มีปัญหาอะไร'],[0,'The totals do not match the invoice, and I cannot find the mistake.','ยอดรวมไม่ตรงกับใบแจ้งหนี้ หาข้อผิดพลาดไม่เจอ'],[1,'Let me take a look. Maybe a formula is wrong.','ขอดูหน่อย บางทีสูตรผิด'],[0,'That would be great. I really appreciate it.','ขอบคุณมากค่ะ'],[1,'No problem. Send me the file and I will check it after lunch.','ไม่เป็นไร ส่งไฟล์มา เดี๋ยวดูหลังพักเที่ยง']],[['มีอาติดปัญหาอะไร?',['ยอดรวมไม่ตรงกับใบแจ้งหนี้','ไฟล์เปิดไม่ได้','ลืมรหัส'],0,'totals do not match the invoice'],['เบนจะทำอะไร?',['ตรวจไฟล์หลังพักเที่ยง','ให้มีอาทำใหม่','โทรหาลูกค้า'],0,'check it after lunch']]),
+D('d50','B1','Complaining in a restaurant','แจ้งปัญหาที่ร้านอาหาร',['Customer','Waiter'],[[0,'Excuse me, I ordered the chicken, but this is fish.','ขอโทษครับ ผมสั่งไก่ แต่นี่คือปลา'],[1,'I am very sorry. Let me check your order.','ขออภัยครับ ขอเช็กออเดอร์'],[0,'I also asked for no spicy sauce.','ผมขอไม่ใส่ซอสเผ็ดด้วย'],[1,'I apologise for the mistake. I will bring you the correct dish right away.','ขออภัยในความผิดพลาด จะนำจานที่ถูกต้องมาให้ทันที'],[0,'Thank you. How long will it take?','ขอบคุณครับ ใช้เวลานานไหม'],[1,'About ten minutes. The dessert is on us.','ประมาณสิบนาที ของหวานทางร้านเลี้ยงครับ']],[['ลูกค้าได้อะไรผิด?',['ปลาแทนไก่','น้ำผิด','ของหวาน'],0,'I ordered the chicken, but this is fish'],['ร้านชดเชยอย่างไร?',['เลี้ยงของหวาน','ลดครึ่งราคา','คืนเงินทั้งหมด'],0,'The dessert is on us']]),
+D('d51','B2','Answering questions after a presentation','ตอบคำถามหลังนำเสนอ',['Mia','Audience'],[[1,'Thank you for the presentation. How reliable are those figures?','ขอบคุณสำหรับการนำเสนอ ตัวเลขเหล่านั้นเชื่อถือได้แค่ไหน'],[0,'That is a good question. The data comes from our audited accounts, so I am confident it is accurate.','เป็นคำถามที่ดี ข้อมูลมาจากบัญชีที่ผ่านการตรวจสอบ จึงมั่นใจว่าถูกต้อง'],[1,'And what are the main risks to the plan?','แล้วความเสี่ยงหลักของแผนคืออะไร'],[0,'The biggest risk is supplier delays. However, we have identified two alternative suppliers.','ความเสี่ยงใหญ่คือซัพพลายเออร์ล่าช้า แต่เรามีซัพพลายเออร์สำรองสองราย'],[1,'Could you share the detailed forecast after the meeting?','ช่วยแชร์พยากรณ์ละเอียดหลังประชุมได้ไหม'],[0,'Certainly. I will email it to everyone this afternoon.','ได้ค่ะ จะอีเมลถึงทุกคนบ่ายนี้']],[['ข้อมูลมาจากไหน?',['บัญชีที่ผ่านการตรวจสอบ','การสำรวจ','ข่าว'],0,'audited accounts'],['มีอามีมาตรการรับมือความเสี่ยงอย่างไร?',['มีซัพพลายเออร์สำรองสองราย','ลดการผลิต','เลื่อนโครงการ'],0,'two alternative suppliers']])
+);
+
+
+/* ===== vocab pack 8: sales, IT, accounting, service ===== */
+addW(B1B,`customer|ลูกค้า|n.|The customer is always right.|ลูกค้าถูกเสมอ
+lead|ลูกค้าเป้าหมาย|n.|We got ten new leads today.|วันนี้เรามีลูกค้าเป้าหมายใหม่สิบราย
+sample|ตัวอย่าง|n.|We can send a free sample.|เราส่งตัวอย่างฟรีได้
+catalogue|แคตตาล็อก|n.|Please see our catalogue.|กรุณาดูแคตตาล็อกของเรา
+brochure|โบรชัวร์|n.|I will send you a brochure.|ฉันจะส่งโบรชัวร์ให้
+commission|ค่าคอมมิชชัน|n.|Sales staff earn a commission.|พนักงานขายได้ค่าคอม
+deal|ข้อตกลง|n.|We closed the deal.|เราปิดดีลได้
+offer a discount|เสนอส่วนลด|v.|We can offer a discount.|เราเสนอส่วนลดได้
+follow up|ติดตามผล|v.|I will follow up tomorrow.|ฉันจะติดตามผลพรุ่งนี้
+bug|บั๊ก|n.|We found a bug in the app.|เราเจอบั๊กในแอป
+server|เซิร์ฟเวอร์|n.|The server is down.|เซิร์ฟเวอร์ล่ม
+data|ข้อมูล|n.|We store customer data.|เราเก็บข้อมูลลูกค้า
+system|ระบบ|n.|The system is slow today.|วันนี้ระบบช้า
+error|ข้อผิดพลาด|n.|An error message appeared.|มีข้อความผิดพลาดปรากฏ
+restart|รีสตาร์ต|v.|Please restart your computer.|กรุณารีสตาร์ตคอมพิวเตอร์
+reset|รีเซ็ต|v.|You can reset your password.|รีเซ็ตรหัสผ่านได้
+access|การเข้าถึง|n.|I do not have access.|ฉันไม่มีสิทธิ์เข้าถึง
+permission|สิทธิ์อนุญาต|n.|You need permission.|ต้องได้รับอนุญาต
+feature|ฟีเจอร์|n.|It is a useful feature.|เป็นฟีเจอร์ที่มีประโยชน์
+version|เวอร์ชัน|n.|Use the latest version.|ใช้เวอร์ชันล่าสุด
+balance|ยอดคงเหลือ|n.|Check your account balance.|ตรวจยอดคงเหลือในบัญชี
+budget plan|แผนงบประมาณ|n.|We prepared a budget plan.|เราเตรียมแผนงบประมาณ
+cost|ต้นทุน|n.|We must reduce costs.|เราต้องลดต้นทุน
+receipt copy|สำเนาใบเสร็จ|n.|Please keep a receipt copy.|กรุณาเก็บสำเนาใบเสร็จ
+total|ยอดรวม|n.|The total is five thousand.|ยอดรวมห้าพัน
+average|ค่าเฉลี่ย|n.|The average is ten percent.|ค่าเฉลี่ยคือสิบเปอร์เซ็นต์
+percentage|เปอร์เซ็นต์|n.|What percentage is that?|นั่นกี่เปอร์เซ็นต์
+increase rate|อัตราการเพิ่ม|n.|The increase rate is high.|อัตราการเพิ่มสูง
+complaint|ข้อร้องเรียน|n.|We received a complaint.|เราได้รับข้อร้องเรียน
+apology|คำขอโทษ|n.|Please accept our apology.|กรุณารับคำขอโทษ
+compensation|การชดเชย|n.|We offered compensation.|เราเสนอชดเชย
+policy|นโยบาย|n.|It is company policy.|เป็นนโยบายบริษัท
+warranty|การรับประกัน|n.|The warranty lasts one year.|รับประกันหนึ่งปี
+guarantee|การรับรอง|n.|We guarantee quality.|เรารับรองคุณภาพ
+satisfied|พอใจ|adj.|Are you satisfied with the service?|คุณพอใจกับบริการไหม
+dissatisfied|ไม่พอใจ|adj.|Some customers are dissatisfied.|ลูกค้าบางคนไม่พอใจ
+patient|ใจเย็น|adj.|Please be patient.|กรุณาใจเย็น
+available hours|ช่วงเวลาที่ว่าง|n.|What are your available hours?|คุณว่างช่วงไหน
+waiting time|เวลารอ|n.|The waiting time is ten minutes.|เวลารอสิบนาที
+staff member|พนักงาน|n.|A staff member will help you.|พนักงานจะช่วยคุณ
+remote|ทางไกล|adj.|I work remotely.|ฉันทำงานทางไกล
+training session|การอบรม|n.|The training session starts at two.|การอบรมเริ่มบ่ายสอง
+handbook|คู่มือ|n.|Please read the handbook.|กรุณาอ่านคู่มือ
+guideline|แนวทาง|n.|Follow the guidelines.|ปฏิบัติตามแนวทาง
+procedure|ขั้นตอน|n.|Follow this procedure.|ทำตามขั้นตอนนี้
+safety|ความปลอดภัย|n.|Safety comes first.|ความปลอดภัยมาก่อน`);
+addW(B2B,`pipeline|ช่องทางการขาย|n.|Our sales pipeline is full.|ช่องทางการขายของเราเต็ม
+conversion rate|อัตราการเปลี่ยนเป็นลูกค้า|n.|The conversion rate improved.|อัตราการเปลี่ยนเป็นลูกค้าดีขึ้น
+upsell|เสนอขายเพิ่ม|v.|We try to upsell premium plans.|เราพยายามเสนอขายแพ็กเกจพรีเมียม
+retention|การรักษาลูกค้า|n.|Customer retention is a priority.|การรักษาลูกค้าเป็นเรื่องสำคัญ
+churn|การเลิกใช้บริการ|n.|Churn has increased.|การเลิกใช้บริการเพิ่มขึ้น
+prospect|ลูกค้าที่มีแนวโน้ม|n.|She called ten prospects.|เธอโทรหาลูกค้าที่มีแนวโน้มสิบราย
+quota|โควตา|n.|He met his sales quota.|เขาทำยอดขายตามโควตา
+bug fix|การแก้บั๊ก|n.|We released a bug fix.|เราปล่อยตัวแก้บั๊ก
+deploy|ติดตั้งใช้งานจริง|v.|We will deploy the update tonight.|เราจะปล่อยอัปเดตคืนนี้
+downtime|ช่วงที่ระบบหยุด|n.|We had two hours of downtime.|ระบบหยุดสองชั่วโมง
+outage|เหตุระบบล่ม|n.|There was a network outage.|เครือข่ายล่ม
+latency|ความล่าช้าของระบบ|n.|Latency affects users.|ความล่าช้าส่งผลต่อผู้ใช้
+backup plan|แผนสำรอง|n.|We need a backup plan.|เราต้องมีแผนสำรอง
+integration|การรวมระบบ|n.|Integration takes time.|การรวมระบบใช้เวลา
+user interface|หน้าจอผู้ใช้|n.|The user interface is simple.|หน้าจอผู้ใช้เรียบง่าย
+reconcile|กระทบยอด|v.|We must reconcile the accounts.|เราต้องกระทบยอดบัญชี
+accrual|รายการค้างจ่าย|n.|Record the accrual.|บันทึกรายการค้างจ่าย
+depreciation|ค่าเสื่อมราคา|n.|Depreciation reduces profit.|ค่าเสื่อมลดกำไร
+accounts payable|เจ้าหนี้การค้า|n.|Accounts payable is overdue.|เจ้าหนี้การค้าเลยกำหนด
+accounts receivable|ลูกหนี้การค้า|n.|Accounts receivable increased.|ลูกหนี้การค้าเพิ่มขึ้น
+variance|ผลต่าง|n.|Explain the budget variance.|อธิบายผลต่างงบประมาณ
+fiscal year|ปีงบประมาณ|n.|The fiscal year ends in September.|ปีงบประมาณสิ้นสุดเดือนกันยายน
+escalation|การส่งต่อระดับสูง|n.|Escalation is needed.|ต้องส่งเรื่องต่อ
+resolution|การแก้ปัญหา|n.|We reached a quick resolution.|เราแก้ปัญหาได้เร็ว
+service level|ระดับการให้บริการ|n.|The service level is high.|ระดับบริการสูง
+turnaround time|ระยะเวลาดำเนินการ|n.|Our turnaround time is two days.|ระยะเวลาดำเนินการสองวัน
+goodwill|ไมตรีจิต / ความนิยม|n.|We offered a gift as goodwill.|เรามอบของขวัญเป็นไมตรีจิต
+refund policy|นโยบายคืนเงิน|n.|Check our refund policy.|ดูนโยบายคืนเงินของเรา
+liaise|ประสานงาน|v.|She liaises with suppliers.|เธอประสานงานกับซัพพลายเออร์
+onboard|ปฐมนิเทศ|v.|We onboard new staff weekly.|เราปฐมนิเทศพนักงานใหม่ทุกสัปดาห์
+handover|การส่งมอบงาน|n.|The handover is on Friday.|ส่งมอบงานวันศุกร์
+sign off|อนุมัติ|v.|The manager signed off the plan.|ผู้จัดการอนุมัติแผน
+roll out|เปิดตัวทีละขั้น|v.|We will roll out the system in May.|เราจะเปิดใช้ระบบทีละขั้นในเดือนพฤษภาคม
+scale up|ขยายขนาด|v.|We want to scale up fast.|เราอยากขยายเร็ว
+wrap up|สรุปจบ|v.|Let us wrap up the meeting.|มาสรุปจบประชุมกัน
+follow through|ทำให้สำเร็จตามที่ตั้งใจ|v.|Please follow through on your promise.|กรุณาทำตามสัญญา
+touch base|ติดต่อสอบถามความคืบหน้า|v.|Let us touch base next week.|สัปดาห์หน้าขอติดต่อกันอีก
+loop in|ดึงเข้ามาเกี่ยวข้อง|v.|Please loop in the manager.|กรุณาดึงผู้จัดการเข้ามาด้วย
+circle back|กลับมาพูดเรื่องนี้|v.|We will circle back on that.|เราจะกลับมาพูดเรื่องนั้น
+bandwidth|กำลังคนและเวลา|n.|I do not have the bandwidth.|ฉันไม่มีเวลาและกำลังพอ
+action item|งานที่ต้องทำต่อ|n.|Here are the action items.|นี่คืองานที่ต้องทำต่อ
+stakeholder buy-in|การยอมรับของผู้เกี่ยวข้อง|n.|We need stakeholder buy-in.|เราต้องได้การยอมรับจากผู้เกี่ยวข้อง`);
+
+
+/* ===== content pack 4 ===== */
+addW(21,`shoulder|ไหล่|n.|My shoulder hurts.|ไหล่ฉันเจ็บ
+elbow|ศอก|n.|He hurt his elbow.|เขาเจ็บศอก
+knee|เข่า|n.|My knee is sore.|เข่าฉันเจ็บ
+ankle|ข้อเท้า|n.|She twisted her ankle.|เธอข้อเท้าแพลง
+wrist|ข้อมือ|n.|He wears a watch on his wrist.|เขาใส่นาฬิกาที่ข้อมือ
+neck|คอ|n.|My neck is stiff.|คอฉันตึง
+stomach|ท้อง|n.|I have a stomach ache.|ฉันปวดท้อง
+chest|หน้าอก|n.|The doctor checked my chest.|หมอตรวจหน้าอกฉัน
+back pain|ปวดหลัง|n.|I have back pain.|ฉันปวดหลัง
+fever|ไข้|n.|She has a fever.|เธอเป็นไข้
+cough|ไอ|n.|I have a bad cough.|ฉันไอหนัก
+cold|หวัด|n.|I caught a cold.|ฉันเป็นหวัด
+rest|พักผ่อน|v.|You need to rest.|คุณต้องพักผ่อน
+healthy food|อาหารสุขภาพ|n.|Eat more healthy food.|กินอาหารสุขภาพมากขึ้น
+exercise|การออกกำลังกาย|n.|Exercise is good for you.|การออกกำลังกายดีต่อคุณ`);
+addW(27,`grandmother|ยาย / ย่า|n.|My grandmother lives in Chiang Mai.|ยายของฉันอยู่เชียงใหม่
+grandfather|ตา / ปู่|n.|My grandfather is eighty.|ตาของฉันอายุแปดสิบ
+uncle|ลุง / อา / น้า|n.|My uncle is a driver.|ลุงของฉันเป็นคนขับรถ
+aunt|ป้า / อา / น้า|n.|My aunt cooks very well.|ป้าของฉันทำอาหารเก่ง
+cousin|ลูกพี่ลูกน้อง|n.|My cousin lives nearby.|ลูกพี่ลูกน้องอยู่ใกล้ ๆ
+parents|พ่อแม่|n.|My parents are retired.|พ่อแม่ฉันเกษียณแล้ว
+relatives|ญาติ|n.|We visit relatives at New Year.|เราไปเยี่ยมญาติช่วงปีใหม่
+married|แต่งงานแล้ว|adj.|She is married.|เธอแต่งงานแล้ว
+single|โสด|adj.|He is single.|เขาโสด
+twin|ฝาแฝด|n.|She has a twin sister.|เธอมีน้องสาวฝาแฝด
+neighbour|เพื่อนบ้าน|n.|Our neighbour is friendly.|เพื่อนบ้านเป็นมิตร
+teenager|วัยรุ่น|n.|My son is a teenager.|ลูกชายฉันเป็นวัยรุ่น
+adult|ผู้ใหญ่|n.|Tickets are for adults.|ตั๋วสำหรับผู้ใหญ่
+baby|ทารก|n.|The baby is sleeping.|ทารกกำลังหลับ
+elderly|ผู้สูงอายุ|adj.|Help elderly people.|ช่วยผู้สูงอายุ`);
+addW(24,`subject|วิชา|n.|My favourite subject is English.|วิชาโปรดของฉันคือภาษาอังกฤษ
+homework|การบ้าน|n.|I finished my homework.|ฉันทำการบ้านเสร็จ
+exam|การสอบ|n.|I have an exam tomorrow.|พรุ่งนี้ฉันมีสอบ
+classroom|ห้องเรียน|n.|The classroom is big.|ห้องเรียนใหญ่
+lesson|บทเรียน|n.|The lesson starts at nine.|บทเรียนเริ่มเก้าโมง
+student|นักเรียน|n.|He is a university student.|เขาเป็นนักศึกษา
+university|มหาวิทยาลัย|n.|She studies at university.|เธอเรียนมหาวิทยาลัย
+library|ห้องสมุด|n.|I study in the library.|ฉันอ่านหนังสือในห้องสมุด
+dictionary|พจนานุกรม|n.|Use a dictionary.|ใช้พจนานุกรม
+pencil|ดินสอ|n.|I need a pencil.|ฉันต้องการดินสอ
+grade|เกรด|n.|She got a good grade.|เธอได้เกรดดี
+pass an exam|สอบผ่าน|v.|I passed the exam.|ฉันสอบผ่าน
+fail an exam|สอบตก|v.|He failed the exam.|เขาสอบตก
+learn|เรียนรู้|v.|I want to learn Spanish.|ฉันอยากเรียนภาษาสเปน
+teach|สอน|v.|She teaches English.|เธอสอนภาษาอังกฤษ`);
+READS.push(
+{id:'r32',lv:'A1',t:'My Best Friend',th:'เพื่อนสนิทของฉัน',x:'My best friend is Tom. He is twenty-six. He is tall and has short black hair. He works in a bank. He likes football and music. We play football on Saturday. He is kind and funny.',q:[['ทอมทำงานที่ไหน?',['ธนาคาร','โรงเรียน','ร้านอาหาร'],0,'He works in a bank'],['พวกเขาเล่นฟุตบอลวันไหน?',['วันเสาร์','วันอาทิตย์','วันศุกร์'],0,'We play football on Saturday']]},
+{id:'r33',lv:'A1',t:'At the Restaurant',th:'ที่ร้านอาหาร',x:'Anna and Ben go to a restaurant. Anna orders fried rice and a glass of water. Ben orders noodles and an orange juice. The food is good and not expensive. They pay and say thank you.',q:[['แอนนาสั่งอะไร?',['ข้าวผัด','ก๋วยเตี๋ยว','ซุป'],0,'fried rice'],['อาหารเป็นอย่างไร?',['อร่อยและไม่แพง','แพงมาก','เค็มเกินไป'],0,'good and not expensive']]}
+);
+DIALOGS.push(
+D('d52','B2','Clarifying project scope','ทำความเข้าใจขอบเขตโครงการ',['Mia','Client'],[[0,'Before we start, I would like to clarify the scope of the project.','ก่อนเริ่ม ขอทำความเข้าใจขอบเขตโครงการ'],[1,'Of course. We need a new website with an online booking system.','ได้ เราต้องการเว็บไซต์ใหม่พร้อมระบบจองออนไลน์'],[0,'Does that include payment integration, or only booking?','รวมการเชื่อมระบบชำระเงินด้วยไหม หรือเฉพาะจอง'],[1,'Payment integration would be ideal, but it is not essential for the first phase.','การเชื่อมชำระเงินจะดี แต่ไม่จำเป็นสำหรับระยะแรก'],[0,'Understood. I suggest we include it in phase two and agree on a separate budget.','เข้าใจ เสนอให้ไว้ในระยะสองและตกลงงบแยก'],[1,'That works. Please put it in writing.','ได้ ช่วยทำเป็นลายลักษณ์อักษร']],[['ระยะแรกต้องมีอะไร?',['เว็บไซต์และระบบจอง','ระบบชำระเงิน','แอปมือถือ'],0,'website with an online booking system'],['มีอาเสนอเรื่องการชำระเงินอย่างไร?',['ไว้ระยะสองและแยกงบ','ตัดออก','ทำเลย'],0,'phase two … separate budget']]),
+D('d53','B2','Reporting a risk early','รายงานความเสี่ยงตั้งแต่เนิ่น ๆ',['Mia','Manager'],[[0,'I would like to flag a risk with the launch date.','ขอแจ้งความเสี่ยงเรื่องวันเปิดตัว'],[1,'Go on. What have you noticed?','ว่ามา สังเกตเห็นอะไร'],[0,'The supplier has warned us that the delivery may be delayed by two weeks.','ซัพพลายเออร์เตือนว่าการส่งอาจล่าช้าสองสัปดาห์'],[1,'That could be serious. Do we have any alternatives?','อาจร้ายแรง มีทางเลือกอื่นไหม'],[0,'We could use a second supplier, although it would cost about five percent more.','ใช้ซัพพลายเออร์รายที่สองได้ แต่แพงขึ้นราวห้าเปอร์เซ็นต์'],[1,'Please prepare both options and we will decide on Monday.','เตรียมทั้งสองทางเลือก แล้วตัดสินใจวันจันทร์']],[['ความเสี่ยงคืออะไร?',['ซัพพลายเออร์อาจส่งช้าสองสัปดาห์','ราคาตก','พนักงานลาออก'],0,'delivery may be delayed by two weeks'],['ผู้จัดการให้ทำอะไร?',['เตรียมสองทางเลือกแล้วตัดสินวันจันทร์','ยกเลิกการเปิดตัว','เปลี่ยนซัพพลายเออร์ทันที'],0,'prepare both options and decide on Monday']])
+);
+
+
+/* ===== content pack 5 ===== */
+addW(B1B,`garbage collection|การเก็บขยะ|n.|Garbage collection is on Monday.|เก็บขยะวันจันทร์
+public transport|ขนส่งสาธารณะ|n.|I use public transport.|ฉันใช้ขนส่งสาธารณะ
+rush hour|ชั่วโมงเร่งด่วน|n.|Avoid rush hour.|หลีกเลี่ยงชั่วโมงเร่งด่วน
+queue|เข้าแถว|n.|There was a long queue.|มีแถวยาว
+crowded|แออัด|adj.|The train was crowded.|รถไฟแออัด
+convenient|สะดวก|adj.|It is convenient to work from home.|ทำงานที่บ้านสะดวก
+inconvenient|ไม่สะดวก|adj.|It is inconvenient for me.|ไม่สะดวกสำหรับฉัน
+comfortable|สบาย|adj.|The chair is comfortable.|เก้าอี้นั่งสบาย
+suitable|เหมาะสม|adj.|Is this suitable for you?|เหมาะกับคุณไหม
+reasonable price|ราคาสมเหตุสมผล|n.|It is a reasonable price.|ราคาสมเหตุสมผล
+affordable|ราคาไม่แพง|adj.|The hotel is affordable.|โรงแรมราคาไม่แพง
+luxury|หรูหรา|n.|It is a luxury hotel.|เป็นโรงแรมหรู
+tradition|ประเพณี|n.|It is a Thai tradition.|เป็นประเพณีไทย
+celebration|การเฉลิมฉลอง|n.|The celebration lasted all night.|การเฉลิมฉลองกินเวลาทั้งคืน
+ceremony|พิธี|n.|The ceremony starts at ten.|พิธีเริ่มสิบโมง
+audience|ผู้ชม|n.|The audience clapped.|ผู้ชมปรบมือ
+performance|การแสดง|n.|The performance was great.|การแสดงยอดเยี่ยม
+exhibition|นิทรรศการ|n.|We visited an art exhibition.|เราชมนิทรรศการศิลปะ
+article writer|ผู้เขียนบทความ|n.|She is an article writer.|เธอเป็นผู้เขียนบทความ
+journalist|นักข่าว|n.|The journalist asked a question.|นักข่าวถามคำถาม
+broadcast|ออกอากาศ|v.|The match is broadcast live.|แมตช์ออกอากาศสด
+headline news|ข่าวเด่น|n.|It is headline news.|เป็นข่าวเด่น
+social media|โซเชียลมีเดีย|n.|I check social media daily.|ฉันดูโซเชียลทุกวัน
+post|โพสต์|v.|She posted a photo.|เธอโพสต์รูป
+share|แชร์|v.|Please share the link.|กรุณาแชร์ลิงก์
+follow|ติดตาม|v.|I follow their page.|ฉันติดตามเพจของเขา
+subscribe|สมัครสมาชิก|v.|Subscribe to our newsletter.|สมัครรับจดหมายข่าว
+newsletter|จดหมายข่าว|n.|We send a monthly newsletter.|เราส่งจดหมายข่าวทุกเดือน
+survey|แบบสำรวจ|n.|Please complete the survey.|กรุณาทำแบบสำรวจ
+questionnaire|แบบสอบถาม|n.|Fill in the questionnaire.|กรอกแบบสอบถาม
+statistics|สถิติ|n.|The statistics are clear.|สถิติชัดเจน
+research|การวิจัย|n.|They did research on customers.|เขาวิจัยเรื่องลูกค้า
+experiment|การทดลอง|n.|We ran an experiment.|เราทำการทดลอง
+discover|ค้นพบ|v.|They discovered a problem.|เขาค้นพบปัญหา
+invent|ประดิษฐ์|v.|Who invented the telephone?|ใครประดิษฐ์โทรศัพท์
+improve skills|พัฒนาทักษะ|v.|I want to improve my skills.|ฉันอยากพัฒนาทักษะ`);
+addW(B2B,`sustainability|ความยั่งยืน|n.|Sustainability is a key goal.|ความยั่งยืนเป็นเป้าหมายหลัก
+diversity|ความหลากหลาย|n.|We value diversity.|เราให้คุณค่ากับความหลากหลาย
+inclusion|การไม่แบ่งแยก|n.|Inclusion improves teamwork.|การไม่แบ่งแยกช่วยการทำงานเป็นทีม
+accountability|ความรับผิดชอบ|n.|Accountability matters.|ความรับผิดชอบสำคัญ
+transparency|ความโปร่งใส|n.|We need more transparency.|เราต้องการความโปร่งใสมากขึ้น
+collaboration|การทำงานร่วมกัน|n.|Collaboration is essential.|การทำงานร่วมกันสำคัญมาก
+innovation|นวัตกรรม|n.|Innovation drives growth.|นวัตกรรมขับเคลื่อนการเติบโต
+disruption|การเปลี่ยนแปลงครั้งใหญ่|n.|AI causes disruption.|AI ทำให้เกิดการเปลี่ยนแปลงใหญ่
+adoption|การนำมาใช้|n.|Adoption of the tool was slow.|การนำเครื่องมือมาใช้ช้า
+resistance|การต่อต้าน|n.|Staff showed resistance to change.|พนักงานต่อต้านการเปลี่ยนแปลง
+milestone review|การทบทวนหมุดหมาย|n.|We hold a milestone review monthly.|เราทบทวนหมุดหมายทุกเดือน
+due diligence|การตรวจสอบอย่างรอบคอบ|n.|We did due diligence before signing.|เราตรวจสอบอย่างรอบคอบก่อนเซ็น
+conflict of interest|ผลประโยชน์ทับซ้อน|n.|There is a conflict of interest.|มีผลประโยชน์ทับซ้อน
+whistleblower|ผู้เปิดโปง|n.|The whistleblower reported fraud.|ผู้เปิดโปงรายงานการทุจริต
+fraud|การทุจริต|n.|The audit found fraud.|การตรวจสอบพบการทุจริต
+bribe|สินบน|n.|He refused a bribe.|เขาปฏิเสธสินบน
+code of conduct|ข้อปฏิบัติ|n.|Read the code of conduct.|อ่านข้อปฏิบัติ
+guideline update|การปรับแนวทาง|n.|We published a guideline update.|เราประกาศการปรับแนวทาง
+policy change|การเปลี่ยนนโยบาย|n.|A policy change is coming.|กำลังจะมีการเปลี่ยนนโยบาย
+legislation|กฎหมาย|n.|New legislation was passed.|มีกฎหมายใหม่ผ่าน
+penalty|บทลงโทษ|n.|The penalty is heavy.|บทลงโทษหนัก
+fine|ค่าปรับ|n.|They paid a fine.|เขาจ่ายค่าปรับ
+enforce|บังคับใช้|v.|Rules must be enforced.|ต้องบังคับใช้กฎ
+oversee|กำกับดูแล|v.|She oversees the whole project.|เธอกำกับดูแลทั้งโครงการ
+coordinate efforts|ประสานความพยายาม|v.|We coordinate our efforts.|เราประสานความพยายาม
+streamline process|ปรับขั้นตอนให้กระชับ|v.|We streamlined the process.|เราปรับขั้นตอนให้กระชับ
+reduce waste|ลดของเสีย|v.|We reduce waste daily.|เราลดของเสียทุกวัน
+carbon footprint|รอยเท้าคาร์บอน|n.|We want to reduce our carbon footprint.|เราอยากลดรอยเท้าคาร์บอน
+renewable|หมุนเวียน|adj.|Renewable energy is growing.|พลังงานหมุนเวียนกำลังโต
+supply chain|ห่วงโซ่อุปทาน|n.|The supply chain was disrupted.|ห่วงโซ่อุปทานสะดุด
+logistics|โลจิสติกส์|n.|She works in logistics.|เธอทำงานโลจิสติกส์
+procurement|การจัดซื้อ|n.|Procurement approved the order.|ฝ่ายจัดซื้ออนุมัติ
+lead time|เวลานำส่ง|n.|The lead time is three weeks.|เวลานำส่งสามสัปดาห์
+inventory|สินค้าคงคลัง|n.|We check inventory weekly.|เราตรวจสินค้าคงคลังรายสัปดาห์
+overhead|ค่าใช้จ่ายคงที่|n.|Overhead costs are high.|ค่าใช้จ่ายคงที่สูง
+return on investment|ผลตอบแทนการลงทุน|n.|What is the return on investment?|ผลตอบแทนการลงทุนเท่าไร`);
+DIALOGS.push(
+D('d54','A2','At the supermarket','ที่ซูเปอร์มาร์เก็ต',['Customer','Cashier'],[[1,'Hello. Did you find everything you need?','สวัสดีค่ะ หาของครบไหมคะ'],[0,'Yes, thank you. How much is it?','ครบครับ เท่าไรครับ'],[1,'That is two hundred and fifty baht.','สองร้อยห้าสิบบาทค่ะ'],[0,'Can I pay by card?','จ่ายด้วยบัตรได้ไหม'],[1,'Yes, of course. Do you need a bag?','ได้ค่ะ ต้องการถุงไหม'],[0,'No, thanks. I have my own bag.','ไม่ครับ ผมมีถุงของตัวเอง']],[['ยอดรวมเท่าไร?',['250 บาท','200 บาท','520 บาท'],0,'two hundred and fifty baht'],['ลูกค้าจ่ายอย่างไร?',['บัตร','เงินสด','โอน'],0,'pay by card']]),
+D('d55','A2','Making plans on the phone','นัดเที่ยวทางโทรศัพท์',['Ann','Ben'],[[0,'Hi Ben, are you free this Saturday?','ไฮเบน เสาร์นี้ว่างไหม'],[1,'Yes, I am. What do you want to do?','ว่าง อยากทำอะไร'],[0,'Let us go to the beach. The weather will be nice.','ไปทะเลกัน อากาศจะดี'],[1,'Sounds great. What time shall we leave?','ดีเลย ออกกี่โมงดี'],[0,'At eight, because the traffic is bad later.','แปดโมง เพราะเดี๋ยวรถติด'],[1,'OK. I will bring some snacks.','โอเค ฉันจะเอาขนมไป']],[['พวกเขาจะไปไหน?',['ทะเล','ภูเขา','ห้างสรรพสินค้า'],0,'go to the beach'],['จะออกกี่โมง?',['แปดโมง','เก้าโมง','เที่ยง'],0,'At eight']]),
+D('d56','A2','At the hotel front desk','ที่เคาน์เตอร์โรงแรม',['Guest','Receptionist'],[[0,'Hello, I have a reservation for two nights.','สวัสดีครับ ผมจองไว้สองคืน'],[1,'May I have your name, please?','ขอชื่อด้วยค่ะ'],[0,'It is Park. P-A-R-K.','ชื่อพาร์ค พี-เอ-อาร์-เค'],[1,'Thank you, Mr. Park. Here is your key. Breakfast is from seven to ten.','ขอบคุณค่ะ นี่กุญแจ อาหารเช้าเจ็ดถึงสิบโมง'],[0,'Is there Wi-Fi in the room?','ในห้องมี Wi-Fi ไหม'],[1,'Yes. The password is on the card.','มีค่ะ รหัสอยู่บนการ์ด']],[['แขกพักกี่คืน?',['สองคืน','สามคืน','หนึ่งคืน'],0,'two nights'],['รหัส Wi-Fi อยู่ที่ไหน?',['บนการ์ด','ที่โต๊ะ','ในอีเมล'],0,'on the card']]),
+D('d57','A2','Lost bag','กระเป๋าหาย',['Mia','Staff'],[[0,'Excuse me, I lost my bag.','ขอโทษค่ะ ฉันทำกระเป๋าหาย'],[1,'What does it look like?','หน้าตาเป็นอย่างไรคะ'],[0,'It is small and black, with a red tag.','เล็กสีดำ มีป้ายสีแดง'],[1,'Where did you lose it?','หายที่ไหนคะ'],[0,'I think I left it on the train.','คิดว่าลืมไว้บนรถไฟ'],[1,'Please fill in this form. We will call you if we find it.','กรุณากรอกแบบฟอร์ม เราจะโทรหาถ้าเจอ']],[['กระเป๋าหน้าตาอย่างไร?',['เล็ก สีดำ มีป้ายแดง','ใหญ่ สีน้ำตาล','สีเขียว'],0,'small and black, with a red tag'],['พนักงานให้ทำอะไร?',['กรอกแบบฟอร์ม','มาใหม่พรุ่งนี้','จ่ายค่าปรับ'],0,'fill in this form']])
+);
+
+
+/* ===== vocab pack 9 ===== */
+addW(B1B,`on time|ตรงเวลา|adv.|Please arrive on time.|กรุณามาตรงเวลา
+in advance|ล่วงหน้า|adv.|Please book in advance.|กรุณาจองล่วงหน้า
+in time|ทันเวลา|adv.|We arrived in time.|เรามาถึงทันเวลา
+on hold|พักไว้ก่อน|adj.|The project is on hold.|โครงการพักไว้ก่อน
+ahead of schedule|เร็วกว่ากำหนด|adv.|We finished ahead of schedule.|เราเสร็จเร็วกว่ากำหนด
+as soon as possible|โดยเร็วที่สุด|adv.|Please reply as soon as possible.|กรุณาตอบโดยเร็วที่สุด
+regards|ขอแสดงความนับถือ|n.|Kind regards, Mia.|ขอแสดงความนับถือ มีอา
+sincerely|ด้วยความจริงใจ|adv.|Yours sincerely, Tom.|ด้วยความนับถือ ทอม
+enclosed|แนบมาด้วย|adj.|Please find the enclosed form.|กรุณาดูแบบฟอร์มที่แนบมา
+in reply to|ตอบกลับเรื่อง|prep.|I am writing in reply to your email.|ฉันเขียนตอบอีเมลของคุณ
+further to|ต่อจากเรื่อง|prep.|Further to our call, I attach the file.|ต่อจากที่คุยโทรศัพท์ ฉันแนบไฟล์
+look forward to|รอคอย|v.|I look forward to your reply.|ฉันรอคำตอบของคุณ
+get in touch|ติดต่อ|v.|Please get in touch with me.|กรุณาติดต่อฉัน
+let me know|แจ้งให้ฉันทราบ|v.|Let me know if you have questions.|แจ้งฉันถ้ามีคำถาม
+chair a meeting|เป็นประธานประชุม|v.|She chairs the meeting.|เธอเป็นประธานประชุม
+propose|เสนอ|v.|I propose a new plan.|ฉันเสนอแผนใหม่
+vote|ลงคะแนน|v.|Let us vote on it.|มาลงคะแนนกัน
+majority|เสียงส่วนใหญ่|n.|The majority agreed.|เสียงส่วนใหญ่เห็นด้วย
+item|หัวข้อ / รายการ|n.|The first item is the budget.|หัวข้อแรกคืองบประมาณ
+attendee|ผู้เข้าร่วม|n.|There are twenty attendees.|มีผู้เข้าร่วมยี่สิบคน
+speaker|ผู้พูด|n.|The speaker was excellent.|ผู้พูดยอดเยี่ยม
+slide|สไลด์|n.|Please go to the next slide.|กรุณาไปสไลด์ถัดไป
+chart|แผนภูมิ|n.|This chart shows sales.|แผนภูมินี้แสดงยอดขาย
+graph|กราฟ|n.|The graph goes up.|กราฟขึ้น
+figure|ตัวเลข|n.|Please check this figure.|กรุณาตรวจตัวเลขนี้
+trend line|เส้นแนวโน้ม|n.|The trend line is positive.|เส้นแนวโน้มเป็นบวก
+rise|เพิ่มขึ้น|v.|Prices rose last month.|ราคาขึ้นเดือนที่แล้ว
+fall|ลดลง|v.|Sales fell by five percent.|ยอดขายลดลงห้าเปอร์เซ็นต์
+remain stable|คงที่|v.|The price remained stable.|ราคาคงที่
+double|เพิ่มเป็นสองเท่า|v.|Sales doubled.|ยอดขายเพิ่มสองเท่า
+half|ครึ่ง|n.|Half of the staff are new.|พนักงานครึ่งหนึ่งเป็นคนใหม่
+a third|หนึ่งในสาม|n.|A third of customers agreed.|ลูกค้าหนึ่งในสามเห็นด้วย
+a quarter|หนึ่งในสี่|n.|A quarter of sales is online.|หนึ่งในสี่ของยอดขายเป็นออนไลน์
+compared with|เมื่อเทียบกับ|prep.|Compared with last year, it is higher.|เมื่อเทียบกับปีที่แล้วสูงกว่า
+according to|ตาม|prep.|According to the report, sales rose.|ตามรายงาน ยอดขายเพิ่ม
+due to|เนื่องจาก|prep.|The delay was due to rain.|ความล่าช้าเกิดจากฝน
+because of|เพราะ|prep.|We stayed in because of the storm.|เราอยู่บ้านเพราะพายุ`);
+addW(B2B,`counteroffer|ข้อเสนอสวน|n.|They made a counteroffer.|เขาเสนอสวน
+concession|การยอมผ่อนปรน|n.|We made a small concession.|เรายอมผ่อนปรนเล็กน้อย
+leverage point|จุดต่อรอง|n.|Volume is our leverage point.|ปริมาณคือจุดต่อรอง
+bargain hard|ต่อรองหนัก|v.|They bargained hard.|เขาต่อรองหนัก
+meet halfway|พบกันครึ่งทาง|v.|Let us meet halfway.|มาพบกันครึ่งทาง
+walk away|ถอนตัว|v.|We may have to walk away.|เราอาจต้องถอนตัว
+close a deal|ปิดดีล|v.|We closed the deal today.|วันนี้เราปิดดีลได้
+terms and conditions|ข้อตกลงและเงื่อนไข|n.|Read the terms and conditions.|อ่านข้อตกลงและเงื่อนไข
+non-disclosure agreement|ข้อตกลงรักษาความลับ|n.|Please sign the non-disclosure agreement.|กรุณาเซ็นข้อตกลงรักษาความลับ
+performance review|การประเมินผลงาน|n.|The performance review is in June.|ประเมินผลงานเดือนมิถุนายน
+constructive feedback|ข้อเสนอแนะเชิงสร้างสรรค์|n.|She gave constructive feedback.|เธอให้ข้อเสนอแนะเชิงสร้างสรรค์
+career development|การพัฒนาสายอาชีพ|n.|Career development is important.|การพัฒนาสายอาชีพสำคัญ
+work-life balance|สมดุลชีวิตกับงาน|n.|Work-life balance matters.|สมดุลชีวิตกับงานสำคัญ
+job satisfaction|ความพึงพอใจในงาน|n.|Job satisfaction is high.|ความพึงพอใจในงานสูง
+team morale|ขวัญกำลังใจทีม|n.|Team morale improved.|ขวัญกำลังใจทีมดีขึ้น
+motivation|แรงจูงใจ|n.|Motivation drives results.|แรงจูงใจนำไปสู่ผลลัพธ์
+delegation|การมอบหมายงาน|n.|Good delegation saves time.|การมอบหมายงานที่ดีประหยัดเวลา
+empower|ให้อำนาจ|v.|We empower our staff.|เราให้อำนาจพนักงาน
+mentor|ที่ปรึกษา / ให้คำปรึกษา|v.|She mentors new staff.|เธอเป็นพี่เลี้ยงพนักงานใหม่
+coach|โค้ช|v.|He coaches junior staff.|เขาโค้ชพนักงานใหม่
+appraise|ประเมิน|v.|We appraise staff annually.|เราประเมินพนักงานทุกปี
+set targets|ตั้งเป้า|v.|We set targets each quarter.|เราตั้งเป้าทุกไตรมาส
+track progress|ติดตามความคืบหน้า|v.|We track progress weekly.|เราติดตามความคืบหน้ารายสัปดาห์
+measure success|วัดความสำเร็จ|v.|How do you measure success?|คุณวัดความสำเร็จอย่างไร
+long-term|ระยะยาว|adj.|It is a long-term plan.|เป็นแผนระยะยาว
+short-term|ระยะสั้น|adj.|We need short-term results.|เราต้องการผลระยะสั้น
+mid-term|ระยะกลาง|adj.|The mid-term goal is growth.|เป้าระยะกลางคือการเติบโต
+competitive advantage|ความได้เปรียบทางการแข่งขัน|n.|Quality is our competitive advantage.|คุณภาพคือข้อได้เปรียบ
+market research|การวิจัยตลาด|n.|We did market research.|เราทำวิจัยตลาด
+target audience|กลุ่มเป้าหมาย|n.|Who is our target audience?|กลุ่มเป้าหมายคือใคร
+brand awareness|การรับรู้แบรนด์|n.|Brand awareness is low.|การรับรู้แบรนด์ต่ำ
+customer loyalty|ความภักดีของลูกค้า|n.|Customer loyalty is valuable.|ความภักดีของลูกค้ามีค่า
+value proposition|คุณค่าที่นำเสนอ|n.|Our value proposition is clear.|คุณค่าที่เรานำเสนอชัดเจน
+unique selling point|จุดขายเฉพาะ|n.|What is our unique selling point?|จุดขายเฉพาะของเราคืออะไร
+cost-benefit analysis|การวิเคราะห์ต้นทุนและผลตอบแทน|n.|We did a cost-benefit analysis.|เราวิเคราะห์ต้นทุนและผลตอบแทน
+risk assessment|การประเมินความเสี่ยง|n.|A risk assessment is required.|ต้องมีการประเมินความเสี่ยง
+contingency plan|แผนรองรับ|n.|We have a contingency plan.|เรามีแผนรองรับ
+worst-case scenario|กรณีเลวร้ายที่สุด|n.|Consider the worst-case scenario.|พิจารณากรณีเลวร้ายที่สุด`);
+
+
+/* ===== vocab pack 10 ===== */
+addW(22,`menu|เมนู|n.|Can I see the menu?|ขอดูเมนูหน่อย
+order|สั่ง|v.|I would like to order.|ฉันอยากสั่ง
+bill|บิล|n.|Could we have the bill?|ขอเช็คบิลได้ไหม
+tip|ทิป|n.|Leave a tip.|ทิ้งทิปไว้
+spicy|เผ็ด|adj.|Is it spicy?|เผ็ดไหม
+sweet|หวาน|adj.|The tea is too sweet.|ชาหวานเกินไป
+sour|เปรี้ยว|adj.|The soup is sour.|ซุปเปรี้ยว
+fresh|สด|adj.|The fruit is fresh.|ผลไม้สด
+fried|ทอด / ผัด|adj.|I like fried rice.|ฉันชอบข้าวผัด
+grilled|ย่าง|adj.|Grilled chicken, please.|ขอไก่ย่าง
+boiled|ต้ม|adj.|Boiled eggs are healthy.|ไข่ต้มดีต่อสุขภาพ
+dessert|ของหวาน|n.|Do you want dessert?|เอาของหวานไหม
+snack|ขนมขบเคี้ยว|n.|I eat a snack at three.|ฉันกินขนมตอนบ่ายสาม
+recipe|สูตรอาหาร|n.|Can I have the recipe?|ขอสูตรได้ไหม
+ingredient|ส่วนผสม|n.|What are the ingredients?|ส่วนผสมมีอะไรบ้าง`);
+addW(26,`season|ฤดู|n.|Summer is my favourite season.|ฤดูร้อนคือฤดูโปรดของฉัน
+forecast|พยากรณ์|n.|The weather forecast says rain.|พยากรณ์อากาศบอกว่าฝนตก
+humid|ชื้น|adj.|It is very humid today.|วันนี้ชื้นมาก
+windy|ลมแรง|adj.|It is windy outside.|ข้างนอกลมแรง
+freezing|หนาวจัด|adj.|It is freezing in the office.|ในออฟฟิศหนาวจัด
+degree|องศา|n.|It is thirty degrees.|อากาศสามสิบองศา
+lightning|ฟ้าแลบ|n.|I saw lightning.|ฉันเห็นฟ้าแลบ
+thunder|ฟ้าร้อง|n.|The thunder was loud.|ฟ้าร้องดัง
+drought|ภัยแล้ง|n.|The drought lasted months.|ภัยแล้งยาวหลายเดือน
+global warming|โลกร้อน|n.|Global warming is serious.|โลกร้อนเป็นเรื่องร้ายแรง`);
+addW(B1B,`delivery|การจัดส่ง|n.|Delivery takes two days.|จัดส่งสองวัน
+tracking number|เลขพัสดุ|n.|Here is your tracking number.|นี่คือเลขพัสดุของคุณ
+parcel|พัสดุ|n.|The parcel arrived today.|พัสดุมาถึงวันนี้
+courier|บริษัทขนส่ง|n.|We use a courier.|เราใช้บริษัทขนส่ง
+customs|ศุลกากร|n.|The parcel is held at customs.|พัสดุติดที่ศุลกากร
+import|นำเข้า|v.|We import coffee.|เรานำเข้ากาแฟ
+export|ส่งออก|v.|They export rice.|เขาส่งออกข้าว
+packaging|บรรจุภัณฑ์|n.|The packaging was damaged.|บรรจุภัณฑ์เสียหาย
+fragile|แตกง่าย|adj.|This box is fragile.|กล่องนี้แตกง่าย
+weight|น้ำหนัก|n.|Check the weight.|ตรวจน้ำหนัก
+dimension|ขนาด|n.|What are the dimensions?|ขนาดเท่าไร
+quantity|ปริมาณ|n.|Please confirm the quantity.|กรุณายืนยันปริมาณ
+unit price|ราคาต่อหน่วย|n.|The unit price is fifty baht.|ราคาต่อหน่วยห้าสิบบาท
+bulk order|สั่งจำนวนมาก|n.|We offer discounts for bulk orders.|เรามีส่วนลดสั่งจำนวนมาก
+minimum order|ขั้นต่ำการสั่ง|n.|The minimum order is ten.|ขั้นต่ำสิบชิ้น
+lead|นำ|v.|She leads the sales team.|เธอนำทีมขาย
+manage a team|บริหารทีม|v.|He manages a team of eight.|เขาดูแลทีมแปดคน
+report to|รายงานต่อ|v.|I report to the director.|ฉันรายงานต่อผู้อำนวยการ
+work together|ทำงานร่วมกัน|v.|We work together well.|เราทำงานร่วมกันได้ดี
+take part in|เข้าร่วม|v.|Please take part in the survey.|กรุณาร่วมแบบสำรวจ`);
+addW(B2B,`allocation|การจัดสรร|n.|Budget allocation is complete.|จัดสรรงบเสร็จแล้ว
+forecasting|การพยากรณ์|n.|Forecasting needs accurate data.|การพยากรณ์ต้องใช้ข้อมูลแม่นยำ
+variance analysis|การวิเคราะห์ผลต่าง|n.|We did a variance analysis.|เราวิเคราะห์ผลต่าง
+cash position|สถานะเงินสด|n.|Our cash position is strong.|สถานะเงินสดแข็งแรง
+break-even point|จุดคุ้มทุน|n.|We reached the break-even point.|เราถึงจุดคุ้มทุน
+gross profit|กำไรขั้นต้น|n.|Gross profit increased.|กำไรขั้นต้นเพิ่ม
+net profit|กำไรสุทธิ|n.|Net profit was ten percent.|กำไรสุทธิสิบเปอร์เซ็นต์
+operating costs|ต้นทุนดำเนินงาน|n.|Operating costs fell.|ต้นทุนดำเนินงานลดลง
+capital|ทุน|n.|We need more capital.|เราต้องการทุนเพิ่ม
+funding|เงินทุนสนับสนุน|n.|The startup raised funding.|สตาร์ทอัพระดมทุนได้
+venture|กิจการเสี่ยง|n.|It is a joint venture.|เป็นกิจการร่วมทุน
+subsidiary|บริษัทลูก|n.|It is a subsidiary of ABC.|เป็นบริษัทลูกของ ABC
+headquarters|สำนักงานใหญ่|n.|Our headquarters is in Bangkok.|สำนักงานใหญ่อยู่ที่กรุงเทพ
+regional office|สำนักงานภูมิภาค|n.|We have a regional office in Asia.|เรามีสำนักงานภูมิภาคในเอเชีย
+cross-functional|ข้ามสายงาน|adj.|It is a cross-functional team.|เป็นทีมข้ามสายงาน
+agile|คล่องตัว (แบบอไจล์)|adj.|We use an agile method.|เราใช้วิธีแบบอไจล์
+iterate|ทำซ้ำเพื่อปรับปรุง|v.|We iterate quickly.|เราปรับปรุงซ้ำอย่างรวดเร็ว
+benchmark against|เทียบกับเกณฑ์|v.|We benchmark against competitors.|เราเทียบกับคู่แข่ง
+pilot project|โครงการนำร่อง|n.|We ran a pilot project.|เราทำโครงการนำร่อง
+proof of concept|การพิสูจน์แนวคิด|n.|The proof of concept worked.|การพิสูจน์แนวคิดได้ผล`);
+
+
+/* ===== units 20-21 ===== */
+UNITS.push(
+{t:'Describing numbers & trends',th:'อธิบายตัวเลขและแนวโน้ม (B1)',ic:'📈',topics:[B1B],g:[45,55],boss:{n:'Chart Chameleon',e:'🦎'},ls:[
+ {t:'Rises and falls',goal:'อธิบายตัวเลขที่เพิ่มขึ้นหรือลดลง',p:[['Sales rose by ten percent last quarter.','ยอดขายเพิ่มสิบเปอร์เซ็นต์ไตรมาสที่แล้ว'],['Costs have fallen since January.','ต้นทุนลดลงตั้งแต่มกราคม'],['The price remained stable.','ราคาคงที่'],['Profits doubled in two years.','กำไรเพิ่มสองเท่าใน 2 ปี']],tip:'ระบุเวลาที่จบแล้ว (last quarter, in 2024) ใช้ past simple · เล่าถึงปัจจุบันหรือ since/for ใช้ present perfect',q:['เติมคำ: Sales ___ since March.',['rose','have risen','rise'],1]},
+ {t:'Comparing figures',goal:'เปรียบเทียบตัวเลขสองชุด',p:[['Compared with last year, sales are higher.','เทียบกับปีที่แล้ว ยอดขายสูงกว่า'],['Online sales are twice as high as store sales.','ยอดขายออนไลน์สูงเป็นสองเท่าของหน้าร้าน'],['A quarter of customers buy online.','ลูกค้าหนึ่งในสี่ซื้อออนไลน์'],['The result was better than expected.','ผลดีกว่าที่คาด']],tip:'เปรียบเทียบด้วย compared with · twice as … as · better than expected เพื่อให้ตัวเลขมีความหมาย',q:['เติมคำ: Sales are twice ___ high as last year.',['as','than','so'],0]},
+ {t:'Explaining causes',goal:'อธิบายสาเหตุของตัวเลขที่เปลี่ยนไป',p:[['The fall was due to the delay.','การลดลงเกิดจากความล่าช้า'],['Because of the new campaign, orders rose.','เพราะแคมเปญใหม่ ออเดอร์เพิ่ม'],['According to the report, costs fell.','ตามรายงาน ต้นทุนลดลง'],['It might be caused by the weather.','อาจเกิดจากสภาพอากาศ']],tip:'due to / because of + นาม · because + ประโยค · according to + แหล่งข้อมูล · might ใช้เมื่อไม่แน่ใจ',q:['เติมคำ: The delay was ___ the storm.',['because','due to','so'],1]}]},
+{t:'Leading meetings',th:'ดำเนินการประชุม (B2)',ic:'🎙️',topics:[B2B,B2B+1],g:[51,52],boss:{n:'Chair Cobra',e:'🐍'},ls:[
+ {t:'Opening & agenda',goal:'เปิดประชุมและแจ้งวาระ',p:[['Thank you all for joining. Let us get started.','ขอบคุณที่เข้าร่วม เริ่มกันเลย'],['The purpose of today’s meeting is to agree on the budget.','จุดประสงค์ของประชุมวันนี้คือตกลงงบ'],['There are three items on the agenda.','มีสามหัวข้อในวาระ'],['We will finish by eleven.','เราจะจบก่อนสิบเอ็ดโมง']],tip:'เปิดประชุมด้วยขอบคุณ → จุดประสงค์ → วาระ → เวลา เพื่อให้ทุกคนรู้ทิศทาง',q:['ประโยคใดบอกจุดประสงค์ประชุม?',['Let us start.','The purpose of today’s meeting is to agree on the budget.','Is everyone here?'],1]},
+ {t:'Managing discussion',goal:'ควบคุมการสนทนาและขอความเห็น',p:[['Could I ask you to keep that point brief?','ช่วยพูดประเด็นนั้นให้สั้นได้ไหม'],['Let us hear from Sara on this.','ขอฟังความเห็นซาร่า'],['I would like to come back to that later.','ขอกลับมาพูดเรื่องนั้นทีหลัง'],['In order to save time, let us move on.','เพื่อประหยัดเวลา ไปหัวข้อต่อไป']],tip:'in order to + V1 บอกจุดประสงค์ · ใช้ Could I ask you to… แทนการสั่งตรง ๆ เพื่อไม่ให้ดูเสียมารยาท',q:['เติมคำ: ___ save time, we will skip item three.',['In order to','So that to','Because'],0]},
+ {t:'Summarising & actions',goal:'สรุปและมอบหมายงานต่อ',p:[['To sum up, we agreed to extend the deadline.','โดยสรุป เราตกลงขยายกำหนดส่ง'],['By Friday, Tom will have sent the report.','ภายในวันศุกร์ ทอมจะส่งรายงานเสร็จแล้ว'],['Mia will follow up with the client.','มีอาจะติดตามกับลูกค้า'],['Let us meet again next Tuesday.','นัดพบกันอีกวันอังคารหน้า']],tip:'ปิดประชุมด้วย To sum up… + ใครทำอะไรเมื่อไร ใช้ future perfect (will have done) กับกำหนดเสร็จ',q:['เติมคำ: By Monday, I ___ the draft.',['will finish','will have finished','finished'],1]}]}
+);
+UNITS.slice(19).forEach((u,k)=>u.ls.forEach(l=>l.p.forEach(p=>PHRASES.push({en:p[0],th:p[1],u:19+k}))));
+
+
+/* ===== units 22-24 ===== */
+UNITS.push(
+{t:'Polite questions & small talk',th:'ถามอย่างสุภาพและคุยเล่น (B1)',ic:'☕',topics:[B1B],g:[54,48],boss:{n:'Chat Chipmunk',e:'🐿️'},ls:[
+ {t:'Indirect questions',goal:'ถามข้อมูลให้สุภาพขึ้น',p:[['Could you tell me where the meeting room is?','ช่วยบอกได้ไหมว่าห้องประชุมอยู่ไหน'],['Do you know what time the call starts?','คุณรู้ไหมว่าสายเริ่มกี่โมง'],['I was wondering if you could help me.','ไม่ทราบว่าช่วยฉันได้ไหม'],['Would you mind telling me how much it costs?','รบกวนบอกได้ไหมว่าราคาเท่าไร']],tip:'หลังวลีสุภาพ ใช้ลำดับ ประธาน + กริยา (where the room is) ไม่ใช้ is the room · คำถาม yes/no ใช้ if',q:['เติมคำ: Could you tell me where ___?',['is the bank','the bank is','does the bank'],1]},
+ {t:'Question tags',goal:'ยืนยันหรือชวนคุยด้วยคำถามท้าย',p:[['It is a nice day, isn’t it?','วันนี้อากาศดีนะ ใช่ไหม'],['You work in sales, don’t you?','คุณทำงานขายใช่ไหม'],['You haven’t met Tom, have you?','คุณยังไม่เคยพบทอมใช่ไหม'],['We should start now, shouldn’t we?','เราควรเริ่มได้แล้วใช่ไหม']],tip:'ประโยคบอกเล่า → tag ปฏิเสธ · ประโยคปฏิเสธ → tag บอกเล่า ใช้ auxiliary ตัวเดิม (is → isn’t it)',q:['เติมคำ: You don’t smoke, ___?',['do you','don’t you','are you'],0]},
+ {t:'Both / either / neither',goal:'พูดถึงสองสิ่งหรือสองคน',p:[['Both of us work in finance.','เราทั้งคู่ทำงานด้านการเงิน'],['Either day is fine for me.','วันไหนก็ได้สำหรับฉัน'],['Neither of the options is perfect.','ไม่มีตัวเลือกไหนสมบูรณ์แบบ'],['I like both the red and the blue one.','ฉันชอบทั้งสีแดงและสีน้ำเงิน']],tip:'both = ทั้งสอง · either = อย่างใดอย่างหนึ่ง · neither = ไม่ทั้งคู่ (ไม่ต้องเติม not)',q:['เติมคำ: ___ of them is available.',['Both','Neither','Either not'],1]}]},
+{t:'Work habits & change',th:'นิสัยการทำงานและการปรับตัว (B1)',ic:'🔄',topics:[B1B],g:[57,46],boss:{n:'Habit Hedgehog',e:'🦔'},ls:[
+ {t:'Getting used to it',goal:'พูดถึงสิ่งที่คุ้นเคยและกำลังปรับตัว',p:[['I am used to working long hours.','ฉันชินกับการทำงานนาน ๆ'],['I am getting used to the new software.','ฉันกำลังปรับตัวกับซอฟต์แวร์ใหม่'],['She is not used to speaking English all day.','เธอไม่ชินกับการพูดอังกฤษทั้งวัน'],['It took me a month to get used to it.','ฉันใช้เวลาหนึ่งเดือนจึงชิน']],tip:'be used to + V-ing = ชินแล้ว · get used to + V-ing = กำลังชิน · ต่างจาก used to + V1 ที่เล่าอดีต',q:['เติมคำ: I am used to ___ early.',['get up','getting up','got up'],1]},
+ {t:'Verb + preposition + -ing',goal:'พูดความสนใจและความสามารถ',p:[['I am interested in joining the project.','ฉันสนใจเข้าร่วมโครงการ'],['She is good at solving problems.','เธอเก่งแก้ปัญหา'],['Thank you for helping me.','ขอบคุณที่ช่วยฉัน'],['We are looking forward to meeting you.','เรารอพบคุณอยู่']],tip:'หลังคำบุพบททุกตัวใช้ V-ing เสมอ รวมถึง look forward to + V-ing',q:['เติมคำ: I am looking forward to ___ you.',['see','seeing','to see'],1]},
+ {t:'Work phrasal verbs',goal:'ใช้ phrasal verbs ที่พบบ่อยในงาน',p:[['Please hand in your report by Friday.','กรุณาส่งรายงานภายในวันศุกร์'],['We had to put off the meeting.','เราต้องเลื่อนประชุม'],['I will sort out the problem today.','ฉันจะจัดการปัญหาวันนี้'],['She pointed out a mistake.','เธอชี้ข้อผิดพลาด']],tip:'phrasal verbs ใช้บ่อยในภาษาพูดงาน จำเป็นกลุ่มเลย ๆ เช่น hand in, put off, sort out, point out, set up',q:['“เลื่อน” ใช้คำใด?',['put off','put on','put up'],0]}]},
+{t:'Wishes, regrets & services',th:'ความปรารถนา ความเสียดาย และการจ้างทำ (B2)',ic:'💭',topics:[B2B,B2B+1,B2B+2],g:[49,50],boss:{n:'Wish Walrus',e:'🦭'},ls:[
+ {t:'I wish…',goal:'พูดถึงสิ่งที่อยากให้ต่างไป',p:[['I wish we had more time.','ฉันอยากให้เรามีเวลามากกว่านี้'],['I wish I had checked the data.','ฉันเสียดายที่ไม่ได้ตรวจข้อมูล'],['If only the budget were bigger.','ถ้างบมากกว่านี้ก็ดี'],['She wishes she could attend.','เธออยากไปได้'],],tip:'wish + past simple = ปัจจุบันที่ไม่เป็นจริง · wish + past perfect = เสียดายอดีต · ใช้ were กับทุกประธานในแบบทางการ',q:['เติมคำ: I wish I ___ the deadline.',['met','had met','meet'],1]},
+ {t:'Having things done',goal:'พูดถึงสิ่งที่จ้างหรือให้คนอื่นทำ',p:[['We had the office repainted.','เราให้ทาสีออฟฟิศใหม่'],['I need to get my contract checked.','ฉันต้องให้ตรวจสัญญา'],['She is having her laptop repaired.','เธอกำลังให้ซ่อมโน้ตบุ๊ก'],['Have you had the report translated?','คุณให้แปลรายงานหรือยัง']],tip:'have/get + object + V3 หมายถึงให้คนอื่นทำให้ ไม่ใช่เราทำเอง',q:['เติมคำ: I had my report ___.',['check','checked','checking'],1]},
+ {t:'So / such for effect',goal:'เน้นความรุนแรงของเหตุการณ์ในรายงาน',p:[['The report was so detailed that nobody had questions.','รายงานละเอียดมากจนไม่มีใครถาม'],['It was such a long meeting that we missed lunch.','เป็นประชุมที่ยาวจนเราพลาดมื้อกลางวัน'],['The demand was so high that we ran out of stock.','ความต้องการสูงจนของหมด'],['It was such good news that everyone celebrated.','เป็นข่าวดีจนทุกคนฉลอง']],tip:'so + adj/adv + that · such + (a) adj + noun + that ใช้บอกเหตุและผลให้ชัด',q:['เติมคำ: It was ___ an interesting talk.',['so','such','very'],1]}]}
+);
+UNITS.slice(21).forEach((u,k)=>u.ls.forEach(l=>l.p.forEach(p=>PHRASES.push({en:p[0],th:p[1],u:21+k}))));
+
+
+/* ===== vocab pack 11 ===== */
+addW(B1B,`schedule a meeting|นัดประชุม|v.|I will schedule a meeting.|ฉันจะนัดประชุม
+cancel a meeting|ยกเลิกประชุม|v.|We cancelled the meeting.|เรายกเลิกประชุม
+run late|มาสาย|v.|I am running late.|ฉันกำลังจะไปสาย
+get started|เริ่มต้น|v.|Let us get started.|เริ่มกันเลย
+make progress|ก้าวหน้า|v.|We are making progress.|เรากำลังก้าวหน้า
+keep track of|ติดตาม|v.|Keep track of your expenses.|ติดตามค่าใช้จ่ายของคุณ
+come up|เกิดขึ้น|v.|A problem came up.|เกิดปัญหาขึ้น
+turn out|กลายเป็น|v.|It turned out well.|ผลออกมาดี
+give up|ยอมแพ้|v.|Never give up.|อย่ายอมแพ้
+take care of|ดูแล|v.|I will take care of it.|ฉันจะดูแลเอง
+look after|ดูแล|v.|She looks after our guests.|เธอดูแลแขกของเรา
+find out|ค้นหา|v.|I will find out the price.|ฉันจะหาราคา
+check in|เช็คอิน|v.|Please check in at the desk.|กรุณาเช็คอินที่เคาน์เตอร์
+fill out|กรอก|v.|Fill out this form.|กรอกแบบฟอร์มนี้
+ask for|ขอ|v.|Ask for help if needed.|ขอความช่วยเหลือถ้าจำเป็น`);
+addW(B2B,`face a challenge|เผชิญความท้าทาย|v.|We face a big challenge.|เราเผชิญความท้าทายใหญ่
+rise to the challenge|รับมือกับความท้าทาย|v.|She rose to the challenge.|เธอรับมือกับความท้าทายได้
+meet a requirement|ตรงตามข้อกำหนด|v.|We meet all requirements.|เราตรงตามข้อกำหนดทั้งหมด
+raise awareness|สร้างความตระหนัก|v.|We want to raise awareness.|เราอยากสร้างความตระหนัก
+take initiative|ริเริ่ม|v.|Take the initiative.|ลงมือริเริ่ม
+make a difference|สร้างความแตกต่าง|v.|You can make a difference.|คุณสร้างความแตกต่างได้
+build trust|สร้างความไว้วางใจ|v.|It takes time to build trust.|การสร้างความไว้วางใจต้องใช้เวลา
+manage expectations|บริหารความคาดหวัง|v.|We must manage expectations.|เราต้องบริหารความคาดหวัง
+set a precedent|เป็นแบบอย่าง|v.|This sets a precedent.|นี่เป็นแบบอย่าง
+reach consensus|หาข้อสรุปร่วมกัน|v.|We reached consensus.|เราได้ข้อสรุปร่วมกัน
+weigh up|ชั่งน้ำหนัก|v.|We weighed up the options.|เราชั่งน้ำหนักทางเลือก
+cut back on|ลด|v.|We must cut back on costs.|เราต้องลดต้นทุน
+step down|ลงจากตำแหน่ง|v.|The CEO stepped down.|ซีอีโอลงจากตำแหน่ง
+take on|รับ (งาน)|v.|She took on more work.|เธอรับงานเพิ่ม
+phase out|ค่อย ๆ เลิก|v.|We will phase out the old system.|เราจะค่อย ๆ เลิกระบบเก่า
+bring forward|เลื่อนให้เร็วขึ้น|v.|We brought forward the launch.|เราเลื่อนเปิดตัวให้เร็วขึ้น
+back out|ถอนตัว|v.|They backed out of the deal.|เขาถอนตัวจากดีล
+step up|เพิ่มระดับ|v.|We need to step up our efforts.|เราต้องเพิ่มความพยายาม
+fall through|ล้มเหลว|v.|The deal fell through.|ดีลล้มเหลว
+pull off|ทำสำเร็จ|v.|They pulled off a great launch.|เขาทำเปิดตัวสำเร็จ
+hold off|เลื่อนไว้ก่อน|v.|Let us hold off on the decision.|เลื่อนการตัดสินใจไว้ก่อน
+follow suit|ทำตาม|v.|Others will follow suit.|คนอื่นจะทำตาม
+iron out|แก้รายละเอียด|v.|We need to iron out the details.|เราต้องแก้รายละเอียด
+bring about|ก่อให้เกิด|v.|This will bring about change.|สิ่งนี้จะก่อให้เกิดการเปลี่ยนแปลง
+rule out|ตัดออก|v.|We cannot rule out delays.|เราตัดความล่าช้าออกไม่ได้
+account for|อธิบาย / คิดเป็น|v.|Sales account for half of revenue.|ยอดขายคิดเป็นครึ่งหนึ่งของรายได้
+stand for|หมายถึง|v.|What does KPI stand for?|KPI ย่อมาจากอะไร
+live up to|สมกับ|v.|It lives up to expectations.|สมกับที่คาดหวัง
+come across|พบโดยบังเอิญ|v.|I came across an error.|ฉันเจอข้อผิดพลาดโดยบังเอิญ
+hand over|ส่งมอบ|v.|She handed over the project.|เธอส่งมอบโครงการ
+break down|เสีย / แยกย่อย|v.|The system broke down.|ระบบเสีย
+carry on|ทำต่อ|v.|Please carry on.|ทำต่อไปได้เลย`);
+
+
+/* ===== work phrases pack 2 ===== */
+const WORKP2=[
+['🤝 เจรจาและต่อรอง',[['We would like to propose a different approach.','เราขอเสนอแนวทางที่ต่างออกไป'],['Could we discuss the price?','เราคุยเรื่องราคากันได้ไหม'],['That is a bit above our budget.','นั่นสูงกว่างบเราเล็กน้อย'],['What if we increased the order size?','ถ้าเราสั่งเพิ่มล่ะ'],['We can meet you halfway on that.','เราตกลงกันครึ่งทางได้'],['Let me confirm what we have agreed.','ขอทวนสิ่งที่เราตกลงกัน']]],
+['📊 นำเสนอผลงาน',[['I would like to start by giving an overview.','ขอเริ่มด้วยภาพรวม'],['As you can see on this slide, sales have grown.','อย่างที่เห็นในสไลด์นี้ ยอดขายเติบโต'],['This brings me to my next point.','ซึ่งนำไปสู่ประเด็นต่อไปของฉัน'],['Let me explain the reason for this trend.','ขออธิบายเหตุผลของแนวโน้มนี้'],['To summarise, there are three key points.','โดยสรุปมีสามประเด็นหลัก'],['I would be happy to answer any questions.','ยินดีตอบคำถาม']]],
+['☕ คุยเล่นกับเพื่อนร่วมงาน',[['How was your weekend?','สุดสัปดาห์เป็นยังไงบ้าง'],['Have you been busy lately?','ช่วงนี้ยุ่งไหม'],['That sounds like a great idea.','ฟังดูเป็นความคิดที่ดี'],['I am looking forward to the holiday.','ฉันรอวันหยุดอยู่'],['Let us grab a coffee sometime.','ไว้ไปกินกาแฟกันนะ'],['It was nice talking to you.','ดีใจที่ได้คุย']]],
+['✉️ ปิดอีเมลและติดตามผล',[['Thank you for your quick response.','ขอบคุณที่ตอบกลับเร็ว'],['I look forward to hearing from you.','รอฟังคำตอบจากคุณ'],['Please let me know if you need anything else.','แจ้งได้ถ้าต้องการอะไรเพิ่ม'],['I am following up on my earlier email.','ติดตามอีเมลก่อนหน้านี้'],['Could you confirm receipt of this email?','ช่วยยืนยันว่าได้รับอีเมลนี้ได้ไหม'],['Kind regards.','ด้วยความนับถือ']]]
+];
+WORKP2.forEach(c=>{WORKP.push(c);c[1].forEach(p=>PHRASES.push({en:p[0],th:p[1],u:12}))});
+
+
+/* ===== content pack 6 ===== */
+READS.push(
+{id:'r34',lv:'A2',t:'A Phone Call',th:'โทรศัพท์หาเพื่อน',x:'Nok called her friend Pim last night. They talked for an hour. Pim told her about her new job. She works in an office near the river. Nok asked about the salary, but Pim only smiled. They decided to meet for lunch next Saturday.',q:[['นกโทรหาใคร?',['พิม เพื่อนของเธอ','แม่','เจ้านาย'],0,'called her friend Pim'],['พวกเขานัดทำอะไรวันเสาร์หน้า?',['กินข้าวเที่ยง','ไปดูหนัง','ช้อปปิ้ง'],0,'meet for lunch next Saturday']]},
+{id:'r35',lv:'A2',t:'Buying a Phone',th:'ซื้อมือถือใหม่',x:'Ben wanted a new phone because his old one was very slow. He compared three models online and read many reviews. The cheapest one had a small screen, and the most expensive one was too heavy. In the end, he chose the middle one. It was not cheap, but the battery lasts two days.',q:[['ทำไมเบนอยากได้มือถือใหม่?',['เครื่องเก่าช้ามาก','จอแตก','แบตหมด'],0,'his old one was very slow'],['เขาเลือกรุ่นไหน?',['รุ่นกลาง','รุ่นถูกที่สุด','รุ่นแพงที่สุด'],0,'chose the middle one']]},
+{id:'r36',lv:'B1',t:'The New Office Rules',th:'กฎใหม่ของออฟฟิศ',x:'From next month, our company will introduce a hybrid schedule. Employees must come to the office on Tuesdays and Thursdays, while the other days can be spent at home. The management believes that this will improve teamwork without removing flexibility. If you have a special situation, you should speak to your manager as soon as possible.',q:[['ต้องเข้าออฟฟิศวันไหนบ้าง?',['วันอังคารและพฤหัสบดี','ทุกวัน','วันจันทร์และศุกร์'],0,'Tuesdays and Thursdays'],['ถ้ามีกรณีพิเศษควรทำอย่างไร?',['คุยกับผู้จัดการโดยเร็ว','ไม่ต้องทำอะไร','ลาออก'],0,'speak to your manager']]},
+{id:'r37',lv:'B1',t:'Learning from Mistakes',th:'เรียนรู้จากความผิดพลาด',x:'Everyone makes mistakes at work, especially in the first year. What matters is how you react. A good employee admits the mistake quickly, explains what happened and suggests how to fix it. Hiding a problem usually makes it worse. Most managers prefer honest people who learn from their errors.',q:[['พนักงานที่ดีทำอะไรเมื่อผิดพลาด?',['ยอมรับ อธิบาย และเสนอวิธีแก้','ปิดบัง','โทษคนอื่น'],0,'admits … explains … suggests how to fix it'],['ผู้จัดการส่วนใหญ่ชอบคนแบบไหน?',['ซื่อสัตย์และเรียนรู้จากความผิด','ไม่เคยผิด','พูดเก่ง'],0,'honest people who learn from their errors']]},
+{id:'r38',lv:'B2',t:'Meeting Culture',th:'วัฒนธรรมการประชุม',x:'Research suggests that professionals spend up to a third of their working week in meetings, and many consider half of that time wasted. To address this, some organisations have introduced meeting-free days, shorter default durations and a requirement that every meeting has a written agenda. Although these measures are not a cure-all, they encourage people to question whether a meeting is really necessary.',q:[['ผู้เชี่ยวชาญหลายคนคิดอย่างไรกับเวลาประชุม?',['ครึ่งหนึ่งสูญเปล่า','ใช้เวลาพอดีแล้ว','ควรเพิ่มประชุม'],0,'half of that time wasted'],['มาตรการเหล่านี้ช่วยอย่างไร?',['ทำให้คนตั้งคำถามว่าจำเป็นต้องประชุมไหม','ยกเลิกประชุมทั้งหมด','เพิ่มรายได้'],0,'question whether a meeting is really necessary']]},
+{id:'r39',lv:'B2',t:'Automation and Jobs',th:'ระบบอัตโนมัติและงาน',x:'Automation is changing the nature of work rather than simply eliminating it. Routine tasks such as data entry are increasingly handled by software, which frees employees to focus on analysis and communication. However, this shift requires continuous training, and workers who fail to adapt risk being left behind. Consequently, many employers now treat learning as a core part of every role.',q:[['ระบบอัตโนมัติเปลี่ยนงานอย่างไร?',['เปลี่ยนลักษณะงานไปมากกว่าตัดงานทิ้ง','ทำให้งานหายหมด','ไม่มีผล'],0,'changing the nature of work rather than simply eliminating it'],['ทำไมนายจ้างเน้นการเรียนรู้?',['เพราะผู้ที่ปรับตัวไม่ทันเสี่ยงตกยุค','เพื่อลดเงินเดือน','เพราะกฎหมาย'],0,'risk being left behind']]}
+);
+DIALOGS.push(
+D('d58','B1','Booking a table','จองโต๊ะอาหาร',['Mia','Staff'],[[0,'Good evening. I would like to book a table for six on Friday.','สวัสดีค่ะ ขอจองโต๊ะหกที่นั่งวันศุกร์'],[1,'What time would you like?','ต้องการกี่โมงคะ'],[0,'Around seven thirty, if possible. We would prefer a quiet corner.','ราวหนึ่งทุ่มครึ่งถ้าได้ ขอมุมเงียบ ๆ'],[1,'I am afraid we are full at seven thirty, but we have a table at eight.','ขออภัยค่ะ หนึ่งทุ่มครึ่งเต็ม แต่มีโต๊ะสองทุ่ม'],[0,'Eight is fine. Could you note that one guest is vegetarian?','สองทุ่มได้ค่ะ ช่วยบันทึกว่ามีแขกกินมังสวิรัติหนึ่งคน'],[1,'Of course. May I have your phone number to confirm?','ได้ค่ะ ขอเบอร์โทรเพื่อยืนยันได้ไหมคะ']],[['มีอาจองกี่ที่นั่ง?',['หกที่','สี่ที่','แปดที่'],0,'a table for six'],['ได้เวลาจองกี่โมง?',['สองทุ่ม','หนึ่งทุ่มครึ่ง','หกโมงเย็น'],0,'a table at eight']]),
+D('d59','B2','Negotiating a deadline','ต่อรองกำหนดส่งงาน',['Mia','Manager'],[[1,'Mia, I need the full analysis by Wednesday.','มีอา ฉันต้องการการวิเคราะห์ฉบับเต็มภายในวันพุธ'],[0,'I understand the urgency, but delivering a thorough analysis by then would be difficult.','เข้าใจว่าด่วน แต่ส่งฉบับละเอียดภายในวันนั้นยาก'],[1,'What would be realistic, in your view?','ในมุมคุณ แบบไหนสมเหตุสมผล'],[0,'I could send the key findings on Wednesday and the complete report on Friday.','ส่งข้อสรุปหลักวันพุธและรายงานเต็มวันศุกร์ได้'],[1,'That could work, provided the key findings are clear enough to act on.','ได้ ถ้าข้อสรุปหลักชัดพอจะนำไปทำต่อ'],[0,'Absolutely. I will make sure they are.','แน่นอนค่ะ ฉันจะทำให้ชัด']],[['มีอาเสนออะไร?',['ส่งข้อสรุปหลักวันพุธ และรายงานเต็มวันศุกร์','ส่งทั้งหมดวันพุธ','เลื่อนไปเดือนหน้า'],0,'key findings on Wednesday … complete report on Friday'],['ผู้จัดการมีเงื่อนไขอะไร?',['ข้อสรุปหลักต้องชัดพอ','ต้องลดเนื้อหา','ต้องประชุมก่อน'],0,'provided the key findings are clear enough']])
+);
 
 let V={t:-1,i:0,flip:false,mode:'card'};
 const wlv=w=>w.t>=B1B?'B1':w.t>=B2B?'B2':w.t>=20?'A2':'A1';
@@ -1823,11 +2733,12 @@ PANES['learn.sounds']=()=>pane(H('ตัวอักษรและเสีย�
 function startPairs(){openSession({title:'ห้องทดลองเสียง',qs:pick(PAIRS,8).map(p=>mkPair(p[0],p[1])),again:startPairs,onDone:r=>{gain(r.ok*8);return'ได้ +'+r.ok*8+' XP'}})}
 
 /* ================= PRACTICE ================= */
-let QZ={t:-1,m:'mix'};
-PANES['practice.quick']=()=>pane(H('ฝึกด่วน 10 ข้อ','เลือกหมวดและรูปแบบที่อยากฝึก')+`<div class="card"><b>หมวดคำศัพท์</b><div class="chips" style="margin-top:10px"><button class="chip ${QZ.t<0?'on':''}" onclick="QZ.t=-1;PANES['practice.quick']()">ทุกหมวด</button>${TOPICS.map((t,i)=>`<button class="chip ${QZ.t===i?'on':''}" onclick="QZ.t=${i};PANES['practice.quick']()">${t.ic} ${t.en}</button>`).join('')}</div>
+let QZ={t:-1,m:'mix',lv:null};
+const qlv=()=>QZ.lv||(S.set&&S.set.level)||'A1';
+PANES['practice.quick']=()=>pane(H('ฝึกด่วน 10 ข้อ','เลือกหมวดและรูปแบบที่อยากฝึก')+`<div class="card"><b>ระดับและหมวดคำศัพท์</b><div class="chips" style="margin-top:10px">${['A1','A2','B1','B2'].map(l=>`<button class="chip ${qlv()===l?'on':''}" onclick="QZ.lv='${l}';QZ.t=-1;PANES['practice.quick']()"><b>${l}</b></button>`).join('')}</div><div class="chips" style="margin-top:10px"><button class="chip ${QZ.t<0?'on':''}" onclick="QZ.t=-1;PANES['practice.quick']()">ทุกหมวด</button>${TOPICS.map((t,i)=>i).filter(i=>WORDS.some(x=>x.t===i&&wlv(x)===qlv())).map(i=>`<button class="chip ${QZ.t===i?'on':''}" onclick="QZ.t=${i};PANES['practice.quick']()">${TOPICS[i].ic} ${TOPICS[i].en}</button>`).join('')}</div>
  <b>รูปแบบ</b><div class="chips" style="margin-top:10px">${[['mix','ผสม'],['meaning','เลือกความหมาย'],['spell','พิมพ์สะกดคำ'],['read','อ่านประโยค']].map(m=>`<button class="chip ${QZ.m===m[0]?'on':''}" onclick="QZ.m='${m[0]}';PANES['practice.quick']()">${m[1]}</button>`).join('')}</div>
  <button class="btn p" onclick="startQuick()">เริ่มฝึก</button></div>`);
-function startQuick(){const pool=QZ.t<0?WL():WORDS.filter(w=>w.t===QZ.t),ws=pick(pool,10);const f={mix:(w,i)=>MIX[i%5](w),meaning:(w,i)=>mkChoose(w,i%2?'t':'e'),spell:mkType,read:mkRead}[QZ.m];
+function startQuick(){const pool=QZ.t<0?WORDS.filter(w=>wlv(w)===qlv()):WORDS.filter(w=>w.t===QZ.t),ws=pick(pool,10);const f={mix:(w,i)=>MIX[i%5](w),meaning:(w,i)=>mkChoose(w,i%2?'t':'e'),spell:mkType,read:mkRead}[QZ.m];
  openSession({title:'ฝึกด่วน',qs:ws.map((w,i)=>f(w,i)),again:startQuick,onDone:r=>{dayLog().q+=r.total;gain(r.ok*8);return'ได้ +'+r.ok*8+' XP'}})}
 PANES['practice.listen']=()=>pane(H('ฝึกฟัง','ฟังคำหรือประโยค แล้วเลือกความหมายที่ได้ยิน')+`<div class="card" style="text-align:center;padding:34px 20px"><div style="font-size:3rem">🎧</div><p class="muted" style="margin:8px 0 18px">เสียงอ่านใช้เสียงของเบราว์เซอร์ ปรับสำเนียงและความเร็วได้ที่หน้า “ฉัน”</p><div class="row c"><button class="btn p" onclick="startListen()">ฟังคำและประโยค 10 ข้อ</button><button class="btn s" onclick="startPairs()">คู่เสียงคล้าย 8 ข้อ</button></div></div>`);
 function startListen(){openSession({title:'ฝึกฟัง',qs:pick(WL(),10).map((w,i)=>mkListen(w,i%2===1)),again:startListen,onDone:r=>{dayLog().q+=r.total;gain(r.ok*8);return'ได้ +'+r.ok*8+' XP'}})}
@@ -1890,21 +2801,24 @@ function rateReview(k,ok){if(!RV)return;srsMark(k,ok);gain(ok?4:1);PANES['practi
 /* ================= CHALLENGE ================= */
 PANES['challenge.boss']=()=>pane(H('บอสประจำบท','จบครบ 3 บทเรียนของหน่วยเพื่อปลดล็อก · ตอบถูกลดพลังบอส ตอบผิดเสียหัวใจ')+`<div class="grid2">${UNITS.map((u,i)=>{const un=isBossUnlocked(i);return`<div class="card" style="text-align:center"><div style="font-size:3rem;${un?'':'filter:grayscale(1);opacity:.45'}">${un?u.boss.e:'🔒'}</div><b>${esc(u.boss.n)}</b><div class="small muted" style="margin:4px 0 12px">Unit ${i+1}: ${esc(u.t)}</div>${S.bossBest[i]?`<div style="margin-bottom:10px">ชนะแล้ว ${'⭐'.repeat(S.bossBest[i])}</div>`:''}<button class="btn ${un?'p':'s'} sm" onclick="${un?`startBoss(${i})`:`toast('จบครบ 3 บทเรียนของ Unit ${i+1} ก่อน')`}">${un?(S.bossBest[i]?'ท้าดวลอีกครั้ง':'ท้าดวล'):'ยังล็อกอยู่'}</button></div>`}).join('')}</div>`);
 function startBoss(ui){const u=UNITS[ui];openSession({title:'Boss: '+u.boss.n,qs:bossQs(ui),boss:{n:u.boss.n,e:u.boss.e,hp:8},again:()=>startBoss(ui),onDone:r=>{dayLog().q+=r.total;if(r.won){const first=!S.bossBest[ui];S.bossBest[ui]=Math.max(S.bossBest[ui]||0,r.hearts);const xp=100+(first?50:0)+r.hearts*10;gain(xp);return`หัวใจเหลือ ${r.hearts} ดวง · ได้ +${xp} XP`}gain(r.ok*5);return`ตอบถูก ${r.ok} ข้อ · ได้ +${r.ok*5} XP`}})}
-PANES['challenge.exam']=()=>{const h=S.exam.hist.slice(-6).reverse();pane(H('ข้อสอบจำลอง','20 ข้อ · 15 นาที · เฉลยหลังส่งข้อสอบเท่านั้น')+`<div class="grid2">${['A1','A2','B1','B2'].map(L=>{const b=L==='A1'?S.exam.best:(S.exam[{A2:'bestA2',B1:'bestB1',B2:'bestB2'}[L]]||0);return`<div class="card" style="text-align:center;padding:26px 18px"><span class="pill">${L}</span><div class="big" style="margin-top:8px">${b||'-'}${b?'<span class="small muted">/100</span>':''}</div><div class="muted small">คะแนนสูงสุด</div><button class="btn p" style="margin-top:14px" onclick="startExam('${L}')">เริ่มสอบ ${L}</button></div>`}).join('')}</div><div class="card" style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><span><b>แบบทดสอบวัดระดับ</b><br><span class="small muted">16 ข้อ ใช้แนะนำจุดเริ่มต้นที่เหมาะกับคุณ</span></span><button class="btn s" onclick="startPlacement()">ทำแบบทดสอบ</button></div>${h.length?`<h3 style="margin:22px 0 10px">ผลล่าสุด</h3><div class="card" style="padding:6px 16px"><table class="tbl">${h.map(x=>`<tr><td>${x.d}</td><td>${x.l||'A1'}</td><td><b>${x.p}</b>/100</td></tr>`).join('')}</table></div>`:''}`)};
+PANES['challenge.exam']=()=>{const h=S.exam.hist.slice(-6).reverse();pane(H('ข้อสอบจำลอง','20 ข้อ · 15 นาที · เฉลยหลังส่งข้อสอบเท่านั้น')+`<div class="grid2">${['A1','A2','B1','B2'].map(L=>{const b=L==='A1'?S.exam.best:(S.exam[{A2:'bestA2',B1:'bestB1',B2:'bestB2'}[L]]||0);return`<div class="card" style="text-align:center;padding:26px 18px"><span class="pill">${L}</span><div class="big" style="margin-top:8px">${b||'-'}${b?'<span class="small muted">/100</span>':''}</div><div class="muted small">คะแนนสูงสุด</div><button class="btn p" style="margin-top:14px" onclick="startExam('${L}')">เริ่มสอบ ${L}</button></div>`}).join('')}</div><div class="card" style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><span><b>แบบทดสอบวัดระดับ</b><br><span class="small muted">24 ข้อ ใช้แนะนำจุดเริ่มต้นที่เหมาะกับคุณ</span></span><button class="btn s" onclick="startPlacement()">ทำแบบทดสอบ</button></div>${h.length?`<h3 style="margin:22px 0 10px">ผลล่าสุด</h3><div class="card" style="padding:6px 16px"><table class="tbl">${h.map(x=>`<tr><td>${x.d}</td><td>${x.l||'A1'}</td><td><b>${x.p}</b>/100</td></tr>`).join('')}</table></div>`:''}`)};
 function startExam(level){level=level||'A1';openSession({title:'ข้อสอบจำลอง '+level,qs:examQs(level),silent:true,time:900,again:()=>startExam(level),onDone:r=>{S.stats.c+=r.ok;S.stats.t+=r.total;r.bad.forEach(q=>q.key&&(S.wrong[q.key]=(S.wrong[q.key]||0)+1));if(level==='B2')S.exam.bestB2=Math.max(S.exam.bestB2||0,r.pct);else if(level==='B1')S.exam.bestB1=Math.max(S.exam.bestB1||0,r.pct);else if(level==='A2')S.exam.bestA2=Math.max(S.exam.bestA2||0,r.pct);else S.exam.best=Math.max(S.exam.best,r.pct);S.exam.hist.push({d:today(),p:r.pct,l:level});dayLog().q+=r.total;const xp=10+Math.round(r.pct/5);gain(xp);return`คะแนน ${r.pct}/100 · ${r.pct>=90?'ยอดเยี่ยมมาก':r.pct>=70?'อยู่ในเกณฑ์ดี':r.pct>=50?'พอใช้ ทบทวนข้อที่พลาดอีกนิด':'เริ่มใหม่ได้เลย ค่อย ๆ ไปทีละบท'} · +${xp} XP`}})}
 
 
 /* ================= READING + PLACEMENT ================= */
 let RD=null;
+const LVV={};
+const rlv=k=>LVV[k]||((S.set&&S.set.level)||'A1');
+const lvChips=k=>{const arr=k==='read'?READS:k==='rp'?ROLES.concat(BRS):DIALOGS,tab=k==='read'?'read':k==='rp'?'roleplay':'dialog';return`<div class="chips">${['A1','A2','B1','B2'].map(l=>`<button class="chip ${rlv(k)===l?'on':''}" onclick="LVV['${k}']='${l}';PANES['practice.${tab}']()"><b>${l}</b> <small style="opacity:.6">${arr.filter(x=>x.lv===l).length}</small></button>`).join('')}</div>${arr.some(x=>x.lv===rlv(k))?'':'<p class="small muted">ยังไม่มีเนื้อหาในระดับนี้ ลองเลือก B1 หรือ B2</p>'}`};
 PANES['practice.read']=()=>{S.read=S.read||{};if(RD)return rdView();const n=Object.keys(S.read).length;
- pane(H('อ่านเรื่องสั้น','อ่านบทความสั้น ๆ แล้วตอบคำถามเพื่อฝึกจับใจความ',`<span class="pill ${n===READS.length?'g':''}">อ่านแล้ว ${n}/${READS.length}</span>`)+['A1','A2','B1','B2'].map(L=>`<h3 style="margin:18px 0 10px">${L}</h3><div class="grid2">${READS.filter(r=>r.lv===L).map(r=>`<button class="item" onclick="RD='${r.id}';PANES['practice.read']();scrollTo(0,0)"><span class="box ${S.read[r.id]!==undefined?'ok':''}"></span><span><b>${esc(r.t)}</b><small>${esc(r.th)}${S.read[r.id]!==undefined?' · ดีที่สุด '+S.read[r.id]+'/'+r.q.length:''}</small></span></button>`).join('')}</div>`).join(''))};
+ pane(H('อ่านเรื่องสั้น','อ่านบทความสั้น ๆ แล้วตอบคำถามเพื่อฝึกจับใจความ',`<span class="pill ${n===READS.length?'g':''}">อ่านแล้ว ${n}/${READS.length}</span>`)+lvChips('read')+[rlv('read')].map(L=>`<div class="grid2">${READS.filter(r=>r.lv===L).map(r=>`<button class="item" onclick="RD='${r.id}';PANES['practice.read']();scrollTo(0,0)"><span class="box ${S.read[r.id]!==undefined?'ok':''}"></span><span><b>${esc(r.t)}</b><small>${esc(r.th)}${S.read[r.id]!==undefined?' · ดีที่สุด '+S.read[r.id]+'/'+r.q.length:''}</small></span></button>`).join('')}</div>`).join(''))};
 function rdView(){const r=READS.find(x=>x.id===RD);
  pane(`<button class="btn s sm" onclick="RD=null;PANES['practice.read']()">กลับรายการ</button><div style="height:14px"></div><section class="page"><div class="small muted ln">${r.lv} · ${esc(r.th)}</div><h2 class="hand">${esc(r.t)}</h2><p class="ln">${esc(r.x)}</p></section><div class="row" style="margin-top:16px"><button class="btn s" onclick="say(READS.find(x=>x.id===RD).x)">🔊 ฟังทั้งเรื่อง</button><button class="btn p" onclick="startRead('${r.id}')">ทำแบบฝึกหัด ${r.q.length} ข้อ</button></div>`)}
 function startRead(id){const r=READS.find(x=>x.id===id);
  openSession({title:'Reading: '+r.t,qs:r.q.map(e=>({type:'choose',prompt:e[0],sub:r.x,options:shuffle(e[1]),answer:e[1][e[2]],small:true,explain:esc(e[3])})),again:()=>startRead(id),onDone:o=>{S.read=S.read||{};S.read[id]=Math.max(S.read[id]||0,o.ok);gain(o.ok*10);return'ได้ +'+o.ok*10+' XP'}})}
-function startPlacement(){const P=[[0,0],[2,1],[5,0],[7,0],[12,0],[13,1],[14,0],[16,2],[21,1],[22,0],[25,0],[27,1],[28,0],[29,1],[35,0],[37,1]];
- openSession({title:'แบบทดสอบวัดระดับ',qs:P.map((p,n)=>Object.assign(mkGrammar(p[0],Math.min(p[1],G[p[0]].q.length-1)),{tier:Math.floor(n/4)})),silent:true,again:()=>startPlacement(),onDone:r=>{const m=[0,0,0,0];r.bad.forEach(q=>m[q.tier||0]++);const c=m.map(x=>4-x),lv=c[0]<3?'A1':c[1]<3?'A2':c[2]<3?'B1':'B2';S.placed=lv;S.set.level=lv;GI=lv==='A1'?0:lv==='A2'?12:lv==='B1'?22:28;gain(10);
-  return'ผลวัดระดับ: แนะนำให้เริ่มที่ '+(lv==='A1'?'A1 (เริ่มจากพื้นฐาน)':lv==='A2'?'A2 (ผ่านพื้นฐานแล้ว)':lv==='B1'?'B1 (พร้อมไวยากรณ์ระดับกลาง)':'B2 (พร้อมภาษาอังกฤษในงานระดับสูง'+(c[3]>=3?' ผ่านส่วน B2 ได้ดี':' ควรทบทวนส่วน B2 เพิ่ม')+')')+' · ตั้งระดับคำศัพท์และจุดเริ่มไวยากรณ์ให้แล้ว'}})}
+function startPlacement(){const P=[[0,0],[2,1],[5,0],[7,0],[3,0],[8,1],[12,0],[13,1],[14,0],[16,2],[39,0],[40,1],[21,1],[22,0],[25,0],[27,1],[44,0],[46,1],[28,0],[29,1],[35,0],[37,1],[49,0],[52,1]];
+ openSession({title:'แบบทดสอบวัดระดับ',qs:P.map((p,n)=>Object.assign(mkGrammar(p[0],Math.min(p[1],G[p[0]].q.length-1)),{tier:Math.floor(n/6)})),silent:true,again:()=>startPlacement(),onDone:r=>{const m=[0,0,0,0];r.bad.forEach(q=>m[q.tier||0]++);const c=m.map(x=>6-x),lv=c[0]<4?'A1':c[1]<4?'A2':c[2]<4?'B1':'B2';S.placed=lv;S.set.level=lv;GI=gIdx(lv)[0];gain(10);
+  return'ผลวัดระดับ: แนะนำให้เริ่มที่ '+(lv==='A1'?'A1 (เริ่มจากพื้นฐาน)':lv==='A2'?'A2 (ผ่านพื้นฐานแล้ว)':lv==='B1'?'B1 (พร้อมไวยากรณ์ระดับกลาง)':'B2 (พร้อมภาษาอังกฤษในงานระดับสูง'+(c[3]>=4?' ผ่านส่วน B2 ได้ดี':' ควรทบทวนส่วน B2 เพิ่ม')+')')+' · ตั้งระดับคำศัพท์และจุดเริ่มไวยากรณ์ให้แล้ว'}})}
 
 
 PANES['learn.work']=()=>pane(H('อังกฤษในที่ทำงาน','วลีที่ใช้จริงในการประชุม อีเมล อธิบายปัญหา และโทรศัพท์ แตะเพื่อฟัง','<button class="btn p sm" onclick="startWork()">ทดสอบวลี</button>')+WORKP.map((c,a)=>`<h3 style="margin:18px 0 10px">${c[0]}</h3><div class="card" style="padding:6px 16px">${c[1].map((p,b)=>`<button class="row" style="width:100%;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);text-align:left" onclick="say(WORKP[${a}][1][${b}][0])"><span><b>${esc(p[0])}</b><br><span class="small muted">${esc(p[1])}</span></span><span>🔊</span></button>`).join('')}</div>`).join(''));
@@ -1996,7 +2910,7 @@ function startRole(id){const r=ROLES.find(x=>x.id===id);openSession({title:'Role
 
 let RS=null;
 const rsT=()=>{const r=ROLES.find(x=>x.id===RS.id);return{r,t:r.turns[RS.i]}};
-PANES['practice.roleplay']=()=>{S.role=S.role||{};RS=null;pane(H('บทบาทสมมติ','เลือกตอบจากตัวเลือก หรือฝึกพูดตอบเองด้วยเสียง')+`<div class="grid2">${ROLES.map(r=>`<div class="card"><b>${esc(r.t)} <span class="pill">${r.lv}</span></b><div class="small muted" style="margin:4px 0 10px">${esc(r.th)} · คุยกับ ${esc(r.who)}${S.role[r.id]!==undefined?' · ดีที่สุด '+S.role[r.id]+'%':''}</div><div class="row"><button class="btn p sm" onclick="startRole('${r.id}')">เลือกตอบ</button><button class="btn s sm" onclick="RS={id:'${r.id}',i:0,res:null,show:0};rsView()">🎙️ พูดตอบ</button></div></div>`).join('')}</div>`)};
+PANES['practice.roleplay']=()=>{S.role=S.role||{};RS=null;pane(H('บทบาทสมมติ','เลือกตอบจากตัวเลือก หรือฝึกพูดตอบเองด้วยเสียง')+lvChips('rp')+`<div class="grid2">${ROLES.filter(r=>r.lv===rlv('rp')).map(r=>`<div class="card"><b>${esc(r.t)} <span class="pill">${r.lv}</span></b><div class="small muted" style="margin:4px 0 10px">${esc(r.th)} · คุยกับ ${esc(r.who)}${S.role[r.id]!==undefined?' · ดีที่สุด '+S.role[r.id]+'%':''}</div><div class="row"><button class="btn p sm" onclick="startRole('${r.id}')">เลือกตอบ</button><button class="btn s sm" onclick="RS={id:'${r.id}',i:0,res:null,show:0};rsView()">🎙️ พูดตอบ</button></div></div>`).join('')}</div>`)};
 function rsView(){const{r,t}=rsT(),res=RS.res,last=RS.i>=r.turns.length-1;
  pane(`<button class="btn s sm" onclick="PANES['practice.roleplay']()">กลับรายการ</button><div style="height:14px"></div><section class="page"><div class="small muted ln">${esc(r.t)} · ตา ${RS.i+1}/${r.turns.length}</div><div style="font-size:1.4rem;font-weight:700;line-height:1.4">${esc(r.who.split(' (')[0])}: ${esc(t[0])}</div><div class="muted ln">${esc(t[1])}</div><div class="row" style="margin-top:12px"><button class="btn s" onclick="say(rsT().t[0])">🔊 ฟังคู่สนทนา</button></div></section>
  <p class="ln" style="margin:14px 0">ตอบเองเป็นภาษาอังกฤษ แล้วค่อยดูตัวอย่าง (พูดให้ใกล้เคียงตัวอย่างจะได้คะแนนสูง)</p>
@@ -2099,7 +3013,7 @@ function brSpeak(){if(SPK.on||!BS||BS.fb||BS.done)return;try{const rec=new SR();
 let BS=null;
 const brN=()=>BRS.find(x=>x.id===BS.id).nodes[BS.node];
 const _rpList=PANES['practice.roleplay'];
-PANES['practice.roleplay']=()=>{_rpList();BS=null;S.role=S.role||{};$('#pane').insertAdjacentHTML('beforeend',`<h3 style="margin:22px 0 10px">แตกแขนง <span class="pill">คำตอบเปลี่ยนเส้นทาง</span></h3><div class="grid2">${BRS.map(b=>`<div class="card"><b>${esc(b.t)} <span class="pill">${b.lv}</span></b><div class="small muted" style="margin:4px 0 10px">${esc(b.th)}${S.role['br_'+b.id]!==undefined?' · ดีที่สุด '+S.role['br_'+b.id]+'%':''}</div><button class="btn p sm" onclick="brStart('${b.id}')">เริ่มสถานการณ์</button></div>`).join('')}</div>`)};
+PANES['practice.roleplay']=()=>{_rpList();BS=null;S.role=S.role||{};if(!BRS.some(b=>b.lv===rlv('rp')))return;$('#pane').insertAdjacentHTML('beforeend',`<h3 style="margin:22px 0 10px">แตกแขนง <span class="pill">คำตอบเปลี่ยนเส้นทาง</span></h3><div class="grid2">${BRS.filter(b=>b.lv===rlv('rp')).map(b=>`<div class="card"><b>${esc(b.t)} <span class="pill">${b.lv}</span></b><div class="small muted" style="margin:4px 0 10px">${esc(b.th)}${S.role['br_'+b.id]!==undefined?' · ดีที่สุด '+S.role['br_'+b.id]+'%':''}</div><button class="btn p sm" onclick="brStart('${b.id}')">เริ่มสถานการณ์</button></div>`).join('')}</div>`)};
 function brStart(id){BS={id,node:BRS.find(x=>x.id===id).start,score:0,max:0,fb:null,done:false};BS.opts=shuffle(brN().opts.slice());brView()}
 function brView(){const b=BRS.find(x=>x.id===BS.id);
  if(BS.done){const pc=Math.round(BS.score/BS.max*100);return pane(`<section class="page"><div class="small muted ln">${esc(b.t)}</div><h2 class="hand">${pc>=80?'Excellent!':pc>=50?'Good job':'Keep practising'} · ${pc}%</h2><p class="ln">ตอบดีที่สุด ${BS.score/2} จาก ${BS.max/2} ตา · ลองใหม่และเลือกคำตอบอื่นเพื่อดูว่าบทสนทนาเปลี่ยนไปอย่างไร</p><div class="row" style="margin-top:12px"><button class="btn p" onclick="brStart('${b.id}')">เล่นอีกครั้ง</button><button class="btn s" onclick="PANES['practice.roleplay']()">กลับรายการ</button></div></section>`)}
@@ -2109,7 +3023,7 @@ function brView(){const b=BRS.find(x=>x.id===BS.id);
  ${BS.fb?`<div class="card" style="margin-bottom:12px"><b>${BS.fb.s===2?'✅ ดีมาก':BS.fb.s===1?'🟡 พอใช้':'⬜ ยังไม่เหมาะ'}</b><div class="ln">${esc(BS.fb.t)}</div><button class="btn p sm" style="margin-top:10px" onclick="brNext()">ต่อไป</button></div>`:''}
  <div class="list">${BS.opts.map((o,i)=>`<button class="item" ${BS.fb?'disabled':''} onclick="brPick(${i})"><span class="box ${BS.fb&&BS.fb.i===i?(o[2]===2?'ok':''):''}"></span><span><b>${esc(o[0])}</b></span></button>`).join('')}</div>`)}
 function brPick(i){if(BS.fb)return;const o=BS.opts[i];BS.score+=o[2];BS.max+=2;BS.fb={t:o[3],s:o[2],next:o[1],i};brView()}
-function brNext(){const nx=BS.fb.next;if(nx==='end'){BS.done=true;const pc=Math.round(BS.score/BS.max*100);S.role['br_'+BS.id]=Math.max(S.role['br_'+BS.id]||0,pc);gain(BS.score*5);toast('+'+BS.score*5+' XP');return brView()}BS.node=nx;BS.fb=null;BS.opts=shuffle(brN().opts.slice());brView()}
+function brNext(){const nx=BS.fb.next;if(nx==='end'){S.role=S.role||{};BS.done=true;const pc=Math.round(BS.score/BS.max*100);S.role['br_'+BS.id]=Math.max(S.role['br_'+BS.id]||0,pc);gain(BS.score*5);toast('+'+BS.score*5+' XP');return brView()}BS.node=nx;BS.fb=null;BS.opts=shuffle(brN().opts.slice());brView()}
 
 PANES['practice.write']=()=>{S.write=S.write||{};if(WR)return wrView();
  pane(H('เขียนอีเมล','ฝึกเขียนอีเมลทำงานแบบสุภาพ เลือกประโยคที่เหมาะ หรือเขียนเองแล้วตรวจโครงสร้าง')+`<div class="grid2">${EMAILS.map(e=>`<button class="item" onclick="WR='${e.id}';PANES['practice.write']();scrollTo(0,0)"><span class="box ${S.write[e.id]>=5?'ok':''}"></span><span><b>${esc(e.t)}</b><small>${esc(e.th)}${S.write[e.id]!==undefined?' · ดีที่สุด '+S.write[e.id]+'/6':''}</small></span></button>`).join('')}</div>`)};
@@ -2147,11 +3061,11 @@ function stopGames(){if(DLG.playing)dlgStop();if(SP&&SP.timer){clearInterval(SP.
 let newAv=AVATARS[0];
 function showLogin(){const r=reg();$('#login').classList.add('open');
  $('#loginBox').innerHTML=`<div class="brand" style="margin-bottom:22px"><div class="logo"></div><div><b style="font-size:1.3rem">English Master</b><small>A1 → B2 · อังกฤษเพื่อการทำงาน</small></div></div><div class="card">${r.users.length?`<h3 style="margin-bottom:12px">ใครกำลังเรียนอยู่?</h3><div class="who">${r.users.map(u=>`<button class="btn s" onclick="pickUser('${u.id}')"><span class="av">${u.avatar}</span>${esc(u.name)}</button>`).join('')}</div><hr style="border:0;border-top:1px solid var(--line);margin:16px 0">`:''}
- <h3 style="margin-bottom:12px">${r.users.length?'เพิ่มผู้เรียนใหม่':'ตั้งชื่อผู้เรียน'}</h3><div class="field"><label for="nm">ชื่อเล่น</label><input id="nm" maxlength="20" autocomplete="off" placeholder="เช่น นุ้ย^^" onkeydown="if(event.key==='Enter')createUser()"></div>
+ <h3 style="margin-bottom:12px">${r.users.length?'เพิ่มผู้เรียนใหม่':'ตั้งชื่อผู้เรียน'}</h3><div class="field"><label for="nm">ชื่อเล่น</label><input id="nm" maxlength="20" autocomplete="off" placeholder="เช่น แอน" onkeydown="if(event.key==='Enter')createUser()"></div>
  <div class="field"><label>รูปประจำตัว</label><div class="avpick">${AVATARS.map(a=>`<button class="${a===newAv?'on':''}" onclick="newAv='${a}';showLogin()" aria-label="เลือก ${a}">${a}</button>`).join('')}</div></div><button class="btn p" onclick="createUser()">เริ่มเรียน</button></div>`;
  setTimeout(()=>{const n=$('#nm');if(n&&!r.users.length)n.focus()},50)}
 function pickUser(id){const u=reg().users.find(x=>x.id===id);if(!u)return;loadUser(u);$('#login').classList.remove('open');nav={sec:'home',tab:{learn:'course',practice:'quick',challenge:'boss'},lesson:null};render()}
-function createUser(){const n=$('#nm').value.trim();if(!n){toast('กรอกชื่อเล่นก่อนนะ');$('#nm').focus();return}const r=reg(),u={id:'u'+Date.now().toString(36),name:n,avatar:newAv};r.users.push(u);saveReg(r);pickUser(u.id);setTimeout(()=>{if(confirm('ทำแบบทดสอบวัดระดับสั้น ๆ 16 ข้อ เพื่อแนะนำจุดเริ่มต้นไหม?'))startPlacement()},600)}
+function createUser(){const n=$('#nm').value.trim();if(!n){toast('กรอกชื่อเล่นก่อนนะ');$('#nm').focus();return}const r=reg(),u={id:'u'+Date.now().toString(36),name:n,avatar:newAv};r.users.push(u);saveReg(r);pickUser(u.id);setTimeout(()=>{if(confirm('ทำแบบทดสอบวัดระดับสั้น ๆ 24 ข้อ เพื่อแนะนำจุดเริ่มต้นไหม?'))startPlacement()},600)}
 
 /* ================= DIALOGUES ================= */
 let DLG={id:null,hideEn:false,showTh:true,slow:false,tok:0,cur:-1,playing:false};
@@ -2178,7 +3092,7 @@ function dlgOpen(id){DLG.id=id;DLG.hideEn=false;DLG.showTh=true;DLG.slow=false;n
 function dlgClose(){dlgStop();DLG.id=null;render()}
 PANES['practice.dialog']=()=>{if(DLG.id)return dlgView();const dn=Object.keys(S.dlg).length;
  pane(H('บทสนทนา','ฟังบทสนทนาสั้น ๆ แล้วทำแบบฝึกตอบคำถาม เลือกประโยคตอบ และฟังจับใจความ',`<span class="pill ${dn===DIALOGS.length?'g':''}">ผ่านแล้ว ${dn}/${DIALOGS.length}</span>`)+
- ['A1','A2','B1','B2'].map(L=>`<h3 style="margin:18px 0 10px">${L} ${L==='A1'?'เริ่มต้น':L==='A2'?'ต่อยอด':L==='B1'?'ระดับกลาง':'ใช้ทำงาน'}</h3><div class="grid2">${DIALOGS.filter(d=>d.lv===L).map(d=>`<button class="item" onclick="dlgOpen('${d.id}')"><span class="box ${S.dlg[d.id]?'ok':''}"></span><span><b>${esc(d.t)}</b><small>${esc(d.th)} · ${d.turns.length} ประโยค${S.dlg[d.id]?' · ดีที่สุด '+S.dlg[d.id].b+'/6':''}</small></span></button>`).join('')}</div>`).join(''))};
+ lvChips('dlg')+[rlv('dlg')].map(L=>`<div class="grid2">${DIALOGS.filter(d=>d.lv===L).map(d=>`<button class="item" onclick="dlgOpen('${d.id}')"><span class="box ${S.dlg[d.id]?'ok':''}"></span><span><b>${esc(d.t)}</b><small>${esc(d.th)} · ${d.turns.length} ประโยค${S.dlg[d.id]?' · ดีที่สุด '+S.dlg[d.id].b+'/6':''}</small></span></button>`).join('')}</div>`).join(''))};
 function dlgView(){const d=dlgById(DLG.id);
  pane(`<button class="btn s sm" onclick="dlgClose()">กลับรายการ</button><div style="height:14px"></div><section class="page"><div class="small muted ln">${d.lv} · ${esc(d.th)}</div><h2 class="hand">${esc(d.t)}</h2>
  <div class="row" style="margin:6px 0 12px"><button class="btn p sm" id="dlgPlay" onclick="dlgPlay()">${DLG.playing?'⏹ หยุด':'▶ เล่นทั้งหมด'}</button><button class="btn s sm" onclick="DLG.slow=!DLG.slow;dlgView()">${DLG.slow?'✓ ':''}เสียงช้า</button><button class="btn s sm" onclick="DLG.hideEn=!DLG.hideEn;dlgView()">${DLG.hideEn?'✓ ':''}ซ่อนข้อความ (ฟังอย่างเดียว)</button><button class="btn s sm" onclick="DLG.showTh=!DLG.showTh;dlgView()">${DLG.showTh?'✓ ':''}แสดงคำแปล</button></div>
