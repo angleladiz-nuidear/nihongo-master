@@ -1913,7 +1913,7 @@ const H=(t,s,r)=>`<div class="pgtitle"><div><h2>${t}</h2>${s?`<p>${s}</p>`:''}</
 const pane=h=>{$('#pane').innerHTML=h};
 
 /* ================= HOME ================= */
-const ulv=u=>u<6?'A1':u<12?'A2':/\(B2\)/.test(UNITS[u].th)?'B2':'B1';
+const ulv=u=>u<6?'A1':u<12?'A2':/\(A2\)/.test(UNITS[u].th)?'A2':/\(B2\)/.test(UNITS[u].th)?'B2':'B1';
 function nextLesson(){const k=GR[(S.set&&S.set.level)||'A1']||0;const pass=(u,strict)=>!strict||GR[ulv(u)]>=k;for(const strict of [true,false])for(let u=0;u<UNITS.length;u++){if(!pass(u,strict))continue;for(let l=0;l<UNITS[u].ls.length;l++)if(!S.courseDone.includes(u+'-'+l))return[u,l]}return null}
 function openLesson(u,l){if(Sess)closeSession(true);nav.sec='learn';nav.tab.learn='course';nav.lesson=[u,l];render();scrollTo(0,0)}
 function startDaily(){openSession({title:'ภารกิจวันนี้',qs:buildDaily(),again:startDaily,onDone:res=>{const first=!(S.quest.date===today()&&S.quest.done);S.quest={date:today(),done:true,score:res.ok+'/'+res.total};dayLog().q+=res.total;const xp=res.ok*10+(first?50:0);gain(xp);return`ได้ +${xp} XP${first?' รวมโบนัสภารกิจประจำวัน 50':''}`}})}
@@ -1952,7 +1952,7 @@ PANES['learn.course']=()=>{if(nav.lesson)return lessonPage(...nav.lesson);const 
  const sec=(lv,title,note,idxs)=>{const dn=idxs.reduce((x,i)=>x+UNITS[i].ls.filter((_,l)=>S.courseDone.includes(i+'-'+l)).length,0),tl=idxs.length*3;return`<details class="card" style="padding:0;margin-bottom:14px" ${((S.set&&S.set.level)||'A1')===lv?'open':''}><summary style="cursor:pointer;padding:16px 18px;list-style:none"><b>${title}</b> <span class="pill">${idxs.length} unit · เรียนจบ ${dn}/${tl}</span>${note?`<div class="small muted" style="margin-top:4px">${note}</div>`:''}</summary><div class="list" style="padding:0 14px 14px">${idxs.map(i=>unitCard(UNITS[i],i)).join('')}</div></details>`};
  const byLv=l=>UNITS.map((_,i)=>i).filter(i=>i>=12&&ulv(i)===l);
  pane(H('หลักสูตรภาษาอังกฤษ',`${UNITS.length} หน่วย ${tot} บทเรียน · เรียนจบ ${d}/${tot} บท`,`<div style="min-width:180px"><div class="bar"><i style="width:${d/tot*100}%"></i></div></div>`)+
- [sec('A1','A1 เริ่มต้น','',[0,1,2,3,4,5]),sec('A2','A2 ต่อยอด','ควรเรียน A1 ให้คล่องก่อน',[6,7,8,9,10,11]),sec('B1','B1 อังกฤษเพื่อการทำงานระดับกลาง','',byLv('B1')),sec('B2','B2 อังกฤษเพื่อการทำงานระดับสูง','',byLv('B2'))].join(''))};
+ [sec('A1','A1 เริ่มต้น','',[0,1,2,3,4,5]),sec('A2','A2 ต่อยอด','ควรเรียน A1 ให้คล่องก่อน',[6,7,8,9,10,11].concat(byLv('A2'))),sec('B1','B1 อังกฤษเพื่อการทำงานระดับกลาง','',byLv('B1')),sec('B2','B2 อังกฤษเพื่อการทำงานระดับสูง','',byLv('B2'))].join(''))};
 function lessonPage(u,li){const U=UNITS[u],l=U.ls[li],done=S.courseDone.includes(u+'-'+li);
  const prev=li>0?[u,li-1]:u>0?[u-1,2]:null,next=li<2?[u,li+1]:u<UNITS.length-1?[u+1,0]:null;
  pane(`<button class="btn s sm" onclick="nav.lesson=null;render()">กลับหลักสูตร</button><div style="height:14px"></div>
@@ -2701,6 +2701,22 @@ D('d58','B1','Booking a table','จองโต๊ะอาหาร',['Mia','St
 D('d59','B2','Negotiating a deadline','ต่อรองกำหนดส่งงาน',['Mia','Manager'],[[1,'Mia, I need the full analysis by Wednesday.','มีอา ฉันต้องการการวิเคราะห์ฉบับเต็มภายในวันพุธ'],[0,'I understand the urgency, but delivering a thorough analysis by then would be difficult.','เข้าใจว่าด่วน แต่ส่งฉบับละเอียดภายในวันนั้นยาก'],[1,'What would be realistic, in your view?','ในมุมคุณ แบบไหนสมเหตุสมผล'],[0,'I could send the key findings on Wednesday and the complete report on Friday.','ส่งข้อสรุปหลักวันพุธและรายงานเต็มวันศุกร์ได้'],[1,'That could work, provided the key findings are clear enough to act on.','ได้ ถ้าข้อสรุปหลักชัดพอจะนำไปทำต่อ'],[0,'Absolutely. I will make sure they are.','แน่นอนค่ะ ฉันจะทำให้ชัด']],[['มีอาเสนออะไร?',['ส่งข้อสรุปหลักวันพุธ และรายงานเต็มวันศุกร์','ส่งทั้งหมดวันพุธ','เลื่อนไปเดือนหน้า'],0,'key findings on Wednesday … complete report on Friday'],['ผู้จัดการมีเงื่อนไขอะไร?',['ข้อสรุปหลักต้องชัดพอ','ต้องลดเนื้อหา','ต้องประชุมก่อน'],0,'provided the key findings are clear enough']])
 );
 
+
+
+
+/* ===== A2 bonus units 25-26 ===== */
+UNITS.push(
+{t:'Talking about the past',th:'เล่าเรื่องอดีตและเวลา (A2)',ic:'⏳',topics:[20,21,23],g:[39,40],boss:{n:'Time Tortoise',e:'🐢'},ls:[
+ {t:'Did / didn’t',goal:'ถามและปฏิเสธเรื่องที่เกิดขึ้นแล้ว',p:[['Did you call the customer yesterday?','เมื่อวานคุณโทรหาลูกค้าไหม'],['I did not finish the report.','ฉันทำรายงานไม่เสร็จ'],['What did she say?','เธอพูดว่าอะไร'],['We didn’t go to the meeting.','เราไม่ได้ไปประชุม']],tip:'ถามและปฏิเสธอดีตใช้ did / didn’t + V1 (กริยาช่อง 1) ไม่ใช้ช่อง 2 ซ้ำ',q:['เติมคำ: She didn’t ___ the email.',['read','reads','reading'],0]},
+ {t:'For and since',goal:'บอกว่าทำสิ่งนั้นมานานแค่ไหน',p:[['I have worked here for three years.','ฉันทำงานที่นี่มาสามปี'],['She has lived in Bangkok since 2019.','เธออยู่กรุงเทพตั้งแต่ปี 2019'],['How long have you studied English?','คุณเรียนภาษาอังกฤษมานานเท่าไร'],['We have known each other since school.','เรารู้จักกันตั้งแต่เรียนหนังสือ']],tip:'for + ช่วงเวลา (for two years) · since + จุดเริ่มต้น (since Monday) ใช้กับ have/has + V3',q:['เติมคำ: I have lived here ___ 2020.',['for','since','from'],1]},
+ {t:'Yesterday and last week',goal:'เล่าเหตุการณ์ในอดีตเรียงตามลำดับ',p:[['Yesterday I woke up at six.','เมื่อวานฉันตื่นหกโมง'],['Last week we visited a client.','สัปดาห์ที่แล้วเราไปหาลูกค้า'],['Then he sent the invoice.','จากนั้นเขาส่งใบแจ้งหนี้'],['After that, we had lunch together.','หลังจากนั้นเรากินข้าวด้วยกัน']],tip:'ใช้ yesterday / last week / then / after that เชื่อมเหตุการณ์ในอดีตเรียงตามเวลา',q:['เติมคำ: ___ week, we started a new project.',['Last','Next','Tomorrow'],0]}]},
+{t:'Describing things & people',th:'บรรยายคนและสิ่งของ (A2)',ic:'🧑‍🤝‍🧑',topics:[24,25,27],g:[41,43],boss:{n:'Detail Dolphin',e:'🐬'},ls:[
+ {t:'Whose is it?',goal:'บอกว่าเป็นของใคร',p:[['This is Mia’s laptop.','นี่คือโน้ตบุ๊กของมีอา'],['Whose bag is this?','นี่กระเป๋าของใคร'],['It is the manager’s office.','นี่คือห้องผู้จัดการ'],['These are our colleagues’ desks.','นี่คือโต๊ะของเพื่อนร่วมงานเรา']],tip:'’s ใช้บอกเจ้าของ (Mia’s) และ whose ใช้ถามเจ้าของ',q:['เติมคำ: ___ pen is this?',['Who','Whose','Who’s'],1]},
+ {t:'How much / how many',goal:'พูดถึงปริมาณ',p:[['We have a few questions.','เรามีคำถามไม่กี่ข้อ'],['I need a little time.','ฉันขอเวลาหน่อย'],['There are a lot of emails today.','วันนี้มีอีเมลเยอะ'],['How many people are coming?','จะมีคนมากี่คน']],tip:'a few + นับได้ (a few ideas) · a little + นับไม่ได้ (a little time) · a lot of ใช้ได้ทั้งสอง',q:['เติมคำ: I have ___ ideas.',['a few','a little','much'],0]},
+ {t:'Good or well?',goal:'ใช้คุณศัพท์และกริยาวิเศษณ์ให้ถูก',p:[['She is a good speaker.','เธอเป็นผู้พูดที่ดี'],['She speaks very well.','เธอพูดได้ดีมาก'],['He is a careful driver.','เขาเป็นคนขับรถที่ระมัดระวัง'],['He drives carefully.','เขาขับรถอย่างระมัดระวัง']],tip:'คุณศัพท์ขยายคำนาม (good speaker) · กริยาวิเศษณ์ขยายกริยา (speaks well, drives carefully)',q:['เติมคำ: He works very ___.',['good','well','goodly'],1]}]}
+);
+UNITS.slice(24).forEach((u,k)=>u.ls.forEach(l=>l.p.forEach(p=>PHRASES.push({en:p[0],th:p[1],u:24+k}))));
+
 let V={t:-1,i:0,flip:false,mode:'card'};
 const wlv=w=>w.t>=B1B?'B1':w.t>=B2B?'B2':w.t>=20?'A2':'A1';
 const vList=()=>WORDS.filter(w=>(!V.lv||wlv(w)===V.lv)&&(V.t<0||w.t===V.t));
@@ -3025,6 +3041,71 @@ function brView(){const b=BRS.find(x=>x.id===BS.id);
 function brPick(i){if(BS.fb)return;const o=BS.opts[i];BS.score+=o[2];BS.max+=2;BS.fb={t:o[3],s:o[2],next:o[1],i};brView()}
 function brNext(){const nx=BS.fb.next;if(nx==='end'){S.role=S.role||{};BS.done=true;const pc=Math.round(BS.score/BS.max*100);S.role['br_'+BS.id]=Math.max(S.role['br_'+BS.id]||0,pc);gain(BS.score*5);toast('+'+BS.score*5+' XP');return brView()}BS.node=nx;BS.fb=null;BS.opts=shuffle(brN().opts.slice());brView()}
 
+
+/* ===== role-play A1/A2 ===== */
+const ROLES2=[
+{id:'r10',lv:'A1',t:'Introduce yourself',th:'แนะนำตัวกับคนที่เพิ่งพบ',who:'Anna (เพื่อนใหม่)',turns:[
+ ['Hi! I am Anna. What is your name?','สวัสดี ฉันชื่อแอนนา คุณชื่ออะไร',['Hi, Anna. My name is Mia. Nice to meet you.','Mia.','Why?']],
+ ['Nice to meet you too. Where are you from?','ยินดีเช่นกัน คุณมาจากไหน',['I am from Thailand. I live in Bangkok.','Thailand.','I do not know.']],
+ ['What do you do?','คุณทำงานอะไร',['I work in an office. I am an accountant.','Work.','No job.']],
+ ['That sounds interesting. See you later!','ฟังดูน่าสนใจ แล้วเจอกัน',['See you! Have a nice day.','Bye.','OK, go.']]]},
+{id:'r11',lv:'A1',t:'Order a coffee',th:'สั่งกาแฟที่ร้าน',who:'Barista (พนักงานร้านกาแฟ)',turns:[
+ ['Good morning. What would you like?','สวัสดีตอนเช้า รับอะไรดีคะ',['Good morning. A latte, please.','Latte.','I want coffee now.']],
+ ['Hot or iced?','ร้อนหรือเย็นคะ',['Iced, please.','Cold.','Hot.']],
+ ['Anything else?','รับอะไรเพิ่มไหมคะ',['No, thank you. That is all.','No.','Nothing. Hurry.']],
+ ['That is eighty baht, please.','แปดสิบบาทค่ะ',['Here you are. Thank you.','Take it.','Too expensive.']]]},
+{id:'r12',lv:'A1',t:'Ask the way',th:'ถามทางไปสถานีรถไฟ',who:'Stranger (คนแปลกหน้า)',turns:[
+ ['Hello. Can I help you?','สวัสดี มีอะไรให้ช่วยไหม',['Excuse me, where is the train station?','Station.','Where?']],
+ ['Go straight and turn left at the bank.','ตรงไปแล้วเลี้ยวซ้ายตรงธนาคาร',['Straight and turn left at the bank. Is it far?','What?','OK.']],
+ ['No, it is five minutes on foot.','ไม่ไกล เดินห้านาที',['Thank you very much for your help.','Thanks.','Fine.']]]},
+{id:'r13',lv:'A2',t:'At the doctor',th:'อธิบายอาการกับหมอ',who:'Doctor (หมอ)',turns:[
+ ['Good morning. What seems to be the problem?','สวัสดีค่ะ เป็นอะไรมาคะ',['Good morning, doctor. I have a headache and a sore throat.','I am sick.','Help me.']],
+ ['How long have you felt like this?','เป็นมานานแค่ไหนแล้ว',['Since Monday. It is getting worse.','Long time.','I do not remember.']],
+ ['Do you have a fever?','มีไข้ไหม',['Yes, I think so. I felt very hot last night.','Maybe.','No idea.']],
+ ['Take this medicine twice a day and rest.','กินยานี้วันละสองครั้งและพักผ่อน',['Thank you, doctor. Should I come back next week?','OK.','Medicine is bad.']]]},
+{id:'r14',lv:'A2',t:'Hotel check-in',th:'เช็คอินที่โรงแรม',who:'Receptionist (พนักงานต้อนรับ)',turns:[
+ ['Good afternoon. Do you have a reservation?','สวัสดีค่ะ จองไว้ไหมคะ',['Yes, I do. It is under the name Mia Srisuk.','Yes.','I want a room.']],
+ ['Thank you. Two nights, is that right?','ขอบคุณค่ะ สองคืนใช่ไหมคะ',['Yes, that is right. Is breakfast included?','Yes.','Two or three.']],
+ ['Breakfast is from seven to ten in the restaurant.','อาหารเช้าเจ็ดถึงสิบโมงที่ห้องอาหาร',['Great. What time is check-out?','OK.','I do not eat breakfast.']],
+ ['Check-out is at noon. Here is your key.','เช็คเอาต์เที่ยงค่ะ นี่กุญแจ',['Thank you very much. Could I have a late check-out?','Thanks.','Give me another key.']]]},
+{id:'r15',lv:'A2',t:'Make an appointment by phone',th:'นัดหมายทางโทรศัพท์',who:'Receptionist (พนักงานต้อนรับ)',turns:[
+ ['Hello, Green Dental. How can I help you?','สวัสดีค่ะ คลินิกกรีน มีอะไรให้ช่วยคะ',['Hello. I would like to make an appointment, please.','Appointment.','I need a dentist now.']],
+ ['Of course. Which day is good for you?','ได้ค่ะ วันไหนสะดวกคะ',['Thursday or Friday would be fine.','Any.','Whenever.']],
+ ['We have a free slot on Friday at ten.','วันศุกร์สิบโมงว่างค่ะ',['Friday at ten is perfect. Thank you.','OK.','Too early.']],
+ ['Could I have your name and phone number?','ขอชื่อและเบอร์โทรด้วยค่ะ',['My name is Mia Srisuk. My number is zero eight one, two three four, five six seven eight.','Mia.','I forgot.']]]}
+];
+ROLES2.forEach(r=>{ROLES.push(r);r.turns.forEach(t=>PHRASES.push({en:t[2][0],th:t[1],u:12}))});
+
+/* ===== branching A2 ===== */
+BRS.push(
+{id:'b6',lv:'A2',t:'Wrong order at a restaurant',th:'ได้อาหารผิดจานที่ร้าน (เส้นทางเปลี่ยนตามท่าที)',who:'Waiter',start:'n1',nodes:{
+ n1:{say:['Here is your order. Enjoy your meal!','นี่ออเดอร์ของคุณ ขอให้อร่อย'],opts:[
+  ['Excuse me, I ordered the chicken, but this is fish.','n2',2,'สุภาพและบอกปัญหาชัดเจน'],
+  ['This is wrong.','n3',1,'บอกว่าผิด แต่ไม่บอกว่าผิดอย่างไร'],
+  ['I do not eat this. Take it away.','n3',0,'พูดห้วนและไม่สุภาพ']]},
+ n2:{say:['I am so sorry. Would you like me to change it?','ขออภัยมาก ให้เปลี่ยนให้ไหมคะ'],opts:[
+  ['Yes, please. How long will it take?','end',2,'ตอบรับและถามเวลา ช่วยให้วางแผนได้'],
+  ['Yes.','end',1,'ใช้ได้ แต่สั้นเกินไป'],
+  ['No. I want my money back now.','end',0,'เรียกร้องแรงเกินเหตุทั้งที่เสนอแก้แล้ว']]},
+ n3:{say:['Is there a problem with your food?','อาหารมีปัญหาอะไรไหมคะ'],opts:[
+  ['Yes, I ordered chicken, but I got fish. Could you check, please?','end',2,'อธิบายปัญหาและขอให้ตรวจ'],
+  ['Yes. It is bad.','end',0,'ไม่ชัดเจนและฟังเหมือนต่อว่า'],
+  ['No problem.','end',1,'ไม่ได้แก้ปัญหาที่เกิดขึ้น']]}}},
+{id:'b7',lv:'A2',t:'Change a hotel room',th:'ขอเปลี่ยนห้องพัก (เส้นทางเปลี่ยนตามท่าที)',who:'Receptionist',start:'n1',nodes:{
+ n1:{say:['Good evening. Is everything all right with your room?','สวัสดีค่ะ ห้องเรียบร้อยดีไหมคะ'],opts:[
+  ['Not really. The room is very noisy. Can I change it, please?','n2',2,'บอกปัญหาและขอสิ่งที่ต้องการอย่างสุภาพ'],
+  ['It is noisy.','n3',1,'บอกปัญหาแต่ไม่ได้ขออะไร'],
+  ['This hotel is terrible.','n3',0,'ตำหนิทั้งหมดโดยไม่ช่วยแก้ปัญหา']]},
+ n2:{say:['Of course. We have a quiet room on the fifth floor. Is that OK?','ได้ค่ะ มีห้องเงียบชั้นห้า โอเคไหมคะ'],opts:[
+  ['That sounds great. Thank you for your help.','end',2,'ตอบรับและขอบคุณ'],
+  ['Is it bigger than this one?','end',1,'ถามได้ แต่ควรขอบคุณก่อน'],
+  ['Fine.','end',0,'ห้วนเกินไป']]},
+ n3:{say:['I am sorry about that. What can I do for you?','ขออภัยค่ะ ให้ช่วยอย่างไรดี'],opts:[
+  ['Could you move me to a quieter room, please?','end',2,'ขอสิ่งที่ต้องการชัดเจนและสุภาพ'],
+  ['Nothing.','end',0,'ปล่อยให้ปัญหาไม่ถูกแก้'],
+  ['Give me my money back.','end',0,'เรียกร้องแรงเกินไปในจังหวะนี้']]}}}
+);
+
 PANES['practice.write']=()=>{S.write=S.write||{};if(WR)return wrView();
  pane(H('เขียนอีเมล','ฝึกเขียนอีเมลทำงานแบบสุภาพ เลือกประโยคที่เหมาะ หรือเขียนเองแล้วตรวจโครงสร้าง')+`<div class="grid2">${EMAILS.map(e=>`<button class="item" onclick="WR='${e.id}';PANES['practice.write']();scrollTo(0,0)"><span class="box ${S.write[e.id]>=5?'ok':''}"></span><span><b>${esc(e.t)}</b><small>${esc(e.th)}${S.write[e.id]!==undefined?' · ดีที่สุด '+S.write[e.id]+'/6':''}</small></span></button>`).join('')}</div>`)};
 function wrView(){const e=EMAILS.find(x=>x.id===WR);
@@ -3061,7 +3142,7 @@ function stopGames(){if(DLG.playing)dlgStop();if(SP&&SP.timer){clearInterval(SP.
 let newAv=AVATARS[0];
 function showLogin(){const r=reg();$('#login').classList.add('open');
  $('#loginBox').innerHTML=`<div class="brand" style="margin-bottom:22px"><div class="logo"></div><div><b style="font-size:1.3rem">English Master</b><small>A1 → B2 · อังกฤษเพื่อการทำงาน</small></div></div><div class="card">${r.users.length?`<h3 style="margin-bottom:12px">ใครกำลังเรียนอยู่?</h3><div class="who">${r.users.map(u=>`<button class="btn s" onclick="pickUser('${u.id}')"><span class="av">${u.avatar}</span>${esc(u.name)}</button>`).join('')}</div><hr style="border:0;border-top:1px solid var(--line);margin:16px 0">`:''}
- <h3 style="margin-bottom:12px">${r.users.length?'เพิ่มผู้เรียนใหม่':'ตั้งชื่อผู้เรียน'}</h3><div class="field"><label for="nm">ชื่อเล่น</label><input id="nm" maxlength="20" autocomplete="off" placeholder="เช่น แอน" onkeydown="if(event.key==='Enter')createUser()"></div>
+ <h3 style="margin-bottom:12px">${r.users.length?'เพิ่มผู้เรียนใหม่':'ตั้งชื่อผู้เรียน'}</h3><div class="field"><label for="nm">ชื่อเล่น</label><input id="nm" maxlength="20" autocomplete="off" placeholder="เช่น นุ้ย^^" onkeydown="if(event.key==='Enter')createUser()"></div>
  <div class="field"><label>รูปประจำตัว</label><div class="avpick">${AVATARS.map(a=>`<button class="${a===newAv?'on':''}" onclick="newAv='${a}';showLogin()" aria-label="เลือก ${a}">${a}</button>`).join('')}</div></div><button class="btn p" onclick="createUser()">เริ่มเรียน</button></div>`;
  setTimeout(()=>{const n=$('#nm');if(n&&!r.users.length)n.focus()},50)}
 function pickUser(id){const u=reg().users.find(x=>x.id===id);if(!u)return;loadUser(u);$('#login').classList.remove('open');nav={sec:'home',tab:{learn:'course',practice:'quick',challenge:'boss'},lesson:null};render()}
