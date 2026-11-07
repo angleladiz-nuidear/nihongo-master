@@ -2151,6 +2151,13 @@
 .kt-sent,.kt-ch,.kt-clue .th{font-weight:800}
 .kt-ls span{font-size:15px}
 
+/* ===== การ์ดคำศัพท์: เนื้อหายาวเลื่อนขึ้นลงได้ ===== */
+.flashcard-front, .flashcard-back { overflow-y: auto; overflow-x: hidden; padding-top: 44px; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+@supports (justify-content: safe center) { .flashcard-front, .flashcard-back { justify-content: safe center; } }
+.flashcard-front::-webkit-scrollbar { width: 6px; }
+.flashcard-front::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.4); border-radius: 4px; }
+.flashcard-back.rich-content { justify-content: flex-start; }
+
 </style>
 </head>
 <body>
