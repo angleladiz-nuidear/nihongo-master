@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nihongo Master - Premium Japanese Classroom Edition</title>
@@ -2056,7 +2057,101 @@
         .exam-review-item .eri-q { font-weight: 600; color: var(--text-main); }
         .exam-review-item .eri-a { color: var(--text-muted); margin-top: 2px; }
 
-    </style>
+    /* ===== KOTOMON เติมคำ ===== */
+#fillBox{position:fixed;inset:0;z-index:9000;display:none;flex-direction:column;background:#1b1240;font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic UI','Sarabun','Noto Sans Thai',system-ui,sans-serif;color:#3a2412;user-select:none;-webkit-user-select:none}
+#fillBox *{box-sizing:border-box}
+#fillBox svg.kt-px{image-rendering:pixelated;shape-rendering:crispEdges;display:block}
+.kt-top{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:8px 10px;background:linear-gradient(#3a2a82,#241660);border-bottom:4px solid #e0a63a;position:relative;z-index:3}
+.kt-logo{display:flex;align-items:center;gap:8px;background:#1a1038;border:3px solid #e0a63a;border-radius:12px;padding:3px 12px 3px 4px;box-shadow:0 3px 0 #000a}
+.kt-logo b{font-family:'DotGothic16','Noto Sans JP',system-ui,sans-serif;font-size:clamp(20px,4vw,32px);font-weight:900;letter-spacing:2px;color:#ffe066;-webkit-text-stroke:1px #5a2a00;paint-order:stroke fill;text-shadow:-2px -2px 0 #5a2a00,2px -2px 0 #5a2a00,-2px 2px 0 #5a2a00,2px 2px 0 #5a2a00,0 4px 0 #5a2a00}
+.kt-banner{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:#1a1038;border:3px solid #7fb2ff;border-radius:14px;padding:6px 10px;color:#fff;font-size:clamp(13px,2.6vw,20px);font-weight:700;box-shadow:0 3px 0 #000a;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kt-btn{font-family:inherit;border:3px solid #fff3;border-radius:12px;color:#fff;font-weight:700;cursor:pointer;padding:8px 14px;font-size:clamp(14px,2.6vw,20px);display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 0 #0007;transition:transform .08s}
+.kt-btn:active{transform:translateY(3px);box-shadow:0 1px 0 #0007}
+.kt-btn[disabled]{filter:grayscale(.8) brightness(.8);cursor:not-allowed}
+.kt-red{background:linear-gradient(#ff5a5a,#c81d2a);border-color:#ffd0d0}
+.kt-blue{background:linear-gradient(#4aa0ff,#1f5fd0);border-color:#cfe4ff}
+.kt-purple{background:linear-gradient(#a070ff,#6a3bc8);border-color:#e1d2ff}
+.kt-green{background:linear-gradient(#4fd466,#1f9a38);border-color:#d3ffd9}
+.kt-gold{background:linear-gradient(#ffd24a,#e0901a);border-color:#fff0b8;color:#4a2a00}
+.kt-stage{flex:1;min-height:0;position:relative;overflow:hidden;background:#caa070}
+.kt-bg{position:absolute;inset:0;width:100%;height:100%}
+.kt-main{position:relative;z-index:2;height:100%;display:flex;gap:10px;padding:10px 12px 8px;align-items:stretch;justify-content:center}
+.kt-card{flex:1;max-width:760px;min-width:0;background:#fff3d8;border:5px solid #e0a63a;border-radius:16px;box-shadow:0 0 0 3px #7a4a10,0 8px 0 #0004;display:flex;flex-direction:column;overflow:hidden}
+.kt-cardbar{flex:0 0 auto;display:flex;align-items:center;gap:10px;background:#251650;padding:6px 10px;color:#fff;border-bottom:3px solid #e0a63a}
+.kt-nbadge{background:linear-gradient(#ff4a4a,#b81222);border:3px solid #ffd0d0;color:#fff;font-weight:700;border-radius:8px;padding:2px 14px;font-size:clamp(16px,3vw,24px);clip-path:polygon(10% 0,90% 0,100% 50%,90% 100%,10% 100%,0 50%)}
+.kt-seg{display:flex;gap:3px;margin-left:auto}
+.kt-seg i{width:clamp(10px,2.2vw,18px);height:14px;border-radius:3px;background:#5a5a78;border:2px solid #2a2a40}
+.kt-seg i.ok{background:#4be05f;border-color:#1a7a2a}.kt-seg i.ng{background:#ff6a6a;border-color:#8a1a1a}.kt-seg i.cur{background:#ffd24a;border-color:#8a6a00}
+.kt-body{flex:1;min-height:0;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+.kt-qrow{display:flex;gap:14px;align-items:center}
+.kt-clue{flex:0 0 auto;width:clamp(96px,22vw,150px);min-height:clamp(96px,22vw,130px);background:#fff;border:4px solid #c9a46a;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;text-align:center;box-shadow:inset 0 0 0 3px #fff3d8}
+.kt-clue small{color:#9a6a2a;font-size:12px}
+.kt-clue .th{font-size:clamp(15px,3vw,22px);font-weight:700;line-height:1.25;color:#8a2a2a;word-break:break-word}
+.kt-clue .hint{margin-top:4px;font-size:15px;color:#1f5fd0;font-weight:700}
+.kt-sent{flex:1;font-size:clamp(20px,4.6vw,34px);font-weight:700;line-height:1.5;color:#2a1608;word-break:break-all}
+.kt-blank{display:inline-block;min-width:3.4em;border-bottom:4px solid #2a1608;text-align:center;color:#e0901a;padding:0 4px;margin:0 2px}
+.kt-blank.ok{color:#1f9a38;border-color:#1f9a38}.kt-blank.ng{color:#c81d2a;border-color:#c81d2a}
+.kt-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kt-ch{font-family:inherit;display:flex;align-items:center;gap:10px;background:linear-gradient(#fff,#efe3cc);border:3px solid #b99a6a;border-radius:12px;padding:8px 10px;cursor:pointer;font-size:clamp(17px,3.6vw,28px);font-weight:700;color:#2a1608;text-align:left;min-height:56px;box-shadow:0 3px 0 #8a6a3a}
+.kt-ch .n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:3px solid #8a2a2a;color:#8a2a2a;display:flex;align-items:center;justify-content:center;font-size:16px;background:#fff}
+.kt-ch .r{display:block;font-size:12px;color:#8a7a5a;font-weight:400;line-height:1.1}
+.kt-ch.sel{background:linear-gradient(#ffe36a,#f2b81e);border-color:#c8860a}
+.kt-ch.right{background:linear-gradient(#a8f0b4,#4fc866);border-color:#1f9a38}
+.kt-ch.wrong{background:linear-gradient(#ffb0b0,#ee6a6a);border-color:#b81222}
+.kt-ch[disabled]{cursor:default}
+.kt-fb{border-radius:12px;padding:8px 12px;font-size:clamp(14px,2.8vw,18px);line-height:1.45;background:#fff;border:3px solid #c9a46a}
+.kt-fb.ok{border-color:#1f9a38;background:#e8ffee}.kt-fb.ng{border-color:#c81d2a;background:#fff0f0}
+.kt-fb .play{font-family:inherit;border:2px solid #1f5fd0;background:#e8f1ff;border-radius:8px;cursor:pointer;margin-left:6px;padding:0 8px}
+.kt-side{flex:0 0 clamp(150px,20vw,190px);display:flex;flex-direction:column;gap:10px;justify-content:center}
+.kt-panel{background:#fff3d8;border:4px solid #e0a63a;border-radius:12px;box-shadow:0 0 0 2px #7a4a10,0 5px 0 #0004;overflow:hidden}
+.kt-panel h4{margin:0;background:#251650;color:#fff;font-size:15px;padding:4px 8px;display:flex;gap:6px;align-items:center}
+.kt-panel div{padding:8px;font-size:14px;font-weight:700;text-align:center}
+.kt-rw{display:flex;align-items:center;gap:8px;justify-content:flex-start;padding:2px 10px;font-size:18px}
+.kt-coin{width:30px;height:30px;border-radius:50%;background:radial-gradient(#ffe36a,#e0901a);border:3px solid #8a5a00;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:#6a3a00}
+.kt-mascot{position:absolute;left:8px;bottom:6px;z-index:2;pointer-events:none;width:clamp(70px,15vw,150px)}
+.kt-mascot #ktMasImg{width:100%}
+.kt-mascot.hop{animation:kthop .5s}.kt-mascot.shake{animation:ktshake .4s}
+@keyframes kthop{0%,100%{transform:translateY(0)}40%{transform:translateY(-22px)}}
+@keyframes ktshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.kt-bottom{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:8px 12px;background:linear-gradient(#3a2a82,#241660);border-top:4px solid #e0a63a;position:relative;z-index:3}
+.kt-bottom .sp{flex:1}
+.kt-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.kt-tab{font-family:inherit;border:3px solid #b99a6a;background:#fff;border-radius:10px;padding:6px 18px;font-size:20px;font-weight:700;cursor:pointer;color:#5a3a1a}
+.kt-tab.on{background:linear-gradient(#ff4a4a,#b81222);color:#fff;border-color:#ffd0d0}
+.kt-lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.kt-ls{display:flex;flex-direction:column;align-items:center;white-space:nowrap;font-family:inherit;background:#fff;border:3px solid #b99a6a;border-radius:10px;padding:6px 4px;cursor:pointer;text-align:center;color:#3a2412;box-shadow:0 3px 0 #8a6a3a;line-height:1.3}
+.kt-ls b{display:block;font-size:18px}.kt-ls span{font-size:13px;color:#c8860a;letter-spacing:1px}
+.kt-ls.done{background:#e8ffee;border-color:#1f9a38}
+.kt-pager{display:flex;align-items:center;justify-content:center;gap:12px;font-weight:700}
+.kt-res{text-align:center;padding:8px}
+.kt-res .stars{font-size:48px;letter-spacing:6px;color:#f2b81e;text-shadow:0 3px 0 #8a5a00}
+.kt-res .sc{font-size:34px;font-weight:700}
+.kt-note{font-size:13px;color:#7a5a3a;text-align:center}
+.kt-rev{position:absolute;inset:0;z-index:5;background:#000a;display:none;align-items:center;justify-content:center;padding:14px}
+.kt-rev .box{background:#fff3d8;border:5px solid #e0a63a;border-radius:16px;max-width:640px;width:100%;max-height:100%;overflow:auto;padding:14px}
+.kt-rev .it{padding:8px 4px;border-bottom:2px dashed #c9a46a;font-size:16px;line-height:1.45}
+@media (min-width:641px){.kt-main{padding-left:calc(clamp(70px,15vw,150px) + 14px)}}
+@media (max-width:640px){
+ .kt-main{flex-direction:column;justify-content:flex-start;padding:8px;gap:8px;overflow:auto}
+ .kt-side{flex-direction:row;flex:0 0 auto}.kt-side .kt-panel{flex:1}
+ .kt-card{max-width:none;flex:1 0 auto}
+ .kt-qrow{flex-direction:column;align-items:stretch}.kt-clue{width:100%;min-height:70px}
+ .kt-mascot{display:none}.kt-logo b{display:none}
+ .kt-btn{padding:8px 10px}
+}
+
+.kt-say{position:absolute;left:6px;bottom:100%;margin-bottom:6px;background:#fff;border:3px solid #7a4a10;border-radius:12px;padding:5px 10px;font-weight:700;font-size:14px;color:#3a2412;white-space:nowrap;opacity:0;transform:translateY(6px);transition:.25s;max-width:60vw}
+.kt-say.on{opacity:1;transform:none}
+.kt-say:after{content:'';position:absolute;left:22px;top:100%;border:7px solid transparent;border-top-color:#7a4a10}
+.kt-ls.next{outline:4px solid #ff4a4a;animation:ktpulse 1s infinite alternate}
+@keyframes ktpulse{from{box-shadow:0 0 0 0 #ff4a4a88}to{box-shadow:0 0 12px 4px #ff4a4acc}}
+.kt-jump{display:flex;align-items:center;gap:6px}
+.kt-jump input{width:72px;font-family:inherit;font-size:18px;padding:5px;border:3px solid #b99a6a;border-radius:8px;text-align:center}
+
+.kt-sent,.kt-ch,.kt-clue .th{font-weight:800}
+.kt-ls span{font-size:15px}
+
+</style>
 </head>
 <body>
 
@@ -2095,6 +2190,7 @@
                 <div class="mode-group" id="modeGroupPractice" style="display:none;">
                     <button id="modeQuizBtn" aria-pressed="false" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ<span class="mode-coin-badge">+1🪙</span></button>
                     <button id="modeChoiceBtn" aria-pressed="false" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ<span class="mode-coin-badge">+1🪙</span></button>
+                    <button id="modeFillBtn" aria-pressed="false" class="mode-btn" onclick="ktPrevMode=currentMode;setMode('fill')">🐕 เติมคำ (KOTOMON)<span class="mode-coin-badge">+3~5🪙</span></button>
                     <button id="modeMatchBtn" aria-pressed="false" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ<span class="mode-coin-badge">+1🪙</span></button>
                     <button id="modeListenBtn" aria-pressed="false" class="mode-btn" onclick="setMode('listen')">🎧 ฟังแล้วตอบ<span class="mode-coin-badge">+2🪙</span></button>
                     <button id="modeReadBtn" aria-pressed="false" class="mode-btn" onclick="setMode('read')">📝 อ่านแล้วตอบ<span class="mode-coin-badge">+2🪙</span></button>
@@ -8336,13 +8432,13 @@
 
         const MODE_CATEGORY_MAP = {
             flashcard: 'learn', kana: 'learn', listenstudy: 'learn', readstudy: 'learn',
-            quiz: 'practice', choice: 'practice', match: 'practice', listen: 'practice', read: 'practice', speak: 'practice', boss: 'practice', exam: 'practice',
+            quiz: 'practice', choice: 'practice', fill: 'practice', match: 'practice', listen: 'practice', read: 'practice', speak: 'practice', boss: 'practice', exam: 'practice',
             roadmap: 'overview'
         };
 
         const MODE_BUTTON_MAP = {
             flashcard: 'modeFlashcardBtn', kana: 'modeKanaBtn', listenstudy: 'modeListenStudyBtn', readstudy: 'modeReadStudyBtn',
-            quiz: 'modeQuizBtn', choice: 'modeChoiceBtn', match: 'modeMatchBtn', listen: 'modeListenBtn', read: 'modeReadBtn',
+            quiz: 'modeQuizBtn', choice: 'modeChoiceBtn', fill: 'modeFillBtn', match: 'modeMatchBtn', listen: 'modeListenBtn', read: 'modeReadBtn',
             speak: 'modeSpeakBtn', boss: 'modeBossBtn', exam: 'modeExamBtn', roadmap: 'modeRoadmapBtn'
         };
 
@@ -8381,6 +8477,7 @@
             
             document.getElementById('quizBox').style.display = (mode === 'quiz') ? 'flex' : 'none';
             document.getElementById('choiceBox').style.display = (mode === 'choice') ? 'flex' : 'none';
+            document.getElementById('fillBox').style.display = (mode === 'fill') ? 'flex' : 'none';
             document.getElementById('matchBox').style.display = (mode === 'match') ? 'flex' : 'none';
             document.getElementById('kanaBox').style.display = (mode === 'kana') ? 'flex' : 'none';
             document.getElementById('kanaNavButtons').style.display = (mode === 'kana') ? 'flex' : 'none';
@@ -8394,11 +8491,12 @@
             document.getElementById('examBox').style.display = (mode === 'exam') ? 'flex' : 'none';
             
             document.getElementById('kanaProgressBox').style.display = (mode === 'kana') ? 'flex' : 'none';
-            document.getElementById('stageHeaderInfo').style.display = (mode === 'kana' || mode === 'boss' || mode === 'roadmap' || mode === 'listenstudy' || mode === 'readstudy' || mode === 'listen' || mode === 'read' || mode === 'speak' || mode === 'exam') ? 'none' : 'flex';
+            document.getElementById('stageHeaderInfo').style.display = (mode === 'fill' || mode === 'kana' || mode === 'boss' || mode === 'roadmap' || mode === 'listenstudy' || mode === 'readstudy' || mode === 'listen' || mode === 'read' || mode === 'speak' || mode === 'exam') ? 'none' : 'flex';
 
             if (mode === 'flashcard') updateCardDisplay();
             else if (mode === 'quiz') initQuiz();
             else if (mode === 'choice') initChoice();
+            else if (mode === 'fill') initFill();
             else if (mode === 'match') newMatchRound();
             else if (mode === 'kana') startKanaPractice();
             else if (mode === 'boss') renderBossSelect();
@@ -9413,6 +9511,7 @@
         // แต่ละ "หมวด" (modeKey) มีเพดานของตัวเอง ตามความยาก/เวลาที่ใช้จริงในโหมดนั้น
         const DAILY_COIN_CAP = {
             quiz:  { cap: 20, label: '🗂 ท่องจำ / 🔤 เลือกคำตอบ' },
+            fill:  { cap: 20, label: '🐕 เติมคำ (KOTOMON)' },
             match: { cap: 15, label: '🧩 จับคู่คำ' },
             listen:{ cap: 20, label: '🎧 ฟังแล้วตอบ' },
             read:  { cap: 20, label: '📝 อ่านแล้วตอบ' },
@@ -9493,7 +9592,7 @@
 
         // ป้ายเหรียญที่ปุ่มเลือกโหมด: ถ้าหมวดนั้นชนเพดานวันนี้แล้ว เปลี่ยนป้ายเป็น "ครบแล้ว ✅" สีเขียว
         const MODE_BTN_COIN_KEY = {
-            modeKanaBtn: 'kana', modeQuizBtn: 'quiz', modeChoiceBtn: 'quiz',
+            modeKanaBtn: 'kana', modeQuizBtn: 'quiz', modeChoiceBtn: 'quiz', modeFillBtn: 'fill',
             modeMatchBtn: 'match', modeListenBtn: 'listen', modeReadBtn: 'read',
             modeSpeakBtn: 'speak', modeBossBtn: 'boss', modeExamBtn: 'exam'
         };
@@ -11334,6 +11433,378 @@
         });
 
 
+    
+// ===== KOTOMON เติมคำ (โหมดเติมคำสไตล์เกม) =====
+const KT_KEY = 'kotomon_fill_v2';
+let ktProg = {}, ktPools = {}, ktPrevMode = 'quiz';
+let ktS = { screen: 'select', level: 'N5', page: 0, lesson: null, qs: [], i: 0, sel: -1, done: false, hint: false, res: [], passAt: 8 };
+const KT_PAGE = 20;
+const KT_SPRITE = {"pal": {"o": "#4a2511", "O": "#f08a2c", "d": "#c9601a", "c": "#fff1d6", "p": "#f26b8a", "k": "#2b1a10", "w": "#ffffff", "y": "#f6d33a"}, "rows": ["..oo................oo......", ".oOOo..............oOOo.....", ".oOcOo............oOcOo.....", ".oOcOOoo........ooOOcOo.....", "oOOOOOOOooooooooOOOOOOOo....", "oOOOOcOOOOOOOOOOOOcOOOOo....", "oOOOOkOOOOOOOOOOOOkOOOOo....", "oOOOkOkOOOOOOOOOOkOkOOOo....", "oOOOOOOOOOOOOOOOOOOOOOOo....", "oOOOOOOccccccccccOOOOOOo....", "oOccOOccccccccccccOOccOo....", "oOccccccccckkcccccccccOo....", "oOcccccccppppppcccccccOo....", ".oOccccccppppppccccccOo.....", ".oOOccccppppppppccccOOo.....", "..oOOcccccpccpcccccOOo......", "..oOOOccccccccccccOOOo......", "..oOOOOccccccccccOOOOo......", "...oOOOOOOOOOOOOOOOOo.......", "...oOOccccccccccccOOo.......", "...oOOccccccccccccOOo...oo..", "...oOOccccccccccccOOo...oOo.", "...oOOOccccccccccOOOo...oOOo", "..oOOOOOOOOOOOOOOOOOOo..occo", "..occcOOOOOOOOOOOOccco...oo.", "..oooooooooooooooooooo......"]};
+
+function ktMoodRows(m) {
+  const R = KT_SPRITE.rows.map(s => s.split(''));
+  const set = (y, x, ch) => { R[y][x] = ch; R[y][23 - x] = ch; };
+  if (m === 'sad') {
+    set(6, 4, 'k'); set(6, 5, 'O'); set(6, 6, 'k'); set(7, 5, 'k'); set(7, 4, 'O'); set(7, 6, 'O');
+    for (let y = 0; y < R.length; y++) for (let x = 0; x < 24; x++) if (R[y][x] === 'p') R[y][x] = 'c';
+    R[13][11] = 'k'; R[13][12] = 'k'; R[14][10] = 'k'; R[14][13] = 'k';
+    R[8][4] = 'b'; R[9][4] = 'b'; R[9][19] = 'b'; R[8][19] = 'b';
+  } else if (m === 'think') {
+    set(6, 4, 'O'); set(6, 5, 'k'); set(6, 6, 'O'); set(7, 4, 'O'); set(7, 5, 'k'); set(7, 6, 'O');
+  }
+  return R.map(a => a.join(''));
+}
+function ktSprite(cols0, cols1, rows0, rows1, mood) {
+  const R = mood ? ktMoodRows(mood) : KT_SPRITE.rows, P = Object.assign({ b: '#6fb8ff' }, KT_SPRITE.pal);
+  cols0 = cols0 || 0; cols1 = cols1 || R[0].length; rows0 = rows0 || 0; rows1 = rows1 || R.length;
+  let out = '';
+  for (let y = rows0; y < rows1; y++) {
+    let x = cols0;
+    while (x < cols1) {
+      const c = R[y][x];
+      if (c === '.') { x++; continue; }
+      let x2 = x; while (x2 < cols1 && R[y][x2] === c) x2++;
+      out += `<rect x="${x - cols0}" y="${y - rows0}" width="${x2 - x}" height="1" fill="${P[c]}"/>`;
+      x = x2;
+    }
+  }
+  return `<svg class="kt-px" viewBox="0 0 ${cols1 - cols0} ${rows1 - rows0}" xmlns="http://www.w3.org/2000/svg">${out}</svg>`;
+}
+
+function ktBgSvg() {
+  const r = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+  let s = r(0, 0, 160, 90, '#d9a86a');
+  for (let x = 0; x < 160; x += 20) s += r(x, 0, 1, 72, '#c4915a');
+  s += r(0, 0, 160, 6, '#5a3410') + r(0, 6, 160, 2, '#8a5a2a');
+  s += r(0, 70, 160, 20, '#a8743a');
+  for (let y = 74; y < 90; y += 5) s += r(0, y, 160, 1, '#8a5a2a');
+  for (let x = 0; x < 160; x += 14) s += r(x, 70, 1, 20, '#8a5a2a');
+  s += r(0, 68, 160, 3, '#5a3410');
+  // window with fuji
+  s += r(12, 14, 46, 44, '#5a3410') + r(14, 16, 42, 40, '#8fd0ff') + r(14, 16, 42, 14, '#6fb8f5');
+  s += `<polygon points="14,56 35,28 56,56" fill="#5a78b8"/><polygon points="30,34 35,28 40,34 37,33 35,35 33,33" fill="#fff"/>`;
+  s += r(14, 52, 42, 4, '#4a9a4a');
+  [[18, 22], [24, 40], [46, 24], [50, 44], [40, 20]].forEach(([x, y]) => { s += r(x, y, 2, 2, '#ffb0cc'); });
+  s += r(34, 16, 2, 40, '#5a3410') + r(14, 35, 42, 2, '#5a3410');
+  // lanterns
+  [[3, 10], [150, 10]].forEach(([x, y]) => { s += r(x + 3, 0, 1, y, '#3a2410') + r(x, y, 8, 10, '#e8601a') + r(x + 1, y + 1, 6, 8, '#ffb43a') + r(x + 3, y + 2, 2, 6, '#ffe58a') + r(x, y, 8, 1, '#3a2410') + r(x, y + 9, 8, 1, '#3a2410'); });
+  // sakura branch top right
+  s += `<polygon points="160,0 110,0 160,16" fill="#6a3a1a"/>`;
+  for (let i = 0; i < 26; i++) { const x = 112 + (i * 37) % 46, y = (i * 11) % 18; s += r(x, y, 3, 3, i % 3 ? '#ffb0cc' : '#ff80aa'); }
+  // shelf + books bottom left
+  s += r(2, 64, 22, 6, '#3a5ab8') + r(4, 60, 18, 4, '#d8503a') + r(2, 64, 22, 1, '#fff');
+  // shoji right
+  s += r(136, 22, 20, 40, '#fff3d8') + r(136, 22, 20, 1, '#5a3410') + r(136, 62, 20, 1, '#5a3410') + r(146, 22, 1, 40, '#5a3410') + r(136, 42, 20, 1, '#5a3410');
+  return s;
+}
+
+function ktLoad() { try { ktProg = JSON.parse(localStorage.getItem(storageKey(KT_KEY)) || '{}') || {}; } catch (e) { ktProg = {}; } }
+function ktSave() { try { localStorage.setItem(storageKey(KT_KEY), JSON.stringify(ktProg)); } catch (e) { } }
+
+const KT_KANJI = /[一-鿿]/, KT_KATA = /^[゠-ヿ]+$/;
+function ktEndClass(w) {
+  if (KT_KATA.test(w)) return 'k';
+  const c = w[w.length - 1];
+  if ('るうつくぐすぬぶむ'.includes(c)) return 'v';
+  if (c === 'い') return 'i';
+  return 'o';
+}
+// ---- การผันคำ (กริยา/คุณศัพท์-い) ----
+const KT_U2I = { 'う': 'い', 'つ': 'ち', 'る': 'り', 'く': 'き', 'ぐ': 'ぎ', 'す': 'し', 'ぬ': 'に', 'ぶ': 'び', 'む': 'み' };
+const KT_U2A = { 'う': 'わ', 'つ': 'た', 'る': 'ら', 'く': 'か', 'ぐ': 'が', 'す': 'さ', 'ぬ': 'な', 'ぶ': 'ば', 'む': 'ま' };
+const KT_TE = { 'う': 'って', 'つ': 'って', 'る': 'って', 'む': 'んで', 'ぶ': 'んで', 'ぬ': 'んで', 'く': 'いて', 'ぐ': 'いで', 'す': 'して' };
+const KT_TA = { 'う': 'った', 'つ': 'った', 'る': 'った', 'む': 'んだ', 'ぶ': 'んだ', 'ぬ': 'んだ', 'く': 'いた', 'ぐ': 'いだ', 'す': 'した' };
+const KT_ICH_NOT = new Set(['帰る', '返る', '減る', '蹴る', '照る', '練る', '滑る', '喋る', 'しゃべる', '参る', '要る', '入る', '走る', '知る', '切る', '散る', '限る', '握る', '焦る', '茂る', '湿る', 'いる', '帰る']);
+const KT_VFORMS = ['dict', 'masu', 'mashita', 'masen', 'mashou', 'tai', 'nai', 'nakatta', 'te', 'ta'];
+const KT_AFORMS = ['dict', 'ku', 'kunai', 'kute', 'katta', 'kunakatta'];
+const KT_SUF = { masu: 'ます', mashita: 'ました', masen: 'ません', mashou: 'ましょう', tai: 'たい', nai: 'ない', nakatta: 'なかった', te: 'て', ta: 'た' };
+function ktConj(d, cls, f) {
+  if (f === 'dict') return d;
+  if (cls === 's') { const b = d.slice(0, -2), m = { masu: 'します', mashita: 'しました', masen: 'しません', mashou: 'しましょう', tai: 'したい', nai: 'しない', nakatta: 'しなかった', te: 'して', ta: 'した' }; return m[f] ? b + m[f] : null; }
+  if (cls === 'a') {
+    if (/(いい|きれい|嫌い|綺麗|大嫌い|きらい)$/.test(d)) return null;
+    const b = d.slice(0, -1), m = { ku: 'く', kunai: 'くない', kute: 'くて', katta: 'かった', kunakatta: 'くなかった' };
+    return m[f] ? b + m[f] : null;
+  }
+  const u = d[d.length - 1], st = d.slice(0, -1);
+  if (cls === 'i') return KT_SUF[f] ? st + KT_SUF[f] : null;
+  if (cls === 'g') {
+    if (!KT_U2I[u]) return null;
+    if ((f === 'te' || f === 'ta') && /(行く|いく)$/.test(d)) return st + (f === 'te' ? 'って' : 'った');
+    if (f === 'te') return st + KT_TE[u];
+    if (f === 'ta') return st + KT_TA[u];
+    if (f === 'nai' || f === 'nakatta') return st + KT_U2A[u] + KT_SUF[f];
+    return st + KT_U2I[u] + KT_SUF[f];
+  }
+  return null;
+}
+function ktClsCands(w) {
+  if (KT_KATA.test(w) || w.length < 2) return [];
+  if (/する$/.test(w) && w.length >= 3) return ['s'];
+  const c = w[w.length - 1];
+  if (c === 'い') return KT_KANJI.test(w) || w.length >= 3 ? ['a'] : [];
+  if (c === 'る') return (KT_KANJI.test(w) || w.length >= 3) ? ['i', 'g'] : [];
+  if ('うつくぐすぬぶむ'.includes(c)) return (KT_KANJI.test(w) || w.length >= 3) ? ['g'] : [];
+  return [];
+}
+function ktForms(c) { return c === 'a' ? KT_AFORMS : KT_VFORMS; }
+// หาคลาสของคำ: ยืนยันจากตัวอย่างประโยคก่อน ถ้าไม่ได้ใช้กฎที่แน่นอนเท่านั้น
+function ktCertainClass(v) {
+  if (v._cc !== undefined) return v._cc;
+  let res = null;
+  const cands = ktClsCands(v.jp), exs = v.examples || (v.example ? [v.example] : []);
+  outer: for (const c of cands) for (const f of ktForms(c)) { if (f === 'dict') continue; const sf = ktConj(v.jp, c, f); if (sf && exs.some(e => (e.jp || '').includes(sf))) { res = c; break outer; } }
+  if (!res && cands.length) {
+    const w = v.jp, c = w[w.length - 1];
+    if (cands[0] === 's') res = 's';
+    else if (c === 'る') {
+      const p = w[w.length - 2];
+      if (KT_ICH_NOT.has(w)) res = 'g';
+      else if ('えけせてねへめれげぜでべぺ'.includes(p) || /[一-鿿]$/.test(w.slice(0, -1)) && false) res = 'i';
+      else if ('あかさたなはまやらわがざだばぱうくすつぬふむゆるぐずづぶぷおこそとのほもよろをごぞどぼぽ'.includes(p)) res = 'g';
+    }
+  }
+  v._cc = res; return res;
+}
+function ktThTokens(t) { return String(t || '').replace(/[（(][^）)]*[）)]/g, ' ').split(/[\s\/,、，;；]+/).map(x => x.replace(/^(การ|ความ|ที่|ให้)/, '')).filter(x => x.length >= 3); }
+function ktThClash(a, b) {
+  const A = ktThTokens(a), B = ktThTokens(b);
+  for (const x of A) for (const y of B) if (x.includes(y) || y.includes(x)) return true;
+  return false;
+}
+function ktPoolFor(level) {
+  if (ktPools[level]) return ktPools[level];
+  const items = [], words = [];
+  vocabList.forEach((v, idx) => {
+    if (v.level !== level || !v.jp) return;
+    if (/[\/／～〜()（）・\s]/.test(v.jp)) return;
+    v._idx = idx; words.push(v);
+    if (v.jp.length < 2 && !KT_KANJI.test(v.jp)) return;
+    const exs = v.examples || (v.example ? [v.example] : []);
+    const w = v.jp, cands = ktClsCands(w);
+    for (const ex of exs) {
+      const s = ex.jp || '';
+      let hit = null;
+      const tryM = (surf, cls, form) => {
+        const a = s.indexOf(surf); if (a < 0 || s.indexOf(surf, a + 1) >= 0) return false;
+        const prev = s[a - 1] || '', next = s[a + surf.length] || '';
+        if (KT_KANJI.test(surf[0]) && KT_KANJI.test(prev)) return false;
+        if (KT_KANJI.test(surf[surf.length - 1]) && KT_KANJI.test(next)) return false;
+        if (!cls && /^[ぁ-ん]+$/.test(surf) && surf.length < 3 && /[ぁ-ん]/.test(prev) && /[ぁ-ん]/.test(next)) return false;
+        hit = { surf, a, cls, form }; return true;
+      };
+      if (cands.length) { for (const c of cands) { for (const f of ktForms(c)) { const sf = ktConj(w, c, f); if (sf && tryM(sf, c, f)) break; } if (hit) break; } }
+      else tryM(w, null, 'dict');
+      if (!hit) continue;
+      const rd = (v.extra || '').split(' (')[0];
+      items.push({ w, rd, rdS: hit.cls ? (ktConj(rd, hit.cls, hit.form) || rd) : rd, surf: hit.surf, cls: hit.cls, form: hit.form, th: v.th, s, sth: ex.th || '', idx, a: hit.a });
+      break;
+    }
+  });
+  ktPools[level] = { items, words };
+  return ktPools[level];
+}
+function ktShuf(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function ktLessonCount(level) { const n = ktPoolFor(level).items.length; return Math.floor(n / 10) + (n % 10 >= 6 ? 1 : 0); }
+function ktLessonItems(level, k) { return ktPoolFor(level).items.slice(k * 10, k * 10 + 10); }
+function ktMakeQ(it, level) {
+  const { words } = ktPoolFor(level);
+  const kj = KT_KANJI.test(it.w), ec = ktEndClass(it.w);
+  let cand;
+  if (it.cls) {
+    cand = [];
+    for (const v of words) {
+      if (v.jp === it.w || v.th === it.th || ktCertainClass(v) !== it.cls) continue;
+      const sf = ktConj(v.jp, it.cls, it.form); if (!sf || it.s.includes(sf) || sf === it.surf) continue;
+      const r = (v.extra || '').split(' (')[0];
+      cand.push({ jp: sf, rd: ktConj(r, it.cls, it.form) || r, th: v.th, base: v.jp });
+    }
+  } else {
+    cand = words.filter(v => v.jp !== it.w && v.th !== it.th && !it.s.includes(v.jp) && KT_KATA.test(v.jp) === KT_KATA.test(it.w) && !ktClsCands(v.jp).length === !ktClsCands(it.w).length)
+      .map(v => ({ jp: v.jp, rd: (v.extra || '').split(' (')[0], th: v.th, base: v.jp }));
+  }
+  cand = cand.filter(c => !ktThClash(it.th, c.th) && !c.base.includes(it.w) && !it.w.includes(c.base));
+  cand.forEach(c => { c._s = (ktEndClass(c.base) === ec ? 3 : 0) + (KT_KANJI.test(c.base) === kj ? 2 : 0) - Math.abs(c.jp.length - it.surf.length) + Math.random() * 1.5; });
+  cand.sort((a, b) => b._s - a._s);
+  const picks = [], seen = new Set([it.surf]);
+  for (const c of cand) { if (seen.has(c.jp)) continue; seen.add(c.jp); picks.push(c); if (picks.length >= 3) break; }
+  if (picks.length < 3) return null;
+  return { it, opts: ktShuf([{ jp: it.surf, rd: it.rdS, ok: true }, ...picks.map(c => ({ jp: c.jp, rd: c.rd, ok: false }))]) };
+}
+
+function ktInit() {
+  ktLoad();
+  document.getElementById('ktLogoFace').innerHTML = `<div style="width:44px">${ktSprite(0, 24, 0, 18)}</div>`;
+  ktSetMood('happy'); ktSndIcon();
+  const bg = document.getElementById('ktBg'); if (!bg.innerHTML.trim()) bg.innerHTML = ktBgSvg();
+  ktS.screen = 'select'; ktSetLevel(ktS.level);
+}
+function ktBack() { setMode(ktPrevMode && ktPrevMode !== 'fill' ? ktPrevMode : 'quiz'); }
+let ktMoodNow = '';
+function ktSetMood(m) { if (m === ktMoodNow) return; ktMoodNow = m; document.getElementById('ktMasImg').innerHTML = ktSprite(0, 0, 0, 0, m === 'happy' ? null : m); }
+let ktSayT = null;
+function ktSay(t, ms) { const e = document.getElementById('ktSay'); if (!e) return; e.textContent = t || ''; e.classList.toggle('on', !!t); clearTimeout(ktSayT); if (t) ktSayT = setTimeout(() => e.classList.remove('on'), ms || 3200); }
+const KT_OK = ['ใช่เลย!', 'เก่งมาก!', 'สุดยอด!', 'ถูกต้อง!', 'ว้าว เยี่ยม!'], KT_NG = ['ไม่เป็นไร จำไว้นะ', 'เกือบแล้ว! ครั้งหน้าได้แน่', 'ผิดเป็นครู สู้ ๆ!', 'ลองดูเฉลยนะ'];
+function ktPickMsg(a) { return a[Math.floor(Math.random() * a.length)]; }
+// ---- เสียงเอฟเฟกต์ (สังเคราะห์ด้วย WebAudio) ----
+let ktAC = null;
+function ktSndOn() { return !ktProg.mute; }
+function ktSndIcon() { const b = document.getElementById('ktSndBtn'); if (b) b.textContent = ktSndOn() ? '🔊' : '🔇'; }
+function ktToggleSnd() { ktProg.mute = !ktProg.mute; ktSave(); ktSndIcon(); if (ktSndOn()) ktSfx('click'); }
+function ktSfx(t) {
+  if (!ktSndOn()) return;
+  try {
+    ktAC = ktAC || new (window.AudioContext || window.webkitAudioContext)();
+    if (ktAC.state === 'suspended') ktAC.resume();
+    const seq = { click: [[880, 0, .05, 'square']], ok: [[784, 0, .1, 'square'], [1047, .1, .1, 'square'], [1319, .2, .18, 'square']], ng: [[300, 0, .16, 'sawtooth'], [200, .16, .25, 'sawtooth']], pass: [[523, 0, .12, 'square'], [659, .12, .12, 'square'], [784, .24, .12, 'square'], [1047, .36, .3, 'square'], [1319, .6, .3, 'square']], fail: [[392, 0, .18, 'triangle'], [330, .2, .18, 'triangle'], [262, .4, .3, 'triangle']] }[t] || [];
+    const t0 = ktAC.currentTime;
+    seq.forEach(([f, d, l, w]) => { const o = ktAC.createOscillator(), g = ktAC.createGain(); o.type = w; o.frequency.value = f; g.gain.setValueAtTime(0.0001, t0 + d); g.gain.exponentialRampToValueAtTime(0.12, t0 + d + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t0 + d + l); o.connect(g); g.connect(ktAC.destination); o.start(t0 + d); o.stop(t0 + d + l + 0.02); });
+  } catch (e) { }
+}
+function ktMas(cls) { const m = document.getElementById('ktMascot'); m.classList.remove('hop', 'shake'); void m.offsetWidth; if (cls) m.classList.add(cls); }
+function ktStars(sc, n) { return sc >= n ? 3 : sc >= n - 1 ? 2 : sc >= ktS.passAt ? 1 : 0; }
+function ktEsc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m])); }
+
+function ktRender() {
+  const body = document.getElementById('ktBody'), bar = document.getElementById('ktCardBar'), side = document.getElementById('ktSide'), bot = document.getElementById('ktBottom');
+  document.getElementById('ktRev').style.display = 'none';
+  const mn = document.getElementById('ktMain'); mn.scrollTop = 0; body.scrollTop = 0;
+  const lv = ktS.level;
+  if (ktS.screen === 'select') {
+    document.getElementById('ktBanner').textContent = 'เติมคำ — เลือกบทเรียน';
+    const total = ktLessonCount(lv), pages = Math.max(1, Math.ceil(total / KT_PAGE));
+    ktS.page = Math.min(ktS.page, pages - 1);
+    bar.innerHTML = `<div class="kt-tabs">${['N5', 'N4', 'N3'].map(l => `<button class="kt-tab ${l === lv ? 'on' : ''}" onclick="ktSetLevel('${l}')">${l}</button>`).join('')}</div><span style="margin-left:auto;font-size:14px">ผ่านแล้ว ${ktClearedCount(lv)}/${total} บท</span>`;
+    let h = '<div class="kt-lessons">';
+    for (let k = ktS.page * KT_PAGE; k < Math.min(total, (ktS.page + 1) * KT_PAGE); k++) {
+      const p = ktProg[lv + '-' + k];
+      h += `<button class="kt-ls ${p && p.stars ? 'done' : ''} ${ktS.focus === k ? 'next' : ''}" id="ktLs${k}" onclick="ktStart(${k})"><b>บท ${k + 1}</b><span>${[0,1,2].map(i => `<em style="font-style:normal;color:${p && i < p.stars ? '#f2a900' : '#c9c0b0'}">★</em>`).join('')}</span></button>`;
+    }
+    h += `</div><div class="kt-pager kt-jump"><input id="ktJumpIn" type="number" min="1" max="${total}" placeholder="บท" onkeydown="if(event.key==='Enter')ktJump()"><button class="kt-btn kt-gold" onclick="ktJump()">ไป</button></div><div class="kt-pager"><button class="kt-btn kt-purple" onclick="ktPage(-1)" ${ktS.page <= 0 ? 'disabled' : ''}>◀</button><span>หน้า ${ktS.page + 1}/${pages}</span><button class="kt-btn kt-purple" onclick="ktPage(1)" ${ktS.page >= pages - 1 ? 'disabled' : ''}>▶</button></div>
+      <div class="kt-note">แต่ละบทมี 10 ข้อ — เติมคำที่หายไปในประโยค โดยดูความหมายภาษาไทยเป็นเบาะแส · ตอบถูก ≥ 8 ข้อถึงจะผ่าน</div>`;
+    body.innerHTML = h;
+    if (ktS.focus != null) { const f = document.getElementById('ktLs' + ktS.focus); if (f) f.scrollIntoView({ block: 'nearest' }); }
+    side.innerHTML = `<div class="kt-panel"><h4>📖 เป้าหมาย</h4><div>ผ่านทุกบทของ ${lv}<br>(${ktClearedCount(lv)}/${total})</div></div>`;
+    const mc = ktMissKeys(lv).length;
+    bot.innerHTML = `<button class="kt-btn kt-gold" onclick="ktGoNext()">⏩ บทที่ยังไม่ผ่าน</button><button class="kt-btn kt-blue" onclick="ktRandomLesson()">🎲 สุ่ม</button><button class="kt-btn kt-purple" onclick="ktStartReview()" ${mc ? '' : 'disabled'}>🔁 ฝึกข้อที่ผิด (${mc})</button><span class="sp"></span><button class="kt-btn kt-red" onclick="ktBack()">⬅ ออก</button>`;
+    return;
+  }
+  if (ktS.screen === 'play') {
+    const q = ktS.qs[ktS.i], n = ktS.qs.length;
+    document.getElementById('ktBanner').textContent = ktS.review ? `เติมคำ — ${lv} ฝึกข้อที่ผิด` : `เติมคำ — ${lv} บทที่ ${ktS.lesson + 1}`;
+    bar.innerHTML = `<span class="kt-nbadge">${lv}</span><span>${ktS.review ? 'ฝึกข้อที่ผิด' : 'บทที่ ' + (ktS.lesson + 1)}</span><span style="margin-left:10px">ข้อ ${ktS.i + 1} / ${n}</span><span class="kt-seg">${ktS.qs.map((_, j) => `<i class="${ktS.res[j] === true ? 'ok' : ktS.res[j] === false ? 'ng' : j === ktS.i ? 'cur' : ''}"></i>`).join('')}</span>`;
+    const it = q.it, s = it.s;
+    const blank = `<span class="kt-blank ${ktS.done ? (ktS.res[ktS.i] ? 'ok' : 'ng') : ''}">${ktS.done ? ktEsc(it.surf) : '＿＿＿'}</span>`;
+    const sent = ktEsc(s.slice(0, it.a)) + blank + ktEsc(s.slice(it.a + it.surf.length));
+    let h = `<div class="kt-qrow"><div class="kt-clue"><small>ความหมาย</small><div class="th">${ktEsc(it.th)}</div>${ktS.hint ? `<div class="hint">よみ: ${ktEsc(it.rdS)}</div>` : ''}</div><div class="kt-sent">${sent}</div></div><div class="kt-choices">`;
+    q.opts.forEach((o, j) => {
+      let c = 'kt-ch';
+      if (ktS.done) { if (o.ok) c += ' right'; else if (j === ktS.sel) c += ' wrong'; } else if (j === ktS.sel) c += ' sel';
+      h += `<button class="${c}" ${ktS.done ? 'disabled' : ''} onclick="ktPick(${j})"><span class="n">${j + 1}</span><span>${ktEsc(o.jp)}<span class="r">${KT_KANJI.test(o.jp) ? ktEsc(o.rd) : ''}</span></span></button>`;
+    });
+    h += '</div>';
+    if (ktS.done) {
+      const ok = ktS.res[ktS.i];
+      h += `<div class="kt-fb ${ok ? 'ok' : 'ng'}"><b>${ok ? '✅ ' + ktEsc(ktS.msg || 'ถูกต้อง!') : ktEsc(ktS.msg || '') + '<br>❌ คำตอบคือ ' + ktEsc(it.surf) + '（' + ktEsc(it.rdS) + '）' + (it.form !== 'dict' ? ' <small>(รูปผันของ ' + ktEsc(it.w) + ')</small>' : '')}</b><button class="play" onclick="ktPlay()">🔊</button><br>${ktEsc(s)}<br><span style="color:#7a5a3a">${ktEsc(it.sth)}</span></div>`;
+    }
+    body.innerHTML = h;
+    const per = 2, coins = 3; const rv = ktS.review;
+    side.innerHTML = `<div class="kt-panel"><h4>📖 เป้าหมาย</h4><div>${rv ? 'ตอบถูกจะลบออกจากรายการผิด' : 'ตอบถูก ≥ ' + ktS.passAt + ' / ' + n}<br><span style="color:#1f9a38">ถูก ${ktS.res.filter(x => x === true).length}</span> · <span style="color:#c81d2a">ผิด ${ktS.res.filter(x => x === false).length}</span></div></div>
+      <div class="kt-panel"><h4>🎁 รางวัลเมื่อผ่าน</h4>${rv ? '' : `<div class="kt-rw"><span class="kt-coin">🪙</span> +${coins}</div>`}<div class="kt-rw"><span class="kt-coin" style="background:#a8f0b4">XP</span> +${per}/ข้อ</div></div>`;
+    bot.innerHTML = `<button class="kt-btn kt-blue" onclick="ktHint()" ${ktS.done ? 'disabled' : ''}>💡 คำใบ้</button><span class="sp"></span><button class="kt-btn kt-purple" onclick="ktReview()">📖 ทบทวน</button>` +
+      (ktS.done ? `<button class="kt-btn kt-gold" onclick="ktNext()">${ktS.i + 1 >= n ? '🏁 ดูผล' : 'ข้อต่อไป ▶'}</button>` : `<button class="kt-btn kt-green" onclick="ktSubmit()" ${ktS.sel < 0 ? 'disabled' : ''}>✔ ส่งคำตอบ</button>`);
+    return;
+  }
+  // result
+  const n = ktS.qs.length, sc = ktS.res.filter(x => x === true).length, pass = sc >= ktS.passAt, st = pass ? ktStars(sc, n) : 0;
+  document.getElementById('ktBanner').textContent = ktS.review ? 'ทบทวนเสร็จแล้ว' : pass ? 'ผ่านบทเรียน!' : 'ลองอีกครั้งนะ';
+  bar.innerHTML = `<span class="kt-nbadge">${lv}</span><span>${ktS.review ? 'ฝึกข้อที่ผิด' : 'บทที่ ' + (ktS.lesson + 1)} — สรุปผล</span>`;
+  body.innerHTML = `<div class="kt-res">${ktS.review ? '' : `<div class="stars">${'★'.repeat(st)}${'☆'.repeat(3 - st)}</div>`}<div class="sc">${sc} / ${n}</div><p>${ktS.review ? '' : pass ? '🎉 เก่งมาก! ผ่านบทนี้แล้ว' : 'ต้องตอบถูกอย่างน้อย ' + ktS.passAt + ' ข้อ — ทบทวนแล้วลองใหม่ได้เลย'}</p>${ktS.rewardMsg ? `<p>${ktS.rewardMsg}</p>` : ''}</div>`;
+  side.innerHTML = '';
+  const total = ktLessonCount(lv);
+  bot.innerHTML = `<button class="kt-btn kt-blue" onclick="ktS.screen='select';ktRender()">📋 เลือกบท</button><button class="kt-btn kt-purple" onclick="ktReview()">📖 ทบทวน</button><span class="sp"></span><button class="kt-btn kt-green" onclick="${ktS.review ? 'ktStartReview()' : 'ktStart(' + ktS.lesson + ')'}">🔁 ${ktS.review ? 'ฝึกต่อ' : 'ลองใหม่'}</button>` +
+    (!ktS.review && pass && ktS.lesson + 1 < total ? `<button class="kt-btn kt-gold" onclick="ktStart(${ktS.lesson + 1})">บทถัดไป ▶</button>` : '');
+}
+function ktFirstUndone(lv) { const t = ktLessonCount(lv); for (let k = 0; k < t; k++) { const p = ktProg[lv + '-' + k]; if (!(p && p.stars)) return k; } return -1; }
+function ktGoNext() { const k = ktFirstUndone(ktS.level); if (k < 0) { ktSay('ผ่านครบทุกบทแล้ว! 🏆', 4000); return; } ktS.page = Math.floor(k / KT_PAGE); ktS.focus = k; ktRender(); }
+function ktJump() { const el = document.getElementById('ktJumpIn'); const t = ktLessonCount(ktS.level); let k = parseInt(el && el.value, 10); if (!(k >= 1)) return; k = Math.min(k, t) - 1; ktS.page = Math.floor(k / KT_PAGE); ktS.focus = k; ktRender(); }
+function ktClearedCount(lv) { let c = 0; Object.keys(ktProg).forEach(k => { if (k.startsWith(lv + '-') && ktProg[k].stars) c++; }); return c; }
+function ktSetLevel(l) { ktS.level = l; ktS.page = 0; ktS.focus = null; const k = ktFirstUndone(l); if (k > 0) { ktS.page = Math.floor(k / KT_PAGE); ktS.focus = k; } ktRender(); }
+function ktPage(d) { ktS.page += d; ktS.focus = null; ktRender(); }
+function ktRandomLesson() { const t = ktLessonCount(ktS.level); ktStart(Math.floor(Math.random() * t)); }
+function ktStart(k) {
+  const lv = ktS.level, items = ktLessonItems(lv, k);
+  if (!items.length) return;
+  ktS.review = false;
+  ktS.lesson = k; ktS.qs = ktShuf(items).map(it => ktMakeQ(it, lv)).filter(Boolean);
+  if (!ktS.qs.length) return;
+  ktS.passAt = Math.ceil(ktS.qs.length * 0.8);
+  ktS.i = 0; ktS.sel = -1; ktS.done = false; ktS.hint = false; ktS.res = []; ktS.rewardMsg = ''; ktS.hinted = [];
+  ktS.streak = 0; ktSetMood('happy'); ktSay('เริ่มกันเลย! สู้ ๆ'); ktS.screen = 'play'; ktRender();
+}
+function ktMissKeys(lv) { const m = ktProg.miss || {}; return ktPoolFor(lv).items.filter(it => m[lv + ':' + it.idx]); }
+function ktStartReview() {
+  const lv = ktS.level, items = ktShuf(ktMissKeys(lv)).slice(0, 10);
+  if (!items.length) return;
+  ktS.review = true; ktS.lesson = -1;
+  ktS.qs = items.map(it => ktMakeQ(it, lv)).filter(Boolean);
+  if (!ktS.qs.length) return;
+  ktS.passAt = Math.ceil(ktS.qs.length * 0.8);
+  ktS.i = 0; ktS.sel = -1; ktS.done = false; ktS.hint = false; ktS.res = []; ktS.rewardMsg = ''; ktS.hinted = [];
+  ktS.streak = 0; ktSetMood('happy'); ktSay('ทบทวนกันนะ!'); ktS.screen = 'play'; ktRender();
+}
+function ktPick(j) { if (ktS.done) return; ktS.sel = j; ktSfx('click'); ktRender(); }
+function ktHint() { if (ktS.done) return; ktS.hint = true; ktS.hinted[ktS.i] = true; ktSetMood('think'); ktSay('ลองดูคำอ่านนะ 🤔'); ktRender(); }
+function ktPlay() { try { playJapaneseAudio(ktS.qs[ktS.i].it.s); } catch (e) { } }
+function ktSubmit() {
+  if (ktS.sel < 0 || ktS.done) return;
+  const q = ktS.qs[ktS.i], ok = q.opts[ktS.sel].ok;
+  ktS.res[ktS.i] = ok; ktS.done = true;
+  { const mk = ktS.level + ':' + q.it.idx; ktProg.miss = ktProg.miss || {};
+    if (ok) { if (ktProg.miss[mk]) delete ktProg.miss[mk]; } else ktProg.miss[mk] = (ktProg.miss[mk] || 0) + 1;
+    ktSave(); try { if (!ok && typeof testMissCount !== 'undefined') { /* เก็บสถิติผิดในโหมดนี้เอง */ } } catch (e) { } }
+  ktMas(ok ? 'hop' : 'shake');
+  ktS.streak = ok ? (ktS.streak || 0) + 1 : 0;
+  ktS.msg = ok ? (ktS.streak >= 3 ? `ถูกติดกัน ${ktS.streak} ข้อแล้ว 🔥` : ktPickMsg(KT_OK)) : ktPickMsg(KT_NG);
+  ktSetMood(ok ? 'happy' : 'sad'); ktSay(ktS.msg); ktSfx(ok ? 'ok' : 'ng');
+  if (ok) {
+    try { if (!ktS.hinted[ktS.i]) awardExp(2, 'fill'); registerQuestCorrectAnswer(); } catch (e) { }
+  }
+  ktRender();
+  if (ok) { setTimeout(() => { try { playJapaneseAudio(q.it.s); } catch (e) { } }, ktSndOn() ? 650 : 0); }
+}
+function ktNext() {
+  if (!ktS.done) return;
+  if (ktS.i + 1 >= ktS.qs.length) { ktFinish(); return; }
+  ktS.i++; ktS.sel = -1; ktS.done = false; ktS.hint = false; ktSetMood('happy'); ktRender();
+}
+function ktFinish() {
+  const n = ktS.qs.length, sc = ktS.res.filter(x => x === true).length, pass = sc >= ktS.passAt;
+  if (ktS.review) { ktS.rewardMsg = `🔁 แก้ได้ ${sc} ข้อ — เหลือข้อที่ยังผิดอยู่ ${ktMissKeys(ktS.level).length} ข้อ`; ktMas(sc ? 'hop' : null); }
+  else if (pass) {
+    const key = ktS.level + '-' + ktS.lesson, old = ktProg[key], st = ktStars(sc, n);
+    if (!old || !old.stars) { try { addPracticeCoins(sc === n ? 5 : 3, 'fill'); } catch (e) { } ktS.rewardMsg = `🪙 รับเหรียญ +${sc === n ? 5 : 3} (ผ่านครั้งแรก)`; }
+    else ktS.rewardMsg = 'เคยผ่านบทนี้แล้ว — ไม่ได้เหรียญซ้ำ แต่ได้ XP ตามข้อที่ตอบถูก';
+    ktProg[key] = { stars: Math.max(st, old ? old.stars : 0), best: Math.max(sc, old ? old.best : 0) };
+    ktSave(); ktMas('hop');
+  }
+  { const okk = ktS.review ? sc > 0 : pass; ktSfx(okk ? 'pass' : 'fail'); ktSetMood(okk ? 'happy' : 'sad'); ktSay(okk ? (sc === n ? 'เพอร์เฟกต์!! 🎉' : 'ผ่านแล้ว! เยี่ยมไปเลย 🎉') : 'ไม่เป็นไร ลองอีกครั้งนะ 💪', 5000); if (okk) ktMas('hop'); }
+  ktS.screen = 'result'; ktRender();
+}
+function ktReview() {
+  const box = document.getElementById('ktRevBox');
+  const rows = ktS.qs.map((q, j) => ({ q, j, r: ktS.res[j] })).filter(x => x.r !== undefined);
+  box.innerHTML = `<h3 style="margin:0 0 8px">📖 ทบทวนข้อที่ตอบแล้ว</h3>` + (rows.length ? rows.map(x => `<div class="it">${x.r ? '✅' : '❌'} <b>${x.j + 1}.</b> ${ktEsc(x.q.it.s)}<br>คำตอบ: <b>${ktEsc(x.q.it.surf)}</b>（${ktEsc(x.q.it.rdS)}）= ${ktEsc(x.q.it.th)}<br><span style="color:#7a5a3a">${ktEsc(x.q.it.sth)}</span></div>`).join('') : '<div class="it">ยังไม่มีข้อที่ตอบ</div>') + `<div style="text-align:center;margin-top:10px"><button class="kt-btn kt-blue" onclick="ktCloseRev()">ปิด</button></div>`;
+  document.getElementById('ktRev').style.display = 'flex';
+}
+function ktCloseRev() { document.getElementById('ktRev').style.display = 'none'; }
+document.addEventListener('keydown', e => {
+  if (typeof currentMode === 'undefined' || currentMode !== 'fill' || ktS.screen !== 'play') return;
+  if (e.key >= '1' && e.key <= '4') { ktPick(+e.key - 1); }
+  else if (e.key === 'Enter') { ktS.done ? ktNext() : ktSubmit(); }
+});
+function initFill() { ktInit(); }
+
     </script>
 
 
@@ -12126,6 +12597,27 @@ window.JP_SUPPORT_POLICY={
 })();
 
 </script>
+
+<div id="fillBox" aria-label="KOTOMON เติมคำ">
+  <div class="kt-top">
+    <div class="kt-logo"><span id="ktLogoFace"></span><b>KOTOMON</b></div>
+    <div class="kt-banner">📖 <span id="ktBanner">เติมคำให้ถูกต้อง</span></div>
+    <button class="kt-btn kt-blue" id="ktSndBtn" onclick="ktToggleSnd()" title="เปิด/ปิดเสียง">🔊</button><button class="kt-btn kt-red" onclick="ktBack()">⬅ กลับ</button>
+  </div>
+  <div class="kt-stage">
+    <svg class="kt-bg kt-px" viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" id="ktBg"></svg>
+    <div class="kt-main" id="ktMain">
+      <div class="kt-card">
+        <div class="kt-cardbar" id="ktCardBar"></div>
+        <div class="kt-body" id="ktBody"></div>
+      </div>
+      <div class="kt-side" id="ktSide"></div>
+    </div>
+    <div class="kt-mascot" id="ktMascot"><div class="kt-say" id="ktSay"></div><div id="ktMasImg"></div></div>
+    <div class="kt-rev" id="ktRev" onclick="if(event.target===this)ktCloseRev()"><div class="box" id="ktRevBox"></div></div>
+  </div>
+  <div class="kt-bottom" id="ktBottom"></div>
+</div>
 
 </body>
 </html>
