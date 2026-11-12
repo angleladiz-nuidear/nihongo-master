@@ -2057,7 +2057,23 @@
         .exam-review-item .eri-q { font-weight: 600; color: var(--text-main); }
         .exam-review-item .eri-a { color: var(--text-muted); margin-top: 2px; }
 
-    /* ===== KOTOMON เติมคำ ===== */
+    .kt-tray{min-height:64px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;background:#fffaf0;border:3px dashed #b99a6a;border-radius:12px;padding:8px;margin:8px 0}
+.kt-tray.ok{border-style:solid;border-color:#1f9a38;background:#e8ffee}.kt-tray.ng{border-style:solid;border-color:#c81d2a;background:#fff0f0}
+.kt-bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:6px 0}
+.kt-chip{font-family:inherit;background:linear-gradient(#fff,#efe3cc);border:3px solid #b99a6a;border-radius:10px;padding:6px 12px;cursor:pointer;font-size:clamp(16px,3.4vw,26px);font-weight:700;color:#2a1608}
+.kt-chip.placed{background:linear-gradient(#fff6c8,#ffe08a);border-color:#e0901a}.kt-chip:disabled{cursor:default}
+.kt-ordans{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.kt-ordc{display:flex;flex-direction:column;align-items:center;background:#fff;border:2px solid #1f9a38;border-radius:10px;padding:4px 10px;font-size:clamp(16px,3.2vw,24px);color:#2a1608}.kt-ordc small{font-size:12px;color:#9a6a2a}
+.kth-room::before{content:"";position:absolute;inset:-6px;border-radius:14px;pointer-events:none;opacity:0}
+.kth-room::after{content:"";position:absolute;top:4px;left:0;right:0;text-align:center;font-size:22px;letter-spacing:.5em;pointer-events:none;animation:kthTw 2.4s ease-in-out infinite alternate}
+@keyframes kthTw{from{opacity:.5}to{opacity:1}}
+.kth-t-R::before{opacity:1;background:linear-gradient(#cdeccf99,#e8ffd600 75%)}.kth-t-R::after{content:"🌸 🍃 🌸"}
+.kth-t-SR::before{opacity:1;background:radial-gradient(ellipse at 50% 15%,#c9b3ffaa,#6f8cff44 55%,#1b1b5a55)}.kth-t-SR::after{content:"✨ ⭐ ✨ 🌙 ✨"}
+.kth-t-SR .kth-rug{background:#4a3a9a;border-color:#c9b3ff;box-shadow:0 0 12px #a88bff}
+.kth-t-SSR::before{opacity:1;background:radial-gradient(ellipse at 50% 10%,#fff1a8dd,#ffb40066 55%,#8a2a0055)}.kth-t-SSR::after{content:"🏮 ✨ 🎆 ✨ 🏮"}
+.kth-t-SSR .kth-rug{background:#7a1020;border-color:#ffd24a;box-shadow:0 0 18px #ffd24a}
+.ktp-fin{animation:ktpGlow 1.8s ease-in-out infinite alternate}@keyframes ktpGlow{from{filter:drop-shadow(0 0 3px #ffd24a)}to{filter:drop-shadow(0 0 10px #ffb400)}}
+/* ===== KOTOMON เติมคำ ===== */
 #fillBox{position:fixed;inset:0;z-index:9000;display:none;flex-direction:column;background:#1b1240;font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic UI','Sarabun','Noto Sans Thai',system-ui,sans-serif;color:#3a2412;user-select:none;-webkit-user-select:none}
 #fillBox *{box-sizing:border-box}
 #fillBox svg.kt-px{image-rendering:pixelated;shape-rendering:crispEdges;display:block}
@@ -2184,6 +2200,70 @@
 #fillBox>.kt-mascot .kt-say{bottom:0;margin:0}
 @media (max-width:640px){#fillBox>.kt-mascot{bottom:70px!important}}
 
+/* ===== บ้านสัตว์เลี้ยง ===== */
+.kt-home{position:absolute;inset:0;z-index:3;display:none}
+.kth-wrap{height:100%;width:100%;max-width:760px;margin:0 auto;display:flex;flex-direction:column;padding:10px;gap:8px}
+.kth-top{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.kth-chip{background:#fff3d8;border:3px solid #e0a63a;border-radius:12px;padding:5px 10px;font-weight:800;display:flex;align-items:center;gap:6px;box-shadow:0 3px 0 #0004}
+.kth-name{flex-direction:column;align-items:flex-start;min-width:130px;cursor:pointer;gap:2px}
+.kth-name em{font-style:normal;color:#c81d2a;margin-left:4px}.kth-name small{margin-left:6px;font-weight:800}
+.ktp-xp{width:100%;height:7px;background:#e8d8b8;border-radius:4px;overflow:hidden;min-width:90px}.ktp-xp i{display:block;height:100%;background:linear-gradient(90deg,#4be05f,#1f9a38)}
+.kth-bars{flex:1;min-width:150px;background:#fff3d8;border:3px solid #e0a63a;border-radius:12px;padding:5px 8px;display:flex;flex-direction:column;gap:3px;box-shadow:0 3px 0 #0004}
+.kth-bar{display:flex;align-items:center;gap:6px;font-size:14px}.kth-bar div{flex:1;height:10px;background:#e8d8b8;border-radius:5px;overflow:hidden}.kth-bar i{display:block;height:100%;transition:width .5s}
+.kth-room{flex:1;min-height:210px;position:relative;display:flex;align-items:flex-end;justify-content:center}
+.kth-rug{position:absolute;bottom:12px;width:min(80%,420px);height:50px;border-radius:50%;background:#c9302c;border:4px dashed #ffd24a;opacity:.92}
+.kth-pet{width:clamp(130px,34vw,210px);cursor:pointer;animation:kthbob 1.6s ease-in-out infinite;margin-bottom:26px;position:relative;z-index:2}
+.kth-pet.hop{animation:kthhop .5s}
+@keyframes kthbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes kthhop{0%,100%{transform:translateY(0)}40%{transform:translateY(-34px) scale(1.04)}}
+.kth-bubble{position:absolute;top:4px;left:50%;transform:translateX(-50%);background:#fff;border:3px solid #3a2a6a;border-radius:14px;padding:7px 14px;text-align:center;max-width:92%;opacity:0;transition:opacity .3s;z-index:3;box-shadow:0 3px 0 #0003}
+.kth-bubble b{display:block;font-size:clamp(16px,3.6vw,22px);color:#2a1608}.kth-bubble small{color:#6a5a7a;font-size:13px}.kth-bubble.on{opacity:1}
+.kth-bubble:after{content:'';position:absolute;left:calc(50% - 8px);top:100%;border:8px solid transparent;border-top-color:#3a2a6a}
+.kth-fx{position:absolute;inset:0;pointer-events:none;z-index:4}.kth-fx span{position:absolute;bottom:34%;font-size:28px;animation:kthfloat 1.5s ease-out forwards;opacity:0}
+@keyframes kthfloat{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-120px)}}
+.kth-dirt{position:absolute;bottom:34%;left:calc(50% + 70px);font-size:26px;z-index:3;animation:kthbob 1s infinite}
+.kth-actions{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.kth-act{font-family:inherit;background:linear-gradient(#fff,#efe3cc);border:3px solid #b99a6a;border-radius:12px;padding:6px 2px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;box-shadow:0 4px 0 #8a6a3a;color:#3a2412}
+.kth-act:active{transform:translateY(3px);box-shadow:0 1px 0 #8a6a3a}
+.kth-act b{font-size:26px;line-height:1.1}.kth-act span{font-size:13px;font-weight:800}.kth-act small{font-size:11px;color:#8a6a3a}
+.kth-gacha{background:linear-gradient(#ffe36a,#f2b81e);border-color:#c8860a}
+.kth-empty{margin:auto;font-size:20px;font-weight:800;color:#fff;text-shadow:0 2px 0 #000a}
+.kt-big{font-size:clamp(16px,3.2vw,22px);padding:10px 20px}
+.ktp-mini{width:72px;margin:0 auto}
+/* sheet */
+.ktp-sheet .box h3{margin:0 0 8px;text-align:center}
+.ktp-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.ktp-row{font-family:inherit;display:flex;align-items:center;gap:10px;width:100%;background:#fff;border:3px solid #c9a46a;border-radius:12px;padding:6px 10px;margin:6px 0;cursor:pointer;font-size:16px;font-weight:700;color:#3a2412;text-align:left}
+.ktp-row b{font-size:26px}.ktp-row span{flex:1}.ktp-row i{font-style:normal;color:#8a6a3a}.ktp-row em{font-style:normal;background:#2fb344;color:#fff;border-radius:8px;padding:2px 12px}
+.ktp-eggs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.ktp-egg{font-family:inherit;background:#fff;border:4px solid #c9a46a;border-radius:16px;padding:10px;width:clamp(78px,24vw,140px);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:700;color:#3a2412;font-size:13px}
+.ktp-egg:hover{border-color:#ff4a4a;transform:translateY(-3px)}
+.ktp-egg.big{width:180px;border:none;background:none}.ktp-egg.wob{animation:ktpwob .5s}
+@keyframes ktpwob{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
+.ktp-hatch{display:flex;justify-content:center}
+.ktp-reveal{width:170px;margin:6px auto;animation:kthhop .8s}
+.ktp-flash{position:absolute;inset:0;background:#fff;pointer-events:none;animation:ktpflash .7s forwards;border-radius:12px}
+@keyframes ktpflash{0%{opacity:1}100%{opacity:0}}
+.ktp-in{display:block;margin:8px auto;font-family:inherit;font-size:20px;padding:6px 10px;border:3px solid #b99a6a;border-radius:10px;text-align:center;width:min(100%,260px)}
+.ktp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ktp-card{font-family:inherit;background:#fff;border:4px solid #c9a46a;border-radius:12px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:#3a2412}
+.ktp-card svg{width:80%}.ktp-card b{font-size:13px}.ktp-card small{font-size:11px}
+.ktp-card.on{background:#fff6c8}.ktp-card.lock{cursor:default;background:#e8e0d0}.ktp-card .sil{width:80%;filter:brightness(0);opacity:.28}
+.ktp-machine{display:flex;justify-content:center;align-items:center;padding:8px;min-height:130px}
+.ktp-ball{--g:#fff0;width:108px;height:108px;border-radius:50%;background:linear-gradient(#ff8fcf 0 50%,#ffe36a 50% 100%);border:5px solid #3a2a6a;position:relative;box-shadow:0 0 22px 4px var(--g)}
+.ktp-ball:after{content:'⭐';position:absolute;left:calc(50% - 16px);top:calc(50% - 18px);font-size:30px;line-height:1}
+.ktp-ball i{position:absolute;left:16%;top:12%;width:30%;height:15%;border-radius:50%;background:rgba(255,255,255,.75);transform:rotate(-35deg)}
+.ktp-ball.shake{animation:ktpshake .5s}.ktp-ball.open{animation:ktpopen .45s forwards}
+@keyframes ktpshake{0%,100%{transform:rotate(0)}20%{transform:rotate(-16deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-10deg)}80%{transform:rotate(8deg)}}
+@keyframes ktpopen{0%{transform:scale(1)}60%{transform:scale(1.35);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.ktp-result{min-height:70px;text-align:center;position:relative;overflow:hidden;padding:4px}
+.ktp-resgrid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.ktp-res{position:relative;background:#fff;border:3px solid #ccc;border-radius:12px;padding:8px 6px 6px;width:104px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:700;animation:kthhop .6s}
+.ktp-res .ktp-ico{font-size:34px;width:60px;line-height:1.2}.ktp-r{position:absolute;top:-8px;left:-6px;color:#fff;border-radius:8px;padding:0 6px;font-size:12px}
+.ktp-conf{position:absolute;inset:0;pointer-events:none}.ktp-conf i{position:absolute;top:-10px;width:8px;height:8px;animation:ktpfall 1.4s linear forwards}
+@keyframes ktpfall{to{transform:translateY(170px) rotate(300deg);opacity:0}}
+@media (max-width:640px){.kth-wrap{padding:8px}.kth-act b{font-size:22px}.kth-act span{font-size:12px}.kth-room{min-height:230px}}
+
 </style>
 </head>
 <body>
@@ -2217,22 +2297,22 @@
             <div class="mode-toggle">
                 <div class="mode-group" id="modeGroupLearn">
                     <button id="modeFlashcardBtn" aria-pressed="true" class="mode-btn active" onclick="setMode('flashcard')">🗂 ท่องจำ</button>
-                    <button id="modeKanaBtn" aria-pressed="false" class="mode-btn" onclick="setMode('kana')">🌸 あいう ตัวอักษร<span class="mode-coin-badge">+2~3🪙</span></button>
+                    <button id="modeKanaBtn" aria-pressed="false" class="mode-btn" onclick="setMode('kana')">🌸 あいう ตัวอักษร<span class="mode-coin-badge">+2~3⭐</span></button>
                     <button id="modeListenStudyBtn" aria-pressed="false" class="mode-btn" onclick="setMode('listenstudy')">📖 เรียนฟัง</button>
                     <button id="modeReadStudyBtn" aria-pressed="false" class="mode-btn" onclick="setMode('readstudy')">📗 เรียนอ่าน</button>
                 </div>
                 <div class="mode-group" id="modeGroupPractice" style="display:none;">
-                    <button id="modeListenBtn" aria-pressed="false" class="mode-btn" onclick="setMode('listen')">🎧 ฟังแล้วตอบ<span class="mode-coin-badge">+2🪙</span></button>
-                    <button id="modeReadBtn" aria-pressed="false" class="mode-btn" onclick="setMode('read')">📝 อ่านแล้วตอบ<span class="mode-coin-badge">+2🪙</span></button>
-                    <button id="modeSpeakBtn" aria-pressed="false" class="mode-btn" onclick="setMode('speak')">🎤 ฝึกพูด<span class="mode-coin-badge">+1🪙</span></button>
-                    <button id="modeExamBtn" aria-pressed="false" class="mode-btn" onclick="setMode('exam')">📝 JLPT Mock Exam<span class="mode-coin-badge">+5~15🪙</span></button>
+                    <button id="modeListenBtn" aria-pressed="false" class="mode-btn" onclick="setMode('listen')">🎧 ฟังแล้วตอบ<span class="mode-coin-badge">+2⭐</span></button>
+                    <button id="modeReadBtn" aria-pressed="false" class="mode-btn" onclick="setMode('read')">📝 อ่านแล้วตอบ<span class="mode-coin-badge">+2⭐</span></button>
+                    <button id="modeSpeakBtn" aria-pressed="false" class="mode-btn" onclick="setMode('speak')">🎤 ฝึกพูด<span class="mode-coin-badge">+1⭐</span></button>
+                    <button id="modeExamBtn" aria-pressed="false" class="mode-btn" onclick="setMode('exam')">📝 JLPT Mock Exam<span class="mode-coin-badge">+5~15⭐</span></button>
                 </div>
                 <div class="mode-group" id="modeGroupFun" style="display:none;">
-                    <button id="modeQuizBtn" aria-pressed="false" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ<span class="mode-coin-badge">+1🪙</span></button>
-                    <button id="modeChoiceBtn" aria-pressed="false" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ<span class="mode-coin-badge">+1🪙</span></button>
-                    <button id="modeFillBtn" aria-pressed="false" class="mode-btn" onclick="ktPrevMode=currentMode;setMode('fill')">🐕 เติมคำ (KOTOMON)<span class="mode-coin-badge">+3~5🪙</span></button>
-                    <button id="modeMatchBtn" aria-pressed="false" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ<span class="mode-coin-badge">+1🪙</span></button>
-                    <button id="modeBossBtn" aria-pressed="false" class="mode-btn" onclick="setMode('boss')">⚔️ Boss Battle<span class="mode-coin-badge">15~120🪙</span></button>
+                    <button id="modeQuizBtn" aria-pressed="false" class="mode-btn" onclick="setMode('quiz')">✍️ ทดสอบ<span class="mode-coin-badge">+1⭐</span></button>
+                    <button id="modeChoiceBtn" aria-pressed="false" class="mode-btn" onclick="setMode('choice')">🔤 เลือกคำตอบ<span class="mode-coin-badge">+1⭐</span></button>
+                    <button id="modeFillBtn" aria-pressed="false" class="mode-btn" onclick="ktPrevMode=currentMode;setMode('fill')">🐕 เติมคำ (KOTOMON)<span class="mode-coin-badge">+3~5⭐</span></button>
+                    <button id="modeMatchBtn" aria-pressed="false" class="mode-btn" onclick="setMode('match')">🧩 จับคู่คำ<span class="mode-coin-badge">+1⭐</span></button>
+                    <button id="modeBossBtn" aria-pressed="false" class="mode-btn" onclick="setMode('boss')">⚔️ Boss Battle<span class="mode-coin-badge">15~120⭐</span></button>
                 </div>
                 <div class="mode-group" id="modeGroupOverview" style="display:none;">
                     <button id="modeRoadmapBtn" aria-pressed="false" class="mode-btn" onclick="setMode('roadmap')">🧭 Roadmap</button>
@@ -2288,7 +2368,7 @@
                     <div class="howto-section-body">ตอบถูกในโหมดฝึกฝนทุกโหมดจะได้ EXP สะสมเพื่อเลเวลอัพตัวละคร ยิ่งเลเวลสูง ยิ่งสะท้อนความสม่ำเสมอในการฝึกของคุณ</div>
                 </div>
                 <div class="howto-section">
-                    <div class="howto-section-title">🪙 เหรียญฝึกฝน</div>
+                    <div class="howto-section-title">⭐ เหรียญฝึกฝน</div>
                     <div class="howto-section-body">ได้จากการตอบถูกในทุกโหมด (ท่องจำ/เลือกคำตอบ/จับคู่/ฟัง/อ่าน/พูด/ตัวอักษร) รวมถึงเควสประจำวัน สอบวัดระดับ และ Boss Battle — สังเกตป้ายทองที่มุมปุ่มแต่ละโหมดว่าได้เหรียญเท่าไร แต่ละหมวดมี <b>เพดานรายวัน</b> เพื่อรักษาสมดุล ดูโควตาที่เหลือได้ในหน้ากาชา</div>
                 </div>
                 <div class="howto-section">
@@ -2552,7 +2632,7 @@
                     <!-- 5. Gacha / Kana Monster Collection -->
                     <div class="gacha-screen" id="kanaGachaContainer" style="display: none;">
                         <div class="gacha-topbar">
-                            <div class="gacha-coin-badge">🪙 <span id="gachaCoinCount">0</span> เหรียญฝึกฝน</div>
+                            <div class="gacha-coin-badge">⭐ <span id="gachaCoinCount">0</span> เหรียญฝึกฝน</div>
                             <button class="btn-mini" style="background: linear-gradient(135deg, var(--kinpaku), var(--sakura)); color:#fff; padding: 10px 18px;" onclick="pullGacha()">🎴 สุ่มการ์ด (20 เหรียญ)</button>
                         </div>
                         <div class="gacha-note">เก็บเหรียญได้จากทุกโหมดฝึกฝน: ท่องจำ/เลือกคำตอบ/จับคู่/ฝึกพูด (+1) · ฟัง/อ่าน (+2) · ลากเส้น (+2) · สปีดเทส (+2) · ทายเสียง (+3) · ภารกิจประจำวัน (+10) · สอบวัดระดับผ่าน (+15) — การ์ดซ้ำจะกลายเป็นวัตถุดิบวิวัฒนาการ ✨</div>
@@ -7388,7 +7468,7 @@
             {char:"ふ", romaji:"FU", type:"Hiragana", example:"ふね (fune) = เรือ", monster:"🚢 ฟุเนะโบ๊ท (Gacha R)"},
             {char:"へ", romaji:"HE", type:"Hiragana", example:"へや (heya) = ห้อง", monster:"🚪 เฮยะรอม (Gacha N)"},
             {char:"ほ", romaji:"HO", type:"Hiragana", example:"ほし (hoshi) = ดาว", monster:"⭐ โฮชิสตาร์ (Gacha SR)"},
-            {char:"ま", romaji:"MA", type:"Hiragana", example:"まど (mado) = หน้าต่าง", monster:"🪟 มาโดะวินโดว์ (Gacha N)"},
+            {char:"ま", romaji:"MA", type:"Hiragana", example:"まど (mado) = หน้าต่าง", monster:"🏠 มาโดะวินโดว์ (Gacha N)"},
             {char:"み", romaji:"MI", type:"Hiragana", example:"みず (mizu) = น้ำ", monster:"💧 มิซึวอเตอร์ (Gacha R)"},
             {char:"む", romaji:"MU", type:"Hiragana", example:"むし (mushi) = แมลง", monster:"🐛 มุชิบัก (Gacha N)"},
             {char:"め", romaji:"ME", type:"Hiragana", example:"め (me) = ตา", monster:"👁️ เมะอาย (Gacha N)"},
@@ -9402,7 +9482,7 @@
         // ===== 🎮 Avatar / EXP / Level / Class / Streak System =====
         const CLASS_DEFS = {
             samurai: { emoji: '🗡️', title: '侍 Samurai', desc: 'สายบู๊ เน้นการต่อสู้ — EXP จาก Boss Battle +20%', bonusModes: ['boss'] },
-            ninja:   { emoji: '🥷', title: '忍者 Ninja',   desc: 'สายเร็ว เน้นไหวพริบ — EXP จากฝึกตัวอักษร (あいう) +20%', bonusModes: ['kana'] },
+            ninja:   { emoji: '⚡', title: '忍者 Ninja',   desc: 'สายเร็ว เน้นไหวพริบ — EXP จากฝึกตัวอักษร (あいう) +20%', bonusModes: ['kana'] },
             scholar: { emoji: '📖', title: '学者 Scholar', desc: 'สายปัญญา เน้นจำศัพท์ — EXP จากทดสอบ/จับคู่/ท่องจำ +20%', bonusModes: ['quiz', 'match', 'srs'] }
         };
 
@@ -9658,7 +9738,7 @@
             if (!el) return;
             const badge = document.createElement('span');
             badge.className = 'coin-gain-float';
-            badge.innerText = `+${n}🪙`;
+            badge.innerText = `+${n}⭐`;
             const rect = el.getBoundingClientRect();
             badge.style.left = rect.left + 'px';
             badge.style.top = rect.top + 'px';
@@ -9671,7 +9751,7 @@
             const el = document.getElementById('gachaCoinCount');
             const badge = document.createElement('span');
             badge.className = 'coin-gain-float coin-cap-note';
-            badge.innerText = `🪙 ครบโควตาวันนี้แล้ว (${label})`;
+            badge.innerText = `⭐ ครบโควตาวันนี้แล้ว (${label})`;
             if (el) {
                 const rect = el.getBoundingClientRect();
                 badge.style.left = rect.left + 'px';
@@ -10187,7 +10267,7 @@
             document.getElementById('bossResultView').style.display = 'block';
             document.getElementById('bossResultEmoji').innerText = isBoss ? '🎉' : '✅';
             document.getElementById('bossResultTitle').innerText = isBoss ? `ชนะ ${boss.name} แล้ว!` : `ผ่าน ${boss.name} แล้ว!`;
-            document.getElementById('bossResultDesc').innerText = `ได้รับ 🪙 ${boss.reward} เหรียญฝึกฝน — ด่านถัดไปปลดล็อกแล้ว!`;
+            document.getElementById('bossResultDesc').innerText = `ได้รับ ⭐ ${boss.reward} เหรียญฝึกฝน — ด่านถัดไปปลดล็อกแล้ว!`;
             bossState = null;
         }
 
@@ -11365,7 +11445,7 @@
                     <td>${formatDT(info.lastLogin)}</td>
                     <td>${info.loginCount}</td>
                     <td>${s.known} คำ</td>
-                    <td>🪙${s.coins} · 🎴${s.cards} · ⚔️${s.bosses}</td>
+                    <td>⭐${s.coins} · 🎴${s.cards} · ⚔️${s.bosses}</td>
                     <td><button class="btn-mini" style="font-size:0.65rem; padding:4px 8px;" onclick="hostDeleteUser('${name.replace(/'/g, "\\'")}')">ลบข้อมูล</button></td>
                 </tr>`;
             }).join('');
@@ -11473,6 +11553,381 @@
 
 
     
+// ===== สไปรต์พิกเซลสัตว์เลี้ยง (วาดเองทั้งหมด) =====
+const KTP_BASE = ['..oooooo','.oOOOOOO','oOOOOOOO','oOOOOOOO','oOOkOOOO','oOOkOOcc','oOpOOcck','oOOOcccc','oOOOcccc','.oOOcccc','..oooooo','.ooo....'];
+const KTP_EARS = {
+  dog:    { 1:'..o.....', 2:'.oOo....', 3:'.oOOo...', 4:'.oOOoooo' },
+  cat:    { 2:'..o.....', 3:'.oOo....', 4:'.opOoooo' },
+  rabbit: { 0:'..oo....', 1:'.oOOo...', 2:'.oOpo...', 3:'.oOpo...', 4:'.oOpoooo' },
+  round:  { 2:'.oo.....', 3:'oOOo....', 4:'oOOooooo' },
+  panda:  { 2:'.oo.....', 3:'oddo....', 4:'oddooooo' },
+  chick:  { 2:'.......y', 3:'......yy' },
+  horn:   { 2:'..y.....', 3:'..yy....', 4:'..yooooo' },
+  none:   {},
+  pig:    { 3:'.ooo....', 4:'.oOOoooo' },
+  uni:    { 1:'.......y', 2:'.oo....y', 3:'opOo..yy', 4:'opOoooyy' },
+  flame:  { 0:'.......y', 1:'.y....yy', 2:'.yy..yyd', 3:'.ydy.ydO', 4:'..oyoooo' },
+  fox:    { 0:'..o.....', 1:'.oOo....', 2:'.oOOo...', 3:'.odOo...', 4:'.oOOoooo' }
+};
+const KTP_SPECIES = [
+  { id:'shiba', name:'ชิบะ', jp:'しば', rar:'N', pal:{O:'#f0922f',c:'#fff1d6',d:'#c9601a',o:'#4a2511',p:'#ff8aa0'}, ears:'dog',
+    tail:[[7,16,'o'],[7,17,'o'],[8,15,'O'],[8,16,'O'],[8,17,'o'],[9,16,'d'],[9,17,'o'],[10,16,'o']] },
+  { id:'neko', name:'แมวเหมียว', jp:'ねこ', rar:'N', pal:{O:'#b9bcc8',c:'#ffffff',d:'#7e8296',o:'#2f3142',p:'#ff9ab0'}, ears:'cat',
+    sym:[[5,3,'d'],[5,5,'d'],[6,4,'d']],
+    tail:[[5,16,'o'],[6,16,'O'],[6,17,'o'],[7,16,'O'],[7,17,'o'],[8,15,'O'],[8,16,'o'],[9,15,'o']] },
+  { id:'piyo', name:'ลูกเจี๊ยบ', jp:'ひよこ', rar:'N', pal:{O:'#ffd84a',c:'#fff2a8',d:'#e0a31a',o:'#7a4a10',p:'#ff9a7a',y:'#ff8a2e'}, ears:'chick',
+    sym:[[10,7,'y'],[11,6,'y'],[11,7,'y']], fix:[[10,7,'y'],[10,8,'y'],[11,7,'y'],[11,8,'y']],
+    tail:[[9,16,'o'],[10,16,'O'],[10,17,'o'],[11,16,'o']] },
+  { id:'usagi', name:'กระต่ายน้อย', jp:'うさぎ', rar:'N', pal:{O:'#fdfdff',c:'#ffe9ef',d:'#d7c3d0',o:'#6a5062',p:'#ff9ab5'}, ears:'rabbit',
+    tail:[[10,16,'o'],[11,16,'c'],[11,17,'o'],[12,16,'o']] },
+  { id:'tanuki', name:'ทานุกิ', jp:'たぬき', rar:'R', pal:{O:'#b08048',c:'#f3dcb0',d:'#4a2f18',o:'#3a2410',p:'#ff9a8a'}, ears:'round',
+    sym:[[7,3,'d'],[8,2,'d'],[8,4,'d'],[9,2,'d'],[9,4,'d'],[10,3,'d'],[4,1,'d'],[4,2,'d']],
+    tail:[[8,16,'o'],[8,17,'o'],[9,15,'O'],[9,16,'d'],[9,17,'o'],[10,16,'O'],[10,17,'o'],[11,16,'o']] },
+  { id:'panda', name:'แพนด้า', jp:'パンダ', rar:'R', pal:{O:'#ffffff',c:'#ffffff',d:'#2a2a33',o:'#2a2a33',p:'#ffb0c0'}, ears:'panda',
+    sym:[[7,2,'d'],[8,2,'d'],[8,3,'d'],[9,2,'d'],[9,3,'d'],[7,3,'d'],[13,1,'d'],[13,2,'d'],[12,1,'d'],[11,1,'d']],
+    pandaeye:true,
+    tail:[[10,16,'o'],[11,16,'c'],[11,17,'o'],[12,16,'o']] },
+  { id:'kitsune', name:'จิ้งจอกขาว', jp:'きつね', rar:'SR', pal:{O:'#fbfbff',c:'#ffffff',d:'#e0483a',o:'#6a4a58',p:'#ff7a7a'}, ears:'fox',
+    sym:[[10,1,'d'],[6,4,'d'],[5,4,'d']],
+    tail:[[5,16,'o'],[6,16,'O'],[6,17,'o'],[7,16,'O'],[7,17,'d'],[8,15,'O'],[8,16,'O'],[8,17,'o'],[9,16,'d'],[9,17,'o'],[10,16,'o'],[7,15,'O']] },
+  { id:'ryu', name:'มังกรน้อย', jp:'りゅう', rar:'SR', pal:{O:'#5cc98a',c:'#fff0b8',d:'#2f8a5a',o:'#1d4a35',p:'#ff9ab0',y:'#ffd24a'}, ears:'horn',
+    sym:[[12,5,'y'],[12,6,'y'],[11,5,'y'],[11,6,'y'],[9,0,'y'],[10,0,'y'],[11,0,'y']],
+    tail:[[10,16,'o'],[10,17,'o'],[11,16,'O'],[11,17,'y'],[12,16,'o']] },
+  { id:'buta', name:'หมูน้อย', jp:'ぶた', rar:'R', pal:{O:'#ffb3c6',c:'#ffd6e0',d:'#e8789a',o:'#8a3a5a',p:'#ff7a9a'}, ears:'pig',
+    sym:[[10,6,'d'],[10,7,'c']],
+    tail:[[9,16,'o'],[9,17,'o'],[10,17,'d'],[10,16,'o']] },
+  { id:'pengin', name:'เพนกวิน', jp:'ペンギン', rar:'R', pal:{O:'#3a4a6a',c:'#ffffff',d:'#26324a',o:'#1a2236',p:'#ff9ab0',y:'#ff9a2e'}, ears:'none', eyebg:'c',
+    sym:[[7,3,'c'],[7,4,'c'],[7,5,'c'],[7,6,'c'],[7,7,'c'],[8,2,'c'],[8,3,'c'],[8,4,'c'],[8,5,'c'],[8,6,'c'],[8,7,'c'],[9,2,'c'],[9,3,'c'],[9,4,'c'],[9,5,'c'],[9,6,'c'],[9,7,'c'],[10,2,'c'],[10,3,'c'],[10,4,'c'],[10,5,'c'],[10,6,'y'],[10,7,'y'],[11,4,'c'],[11,5,'c'],[11,6,'c'],[11,7,'c'],[12,4,'c'],[12,5,'c'],[12,6,'c'],[12,7,'c']],
+    fix:[[11,7,'y'],[11,8,'y']], eyes:true,
+    tail:[[11,16,'o'],[12,16,'d'],[12,17,'o']] },
+  { id:'unicorn', name:'ยูนิคอร์น', jp:'ユニコーン', rar:'SR', pal:{O:'#fdfdff',c:'#fff0fa',d:'#ffa6d4',o:'#7a5a8a',p:'#ffb0d0',y:'#ffd24a'}, ears:'uni',
+    sym:[[5,3,'d'],[5,4,'d'],[6,3,'d'],[8,0,'d'],[9,0,'d'],[10,0,'d'],[11,0,'d'],[12,1,'d']],
+    tail:[[8,16,'d'],[8,17,'d'],[9,16,'d'],[9,17,'o'],[10,16,'d'],[10,17,'o'],[11,16,'o']] },
+  { id:'maneki', name:'แมวนำโชค', jp:'まねきねこ', rar:'SSR', pal:{O:'#ffe27a',c:'#fff8d8',d:'#d9941a',o:'#7a4a10',p:'#ff9a8a',y:'#ff3a3a'}, ears:'cat',
+    sym:[[11,7,'d'],[12,7,'d'],[11,6,'d'],[12,6,'d'],[13,5,'y']],
+    tail:[[5,16,'o'],[6,16,'O'],[6,17,'o'],[7,16,'O'],[7,17,'o'],[8,15,'O'],[8,16,'o'],[9,15,'o']] }
+  ,{ id:'hou', name:'ฟีนิกซ์', jp:'ほうおう', rar:'SSR', pal:{O:'#ff6a3a',c:'#ffd866',d:'#c8281e',o:'#5a1a10',p:'#ffb060',y:'#ffe94a'}, ears:'flame',
+    sym:[[10,7,'y'],[11,7,'y'],[9,0,'d'],[10,0,'d'],[11,0,'d'],[11,1,'d'],[12,1,'d']], fix:[[10,8,'y'],[11,8,'y']],
+    tail:[[6,16,'y'],[7,16,'y'],[7,17,'d'],[8,16,'d'],[8,17,'y'],[9,16,'y'],[9,17,'d'],[10,16,'d']] }
+];
+function ktpSp(id) { return KTP_SPECIES.find(s => s.id === id); }
+function ktpGrid(sp, mood) {
+  const W = 18, H = 16, G = [];
+  for (let r = 0; r < H; r++) {
+    let half = '........';
+    const ears = KTP_EARS[sp.ears] || {};
+    if (r <= 4 && ears[r] !== undefined) half = ears[r]; else if (r >= 4) half = KTP_BASE[r - 4];
+    const full = half + half.split('').reverse().join('');
+    G.push((full + '..').split(''));
+  }
+  const set = (r, c, ch) => { G[r][c] = ch; if (c < 16) G[r][15 - c] = ch; };
+  const put = (r, c, ch) => { if (r >= 0 && r < H && c >= 0 && c < W) G[r][c] = ch; };
+  (sp.sym || []).forEach(([r, c, ch]) => set(r, c, ch));
+  (sp.fix || []).forEach(([r, c, ch]) => put(r, c, ch));
+  (sp.tail || []).forEach(([r, c, ch]) => put(r, c, ch));
+  if (sp.pandaeye) { set(8, 3, 'k'); set(9, 3, 'k'); }
+  if (sp.id === 'tanuki') { set(8, 3, 'k'); set(9, 3, 'k'); }
+  if (mood === 'happy') { set(8, 3, (sp.eyebg || (sp.id === 'panda' || sp.id === 'tanuki' ? 'd' : 'O'))); set(9, 3, (sp.eyebg || (sp.id === 'panda' || sp.id === 'tanuki' ? 'd' : 'O'))); set(8, 3, 'k'); set(9, 2, 'k'); set(9, 4, 'k'); set(9, 3, (sp.eyebg || (sp.id === 'panda' || sp.id === 'tanuki' ? 'd' : 'O'))); }
+  if (mood === 'sad') { set(8, 2, 'k'); set(8, 4, 'k'); set(9, 3, 'k'); set(8, 3, (sp.eyebg || (sp.id === 'panda' || sp.id === 'tanuki' ? 'd' : 'O'))); set(10, 3, 'b'); }
+  return G;
+}
+function ktpRects(G, pal) {
+  const P = Object.assign({ k: '#2b1a10', w: '#ffffff', b: '#6fb8ff' }, pal);
+  let out = '';
+  for (let y = 0; y < G.length; y++) {
+    let x = 0;
+    while (x < G[y].length) {
+      const c = G[y][x];
+      if (c === '.' || !P[c]) { x++; continue; }
+      let x2 = x; while (x2 < G[y].length && G[y][x2] === c) x2++;
+      out += `<rect x="${x}" y="${y}" width="${x2 - x}" height="1" fill="${P[c]}"/>`;
+      x = x2;
+    }
+  }
+  return out;
+}
+const KTP_STAGES = [{ n: 'ทารก' }, { n: 'วัยเยาว์' }, { n: 'เต็มวัย' }, { n: 'สมบูรณ์' }], KTP_STAGE_LV = [1, 10, 20, 30], KTP_EVO_COIN = [0, 5, 10, 20];
+function ktpStage(lv) { return lv >= 30 ? 3 : lv >= 20 ? 2 : lv >= 10 ? 1 : 0; }
+function ktpSvg(id, mood, cls, lv) {
+  const sp = ktpSp(id); if (!sp) return '';
+  const body = ktpRects(ktpGrid(sp, mood), sp.pal), R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+  if (!(lv >= 1)) return `<svg class="kt-px ${cls || ''}" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
+  const st = ktpStage(lv), S = [.66, .82, .92, 1][st], tx = (9 * (1 - S)).toFixed(2), ty = (16 * (1 - S)).toFixed(2);
+  let pre = '', post = '';
+  if (st === 0) post = R(8.5, 4.4, 1, 1, '#ffe27a') + R(8.5, 3.6, .6, .8, '#ffe27a');
+  if (st === 1) post = R(9, 1.6, .6, 1.3, '#3fae4a') + R(9.6, 1.6, 1.5, .7, '#6fd66f') + R(7.9, 2, 1.1, .7, '#6fd66f');
+  if (st === 2) post = R(7.1, .2, 1.8, 1.2, '#4aa0ff') + R(9.1, .2, 1.8, 1.2, '#4aa0ff') + R(8.6, .5, .8, .7, '#ffd24a');
+  if (st === 3) {
+    pre = '<defs><radialGradient id="ktpAura"><stop offset="0" stop-color="#fff3a0" stop-opacity=".9"/><stop offset="1" stop-color="#ffb400" stop-opacity="0"/></radialGradient></defs><circle cx="9" cy="9" r="9" fill="url(#ktpAura)"/>';
+    post = R(6.5, .6, 5, 1, '#ffd24a') + R(6.5, 0, 1, .7, '#ffd24a') + R(8.5, 0, 1, .7, '#ffd24a') + R(10.5, 0, 1, .7, '#ffd24a') + R(8.6, .8, .8, .6, '#e8334a') + R(1, 3, .9, .9, '#fff6a0') + R(16, 5, .9, .9, '#fff6a0') + R(2, 12, .9, .9, '#fff6a0') + R(15.5, 13, .9, .9, '#fff6a0');
+  }
+  return `<svg class="kt-px ${cls || ''} ${st === 3 ? 'ktp-fin' : ''}" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">${pre}<g transform="translate(${tx} ${ty}) scale(${S})">${body}</g>${post}</svg>`;
+}
+function ktpEvoCheck(p, oldLv) { if (ktpStage(p.lv) > ktpStage(oldLv)) { ktp.evo = { sp: p.sp, from: ktpStage(oldLv), to: ktpStage(p.lv) }; ktpSave(); } }
+function ktpEvoSheet() {
+  const e = ktp && ktp.evo; if (!e) return; const p = ktp.pets[e.sp]; ktp.evo = null;
+  if (!p) { ktpSave(); return; }
+  const c = KTP_EVO_COIN[e.to]; try { if (c) { gachaState.coins += c; saveGachaState(); } } catch (x) { }
+  ktpSave(); ktSfx('rare');
+  ktpSheet(`<div class="ktp-flash"></div><h3>✨ วิวัฒนาการ!</h3><div style="display:flex;align-items:center;justify-content:center;gap:10px"><div class="ktp-mini" style="width:90px">${ktpSvg(e.sp, 'happy', '', KTP_STAGE_LV[e.from])}</div><b style="font-size:28px">➜</b><div class="ktp-mini" style="width:120px">${ktpSvg(e.sp, 'happy', '', KTP_STAGE_LV[e.to])}</div></div><p class="kt-note">${ktEsc(p.name)} เติบโตเป็น <b>ร่าง${KTP_STAGES[e.to].n}</b> แล้ว! (Lv.${p.lv})${c ? '<br>🎁 โบนัสวิวัฒนาการ +' + c + ' ⭐' : ''}</p><div class="ktp-btns"><button class="kt-btn kt-gold" onclick="ktpClose()">เยี่ยมเลย!</button></div>`, true);
+}
+// ---- ไข่ 3 แบบ ----
+const KTP_EGG_HALF = ['....oo','..ooOO','.oOOOO','.oOOOO','oOOOOO','oOOOOO','oOOOOO','oOOOOO','oOOOOO','oOOOOO','.oOOOO','.oOOOO','..oooo'];
+const KTP_EGGS = [
+  { id: 0, name: 'ไข่ลายจุดส้ม', hatch: 'shiba', pal: { O: '#fff4dc', o: '#8a5a2a', d: '#f0922f' }, spots: [[3,2],[5,4],[7,2],[8,5],[10,3],[4,8],[6,9],[9,8]] },
+  { id: 1, name: 'ไข่ลายฟ้า', hatch: 'neko', pal: { O: '#eaf6ff', o: '#4a6a8a', d: '#6fb8ff' }, spots: [[4,1],[4,2],[4,3],[4,4],[4,5],[4,6],[4,7],[4,8],[4,9],[4,10],[7,1],[7,2],[7,3],[7,4],[7,5],[7,6],[7,7],[7,8],[7,9],[7,10],[10,2],[10,3],[10,4],[10,5],[10,6],[10,7],[10,8],[10,9]] },
+  { id: 2, name: 'ไข่ลายเหลือง', hatch: 'piyo', pal: { O: '#fffbe0', o: '#8a7a2a', d: '#ffd84a' }, spots: [[3,5],[3,6],[4,4],[5,5],[5,6],[6,7],[7,5],[7,6],[8,4],[9,5],[9,6],[10,7]] }
+];
+function ktpEggSvg(i, crack, cls) {
+  const e = KTP_EGGS[i];
+  const G = KTP_EGG_HALF.map(h => (h + h.split('').reverse().join('')).split(''));
+  e.spots.forEach(([r, c]) => { if (G[r] && G[r][c] === 'O') G[r][c] = 'd'; });
+  const cr = [[[4,5],[5,6]],[[4,5],[5,6],[6,5],[6,4],[7,5],[7,6]],[[3,6],[4,5],[5,6],[6,5],[6,4],[7,5],[7,6],[8,7],[8,8],[7,9],[9,6],[9,5]]][Math.min(crack || 0, 3) - 1];
+  if (cr) cr.forEach(([r, c]) => { if (G[r]) G[r][c] = 'o'; });
+  return `<svg class="kt-px ${cls || ''}" viewBox="0 0 12 13" xmlns="http://www.w3.org/2000/svg">${ktpRects(G, e.pal)}</svg>`;
+}
+
+// ===== ระบบสัตว์เลี้ยง KOTOMON =====
+const KTP_KEY = 'kotomon_pet_v1';
+let ktp = null, ktpMood = null, ktpBubbleT = null;
+const KTP_RAR = { N: { c: '#9aa0b0', w: 'ธรรมดา' }, R: { c: '#3b9cff', w: 'หายาก' }, SR: { c: '#a35bff', w: 'หายากมาก' }, SSR: { c: '#ffb400', w: 'ตำนาน' } };
+const KTP_ITEMS = {
+  onigiri: { e: '🍙', n: 'ข้าวปั้น', cat: 'feed', rar: 'N', eff: { hunger: 25 } },
+  dango:   { e: '🍡', n: 'ดังโงะ', cat: 'feed', rar: 'N', eff: { hunger: 20, happy: 10 } },
+  ramen:   { e: '🍜', n: 'ราเมน', cat: 'feed', rar: 'R', eff: { hunger: 40 } },
+  sushi:   { e: '🍣', n: 'ซูชิ', cat: 'feed', rar: 'SR', eff: { hunger: 60, happy: 15 } },
+  soap:    { e: '🧼', n: 'สบู่', cat: 'bath', rar: 'N', eff: { clean: 30 } },
+  bubble:  { e: '🛁', n: 'ตั๋วอาบน้ำฟอง', cat: 'bath', rar: 'R', eff: { clean: 60, happy: 10 } },
+  ball:    { e: '🎾', n: 'ลูกบอล', cat: 'play', rar: 'N', eff: { happy: 25 } },
+  teddy:   { e: '🧸', n: 'ตุ๊กตาหมี', cat: 'play', rar: 'R', eff: { happy: 40 } },
+  kite:    { e: '🎏', n: 'ว่าว', cat: 'play', rar: 'SR', eff: { happy: 55 }, xp: 10 },
+  candy:   { e: '🍬', n: 'ขนมวิเศษ', cat: 'xp', rar: 'SR', eff: {}, xp: 50 }
+};
+const KTP_FREE = { feed: { e: '🍚', n: 'ข้าวเปล่า (ฟรีวันละครั้ง)', eff: { hunger: 20 } }, bath: { e: '🚿', n: 'ฝักบัว (ฟรีวันละครั้ง)', eff: { clean: 25 } }, play: { e: '🤝', n: 'เล่นมือเปล่า (ฟรีวันละครั้ง)', eff: { happy: 20 } } };
+const KTP_CAT = { feed: { w: 'ให้อาหาร', e: '🍙' }, bath: { w: 'อาบน้ำ', e: '🛁' }, play: { w: 'เล่นด้วย', e: '🎾' } };
+const KTP_TALK = {
+  idle: [['いっしょに べんきょう しよう！', 'มาเรียนด้วยกันเถอะ!'], ['はやおきは さんもんの とく', 'ตื่นเช้าได้กำไร'], ['ななころび やおき', 'ล้ม 7 ครั้ง ลุก 8 ครั้ง'], ['ちりも つもれば やまとなる', 'ฝุ่นสะสมก็เป็นภูเขา (ทีละนิดก็สำเร็จ)'], ['けいぞくは ちからなり', 'ความต่อเนื่องคือพลัง'], ['がんばって！', 'สู้ ๆ นะ!'], ['きょうも いい てんき', 'วันนี้อากาศดีจัง'], ['たのしい！', 'สนุกจัง!'], ['すごいね！', 'เก่งจังเลย!'], ['ありがとう', 'ขอบคุณ']],
+  hungry: [['おなかが すいた…', 'หิวจัง…'], ['ごはん ください', 'ขอข้าวหน่อย']],
+  dirty: [['べたべた する…', 'เหนียวตัวจัง…'], ['おふろ に はいりたい', 'อยากอาบน้ำ']],
+  bored: [['ひまだなあ…', 'เบื่อจัง…'], ['あそぼう！', 'มาเล่นกันเถอะ!']],
+  feed: [['いただきます！', 'ขอทานนะ!'], ['おいしい！', 'อร่อย!'], ['ごちそうさま', 'ขอบคุณสำหรับอาหาร']],
+  bath: [['さっぱり した！', 'สดชื่นจัง!'], ['きもちいい', 'สบายตัวจัง']],
+  play: [['たのしい！', 'สนุกจัง!'], ['もっと あそぼう！', 'เล่นอีกนะ!']],
+  study: [['よく できたね！', 'ทำได้ดีมาก!'], ['すごい！', 'สุดยอด!']],
+  lvup: [['レベルアップ！', 'เลเวลอัป!']]
+};
+const KTP_PERK = { N: { xp: 1, decay: 1, coin: 0, tx: 'ไม่มีโบนัส' }, R: { xp: 1.1, decay: .9, coin: 0, tx: 'XP ×1.1 · หิว/สกปรกช้าลง 10%' }, SR: { xp: 1.25, decay: .75, coin: 1, tx: 'XP ×1.25 · ช้าลง 25% · เหรียญผ่านบทครั้งแรก +1' }, SSR: { xp: 1.5, decay: .5, coin: 2, tx: 'XP ×1.5 · ช้าลง 50% · เหรียญ +2 · ฉากบ้านพิเศษ' } };
+const KTP_HOME = { N: 'บ้านของเรา', R: '🌸 บ้านสวนสวย', SR: '✨ บ้านแสงดาว', SSR: '🏮 วิหารทองคำ' };
+const KTP_SP_TALK = {
+  tanuki: [['たぬき ねいり', 'แกล้งหลับ (สำนวน) — พักสายตานิดนึงนะ'], ['ばける ぞ〜', 'จะแปลงร่างแล้วนะ~']],
+  panda: [['ゆっくり いこう', 'ค่อย ๆ ไปกันนะ'], ['ささ より ことば！', 'ฉันชอบคำศัพท์มากกว่าไผ่อีก!']],
+  buta: [['おだてりゃ ぶたも きに のぼる', 'ชมหน่อย หมูก็ปีนต้นไม้ได้ (สำนวน)'], ['もう いっかい！', 'อีกรอบนะ!']],
+  pengin: [['ひとやすみ ひとやすみ', 'พักสักหน่อย พักสักหน่อย'], ['ぺたぺた あるこう', 'เดินต๊อกแต๊กไปด้วยกัน']],
+  kitsune: [['きつねの よめいり', 'ฝนตกทั้งที่แดดออก (สำนวน) — วันนี้โชคดีนะ'], ['こんこん！ きょうも がんばろう', 'คอนคอน! วันนี้ก็สู้กัน'], ['ひ の ない ところに けむりは たたぬ', 'ไม่มีมูล หมาไม่ขี้ — ทบทวนบ่อย ๆ จะจำได้']],
+  ryu: [['とうりゅうもん を くぐろう', 'ไปให้ถึงประตูมังกร (ประตูสู่ความสำเร็จ)'], ['りゅうの ように のぼれ！', 'พุ่งขึ้นเหมือนมังกร!'], ['たつ の ねがい', 'ขอพรมังกร: สอบผ่านนะ']],
+  unicorn: [['ゆめは かなう よ', 'ความฝันเป็นจริงได้นะ'], ['きょうも きらきら べんきょう', 'วันนี้ก็เรียนอย่างเปล่งประกายนะ'], ['しんじる こころが まほう', 'ใจที่เชื่อมั่นคือเวทมนตร์']],
+  maneki: [['ふくを まねく よ〜', 'กวักโชคเข้ามาให้แล้วนะ~'], ['まいにち いいこと が ありますように', 'ขอให้ทุกวันมีเรื่องดี ๆ'], ['せんりの みち も いっぽ から', 'ทางพันลี้เริ่มที่ก้าวแรก (สำนวน)'], ['にゃん ひゃく てん！', 'เต็ม 100 คะแนนเลย!']],
+  hou: [['なんど でも よみがえる よ', 'ล้มกี่ครั้งก็ฟื้นขึ้นมาได้'], ['ほうおう は ひ の なか から', 'หงส์ไฟเกิดจากกองเพลิง — ความพยายามไม่สูญเปล่า'], ['ななころび やおき', 'ล้ม 7 ครั้ง ลุก 8 ครั้ง'], ['てん たかく とぼう！', 'บินให้สูงขึ้นไปด้วยกัน!']]
+};
+function ktpPerk() { let r = 'N'; try { const p = ktpAct(); if (p) r = ktpSp(p.sp).rar; } catch (e) { } return KTP_PERK[r] || KTP_PERK.N; }
+function ktpRarNow() { try { const p = ktpAct(); return p ? ktpSp(p.sp).rar : 'N'; } catch (e) { return 'N'; } }
+function ktpHomeName() { return KTP_HOME[ktpRarNow()] || KTP_HOME.N; }
+function ktpDay() { return new Date().toISOString().slice(0, 10); }
+function ktpNew() { return { v: 1, hasEgg: false, pets: {}, active: null, hunger: 70, clean: 70, happy: 70, t: Date.now(), items: {}, free: { d: ktpDay(), feed: 0, bath: 0, play: 0 }, pity: 0, pulls: 0 }; }
+function ktpLoad() {
+  try { ktp = JSON.parse(localStorage.getItem(storageKey(KTP_KEY)) || 'null'); } catch (e) { ktp = null; }
+  if (!ktp || !ktp.pets) ktp = ktpNew();
+  const h = Math.min(48, Math.max(0, (Date.now() - (ktp.t || Date.now())) / 3600000)) * ktpPerk().decay;
+  ktp.hunger = Math.max(0, ktp.hunger - h * 3); ktp.clean = Math.max(0, ktp.clean - h * 2); ktp.happy = Math.max(0, ktp.happy - h * 2); ktp.t = Date.now();
+  if (!ktp.free || ktp.free.d !== ktpDay()) ktp.free = { d: ktpDay(), feed: 0, bath: 0, play: 0 };
+  ktpSave();
+}
+function ktpSave() { try { localStorage.setItem(storageKey(KTP_KEY), JSON.stringify(ktp)); } catch (e) { } }
+function ktpAct() { return ktp && ktp.active ? ktp.pets[ktp.active] : null; }
+function ktpNeed(lv) { return 20 + lv * 15; }
+function ktpCl(v) { return Math.max(0, Math.min(100, v)); }
+function ktpMoodNow() {
+  const a = (ktp.hunger + ktp.clean + ktp.happy) / 3, m = Math.min(ktp.hunger, ktp.clean, ktp.happy);
+  return m < 25 || a < 40 ? 'sad' : a > 75 ? 'happy' : null;
+}
+function ktpTalkKey() { if (ktp.hunger < 30) return 'hungry'; if (ktp.clean < 30) return 'dirty'; if (ktp.happy < 30) return 'bored'; return 'idle'; }
+function ktpGain(xp, why) {
+  const p = ktpAct(); if (!p) return null; const oLv = p.lv;
+  const sad = Math.min(ktp.hunger, ktp.clean) < 20;
+  { const g = (sad ? xp / 2 : xp) * ktpPerk().xp + (p.xf || 0), gi = Math.floor(g); p.xf = g - gi; p.xp += gi; }
+  let up = false;
+  while (p.lv < 30 && p.xp >= ktpNeed(p.lv)) { p.xp -= ktpNeed(p.lv); p.lv++; up = true; }
+  if (p.lv >= 30) p.xp = Math.min(p.xp, ktpNeed(30));
+  ktpEvoCheck(p, oLv); ktpSave();
+  return up ? p.lv : null;
+}
+function ktpStudy(correct) {
+  if (!ktpAct()) return;
+  if (correct) ktp.happy = ktpCl(ktp.happy + 1);
+  const up = ktpGain(correct ? 2 : 0);
+  if (up) { ktSfx('levelup'); ktSay(`${ktpAct().name} เลเวลอัปเป็น Lv.${up}! 🎉`, 4000); }
+}
+function ktpPetPanel(mood) {
+  const p = ktpAct(); if (!p) return '';
+  const need = ktpNeed(p.lv), pct = Math.round(p.xp / need * 100);
+  return `<div class="kt-panel"><h4>🐾 ${ktEsc(p.name)}</h4><div style="padding:4px 6px"><div class="ktp-mini">${ktpSvg(p.sp, mood || ktpMoodNow(), '', p.lv)}</div><div style="font-size:13px">Lv.${p.lv} · ${KTP_STAGES[ktpStage(p.lv)].n}</div><div class="ktp-xp"><i style="width:${pct}%"></i></div></div></div>`;
+}
+// ---- หน้าบ้าน ----
+function ktpBubble(key) {
+  let arr = KTP_TALK[key] || KTP_TALK.idle; { const a0 = ktpAct(), sl = a0 && KTP_SP_TALK[a0.sp]; if (sl && (key === 'idle' || key === 'study') && Math.random() < 0.7) arr = sl; } const t = arr[Math.floor(Math.random() * arr.length)];
+  const el = document.getElementById('kthBubble'); if (!el) return;
+  el.innerHTML = `<b>${ktEsc(t[0])}</b><small>${ktEsc(t[1])}</small>`; el.classList.add('on');
+  clearTimeout(ktpBubbleT); ktpBubbleT = setTimeout(() => el.classList.remove('on'), 4500);
+}
+function ktpBar(ic, v, col) { return `<div class="kth-bar" title="${Math.round(v)}"><span>${ic}</span><div><i style="width:${Math.round(v)}%;background:${v < 30 ? '#ee5a5a' : col}"></i></div></div>`; }
+function ktpFreeLeft(cat) { return ktp.free[cat] ? 0 : 1; }
+function ktpCount(cat) { return Object.keys(ktp.items).filter(k => KTP_ITEMS[k] && KTP_ITEMS[k].cat === cat).reduce((s, k) => s + ktp.items[k], 0); }
+function ktRenderHome() {
+  const home = document.getElementById('kthomeInner'), bot = document.getElementById('ktBottom');
+  document.getElementById('ktBanner').textContent = ktpHomeName();
+  const p = ktpAct();
+  if (!p) { home.innerHTML = '<div class="kth-empty">ยังไม่มีเพื่อนคู่ใจ…</div>'; bot.innerHTML = `<span class="sp"></span><button class="kt-btn kt-gold" onclick="ktpEggScreen()">🥚 เลือกไข่ใบแรก</button><span class="sp"></span>`; return; }
+  const mood = ktpMood || ktpMoodNow(), need = ktpNeed(p.lv), pct = Math.round(p.xp / need * 100), sp = ktpSp(p.sp);
+  home.innerHTML = `
+    <div class="kth-top">
+      <div class="kth-chip">⭐ <b id="kthCoins">${gachaState.coins}</b></div>
+      <div class="kth-chip kth-name" onclick="ktpRename()">${ktEsc(p.name)} <em>Lv.${p.lv} · ${KTP_STAGES[ktpStage(p.lv)].n}</em><small style="color:${KTP_RAR[sp.rar].c}">${sp.rar}</small><small style="display:block;font-size:11px;color:#7a5a3a">${KTP_PERK[sp.rar].tx}</small><div class="ktp-xp"><i style="width:${pct}%"></i></div></div>
+      <div class="kth-bars">${ktpBar('🍙', ktp.hunger, '#f2a33a')}${ktpBar('🛁', ktp.clean, '#4aa0ff')}${ktpBar('💛', ktp.happy, '#ff7aa8')}</div>
+    </div>
+    <div class="kth-room kth-t-${sp.rar}" id="kthRoom">
+      <div class="kth-bubble" id="kthBubble"></div>
+      <div class="kth-rug"></div>
+      <div class="kth-pet" id="kthPet" onclick="ktpTap()">${ktpSvg(p.sp, mood, '', p.lv)}</div>
+      <div class="kth-fx" id="kthFx"></div>
+      ${ktp.clean < 30 ? '<div class="kth-dirt">💨</div>' : ''}
+    </div>
+    <div class="kth-actions">
+      ${['feed', 'bath', 'play'].map(c => `<button class="kth-act" onclick="ktpCareSheet('${c}')"><b>${KTP_CAT[c].e}</b><span>${KTP_CAT[c].w}</span><small>${ktpFreeLeft(c) ? 'ฟรี 1' : ktpCount(c) + ' ชิ้น'}</small></button>`).join('')}
+      <button class="kth-act kth-gacha" onclick="ktpGachaSheet()"><b>🎰</b><span>กาชา</span><small>10 ⭐</small></button>
+      <button class="kth-act" onclick="ktpBookSheet()"><b>📖</b><span>สมุดภาพ</span><small>${Object.keys(ktp.pets).length}/${KTP_SPECIES.length}</small></button>
+    </div>`;
+  bot.innerHTML = `<button class="kt-btn kt-red" onclick="ktBack()">⬅ ออก</button><span class="sp"></span><button class="kt-btn kt-red kt-big" onclick="ktGoSelect()">📝 เริ่มเรียน (เติมคำ)</button>`;
+  setTimeout(() => ktpBubble(ktpTalkKey()), 300); if (ktp.evo) setTimeout(ktpEvoSheet, 700);
+}
+function ktpTap() { const e = document.getElementById('kthPet'); if (!e) return; e.classList.remove('hop'); void e.offsetWidth; e.classList.add('hop'); ktSfx('pop'); ktpBubble(ktpTalkKey()); ktpFx('💗'); }
+function ktpFx(emo, n) {
+  const f = document.getElementById('kthFx'); if (!f) return;
+  for (let i = 0; i < (n || 4); i++) { const s = document.createElement('span'); s.textContent = emo; s.style.left = (30 + Math.random() * 40) + '%'; s.style.animationDelay = (i * 0.12) + 's'; f.appendChild(s); setTimeout(() => s.remove(), 1600); }
+}
+function ktpRename() {
+  const p = ktpAct(); if (!p) return;
+  const n = prompt('ตั้งชื่อใหม่ให้เพื่อนของคุณ (สูงสุด 12 ตัวอักษร)', p.name);
+  if (n && n.trim()) { p.name = n.trim().slice(0, 12); ktpSave(); ktRender(); }
+}
+// ---- Sheet ----
+function ktpSheet(html, keep) { const s = document.getElementById('ktSheet'); document.getElementById('ktSheetBox').innerHTML = html; s.style.display = 'flex'; s.dataset.keep = keep ? '1' : ''; }
+function ktpClose() { document.getElementById('ktSheet').style.display = 'none'; ktRender(); }
+function ktpCareSheet(cat) {
+  const rows = [];
+  if (ktpFreeLeft(cat)) rows.push(`<button class="ktp-row" onclick="ktpUse('${cat}','_free')"><b>${KTP_FREE[cat].e}</b><span>${KTP_FREE[cat].n}</span><em>ใช้</em></button>`);
+  Object.keys(KTP_ITEMS).filter(k => KTP_ITEMS[k].cat === cat && ktp.items[k] > 0).forEach(k => { const it = KTP_ITEMS[k]; rows.push(`<button class="ktp-row" onclick="ktpUse('${cat}','${k}')"><b>${it.e}</b><span>${it.n} <small style="color:${KTP_RAR[it.rar].c}">${it.rar}</small></span><i>×${ktp.items[k]}</i><em>ใช้</em></button>`); });
+  if (cat === 'play') Object.keys(KTP_ITEMS).filter(k => KTP_ITEMS[k].cat === 'xp' && ktp.items[k] > 0).forEach(k => { const it = KTP_ITEMS[k]; rows.push(`<button class="ktp-row" onclick="ktpUse('xp','${k}')"><b>${it.e}</b><span>${it.n} (+${it.xp} XP)</span><i>×${ktp.items[k]}</i><em>ใช้</em></button>`); });
+  ktpSheet(`<h3>${KTP_CAT[cat].e} ${KTP_CAT[cat].w}</h3>${rows.join('') || '<p class="kt-note">ของหมดแล้ว! ไปเรียนเก็บเหรียญแล้วสุ่มกาชาได้เลย 🎰</p>'}<div class="ktp-btns"><button class="kt-btn kt-blue" onclick="ktpClose()">ปิด</button></div>`);
+}
+function ktpUse(cat, key) {
+  const p = ktpAct(); let eff, xp = 0, emo;
+  if (key === '_free') { if (!ktpFreeLeft(cat)) return; ktp.free[cat] = 1; eff = KTP_FREE[cat].eff; emo = KTP_FREE[cat].e; }
+  else { if (!(ktp.items[key] > 0)) return; ktp.items[key]--; const it = KTP_ITEMS[key]; eff = it.eff; xp = it.xp || 0; emo = it.e; }
+  Object.keys(eff).forEach(k => { ktp[k] = ktpCl(ktp[k] + eff[k]); });
+  ktp.t = Date.now(); const up = ktpGain(xp + 3); ktpSave();
+  ktpMood = 'happy'; setTimeout(() => { ktpMood = null; }, 4000);
+  document.getElementById('ktSheet').style.display = 'none'; ktRender(); ktSfx('care');
+  setTimeout(() => { ktpFx(emo, 5); ktpBubble(cat === 'xp' ? 'study' : cat); const e = document.getElementById('kthPet'); if (e) e.classList.add('hop'); if (up) { ktSfx('levelup'); ktSay(`${p.name} เลเวลอัปเป็น Lv.${up}! 🎉`, 4000); ktpFx('⭐', 6); } }, 120);
+}
+// ---- เลือกไข่ + ฟักไข่ ----
+function ktpEggScreen() {
+  ktpSheet(`<h3>🥚 เลือกไข่ใบแรกของคุณ</h3><p class="kt-note">ข้างในจะฟักเป็นเพื่อนคู่ใจ… ไม่บอกว่าเป็นตัวอะไร!</p><div class="ktp-eggs">${KTP_EGGS.map(e => `<button class="ktp-egg" onclick="ktpHatch(${e.id})">${ktpEggSvg(e.id, 0)}<span>${e.name}</span></button>`).join('')}</div>`, true);
+}
+function ktpHatch(i) {
+  let taps = 0;
+  const draw = () => ktpSheet(`<h3>แตะไข่เพื่อฟัก! (${taps}/3)</h3><div class="ktp-hatch"><button class="ktp-egg big ${taps ? 'wob' : ''}" onclick="ktpHatchTap(${i})">${ktpEggSvg(i, taps)}</button></div><p class="kt-note">แตะ ๆ ๆ</p>`, true);
+  window.ktpHatchTap = (id) => { taps++; ktSfx('shake'); if (taps < 3) { draw(); return; } ktSfx('rare'); ktpReveal(id); };
+  draw();
+}
+function ktpReveal(i) {
+  const sp = KTP_EGGS[i].hatch, S = ktpSp(sp);
+  ktpSheet(`<div class="ktp-flash"></div><h3>🎉 ฟักแล้ว! ได้ ${S.name}!</h3><div class="ktp-reveal">${ktpSvg(sp, 'happy', '', 1)}</div><p class="kt-note">${S.jp} · ระดับ ${S.rar}</p><input id="ktpNameIn" class="ktp-in" maxlength="12" value="${S.name}" aria-label="ชื่อ"><div class="ktp-btns"><button class="kt-btn kt-green" onclick="ktpConfirmName('${sp}')">✔ ตั้งชื่อและเริ่มเลย</button></div>`, true);
+}
+function ktpConfirmName(sp) {
+  const n = (document.getElementById('ktpNameIn').value || '').trim().slice(0, 12) || ktpSp(sp).name;
+  ktp.hasEgg = true; ktp.pets[sp] = { sp, name: n, lv: 1, xp: 0, since: ktpDay() }; ktp.active = sp;
+  ['onigiri', 'soap', 'ball'].forEach(k => { ktp.items[k] = (ktp.items[k] || 0) + 1; });
+  ktpSave(); document.getElementById('ktSheet').style.display = 'none'; ktRender(); ktSfx('pass');
+  setTimeout(() => { ktpFx('✨', 6); ktpBubble('study'); }, 200);
+}
+// ---- สมุดภาพ ----
+function ktpBookSheet() {
+  const cells = KTP_SPECIES.map(s => { const p = ktp.pets[s.id]; return p ? `<button class="ktp-card ${ktp.active === s.id ? 'on' : ''}" style="border-color:${KTP_RAR[s.rar].c}" onclick="ktpSetActive('${s.id}')">${ktpSvg(s.id, undefined, '', p.lv)}<b>${ktEsc(p.name)}</b><small>Lv.${p.lv} · <span style="color:${KTP_RAR[s.rar].c}">${s.rar}</span>${ktp.active === s.id ? ' ⭐' : ''}</small></button>` : `<div class="ktp-card lock"><div class="sil">${ktpSvg(s.id)}</div><b>???</b><small style="color:${KTP_RAR[s.rar].c}">${s.rar}</small></div>`; }).join('');
+  ktpSheet(`<h3>📖 สมุดภาพ (${Object.keys(ktp.pets).length}/${KTP_SPECIES.length})</h3><p class="kt-note">แตะตัวละครเพื่อเปลี่ยนเป็นเพื่อนหลัก (ค่าหิว/สะอาด/สุขใจใช้ร่วมกัน)<br>โบนัสตามความหายาก — R: XP ×1.1 · SR: XP ×1.25 เหรียญ +1 ฉากบ้านแสงดาว · SSR: XP ×1.5 เหรียญ +2 ฉากวิหารทอง · SR/SSR มีคำพูดเฉพาะตัว<br>🌱 วิวัฒนาการที่ Lv.10 / 20 / 30 (ทารก → วัยเยาว์ → เต็มวัย → สมบูรณ์) รับโบนัส +5 / +10 / +20 ⭐</p><div class="ktp-grid">${cells}</div><div class="ktp-btns"><button class="kt-btn kt-blue" onclick="ktpClose()">ปิด</button></div>`);
+}
+function ktpSetActive(id) { if (!ktp.pets[id]) return; ktp.active = id; ktpSave(); ktSfx('pop'); ktpBookSheet(); }
+// ---- กาชา ----
+const KTP_COST = 10, KTP_PITY = 10;
+const KTP_RW = { N: 58, R: 28, SR: 11, SSR: 3 };
+function ktpPool(r) {
+  const it = (k, w) => ({ t: 'item', k, w }), pe = (k, w) => ({ t: 'pet', k, w });
+  return { N: [it('onigiri', 3), it('dango', 3), it('soap', 3), it('ball', 3), pe('shiba', 1), pe('neko', 1), pe('piyo', 1), pe('usagi', 1)], R: [it('ramen', 3), it('bubble', 3), it('teddy', 3), pe('tanuki', 1), pe('panda', 1), pe('buta', 1), pe('pengin', 1)], SR: [it('sushi', 2), it('kite', 2), it('candy', 2), pe('kitsune', 1), pe('ryu', 1), pe('unicorn', 1)], SSR: [pe('maneki', 1), pe('hou', 1), { t: 'jackpot', k: 'jackpot', w: 1 }] }[r];
+}
+function ktpWpick(a) { let t = a.reduce((s, x) => s + x.w, 0), r = Math.random() * t; for (const x of a) { r -= x.w; if (r <= 0) return x; } return a[0]; }
+function ktpRoll() {
+  let forcePet = ktp.pity >= KTP_PITY - 1, rar, pick, guard = 0;
+  do {
+    const w = forcePet ? { N: 55, R: 30, SR: 12, SSR: 3 } : KTP_RW; let r = Math.random() * 100;
+    rar = 'N'; for (const k of ['N', 'R', 'SR', 'SSR']) { r -= w[k]; if (r <= 0) { rar = k; break; } }
+    pick = ktpWpick(ktpPool(rar));
+  } while (forcePet && pick.t !== 'pet' && ++guard < 200);
+  ktp.pulls++; ktp.pity = pick.t === 'pet' ? 0 : ktp.pity + 1;
+  return ktpApply(pick, rar);
+}
+function ktpApply(pick, rar) {
+  if (pick.t === 'pet') {
+    const S = ktpSp(pick.k);
+    if (!ktp.pets[pick.k]) { ktp.pets[pick.k] = { sp: pick.k, name: S.name, lv: 1, xp: 0, since: ktpDay() }; return { rar, e: 'pet', sp: pick.k, title: `ได้ตัวใหม่! ${S.name}`, isNew: true }; }
+    const p = ktp.pets[pick.k], oLv = p.lv; p.xp += 40; while (p.lv < 30 && p.xp >= ktpNeed(p.lv)) { p.xp -= ktpNeed(p.lv); p.lv++; }
+    return { rar, e: 'pet', sp: pick.k, title: (ktpEvoCheck(p, oLv), `ซ้ำ! ${p.name} ได้ +40 XP`), isNew: false };
+  }
+  if (pick.t === 'jackpot') { ['sushi', 'bubble', 'kite', 'candy'].forEach(k => { ktp.items[k] = (ktp.items[k] || 0) + 1; }); return { rar, e: '🎁', title: 'แจ็กพอต! ได้ครบเซ็ต ซูชิ+ตั๋วอาบน้ำฟอง+ว่าว+ขนมวิเศษ' }; }
+  const it = KTP_ITEMS[pick.k]; ktp.items[pick.k] = (ktp.items[pick.k] || 0) + 1;
+  return { rar, e: it.e, title: `ได้ ${it.n}` };
+}
+function ktpGachaSheet(res) {
+  const pity = ktp.pity;
+  ktpSheet(`<h3>🎰 กาชาของ KOTOMON</h3>
+    <div class="ktp-machine"><div class="ktp-ball" id="ktpBall"><i></i></div></div>
+    <div id="ktpResult" class="ktp-result">${res || '<span class="kt-note">สุ่มได้ทั้งตัวละคร อาหาร ตั๋วอาบน้ำ ของเล่น และขนมวิเศษ</span>'}</div>
+    <div class="kt-note">⭐ เหรียญ: <b id="ktpCoins">${gachaState.coins}</b> · นับสะสม <b id="ktpPity">${pity}</b>/${KTP_PITY} (ครบแล้วการสุ่มครั้งถัดไปได้ตัวละครแน่นอน)</div>
+    <div class="ktp-btns"><button class="kt-btn kt-gold" onclick="ktpPull(1)">สุ่ม ×1 (${KTP_COST}⭐)</button><button class="kt-btn kt-purple" onclick="ktpPull(5)">สุ่ม ×5 (${KTP_COST * 5 - 5}⭐)</button><button class="kt-btn kt-blue" onclick="ktpClose()">ปิด</button></div>`);
+}
+let ktpBusy = false;
+function ktpPull(n) {
+  if (ktpBusy) return;
+  const cost = n === 5 ? KTP_COST * 5 - 5 : KTP_COST;
+  if (gachaState.coins < cost) { const r = document.getElementById('ktpResult'); r.innerHTML = `<span style="color:#c81d2a;font-weight:700">เหรียญไม่พอ! ต้องการ ${cost} ⭐ — ไปเรียนเก็บเหรียญก่อนนะ</span>`; ktSfx('ng'); return; }
+  gachaState.coins -= cost; saveGachaState(); ktpBusy = true; { const b0 = document.getElementById('ktpBall'); if (b0) b0.classList.remove('open'); }
+  const results = []; for (let i = 0; i < n; i++) results.push(ktpRoll());
+  ktpSave();
+  const order = { N: 0, R: 1, SR: 2, SSR: 3 }, best = results.reduce((a, b) => order[b.rar] > order[a.rar] ? b : a);
+  const col = r => KTP_RAR[r].c, ball = document.getElementById('ktpBall'), tier = ['N', 'R', 'SR', 'SSR'];
+  const lowerRar = tier[Math.max(0, order[best.rar] - 1)];
+  document.getElementById('ktpResult').innerHTML = '<span class="kt-note">กำลังสุ่ม…</span>';
+  const beat = (c, d) => setTimeout(() => { ball.classList.remove('shake'); void ball.offsetWidth; ball.classList.add('shake'); ball.style.setProperty('--g', c); ktSfx('shake'); }, d);
+  beat('#ffffff', 100); beat(col(lowerRar), 750); beat(col(best.rar), 1400);
+  setTimeout(() => {
+    ball.classList.remove('shake'); ball.classList.add('open'); ktSfx(order[best.rar] >= 2 ? 'rare' : 'pop');
+    const html = results.map(r => `<div class="ktp-res" style="border-color:${col(r.rar)};box-shadow:0 0 ${order[r.rar] >= 2 ? 14 : 4}px ${col(r.rar)}"><b class="ktp-r" style="background:${col(r.rar)}">${r.rar}</b><div class="ktp-ico">${r.e === 'pet' ? ktpSvg(r.sp, 'happy') : r.e}</div><span>${ktEsc(r.title)}</span></div>`).join('');
+    const fx = order[best.rar] >= 2 ? '<div class="ktp-conf">' + Array.from({ length: 18 }, (_, i) => `<i style="left:${Math.random() * 100}%;animation-delay:${Math.random() * .4}s;background:${['#ffd24a', '#ff7aa8', '#6fb8ff', '#8dec9a'][i % 4]}"></i>`).join('') + '</div>' : '';
+    document.getElementById('ktpResult').innerHTML = `<div class="ktp-resgrid">${html}</div>${fx}`;
+    const c = document.getElementById('ktpCoins'); if (c) c.textContent = gachaState.coins;
+    const cc = document.getElementById('gachaCoinCount'); if (cc) cc.innerText = gachaState.coins;
+    ktpBusy = false; const pt = document.getElementById('ktpPity'); if (pt) pt.textContent = ktp.pity;
+  }, 2100);
+}
+
 // ===== KOTOMON เติมคำ (โหมดเติมคำสไตล์เกม) =====
 const KT_KEY = 'kotomon_fill_v2';
 let ktProg = {}, ktPools = {}, ktPrevMode = 'quiz';
@@ -11610,6 +12065,7 @@ function ktPoolFor(level) {
     if (v.jp.length < 2 && !KT_KANJI.test(v.jp)) return;
     const exs = v.examples || (v.example ? [v.example] : []);
     const w = v.jp, cands = ktClsCands(w);
+    let firstIt = null;
     for (const ex of exs) {
       const s = ex.jp || '';
       let hit = null;
@@ -11625,8 +12081,8 @@ function ktPoolFor(level) {
       else tryM(w, null, 'dict');
       if (!hit) continue;
       const rd = (v.extra || '').split(' (')[0];
-      items.push({ w, rd, rdS: hit.cls ? (ktConj(rd, hit.cls, hit.form) || rd) : rd, surf: hit.surf, cls: hit.cls, form: hit.form, th: v.th, s, sth: ex.th || '', idx, a: hit.a });
-      break;
+      const obj = { w, rd, rdS: hit.cls ? (ktConj(rd, hit.cls, hit.form) || rd) : rd, surf: hit.surf, cls: hit.cls, form: hit.form, th: v.th, s, sth: ex.th || '', idx, a: hit.a };
+      if (!firstIt) { firstIt = obj; items.push(obj); } else (firstIt.alts = firstIt.alts || []).push({ s: obj.s, sth: obj.sth, surf: obj.surf, a: obj.a, cls: obj.cls, form: obj.form, rdS: obj.rdS });
     }
   });
   ktPools[level] = { items, words };
@@ -11636,6 +12092,7 @@ function ktShuf(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { con
 function ktLessonCount(level) { const n = ktPoolFor(level).items.length; return Math.floor(n / 10) + (n % 10 >= 6 ? 1 : 0); }
 function ktLessonItems(level, k) { return ktPoolFor(level).items.slice(k * 10, k * 10 + 10); }
 function ktMakeQ(it, level) {
+  if (it.alts && it.alts.length) { const all = [it].concat(it.alts); ktProg.exn = ktProg.exn || {}; const k0 = level + ':' + it.idx, n0 = ktProg.exn[k0] || 0; ktProg.exn[k0] = n0 + 1; it = Object.assign({}, it, all[n0 % all.length]); }
   const { words } = ktPoolFor(level);
   const kj = KT_KANJI.test(it.w), ec = ktEndClass(it.w);
   let cand;
@@ -11665,9 +12122,14 @@ function ktInit() {
   document.getElementById('ktLogoFace').innerHTML = `<div style="width:44px">${ktSprite(0, 24, 0, 18)}</div>`;
   ktSetMood('happy'); ktSndIcon();
   const bg = document.getElementById('ktBg'); if (!bg.innerHTML.trim()) bg.innerHTML = ktBgSvg();
-  ktS.screen = 'select'; ktSetLevel(ktS.level);
+  ktpLoad(); ktS.screen = 'home'; ktRender();
+  if (!ktp.hasEgg) ktpEggScreen();
 }
-function ktBack() { setMode(ktPrevMode && ktPrevMode !== 'fill' ? ktPrevMode : 'quiz'); }
+function ktBack() {
+  if (ktS.screen === 'home') { setMode(ktPrevMode && ktPrevMode !== 'fill' ? ktPrevMode : 'quiz'); return; }
+  ktS.screen = ktS.screen === 'select' ? 'home' : 'select'; ktRender();
+}
+function ktGoSelect() { ktS.screen = 'select'; ktSetLevel(ktS.level); }
 let ktMoodNow = '';
 function ktSetMood(m) { if (m === ktMoodNow) return; ktMoodNow = m; document.getElementById('ktMasImg').innerHTML = ktSprite(0, 0, 0, 0, m === 'happy' ? null : m); }
 let ktSayT = null;
@@ -11684,7 +12146,7 @@ function ktSfx(t) {
   try {
     ktAC = ktAC || new (window.AudioContext || window.webkitAudioContext)();
     if (ktAC.state === 'suspended') ktAC.resume();
-    const seq = { click: [[880, 0, .05, 'square']], ok: [[784, 0, .1, 'square'], [1047, .1, .1, 'square'], [1319, .2, .18, 'square']], ng: [[300, 0, .16, 'sawtooth'], [200, .16, .25, 'sawtooth']], pass: [[523, 0, .12, 'square'], [659, .12, .12, 'square'], [784, .24, .12, 'square'], [1047, .36, .3, 'square'], [1319, .6, .3, 'square']], fail: [[392, 0, .18, 'triangle'], [330, .2, .18, 'triangle'], [262, .4, .3, 'triangle']] }[t] || [];
+    const seq = { care: [[660, 0, .08, 'triangle'], [880, .08, .14, 'triangle']], shake: [[220, 0, .06, 'square'], [260, .06, .06, 'square']], pop: [[400, 0, .05, 'square'], [800, .05, .1, 'square']], levelup: [[523, 0, .1, 'square'], [659, .1, .1, 'square'], [784, .2, .1, 'square'], [1047, .3, .1, 'square'], [1319, .4, .25, 'square']], rare: [[784, 0, .1, 'triangle'], [988, .1, .1, 'triangle'], [1175, .2, .1, 'triangle'], [1568, .3, .35, 'triangle']], click: [[880, 0, .05, 'square']], ok: [[784, 0, .1, 'square'], [1047, .1, .1, 'square'], [1319, .2, .18, 'square']], ng: [[300, 0, .16, 'sawtooth'], [200, .16, .25, 'sawtooth']], pass: [[523, 0, .12, 'square'], [659, .12, .12, 'square'], [784, .24, .12, 'square'], [1047, .36, .3, 'square'], [1319, .6, .3, 'square']], fail: [[392, 0, .18, 'triangle'], [330, .2, .18, 'triangle'], [262, .4, .3, 'triangle']] }[t] || [];
     const t0 = ktAC.currentTime;
     seq.forEach(([f, d, l, w]) => { const o = ktAC.createOscillator(), g = ktAC.createGain(); o.type = w; o.frequency.value = f; g.gain.setValueAtTime(0.0001, t0 + d); g.gain.exponentialRampToValueAtTime(0.12, t0 + d + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t0 + d + l); o.connect(g); g.connect(ktAC.destination); o.start(t0 + d); o.stop(t0 + d + l + 0.02); });
   } catch (e) { }
@@ -11696,6 +12158,8 @@ function ktEsc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, m => (
 function ktRender() {
   const body = document.getElementById('ktBody'), bar = document.getElementById('ktCardBar'), side = document.getElementById('ktSide'), bot = document.getElementById('ktBottom');
   document.getElementById('ktRev').style.display = 'none';
+  { const sh = document.getElementById('ktSheet'); if (sh && !sh.dataset.keep && false) sh.style.display = 'none'; }
+  { const hm = document.getElementById('ktHome'), isH = ktS.screen === 'home'; hm.style.display = isH ? 'block' : 'none'; document.getElementById('ktMain').style.display = isH ? 'none' : ''; if (isH) { ktRenderHome(); return; } }
   const mn = document.getElementById('ktMain'); mn.scrollTop = 0; body.scrollTop = 0;
   const lv = ktS.level;
   if (ktS.screen === 'select') {
@@ -11709,12 +12173,12 @@ function ktRender() {
       h += `<button class="kt-ls ${p && p.stars ? 'done' : ''} ${ktS.focus === k ? 'next' : ''}" id="ktLs${k}" onclick="ktStart(${k})"><b>บท ${k + 1}</b><span>${[0,1,2].map(i => `<em style="font-style:normal;color:${p && i < p.stars ? '#f2a900' : '#c9c0b0'}">★</em>`).join('')}</span></button>`;
     }
     h += `</div><div class="kt-pager kt-jump"><input id="ktJumpIn" type="number" min="1" max="${total}" placeholder="บท" onkeydown="if(event.key==='Enter')ktJump()"><button class="kt-btn kt-gold" onclick="ktJump()">ไป</button></div><div class="kt-pager"><button class="kt-btn kt-purple" onclick="ktPage(-1)" ${ktS.page <= 0 ? 'disabled' : ''}>◀</button><span>หน้า ${ktS.page + 1}/${pages}</span><button class="kt-btn kt-purple" onclick="ktPage(1)" ${ktS.page >= pages - 1 ? 'disabled' : ''}>▶</button></div>
-      <div class="kt-note">แต่ละบทมี 10 ข้อ — เติมคำที่หายไปในประโยค โดยดูความหมายภาษาไทยเป็นเบาะแส · ตอบถูก ≥ 8 ข้อถึงจะผ่าน</div>`;
+      <div class="kt-note">แต่ละบทมี 10 ข้อเติมคำ + 1–2 ข้อเรียงประโยค — เติมคำที่หายไปในประโยค โดยดูความหมายภาษาไทยเป็นเบาะแส · ตอบถูก ≥ 80% ถึงจะผ่าน</div>`;
     body.innerHTML = h;
     if (ktS.focus != null) { const f = document.getElementById('ktLs' + ktS.focus); if (f) f.scrollIntoView({ block: 'nearest' }); }
     side.innerHTML = `<div class="kt-panel"><h4>📖 เป้าหมาย</h4><div>ผ่านทุกบทของ ${lv}<br>(${ktClearedCount(lv)}/${total})</div></div>`;
     const mc = ktMissKeys(lv).length;
-    bot.innerHTML = `<button class="kt-btn kt-gold" onclick="ktGoNext()">⏩ บทที่ยังไม่ผ่าน</button><button class="kt-btn kt-blue" onclick="ktRandomLesson()">🎲 สุ่ม</button><button class="kt-btn kt-purple" onclick="ktStartReview()" ${mc ? '' : 'disabled'}>🔁 ฝึกข้อที่ผิด (${mc})</button><span class="sp"></span><button class="kt-btn kt-red" onclick="ktBack()">⬅ ออก</button>`;
+    bot.innerHTML = `<button class="kt-btn kt-gold" onclick="ktGoNext()">⏩ บทที่ยังไม่ผ่าน</button><button class="kt-btn kt-blue" onclick="ktRandomLesson()">🎲 สุ่ม</button><button class="kt-btn kt-purple" onclick="ktStartReview()" ${mc ? '' : 'disabled'}>🔁 ฝึกข้อที่ผิด (${mc})</button><span class="sp"></span><button class="kt-btn kt-red" onclick="ktBack()">🏠 บ้าน</button>`;
     return;
   }
   if (ktS.screen === 'play') {
@@ -11722,6 +12186,7 @@ function ktRender() {
     document.getElementById('ktBanner').textContent = ktS.review ? `เติมคำ — ${lv} ฝึกข้อที่ผิด` : `เติมคำ — ${lv} บทที่ ${ktS.lesson + 1}`;
     bar.innerHTML = `<span class="kt-nbadge">${lv}</span><span>${ktS.review ? 'ฝึกข้อที่ผิด' : 'บทที่ ' + (ktS.lesson + 1)}</span><span style="margin-left:10px">ข้อ ${ktS.i + 1} / ${n}</span><span class="kt-seg">${ktS.qs.map((_, j) => `<i class="${ktS.res[j] === true ? 'ok' : ktS.res[j] === false ? 'ng' : j === ktS.i ? 'cur' : ''}"></i>`).join('')}</span>`;
     const it = q.it, s = it.s;
+    if (q.type === 'order') { ktRenderOrderBody(q, body); } else {
     const blank = `<span class="kt-blank ${ktS.done ? (ktS.res[ktS.i] ? 'ok' : 'ng') : ''}">${ktS.done ? ktEsc(it.surf) : '＿＿＿'}</span>`;
     const sent = ktEsc(s.slice(0, it.a)) + blank + ktEsc(s.slice(it.a + it.surf.length));
     let h = `<div class="kt-qrow"><div class="kt-clue"><small>ความหมาย</small><div class="th">${ktEsc(it.th)}</div>${ktS.hint ? `<div class="hint">よみ: ${ktEsc(it.rdS)}</div>` : ''}</div><div class="kt-sent">${sent}</div></div><div class="kt-choices">`;
@@ -11735,10 +12200,11 @@ function ktRender() {
       const ok = ktS.res[ktS.i];
       h += `<div class="kt-fb ${ok ? 'ok' : 'ng'}"><b>${ok ? '✅ ' + ktEsc(ktS.msg || 'ถูกต้อง!') : ktEsc(ktS.msg || '') + '<br>❌ คำตอบคือ ' + ktEsc(it.surf) + '（' + ktEsc(it.rdS) + '）' + (it.form !== 'dict' ? ' <small>(รูปผันของ ' + ktEsc(it.w) + ')</small>' : '')}</b><button class="play" onclick="ktPlay()">🔊</button><br>${ktEsc(s)}<br><span style="color:#7a5a3a">${ktEsc(it.sth)}</span></div>`;
     }
-    body.innerHTML = h;
+    body.innerHTML = h; }
     const per = 2, coins = 3; const rv = ktS.review;
     side.innerHTML = `<div class="kt-panel"><h4>📖 เป้าหมาย</h4><div>${rv ? 'ตอบถูกจะลบออกจากรายการผิด' : 'ตอบถูก ≥ ' + ktS.passAt + ' / ' + n}<br><span style="color:#1f9a38">ถูก ${ktS.res.filter(x => x === true).length}</span> · <span style="color:#c81d2a">ผิด ${ktS.res.filter(x => x === false).length}</span></div></div>
-      <div class="kt-panel"><h4>🎁 รางวัลเมื่อผ่าน</h4>${rv ? '' : `<div class="kt-rw"><span class="kt-coin">🪙</span> +${coins}</div>`}<div class="kt-rw"><span class="kt-coin" style="background:#a8f0b4">XP</span> +${per}/ข้อ</div></div>`;
+      <div class="kt-panel"><h4>🎁 รางวัลเมื่อผ่าน</h4>${rv ? '' : `<div class="kt-rw"><span class="kt-coin">⭐</span> +${coins}</div>`}<div class="kt-rw"><span class="kt-coin" style="background:#a8f0b4">XP</span> +${per}/ข้อ</div></div>`;
+    try { side.innerHTML += ktpPetPanel(ktS.done ? (ktS.res[ktS.i] ? 'happy' : 'sad') : null); } catch (e) { }
     bot.innerHTML = `<button class="kt-btn kt-blue" onclick="ktHint()" ${ktS.done ? 'disabled' : ''}>💡 คำใบ้</button><span class="sp"></span><button class="kt-btn kt-purple" onclick="ktReview()">📖 ทบทวน</button>` +
       (ktS.done ? `<button class="kt-btn kt-gold" onclick="ktNext()">${ktS.i + 1 >= n ? '🏁 ดูผล' : 'ข้อต่อไป ▶'}</button>` : `<button class="kt-btn kt-green" onclick="ktSubmit()" ${ktS.sel < 0 ? 'disabled' : ''}>✔ ส่งคำตอบ</button>`);
     return;
@@ -11764,7 +12230,7 @@ function ktStart(k) {
   const lv = ktS.level, items = ktLessonItems(lv, k);
   if (!items.length) return;
   ktS.review = false;
-  ktS.lesson = k; ktS.qs = ktShuf(items).map(it => ktMakeQ(it, lv)).filter(Boolean);
+  ktS.lesson = k; ktS.qs = ktShuf(items).map(it => ktMakeQ(it, lv)).filter(Boolean); try { ktAddOrderQs(items, lv); } catch (e) { }
   if (!ktS.qs.length) return;
   ktS.passAt = Math.ceil(ktS.qs.length * 0.8);
   ktS.i = 0; ktS.sel = -1; ktS.done = false; ktS.hint = false; ktS.res = []; ktS.rewardMsg = ''; ktS.hinted = [];
@@ -11781,14 +12247,14 @@ function ktStartReview() {
   ktS.i = 0; ktS.sel = -1; ktS.done = false; ktS.hint = false; ktS.res = []; ktS.rewardMsg = ''; ktS.hinted = [];
   ktS.streak = 0; ktSetMood('happy'); ktSay('ทบทวนกันนะ!'); ktS.screen = 'play'; ktRender();
 }
-function ktPick(j) { if (ktS.done) return; ktS.sel = j; ktSfx('click'); ktRender(); }
+function ktPick(j) { if (ktS.done || (ktS.qs[ktS.i] && ktS.qs[ktS.i].type === 'order')) return; ktS.sel = j; ktSfx('click'); ktRender(); }
 function ktHint() { if (ktS.done) return; ktS.hint = true; ktS.hinted[ktS.i] = true; ktSetMood('think'); ktSay('ลองดูคำอ่านนะ 🤔'); ktRender(); }
 function ktPlay() { try { playJapaneseAudio(ktS.qs[ktS.i].it.s); } catch (e) { } }
 function ktSubmit() {
   if (ktS.sel < 0 || ktS.done) return;
-  const q = ktS.qs[ktS.i], ok = q.opts[ktS.sel].ok;
+  const q = ktS.qs[ktS.i], ok = q.type === 'order' ? ktOrdCheck(q) : q.opts[ktS.sel].ok;
   ktS.res[ktS.i] = ok; ktS.done = true;
-  { const mk = ktS.level + ':' + q.it.idx; ktProg.miss = ktProg.miss || {};
+  if (q.type !== 'order') { const mk = ktS.level + ':' + q.it.idx; ktProg.miss = ktProg.miss || {};
     if (ok) { if (ktProg.miss[mk]) delete ktProg.miss[mk]; } else ktProg.miss[mk] = (ktProg.miss[mk] || 0) + 1;
     ktSave(); try { if (!ok && typeof testMissCount !== 'undefined') { /* เก็บสถิติผิดในโหมดนี้เอง */ } } catch (e) { } }
   ktMas(ok ? 'hop' : 'shake');
@@ -11798,6 +12264,7 @@ function ktSubmit() {
   if (ok) {
     try { if (!ktS.hinted[ktS.i]) awardExp(2, 'fill'); registerQuestCorrectAnswer(); } catch (e) { }
   }
+  try { ktpStudy(ok); } catch (e) { }
   ktRender();
   if (ok) { setTimeout(() => { try { playJapaneseAudio(q.it.s); } catch (e) { } }, ktSndOn() ? 650 : 0); }
 }
@@ -11808,16 +12275,18 @@ function ktNext() {
 }
 function ktFinish() {
   const n = ktS.qs.length, sc = ktS.res.filter(x => x === true).length, pass = sc >= ktS.passAt;
-  if (ktS.review) { ktS.rewardMsg = `🔁 แก้ได้ ${sc} ข้อ — เหลือข้อที่ยังผิดอยู่ ${ktMissKeys(ktS.level).length} ข้อ`; ktMas(sc ? 'hop' : null); }
+  try { const up = ktpGain(ktS.review ? 5 : (pass ? 15 : 5)); ktp.happy = ktpCl(ktp.happy + (pass ? 5 : 1)); ktpSave(); if (up) ktS.petUp = up; } catch (e) { }
+  if (ktS.review) { const rg = sc > 0 ? ktSmallCoin() : 0; ktS.rewardMsg = (rg ? '+1 ⭐ · ' : '') + `🔁 แก้ได้ ${sc} ข้อ — เหลือข้อที่ยังผิดอยู่ ${ktMissKeys(ktS.level).length} ข้อ`; ktMas(sc ? 'hop' : null); }
   else if (pass) {
     const key = ktS.level + '-' + ktS.lesson, old = ktProg[key], st = ktStars(sc, n);
-    if (!old || !old.stars) { try { addPracticeCoins(sc === n ? 5 : 3, 'fill'); } catch (e) { } ktS.rewardMsg = `🪙 รับเหรียญ +${sc === n ? 5 : 3} (ผ่านครั้งแรก)`; }
-    else ktS.rewardMsg = 'เคยผ่านบทนี้แล้ว — ไม่ได้เหรียญซ้ำ แต่ได้ XP ตามข้อที่ตอบถูก';
+    if (!old || !old.stars) { try { addPracticeCoins(sc === n ? 5 : 3, 'fill'); if (ktpPerk().coin) addPracticeCoins(ktpPerk().coin, 'fill'); } catch (e) { } ktS.rewardMsg = `⭐ รับเหรียญ +${sc === n ? 5 : 3} (ผ่านครั้งแรก)${ktpPerk().coin ? ' + โบนัสเพื่อนคู่ใจ +' + ktpPerk().coin + ' ⭐' : ''}`; }
+    else { const g = ktSmallCoin(); ktS.rewardMsg = g ? '🔁 เล่นซ้ำบทที่ผ่านแล้ว +1 ⭐ (เล่นซ้ำ/ทบทวน รับเหรียญได้สูงสุด 5 ⭐ ต่อวัน) และได้ XP ตามข้อที่ตอบถูก' : 'ครบโควตาเหรียญเล่นซ้ำของวันนี้แล้ว แต่ยังได้ XP ตามข้อที่ตอบถูก'; }
     ktProg[key] = { stars: Math.max(st, old ? old.stars : 0), best: Math.max(sc, old ? old.best : 0) };
     ktSave(); ktMas('hop');
   }
+  try { if (ktS.review ? sc > 0 : pass) { const b = ktDailyBonus(); if (b) ktS.rewardMsg = (ktS.rewardMsg ? ktS.rewardMsg + ' | ' : '') + '🎁 โบนัสเข้าเล่นรายวัน +' + b.c + ' ⭐ (ติดต่อกัน ' + b.streak + ' วัน)'; } } catch (e) { }
   { const okk = ktS.review ? sc > 0 : pass; ktSfx(okk ? 'pass' : 'fail'); ktSetMood(okk ? 'happy' : 'sad'); ktSay(okk ? (sc === n ? 'เพอร์เฟกต์!! 🎉' : 'ผ่านแล้ว! เยี่ยมไปเลย 🎉') : 'ไม่เป็นไร ลองอีกครั้งนะ 💪', 5000); if (okk) ktMas('hop'); }
-  ktS.screen = 'result'; ktRender();
+  ktS.screen = 'result'; ktRender(); if (ktp && ktp.evo) setTimeout(ktpEvoSheet, 900);
 }
 function ktReview() {
   const box = document.getElementById('ktRevBox');
@@ -11832,6 +12301,80 @@ document.addEventListener('keydown', e => {
   else if (e.key === 'Enter') { ktS.done ? ktNext() : ktSubmit(); }
 });
 function initFill() { ktInit(); }
+
+// ===== ข้อเรียงคำให้เป็นประโยค =====
+const KT_ROLE = { 'は': 'หัวข้อ', 'が': 'ประธาน', 'を': 'กรรม', 'に': 'เวลา/ที่อยู่/ผู้รับ', 'で': 'สถานที่ทำ/เครื่องมือ', 'へ': 'ทิศทาง', 'と': 'กับ/และ', 'も': 'ก็/เช่นกัน' };
+function ktOrdRole(c, last) {
+  if (last) return 'กริยา/ท้ายประโยค';
+  const x = c.replace(/、$/, '');
+  if (/から$/.test(x)) return 'จาก'; if (/まで$/.test(x)) return 'ถึง';
+  return KT_ROLE[x[x.length - 1]] || '';
+}
+function ktChunk(s) {
+  s = String(s || '').replace(/[。！？!?]+$/, '').trim();
+  if (!s || s.length > 32 || /[\s「」『』（）()]/.test(s)) return null;
+  const hard = /[一-鿿々ァ-ヿ]/, out = []; let buf = '';
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i]; buf += c;
+    const prev = s[i - 1] || '', last = i === s.length - 1;
+    if (last) break;
+    if (c === '、') { out.push(buf); buf = ''; continue; }
+    if ('はがをにでへともも'.includes(c) && hard.test(prev)) { out.push(buf); buf = ''; continue; }
+    if (c === 'ら' && prev === 'か' && buf.length > 2 && hard.test(s[i - 2] || '')) { out.push(buf); buf = ''; }
+  }
+  if (buf) out.push(buf);
+  if (out.length < 3 || out.length > 6 || new Set(out).size !== out.length || out[out.length - 1].length < 2) return null;
+  return out;
+}
+function ktAddOrderQs(items, lv) {
+  const cand = [];
+  ktShuf(items).forEach(it => {
+    const v = vocabList[it.idx]; if (!v) return;
+    for (const ex of ktShuf(v.examples || (v.example ? [v.example] : []))) {
+      const ch = ktChunk(ex.jp || ''); if (!ch) continue;
+      cand.push({ it: Object.assign({}, it, { s: ex.jp, sth: ex.th || '', surf: ex.jp, rdS: '', form: 'dict' }), chunks: ch }); break;
+    }
+  });
+  const take = Math.min(2, cand.length);
+  for (let k = 0; k < take; k++) {
+    const c = cand[k]; let sh = c.chunks.map((_, i) => i);
+    for (let t = 0; t < 20; t++) { sh = ktShuf(sh); if (sh.some((v, i) => v !== i)) break; }
+    ktS.qs.splice(k === 0 ? Math.min(4, ktS.qs.length) : ktS.qs.length, 0, { type: 'order', it: c.it, chunks: c.chunks, shuf: sh, ord: [] });
+  }
+}
+function ktOrdAdd(ci) { if (ktS.done) return; const q = ktS.qs[ktS.i]; if (!q || q.type !== 'order' || q.ord.includes(ci)) return; q.ord.push(ci); ktS.sel = q.ord.length === q.chunks.length ? 0 : -1; ktSfx('click'); ktRender(); }
+function ktOrdRemove(ci) { if (ktS.done) return; const q = ktS.qs[ktS.i]; if (!q || q.type !== 'order') return; q.ord = q.ord.filter(x => x !== ci); ktS.sel = -1; ktSfx('click'); ktRender(); }
+function ktOrdCheck(q) { const o = q.ord; return o.length === q.chunks.length && o[o.length - 1] === q.chunks.length - 1; }
+function ktOrdExact(q) { return q.ord.every((v, i) => v === i); }
+function ktRenderOrderBody(q, body) {
+  const ch = q.chunks, it = q.it, done = ktS.done, ok = ktS.res[ktS.i], used = new Set(q.ord);
+  const chip = (ci, cls, fn) => `<button class="kt-chip ${cls}" ${done ? 'disabled' : ''} onclick="${fn}(${ci})">${ktEsc(ch[ci])}</button>`;
+  let h = `<div class="kt-qrow"><div class="kt-clue" style="width:auto;flex:1"><small>เรียงคำให้เป็นประโยค</small><div class="th">${ktEsc(it.sth || it.th)}</div>${ktS.hint ? `<div class="hint">คำแรกคือ: ${ktEsc(ch[0])}</div>` : ''}</div></div>`;
+  h += `<div class="kt-tray ${done ? (ok ? 'ok' : 'ng') : ''}">${q.ord.length ? q.ord.map(ci => chip(ci, 'placed', 'ktOrdRemove')).join('') : '<span class="kt-note">แตะคำด้านล่างเพื่อเรียงที่นี่</span>'}</div>`;
+  if (!done) h += `<div class="kt-bank">${q.shuf.filter(ci => !used.has(ci)).map(ci => chip(ci, '', 'ktOrdAdd')).join('')}</div><div class="kt-note">💡 กริยา/ส่วนท้ายอยู่ท้ายประโยคเสมอ · โครงทั่วไป: หัวข้อ(は) → เวลา/สถานที่(に・で) → กรรม(を) → กริยา</div>`;
+  else {
+    const exact = ktOrdExact(q);
+    h += `<div class="kt-fb ${ok ? 'ok' : 'ng'}"><b>${ok ? (exact ? '✅ ตรงลำดับมาตรฐาน!' : '✅ กริยาอยู่ท้ายถูกต้อง (ภาษาญี่ปุ่นสลับบางส่วนได้) — ลำดับที่พบบ่อยที่สุดอยู่ด้านล่าง') : '❌ กริยา/ส่วนท้ายต้องอยู่ท้ายสุด — ลำดับที่ถูกอยู่ด้านล่าง'}</b><button class="play" onclick="ktPlay()">🔊</button></div><div class="kt-ordans">${ch.map((c, i) => `<span class="kt-ordc"><b>${ktEsc(c)}</b><small>${ktOrdRole(c, i === ch.length - 1)}</small></span>`).join('')}</div>`;
+  }
+  body.innerHTML = h;
+}
+
+// ===== เหรียญเพิ่มเติม (เล่นซ้ำ/ทบทวน/โบนัสรายวัน) =====
+function ktLocalDay(off) { const d = new Date(Date.now() - (off || 0) * 864e5); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function ktSmallCoin() {
+  const d = ktLocalDay(); if (!ktProg.rc || ktProg.rc.d !== d) ktProg.rc = { d, n: 0 };
+  if (ktProg.rc.n >= 5) return 0;
+  try { addPracticeCoins(1, 'fill'); } catch (e) { return 0; }
+  ktProg.rc.n++; ktSave(); return 1;
+}
+function ktDailyBonus() {
+  const d = ktLocalDay(), g = ktProg.dly || {};
+  if (g.d === d) return null;
+  const streak = g.d === ktLocalDay(1) ? (g.n || 0) + 1 : 1, c = 2 + Math.min(streak - 1, 4) + (streak % 7 === 0 ? 10 : 0);
+  try { addPracticeCoins(c, 'fill'); } catch (e) { return null; }
+  ktProg.dly = { d, n: streak }; ktSave(); return { c, streak };
+}
+
 
     </script>
 
@@ -12635,6 +13178,7 @@ window.JP_SUPPORT_POLICY={
   <div class="kt-stage">
     <svg class="kt-bg kt-px" viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" id="ktBg"></svg>
     <div class="kt-bgimg kt-bgL"></div><div class="kt-bgimg kt-bgR"></div>
+    <div class="kt-home" id="ktHome"><div class="kth-wrap" id="kthomeInner"></div></div>
     <div class="kt-main" id="ktMain">
       <div class="kt-card">
         <div class="kt-cardbar" id="ktCardBar"></div>
@@ -12642,6 +13186,7 @@ window.JP_SUPPORT_POLICY={
       </div>
       <div class="kt-side" id="ktSide"></div>
     </div>
+    <div class="kt-rev ktp-sheet" id="ktSheet"><div class="box" id="ktSheetBox"></div></div>
     <div class="kt-rev" id="ktRev" onclick="if(event.target===this)ktCloseRev()"><div class="box" id="ktRevBox"></div></div>
   </div>
   <div class="kt-bottom" id="ktBottom"></div>
