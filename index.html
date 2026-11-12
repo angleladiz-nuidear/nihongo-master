@@ -2270,6 +2270,70 @@
 @media (max-width:640px){.kth-wrap{padding:8px}.kth-act b{font-size:22px}.kth-act span{font-size:12px}.kth-room{min-height:230px}}
 
 </style>
+<style id="kt-rar-theme">
+/* ===== KOTOMON เติมคำ: ธีมตามความหายากของเพื่อนคู่ใจ (SR / SSR) ===== */
+#fillBox[data-rar=SR]{--c1:#34207a;--c2:#1a1050;--cd:#f4eeff;--cb:#8a74e0;--cs:#5a46b0;--bd:#a88bff;--sky:linear-gradient(#0f0a33,#2a1b6b 55%,#5a3ca8)}
+#fillBox[data-rar=SSR]{--c1:#7a1224;--c2:#3e0812;--cd:#fff4cf;--cb:#d9a21a;--cs:#8a5a00;--bd:#ffd24a;--sky:linear-gradient(#3a0712,#8a1a22 50%,#e0792a 88%,#ffd24a)}
+#fillBox.kt-on .kt-stage{background:var(--sky)}
+#fillBox.kt-on .kt-bg,#fillBox.kt-on .kt-bgimg{display:none}
+#fillBox.kt-on .kt-fx{display:block}
+#fillBox.kt-on .kt-top,#fillBox.kt-on .kt-bottom{background:linear-gradient(var(--c1),var(--c2));border-color:var(--bd)}
+#fillBox.kt-on .kt-card{position:relative;background:var(--cd);border-color:var(--bd);box-shadow:0 0 0 3px var(--cs),0 0 26px var(--ta),0 8px 0 #0006}
+#fillBox.kt-on .kt-card::before{content:"";position:absolute;inset:6px;border-radius:10px;pointer-events:none;z-index:4;--k:var(--ta);--l:20px;--w:4px;background:
+linear-gradient(var(--k),var(--k)) top left/var(--l) var(--w) no-repeat,linear-gradient(var(--k),var(--k)) top left/var(--w) var(--l) no-repeat,
+linear-gradient(var(--k),var(--k)) top right/var(--l) var(--w) no-repeat,linear-gradient(var(--k),var(--k)) top right/var(--w) var(--l) no-repeat,
+linear-gradient(var(--k),var(--k)) bottom left/var(--l) var(--w) no-repeat,linear-gradient(var(--k),var(--k)) bottom left/var(--w) var(--l) no-repeat,
+linear-gradient(var(--k),var(--k)) bottom right/var(--l) var(--w) no-repeat,linear-gradient(var(--k),var(--k)) bottom right/var(--w) var(--l) no-repeat}
+#fillBox.kt-on .kt-cardbar{background:linear-gradient(var(--c1),var(--c2));border-bottom-color:var(--bd)}
+#fillBox.kt-on .kt-clue{border-color:var(--cb);box-shadow:inset 0 0 0 3px var(--cd)}
+#fillBox.kt-on .kt-ch:not(.right):not(.wrong):not(.sel){background:linear-gradient(#fff,var(--cd));border-color:var(--cb);box-shadow:0 3px 0 var(--cs)}
+#fillBox.kt-on .kt-ch .n{border-color:var(--cs);color:var(--cs)}
+#fillBox.kt-on .kt-blank:not(.ok):not(.ng){border-color:var(--ta);animation:ktBl 1.4s ease-in-out infinite alternate}
+@keyframes ktBl{from{box-shadow:0 6px 6px -6px var(--ta)}to{box-shadow:0 8px 14px -4px var(--ta)}}
+#fillBox.kt-on .kt-panel{border-color:var(--bd);box-shadow:0 0 0 2px var(--cs),0 5px 0 #0004}
+#fillBox.kt-on .kt-panel h4{background:var(--c2)}
+#fillBox.kt-on .kt-ls{border-color:var(--cb);box-shadow:0 3px 0 var(--cs)}
+#fillBox.kt-on .kt-ls.done{background:linear-gradient(#fff,var(--tg));border-color:var(--ta)}
+.kt-combo{background:var(--ta);color:#2a1608;font-weight:800;border:3px solid #fff8;border-radius:8px;padding:0 10px;margin-left:10px;animation:ktCb .45s}
+@keyframes ktCb{from{transform:scale(1.7)}to{transform:none}}
+/* ฉากหลัง */
+.kt-fx{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;display:none}
+.kt-fx i{position:absolute;display:block}
+.fx-moon{top:6%;right:8%;width:64px;height:64px;border-radius:50%;box-shadow:inset -14px 0 0 0 #fff4b8,0 0 26px #fff4b855}
+.fx-hill{left:0;right:0;bottom:0;height:22%;background:#160f4a;clip-path:polygon(0 60%,12% 35%,28% 58%,46% 25%,64% 55%,82% 30%,100% 58%,100% 100%,0 100%)}
+#fillBox[data-rar=SSR] .fx-hill{background:#2a0509}
+.fx-star{width:var(--s);height:var(--s);background:#fff;box-shadow:0 0 6px #fff;animation:ktTw 2.6s ease-in-out infinite}
+@keyframes ktTw{0%,100%{opacity:.25}50%{opacity:1}}
+.fx-shoot{top:12%;left:-10%;width:90px;height:3px;background:linear-gradient(90deg,transparent,#fff);animation:ktSh 8s linear infinite 3s;opacity:0}
+@keyframes ktSh{0%{transform:translateX(0) rotate(24deg);opacity:1}12%{transform:translateX(140vw) translateY(40vh) rotate(24deg);opacity:0}100%{opacity:0}}
+.fx-sun{left:50%;bottom:6%;width:min(70vh,520px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(#fff1a8,#ffc83acc 42%,transparent 70%)}
+.fx-sun::before{content:"";position:absolute;inset:-30%;background:repeating-conic-gradient(#ffd24a 0 7deg,transparent 7deg 20deg);opacity:.16;-webkit-mask:radial-gradient(#000 25%,transparent 68%);mask:radial-gradient(#000 25%,transparent 68%);animation:ktSp 70s linear infinite}
+@keyframes ktSp{to{transform:rotate(360deg)}}
+.fx-lan{top:0;width:44px;height:62px;margin-top:16px;border-radius:40%/50%;background:linear-gradient(#ffd24a 0 6px,transparent 6px calc(100% - 6px),#ffd24a 0),radial-gradient(ellipse,#ff5a3a,#b81222);box-shadow:0 0 24px #ff7a3a;transform-origin:50% -16px;animation:ktSw 3s ease-in-out infinite alternate}
+.fx-lan::before{content:"";position:absolute;left:50%;top:-16px;width:2px;height:16px;background:#ffd24a}
+.fx-lan.l1{left:4%}.fx-lan.l2{right:4%;animation-delay:-1.5s}
+@keyframes ktSw{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+.fx-ember{bottom:-10px;width:4px;height:4px;background:var(--tg);box-shadow:0 0 6px #ffb400;animation:ktRs linear infinite}
+@keyframes ktRs{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translate(24px,-90vh);opacity:0}}
+/* เอฟเฟกต์ตอบถูก */
+.kt-burst{position:absolute;z-index:6;width:0;height:0;pointer-events:none}
+.kt-burst i{position:absolute;left:-8px;top:-8px;font-style:normal;font-size:18px;color:var(--ta);text-shadow:0 0 8px var(--tg);animation:ktBu .9s ease-out forwards}
+@keyframes ktBu{to{transform:translate(var(--dx),var(--dy)) scale(.4) rotate(180deg);opacity:0}}
+.kt-burst .ring{position:absolute;left:-10px;top:-10px;width:20px;height:20px;border:4px solid #ffd24a;border-radius:50%;animation:ktRg .7s ease-out forwards}
+@keyframes ktRg{to{transform:scale(9);opacity:0}}
+/* ฉากเปิดบทเรียน */
+.kt-intro{position:absolute;z-index:7;left:50%;top:38%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:14px;padding:10px 22px 10px 12px;background:linear-gradient(var(--c1),var(--c2));border:4px solid var(--bd);border-radius:14px;box-shadow:0 0 0 3px var(--cs),0 0 34px var(--ta),0 8px 0 #0008;color:#fff;pointer-events:none;animation:ktIn 1.9s both;max-width:92%}
+.kt-intro .pet{width:64px;flex:0 0 64px}
+.kt-intro b{display:block;font-family:'DotGothic16','Noto Sans JP',sans-serif;font-size:34px;line-height:1;color:var(--bd)}
+.kt-intro span{display:block;font-weight:800;font-size:18px}.kt-intro small{display:block;font-size:12px;color:var(--tg)}
+@keyframes ktIn{0%{opacity:0;transform:translate(-50%,-30%) scale(.8)}12%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}20%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-62%)}}
+/* หน้าสรุปผล */
+.kt-ribbon{display:inline-block;background:linear-gradient(var(--c1),var(--c2));color:var(--bd);border:3px solid var(--bd);border-radius:8px;padding:2px 14px;font-weight:800;margin-bottom:6px}
+#fillBox.kt-on[data-pass="1"] .kt-res{position:relative;isolation:isolate}
+#fillBox.kt-on[data-pass="1"] .kt-res::before{content:"";position:absolute;left:50%;top:-40px;width:380px;height:380px;margin-left:-190px;z-index:-1;background:repeating-conic-gradient(var(--tg) 0 9deg,transparent 9deg 22deg);opacity:.4;-webkit-mask:radial-gradient(#000 25%,transparent 68%);mask:radial-gradient(#000 25%,transparent 68%);animation:ktSp 30s linear infinite}
+#fillBox.kt-on[data-pass="1"] .kt-res .stars{filter:drop-shadow(0 0 8px var(--ta))}
+@media (prefers-reduced-motion:reduce){.kt-fx i,.kt-burst *,.kt-blank,.kt-combo,#fillBox .kt-res::before{animation:none!important}.kt-intro{animation-duration:.01s!important;display:none}}
+</style>
 </head>
 <body>
 
@@ -11709,7 +11773,7 @@ function ktpEvoCheck(p, oldLv) { if (ktpStage(p.lv) > ktpStage(oldLv)) { ktp.evo
 function ktpEvoSheet() {
   const e = ktp && ktp.evo; if (!e) return; const p = ktp.pets[e.sp]; ktp.evo = null;
   if (!p) { ktpSave(); return; }
-  const c = KTP_EVO_COIN[e.to]; try { if (c) { gachaState.coins += c; saveGachaState(); } } catch (x) { }
+  const c = e.adm ? 0 : KTP_EVO_COIN[e.to]; try { if (c) { gachaState.coins += c; saveGachaState(); } } catch (x) { }
   ktpSave(); ktSfx('rare');
   ktpSheet(`<div class="ktp-flash"></div><h3>✨ วิวัฒนาการ!</h3><div style="display:flex;align-items:center;justify-content:center;gap:10px"><div class="ktp-mini" style="width:90px">${ktpSvg(e.sp, 'happy', '', KTP_STAGE_LV[e.from])}</div><b style="font-size:28px">➜</b><div class="ktp-mini" style="width:120px">${ktpSvg(e.sp, 'happy', '', KTP_STAGE_LV[e.to])}</div></div><p class="kt-note">${ktEsc(p.name)} เติบโตเป็น <b>ร่าง${KTP_STAGES[e.to].n}</b> แล้ว! (Lv.${p.lv})${c ? '<br>🎁 โบนัสวิวัฒนาการ +' + c + ' ⭐' : ''}</p><div class="ktp-btns"><button class="kt-btn kt-gold" onclick="ktpClose()">เยี่ยมเลย!</button></div>`, true);
 }
@@ -12343,6 +12407,43 @@ document.addEventListener('keydown', e => {
   else if (e.key === 'Enter') { ktS.done ? ktNext() : ktSubmit(); }
 });
 function initFill() { ktInit(); }
+// ===== Admin (สำหรับทดสอบ) — แตะโลโก้ KOTOMON 5 ครั้งติด แล้วใส่รหัส =====
+const KT_ADMIN_CODE = 'admin1234';
+let ktAdmTaps = 0, ktAdmT = null;
+function ktAdminTap() {
+  ktAdmTaps++; clearTimeout(ktAdmT); ktAdmT = setTimeout(() => { ktAdmTaps = 0; }, 1500);
+  if (ktAdmTaps < 5) return; ktAdmTaps = 0;
+  const c = prompt('รหัส Admin'); if (c === null) return;
+  if (c === KT_ADMIN_CODE) ktAdminSheet(); else ktSay('รหัสไม่ถูกต้อง');
+}
+function ktAdminSheet(msg) {
+  const p = ktpAct();
+  ktpSheet(`<h3>🛠 Admin (ทดสอบ)</h3><p class="kt-note">ตัวหลัก: ${p ? ktEsc(p.name) + ' · Lv.' + p.lv + ' · ' + KTP_STAGES[ktpStage(p.lv)].n : 'ยังไม่มี (ปลดล็อกสัตว์ก่อน)'}${msg ? '<br><b>' + ktEsc(msg) + '</b>' : ''}</p>
+    <div class="ktp-btns">${[1, 9, 10, 19, 20, 29, 30].map(n => `<button class="kt-btn kt-purple" onclick="ktAdmLv(${n})">Lv.${n}</button>`).join('')}</div>
+    <div class="ktp-btns"><input id="ktAdmIn" type="number" min="1" max="30" class="ktp-in" placeholder="เลเวล 1–30"><button class="kt-btn kt-gold" onclick="ktAdmLv(+document.getElementById('ktAdmIn').value)">ตั้งเลเวล</button></div>
+    <div class="ktp-btns"><select id="ktAdmSp" class="ktp-in">${KTP_SPECIES.map(s => `<option value="${s.id}" ${p && p.sp === s.id ? 'selected' : ''}>${s.rar} · ${s.name}</option>`).join('')}</select><button class="kt-btn kt-green" onclick="ktAdmPick()">ตั้งเป็นตัวหลัก</button></div>
+    <div class="ktp-btns"><button class="kt-btn kt-blue" onclick="ktAdmAll()">🐾 ปลดล็อกสัตว์ทุกตัว</button><button class="kt-btn kt-blue" onclick="ktAdmLvAll(30)">ทุกตัว Lv.30</button><button class="kt-btn kt-blue" onclick="ktAdmCoins(100)">+100 ⭐</button><button class="kt-btn kt-blue" onclick="ktAdmFull()">เติมสถานะเต็ม</button></div>
+    <div class="ktp-btns"><button class="kt-btn kt-red" onclick="ktpClose()">ปิด</button></div>`, true);
+}
+function ktAdmLv(n) {
+  const p = ktpAct(); n = Math.max(1, Math.min(30, Math.floor(n) || 0));
+  if (!p) return ktAdminSheet('ยังไม่มีตัวหลัก'); if (!n) return;
+  const old = p.lv; p.lv = n; p.xp = 0; delete p.xf;
+  if (ktpStage(n) > ktpStage(old)) ktp.evo = { sp: p.sp, from: ktpStage(old), to: ktpStage(n), adm: true };
+  ktpSave(); ktpClose();
+}
+function ktAdmPick() {
+  const id = document.getElementById('ktAdmSp').value;
+  if (!ktp.pets[id]) ktp.pets[id] = { sp: id, name: ktpSp(id).name, lv: 1, xp: 0, since: ktpDay() };
+  ktp.active = id; ktp.hasEgg = true; ktpSave(); ktAdminSheet('ตั้ง ' + ktp.pets[id].name + ' เป็นตัวหลักแล้ว');
+}
+function ktAdmAll() {
+  KTP_SPECIES.forEach(s => { if (!ktp.pets[s.id]) ktp.pets[s.id] = { sp: s.id, name: s.name, lv: 1, xp: 0, since: ktpDay() }; });
+  if (!ktp.active) ktp.active = KTP_SPECIES[0].id; ktp.hasEgg = true; ktpSave(); ktAdminSheet('ปลดล็อกครบ ' + KTP_SPECIES.length + ' ตัว');
+}
+function ktAdmLvAll(n) { Object.values(ktp.pets).forEach(p => { p.lv = n; p.xp = 0; delete p.xf; }); ktpSave(); ktAdminSheet('ตั้งทุกตัวเป็น Lv.' + n + ' (ดูได้ในสมุดภาพ)'); }
+function ktAdmCoins(n) { try { gachaState.coins += n; saveGachaState(); } catch (e) { } ktAdminSheet('+' + n + ' ⭐ (รวม ' + gachaState.coins + ')'); }
+function ktAdmFull() { ktp.hunger = ktp.clean = ktp.happy = 100; ktp.t = Date.now(); ktpSave(); ktAdminSheet('เติมสถานะเต็มแล้ว'); }
 
 // ===== ข้อเรียงคำให้เป็นประโยค =====
 const KT_ROLE = { 'は': 'หัวข้อ', 'が': 'ประธาน', 'を': 'กรรม', 'に': 'เวลา/ที่อยู่/ผู้รับ', 'で': 'สถานที่ทำ/เครื่องมือ', 'へ': 'ทิศทาง', 'と': 'กับ/และ', 'も': 'ก็/เช่นกัน' };
@@ -13213,7 +13314,7 @@ window.JP_SUPPORT_POLICY={
 
 <div id="fillBox" aria-label="KOTOMON เติมคำ">
   <div class="kt-top">
-    <div class="kt-logo"><span id="ktLogoFace"></span><b>KOTOMON</b></div>
+    <div class="kt-logo" onclick="ktAdminTap()"><span id="ktLogoFace"></span><b>KOTOMON</b></div>
     <div class="kt-banner">📖 <span id="ktBanner">เติมคำให้ถูกต้อง</span></div>
     <button class="kt-btn kt-blue" id="ktSndBtn" onclick="ktToggleSnd()" title="เปิด/ปิดเสียง">🔊</button><button class="kt-btn kt-red" onclick="ktBack()">⬅ กลับ</button>
   </div>
@@ -13235,5 +13336,54 @@ window.JP_SUPPORT_POLICY={
   <div class="kt-mascot" id="ktMascot"><div class="kt-say" id="ktSay"></div><div id="ktMasImg"></div></div>
 </div>
 
+<script id="kt-rar-theme-js">
+/* ธีม SR/SSR ของโหมดเติมคำ — ครอบฟังก์ชันเดิม ไม่แก้ตรรกะเกม/รางวัล */
+(function(){
+const ACC={kitsune:['#ff6a4a','#ffc2b0'],ryu:['#2fd08a','#b6ffe0'],unicorn:['#ff7fc8','#ffd0ec'],maneki:['#ffc933','#fff0a8'],hou:['#ff7a30','#ffd08a']};
+const $=id=>document.getElementById(id);
+function cur(){try{const p=ktpAct();return p?{p:p,sp:ktpSp(p.sp)}:null}catch(e){return null}}
+function rarNow(){const c=cur();return c&&(c.sp.rar==='SR'||c.sp.rar==='SSR')?c.sp.rar:''}
+function fx(rar){
+  const st=document.querySelector('#fillBox .kt-stage');let f=$('ktFx');
+  if(!f){f=document.createElement('div');f.id='ktFx';f.className='kt-fx';st.insertBefore(f,$('ktMain'))}
+  if(f.dataset.r===rar)return;f.dataset.r=rar;let h='';
+  if(rar==='SR'){h='<i class="fx-moon"></i><i class="fx-hill"></i>';for(let i=0;i<22;i++)h+='<i class="fx-star" style="left:'+((i*37+11)%100)+'%;top:'+((i*23+5)%62)+'%;animation-delay:'+((i%7)*.45)+'s;--s:'+(i%4===0?4:2)+'px"></i>';h+='<i class="fx-shoot"></i>'}
+  else if(rar==='SSR'){h='<i class="fx-sun"></i><i class="fx-hill"></i><i class="fx-lan l1"></i><i class="fx-lan l2"></i>';for(let i=0;i<20;i++)h+='<i class="fx-ember" style="left:'+((i*29+7)%100)+'%;animation-delay:'+((i%9)*.7)+'s;animation-duration:'+(5+i%5)+'s"></i>'}
+  f.innerHTML=h;
+}
+function theme(){
+  const b=$('fillBox');if(!b)return;const rar=rarNow(),c=cur(),scr=ktS.screen;
+  if(rar){const a=ACC[c.sp.id]||['#a88bff','#e0d4ff'];b.dataset.rar=rar;b.style.setProperty('--ta',a[0]);b.style.setProperty('--tg',a[1]);fx(rar)}
+  else delete b.dataset.rar;
+  b.classList.toggle('kt-on',!!rar&&scr!=='home');b.dataset.scr=scr;
+  if(!rar||scr==='home')return;
+  if(scr==='play'&&(ktS.streak||0)>=3){const bar=$('ktCardBar'),e=document.createElement('span');e.className='kt-combo';e.textContent='🔥 ×'+ktS.streak;bar.insertBefore(e,bar.querySelector('.kt-seg'))}
+  if(scr==='result'){
+    const pass=ktS.res.filter(x=>x===true).length>=ktS.passAt;b.dataset.pass=pass?'1':'0';
+    const res=document.querySelector('#ktBody .kt-res');
+    if(pass&&res&&!res.querySelector('.kt-ribbon')){const r=document.createElement('div');r.className='kt-ribbon';r.textContent='✦ '+c.p.name+' ('+rar+') ภูมิใจในตัวคุณ ✦';res.insertBefore(r,res.firstChild)}
+  }else b.dataset.pass='0';
+}
+function burst(){
+  const el=document.querySelector('#fillBox .kt-ch.right'),st=document.querySelector('#fillBox .kt-stage'),rar=rarNow();if(!el||!st||!rar)return;
+  const r=el.getBoundingClientRect(),s=st.getBoundingClientRect(),n=rar==='SSR'?18:12,w=document.createElement('div');
+  w.className='kt-burst';w.style.left=(r.left-s.left+r.width/2)+'px';w.style.top=(r.top-s.top+r.height/2)+'px';
+  let h=rar==='SSR'?'<b class="ring"></b>':'';
+  for(let i=0;i<n;i++){const a=i/n*6.283,d=60+(i%3)*28;h+='<i style="--dx:'+Math.cos(a)*d+'px;--dy:'+Math.sin(a)*d+'px">'+(rar==='SSR'&&i%2?'●':'✦')+'</i>'}
+  w.innerHTML=h;st.appendChild(w);setTimeout(()=>w.remove(),1000);
+}
+function intro(){
+  const rar=rarNow(),c=cur(),st=document.querySelector('#fillBox .kt-stage');if(!rar||!st)return;
+  const old=st.querySelector('.kt-intro');if(old)old.remove();
+  const e=document.createElement('div');e.className='kt-intro';
+  e.innerHTML='<div class="pet">'+ktpSvg(c.p.sp,'happy','',c.p.lv)+'</div><div><b>'+rar+'</b><span>'+ktEsc(c.p.name)+' ออกโรง!</span><small>'+ktEsc(KTP_PERK[rar].tx)+'</small></div>';
+  st.appendChild(e);setTimeout(()=>e.remove(),1900);
+}
+const _r=ktRender;ktRender=function(){_r.apply(this,arguments);try{theme()}catch(e){}};
+const _s=ktSubmit;ktSubmit=function(){const was=ktS.done;_s.apply(this,arguments);if(!was&&ktS.done&&ktS.res[ktS.i]===true)try{burst()}catch(e){}};
+const _a=ktStart;ktStart=function(){_a.apply(this,arguments);if(ktS.screen==='play')try{intro()}catch(e){}};
+const _b=ktStartReview;ktStartReview=function(){_b.apply(this,arguments);if(ktS.screen==='play')try{intro()}catch(e){}};
+})();
+</script>
 </body>
 </html>
