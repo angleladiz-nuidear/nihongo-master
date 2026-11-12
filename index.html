@@ -2073,6 +2073,11 @@
 .kth-t-SSR::before{opacity:1;background:radial-gradient(ellipse at 50% 10%,#fff1a8dd,#ffb40066 55%,#8a2a0055)}.kth-t-SSR::after{content:"🏮 ✨ 🎆 ✨ 🏮"}
 .kth-t-SSR .kth-rug{background:#7a1020;border-color:#ffd24a;box-shadow:0 0 18px #ffd24a}
 .ktp-fin{animation:ktpGlow 1.8s ease-in-out infinite alternate}@keyframes ktpGlow{from{filter:drop-shadow(0 0 3px #ffd24a)}to{filter:drop-shadow(0 0 10px #ffb400)}}
+.ktp-wave{transform-box:fill-box;transform-origin:50% 100%;animation:ktpWv .8s ease-in-out infinite alternate}@keyframes ktpWv{from{transform:rotate(-16deg)}to{transform:rotate(16deg)}}
+.ktp-flick{animation:ktpFl .5s ease-in-out infinite alternate}@keyframes ktpFl{from{opacity:.65}to{opacity:1}}
+.ktp-float{animation:ktpFt 2s ease-in-out infinite alternate}@keyframes ktpFt{from{transform:translateY(-.6px)}to{transform:translateY(.6px)}}
+.ktp-spin{transform-box:fill-box;transform-origin:center;animation:ktpSp 14s linear infinite}@keyframes ktpSp{to{transform:rotate(360deg)}}
+.ktp-ember{animation:ktpEm 1.8s linear infinite}@keyframes ktpEm{from{transform:translateY(0);opacity:1}to{transform:translateY(-5px);opacity:0}}
 /* ===== KOTOMON เติมคำ ===== */
 #fillBox{position:fixed;inset:0;z-index:9000;display:none;flex-direction:column;background:#1b1240;font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic UI','Sarabun','Noto Sans Thai',system-ui,sans-serif;color:#3a2412;user-select:none;-webkit-user-select:none}
 #fillBox *{box-sizing:border-box}
@@ -11648,20 +11653,57 @@ function ktpRects(G, pal) {
 }
 const KTP_STAGES = [{ n: 'ทารก' }, { n: 'วัยเยาว์' }, { n: 'เต็มวัย' }, { n: 'สมบูรณ์' }], KTP_STAGE_LV = [1, 10, 20, 30], KTP_EVO_COIN = [0, 5, 10, 20];
 function ktpStage(lv) { return lv >= 30 ? 3 : lv >= 20 ? 2 : lv >= 10 ? 1 : 0; }
+function ktpWing(side, f, fill, stroke, extra) {
+  const ax = side < 0 ? 2.5 : 12.5, ay = 8, o = side < 0 ? -1 : 1, P = [[0, 0], [4.6, -8.2], [3.7, -2.6], [5.5, -.8], [3.2, 1.4], [4.6, 4.6], [0, 3.6]];
+  return `<path ${extra || ''} d="M${P.map(([dx, dy]) => (ax + o * dx * f).toFixed(2) + ' ' + (ay + dy * f).toFixed(2)).join(' L')} Z" fill="${fill}" stroke="${stroke}" stroke-width=".3"/>`;
+}
+function ktpExtra(id, st, R) {
+  const f = [0, .55, .8, 1][st], star = (x, y, c) => `<g class="ktp-flick">${R(x, y + .4, 1.2, .4, c)}${R(x + .4, y, .4, 1.2, c)}</g>`;
+  let pre = '', post = '';
+  const tail = (x, y) => `<g fill="#fbfbff" stroke="#6a4a58" stroke-width=".3">${R(x, y + 1.5, 2.4, 4, '#fbfbff')}${R(x + .8, y, 2.2, 3, '#fbfbff')}</g>${R(x + 1.6, y - .1, 1.4, 1.3, '#e0483a')}`;
+  const flame = (x, y, c1, c2) => `<g class="ktp-flick">${R(x, y + 1, 1.4, 1.8, c1)}${R(x + .3, y, .8, 1.3, c2)}</g>`;
+  if (id === 'kitsune') {
+    pre = tail(15, 0) + (st >= 2 ? tail(15.5, 9) : '') + (st >= 3 ? tail(13, -2.5) + tail(16.5, 4.5) : '');
+    if (st >= 2) post += flame(1, -2.5, '#6fb8ff', '#bfe4ff');
+    if (st >= 3) post += flame(8, -3.6, '#6fb8ff', '#bfe4ff') + flame(14, -2.5, '#6fb8ff', '#bfe4ff') + star(-1.5, 7, '#bfe4ff');
+  } else if (id === 'ryu') {
+    pre = ktpWing(-1, f, '#3fae7a', '#1d4a35') + ktpWing(1, f, '#3fae7a', '#1d4a35');
+    if (st >= 2) post += `<g class="ktp-float"><circle cx="17.5" cy="2.5" r="1.3" fill="#ffd24a" stroke="#c9a02a" stroke-width=".25"/><circle cx="17.1" cy="2.1" r=".4" fill="#fff"/></g>`;
+    if (st >= 3) post += `<ellipse cx="4" cy="16.3" rx="2.8" ry=".9" fill="#fff" opacity=".9"/><ellipse cx="13" cy="16.3" rx="2.8" ry=".9" fill="#fff" opacity=".9"/><path class="ktp-flick" d="M0 -1 L-1.2 1.2 L0 1.2 L-.8 3.4 L1.4 .8 L.2 .8 Z" fill="#ffe94a"/>`;
+  } else if (id === 'unicorn') {
+    if (st >= 3) pre += ['#ff5a5a', '#ffb04a', '#ffe94a', '#6fe08a', '#6fb8ff'].map((c, i) => { const r = 9.5 - i * .8; return `<path d="M${8 - r} 5 A${r} ${r * .85} 0 0 1 ${8 + r} 5" fill="none" stroke="${c}" stroke-width=".8" opacity=".9"/>`; }).join('');
+    if (st >= 2) pre += ktpWing(-1, f, '#ffffff', '#c9a6e0') + ktpWing(1, f, '#ffffff', '#c9a6e0');
+    post = star(2, 0, '#ffd24a') + star(15, 1, '#ff9ad0') + (st >= 2 ? star(16.5, 10, '#ffd24a') : '') + (st >= 3 ? star(-1.5, 9, '#ff9ad0') + star(8, -3.6, '#fff6a0') : '');
+  } else if (id === 'maneki') {
+    if (st >= 3) pre += `<g class="ktp-spin" opacity=".4">${[...Array(12)].map((_, i) => `<line x1="8" y1="8" x2="${(8 + 14 * Math.cos(i * Math.PI / 6)).toFixed(2)}" y2="${(8 + 14 * Math.sin(i * Math.PI / 6)).toFixed(2)}" stroke="#ffd24a" stroke-width=".7"/>`).join('')}</g>`;
+    post = `<g class="ktp-wave" stroke="#7a4a10" stroke-width=".25">${R(14.8, 1, 2.4, 3.9, '#ffe27a')}${R(15.4, 2.4, 1.2, 1.2, '#ff9a8a')}</g>`;
+    const coin = (x, y) => `<g class="ktp-float"><ellipse cx="${x}" cy="${y}" rx="1" ry="1.5" fill="#ffd24a" stroke="#d9941a" stroke-width=".3"/><rect x="${x - .3}" y="${y - .7}" width=".6" height="1.4" fill="#d9941a"/></g>`;
+    if (st >= 2) post += coin(0, 5) + coin(17.5, 11);
+    if (st >= 3) post += coin(-1, 11) + coin(17, 15) + `<circle cx="8" cy="-1.6" r="1.9" fill="#c81e1e" stroke="#ffd24a" stroke-width=".35"/><text x="8" y="-.8" font-size="2.3" fill="#ffd24a" text-anchor="middle">福</text>`;
+  } else if (id === 'hou') {
+    pre = `<g class="ktp-flick">${ktpWing(-1, f * 1.05, '#ff8a3a', '#c8281e') + ktpWing(1, f * 1.05, '#ff8a3a', '#c8281e') + ktpWing(-1, f * .6, '#ffe94a', 'none') + ktpWing(1, f * .6, '#ffe94a', 'none')}</g>`;
+    if (st >= 3) pre = `<g class="ktp-spin"><circle cx="8" cy="8" r="10.2" fill="none" stroke="#ffb400" stroke-width=".5" stroke-dasharray="1.2 1"/></g>` + pre;
+    if (st >= 2) post += flame(7.3, -2.8, '#ffb04a', '#ffe94a');
+    if (st >= 3) post += flame(3.6, -2, '#ff6a3a', '#ffe94a') + flame(11, -2, '#ff6a3a', '#ffe94a') + [[-2, 10, 0], [17.5, 8, .6], [8, 16.5, 1.1]].map(([x, y, d]) => `<rect class="ktp-ember" style="animation-delay:${d}s" x="${x}" y="${y}" width=".8" height=".8" fill="#ffe94a"/>`).join('');
+  }
+  return { pre, post };
+}
 function ktpSvg(id, mood, cls, lv) {
   const sp = ktpSp(id); if (!sp) return '';
   const body = ktpRects(ktpGrid(sp, mood), sp.pal), R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
   if (!(lv >= 1)) return `<svg class="kt-px ${cls || ''}" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
   const st = ktpStage(lv), S = [.66, .82, .92, 1][st], tx = (9 * (1 - S)).toFixed(2), ty = (16 * (1 - S)).toFixed(2);
+  const X = (sp.rar === 'SR' || sp.rar === 'SSR') && st >= 1 ? ktpExtra(id, st, R) : null;
   let pre = '', post = '';
   if (st === 0) post = R(8.5, 4.4, 1, 1, '#ffe27a') + R(8.5, 3.6, .6, .8, '#ffe27a');
-  if (st === 1) post = R(9, 1.6, .6, 1.3, '#3fae4a') + R(9.6, 1.6, 1.5, .7, '#6fd66f') + R(7.9, 2, 1.1, .7, '#6fd66f');
-  if (st === 2) post = R(7.1, .2, 1.8, 1.2, '#4aa0ff') + R(9.1, .2, 1.8, 1.2, '#4aa0ff') + R(8.6, .5, .8, .7, '#ffd24a');
-  if (st === 3) {
-    pre = '<defs><radialGradient id="ktpAura"><stop offset="0" stop-color="#fff3a0" stop-opacity=".9"/><stop offset="1" stop-color="#ffb400" stop-opacity="0"/></radialGradient></defs><circle cx="9" cy="9" r="9" fill="url(#ktpAura)"/>';
-    post = R(6.5, .6, 5, 1, '#ffd24a') + R(6.5, 0, 1, .7, '#ffd24a') + R(8.5, 0, 1, .7, '#ffd24a') + R(10.5, 0, 1, .7, '#ffd24a') + R(8.6, .8, .8, .6, '#e8334a') + R(1, 3, .9, .9, '#fff6a0') + R(16, 5, .9, .9, '#fff6a0') + R(2, 12, .9, .9, '#fff6a0') + R(15.5, 13, .9, .9, '#fff6a0');
+  if (!X) {
+    if (st === 1) post = R(9, 1.6, .6, 1.3, '#3fae4a') + R(9.6, 1.6, 1.5, .7, '#6fd66f') + R(7.9, 2, 1.1, .7, '#6fd66f');
+    if (st === 2) post = R(7.1, .2, 1.8, 1.2, '#4aa0ff') + R(9.1, .2, 1.8, 1.2, '#4aa0ff') + R(8.6, .5, .8, .7, '#ffd24a');
+    if (st === 3) post = R(6.5, .6, 5, 1, '#ffd24a') + R(6.5, 0, 1, .7, '#ffd24a') + R(8.5, 0, 1, .7, '#ffd24a') + R(10.5, 0, 1, .7, '#ffd24a') + R(8.6, .8, .8, .6, '#e8334a') + R(1, 3, .9, .9, '#fff6a0') + R(16, 5, .9, .9, '#fff6a0') + R(2, 12, .9, .9, '#fff6a0') + R(15.5, 13, .9, .9, '#fff6a0');
   }
-  return `<svg class="kt-px ${cls || ''} ${st === 3 ? 'ktp-fin' : ''}" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">${pre}<g transform="translate(${tx} ${ty}) scale(${S})">${body}</g>${post}</svg>`;
+  if (st === 3) { const pu = sp.rar === 'SR'; pre = `<defs><radialGradient id="ktpAura${pu ? 'S' : ''}"><stop offset="0" stop-color="${pu ? '#e0ccff' : '#fff3a0'}" stop-opacity=".9"/><stop offset="1" stop-color="${pu ? '#8a5cff' : '#ffb400'}" stop-opacity="0"/></radialGradient></defs><circle cx="9" cy="8.5" r="${X ? 11 : 9}" fill="url(#ktpAura${pu ? 'S' : ''})"/>`; }
+  const vb = X ? '-3.5 -4 25 21' : '0 0 18 16';
+  return `<svg class="kt-px ${cls || ''} ${st === 3 ? 'ktp-fin' : ''}" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${pre}<g transform="translate(${tx} ${ty}) scale(${S})">${X ? X.pre : ''}${body}${X ? X.post : ''}</g>${X ? '' : post}</svg>`;
 }
 function ktpEvoCheck(p, oldLv) { if (ktpStage(p.lv) > ktpStage(oldLv)) { ktp.evo = { sp: p.sp, from: ktpStage(oldLv), to: ktpStage(p.lv) }; ktpSave(); } }
 function ktpEvoSheet() {
@@ -11863,7 +11905,7 @@ function ktpConfirmName(sp) {
 // ---- สมุดภาพ ----
 function ktpBookSheet() {
   const cells = KTP_SPECIES.map(s => { const p = ktp.pets[s.id]; return p ? `<button class="ktp-card ${ktp.active === s.id ? 'on' : ''}" style="border-color:${KTP_RAR[s.rar].c}" onclick="ktpSetActive('${s.id}')">${ktpSvg(s.id, undefined, '', p.lv)}<b>${ktEsc(p.name)}</b><small>Lv.${p.lv} · <span style="color:${KTP_RAR[s.rar].c}">${s.rar}</span>${ktp.active === s.id ? ' ⭐' : ''}</small></button>` : `<div class="ktp-card lock"><div class="sil">${ktpSvg(s.id)}</div><b>???</b><small style="color:${KTP_RAR[s.rar].c}">${s.rar}</small></div>`; }).join('');
-  ktpSheet(`<h3>📖 สมุดภาพ (${Object.keys(ktp.pets).length}/${KTP_SPECIES.length})</h3><p class="kt-note">แตะตัวละครเพื่อเปลี่ยนเป็นเพื่อนหลัก (ค่าหิว/สะอาด/สุขใจใช้ร่วมกัน)<br>โบนัสตามความหายาก — R: XP ×1.1 · SR: XP ×1.25 เหรียญ +1 ฉากบ้านแสงดาว · SSR: XP ×1.5 เหรียญ +2 ฉากวิหารทอง · SR/SSR มีคำพูดเฉพาะตัว<br>🌱 วิวัฒนาการที่ Lv.10 / 20 / 30 (ทารก → วัยเยาว์ → เต็มวัย → สมบูรณ์) รับโบนัส +5 / +10 / +20 ⭐</p><div class="ktp-grid">${cells}</div><div class="ktp-btns"><button class="kt-btn kt-blue" onclick="ktpClose()">ปิด</button></div>`);
+  ktpSheet(`<h3>📖 สมุดภาพ (${Object.keys(ktp.pets).length}/${KTP_SPECIES.length})</h3><p class="kt-note">แตะตัวละครเพื่อเปลี่ยนเป็นเพื่อนหลัก (ค่าหิว/สะอาด/สุขใจใช้ร่วมกัน)<br>โบนัสตามความหายาก — R: XP ×1.1 · SR: XP ×1.25 เหรียญ +1 ฉากบ้านแสงดาว · SSR: XP ×1.5 เหรียญ +2 ฉากวิหารทอง · SR/SSR มีคำพูดเฉพาะตัว<br>🌱 วิวัฒนาการที่ Lv.10 / 20 / 30 (ทารก → วัยเยาว์ → เต็มวัย → สมบูรณ์) รับโบนัส +5 / +10 / +20 ⭐<br>💎 SR/SSR มีร่างพิเศษเฉพาะตัว: จิ้งจอกหลายหาง · มังกรปีก+ไข่มุก · ยูนิคอร์นปีก+รุ้ง · แมวกวักพลังโชค · หงส์ไฟ</p><div class="ktp-grid">${cells}</div><div class="ktp-btns"><button class="kt-btn kt-blue" onclick="ktpClose()">ปิด</button></div>`);
 }
 function ktpSetActive(id) { if (!ktp.pets[id]) return; ktp.active = id; ktpSave(); ktSfx('pop'); ktpBookSheet(); }
 // ---- กาชา ----
