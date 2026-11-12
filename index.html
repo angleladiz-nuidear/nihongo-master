@@ -2383,6 +2383,29 @@ linear-gradient(var(--k),var(--k)) bottom right/var(--l) var(--w) no-repeat,line
 @keyframes k48Tl{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
 @media (prefers-reduced-motion:reduce){[class^=k48-],[class*=" k48-"]{animation:none!important}}
 </style>
+<style id="kt-home-theme">
+/* ===== หน้าบ้านสัตว์เลี้ยง SR/SSR: ธีมเฉพาะตัว ===== */
+.fx-ground{display:none;left:0;right:0;bottom:0;height:26%;border-top:4px solid var(--bd)}
+#fillBox[data-scr=home] .fx-ground{display:block}
+#fillBox[data-scr=home] .fx-torii{bottom:23%}
+#fillBox[data-scr=home] .fx-hill,#fillBox[data-scr=home] .fx-mt{bottom:25%}
+#fillBox[data-scr=home] .fx-fire{bottom:20%}
+#fillBox[data-scr=home] .fx-sun{bottom:16%}
+#fillBox[data-scr=home] .fx-heat{height:75%}
+#fillBox.kt-on .kth-room::before,#fillBox.kt-on .kth-room::after{display:none}
+#fillBox.kt-on .kth-rug{background:var(--c1);border-color:var(--bd);box-shadow:0 0 16px var(--ta)}
+#fillBox[data-sp=ryu].kt-on .kth-rug{background:#d8fff0;border-color:#7affc4}
+#fillBox[data-sp=unicorn].kt-on .kth-rug{background:#ffd0ec;border-color:#fff}
+#fillBox.kt-on .kth-chip,#fillBox.kt-on .kth-bars{background:var(--cd);border-color:var(--bd);box-shadow:0 3px 0 #0004,0 0 12px var(--ta)}
+#fillBox.kt-on .kth-act:not(.kth-gacha){background:linear-gradient(#fff,var(--cd));border-color:var(--cb);box-shadow:0 4px 0 var(--cs)}
+#fillBox[data-sp=kitsune] .fx-ground{background:repeating-linear-gradient(90deg,transparent 0 62px,#0005 62px 64px),linear-gradient(#4a1c2e,#220c18);box-shadow:0 -6px 18px #ff6a4a44}
+#fillBox[data-sp=ryu] .fx-ground{left:-8%;right:-8%;border:0;border-radius:50% 50% 0 0/36px 36px 0 0;background:linear-gradient(#f4fffb,#a8e8d0);box-shadow:0 -4px 22px #b6ffe088}
+#fillBox[data-sp=unicorn] .fx-ground{left:-8%;right:-8%;border:0;border-radius:50% 50% 0 0/30px 30px 0 0;background:radial-gradient(circle,#fff 0 2px,transparent 3px) 0 0/30px 24px,radial-gradient(circle,#ff9ad0 0 2px,transparent 3px) 15px 12px/30px 24px,linear-gradient(#a6ef94,#4fb56a)}
+#fillBox[data-sp=maneki] .fx-ground{background:repeating-linear-gradient(90deg,transparent 0 78px,#0004 78px 80px),linear-gradient(#e0ac26,#8a5a00)}
+#fillBox[data-sp=hou] .fx-ground{border-top-color:#ff7a30;background:repeating-linear-gradient(100deg,transparent 0 44px,#ff7a3066 44px 46px),linear-gradient(#3a1008,#150403);box-shadow:0 -6px 24px #ff7a3077}
+#fillBox[data-sp=kitsune] .fx-ground::before,#fillBox[data-sp=kitsune] .fx-ground::after{content:"";position:absolute;top:-52px;width:34px;height:52px;background:linear-gradient(#8a7a8a,#8a7a8a) 0 0/34px 9px no-repeat,linear-gradient(#ffb060,#ff7a30) 8px 11px/18px 14px no-repeat,linear-gradient(#6a5a6a,#6a5a6a) 13px 25px/8px 20px no-repeat,linear-gradient(#8a7a8a,#8a7a8a) 4px 44px/26px 8px no-repeat;filter:drop-shadow(0 0 8px #ff9a5a)}
+#fillBox[data-sp=kitsune] .fx-ground::before{left:6%}#fillBox[data-sp=kitsune] .fx-ground::after{right:6%}
+</style>
 </head>
 <body>
 
@@ -11776,11 +11799,11 @@ function ktpExtra(id, st, R) {
   const tail = (x, y) => `<g fill="#fbfbff" stroke="#6a4a58" stroke-width=".3">${R(x, y + 1.5, 2.4, 4, '#fbfbff')}${R(x + .8, y, 2.2, 3, '#fbfbff')}</g>${R(x + 1.6, y - .1, 1.4, 1.3, '#e0483a')}`;
   const flame = (x, y, c1, c2) => `<g class="ktp-flick">${R(x, y + 1, 1.4, 1.8, c1)}${R(x + .3, y, .8, 1.3, c2)}</g>`;
   if (id === 'kitsune') {
-    pre = tail(15, 0) + (st >= 2 ? tail(15.5, 9) : '') + (st >= 3 ? tail(13, -2.5) + tail(16.5, 4.5) : '');
+    pre = '';
     if (st >= 2) post += flame(1, -2.5, '#6fb8ff', '#bfe4ff');
     if (st >= 3) post += flame(8, -3.6, '#6fb8ff', '#bfe4ff') + flame(14, -2.5, '#6fb8ff', '#bfe4ff') + star(-1.5, 7, '#bfe4ff');
   } else if (id === 'ryu') {
-    pre = ktpWing(-1, f, '#3fae7a', '#1d4a35') + ktpWing(1, f, '#3fae7a', '#1d4a35');
+    pre = '';
     if (st >= 2) post += `<g class="ktp-float"><circle cx="17.5" cy="2.5" r="1.3" fill="#ffd24a" stroke="#c9a02a" stroke-width=".25"/><circle cx="17.1" cy="2.1" r=".4" fill="#fff"/></g>`;
     if (st >= 3) post += `<ellipse cx="4" cy="16.3" rx="2.8" ry=".9" fill="#fff" opacity=".9"/><ellipse cx="13" cy="16.3" rx="2.8" ry=".9" fill="#fff" opacity=".9"/><path class="ktp-flick" d="M0 -1 L-1.2 1.2 L0 1.2 L-.8 3.4 L1.4 .8 L.2 .8 Z" fill="#ffe94a"/>`;
   } else if (id === 'unicorn') {
@@ -11803,7 +11826,7 @@ function ktpExtra(id, st, R) {
 }
 function ktpSvg(id, mood, cls, lv) {
   const sp = ktpSp(id); if (!sp) return '';
-  const body = (sp.rar === 'SSR' && window.ktp48 && ktp48(id, mood)) || ktpRects(ktpGrid(sp, mood), sp.pal), R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+  const body = ((sp.rar === 'SSR' || sp.rar === 'SR') && window.ktp48 && ktp48(id, mood, ktpStage(lv))) || ktpRects(ktpGrid(sp, mood), sp.pal), R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
   if (!(lv >= 1)) return `<svg class="kt-px ${cls || ''}" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
   const sg = ktpStage(lv), st = KTP_VT[sg], S = KTP_SC[sg], tx = (9 * (1 - S)).toFixed(2), ty = (16 * (1 - S)).toFixed(2);
   const X = (sp.rar === 'SR' || sp.rar === 'SSR') && st >= 1 ? ktpExtra(id, st, R) : null;
@@ -11887,7 +11910,8 @@ const KTP_SP_TALK = {
 };
 function ktpPerk() { let r = 'N'; try { const p = ktpAct(); if (p) r = ktpSp(p.sp).rar; } catch (e) { } return KTP_PERK[r] || KTP_PERK.N; }
 function ktpRarNow() { try { const p = ktpAct(); return p ? ktpSp(p.sp).rar : 'N'; } catch (e) { return 'N'; } }
-function ktpHomeName() { return KTP_HOME[ktpRarNow()] || KTP_HOME.N; }
+const KTP_HOME_SP = { kitsune: '⛩️ ศาลเจ้าอินาริยามค่ำ', ryu: '🌫️ ขุนเขาหยกมังกร', unicorn: '🌈 ทุ่งสายรุ้งแสนฝัน', maneki: '🏮 วิหารโชคลาภ', hou: '🔥 ทะเลเพลิงฟีนิกซ์' };
+function ktpHomeName() { const p = ktpAct(); return (p && KTP_HOME_SP[p.sp] && ktpRarNow() !== 'N' && ktpRarNow() !== 'R' ? KTP_HOME_SP[p.sp] : null) || KTP_HOME[ktpRarNow()] || KTP_HOME.N; }
 function ktpDay() { return new Date().toISOString().slice(0, 10); }
 function ktpNew() { return { v: 1, hasEgg: false, pets: {}, active: null, hunger: 70, clean: 70, happy: 70, t: Date.now(), items: {}, free: { d: ktpDay(), feed: 0, bath: 0, play: 0 }, pity: 0, pulls: 0 }; }
 function ktpLoad() {
@@ -13406,13 +13430,13 @@ function fx(id){
   else if(id==='unicorn'){h=stars(8)+'<i class="fx-rainbow"></i>'+cl(3,'#ffffff55')+'<i class="fx-hill"></i>';for(let i=0;i<14;i++)h+='<i class="fx-spk" style="left:'+((i*31+9)%96)+'%;animation-delay:-'+((i%7)*.9)+'s;animation-duration:'+(5+i%4)+'s;--sc:'+['#fff','#ff9ad0','#ffe94a','#bfe4ff'][i%4]+'">'+(i%3?'✦':'♥')+'</i>'}
   else if(id==='maneki'){h='<i class="fx-sun"></i><i class="fx-hill"></i><i class="fx-lan l1"></i><i class="fx-lan l2"></i>';for(let i=0;i<12;i++)h+='<i class="fx-coin" style="left:'+((i*23+8)%96)+'%;animation-delay:-'+((i%6)*1.3)+'s;animation-duration:'+(6+i%4)+'s"></i>'}
   else if(id==='hou'){h='<i class="fx-heat"></i><i class="fx-sun"></i>'+emb(26)+'<div class="fx-fire">';for(let i=0;i<9;i++)h+='<i class="fx-fl" style="left:'+(i*11.5-3)+'%;height:'+(70+(i*37)%60)+'%;animation-delay:-'+(i*.23)+'s"></i>';h+='</div>'}
-  f.innerHTML=h;
+  h+='<i class="fx-ground"></i>';f.innerHTML=h;
 }
 function theme(){
   const b=$('fillBox');if(!b)return;const rar=rarNow(),c=cur(),scr=ktS.screen;
   if(rar){const a=ACC[c.sp.id]||['#a88bff','#e0d4ff'];b.dataset.rar=rar;b.dataset.sp=c.sp.id;b.style.setProperty('--ta',a[0]);b.style.setProperty('--tg',a[1]);fx(c.sp.id)}
   else{delete b.dataset.rar;delete b.dataset.sp}
-  b.classList.toggle('kt-on',!!rar&&scr!=='home');b.dataset.scr=scr;
+  b.classList.toggle('kt-on',!!rar);b.dataset.scr=scr;
   if(!rar||scr==='home')return;
   if(scr==='play'&&(ktS.streak||0)>=3){const bar=$('ktCardBar'),e=document.createElement('span');e.className='kt-combo';e.textContent='🔥 ×'+ktS.streak;bar.insertBefore(e,bar.querySelector('.kt-seg'))}
   if(scr==='result'){
@@ -13436,6 +13460,7 @@ function intro(){
   e.innerHTML='<div class="pet">'+ktpSvg(c.p.sp,'happy','',c.p.lv)+'</div><div><b>'+rar+'</b><span>'+ktEsc(c.p.name)+' ออกโรง!</span><small>'+ktEsc(KTP_PERK[rar].tx)+'</small></div>';
   st.appendChild(e);setTimeout(()=>e.remove(),1900);
 }
+const _h=ktRenderHome;ktRenderHome=function(){_h.apply(this,arguments);try{theme()}catch(e){}};
 const _r=ktRender;ktRender=function(){_r.apply(this,arguments);try{theme()}catch(e){}};
 const _s=ktSubmit;ktSubmit=function(){const was=ktS.done;_s.apply(this,arguments);if(!was&&ktS.done&&ktS.res[ktS.i]===true)try{burst()}catch(e){}};
 const _a=ktStart;ktStart=function(){_a.apply(this,arguments);if(ktS.screen==='play')try{intro()}catch(e){}};
@@ -13503,11 +13528,67 @@ function hou(mood){
   if(mood==='sad'){line(M,15,10,21,8,INK);line(M,32,10,26,8,INK);pts(E,[[16,17],[16,18],[16,19]],TEAR)}
   if(mood==='think')pts(M,[[40,5],[40,6],[39,7],[40,7],[41,7],[39,8],[40,8],[41,8]],'#9fd4ff');
   return[['k48-tl',T],['k48-wl',WL],['k48-wr',WR],['k48-cr',C],['',M],['k48-bk',E]]}
-const CH={maneki,hou},cache={};
+
+function face(E,M,mood,o){const lx=Math.floor(o.cx),cy=Math.round(o.cy),I=o.ink;
+  if(mood==='happy'){const A=[[lx-3,cy+1],[lx-2,cy],[lx-1,cy-1],[lx,cy-1],[lx+1,cy-1],[lx+2,cy],[lx+3,cy+1]];both(E,A,I);both(E,A.slice(1,6).map(p=>[p[0],p[1]+1]),I);return}
+  fill(E,ell(o.cx,o.cy,o.rx,o.ry),[I],{flat:1});fill(E,ell(48-o.cx,o.cy,o.rx,o.ry),[I],{flat:1});
+  both(E,[[lx-1,cy-2],[lx-1,cy-1]],'#ffffff');
+  if(mood==='sad'){line(M,lx-3,cy-4,lx+3,cy-6,I);line(M,47-lx+3,cy-4,47-lx-3,cy-6,I);pts(E,[[lx-2,cy+4],[lx-2,cy+5],[lx-2,cy+6]],TEAR)}
+  if(mood==='think')pts(M,[[4,5],[4,6],[3,7],[4,7],[5,7],[3,8],[4,8],[5,8]],'#9fd4ff')}
+function kitsune(mood,sg){
+  const O='#6a4a58',W=['#ffffff','#ffffff','#dcd4ea'],R=['#e0483a','#ff7a5a','#a82a2a'],n=[1,1,2,3,4,6,9][sg||0],T=Z(),M=Z(),E=Z(),hd=ell(24,16,13.5,10.5),bd=ell(24,32,12,9.5);
+  for(let k=0;k<n;k++){const th=n===1?1.9*Math.PI:Math.PI*(1.06+.88*k/(n-1)),bx=24+9*Math.cos(th),by=35+5*Math.sin(th),tx=24+23*Math.cos(th),ty=31+28*Math.sin(th),w=n<3?4.4:n<5?3.8:n<7?3.3:2.8;
+    fill(T,fea(bx,by,tx,ty,w),W,{edge:O});fill(T,fea(bx+(tx-bx)*.66,by+(ty-by)*.66,tx,ty,w*.75),[R[0]],{flat:1,clip:fea(bx,by,tx,ty,w-.9)})}
+  fill(M,bd,W,{edge:O});fill(M,ell(24,34,7,6),['#ffe9ee'],{flat:1});
+  [18.5,29.5].forEach(x=>fill(M,ell(x,41,4,2.6),['#6a4a58','#8a6a78','#4a3040'],{edge:'#3a2030'}));
+  fill(M,ell(24,26.5,10.5,2.4),R,{edge:'#6a1a1a'});fill(M,poly([[27,27],[33,31],[30,35],[25,28.5]]),R,{edge:'#6a1a1a'});
+  fill(M,poly([[11,19],[6.5,24],[14,24]]),W,{edge:O});fill(M,poly([[37,19],[41.5,24],[34,24]]),W,{edge:O});
+  fill(M,poly([[11,11],[10,.8],[20,6]]),W,{edge:O});fill(M,poly([[37,11],[38,.8],[28,6]]),W,{edge:O});
+  fill(M,poly([[13,9],[12.4,4.2],[17.6,7]]),['#ff7a7a'],{flat:1});fill(M,poly([[35,9],[35.6,4.2],[30.4,7]]),['#ff7a7a'],{flat:1});
+  fill(M,poly([[10,4],[10,.8],[13.2,3]]),[O],{flat:1});fill(M,poly([[38,4],[38,.8],[34.8,3]]),[O],{flat:1});
+  fill(M,hd,W,{edge:O});both(M,[[12,17],[13,18],[14,19]],'#e0483a');pts(M,[[23,6],[24,6],[23,7],[24,7],[23,8],[24,8]],'#e0483a');
+  both(M,[[13,13],[14,12],[15,12],[16,12]],'#e0483a');
+  fill(M,ell(13,21,2.4,1.3),[BLUSH],{flat:1});fill(M,ell(35,21,2.4,1.3),[BLUSH],{flat:1});
+  pts(M,[[23,19],[24,19]],'#3a2030');pts(M,[[22,20],[25,20],[23,21],[24,21]],O);
+  if(mood==='happy')pts(M,[[23,22],[24,22]],'#ff7a8a');
+  face(E,M,mood,{cx:17.5,cy:16,rx:2.2,ry:3,ink:'#3a2030'});
+  return[['k48-tl',T],['',M],['k48-bk',E]]}
+function ryu(mood){
+  const O='#1d4a35',G=['#5cc98a','#8ee6b0','#2f8a5a'],CR=['#fff0b8','#fffbe0','#e8cf80'],GD=['#ffd24a','#fff0a0','#d89a10'],WL=Z(),WR=Z(),T=Z(),M=Z(),E=Z(),hd=ell(24,15,13,10),bd=ell(24,31,11.5,9.5);
+  const wing=(L,s)=>{const X=v=>s?48-v:v;fill(L,poly([[15,24],[5,11],[8,18],[2,20],[6,25],[3,28],[13,29]].map(p=>[X(p[0]),p[1]])),['#3fae7a','#6fd8a0','#1d6a4a'],{edge:O});[[5,11],[2,20],[3,28]].forEach(t=>line(L,X(15),24,X(t[0]),t[1],O))};
+  wing(WL,0);wing(WR,1);
+  fill(T,fea(32,37,44,35,3.2),G,{edge:O});fill(T,fea(41,35,45,27,2.5),G,{edge:O});fill(T,poly([[43,29],[47,26],[46,32]]),GD,{edge:'#8a5a00'});
+  fill(M,bd,G,{edge:O});fill(M,ell(24,33,7,6.5),CR,{});[30,33,36].forEach(y=>pts(M,[[21,y],[22,y],[23,y],[24,y],[25,y],[26,y]],'#e0c070'));
+  [18,30].forEach(x=>fill(M,ell(x,41,4,2.2),G,{edge:O}));
+  fill(M,fea(18,9,13,.8,2.1),GD,{edge:'#8a5a00'});fill(M,fea(30,9,35,.8,2.1),GD,{edge:'#8a5a00'});fill(M,poly([[21,8],[24,2.5],[27,8]]),GD,{edge:'#8a5a00'});
+  fill(M,hd,G,{edge:O});fill(M,ell(24,20,7,4.3),['#7fe0a8','#b0f4cc','#4ab07a'],{edge:'#2f8a5a'});
+  pts(M,[[22,19],[25,19]],O);pts(M,[[21,22],[22,23],[23,23],[24,23],[25,23],[26,22]],O);
+  line(M,17,21,10,23,'#ffd24a');line(M,10,23,7,29,'#ffd24a');line(M,30,21,37,23,'#ffd24a');line(M,37,23,40,29,'#ffd24a');
+  both(M,[[15,10],[16,9],[17,9],[18,10]],'#2f8a5a');fill(M,ell(13.5,19,2.2,1.3),[BLUSH],{flat:1});fill(M,ell(34.5,19,2.2,1.3),[BLUSH],{flat:1});
+  if(mood==='happy')fill(M,ell(24,22.8,2.6,1.2),['#c81d2a'],{flat:1});
+  face(E,M,mood,{cx:18.5,cy:14.5,rx:2.3,ry:3.1,ink:'#1d3a2a'});
+  return[['k48-wl',WL],['k48-wr',WR],['k48-tl',T],['',M],['k48-bk',E]]}
+function unicorn(mood){
+  const O='#6a4a7a',W=['#fdfdff','#ffffff','#cfc6ea'],PK=['#ffa6d4','#ffd0ec','#e070b0'],HR=['#ffd24a','#fff6a0','#d89a10'],PE='#a04a88',T=Z(),M=Z(),E=Z(),hd=ell(24,15,12.5,10.5),bd=ell(24,32,12,9);
+  fill(T,fea(34,29,45,38,3.4),PK,{edge:PE});fill(T,fea(34,33,44,42,2.6),['#ffd0ec','#ffffff','#ffa6d4'],{edge:PE});
+  fill(M,bd,W,{edge:O});fill(M,ell(24,35,7,5.5),['#fff0fa'],{flat:1});
+  fill(M,fea(13,12,10,27,2.8),PK,{edge:PE});fill(M,fea(35,12,38,27,2.8),PK,{edge:PE});
+  [18.5,29.5].forEach(x=>{fill(M,ell(x,38.5,3.4,4.5),W,{edge:O});fill(M,ell(x,42,3.4,1.5),['#c9a6e0'],{edge:O,flat:1})});
+  fill(M,poly([[13,10],[12.5,1.8],[19.5,6.5]]),W,{edge:O});fill(M,poly([[35,10],[35.5,1.8],[28.5,6.5]]),W,{edge:O});
+  fill(M,poly([[14.2,8.5],[14,4.5],[17.6,7]]),['#ffb0d0'],{flat:1});fill(M,poly([[33.8,8.5],[34,4.5],[30.4,7]]),['#ffb0d0'],{flat:1});
+  fill(M,hd,W,{edge:O});fill(M,ell(24,20.5,6,4),['#fff0fa'],{edge:'#d8b8d8',flat:1});
+  pts(M,[[22,21],[25,21]],'#c890b0');pts(M,[[23,23],[24,23]],O);
+  fill(M,ell(19,8,5,3.4),PK,{edge:PE});fill(M,ell(29,7.5,4,3),PK,{edge:PE});
+  fill(M,fea(24,9,24.5,.8,2.1),HR,{edge:'#8a5a00'});pts(M,[[23,7],[24,7],[25,6],[23,5],[24,5],[25,4],[24,3],[25,2]],'#d89a10');
+  fill(M,ell(13.5,20.5,2.4,1.3),[BLUSH],{flat:1});fill(M,ell(34.5,20.5,2.4,1.3),[BLUSH],{flat:1});both(M,[[15,13],[14,12]],'#4a2a6a');
+  if(mood==='happy')fill(M,ell(24,23.5,2.4,1.2),['#c81d2a'],{flat:1});
+  face(E,M,mood,{cx:18,cy:16,rx:2.5,ry:3.4,ink:'#4a2a6a'});
+  return[['k48-tl',T],['',M],['k48-bk',E]]}
+const CH={maneki,hou,kitsune,ryu,unicorn},cache={};
 function svgOf(L){let s='';for(let y=0;y<H;y++){let x=0;while(x<W){const c=L[y][x];if(!c){x++;continue}let e=x;while(e<W&&L[y][e]===c)e++;s+='<rect x="'+x+'" y="'+y+'" width="'+(e-x)+'" height="1" fill="'+c+'"/>';x=e}}return s}
-window.ktp48Parts=(id,mood)=>CH[id]?CH[id](mood):null;
-window.ktp48=function(id,mood){if(!CH[id])return null;const m=mood==='happy'||mood==='sad'||mood==='think'?mood:'',k=id+'|'+m;if(cache[k])return cache[k];
-  return cache[k]='<g transform="scale(.375)"><g class="k48-br">'+CH[id](m).map(p=>'<g'+(p[0]?' class="'+p[0]+'"':'')+'>'+svgOf(p[1])+'</g>').join('')+'</g></g>'};
+window.ktp48Parts=(id,mood,sg)=>CH[id]?CH[id](mood,sg):null;
+window.ktp48=function(id,mood,sg){if(!CH[id])return null;const m=mood==='happy'||mood==='sad'||mood==='think'?mood:'',k=id+'|'+m+'|'+(id==='kitsune'?sg|0:0);if(cache[k])return cache[k];
+  return cache[k]='<g transform="scale(.375)"><g class="k48-br">'+CH[id](m,sg).map(p=>'<g'+(p[0]?' class="'+p[0]+'"':'')+'>'+svgOf(p[1])+'</g>').join('')+'</g></g>'};
 })();
 
 </script>
