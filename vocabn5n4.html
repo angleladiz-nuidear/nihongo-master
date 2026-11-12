@@ -2334,6 +2334,55 @@ linear-gradient(var(--k),var(--k)) bottom right/var(--l) var(--w) no-repeat,line
 #fillBox.kt-on[data-pass="1"] .kt-res .stars{filter:drop-shadow(0 0 8px var(--ta))}
 @media (prefers-reduced-motion:reduce){.kt-fx i,.kt-burst *,.kt-blank,.kt-combo,#fillBox .kt-res::before{animation:none!important}.kt-intro{animation-duration:.01s!important;display:none}}
 </style>
+<style id="kt-sp-theme">
+/* ===== ธีมเฉพาะตัว: ใครธีมมัน ===== */
+#fillBox[data-sp=kitsune]{--c1:#5a1830;--c2:#2e0a1c;--cd:#fff3ee;--cb:#e0705a;--cs:#8a2a20;--bd:#ff9a7a;--hill:#12071f;--sky:linear-gradient(#150a2c,#4a1638 55%,#b8402e)}
+#fillBox[data-sp=ryu]{--c1:#0f5a52;--c2:#06302e;--cd:#effff6;--cb:#3fbf8f;--cs:#1d6a4a;--bd:#7affc4;--sky:linear-gradient(#06222a,#0f5a52 55%,#2fb88a)}
+#fillBox[data-sp=unicorn]{--c1:#7a3aa8;--c2:#43206e;--cd:#fff2fb;--cb:#d98ae0;--cs:#8a46b0;--bd:#ffb0e6;--hill:#d78be6;--sky:linear-gradient(#3a2a7a,#a86ad0 55%,#ffb6dc)}
+#fillBox[data-sp=maneki]{--c1:#8a1a24;--c2:#4a0a10;--cd:#fff4cf;--cb:#d9a21a;--cs:#8a5a00;--bd:#ffd24a;--hill:#2a0509;--sky:linear-gradient(#5a0c14,#b0241e 50%,#f0922a 88%,#ffd24a)}
+#fillBox[data-sp=hou]{--c1:#9a2410;--c2:#4a0c06;--cd:#fff0dc;--cb:#e0682a;--cs:#8a2a10;--bd:#ffb060;--sky:linear-gradient(#1a0505,#6a1208 45%,#d8481a 80%,#ffb02a)}
+#fillBox[data-sp] .fx-hill{background:var(--hill,#160f4a)}
+#fillBox[data-sp=unicorn] .fx-hill{left:-20%;right:-20%;height:20%;clip-path:none;border-radius:50% 50% 0 0/100% 100% 0 0}
+.fx-torii{bottom:6%;width:120px;height:110px;background:linear-gradient(#d8283a,#d8283a) 0 0/120px 12px no-repeat,linear-gradient(#a81a2a,#a81a2a) 6px 12px/108px 6px no-repeat,linear-gradient(#d8283a,#d8283a) 10px 34px/100px 8px no-repeat,linear-gradient(#c81d2a,#c81d2a) 16px 12px/14px 98px no-repeat,linear-gradient(#c81d2a,#c81d2a) 90px 12px/14px 98px no-repeat;filter:drop-shadow(0 0 10px #ff6a4a66)}
+.fx-torii.t1{left:2%;transform:scale(1.2);transform-origin:bottom left}.fx-torii.t2{right:2%;transform:scale(1.2);transform-origin:bottom right}.fx-torii.t3{left:50%;margin-left:-45px;transform:scale(.75);opacity:.55}
+.fx-wisp{width:10px;height:15px;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(#fff,#ffc2a0 45%,#ff6a4a);box-shadow:0 0 12px 3px #ff8a6aaa;animation:ktWp 4.5s ease-in-out infinite}
+@keyframes ktWp{0%,100%{transform:translate(0,0);opacity:.5}50%{transform:translate(10px,-18px);opacity:1}}
+.fx-pearl{box-shadow:0 0 34px 10px #b6ffe066;background:radial-gradient(circle at 35% 35%,#fff,#9affd0 40%,#2fd08a)}
+.fx-mt{left:0;right:0;bottom:0}
+.fx-mt.m1{height:38%;background:#0b4a44;clip-path:polygon(0 70%,10% 30%,22% 62%,36% 15%,52% 58%,68% 22%,84% 60%,100% 28%,100% 100%,0 100%)}
+.fx-mt.m2{height:24%;background:#06302e;clip-path:polygon(0 50%,16% 20%,30% 55%,48% 30%,62% 60%,80% 25%,100% 55%,100% 100%,0 100%)}
+.fx-cloud{left:-240px;width:150px;height:30px;border-radius:30px;background:var(--cc);box-shadow:44px -12px 0 6px var(--cc),-36px -6px 0 0 var(--cc);animation:ktCl var(--d,60s) linear infinite}
+@keyframes ktCl{to{transform:translateX(calc(100vw + 480px))}}
+.fx-bolt{inset:0;background:radial-gradient(ellipse at 70% 0,#d8fff0cc,transparent 60%);opacity:0;animation:ktBo 9s linear infinite 2s}
+@keyframes ktBo{0%,100%{opacity:0}2%{opacity:1}4%{opacity:.1}6%{opacity:.8}10%{opacity:0}}
+.fx-rainbow{left:50%;bottom:-34%;width:min(130vw,1000px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;opacity:.6;background:radial-gradient(circle,transparent 58%,#ff5a5a 58% 61%,#ffb04a 61% 64%,#ffe94a 64% 67%,#6fe08a 67% 70%,#6fb8ff 70% 73%,#a070ff 73% 76%,transparent 76%)}
+.fx-spk{bottom:-20px;font-style:normal;font-size:16px;color:var(--sc);text-shadow:0 0 8px var(--sc);animation:ktRs linear infinite}
+.fx-coin{top:-30px;width:16px;height:22px;border-radius:50%;background:radial-gradient(ellipse,#ffe27a,#d9941a);border:2px solid #8a5a00;box-shadow:0 0 8px #ffd24a;animation:ktCo linear infinite}
+@keyframes ktCo{from{transform:translateY(0) rotateY(0)}to{transform:translateY(110vh) rotateY(720deg)}}
+.fx-heat{inset:auto 0 0 0;height:60%;background:radial-gradient(ellipse at 50% 100%,#ffb02aaa,transparent 70%)}
+.fx-fire{position:absolute;left:0;right:0;bottom:0;height:26%}
+.fx-fl{bottom:0;width:15%;border-radius:50% 50% 0 0/85% 85% 0 0;background:linear-gradient(#ffe94a,#ff7a30 50%,#c8281e);transform-origin:bottom;animation:ktFl .9s ease-in-out infinite alternate;opacity:.9}
+@keyframes ktFl{from{transform:scaleY(.8) skewX(-4deg)}to{transform:scaleY(1.1) skewX(4deg)}}
+#fillBox[data-sp=hou] .fx-ember{width:5px;height:5px;background:#ffe94a}
+</style>
+<style id="k48-css">
+/* ===== SSR 48x48: แอนิเมชันแยกเลเยอร์ ===== */
+.k48-br{transform-box:fill-box;transform-origin:50% 100%;animation:k48Br 2.6s ease-in-out infinite alternate}
+@keyframes k48Br{to{transform:scaleY(1.025)}}
+.k48-bk{transform-box:fill-box;transform-origin:50% 50%;animation:k48Bk 4.2s infinite}
+@keyframes k48Bk{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.k48-pw{transform-box:fill-box;transform-origin:50% 100%;animation:k48Pw .8s ease-in-out infinite alternate}
+@keyframes k48Pw{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+.k48-wl,.k48-wr{transform-box:fill-box;animation:k48Wl .7s ease-in-out infinite alternate}
+.k48-wl{transform-origin:100% 70%}.k48-wr{transform-origin:0% 70%;animation-name:k48Wr}
+@keyframes k48Wl{from{transform:rotate(-6deg)}to{transform:rotate(7deg)}}
+@keyframes k48Wr{from{transform:rotate(6deg)}to{transform:rotate(-7deg)}}
+.k48-cr{transform-box:fill-box;transform-origin:50% 100%;animation:k48Cr .5s ease-in-out infinite alternate}
+@keyframes k48Cr{from{transform:scaleY(.93)}to{transform:scaleY(1.07)}}
+.k48-tl{transform-box:fill-box;transform-origin:50% 0;animation:k48Tl 2.4s ease-in-out infinite alternate}
+@keyframes k48Tl{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+@media (prefers-reduced-motion:reduce){[class^=k48-],[class*=" k48-"]{animation:none!important}}
+</style>
 </head>
 <body>
 
@@ -11715,8 +11764,8 @@ function ktpRects(G, pal) {
   }
   return out;
 }
-const KTP_STAGES = [{ n: 'ทารก' }, { n: 'วัยเยาว์' }, { n: 'เต็มวัย' }, { n: 'สมบูรณ์' }], KTP_STAGE_LV = [1, 10, 20, 30], KTP_EVO_COIN = [0, 5, 10, 20];
-function ktpStage(lv) { return lv >= 30 ? 3 : lv >= 20 ? 2 : lv >= 10 ? 1 : 0; }
+const KTP_STAGES = [{ n: 'ทารก' }, { n: 'เด็กน้อย' }, { n: 'วัยเยาว์' }, { n: 'วัยรุ่น' }, { n: 'เต็มวัย' }, { n: 'ผู้เชี่ยวชาญ' }, { n: 'สมบูรณ์' }], KTP_STAGE_LV = [1, 5, 10, 15, 20, 25, 30], KTP_EVO_COIN = [0, 2, 3, 5, 6, 7, 12], KTP_VT = [0, 1, 1, 2, 2, 3, 3], KTP_SC = [.64, .72, .79, .86, .92, .96, 1];
+function ktpStage(lv) { return lv >= 30 ? 6 : lv >= 25 ? 5 : lv >= 20 ? 4 : lv >= 15 ? 3 : lv >= 10 ? 2 : lv >= 5 ? 1 : 0; }
 function ktpWing(side, f, fill, stroke, extra) {
   const ax = side < 0 ? 2.5 : 12.5, ay = 8, o = side < 0 ? -1 : 1, P = [[0, 0], [4.6, -8.2], [3.7, -2.6], [5.5, -.8], [3.2, 1.4], [4.6, 4.6], [0, 3.6]];
   return `<path ${extra || ''} d="M${P.map(([dx, dy]) => (ax + o * dx * f).toFixed(2) + ' ' + (ay + dy * f).toFixed(2)).join(' L')} Z" fill="${fill}" stroke="${stroke}" stroke-width=".3"/>`;
@@ -11740,12 +11789,12 @@ function ktpExtra(id, st, R) {
     post = star(2, 0, '#ffd24a') + star(15, 1, '#ff9ad0') + (st >= 2 ? star(16.5, 10, '#ffd24a') : '') + (st >= 3 ? star(-1.5, 9, '#ff9ad0') + star(8, -3.6, '#fff6a0') : '');
   } else if (id === 'maneki') {
     if (st >= 3) pre += `<g class="ktp-spin" opacity=".4">${[...Array(12)].map((_, i) => `<line x1="8" y1="8" x2="${(8 + 14 * Math.cos(i * Math.PI / 6)).toFixed(2)}" y2="${(8 + 14 * Math.sin(i * Math.PI / 6)).toFixed(2)}" stroke="#ffd24a" stroke-width=".7"/>`).join('')}</g>`;
-    post = `<g class="ktp-wave" stroke="#7a4a10" stroke-width=".25">${R(14.8, 1, 2.4, 3.9, '#ffe27a')}${R(15.4, 2.4, 1.2, 1.2, '#ff9a8a')}</g>`;
+    post = '';
     const coin = (x, y) => `<g class="ktp-float"><ellipse cx="${x}" cy="${y}" rx="1" ry="1.5" fill="#ffd24a" stroke="#d9941a" stroke-width=".3"/><rect x="${x - .3}" y="${y - .7}" width=".6" height="1.4" fill="#d9941a"/></g>`;
     if (st >= 2) post += coin(0, 5) + coin(17.5, 11);
     if (st >= 3) post += coin(-1, 11) + coin(17, 15) + `<circle cx="8" cy="-1.6" r="1.9" fill="#c81e1e" stroke="#ffd24a" stroke-width=".35"/><text x="8" y="-.8" font-size="2.3" fill="#ffd24a" text-anchor="middle">福</text>`;
   } else if (id === 'hou') {
-    pre = `<g class="ktp-flick">${ktpWing(-1, f * 1.05, '#ff8a3a', '#c8281e') + ktpWing(1, f * 1.05, '#ff8a3a', '#c8281e') + ktpWing(-1, f * .6, '#ffe94a', 'none') + ktpWing(1, f * .6, '#ffe94a', 'none')}</g>`;
+    pre = '';
     if (st >= 3) pre = `<g class="ktp-spin"><circle cx="8" cy="8" r="10.2" fill="none" stroke="#ffb400" stroke-width=".5" stroke-dasharray="1.2 1"/></g>` + pre;
     if (st >= 2) post += flame(7.3, -2.8, '#ffb04a', '#ffe94a');
     if (st >= 3) post += flame(3.6, -2, '#ff6a3a', '#ffe94a') + flame(11, -2, '#ff6a3a', '#ffe94a') + [[-2, 10, 0], [17.5, 8, .6], [8, 16.5, 1.1]].map(([x, y, d]) => `<rect class="ktp-ember" style="animation-delay:${d}s" x="${x}" y="${y}" width=".8" height=".8" fill="#ffe94a"/>`).join('');
@@ -11754,9 +11803,9 @@ function ktpExtra(id, st, R) {
 }
 function ktpSvg(id, mood, cls, lv) {
   const sp = ktpSp(id); if (!sp) return '';
-  const body = ktpRects(ktpGrid(sp, mood), sp.pal), R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+  const body = (sp.rar === 'SSR' && window.ktp48 && ktp48(id, mood)) || ktpRects(ktpGrid(sp, mood), sp.pal), R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
   if (!(lv >= 1)) return `<svg class="kt-px ${cls || ''}" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
-  const st = ktpStage(lv), S = [.66, .82, .92, 1][st], tx = (9 * (1 - S)).toFixed(2), ty = (16 * (1 - S)).toFixed(2);
+  const sg = ktpStage(lv), st = KTP_VT[sg], S = KTP_SC[sg], tx = (9 * (1 - S)).toFixed(2), ty = (16 * (1 - S)).toFixed(2);
   const X = (sp.rar === 'SR' || sp.rar === 'SSR') && st >= 1 ? ktpExtra(id, st, R) : null;
   let pre = '', post = '';
   if (st === 0) post = R(8.5, 4.4, 1, 1, '#ffe27a') + R(8.5, 3.6, .6, .8, '#ffe27a');
@@ -11765,9 +11814,10 @@ function ktpSvg(id, mood, cls, lv) {
     if (st === 2) post = R(7.1, .2, 1.8, 1.2, '#4aa0ff') + R(9.1, .2, 1.8, 1.2, '#4aa0ff') + R(8.6, .5, .8, .7, '#ffd24a');
     if (st === 3) post = R(6.5, .6, 5, 1, '#ffd24a') + R(6.5, 0, 1, .7, '#ffd24a') + R(8.5, 0, 1, .7, '#ffd24a') + R(10.5, 0, 1, .7, '#ffd24a') + R(8.6, .8, .8, .6, '#e8334a') + R(1, 3, .9, .9, '#fff6a0') + R(16, 5, .9, .9, '#fff6a0') + R(2, 12, .9, .9, '#fff6a0') + R(15.5, 13, .9, .9, '#fff6a0');
   }
-  if (st === 3) { const pu = sp.rar === 'SR'; pre = `<defs><radialGradient id="ktpAura${pu ? 'S' : ''}"><stop offset="0" stop-color="${pu ? '#e0ccff' : '#fff3a0'}" stop-opacity=".9"/><stop offset="1" stop-color="${pu ? '#8a5cff' : '#ffb400'}" stop-opacity="0"/></radialGradient></defs><circle cx="9" cy="8.5" r="${X ? 11 : 9}" fill="url(#ktpAura${pu ? 'S' : ''})"/>`; }
+  if (sg === 6) { const pu = sp.rar === 'SR'; pre = `<defs><radialGradient id="ktpAura${pu ? 'S' : ''}"><stop offset="0" stop-color="${pu ? '#e0ccff' : '#fff3a0'}" stop-opacity=".9"/><stop offset="1" stop-color="${pu ? '#8a5cff' : '#ffb400'}" stop-opacity="0"/></radialGradient></defs><circle cx="9" cy="8.5" r="${X ? 11 : 9}" fill="url(#ktpAura${pu ? 'S' : ''})"/>`; }
+  if (sg === 2 || sg === 4 || sg === 5) pre += [[1, 3], [16, 5], [2, 12]].slice(0, sg === 2 ? 1 : sg === 4 ? 2 : 3).map(([x, y]) => R(x, y, .9, .9, '#fff6a0')).join('');
   const vb = X ? '-3.5 -4 25 21' : '0 0 18 16';
-  return `<svg class="kt-px ${cls || ''} ${st === 3 ? 'ktp-fin' : ''}" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${pre}<g transform="translate(${tx} ${ty}) scale(${S})">${X ? X.pre : ''}${body}${X ? X.post : ''}</g>${X ? '' : post}</svg>`;
+  return `<svg class="kt-px ${cls || ''} ${sg === 6 ? 'ktp-fin' : ''}" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${pre}<g transform="translate(${tx} ${ty}) scale(${S})">${X ? X.pre : ''}${body}${X ? X.post : ''}</g>${X ? '' : post}</svg>`;
 }
 function ktpEvoCheck(p, oldLv) { if (ktpStage(p.lv) > ktpStage(oldLv)) { ktp.evo = { sp: p.sp, from: ktpStage(oldLv), to: ktpStage(p.lv) }; ktpSave(); } }
 function ktpEvoSheet() {
@@ -13343,18 +13393,25 @@ const ACC={kitsune:['#ff6a4a','#ffc2b0'],ryu:['#2fd08a','#b6ffe0'],unicorn:['#ff
 const $=id=>document.getElementById(id);
 function cur(){try{const p=ktpAct();return p?{p:p,sp:ktpSp(p.sp)}:null}catch(e){return null}}
 function rarNow(){const c=cur();return c&&(c.sp.rar==='SR'||c.sp.rar==='SSR')?c.sp.rar:''}
-function fx(rar){
+function fx(id){
   const st=document.querySelector('#fillBox .kt-stage');let f=$('ktFx');
   if(!f){f=document.createElement('div');f.id='ktFx';f.className='kt-fx';st.insertBefore(f,$('ktMain'))}
-  if(f.dataset.r===rar)return;f.dataset.r=rar;let h='';
-  if(rar==='SR'){h='<i class="fx-moon"></i><i class="fx-hill"></i>';for(let i=0;i<22;i++)h+='<i class="fx-star" style="left:'+((i*37+11)%100)+'%;top:'+((i*23+5)%62)+'%;animation-delay:'+((i%7)*.45)+'s;--s:'+(i%4===0?4:2)+'px"></i>';h+='<i class="fx-shoot"></i>'}
-  else if(rar==='SSR'){h='<i class="fx-sun"></i><i class="fx-hill"></i><i class="fx-lan l1"></i><i class="fx-lan l2"></i>';for(let i=0;i<20;i++)h+='<i class="fx-ember" style="left:'+((i*29+7)%100)+'%;animation-delay:'+((i%9)*.7)+'s;animation-duration:'+(5+i%5)+'s"></i>'}
+  if(f.dataset.r===id)return;f.dataset.r=id;
+  const stars=n=>{let s='';for(let i=0;i<n;i++)s+='<i class="fx-star" style="left:'+((i*37+11)%100)+'%;top:'+((i*23+5)%58)+'%;animation-delay:'+((i%7)*.45)+'s;--s:'+(i%4===0?4:2)+'px"></i>';return s};
+  const emb=n=>{let s='';for(let i=0;i<n;i++)s+='<i class="fx-ember" style="left:'+((i*29+7)%100)+'%;animation-delay:'+((i%9)*.7)+'s;animation-duration:'+(4+i%5)+'s"></i>';return s};
+  const cl=(n,a)=>{let s='';for(let i=0;i<n;i++)s+='<i class="fx-cloud" style="top:'+(8+i*17)+'%;--d:'+(50+i*18)+'s;animation-delay:-'+(i*19)+'s;--cc:'+a+'"></i>';return s};
+  let h='';
+  if(id==='kitsune'){h='<i class="fx-moon"></i>'+stars(10)+'<i class="fx-hill"></i><i class="fx-torii t1"></i><i class="fx-torii t2"></i><i class="fx-torii t3"></i>';for(let i=0;i<8;i++)h+='<i class="fx-wisp" style="left:'+((i*13+6)%94)+'%;top:'+(30+(i*17)%45)+'%;animation-delay:-'+(i*.7)+'s"></i>'}
+  else if(id==='ryu'){h='<i class="fx-moon fx-pearl"></i>'+cl(3,'#ffffff2e')+'<i class="fx-mt m1"></i><i class="fx-mt m2"></i><i class="fx-bolt"></i>'}
+  else if(id==='unicorn'){h=stars(8)+'<i class="fx-rainbow"></i>'+cl(3,'#ffffff55')+'<i class="fx-hill"></i>';for(let i=0;i<14;i++)h+='<i class="fx-spk" style="left:'+((i*31+9)%96)+'%;animation-delay:-'+((i%7)*.9)+'s;animation-duration:'+(5+i%4)+'s;--sc:'+['#fff','#ff9ad0','#ffe94a','#bfe4ff'][i%4]+'">'+(i%3?'✦':'♥')+'</i>'}
+  else if(id==='maneki'){h='<i class="fx-sun"></i><i class="fx-hill"></i><i class="fx-lan l1"></i><i class="fx-lan l2"></i>';for(let i=0;i<12;i++)h+='<i class="fx-coin" style="left:'+((i*23+8)%96)+'%;animation-delay:-'+((i%6)*1.3)+'s;animation-duration:'+(6+i%4)+'s"></i>'}
+  else if(id==='hou'){h='<i class="fx-heat"></i><i class="fx-sun"></i>'+emb(26)+'<div class="fx-fire">';for(let i=0;i<9;i++)h+='<i class="fx-fl" style="left:'+(i*11.5-3)+'%;height:'+(70+(i*37)%60)+'%;animation-delay:-'+(i*.23)+'s"></i>';h+='</div>'}
   f.innerHTML=h;
 }
 function theme(){
   const b=$('fillBox');if(!b)return;const rar=rarNow(),c=cur(),scr=ktS.screen;
-  if(rar){const a=ACC[c.sp.id]||['#a88bff','#e0d4ff'];b.dataset.rar=rar;b.style.setProperty('--ta',a[0]);b.style.setProperty('--tg',a[1]);fx(rar)}
-  else delete b.dataset.rar;
+  if(rar){const a=ACC[c.sp.id]||['#a88bff','#e0d4ff'];b.dataset.rar=rar;b.dataset.sp=c.sp.id;b.style.setProperty('--ta',a[0]);b.style.setProperty('--tg',a[1]);fx(c.sp.id)}
+  else{delete b.dataset.rar;delete b.dataset.sp}
   b.classList.toggle('kt-on',!!rar&&scr!=='home');b.dataset.scr=scr;
   if(!rar||scr==='home')return;
   if(scr==='play'&&(ktS.streak||0)>=3){const bar=$('ktCardBar'),e=document.createElement('span');e.className='kt-combo';e.textContent='🔥 ×'+ktS.streak;bar.insertBefore(e,bar.querySelector('.kt-seg'))}
@@ -13369,7 +13426,7 @@ function burst(){
   const r=el.getBoundingClientRect(),s=st.getBoundingClientRect(),n=rar==='SSR'?18:12,w=document.createElement('div');
   w.className='kt-burst';w.style.left=(r.left-s.left+r.width/2)+'px';w.style.top=(r.top-s.top+r.height/2)+'px';
   let h=rar==='SSR'?'<b class="ring"></b>':'';
-  for(let i=0;i<n;i++){const a=i/n*6.283,d=60+(i%3)*28;h+='<i style="--dx:'+Math.cos(a)*d+'px;--dy:'+Math.sin(a)*d+'px">'+(rar==='SSR'&&i%2?'●':'✦')+'</i>'}
+  for(let i=0;i<n;i++){const a=i/n*6.283,d=60+(i%3)*28;h+='<i style="--dx:'+Math.cos(a)*d+'px;--dy:'+Math.sin(a)*d+'px">'+(({kitsune:'✦',ryu:'⚡',unicorn:'♥',maneki:'●',hou:'🔥'})[cur().sp.id]||'✦')+'</i>'}
   w.innerHTML=h;st.appendChild(w);setTimeout(()=>w.remove(),1000);
 }
 function intro(){
@@ -13384,6 +13441,75 @@ const _s=ktSubmit;ktSubmit=function(){const was=ktS.done;_s.apply(this,arguments
 const _a=ktStart;ktStart=function(){_a.apply(this,arguments);if(ktS.screen==='play')try{intro()}catch(e){}};
 const _b=ktStartReview;ktStartReview=function(){_b.apply(this,arguments);if(ktS.screen==='play')try{intro()}catch(e){}};
 })();
+</script>
+<script id="k48-js">
+(function(){
+const W=48,H=44,Z=()=>Array.from({length:H},()=>Array(W).fill(null));
+const ellD=(cx,cy,a,b,t)=>{const c=Math.cos(t||0),s=Math.sin(t||0),R=Math.max(a,b);return(x,y)=>{const dx=x+.5-cx,dy=y+.5-cy,u=(dx*c+dy*s)/a,v=(-dx*s+dy*c)/b;return u*u+v*v<=1?(-dx*.55-dy*.85)/R:null}};
+const ell=(cx,cy,rx,ry)=>ellD(cx,cy,rx,ry,0);
+const fea=(bx,by,tx,ty,w)=>ellD((bx+tx)/2,(by+ty)/2,Math.hypot(tx-bx,ty-by)/2,w,Math.atan2(ty-by,tx-bx));
+const poly=P=>{let sx=0,sy=0;P.forEach(p=>{sx+=p[0];sy+=p[1]});sx/=P.length;sy/=P.length;const R=Math.max(...P.map(p=>Math.hypot(p[0]-sx,p[1]-sy)));return(x,y)=>{const X=x+.5,Y=y+.5;let n=false;for(let i=0,j=P.length-1;i<P.length;j=i++){const a=P[i],c=P[j];if((a[1]>Y)!==(c[1]>Y)&&X<(c[0]-a[0])*(Y-a[1])/(c[1]-a[1])+a[0])n=!n}return n?(-(X-sx)*.55-(Y-sy)*.85)/R:null}};
+function fill(L,m,c,o){o=o||{};for(let y=0;y<H;y++)for(let x=0;x<W;x++){const d=m(x,y);if(d===null)continue;if(o.clip&&o.clip(x,y)===null)continue;let col=c[0];if(!o.flat&&c.length>2)col=d>.42?c[1]:d<-.38?c[2]:c[0];if(o.edge&&(m(x-1,y)===null||m(x+1,y)===null||m(x,y-1)===null||m(x,y+1)===null))col=o.edge;L[y][x]=col}}
+const px=(L,x,y,c)=>{if(x>=0&&x<W&&y>=0&&y<H)L[y][x]=c};
+const pts=(L,P,c)=>P.forEach(p=>px(L,p[0],p[1],c));
+const mir=P=>P.map(p=>[47-p[0],p[1]]);
+function line(L,a,b,c,d,col){const n=Math.max(Math.abs(c-a),Math.abs(d-b))||1;for(let i=0;i<=n;i++)px(L,Math.round(a+(c-a)*i/n),Math.round(b+(d-b)*i/n),col)}
+const both=(L,P,c)=>{pts(L,P,c);pts(L,mir(P),c)};
+const TEAR='#6fb8ff',BLUSH='#ff9a9a';
+function faceExtras(E,mood,o){ // o: arcs, brows[[x0,y0,x1,y1]], tear, hy
+  if(mood==='happy'){both(E,o.arcs,o.ink);both(E,o.arcs.map(p=>[p[0],p[1]+1]).filter((p,i,a)=>i>0&&i<a.length-1),o.ink);return true}
+  return false}
+function maneki(mood){
+  const O='#5a2e0e',G=['#ffe27a','#fff6c0','#e8b030'],OR=['#f4a83a','#ffc866','#d4801c'],CR=['#fff8dc','#ffffff','#f0dca0'],RD=['#e0282e','#ff6a5a','#a81220'],GD=['#ffcf33','#fff08a','#d89a10'];
+  const M=Z(),E=Z(),P=Z(),hd=ell(24,15,14,11.5),bd=ell(24,32,13,10);
+  fill(M,bd,G,{edge:O});fill(M,ell(34,31,5.5,5),OR,{clip:bd});fill(M,ell(24,34,8,6.5),CR,{});
+  fill(M,ell(17,41,5,2.6),G,{edge:O});fill(M,ell(31,41,5,2.6),G,{edge:O});
+  both(M,[[15,42],[18,42],[19,42]].slice(0,0),O);pts(M,[[15,41],[18,41]],O);pts(M,[[29,41],[32,41]],O);
+  fill(M,ell(12,36,4.8,6.5),GD,{edge:'#8a5a00'});for(let y=33;y<=39;y++)px(M,12,y,'#b8761a');pts(M,[[10,35],[14,35],[10,38],[14,38]],'#b8761a');
+  fill(M,ell(14,31,3.6,3.2),G,{edge:O});
+  fill(M,poly([[10.5,10],[11.5,.8],[20,4.8]]),G,{edge:O});fill(M,poly([[37.5,10],[36.5,.8],[28,4.8]]),G,{edge:O});
+  fill(M,poly([[13,8],[13.5,3.6],[17.6,5.4]]),['#ff9a9a'],{flat:1});fill(M,poly([[35,8],[34.5,3.6],[30.4,5.4]]),['#ff9a9a'],{flat:1});
+  fill(M,hd,G,{edge:O});fill(M,ell(15,8,5,3.5),OR,{clip:hd});
+  fill(M,ell(13,20.5,2.8,1.6),[BLUSH],{flat:1});fill(M,ell(35,20.5,2.8,1.6),[BLUSH],{flat:1});
+  pts(M,[[22,18],[23,18],[24,18],[25,18],[23,19],[24,19]],'#e06a6a');
+  pts(M,[[23,20],[24,20],[22,21],[21,21],[20,20],[25,21],[26,21],[27,20]],O);
+  line(M,9,18,4,17,'#7a5a30');line(M,9,21,4,22,'#7a5a30');line(M,38,18,43,17,'#7a5a30');line(M,38,21,43,22,'#7a5a30');
+  fill(M,ell(24,26.5,11.5,2.8),RD,{edge:'#6a0a14'});fill(M,ell(24,30,2.6,2.6),GD,{edge:'#8a5a00'});pts(M,[[23,31],[24,31]],'#8a5a00');
+  const INK='#3a1a08';
+  if(mood==='happy'){const A=[[14,16],[15,15],[16,14],[17,14],[18,14],[19,15],[20,16]];both(E,A,INK);both(E,A.map(p=>[p[0],p[1]+1]).slice(1,6),INK);
+    fill(M,ell(24,23.2,2.8,1.6),['#c81d2a'],{flat:1});pts(M,[[23,24],[24,24]],'#ff8a8a')}
+  else{fill(E,ell(17.5,15.5,2.4,3.3),[INK],{flat:1});fill(E,ell(30.5,15.5,2.4,3.3),[INK],{flat:1});
+    pts(E,[[16,14],[16,15],[29,14],[29,15]],'#ffffff');pts(E,[[18,17],[31,17]],'#d8e8ff')}
+  if(mood==='sad'){line(M,13,13,20,11,INK);line(M,34,13,27,11,INK);pts(M,[[23,20],[24,20],[22,21],[21,21],[20,20],[25,21],[26,21],[27,20]],G[0]);pts(M,[[23,21],[24,21],[22,22],[25,22],[21,23],[26,23]],O);pts(E,[[15,19],[15,20],[15,21]],TEAR)}
+  if(mood==='think')pts(M,[[4,6],[4,7],[3,8],[4,8],[5,8],[3,9],[4,9],[5,9]],'#9fd4ff');
+  fill(P,fea(39.5,30,42,9.5,4.4),G,{edge:O});fill(P,ell(42.3,15,2.3,2.5),['#ff9a9a'],{flat:1});pts(P,[[40,11],[42,10],[44,11]],'#e08a8a');
+  return[['',M],['k48-bk',E],['k48-pw',P]]}
+function hou(mood){
+  const O='#5a1a10',B=['#ff6a3a','#ff9a5a','#c8281e'],GL=['#ffd866','#fff3a0','#e0a020'],WG=['#e8482a','#ff8a4a','#a81e1e'],hd=ell(24,14,11,9.5),bd=ell(24,28,11,9.5);
+  const T=Z(),WL=Z(),WR=Z(),C=Z(),M=Z(),E=Z();
+  [[9,41],[39,41],[16,43],[32,43]].forEach(t=>fill(T,fea(24,31,t[0],t[1],3),WG,{edge:O}));fill(T,fea(24,31,24,43.5,3.2),GL,{edge:'#8a3a10'});
+  const wing=(L,s)=>{const X=v=>s?48-v:v,F=[[4,27],[1,17],[4,7]];F.forEach(t=>fill(L,fea(X(15),24,X(t[0]),t[1],3.5),WG,{edge:O}));
+    F.forEach(t=>{const tx=15+(t[0]-15)*.7,ty=24+(t[1]-24)*.7;fill(L,fea(X(15),24,X(tx),ty,1.5),['#ffd866'],{flat:1})})};
+  wing(WL,0);wing(WR,1);
+  const CC=['#ff9a3a','#ffc866','#e0601c'];fill(C,fea(20,11,12,3,2.4),CC,{edge:'#a81e1e'});fill(C,fea(28,11,36,3,2.4),CC,{edge:'#a81e1e'});fill(C,fea(24,11,24,.6,3),['#ffe94a','#fffbb0','#f0b820'],{edge:'#c8281e'});
+  fill(M,bd,B,{edge:O});fill(M,ell(24,31,7,6),GL,{});pts(M,[[20,28],[21,29],[22,28],[25,28],[26,29],[27,28],[22,32],[23,33],[24,33],[25,32]],'#d89a10');
+  fill(M,ell(19,38.5,3,1.6),['#ffb02a'],{edge:'#8a3a10',flat:1});fill(M,ell(29,38.5,3,1.6),['#ffb02a'],{edge:'#8a3a10',flat:1});
+  fill(M,hd,B,{edge:O});fill(M,ell(24,17.5,8,5.5),GL,{clip:hd});
+  fill(M,ell(15.5,18,2.2,1.4),['#ff8a6a'],{flat:1});fill(M,ell(32.5,18,2.2,1.4),['#ff8a6a'],{flat:1});
+  fill(M,poly([[21.5,15.5],[26.5,15.5],[24,20.5]]),['#ffb02a','#ffd866','#e07a10'],{edge:'#8a3a10'});
+  const INK='#3a1008';
+  if(mood==='happy'){const A=[[15,14],[16,13],[17,12],[18,12],[19,12],[20,13],[21,14]];both(E,A,INK);both(E,A.map(p=>[p[0],p[1]+1]).slice(1,6),INK)}
+  else{fill(E,ell(18.5,13.5,2.1,3),[INK],{flat:1});fill(E,ell(29.5,13.5,2.1,3),[INK],{flat:1});pts(E,[[17,12],[17,13],[28,12],[28,13]],'#ffffff');pts(E,[[19,15],[30,15]],'#ffd8b0')}
+  if(mood==='sad'){line(M,15,10,21,8,INK);line(M,32,10,26,8,INK);pts(E,[[16,17],[16,18],[16,19]],TEAR)}
+  if(mood==='think')pts(M,[[40,5],[40,6],[39,7],[40,7],[41,7],[39,8],[40,8],[41,8]],'#9fd4ff');
+  return[['k48-tl',T],['k48-wl',WL],['k48-wr',WR],['k48-cr',C],['',M],['k48-bk',E]]}
+const CH={maneki,hou},cache={};
+function svgOf(L){let s='';for(let y=0;y<H;y++){let x=0;while(x<W){const c=L[y][x];if(!c){x++;continue}let e=x;while(e<W&&L[y][e]===c)e++;s+='<rect x="'+x+'" y="'+y+'" width="'+(e-x)+'" height="1" fill="'+c+'"/>';x=e}}return s}
+window.ktp48Parts=(id,mood)=>CH[id]?CH[id](mood):null;
+window.ktp48=function(id,mood){if(!CH[id])return null;const m=mood==='happy'||mood==='sad'||mood==='think'?mood:'',k=id+'|'+m;if(cache[k])return cache[k];
+  return cache[k]='<g transform="scale(.375)"><g class="k48-br">'+CH[id](m).map(p=>'<g'+(p[0]?' class="'+p[0]+'"':'')+'>'+svgOf(p[1])+'</g>').join('')+'</g></g>'};
+})();
+
 </script>
 </body>
 </html>
