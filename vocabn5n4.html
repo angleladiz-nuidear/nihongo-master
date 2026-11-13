@@ -2406,6 +2406,96 @@ linear-gradient(var(--k),var(--k)) bottom right/var(--l) var(--w) no-repeat,line
 #fillBox[data-sp=kitsune] .fx-ground::before,#fillBox[data-sp=kitsune] .fx-ground::after{content:"";position:absolute;top:-52px;width:34px;height:52px;background:linear-gradient(#8a7a8a,#8a7a8a) 0 0/34px 9px no-repeat,linear-gradient(#ffb060,#ff7a30) 8px 11px/18px 14px no-repeat,linear-gradient(#6a5a6a,#6a5a6a) 13px 25px/8px 20px no-repeat,linear-gradient(#8a7a8a,#8a7a8a) 4px 44px/26px 8px no-repeat;filter:drop-shadow(0 0 8px #ff9a5a)}
 #fillBox[data-sp=kitsune] .fx-ground::before{left:6%}#fillBox[data-sp=kitsune] .fx-ground::after{right:6%}
 </style>
+<style id="kt-sakura-theme">
+/* ===== บ้านสัตว์ระดับ R: สวนซากุระ (วาดด้วยโค้ดตามภาพอ้างอิง) ===== */
+#fillBox[data-sp=sakura]{--c1:#c0507a;--c2:#7a2a4a;--cd:#fff3f6;--cb:#f0a0b8;--cs:#b8607a;--bd:#ffb0c8;--hill:#6ccb6a;--sky:linear-gradient(#4aa8f0,#8ed4ff 55%,#d4f2ff)}
+#fillBox[data-sp=sakura] .fx-hill{left:-20%;right:-20%;height:20%;clip-path:none;border-radius:50% 50% 0 0/100% 100% 0 0}
+#fillBox[data-sp=sakura] .fx-ground{left:-8%;right:-8%;border:0;border-radius:50% 50% 0 0/30px 30px 0 0;background:radial-gradient(circle,#fff 0 2px,transparent 3px) 0 0/34px 26px,radial-gradient(circle,#ffd84a 0 2px,transparent 3px) 17px 13px/34px 26px,radial-gradient(circle,#ff9ac0 0 2px,transparent 3px) 8px 20px/34px 26px,linear-gradient(#7fd86a,#3f9a4a)}
+#fillBox[data-sp=sakura].kt-on .kth-rug{background:#e8c070;border-color:#b8862a;box-shadow:0 0 0 #0000}
+.fx-fuji{left:50%;margin-left:-110px;bottom:25%;width:220px;height:90px;background:linear-gradient(#fff 0 22%,#6a8ac0 22%);clip-path:polygon(0 100%,38% 4%,62% 4%,100% 100%);opacity:.85}
+.fx-house{left:3%;bottom:24%;width:120px;height:84px;background:linear-gradient(#f4e6c8,#f4e6c8) 12px 36px/96px 44px no-repeat,linear-gradient(#7a4a2a,#7a4a2a) 50px 52px/18px 28px no-repeat,linear-gradient(#bfe4ff,#bfe4ff) 20px 46px/20px 14px no-repeat,linear-gradient(#bfe4ff,#bfe4ff) 80px 46px/20px 14px no-repeat}
+.fx-house::before{content:"";position:absolute;left:0;top:0;width:120px;height:40px;background:#2a4a9a;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.fx-trunk{left:4%;top:28%;bottom:25%;width:16px;background:linear-gradient(90deg,#5a3424,#8a5a3a)}
+.fx-sak{top:-4%;width:58%;height:40%;background:radial-gradient(circle at 25% 35%,#ffb6d0 0 24%,transparent 25%),radial-gradient(circle at 55% 25%,#ff9ec0 0 26%,transparent 27%),radial-gradient(circle at 78% 45%,#ffc9dc 0 22%,transparent 23%),radial-gradient(circle at 42% 62%,#ffd8e6 0 20%,transparent 21%),radial-gradient(circle at 12% 62%,#ff9ec0 0 16%,transparent 17%)}
+.fx-sak.l{left:-12%}.fx-sak.r{right:-12%}
+.fx-pet{top:-12px;width:9px;height:7px;border-radius:60% 0 60% 0;background:#ffb6d0;animation:ktPt linear infinite}
+@keyframes ktPt{from{transform:translate(0,0) rotate(0)}to{transform:translate(50px,108vh) rotate(420deg)}}
+</style>
+<style id="kt-shop-css">
+#ktShop{position:absolute;inset:0;z-index:60;display:none;flex-direction:column;background:#fbecc8;font-family:inherit;color:#3a2412}
+.shp-top{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:10px 12px;background:#000;color:#fff;border-bottom:4px solid #e0a63a}
+.shp-top b{flex:1;font-size:clamp(16px,3vw,22px);text-shadow:2px 2px 0 #c81d2a}
+.shp-x{background:#c81d2a;border:3px solid #ffd0d0;border-radius:8px;color:#fff;font-weight:700;padding:4px 10px;cursor:pointer}
+.shp-chip{background:#fbecc8;color:#4a2a00;border-radius:8px;padding:2px 10px;font-weight:700}
+.shp-body{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px;max-width:640px;width:100%;margin:0 auto}
+.shp-card{background:#fff8e6;border:4px solid #6a3a1a;box-shadow:0 4px 0 #6a3a1a;padding:10px 12px}
+.shp-lv{font-weight:800;font-size:18px}.shp-lv small{font-size:12px;color:#7a5a3a}.shp-big{font-size:22px;font-weight:800;margin:6px 0}
+.shp-bar{height:12px;background:#e6d2a8;border:2px solid #6a3a1a;margin:6px 0}.shp-bar i{display:block;height:100%;background:linear-gradient(#ffd24a,#e0901a)}
+.shp-note{font-size:13px;color:#6a4a2a;margin-top:4px}
+.shp-shop{display:block;width:100%;text-align:center;font-family:inherit;font-weight:800;font-size:18px;padding:14px 10px;background:linear-gradient(#e83a1a,#c81d0a);color:#fff;border:4px solid #000;box-shadow:inset 0 0 0 3px #ff9a7a,0 4px 0 #6a1208;cursor:pointer;text-shadow:2px 2px 0 #000}
+.shp-shop:active{transform:translateY(3px)}.shp-shop small{display:block;font-size:12px;font-weight:600;opacity:.9;text-shadow:none}
+.shp-shop span{font-size:22px}.shp-shop.alt{background:linear-gradient(#fff,#f0e0c0);color:#3a2412;text-shadow:none;border-color:#6a3a1a;box-shadow:0 4px 0 #6a3a1a}
+.shp-shop.lock{background:#fff8e6;color:#8a7a68;border:4px solid #8a8070;box-shadow:0 4px 0 #8a8070;text-shadow:none;cursor:default}
+.shp-scene{position:relative;flex:0 0 38%;min-height:190px;max-height:290px;overflow:hidden;background:linear-gradient(90deg,var(--w1),var(--w2) 50%,var(--w1));border-bottom:4px solid #000}
+.shp-scene>i,.shp-scene>div{position:absolute}
+.shp-aw{left:0;right:0;top:0;height:24px;background:repeating-linear-gradient(90deg,var(--a1) 0 30px,var(--a2) 30px 60px);border-bottom:4px solid #0004;z-index:5}
+.shp-win{left:5%;top:40px;width:84px;height:62px;border:5px solid #5a3018;background:linear-gradient(#bfe4ff 48%,#7cc0f0 48%)}
+.shp-win::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:5px;margin-left:-2px;background:#5a3018}
+.shp-sign{left:31%;top:36px;width:74px;height:64px;border:4px solid #5a3018;background:#fdeccc;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800}
+.shp-shelf{right:5%;top:46px;width:34%;height:30px;border-bottom:8px solid #5a3018;display:flex;gap:8px;align-items:flex-end;padding-left:6px}
+.shp-shelf i{position:static;width:22px;height:20px;border-top:5px solid #0003}
+.shp-prog{left:8px;bottom:8px;background:#000;color:#fff;font-size:12px;padding:2px 8px;border:2px solid #fff;z-index:6}
+.shp-scene::after{content:"";position:absolute;left:0;right:0;bottom:0;height:32%;background:repeating-linear-gradient(90deg,transparent 0 46px,#0002 46px 48px),var(--fl)}
+.shp-cust{left:9%;bottom:6%;width:82px;z-index:4;animation:shpBob 1.4s ease-in-out infinite alternate}
+.shp-cust.in{animation:shpIn .5s ease-out,shpBob 1.4s ease-in-out .5s infinite alternate}
+.shp-keep{right:10%;bottom:34%;width:92px;z-index:3}.shp-keep.hop{animation:shpHop .5s ease-out}
+.shp-cnt{right:0;bottom:0;width:58%;height:40%;z-index:4;background:linear-gradient(var(--ct) 0 14%,#0003 14% 17%,transparent 17%),repeating-linear-gradient(90deg,var(--ct) 0 44px,#0003 44px 48px);border-top:5px solid #fff3}
+.shp-scene svg{width:100%;height:auto;display:block;image-rendering:pixelated}
+@keyframes shpBob{to{transform:translateY(-4px)}}@keyframes shpIn{from{transform:translateX(-120px);opacity:0}}@keyframes shpHop{40%{transform:translateY(-16px)}}
+.shp-dlg{flex:0 0 auto;margin:8px;background:#000;border:3px solid #fff;outline:3px solid #000;padding:8px 12px;color:#fff;position:relative}
+.shp-nm{font-size:12px;color:#ffd24a}.shp-jp{font-size:clamp(20px,5vw,28px);font-weight:800;margin:2px 0;min-height:36px}.shp-th{font-size:14px;color:#9fe0ff;min-height:18px}
+.shp-bt{display:flex;gap:8px;justify-content:flex-end;margin-top:4px}.shp-bt button{background:#fff;border:0;border-bottom:4px solid #9aa;padding:4px 12px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.shp-grid{flex:1;overflow:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:4px 8px 12px;align-content:start}
+.shp-it{background:#fbeccd;border:4px solid #6a3a1a;box-shadow:0 3px 0 #6a3a1a;padding:6px 2px;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
+.shp-it span{font-size:clamp(24px,6vw,36px);line-height:1.1}.shp-it em{font-style:normal;font-size:clamp(9px,2.4vw,13px);font-weight:700;word-break:break-all;text-align:center;line-height:1.2}
+.shp-it:active{transform:translateY(2px)}.shp-it.ok{background:#b8f0a0;border-color:#2a8a2a;animation:shpHop .5s}.shp-it.ng{background:#f4b0a8;border-color:#a02a1a;opacity:.6;animation:shpSh .3s}
+@keyframes shpSh{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){#ktShop *{animation:none!important}}
+</style>
+<style id="kt-shop-css2">
+.shp-it{position:relative}.shp-n{position:absolute;right:2px;top:2px;background:#c81d2a;color:#fff;font-size:12px;padding:0 5px;border:2px solid #fff;border-radius:8px}
+.shp-it.in{background:#fff0a8;border-color:#e0901a}
+.shp-cart{flex:0 0 auto;display:flex;gap:6px;align-items:center;margin:0 8px 6px;padding:6px;background:#fff8e6;border:3px solid #6a3a1a}
+.shp-chips{flex:1;display:flex;flex-wrap:wrap;gap:4px;min-height:30px;align-items:center}
+.shp-emp{font-size:12px;color:#8a7a68}.shp-c2{font-family:inherit;font-weight:700;font-size:14px;background:#fff;border:2px solid #6a3a1a;padding:2px 6px;cursor:pointer}
+.shp-cart>button{font-family:inherit;font-weight:800;border:3px solid #000;background:#fff;padding:6px 10px;cursor:pointer}
+.shp-cart .go{background:linear-gradient(#3ac050,#1e8a30);color:#fff;text-shadow:1px 1px 0 #000}
+.shp-bad{color:#ff8a8a;font-weight:700}
+</style>
+<style id="kt-shop-css3">
+#ktShop.shp-scroll{overflow-y:auto}
+.shp-scroll .shp-scene{flex:0 0 165px;min-height:165px}
+.shp-scroll .shp-jp{font-size:clamp(17px,4.6vw,24px);min-height:0}
+.shp-scroll .shp-dlg{padding:6px 10px}
+.shp-scroll .shp-grid{flex:0 0 auto;overflow:visible}
+.shp-dock{position:sticky;bottom:0;z-index:8;margin-top:auto;padding:5px 0 3px;background:#fbecc8;border-top:4px solid #6a3a1a;box-shadow:0 -6px 10px #0002}
+.shp-dock .shp-cart{margin:0 8px 5px;padding:4px}
+.shp-opts{margin:0 8px;display:flex;flex-direction:column;gap:3px;padding:4px;background:#fff8e6;border:3px dashed #6a3a1a}
+.shp-og{display:flex;align-items:stretch;gap:5px;padding:1px 2px;border:2px solid transparent}
+.shp-og.ng{border-color:#c81d2a;background:#ffe3df;animation:shpSh .3s}
+.shp-ot{flex:0 0 60px;display:flex;align-items:center;font-size:11px;font-weight:800;color:#6a3a1a;line-height:1.15}
+.shp-ob{flex:1;min-width:0;font-family:inherit;font-weight:800;font-size:12px;line-height:1.2;color:#3a2412;background:#fff;border:3px solid #6a3a1a;box-shadow:0 3px 0 #6a3a1a;padding:3px 2px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.shp-ob small{font-weight:600;font-size:10px;color:#7a5a3a}
+.shp-ob.on{background:#fff0a8;border-color:#e0901a;box-shadow:0 3px 0 #e0901a}
+.shp-ob:active{transform:translateY(2px)}
+.shp-rc{margin:0 8px;padding:6px 12px;background:#fff;border:2px solid #333;color:#222;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;position:relative;animation:shpHop .5s ease-out}
+.shp-rc h4{margin:0 0 2px;text-align:center;letter-spacing:2px;font-size:13px}
+.shp-rc div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted #999;padding:1px 0}
+.shp-rc .o{justify-content:flex-start;color:#a02a1a}
+.shp-rc .t{justify-content:center;border:0;margin-top:3px;font-weight:700}
+.shp-shop.hard{background:linear-gradient(#8a3ae8,#4a1aa0);box-shadow:inset 0 0 0 3px #c9a0ff,0 4px 0 #2a0a60}
+.shp-shop.plc{background:linear-gradient(#3aa0e8,#1a6ab8);box-shadow:inset 0 0 0 3px #9ad0ff,0 4px 0 #0a3a68}
+</style>
 </head>
 <body>
 
@@ -11986,7 +12076,7 @@ function ktRenderHome() {
       <button class="kth-act kth-gacha" onclick="ktpGachaSheet()"><b>🎰</b><span>กาชา</span><small>10 ⭐</small></button>
       <button class="kth-act" onclick="ktpBookSheet()"><b>📖</b><span>สมุดภาพ</span><small>${Object.keys(ktp.pets).length}/${KTP_SPECIES.length}</small></button>
     </div>`;
-  bot.innerHTML = `<button class="kt-btn kt-red" onclick="ktBack()">⬅ ออก</button><span class="sp"></span><button class="kt-btn kt-red kt-big" onclick="ktGoSelect()">📝 เริ่มเรียน (เติมคำ)</button>`;
+  bot.innerHTML = `<button class="kt-btn kt-red" onclick="ktBack()">⬅ ออก</button><button class="kt-btn kt-gold" onclick="ktShopOpen()">🏪 ร้านม่อน</button><span class="sp"></span><button class="kt-btn kt-red kt-big" onclick="ktGoSelect()">📝 เริ่มเรียน (เติมคำ)</button>`;
   setTimeout(() => ktpBubble(ktpTalkKey()), 300); if (ktp.evo) setTimeout(ktpEvoSheet, 700);
 }
 function ktpTap() { const e = document.getElementById('kthPet'); if (!e) return; e.classList.remove('hop'); void e.offsetWidth; e.classList.add('hop'); ktSfx('pop'); ktpBubble(ktpTalkKey()); ktpFx('💗'); }
@@ -13430,13 +13520,14 @@ function fx(id){
   else if(id==='unicorn'){h=stars(8)+'<i class="fx-rainbow"></i>'+cl(3,'#ffffff55')+'<i class="fx-hill"></i>';for(let i=0;i<14;i++)h+='<i class="fx-spk" style="left:'+((i*31+9)%96)+'%;animation-delay:-'+((i%7)*.9)+'s;animation-duration:'+(5+i%4)+'s;--sc:'+['#fff','#ff9ad0','#ffe94a','#bfe4ff'][i%4]+'">'+(i%3?'✦':'♥')+'</i>'}
   else if(id==='maneki'){h='<i class="fx-sun"></i><i class="fx-hill"></i><i class="fx-lan l1"></i><i class="fx-lan l2"></i>';for(let i=0;i<12;i++)h+='<i class="fx-coin" style="left:'+((i*23+8)%96)+'%;animation-delay:-'+((i%6)*1.3)+'s;animation-duration:'+(6+i%4)+'s"></i>'}
   else if(id==='hou'){h='<i class="fx-heat"></i><i class="fx-sun"></i>'+emb(26)+'<div class="fx-fire">';for(let i=0;i<9;i++)h+='<i class="fx-fl" style="left:'+(i*11.5-3)+'%;height:'+(70+(i*37)%60)+'%;animation-delay:-'+(i*.23)+'s"></i>';h+='</div>'}
+  if(id==='sakura'){h='<i class="fx-fuji"></i>'+cl(3,'#ffffffd0')+'<i class="fx-hill"></i><i class="fx-house"></i><i class="fx-trunk"></i><i class="fx-torii t2"></i><i class="fx-sak l"></i><i class="fx-sak r"></i>';for(let i=0;i<14;i++)h+='<i class="fx-pet" style="left:'+((i*29+5)%98)+'%;animation-delay:-'+((i%7)*1.2)+'s;animation-duration:'+(8+i%4)+'s"></i>'}
   h+='<i class="fx-ground"></i>';f.innerHTML=h;
 }
 function theme(){
-  const b=$('fillBox');if(!b)return;const rar=rarNow(),c=cur(),scr=ktS.screen;
+  const b=$('fillBox');if(!b)return;const rar=rarNow(),c=cur(),scr=ktS.screen,isR=!rar&&!!c&&c.sp.rar==='R'&&scr==='home';
   if(rar){const a=ACC[c.sp.id]||['#a88bff','#e0d4ff'];b.dataset.rar=rar;b.dataset.sp=c.sp.id;b.style.setProperty('--ta',a[0]);b.style.setProperty('--tg',a[1]);fx(c.sp.id)}
-  else{delete b.dataset.rar;delete b.dataset.sp}
-  b.classList.toggle('kt-on',!!rar);b.dataset.scr=scr;
+  else if(isR){delete b.dataset.rar;b.dataset.sp='sakura';b.style.setProperty('--ta','#ff9ac0');b.style.setProperty('--tg','#ffd8e6');fx('sakura')}else{delete b.dataset.rar;delete b.dataset.sp}
+  b.classList.toggle('kt-on',!!rar||isR);b.dataset.scr=scr;
   if(!rar||scr==='home')return;
   if(scr==='play'&&(ktS.streak||0)>=3){const bar=$('ktCardBar'),e=document.createElement('span');e.className='kt-combo';e.textContent='🔥 ×'+ktS.streak;bar.insertBefore(e,bar.querySelector('.kt-seg'))}
   if(scr==='result'){
@@ -13589,6 +13680,202 @@ function svgOf(L){let s='';for(let y=0;y<H;y++){let x=0;while(x<W){const c=L[y][
 window.ktp48Parts=(id,mood,sg)=>CH[id]?CH[id](mood,sg):null;
 window.ktp48=function(id,mood,sg){if(!CH[id])return null;const m=mood==='happy'||mood==='sad'||mood==='think'?mood:'',k=id+'|'+m+'|'+(id==='kitsune'?sg|0:0);if(cache[k])return cache[k];
   return cache[k]='<g transform="scale(.375)"><g class="k48-br">'+CH[id](m,sg).map(p=>'<g'+(p[0]?' class="'+p[0]+'"':'')+'>'+svgOf(p[1])+'</g>').join('')+'</g></g>'};
+})();
+
+</script>
+<script id="kt-shop-js">
+/* ===== ร้านของม่อน: โหมดฝึกฟัง-อ่านประโยคสั่งของ (เสียบเข้า KOTOMON) ===== */
+(function(){
+const $=id=>document.getElementById(id);
+const SHOPS=[
+ {id:'fruit',n:'แผงผลไม้',e:'🍎',lv:1,c:['#e03a3a','#fff3dc','#8a5a3a','#6e4528','#c9a070','#c98a4a'],
+  pat:[['{x}を ください。','ขอ{t}หน่อย'],['{x}を おねがいします。','ขอ{t}หน่อยนะคะ/ครับ']],
+  it:[['りんご','แอปเปิล','🍎'],['みかん','ส้ม','🍊'],['バナナ','กล้วย','🍌'],['すいか','แตงโม','🍉'],['たまご','ไข่','🥚'],['にんじん','แครอท','🥕'],['トマト','มะเขือเทศ','🍅'],['ぶどう','องุ่น','🍇'],['ぎゅうにゅう','นม','🥛'],['パン','ขนมปัง','🍞']]},
+ {id:'sweet',n:'ร้านขนมปัง',e:'🍰',lv:4,c:['#ff8ab0','#fff6ee','#e8c8a0','#c9a070','#f0d8b0','#e0a070'],
+  pat:[['{x}を ひとつ ください。','ขอ{t}หนึ่งชิ้น/อัน'],['{x}は ありますか。','มี{t}ไหมคะ/ครับ']],
+  it:[['ケーキ','เค้ก','🍰'],['クッキー','คุกกี้','🍪'],['ドーナツ','โดนัท','🍩'],['アイスクリーム','ไอศกรีม','🍦'],['チョコレート','ช็อกโกแลต','🍫'],['キャンディー','ลูกอม','🍬'],['ピザ','พิซซ่า','🍕'],['ハンバーガー','แฮมเบอร์เกอร์','🍔'],['おにぎり','ข้าวปั้น','🍙'],['ホットドッグ','ฮอตดอก','🌭']]},
+ {id:'stat',n:'ร้านเครื่องเขียน',e:'✏️',lv:6,c:['#3a8ae0','#eef6ff','#4a7a5a','#356248','#b8a078','#a08050'],
+  pat:[['{x}は ありますか。','มี{t}ไหมคะ/ครับ'],['{x}が ほしいです。','อยากได้{t}']],
+  it:[['えんぴつ','ดินสอ','✏️'],['ノート','สมุด','📓'],['ほん','หนังสือ','📖'],['はさみ','กรรไกร','✂️'],['かばん','กระเป๋า','🎒'],['かさ','ร่ม','🌂'],['とけい','นาฬิกา','⏰'],['めがね','แว่นตา','👓'],['てがみ','จดหมาย','✉️'],['ペン','ปากกา','🖊️']]},
+ {id:'cafe',n:'คาเฟ่',e:'☕',lv:8,c:['#8a5a3a','#f6e8d0','#5a3a28','#40281a','#a07850','#7a5030'],
+  pat:[['{x}を おねがいします。','ขอ{t}หน่อย'],['{x}を いただけますか。','ขอ{t}ได้ไหมคะ/ครับ (สุภาพ)']],
+  it:[['コーヒー','กาแฟ','☕'],['おちゃ','ชา','🍵'],['カレー','แกงกะหรี่','🍛'],['ラーメン','ราเมน','🍜'],['すし','ซูชิ','🍣'],['サラダ','สลัด','🥗'],['スープ','ซุป','🍲'],['ステーキ','สเต็ก','🥩'],['パスタ','พาสต้า','🍝'],['おべんとう','กล่องข้าว','🍱']]},
+ {id:'pet',n:'ร้านสัตว์เลี้ยง',e:'🐾',lv:10,c:['#3aaa6a','#f0fff4','#e8d8a8','#c8b078','#d8c090','#b89850'],
+  pat:[['{x}を いただけませんか。','ขอ{t}ได้ไหมคะ/ครับ (สุภาพมาก)'],['{x}を かいたいです。','อยากซื้อ{t}']],
+  it:[['おにぎり','ข้าวปั้น','🍙','onigiri'],['だんご','ดังโงะ','🍡','dango'],['ラーメン','ราเมน','🍜','ramen'],['すし','ซูชิ','🍣','sushi'],['せっけん','สบู่','🧼','soap'],['おふろ','อ่างอาบน้ำ','🛁','bubble'],['ボール','ลูกบอล','🎾','ball'],['ぬいぐるみ','ตุ๊กตา','🧸','teddy'],['たこ','ว่าว','🎏','kite'],['おかし','ขนมหวาน','🍬','candy']]},
+ {id:'konbini',n:'ร้านสะดวกซื้อ (コンビニ)',e:'🏪',lv:3,sub:'มีตัวเลือก: อุ่นไมโครเวฟ・ตะเกียบ・ถุง・ทานที่นี่/กลับบ้าน',c:['#2aa05a','#f4fff4','#dfe8ee','#c4d2dc','#e8e8e8','#8aa0b0'],
+  end:[['ください。','ขอ{L}'],['おねがいします。','ขอ{L}']],
+  hx:[['ハンバーグ','แฮมเบิร์กสเต็ก','🍖','h','tsu','ชิ้น'],['グラタン','กราแต็ง','🧀','h','tsu','ถ้วย'],['からあげ','ไก่ทอด','🍗','','tsu','กล่อง'],['みず','น้ำเปล่า','💧','','hon','ขวด'],['コーヒー','กาแฟกระป๋อง','🥫','','hon','กระป๋อง'],['チョコレート','ช็อกโกแลต','🍫','','tsu','แท่ง']],
+  hopt:[
+   {id:'heat',t:'อุ่นไหม?',need:'h',ch:[['あたためて いただけますか','อุ่นด้วย (ไมโครเวฟ)','♨️','あたためて'],['あたためなくて けっこうです','ไม่ต้องอุ่น','❄️','あたためない']]},
+   {id:'nuki',t:'ไม่ใส่?',nuki:1},
+   {id:'chop',t:'ตะเกียบ?',ch:[['おはしを いれて いただけますか','ขอตะเกียบ','🥢','おはし あり'],['おはしは けっこうです','ไม่เอาตะเกียบ','🙅','おはし なし']]},
+   {id:'bag',t:'ถุง?',ch:[['ふくろは わけて いただけますか','แยกถุง','🛍️','わけて'],['ふくろは ひとつに まとめて ください','รวมถุงเดียว','👜','まとめて'],['ふくろは けっこうです','ไม่เอาถุง','🙅','いらない']]},
+   {id:'eat',t:'ทานที่ไหน?',ch:[['こちらで いただきます','ทานที่นี่','🪑','こちらで'],['もちかえりで おねがいします','ซื้อกลับบ้าน','🚶','もちかえり']]}],
+  it:[['おべんとう','กล่องข้าว','🍱','h','tsu','ชิ้น'],['おにぎり','ข้าวปั้น','🍙','','tsu','ชิ้น'],['サンドイッチ','แซนด์วิช','🥪','','tsu','ชิ้น'],['パスタ','พาสต้า','🍝','h','tsu','ถาด'],['カレー','แกงกะหรี่','🍛','h','tsu','กล่อง'],['サラダ','สลัด','🥗','','tsu','ถ้วย'],['おちゃ','ชา (ขวด)','🍵','','hon','ขวด'],['ジュース','น้ำผลไม้','🧃','','hon','ขวด'],['ぎゅうにゅう','นม','🥛','','tsu','กล่อง'],['アイスクリーム','ไอศกรีม','🍦','','tsu','ถ้วย']],
+  opt:[
+   {id:'heat',t:'อุ่นไหม?',need:'h',ch:[['あたためて ください','อุ่นด้วย (ไมโครเวฟ)','♨️','あたためて'],['そのままで いいです','ไม่ต้องอุ่น','❄️','そのまま']]},
+   {id:'chop',t:'ตะเกียบ?',ch:[['おはしを ください','ขอตะเกียบ','🥢'],['おはしは いりません','ไม่เอาตะเกียบ','🙅']]},
+   {id:'bag',t:'ถุง?',ch:[['ふくろに いれて ください','ใส่ถุงให้ด้วย','🛍️','ふくろに いれて'],['ふくろは いりません','ไม่เอาถุง','🙅']]},
+   {id:'eat',t:'ทานที่ไหน?',ch:[['ここで たべます','ทานที่นี่ (มุมอีทอิน)','🪑'],['もちかえります','ซื้อกลับบ้าน','🚶']]}]},
+ {id:'diner',n:'ร้านอาหารญี่ปุ่น (しょくどう)',e:'🍜',lv:5,sub:'มีตัวเลือก: ร้อน/เย็น・ขนาด・ทานที่ร้าน/ห่อกลับ',c:['#c81d2a','#fff3dc','#d8b078','#b88c50','#a07850','#6e4528'],
+  end:[['おねがいします。','ขอ{L}'],['ください。','ขอ{L}']],
+  hx:[['うどん','อุด้ง','🍜','n','hai','ชาม'],['やきとり','ยากิโทริ','🍢','','hon','ไม้'],['おにぎり','ข้าวปั้น','🍙','','tsu','ชิ้น'],['サラダ','สลัด','🥗','','tsu','จาน'],['ケーキ','เค้ก','🍰','','tsu','ชิ้น'],['ぎゅうにゅう','นม','🥛','','hai','แก้ว']],
+  hopt:[
+   {id:'size',t:'ขนาด?',need:'n',ch:[['おおもりに していただけますか','ใหญ่พิเศษ (大盛り)','🔼','おおもり'],['ふつうで けっこうです','ขนาดปกติ','🍽️','ふつう']]},
+   {id:'nuki',t:'ไม่ใส่?',nuki:1},
+   {id:'temp',t:'ร้อน/เย็น?',need:'d',ch:[['あたたかいのを おねがいできますか','แบบร้อน','♨️','あたたかい'],['つめたいのを おねがいできますか','แบบเย็น','🧊','つめたい']]},
+   {id:'eat',t:'ทานที่ไหน?',ch:[['こちらで いただきます','ทานที่ร้าน','🪑','こちらで'],['もちかえりに していただけますか','ห่อกลับบ้าน','🥡','もちかえり']]}],
+  it:[['ラーメン','ราเมน','🍜','n','hai','ชาม'],['カレー','แกงกะหรี่','🍛','n','tsu','จาน'],['かつどん','ข้าวหน้าหมูทอด','🍚','n','tsu','ชาม'],['てんぷら','เทมปุระ','🍤','','tsu','ชุด'],['ぎょうざ','เกี๊ยวซ่า','🥟','','tsu','จาน'],['すし','ซูชิ','🍣','','tsu','ชุด'],['みそしる','ซุปมิโซะ','🥣','','hai','ถ้วย'],['おちゃ','ชา','🍵','d','hai','ถ้วย'],['コーヒー','กาแฟ','☕','d','hai','แก้ว'],['ジュース','น้ำผลไม้','🧃','','hai','แก้ว']],
+  opt:[
+   {id:'size',t:'ขนาด?',need:'n',ch:[['おおもりで おねがいします','ใหญ่พิเศษ (大盛り)','🔼','おおもり'],['ふつうで いいです','ขนาดปกติ','🍽️','ふつう']]},
+   {id:'temp',t:'ร้อน/เย็น?',need:'d',ch:[['あたたかいのを おねがいします','แบบร้อน','♨️','あたたかいの'],['つめたいのを おねがいします','แบบเย็น','🧊','つめたいの']]},
+   {id:'eat',t:'ทานที่ไหน?',ch:[['ここで たべます','ทานที่ร้าน','🪑'],['もちかえりで おねがいします','ห่อกลับบ้าน','🥡','もちかえり']]}]}
+];
+const TH=[0,20,50,90,140,200,270,350,440,540];
+const P=()=>{ktProg.shop=ktProg.shop||{pts:0};return ktProg.shop};
+const lvOf=p=>TH.filter(t=>p>=t).length;
+const day=()=>ktLocalDay();
+let S=null,box=null;
+const shuf=a=>a.slice().sort(()=>Math.random()-.5);
+function keeper(){const p=ktpAct();return p?{id:p.sp,lv:p.lv}:{id:KTP_SPECIES[0].id,lv:0}}
+function ensure(){const f=$('fillBox');if(!f)return null;if(!box||!box.isConnected){box=document.createElement('div');box.id='ktShop';f.appendChild(box)}box.style.display='flex';return box}
+window.ktShopOpen=function(){ensure();menu()};
+window.ktShopClose=function(){if(box)box.style.display='none';try{ktRender()}catch(e){}};
+function head(t,back){return '<div class="shp-top"><button class="shp-x" onclick="'+(back||'ktShopClose()')+'">⬅</button><b>'+t+'</b><span class="shp-chip">⭐ '+gachaState.coins+'</span></div>'}
+window.ktShopMenu=menu;
+function menu(){
+  S=null;box.classList.remove('shp-scroll');const p=P(),lv=lvOf(p.pts),hardOK=lvOf(p.pts)>=7,nx=TH[lv],d=p.d&&p.d.d===day()?p.d.n:0;
+  const prog=nx==null?'<div class="shp-note">⭐ ระดับสูงสุดแล้ว!</div>':'<div class="shp-bar"><i style="width:'+Math.round((p.pts-TH[lv-1])/(nx-TH[lv-1])*100)+'%"></i></div><div class="shp-note">อีก '+(nx-p.pts)+' แต้มถึงระดับ ★'+(lv+1)+'</div>';
+  box.innerHTML=head('🏪 ร้านของม่อน')+'<div class="shp-body"><div class="shp-card"><div class="shp-lv">ระดับร้าน '+'★'.repeat(lv)+'<small> '+lv+'/10</small></div>'+prog+'<div class="shp-note">รอบที่ได้เหรียญวันนี้ '+d+'/5 · ตอบถูกในครั้งแรกได้แต้มเพิ่ม</div><div class="shp-note">ลูกค้าในร้านระดับสูงสั่งหลายชิ้น/หลายอย่าง ต้องฟังตัวนับ つ・本・冊・杯 ให้ออก · ร้านสะดวกซื้อและร้านอาหารมีตัวเลือกพิเศษ (อุ่นไมโครเวฟ・ร้อน/เย็น・ทานที่นี่/กลับบ้าน)</div></div>'+
+   ('<button class="shp-shop plc" onclick="ktShopPlace()"><span>🎯</span> ทดสอบวัดระดับ (5 ข้อ)<small>'+(p.pl?'เคยทำแล้ว '+p.pl.s+'/5 · ทำซ้ำได้ (ไม่ลดระดับ)':'รู้ภาษาญี่ปุ่นอยู่แล้ว? ข้ามด่านง่าย ๆ ได้')+'</small></button>')+SHOPS.map((s,i)=>[s,i]).sort((a,b)=>a[0].lv-b[0].lv).map(x=>{const s=x[0],i=x[1];return lv>=s.lv?'<button class="shp-shop" onclick="ktShopStart('+i+')"><span>'+s.e+'</span> '+s.n+'<small>'+(s.id==='pet'?'ได้ของแถมไปเลี้ยงม่อน':s.sub||'เริ่มรับลูกค้า')+'</small></button>'+(s.hopt?(hardOK?'<button class="shp-shop hard" onclick="ktShopStart('+i+',1)"><span>🔥</span> โหมดยาก N3–N2 (敬語)<small>ประโยคยาว・ภาษาสุภาพ・เปลี่ยน/ยกเลิกออเดอร์・ไม่ใส่…</small></button>':'<div class="shp-shop lock">🔒 โหมดยาก N3–N2 (敬語)<small>ปลดล็อกที่ ★7 หรือทำแบบทดสอบได้ตั้งแต่ 4/5</small></div>'):''):'<div class="shp-shop lock">🔒 '+s.n+'<small>ปลดล็อกที่ ★ '+s.lv+'</small></div>'}).join('')+'</div>';
+}
+const CT={tsu:['','ひとつ','ふたつ','みっつ','よっつ','いつつ'],hon:['','いっぽん','にほん','さんぼん','よんほん','ごほん'],satsu:['','いっさつ','にさつ','さんさつ','よんさつ','ごさつ'],hai:['','いっぱい','にはい','さんばい','よんはい','ごはい']};
+const UN={tsu:'ชิ้น',hon:'แท่ง',satsu:'เล่ม',hai:'แก้ว'};
+const PLAN=[[[4,1,1],[8,1,3],[10,2,2]],[[3,1,1],[7,1,4],[10,2,3]],[[3,1,1],[7,1,4],[10,2,3]],[[2,1,1],[5,1,3],[8,2,3],[10,3,2]],[[2,1,1],[4,1,3],[8,2,3],[10,3,2]]];
+const END=[[['ください。','ขอ{L}หน่อย'],['おねがいします。','ขอ{L}หน่อยนะคะ/ครับ']],0,0,[['おねがいします。','ขอ{L}หน่อย'],['いただけますか。','ขอ{L}ได้ไหมคะ/ครับ (สุภาพ)']],[['いただけませんか。','ขอ{L}ได้ไหมคะ/ครับ (สุภาพมาก)'],['かいたいです。','อยากซื้อ{L}']]];END[1]=END[2]=END[0];
+function ctr(s,k){if(s.opt){const x=s.it.find(a=>a[0]===k);return x[4]}if(s.id==='stat')return /^(えんぴつ|ペン)$/.test(k)?'hon':/^(ノート|ほん)$/.test(k)?'satsu':'tsu';if(s.id==='cafe')return /^(コーヒー|おちゃ)$/.test(k)?'hai':'tsu';return'tsu'}
+const rnd=n=>Math.floor(Math.random()*n);
+function mkOptOrder(si,k,s,others){
+  const gc=Math.min(s.opt.length,k<3?1:k<7?2:3),nl=k<3?2:k<7?2+rnd(2):3,mq=k<3?2:3;
+  const gs=shuf(s.opt).slice(0,gc),needF=gs.filter(g=>g.need).map(g=>g.need),J=s.it.map((_,j)=>j),pn={},lines=[];
+  gs.forEach(g=>{if(!g.need)return;const j=shuf(J.filter(j=>s.it[j][3].indexOf(g.need)>-1))[0];pn[g.id]=j;lines.push({j:j,it:s.it[j],c:s.it[j][4],q:1})});
+  const free=shuf(J.filter(j=>!lines.some(l=>l.j===j)&&!needF.some(f=>s.it[j][3].indexOf(f)>-1)));
+  while(lines.length<nl&&free.length){const j=free.pop();lines.push({j:j,it:s.it[j],c:s.it[j][4],q:1+rnd(mq)})}
+  const L=shuf(lines);
+  const opts=gs.slice().sort((a,b)=>s.opt.indexOf(a)-s.opt.indexOf(b)).map(g=>({g:g,v:rnd(2),fl:rnd(2),tn:g.need?s.it[pn[g.id]]:null}));
+  const e=s.end[rnd(2)],cu=others[rnd(others.length)];
+  const jp=L.map(l=>l.it[0]+'を '+CT[l.c][l.q]).join('と ')+' '+e[0]+opts.map(o=>' '+(o.tn?o.tn[0]+'は ':'')+o.g.ch[o.v][0]+'。').join('');
+  const th=e[1].replace('{L}',L.map(l=>l.it[1]+' '+l.q+' '+l.it[5]).join(' กับ '))+opts.map(o=>' · '+(o.tn?o.tn[1]+': ':'')+o.g.ch[o.v][1]).join('');
+  return{lines:L,simple:false,jp:jp,th:th,cu:cu,first:true,opts:opts};
+}
+const NGP=[['たまねぎ','หัวหอม','🧅'],['ねぎ','ต้นหอม','🌿'],['トマト','มะเขือเทศ','🍅'],['きゅうり','แตงกวา','🥒'],['にんじん','แครอท','🥕'],['わさび','วาซาบิ','🟢'],['にんにく','กระเทียม','🧄'],['もやし','ถั่วงอก','🌱'],['コーン','ข้าวโพด','🌽']];
+const NGI={'サンドイッチ':['トマト','きゅうり','たまねぎ'],'サラダ':['たまねぎ','トマト','コーン'],'ラーメン':['ねぎ','もやし','にんにく'],'カレー':['たまねぎ','にんじん'],'すし':['わさび'],'ぎょうざ':['にんにく'],'うどん':['ねぎ'],'かつどん':['たまねぎ','ねぎ']};
+function mkHardOrder(si,k,s,others){
+  const its=s.it.concat(s.hx),J=its.map((_,j)=>j),gc=k<3?2:3,nl=k<5?3:4;
+  const gs=shuf(s.hopt).slice(0,gc),needF=gs.filter(g=>g.need).map(g=>g.need),pn={},tgt={},lines=[];
+  const mkl=(j,q)=>({j:j,it:its[j],c:its[j][4],q:q}),nf=j=>needF.some(f=>its[j][3].indexOf(f)>-1);
+  gs.forEach(g=>{if(g.need){const j=shuf(J.filter(j=>its[j][3].indexOf(g.need)>-1))[0];pn[g.id]=j;tgt[j]=1;lines.push(mkl(j,1))}});
+  gs.forEach(g=>{if(!g.nuki)return;const cand=J.filter(j=>NGI[its[j][0]]&&(!nf(j)||lines.some(l=>l.j===j))),j=shuf(cand)[0];pn[g.id]=j;tgt[j]=1;if(!lines.some(l=>l.j===j))lines.push(mkl(j,1+rnd(2)))});
+  const free=shuf(J.filter(j=>!lines.some(l=>l.j===j)&&!nf(j)));
+  while(lines.length<nl&&free.length)lines.push(mkl(free.pop(),1+rnd(3)));
+  let chg=null;
+  if(k>=2){
+    let plain=lines.filter(l=>!tgt[l.j]);
+    if(!plain.length&&free.length){const l=mkl(free.pop(),1+rnd(3));lines.push(l);plain=[l]}
+    if(plain.length){const x=plain[rnd(plain.length)],ty=['cancel','swap','add'][rnd(3)];
+      if(ty==='swap'&&free.length)chg={t:'swap',x:x,y:mkl(free.pop(),x.q)};
+      else if(ty==='add'&&x.q<4)chg={t:'add',x:x};
+      else chg={t:'cancel',x:x}}
+  }
+  const fin=!chg?lines.slice():chg.t==='cancel'?lines.filter(l=>l!==chg.x):chg.t==='swap'?lines.map(l=>l===chg.x?chg.y:l):lines.map(l=>l===chg.x?{j:l.j,it:l.it,c:l.c,q:l.q+1}:l);
+  const opts=gs.slice().sort((a,b)=>s.hopt.indexOf(a)-s.hopt.indexOf(b)).map(g=>{
+    if(g.nuki){const it=its[pn[g.id]],nm=shuf(NGI[it[0]])[0],c=NGP.find(x=>x[0]===nm),arr=shuf([c].concat(shuf(NGP.filter(x=>x!==c)).slice(0,2))),pol=rnd(2);
+      return{g:g,chs:arr.map(x=>[pol?x[0]+'ぬきで おねがいします':x[0]+'を ぬいて いただけますか','ไม่ใส่'+x[1],x[2],x[0]+'ぬき']),v:arr.indexOf(c),ord:[0,1,2],tn:it}}
+    return{g:g,v:rnd(g.ch.length),ord:shuf(g.ch.map((_,i)=>i)),tn:g.need?its[pn[g.id]]:null}});
+  const op=['すみません。 ','あの、 すみません。 ','しつれいします。 '][rnd(3)],en=[['いただけますか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)'],['いただけませんか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพมาก)'],['おねがいできますか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)']][rnd(3)],L0=shuf(lines),cu=others[rnd(others.length)];
+  let jp=op+L0.map(l=>l.it[0]+'を '+CT[l.c][l.q]).join('と ')+' '+en[0]+opts.map(o=>' '+(o.tn?o.tn[0]+'は ':'')+(o.chs||o.g.ch)[o.v][0]+'。').join('');
+  let th=en[1].replace('{L}',L0.map(l=>l.it[1]+' '+l.q+' '+l.it[5]).join(' กับ '))+opts.map(o=>' · '+(o.tn?o.tn[1]+': ':'')+(o.chs||o.g.ch)[o.v][1]).join('');
+  let chgTh=null;
+  if(chg){const x=chg.x;
+    if(chg.t==='cancel'){jp+=' あ、 やっぱり '+x.it[0]+'は けっこうです。';chgTh='ยกเลิก '+x.it[1]}
+    else if(chg.t==='swap'){jp+=' あ、 すみません、 '+x.it[0]+'を '+chg.y.it[0]+'に かえて いただけますか。';chgTh='เปลี่ยน '+x.it[1]+' เป็น '+chg.y.it[1]+' (จำนวนเท่าเดิม)'}
+    else{jp+=' あ、 '+x.it[0]+'は もう ひとつ ふやして いただけますか。';chgTh='เพิ่ม '+x.it[1]+' อีก 1'}
+    th+=' · 🔄 '+chgTh}
+  return{lines:shuf(fin),simple:false,jp:jp,th:th,cu:cu,first:true,opts:opts,its:its,chgTh:chgTh,chg:chg};
+}
+window.ktShopPlace=function(){
+  const k=keeper(),others=KTP_SPECIES.filter(x=>x.id!==k.id);
+  const mk=(si,kk,hard)=>{const sh=SHOPS[si],q=hard?mkHardOrder(si,kk,sh,others):mkOrder(si,kk,sh,others);q.sh=si;return q};
+  S={i:0,s:SHOPS[0],k:k,first:0,place:true,hard:false,qs:[mk(0,0),mk(2,7),mk(5,5),mk(6,9),mk(5,6,1)],i2:0,wrong:false,hint:false,done:false,lock:false,ng:{},cart:{},sel:{},og:{},why:''};
+  render(true);ktShopSay();
+};
+function pfinish(){
+  box.classList.remove('shp-scroll');
+  const p=P(),old=lvOf(p.pts),sc=S.first,tg=[1,1,3,5,7,8][sc];
+  p.pl={d:day(),s:sc};if(TH[tg-1]>p.pts)p.pts=TH[tg-1];
+  const nw=lvOf(p.pts),unlock=SHOPS.filter(x=>x.lv>old&&x.lv<=nw);
+  ktSave();try{ktSfx('pass')}catch(e){}
+  box.innerHTML=head('🎯 ผลวัดระดับ','ktShopMenu()')+'<div class="shp-body"><div class="shp-card shp-res"><div class="shp-lv">ตอบถูก '+sc+'/5</div><div class="shp-big">ระดับร้าน ★'+nw+'</div><div class="shp-note">'+(nw>old?'🎉 ข้ามระดับจาก ★'+old+' เป็น ★'+nw:'ระดับเดิมของคุณ ★'+old+' สูงพออยู่แล้ว (แบบทดสอบไม่ลดระดับ)')+'</div>'+(unlock.length?'<div class="shp-note">🔓 ปลดล็อก: '+unlock.map(x=>x.n).join(', ')+'</div>':'')+(nw>=7?'<div class="shp-note">🔥 ปลดล็อกโหมดยาก N3–N2 แล้ว (ร้านสะดวกซื้อ / ร้านอาหารญี่ปุ่น)</div>':'')+'</div><button class="shp-shop" onclick="ktShopMenu()">ไปเลือกร้าน</button></div>';
+}
+function mkOrder(si,k,s,others){
+  if(s.opt)return mkOptOrder(si,k,s,others);
+  const t=PLAN[si].find(x=>k<x[0]),nl=t[1],mq=t[2],pick=shuf(s.it.map((it,j)=>j)).slice(0,nl);
+  const lines=pick.map(j=>{const it=s.it[j];return{j:j,it:it,c:ctr(s,it[0]),q:nl===1&&mq>1?2+rnd(mq-1):1+rnd(mq)}});
+  const cu=others[rnd(others.length)];
+  if(nl===1&&mq===1){const pt=s.pat[rnd(s.pat.length)],it=lines[0].it;return{lines:lines,simple:true,jp:pt[0].replace('{x}',it[0]),th:pt[1].replace('{t}',it[1]),cu:cu,first:true}}
+  const e=END[si][rnd(2)];
+  return{lines:lines,simple:false,jp:lines.map(l=>l.it[0]+'を '+CT[l.c][l.q]).join('と ')+' '+e[0],th:e[1].replace('{L}',lines.map(l=>l.it[1]+' '+l.q+UN[l.c]).join(' กับ ')),cu:cu,first:true}
+}
+window.ktShopStart=function(i,hard){
+  const s=SHOPS[i],k=keeper(),others=KTP_SPECIES.filter(x=>x.id!==k.id);
+  S={i:i,s:s,k:k,first:0,qs:Array.from({length:10},(_,n)=>hard&&s.hopt?mkHardOrder(i,n,s,others):mkOrder(i,n,s,others)),i2:0,wrong:false,hint:false,done:false,lock:false,ng:{},cart:{},sel:{},og:{},why:'',hard:!!(hard&&s.hopt),place:false};
+  render(true);ktShopSay();
+};
+function render(fresh){
+  const q=S.qs[S.i2],s=q.sh!=null?SHOPS[q.sh]:S.s,its=q.its||s.it,c=s.c,cm=S.done?'happy':S.wrong?'sad':null,tag=q.simple?'':(q.lines.length>1?' · 🧺 หลายอย่าง':' · 🔢 จำนวน');
+  const cards=its.map((it,j)=>'<button class="shp-it'+(S.cart[j]?' in':'')+(S.done&&q.lines.some(l=>l.j===j)?' ok':'')+(S.ng[j]?' ng':'')+'" onclick="ktShopPick('+j+')">'+(S.cart[j]?'<b class="shp-n">×'+S.cart[j]+'</b>':'')+'<span>'+it[2]+'</span><em>'+it[0]+'</em></button>').join('');
+  const chips=Object.keys(S.cart).map(j=>'<button class="shp-c2" onclick="ktShopDec('+j+')">'+its[j][2]+'×'+S.cart[j]+' ➖</button>').join('');
+  const cart=q.simple?'':'<div class="shp-cart"><div class="shp-chips">'+(chips||'<span class="shp-emp">แตะสินค้าเพื่อใส่ตะกร้า (แตะซ้ำ = เพิ่มจำนวน)</span>')+'</div><button onclick="ktShopClear()">🗑</button><button class="go" onclick="ktShopSubmit()">✔ ส่งของ</button></div>';
+  const st=(S.wrong?'<span class="shp-bad">✖ ちがいます…'+(S.place?' ข้อนี้ผิด (ไปข้อต่อไป)':' ลองฟังอีกครั้ง'+(S.why?' ('+S.why+')':''))+'</span> ':'')+(S.hint||S.done?'💡 '+ktEsc(q.th):'');
+  let optsHtml='';
+  if(q.opts){
+    if(S.done)optsHtml='<div class="shp-rc"><h4>🧾 レシート</h4>'+q.lines.map(l=>'<div><span>'+l.it[2]+' '+l.it[0]+'</span><b>× '+l.q+'</b></div>').join('')+q.opts.map(o=>'<div class="o"><span>'+(o.chs||o.g.ch)[o.v][2]+' '+(o.tn?o.tn[0]+' → ':'')+(o.chs||o.g.ch)[o.v][1]+'</span></div>').join('')+(q.chgTh?'<div class="o">🔄 '+q.chgTh+'</div>':'')+'<div class="t">ありがとうございました！</div></div>';
+    else optsHtml='<div class="shp-opts">'+q.opts.map(o=>{const g=o.g,chs=o.chs||g.ch,ord=o.ord||(o.fl?[1,0]:[0,1]);return '<div class="shp-og'+(S.og[g.id]?' ng':'')+'"><span class="shp-ot">'+g.t+(o.tn?' '+o.tn[2]:'')+'</span>'+ord.map(v=>'<button class="shp-ob'+(S.sel[g.id]===v?' on':'')+'" onclick="ktShopOpt(\''+g.id+'\','+v+')">'+chs[v][2]+' '+(chs[v][3]||chs[v][0])+'<small>'+chs[v][1]+'</small></button>').join('')+'</div>'}).join('')+'</div>';
+  }
+  box.classList.toggle('shp-scroll',!!q.opts);
+  box.innerHTML=head(S.place?'🎯 วัดระดับ '+(S.i2+1)+'/5':s.e+' '+s.n,'ktShopMenu()')+'<div class="shp-scene" style="--a1:'+c[0]+';--a2:'+c[1]+';--w1:'+c[2]+';--w2:'+c[3]+';--fl:'+c[4]+';--ct:'+c[5]+'"><i class="shp-aw"></i><i class="shp-win"></i><div class="shp-sign"'+(S.done&&q.lines.length>1?' style="font-size:'+(q.lines.length>2?17:24)+'px;line-height:1.1;flex-wrap:wrap;align-content:center"':'')+'>'+(S.done?q.lines.map(l=>l.it[2]).join(''):'？')+'</div><div class="shp-shelf"><i style="background:#f27a7a"></i><i style="background:#ffd24a"></i><i style="background:#8ad47a"></i><i style="background:#a98ae8"></i></div><div class="shp-prog">ลูกค้า '+(S.i2+1)+'/'+S.qs.length+tag+(S.hard?' · 🔥 N3–N2':'')+'</div>'+
+   '<div class="shp-cust'+(fresh?' in':'')+'">'+ktpSvg(q.cu.id,cm,'')+'</div><div class="shp-keep'+(S.done?' hop':'')+'">'+ktpSvg(S.k.id,S.done?'happy':S.wrong?'sad':null,'',S.k.lv)+'</div><i class="shp-cnt"></i></div>'+
+   '<div class="shp-dlg"><div class="shp-nm">'+ktEsc(q.cu.name)+' ('+q.cu.jp+')</div><div class="shp-jp">'+(S.done?'ありがとう！':q.jp)+'</div><div class="shp-th">'+st+'</div><div class="shp-bt"><button onclick="ktShopSay()">🔊</button>'+(S.place?'':'<button onclick="ktShopHint()">💡 คำใบ้</button>')+'</div></div>'+(q.opts?'<div class="shp-grid">'+cards+'</div><div class="shp-dock">'+cart+optsHtml+'</div>':cart+'<div class="shp-grid">'+cards+'</div>');
+}
+window.ktShopSay=function(){if(!S||S.done)return;try{playJapaneseAudio(S.qs[S.i2].jp.replace(/\s/g,''))}catch(e){}};
+window.ktShopHint=function(){if(!S||S.done||S.place)return;S.hint=true;S.qs[S.i2].first=false;render(false)};
+function good(q){S.done=true;S.lock=true;if(q.first&&!S.wrong)S.first++;else q.first=false;try{ktSfx('care')}catch(e){}render(false);setTimeout(next,q.opts?2600:1400)}
+function bad(q){S.wrong=true;q.first=false;try{ktSfx('shake')}catch(e){}if(S.place)S.lock=true;render(false);if(S.place)setTimeout(next,2200)}
+window.ktShopPick=function(j){
+  if(!S||S.done||S.lock)return;const q=S.qs[S.i2];
+  if(q.simple){if(S.ng[j])return;if(q.lines[0].j===j)good(q);else{S.ng[j]=1;bad(q)}}
+  else{S.cart[j]=Math.min(5,(S.cart[j]||0)+1);S.wrong=false;render(false)}
+};
+window.ktShopDec=function(j){if(!S||S.done||S.lock)return;if(--S.cart[j]<=0)delete S.cart[j];S.wrong=false;render(false)};
+window.ktShopClear=function(){if(!S||S.done||S.lock)return;S.cart={};S.wrong=false;render(false)};
+window.ktShopOpt=function(g,v){if(!S||S.done||S.lock)return;S.sel[g]=v;delete S.og[g];S.wrong=false;S.why='';render(false)};
+window.ktShopSubmit=function(){
+  if(!S||S.done||S.lock)return;const q=S.qs[S.i2],ks=Object.keys(S.cart);if(!ks.length)return;
+  const iok=ks.length===q.lines.length&&q.lines.every(l=>S.cart[l.j]===l.q);let ook=true;S.og={};(q.opts||[]).forEach(o=>{if(S.sel[o.g.id]!==o.v){S.og[o.g.id]=1;ook=false}});S.why=q.opts?(iok?'':'เช็คของในตะกร้า')+(!iok&&!ook?' + ':'')+(ook?'':'เช็คช่องที่ขึ้นแดง'):'';if(iok&&ook)good(q);else bad(q);
+};
+function next(){if(!S)return;S.i2++;if(S.i2>=S.qs.length)return S.place?pfinish():finish();S.done=false;S.wrong=false;S.hint=false;S.ng={};S.cart={};S.sel={};S.og={};S.why='';S.lock=false;render(true);ktShopSay()}
+function finish(){
+  const p=P(),old=lvOf(p.pts),pts=S.hard?14+S.first*2:10+S.first;p.pts+=pts;const nw=lvOf(p.pts);
+  const dd=p.d&&p.d.d===day()?p.d:{d:day(),n:0};let coin=0;
+  if(dd.n<5){coin=2+(S.first>=8?1:0)+(S.first===10?2:0)+(S.hard?2:0);try{coin+=ktpPerk().coin||0}catch(e){}try{addPracticeCoins(coin,'fill')}catch(e){coin=0}dd.n++}
+  p.d=dd;let tips=[];
+  if(S.s.id==='pet'){const t=p.t&&p.t.d===day()?p.t:{d:day(),n:0};S.qs.forEach(q=>{if(q.first&&t.n<3&&Math.random()<.35&&ktp){const l=q.lines[rnd(q.lines.length)];ktp.items[l.it[3]]=(ktp.items[l.it[3]]||0)+1;t.n++;tips.push(l.it[2]+' '+l.it[1])}});p.t=t;try{ktpSave()}catch(e){}}
+  try{ktpGain(8)}catch(e){}ktSave();try{ktSfx('pass')}catch(e){}
+  box.classList.remove('shp-scroll');const unlock=SHOPS.filter(s=>s.lv>old&&s.lv<=nw);
+  box.innerHTML=head('🏪 ร้านของม่อน','ktShopMenu()')+'<div class="shp-body"><div class="shp-card shp-res"><div class="shp-lv">ปิดร้านแล้ว! '+S.s.e+'</div><div class="shp-big">ตอบถูกครั้งแรก '+S.first+'/10</div><div class="shp-note">แต้มร้าน +'+pts+(nw>old?' · 🎉 ระดับร้านขึ้นเป็น ★'+nw:'')+'</div><div class="shp-note">'+(coin?'⭐ รับเหรียญ +'+coin:'รอบที่ได้เหรียญวันนี้ครบ 5 แล้ว แต่แต้มร้านยังได้')+'</div>'+
+   (tips.length?'<div class="shp-note">🎁 ลูกค้าให้ของแถม: '+tips.join(', ')+'</div>':'')+(unlock.length?'<div class="shp-note">🔓 ปลดล็อก: '+unlock.map(s=>s.n).join(', ')+'</div>':'')+'</div><button class="shp-shop" onclick="ktShopStart('+S.i+','+(S.hard?1:0)+')">🔁 เปิดร้านอีกรอบ</button><button class="shp-shop alt" onclick="ktShopMenu()">เลือกร้านอื่น</button></div>';
+}
 })();
 
 </script>
