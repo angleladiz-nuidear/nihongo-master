@@ -2524,6 +2524,10 @@ linear-gradient(var(--k),var(--k)) bottom right/var(--l) var(--w) no-repeat,line
 .shp-dopts button:active{transform:translateY(3px)}.shp-dopts button.ng{background:#f4b0a8;border-color:#a02a1a;opacity:.55;box-shadow:none}
 .shp-dopts button.ok{background:#b8f0a0;border-color:#2a8a2a}
 .shp-sec{font-weight:800;font-size:14px;color:#6a3a1a;margin:6px 0 -4px}
+.shp-tier{display:inline-block;background:#6a1aa0;color:#fff;border-radius:8px;padding:0 8px;font-size:13px;margin-left:6px;vertical-align:middle}
+.shp-chs{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.shp-chs button{font-family:inherit;font-weight:800;font-size:13px;color:#3a2412;background:#fff;border:2px solid #6a3a1a;padding:3px 9px;cursor:pointer}
+.shp-chs button.on{background:#6a1aa0;color:#fff;border-color:#2a0a60}.shp-chs button:disabled{opacity:.35;cursor:default}
 </style>
 </head>
 <body>
@@ -13761,9 +13765,13 @@ const SHOPS=[
    {id:'temp',t:'ร้อน/เย็น?',need:'d',ch:[['あたたかいのを おねがいします','แบบร้อน','♨️','あたたかいの'],['つめたいのを おねがいします','แบบเย็น','🧊','つめたいの']]},
    {id:'eat',t:'ทานที่ไหน?',ch:[['ここで たべます','ทานที่ร้าน','🪑'],['もちかえりで おねがいします','ห่อกลับบ้าน','🥡','もちかえり']]}]}
 ];
-const TH=[0,20,50,90,140,200,270,350,440,540];
+const TH=[0,20,50,90,140,200,270,350,440,540,660,800,960,1140,1340];
 const P=()=>{ktProg.shop=ktProg.shop||{pts:0};return ktProg.shop};
 const lvOf=p=>TH.filter(t=>p>=t).length;
+const tierOf=l=>l<=5?5:l<=8?4:l<=10?3:l<=12?2:1;
+function effTier(){const p=P(),c=tierOf(lvOf(p.pts));return p.tsel&&p.tsel>=c?p.tsel:c}
+window.ktShopTier=function(t){const p=P();p.tsel=t||null;ktSave();menu()};
+function tierBar(p,lv){const c=tierOf(lv),e=effTier();return'<div class="shp-note">ระดับความยากตามดาว: ★1–5 = N5 · ★6–8 = N4 · ★9–10 = N3 · ★11–12 = N2 · ★13–15 = N1 (ยิ่งดาวสูง ลูกค้ายิ่งสั่งซับซ้อน ภาษาสุภาพ และเปลี่ยนใจกลางคัน)</div><div class="shp-chs"><button class="'+(!p.tsel||p.tsel<c?'on':'')+'" onclick="ktShopTier(0)">อัตโนมัติ (N'+c+')</button>'+[5,4,3,2,1].map(t=>'<button class="'+(p.tsel===t&&t>=c?'on':'')+'" '+(t<c?'disabled ':'')+'onclick="ktShopTier('+t+')">N'+t+'</button>').join('')+'</div><div class="shp-note">ตอนนี้เล่นที่ระดับ <b>N'+e+'</b> (เลือกระดับที่ง่ายกว่าเพื่อทบทวนได้)</div>'}
 const day=()=>ktLocalDay();
 let S=null,box=null,D=null;
 const shuf=a=>a.slice().sort(()=>Math.random()-.5);
@@ -13779,7 +13787,7 @@ function rec(q){if(S&&!q.m){q.m=1;S.missed.push(q)}}
 function oneLine(q){return q.jp.replace(/\s+/g,' ').trim()}
 function book(){
   const p=P();if(!S)return;
-  if(!S.place&&!S.bk){S.bk=1;p.rounds=(p.rounds||0)+1;p.best=p.best||{};const k=S.s.id+(S.hard?'H':'');if(p.best[k]==null||S.first>p.best[k])p.best[k]=S.first}
+  if(!S.place&&!S.bk){S.bk=1;p.rounds=(p.rounds||0)+1;p.best=p.best||{};const k=S.s.id+'T'+(S.tier||5);if(p.best[k]==null||S.first>p.best[k])p.best[k]=S.first}
   if(S.mk)return;S.mk=1;
   if(!S.missed.length)return;
   const m=p.miss=p.miss||[];
@@ -13992,10 +14000,10 @@ window.ktShopCtr=function(){
    numCard()+CTR.map(c=>'<div class="shp-ctr"><h4>'+c.k+(c.g?'<em>เกม</em>':'')+'</h4><p>'+c.n+'</p><div class="shp-cg">'+c.r.map((t,i)=>'<button class="'+(c.ir.indexOf(i)>-1?'ir':'')+'" data-t="'+t+'" onclick="ktShopSp(this)"><b>'+(i+1)+'</b><span>'+t+'</span></button>').join('')+'</div></div>').join('')+'</div>';
 };
 function menu(){
-  S=null;D=null;box.classList.remove('shp-scroll');const p=P(),lv=lvOf(p.pts),hardOK=lvOf(p.pts)>=7,nx=TH[lv],d=p.d&&p.d.d===day()?p.d.n:0,bs=p.best||{},bt=k=>bs[k]!=null?' · ดีที่สุด '+bs[k]+'/10':'',nm=(p.miss||[]).length;
+  S=null;D=null;box.classList.remove('shp-scroll');const p=P(),lv=lvOf(p.pts),tr=effTier(),nx=TH[lv],d=p.d&&p.d.d===day()?p.d.n:0,bs=p.best||{},bt=k=>bs[k]!=null?' · ดีที่สุด '+bs[k]+'/10':'',nm=(p.miss||[]).length;
   const prog=nx==null?'<div class="shp-note">⭐ ระดับสูงสุดแล้ว!</div>':'<div class="shp-bar"><i style="width:'+Math.round((p.pts-TH[lv-1])/(nx-TH[lv-1])*100)+'%"></i></div><div class="shp-note">อีก '+(nx-p.pts)+' แต้มถึงระดับ ★'+(lv+1)+'</div>';
-  box.innerHTML=head('🏪 ร้านของม่อน')+'<div class="shp-body"><div class="shp-card"><div class="shp-lv">ระดับร้าน '+'★'.repeat(lv)+'<small> '+lv+'/10</small></div>'+prog+'<div class="shp-note">รอบที่ได้เหรียญวันนี้ '+d+'/5 · ตอบถูกในครั้งแรกได้แต้มเพิ่ม</div><div class="shp-note">ลูกค้าในร้านระดับสูงสั่งหลายชิ้น/หลายอย่าง ต้องฟังตัวนับ つ・本・冊・杯 ให้ออก · ส่งของเสร็จต้องฟังยอดรวมและทอนเงิน (💴) · ร้านสะดวกซื้อและร้านอาหารมีตัวเลือกพิเศษ (อุ่นไมโครเวฟ・ร้อน/เย็น・ทานที่นี่/กลับบ้าน)</div></div>'+
-   ('<div class="shp-row"><button class="shp-shop alt" onclick="ktShopCtr()"><span>📖</span> ตารางตัวนับ<small>ตัวนับ つ・本・杯・冊… และตัวเลขราคา</small></button><button class="shp-shop alt" onclick="ktShopNote()"><span>📝</span> สมุดทวน<small>'+(nm?'ประโยคที่เคยพลาด '+nm+' อัน':'ยังไม่มี (พลาดแล้วจะมาเก็บที่นี่)')+'</small></button></div><div class="shp-row"><button class="shp-shop alt'+(p.blind?' on':'')+'" onclick="ktShopBlind()"><span>🎧</span> ฟังอย่างเดียว: '+(p.blind?'เปิด':'ปิด')+'<small>ซ่อนข้อความญี่ปุ่น (👁 ดูได้ แต่เสียแต้ม)</small></button><button class="shp-shop alt'+(p.nopay?'':' on')+'" onclick="ktShopPayTog()"><span>💴</span> ฉากจ่ายเงิน: '+(p.nopay?'ปิด':'เปิด')+'<small>ฟังราคา・ทอนเงิน หลังส่งของ</small></button></div><div class="shp-sec">🎓 ฝึกพิเศษ (ไม่ต้องเปิดร้าน)</div><button class="shp-shop alt" onclick="ktShopDrill(\'chat\')"><span>💬</span> ลูกค้าชวนคุย<small>ถามทาง・ถามราคา・ขอลด・ขอบคุณ → เลือกคำตอบพนักงาน</small></button><div class="shp-row"><button class="shp-shop alt" onclick="ktShopDrill(\'num\')"><span>⏰</span> เลข・เวลา・วันที่<small>ราคาหลักหมื่น・กี่โมง・วันที่</small></button>'+(nm?'<button class="shp-shop alt" onclick="ktShopDrill(\'rev\')"><span>🔁</span> ทบทวนสมุด<small>ฟังประโยคที่เคยพลาด → เลือกคำแปล ('+nm+')</small></button>':'<div class="shp-shop lock" style="font-size:14px;padding:10px 4px">🔁 ทบทวนสมุด<small>ยังไม่มีประโยคในสมุด</small></div>')+'</div>'+'<button class="shp-shop plc" onclick="ktShopPlace()"><span>🎯</span> ทดสอบวัดระดับ (5 ข้อ)<small>'+(p.pl?'เคยทำแล้ว '+p.pl.s+'/5 · ทำซ้ำได้ (ไม่ลดระดับ)':'รู้ภาษาญี่ปุ่นอยู่แล้ว? ข้ามด่านง่าย ๆ ได้')+'</small></button>')+SHOPS.map((s,i)=>[s,i]).sort((a,b)=>a[0].lv-b[0].lv).map(x=>{const s=x[0],i=x[1];return lv>=s.lv?'<button class="shp-shop" onclick="ktShopStart('+i+')"><span>'+s.e+'</span> '+s.n+'<small>'+(s.id==='pet'?'ได้ของแถมไปเลี้ยงม่อน':s.sub||'เริ่มรับลูกค้า')+bt(s.id)+'</small></button>'+(s.hopt?(hardOK?'<button class="shp-shop hard" onclick="ktShopStart('+i+',1)"><span>🔥</span> โหมดยาก N3–N2 (敬語)<small>ประโยคยาว・ภาษาสุภาพ・เปลี่ยน/ยกเลิกออเดอร์・ไม่ใส่…'+bt(s.id+'H')+'</small></button>':'<div class="shp-shop lock">🔒 โหมดยาก N3–N2 (敬語)<small>ปลดล็อกที่ ★7 หรือทำแบบทดสอบได้ตั้งแต่ 4/5</small></div>'):''):'<div class="shp-shop lock">🔒 '+s.n+'<small>ปลดล็อกที่ ★ '+s.lv+'</small></div>'}).join('')+'</div>';
+  box.innerHTML=head('🏪 ร้านของม่อน')+'<div class="shp-body"><div class="shp-card"><div class="shp-lv">ระดับร้าน '+'★'.repeat(lv)+'<small> '+lv+'/15</small><span class="shp-tier">N'+tierOf(lv)+'</span></div>'+prog+tierBar(p,lv)+'<div class="shp-note">รอบที่ได้เหรียญวันนี้ '+d+'/5 · ตอบถูกในครั้งแรกได้แต้มเพิ่ม</div><div class="shp-note">ลูกค้าในร้านระดับสูงสั่งหลายชิ้น/หลายอย่าง ต้องฟังตัวนับ つ・本・冊・杯 ให้ออก · ส่งของเสร็จต้องฟังยอดรวมและทอนเงิน (💴) · ร้านสะดวกซื้อและร้านอาหารมีตัวเลือกพิเศษ (อุ่นไมโครเวฟ・ร้อน/เย็น・ทานที่นี่/กลับบ้าน)</div></div>'+
+   ('<div class="shp-row"><button class="shp-shop alt" onclick="ktShopCtr()"><span>📖</span> ตารางตัวนับ<small>ตัวนับ つ・本・杯・冊… และตัวเลขราคา</small></button><button class="shp-shop alt" onclick="ktShopNote()"><span>📝</span> สมุดทวน<small>'+(nm?'ประโยคที่เคยพลาด '+nm+' อัน':'ยังไม่มี (พลาดแล้วจะมาเก็บที่นี่)')+'</small></button></div><div class="shp-row"><button class="shp-shop alt'+(p.blind?' on':'')+'" onclick="ktShopBlind()"><span>🎧</span> ฟังอย่างเดียว: '+(p.blind?'เปิด':'ปิด')+'<small>ซ่อนข้อความญี่ปุ่น (👁 ดูได้ แต่เสียแต้ม)</small></button><button class="shp-shop alt'+(p.nopay?'':' on')+'" onclick="ktShopPayTog()"><span>💴</span> ฉากจ่ายเงิน: '+(p.nopay?'ปิด':'เปิด')+'<small>ฟังราคา・ทอนเงิน หลังส่งของ</small></button></div><div class="shp-sec">🎓 ฝึกพิเศษ (ไม่ต้องเปิดร้าน)</div><button class="shp-shop alt" onclick="ktShopDrill(\'chat\')"><span>💬</span> ลูกค้าชวนคุย<small>ถามทาง・ถามราคา・ขอลด・ขอบคุณ → เลือกคำตอบพนักงาน</small></button><div class="shp-row"><button class="shp-shop alt" onclick="ktShopDrill(\'num\')"><span>⏰</span> เลข・เวลา・วันที่<small>ราคาหลักหมื่น・กี่โมง・วันที่</small></button>'+(nm?'<button class="shp-shop alt" onclick="ktShopDrill(\'rev\')"><span>🔁</span> ทบทวนสมุด<small>ฟังประโยคที่เคยพลาด → เลือกคำแปล ('+nm+')</small></button>':'<div class="shp-shop lock" style="font-size:14px;padding:10px 4px">🔁 ทบทวนสมุด<small>ยังไม่มีประโยคในสมุด</small></div>')+'</div>'+'<button class="shp-shop plc" onclick="ktShopPlace()"><span>🎯</span> ทดสอบวัดระดับ (5 ข้อ)<small>'+(p.pl?'เคยทำแล้ว '+p.pl.s+'/5 · ทำซ้ำได้ (ไม่ลดระดับ)':'รู้ภาษาญี่ปุ่นอยู่แล้ว? ข้ามด่านง่าย ๆ ได้')+'</small></button>')+SHOPS.map((s,i)=>[s,i]).sort((a,b)=>a[0].lv-b[0].lv).map(x=>{const s=x[0],i=x[1];return lv>=s.lv?'<button class="shp-shop" onclick="ktShopStart('+i+')"><span>'+s.e+'</span> '+s.n+'<small>'+(s.id==='pet'?'ได้ของแถมไปเลี้ยงม่อน':s.sub||'เริ่มรับลูกค้า')+' · ระดับ N'+tr+bt(s.id+'T'+tr)+'</small></button>':'<div class="shp-shop lock">🔒 '+s.n+'<small>ปลดล็อกที่ ★ '+s.lv+'</small></div>'}).join('')+'</div>';
 }
 const CT={tsu:['','ひとつ','ふたつ','みっつ','よっつ','いつつ'],hon:['','いっぽん','にほん','さんぼん','よんほん','ごほん'],satsu:['','いっさつ','にさつ','さんさつ','よんさつ','ごさつ'],hai:['','いっぱい','にはい','さんばい','よんはい','ごはい']};
 const UN={tsu:'ชิ้น',hon:'แท่ง',satsu:'เล่ม',hai:'แก้ว'};
@@ -14018,42 +14026,46 @@ function mkOptOrder(si,k,s,others){
 }
 const NGP=[['たまねぎ','หัวหอม','🧅'],['ねぎ','ต้นหอม','🌿'],['トマト','มะเขือเทศ','🍅'],['きゅうり','แตงกวา','🥒'],['にんじん','แครอท','🥕'],['わさび','วาซาบิ','🟢'],['にんにく','กระเทียม','🧄'],['もやし','ถั่วงอก','🌱'],['コーン','ข้าวโพด','🌽']];
 const NGI={'サンドイッチ':['トマト','きゅうり','たまねぎ'],'サラダ':['たまねぎ','トマト','コーン'],'ラーメン':['ねぎ','もやし','にんにく'],'カレー':['たまねぎ','にんじん'],'すし':['わさび'],'ぎょうざ':['にんにく'],'うどん':['ねぎ'],'かつどん':['たまねぎ','ねぎ']};
-function mkHardOrder(si,k,s,others){
-  const its=s.it.concat(s.hx),J=its.map((_,j)=>j),gc=k<3?2:3,nl=k<5?3:4;
-  const gs=shuf(s.hopt).slice(0,gc),needF=gs.filter(g=>g.need).map(g=>g.need),pn={},tgt={},lines=[];
-  const mkl=(j,q)=>({j:j,it:its[j],c:its[j][4],q:q}),nf=j=>needF.some(f=>its[j][3].indexOf(f)>-1);
+function mkHardOrder(si,k,s,others,t){
+  t=t||3;const hopt=s.hopt||[],its=s.it.concat(s.hx||[]),J=its.map((_,j)=>j);
+  const gc=t===3?(k<3?2:3):3,nl=t===3?(k<5?3:4):t===2?4:(k<5?4:5),mqx=t===3?3:4,cn=t===3?(k>=2?1:0):t===2?1:(k<3?1:2);
+  const gs=shuf(hopt).slice(0,gc),needF=gs.filter(g=>g.need).map(g=>g.need),pn={},tgt={},lines=[];
+  const mkl=(j,q)=>({j:j,it:its[j],c:its[j][4]||ctr(s,its[j][0]),q:q}),nf=j=>needF.some(f=>its[j][3].indexOf(f)>-1),un=l=>l.it[5]||UN[l.c];
   gs.forEach(g=>{if(g.need){const j=shuf(J.filter(j=>its[j][3].indexOf(g.need)>-1))[0];pn[g.id]=j;tgt[j]=1;lines.push(mkl(j,1))}});
   gs.forEach(g=>{if(!g.nuki)return;const cand=J.filter(j=>NGI[its[j][0]]&&(!nf(j)||lines.some(l=>l.j===j))),j=shuf(cand)[0];pn[g.id]=j;tgt[j]=1;if(!lines.some(l=>l.j===j))lines.push(mkl(j,1+rnd(2)))});
   const free=shuf(J.filter(j=>!lines.some(l=>l.j===j)&&!nf(j)));
-  while(lines.length<nl&&free.length)lines.push(mkl(free.pop(),1+rnd(3)));
-  let chg=null;
-  if(k>=2){
-    let plain=lines.filter(l=>!tgt[l.j]);
-    if(!plain.length&&free.length){const l=mkl(free.pop(),1+rnd(3));lines.push(l);plain=[l]}
-    if(plain.length){const x=plain[rnd(plain.length)],ty=['cancel','swap','add'][rnd(3)];
-      if(ty==='swap'&&free.length)chg={t:'swap',x:x,y:mkl(free.pop(),x.q)};
-      else if(ty==='add'&&x.q<4)chg={t:'add',x:x};
-      else chg={t:'cancel',x:x}}
+  while(lines.length<nl&&free.length)lines.push(mkl(free.pop(),1+rnd(mqx)));
+  const chgs=[],used=[];let cur=lines.slice();
+  for(let ci=0;ci<cn;ci++){
+    let plain=lines.filter(l=>!tgt[l.j]&&used.indexOf(l)<0);
+    if(!plain.length&&free.length){const l=mkl(free.pop(),1+rnd(3));lines.push(l);cur.push(l);plain=[l]}
+    if(!plain.length)break;
+    const x=plain[rnd(plain.length)],ty=['cancel','swap','add'][rnd(3)];used.push(x);
+    if(ty==='swap'&&free.length){const y=mkl(free.pop(),x.q);chgs.push({t:'swap',x:x,y:y});cur=cur.map(l=>l===x?y:l)}
+    else if(ty==='add'&&x.q<4){chgs.push({t:'add',x:x});cur=cur.map(l=>l===x?{j:x.j,it:x.it,c:x.c,q:x.q+1}:l)}
+    else{chgs.push({t:'cancel',x:x});cur=cur.filter(l=>l!==x)}
   }
-  const fin=!chg?lines.slice():chg.t==='cancel'?lines.filter(l=>l!==chg.x):chg.t==='swap'?lines.map(l=>l===chg.x?chg.y:l):lines.map(l=>l===chg.x?{j:l.j,it:l.it,c:l.c,q:l.q+1}:l);
-  const opts=gs.slice().sort((a,b)=>s.hopt.indexOf(a)-s.hopt.indexOf(b)).map(g=>{
+  const opts=gs.slice().sort((a,b)=>hopt.indexOf(a)-hopt.indexOf(b)).map(g=>{
     if(g.nuki){const it=its[pn[g.id]],nm=shuf(NGI[it[0]])[0],c=NGP.find(x=>x[0]===nm),arr=shuf([c].concat(shuf(NGP.filter(x=>x!==c)).slice(0,2))),pol=rnd(2);
       return{g:g,chs:arr.map(x=>[pol?x[0]+'ぬきで おねがいします':x[0]+'を ぬいて いただけますか','ไม่ใส่'+x[1],x[2],x[0]+'ぬき']),v:arr.indexOf(c),ord:[0,1,2],tn:it}}
     return{g:g,v:rnd(g.ch.length),ord:shuf(g.ch.map((_,i)=>i)),tn:g.need?its[pn[g.id]]:null}});
-  const op=['すみません。 ','あの、 すみません。 ','しつれいします。 '][rnd(3)],en=[['いただけますか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)'],['いただけませんか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพมาก)'],['おねがいできますか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)']][rnd(3)],L0=shuf(lines),cu=others[rnd(others.length)];
+  const OP3=['すみません。 ','あの、 すみません。 ','しつれいします。 '],OP2=OP3.concat(['おいそがしい ところ すみません。 ','ちょっと よろしいでしょうか。 ']),OP1=OP2.concat(['おそれいります。 ','しつれいですが、 ']);
+  const EN3=[['いただけますか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)'],['いただけませんか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพมาก)'],['おねがいできますか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)']];
+  const EN2=EN3.concat([['おねがいしても よろしいでしょうか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)']]),EN1=[['いただけませんでしょうか。','ขอ{L} ได้หรือไม่คะ/ครับ (สุภาพที่สุด)'],['おねがいできませんでしょうか。','ขอ{L} ได้หรือไม่คะ/ครับ (สุภาพที่สุด)'],['おねがいしても よろしいでしょうか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)']];
+  const OPL=t===3?OP3:t===2?OP2:OP1,ENL=t===3?EN3:t===2?EN2:EN1,op=OPL[rnd(OPL.length)],en=ENL[rnd(ENL.length)],L0=shuf(lines),cu=others[rnd(others.length)];
   let jp=op+L0.map(l=>l.it[0]+'を '+CT[l.c][l.q]).join('と ')+' '+en[0]+opts.map(o=>' '+(o.tn?o.tn[0]+'は ':'')+(o.chs||o.g.ch)[o.v][0]+'。').join('');
-  let th=en[1].replace('{L}',L0.map(l=>l.it[1]+' '+l.q+' '+l.it[5]).join(' กับ '))+opts.map(o=>' · '+(o.tn?o.tn[1]+': ':'')+(o.chs||o.g.ch)[o.v][1]).join('');
-  let chgTh=null;
-  if(chg){const x=chg.x;
-    if(chg.t==='cancel'){jp+=' あ、 やっぱり '+x.it[0]+'は けっこうです。';chgTh='ยกเลิก '+x.it[1]}
-    else if(chg.t==='swap'){jp+=' あ、 すみません、 '+x.it[0]+'を '+chg.y.it[0]+'に かえて いただけますか。';chgTh='เปลี่ยน '+x.it[1]+' เป็น '+chg.y.it[1]+' (จำนวนเท่าเดิม)'}
-    else{jp+=' あ、 '+x.it[0]+'は もう ひとつ ふやして いただけますか。';chgTh='เพิ่ม '+x.it[1]+' อีก 1'}
-    th+=' · 🔄 '+chgTh}
-  return{lines:shuf(fin),simple:false,jp:jp,th:th,cu:cu,first:true,opts:opts,its:its,chgTh:chgTh,chg:chg};
+  let th=en[1].replace('{L}',L0.map(l=>l.it[1]+' '+l.q+' '+un(l)).join(' กับ '))+opts.map(o=>' · '+(o.tn?o.tn[1]+': ':'')+(o.chs||o.g.ch)[o.v][1]).join('');
+  const cths=[];
+  chgs.forEach(c=>{const x=c.x;
+    if(c.t==='cancel'){jp+=' あ、 やっぱり '+x.it[0]+'は けっこうです。';cths.push('ยกเลิก '+x.it[1])}
+    else if(c.t==='swap'){jp+=' あ、 すみません、 '+x.it[0]+'を '+c.y.it[0]+'に かえて いただけますか。';cths.push('เปลี่ยน '+x.it[1]+' เป็น '+c.y.it[1]+' (จำนวนเท่าเดิม)')}
+    else{jp+=' あ、 '+x.it[0]+'は もう ひとつ ふやして いただけますか。';cths.push('เพิ่ม '+x.it[1]+' อีก 1')}});
+  const chgTh=cths.length?cths.join(' / '):null;if(chgTh)th+=' · 🔄 '+chgTh;
+  return{lines:shuf(cur),simple:false,jp:jp,th:th,cu:cu,first:true,opts:opts.length?opts:undefined,its:its,chgTh:chgTh,chg:chgs[0]||null};
 }
 window.ktShopPlace=function(){
   const k=keeper(),others=KTP_SPECIES.filter(x=>x.id!==k.id);
-  const mk=(si,kk,hard)=>{const sh=SHOPS[si],q=hard?mkHardOrder(si,kk,sh,others):mkOrder(si,kk,sh,others);q.sh=si;return q};
+  const mk=(si,kk,hard)=>{const sh=SHOPS[si],q=hard?mkHardOrder(si,kk,sh,others,3):mkOrder(si,kk,sh,others);q.sh=si;return q};
   S={i:0,s:SHOPS[0],k:k,first:0,place:true,hard:false,qs:[mk(0,0),mk(2,7),mk(5,5),mk(6,9),mk(5,6,1)],i2:0,wrong:false,hint:false,done:false,lock:false,ng:{},cart:{},sel:{},og:{},why:'',missed:[],peek:false};
   render(true);ktShopSay();
 };
@@ -14063,7 +14075,7 @@ function pfinish(){
   p.pl={d:day(),s:sc};if(TH[tg-1]>p.pts)p.pts=TH[tg-1];
   const nw=lvOf(p.pts),unlock=SHOPS.filter(x=>x.lv>old&&x.lv<=nw);
   ktSave();try{ktSfx('pass')}catch(e){}
-  box.innerHTML=head('🎯 ผลวัดระดับ','ktShopMenu()')+'<div class="shp-body"><div class="shp-card shp-res"><div class="shp-lv">ตอบถูก '+sc+'/5</div><div class="shp-big">ระดับร้าน ★'+nw+'</div><div class="shp-note">'+(nw>old?'🎉 ข้ามระดับจาก ★'+old+' เป็น ★'+nw:'ระดับเดิมของคุณ ★'+old+' สูงพออยู่แล้ว (แบบทดสอบไม่ลดระดับ)')+'</div>'+(unlock.length?'<div class="shp-note">🔓 ปลดล็อก: '+unlock.map(x=>x.n).join(', ')+'</div>':'')+(nw>=7?'<div class="shp-note">🔥 ปลดล็อกโหมดยาก N3–N2 แล้ว (ร้านสะดวกซื้อ / ร้านอาหารญี่ปุ่น)</div>':'')+'</div>'+missHtml()+'<button class="shp-shop" onclick="ktShopMenu()">ไปเลือกร้าน</button></div>';
+  box.innerHTML=head('🎯 ผลวัดระดับ','ktShopMenu()')+'<div class="shp-body"><div class="shp-card shp-res"><div class="shp-lv">ตอบถูก '+sc+'/5</div><div class="shp-big">ระดับร้าน ★'+nw+'</div><div class="shp-note">'+(nw>old?'🎉 ข้ามระดับจาก ★'+old+' เป็น ★'+nw:'ระดับเดิมของคุณ ★'+old+' สูงพออยู่แล้ว (แบบทดสอบไม่ลดระดับ)')+'</div>'+(unlock.length?'<div class="shp-note">🔓 ปลดล็อก: '+unlock.map(x=>x.n).join(', ')+'</div>':'')+'<div class="shp-note">ระดับความยากตอนนี้: N'+effTier()+'</div>'+'</div>'+missHtml()+'<button class="shp-shop" onclick="ktShopMenu()">ไปเลือกร้าน</button></div>';
 }
 function mkOrder(si,k,s,others){
   if(s.opt)return mkOptOrder(si,k,s,others);
@@ -14074,9 +14086,9 @@ function mkOrder(si,k,s,others){
   const e=END[si][rnd(2)];
   return{lines:lines,simple:false,jp:lines.map(l=>l.it[0]+'を '+CT[l.c][l.q]).join('と ')+' '+e[0],th:e[1].replace('{L}',lines.map(l=>l.it[1]+' '+l.q+UN[l.c]).join(' กับ ')),cu:cu,first:true}
 }
-window.ktShopStart=function(i,hard){
-  const s=SHOPS[i],k=keeper(),others=KTP_SPECIES.filter(x=>x.id!==k.id);
-  S={i:i,s:s,k:k,first:0,qs:Array.from({length:10},(_,n)=>hard&&s.hopt?mkHardOrder(i,n,s,others):mkOrder(i,n,s,others)),i2:0,wrong:false,hint:false,done:false,lock:false,ng:{},cart:{},sel:{},og:{},why:'',hard:!!(hard&&s.hopt),place:false,missed:[],peek:false};
+window.ktShopStart=function(i){
+  const s=SHOPS[i],k=keeper(),others=KTP_SPECIES.filter(x=>x.id!==k.id),tr=effTier();
+  S={i:i,s:s,k:k,first:0,qs:Array.from({length:10},(_,n)=>tr<=3?mkHardOrder(i,n,s,others,tr):mkOrder(i,tr===4?Math.min(9,n+3):n,s,others)),i2:0,wrong:false,hint:false,done:false,lock:false,ng:{},cart:{},sel:{},og:{},why:'',hard:tr<=3,tier:tr,place:false,missed:[],peek:false};
   render(true);ktShopSay();
 };
 function render(fresh){
@@ -14091,7 +14103,7 @@ function render(fresh){
     else optsHtml='<div class="shp-opts">'+q.opts.map(o=>{const g=o.g,chs=o.chs||g.ch,ord=o.ord||(o.fl?[1,0]:[0,1]);return '<div class="shp-og'+(S.og[g.id]?' ng':'')+'"><span class="shp-ot">'+g.t+(o.tn?' '+o.tn[2]:'')+'</span>'+ord.map(v=>'<button class="shp-ob'+(S.sel[g.id]===v?' on':'')+'" onclick="ktShopOpt(\''+g.id+'\','+v+')">'+chs[v][2]+' '+(chs[v][3]||chs[v][0])+'<small>'+chs[v][1]+'</small></button>').join('')+'</div>'}).join('')+'</div>';
   }
   box.classList.toggle('shp-scroll',!!q.opts);
-  box.innerHTML=head(S.place?'🎯 วัดระดับ '+(S.i2+1)+'/5':s.e+' '+s.n,'ktShopMenu()')+'<div class="shp-scene" style="--a1:'+c[0]+';--a2:'+c[1]+';--w1:'+c[2]+';--w2:'+c[3]+';--fl:'+c[4]+';--ct:'+c[5]+'"><i class="shp-aw"></i><i class="shp-win"></i><div class="shp-sign"'+(S.done&&q.lines.length>1?' style="font-size:'+(q.lines.length>2?17:24)+'px;line-height:1.1;flex-wrap:wrap;align-content:center"':'')+'>'+(S.done?q.lines.map(l=>l.it[2]).join(''):'？')+'</div><div class="shp-shelf"><i style="background:#f27a7a"></i><i style="background:#ffd24a"></i><i style="background:#8ad47a"></i><i style="background:#a98ae8"></i></div><div class="shp-prog">ลูกค้า '+(S.i2+1)+'/'+S.qs.length+tag+(S.hard?' · 🔥 N3–N2':'')+'</div>'+
+  box.innerHTML=head(S.place?'🎯 วัดระดับ '+(S.i2+1)+'/5':s.e+' '+s.n,'ktShopMenu()')+'<div class="shp-scene" style="--a1:'+c[0]+';--a2:'+c[1]+';--w1:'+c[2]+';--w2:'+c[3]+';--fl:'+c[4]+';--ct:'+c[5]+'"><i class="shp-aw"></i><i class="shp-win"></i><div class="shp-sign"'+(S.done&&q.lines.length>1?' style="font-size:'+(q.lines.length>2?17:24)+'px;line-height:1.1;flex-wrap:wrap;align-content:center"':'')+'>'+(S.done?q.lines.map(l=>l.it[2]).join(''):'？')+'</div><div class="shp-shelf"><i style="background:#f27a7a"></i><i style="background:#ffd24a"></i><i style="background:#8ad47a"></i><i style="background:#a98ae8"></i></div><div class="shp-prog">ลูกค้า '+(S.i2+1)+'/'+S.qs.length+tag+(S.place?'':' · N'+(S.tier||5)+(S.hard?' 🔥':''))+'</div>'+
    '<div class="shp-cust'+(fresh?' in':'')+'">'+ktpSvg(q.cu.id,cm,'')+'</div><div class="shp-keep'+(S.done?' hop':'')+'">'+ktpSvg(S.k.id,S.done?'happy':S.wrong?'sad':null,'',S.k.lv)+'</div><i class="shp-cnt"></i></div>'+
    '<div class="shp-dlg"><div class="shp-nm">'+ktEsc(q.cu.name)+' ('+q.cu.jp+')</div><div class="shp-jp">'+(S.done?'ありがとう！':hide?'🎧 ฟังให้ดี ๆ นะ…':q.jp)+'</div><div class="shp-th">'+st+'</div><div class="shp-bt"><button onclick="ktShopSay()">🔊</button><button onclick="ktShopSay(.55)">🐢</button>'+(hide?'<button onclick="ktShopPeek()">👁 ดูข้อความ</button>':'')+(S.place?'':'<button onclick="ktShopHint()">💡 คำใบ้</button>')+'</div></div>'+(q.opts?'<div class="shp-grid">'+cards+'</div><div class="shp-dock">'+cart+optsHtml+'</div>':cart+'<div class="shp-grid">'+cards+'</div>');
 }
@@ -14114,7 +14126,7 @@ window.ktShopSubmit=function(){
 };
 function next(){if(!S)return;S.i2++;if(S.i2>=S.qs.length)return S.place?pfinish():finish();S.done=false;S.wrong=false;S.hint=false;S.ng={};S.cart={};S.sel={};S.og={};S.why='';S.peek=false;S.pay=null;S.lock=false;render(true);ktShopSay()}
 function finish(){
-  book();const p=P(),old=lvOf(p.pts),pts=(S.hard?14+S.first*2:10+S.first)+(S.payOk||0);p.pts+=pts;const nw=lvOf(p.pts);
+  book();const p=P(),old=lvOf(p.pts),pts=([0,18,16,14,12,10][S.tier||5]+S.first*(S.hard?2:1))+(S.payOk||0);p.pts+=pts;const nw=lvOf(p.pts);
   const dd=p.d&&p.d.d===day()?p.d:{d:day(),n:0};let coin=0;
   if(dd.n<5){coin=2+(S.first>=8?1:0)+(S.first===10?2:0)+(S.hard?2:0);try{coin+=ktpPerk().coin||0}catch(e){}try{addPracticeCoins(coin,'fill')}catch(e){coin=0}dd.n++}
   p.d=dd;let tips=[];
@@ -14122,7 +14134,7 @@ function finish(){
   try{ktpGain(8)}catch(e){}ktSave();try{ktSfx('pass')}catch(e){}
   box.classList.remove('shp-scroll');const unlock=SHOPS.filter(s=>s.lv>old&&s.lv<=nw);
   box.innerHTML=head('🏪 ร้านของม่อน','ktShopMenu()')+'<div class="shp-body"><div class="shp-card shp-res"><div class="shp-lv">ปิดร้านแล้ว! '+S.s.e+'</div><div class="shp-big">ตอบถูกครั้งแรก '+S.first+'/10</div><div class="shp-note">แต้มร้าน +'+pts+(nw>old?' · 🎉 ระดับร้านขึ้นเป็น ★'+nw:'')+'</div>'+payNote()+'<div class="shp-note">'+(coin?'⭐ รับเหรียญ +'+coin:'รอบที่ได้เหรียญวันนี้ครบ 5 แล้ว แต่แต้มร้านยังได้')+'</div>'+
-   (tips.length?'<div class="shp-note">🎁 ลูกค้าให้ของแถม: '+tips.join(', ')+'</div>':'')+(unlock.length?'<div class="shp-note">🔓 ปลดล็อก: '+unlock.map(s=>s.n).join(', ')+'</div>':'')+'</div>'+missHtml()+'<button class="shp-shop" onclick="ktShopStart('+S.i+','+(S.hard?1:0)+')">🔁 เปิดร้านอีกรอบ</button><button class="shp-shop alt" onclick="ktShopMenu()">เลือกร้านอื่น</button></div>';
+   (tips.length?'<div class="shp-note">🎁 ลูกค้าให้ของแถม: '+tips.join(', ')+'</div>':'')+(unlock.length?'<div class="shp-note">🔓 ปลดล็อก: '+unlock.map(s=>s.n).join(', ')+'</div>':'')+'</div>'+missHtml()+'<button class="shp-shop" onclick="ktShopStart('+S.i+')">🔁 เปิดร้านอีกรอบ</button><button class="shp-shop alt" onclick="ktShopMenu()">เลือกร้านอื่น</button></div>';
 }
 })();
 
