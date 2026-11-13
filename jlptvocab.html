@@ -2334,6 +2334,168 @@ linear-gradient(var(--k),var(--k)) bottom right/var(--l) var(--w) no-repeat,line
 #fillBox.kt-on[data-pass="1"] .kt-res .stars{filter:drop-shadow(0 0 8px var(--ta))}
 @media (prefers-reduced-motion:reduce){.kt-fx i,.kt-burst *,.kt-blank,.kt-combo,#fillBox .kt-res::before{animation:none!important}.kt-intro{animation-duration:.01s!important;display:none}}
 </style>
+<style id="kt-sp-theme">
+/* ===== ธีมเฉพาะตัว: ใครธีมมัน ===== */
+#fillBox[data-sp=kitsune]{--c1:#5a1830;--c2:#2e0a1c;--cd:#fff3ee;--cb:#e0705a;--cs:#8a2a20;--bd:#ff9a7a;--hill:#12071f;--sky:linear-gradient(#150a2c,#4a1638 55%,#b8402e)}
+#fillBox[data-sp=ryu]{--c1:#0f5a52;--c2:#06302e;--cd:#effff6;--cb:#3fbf8f;--cs:#1d6a4a;--bd:#7affc4;--sky:linear-gradient(#06222a,#0f5a52 55%,#2fb88a)}
+#fillBox[data-sp=unicorn]{--c1:#7a3aa8;--c2:#43206e;--cd:#fff2fb;--cb:#d98ae0;--cs:#8a46b0;--bd:#ffb0e6;--hill:#d78be6;--sky:linear-gradient(#3a2a7a,#a86ad0 55%,#ffb6dc)}
+#fillBox[data-sp=maneki]{--c1:#8a1a24;--c2:#4a0a10;--cd:#fff4cf;--cb:#d9a21a;--cs:#8a5a00;--bd:#ffd24a;--hill:#2a0509;--sky:linear-gradient(#5a0c14,#b0241e 50%,#f0922a 88%,#ffd24a)}
+#fillBox[data-sp=hou]{--c1:#9a2410;--c2:#4a0c06;--cd:#fff0dc;--cb:#e0682a;--cs:#8a2a10;--bd:#ffb060;--sky:linear-gradient(#1a0505,#6a1208 45%,#d8481a 80%,#ffb02a)}
+#fillBox[data-sp] .fx-hill{background:var(--hill,#160f4a)}
+#fillBox[data-sp=unicorn] .fx-hill{left:-20%;right:-20%;height:20%;clip-path:none;border-radius:50% 50% 0 0/100% 100% 0 0}
+.fx-torii{bottom:6%;width:120px;height:110px;background:linear-gradient(#d8283a,#d8283a) 0 0/120px 12px no-repeat,linear-gradient(#a81a2a,#a81a2a) 6px 12px/108px 6px no-repeat,linear-gradient(#d8283a,#d8283a) 10px 34px/100px 8px no-repeat,linear-gradient(#c81d2a,#c81d2a) 16px 12px/14px 98px no-repeat,linear-gradient(#c81d2a,#c81d2a) 90px 12px/14px 98px no-repeat;filter:drop-shadow(0 0 10px #ff6a4a66)}
+.fx-torii.t1{left:2%;transform:scale(1.2);transform-origin:bottom left}.fx-torii.t2{right:2%;transform:scale(1.2);transform-origin:bottom right}.fx-torii.t3{left:50%;margin-left:-45px;transform:scale(.75);opacity:.55}
+.fx-wisp{width:10px;height:15px;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(#fff,#ffc2a0 45%,#ff6a4a);box-shadow:0 0 12px 3px #ff8a6aaa;animation:ktWp 4.5s ease-in-out infinite}
+@keyframes ktWp{0%,100%{transform:translate(0,0);opacity:.5}50%{transform:translate(10px,-18px);opacity:1}}
+.fx-pearl{box-shadow:0 0 34px 10px #b6ffe066;background:radial-gradient(circle at 35% 35%,#fff,#9affd0 40%,#2fd08a)}
+.fx-mt{left:0;right:0;bottom:0}
+.fx-mt.m1{height:38%;background:#0b4a44;clip-path:polygon(0 70%,10% 30%,22% 62%,36% 15%,52% 58%,68% 22%,84% 60%,100% 28%,100% 100%,0 100%)}
+.fx-mt.m2{height:24%;background:#06302e;clip-path:polygon(0 50%,16% 20%,30% 55%,48% 30%,62% 60%,80% 25%,100% 55%,100% 100%,0 100%)}
+.fx-cloud{left:-240px;width:150px;height:30px;border-radius:30px;background:var(--cc);box-shadow:44px -12px 0 6px var(--cc),-36px -6px 0 0 var(--cc);animation:ktCl var(--d,60s) linear infinite}
+@keyframes ktCl{to{transform:translateX(calc(100vw + 480px))}}
+.fx-bolt{inset:0;background:radial-gradient(ellipse at 70% 0,#d8fff0cc,transparent 60%);opacity:0;animation:ktBo 9s linear infinite 2s}
+@keyframes ktBo{0%,100%{opacity:0}2%{opacity:1}4%{opacity:.1}6%{opacity:.8}10%{opacity:0}}
+.fx-rainbow{left:50%;bottom:-34%;width:min(130vw,1000px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;opacity:.6;background:radial-gradient(circle,transparent 58%,#ff5a5a 58% 61%,#ffb04a 61% 64%,#ffe94a 64% 67%,#6fe08a 67% 70%,#6fb8ff 70% 73%,#a070ff 73% 76%,transparent 76%)}
+.fx-spk{bottom:-20px;font-style:normal;font-size:16px;color:var(--sc);text-shadow:0 0 8px var(--sc);animation:ktRs linear infinite}
+.fx-coin{top:-30px;width:16px;height:22px;border-radius:50%;background:radial-gradient(ellipse,#ffe27a,#d9941a);border:2px solid #8a5a00;box-shadow:0 0 8px #ffd24a;animation:ktCo linear infinite}
+@keyframes ktCo{from{transform:translateY(0) rotateY(0)}to{transform:translateY(110vh) rotateY(720deg)}}
+.fx-heat{inset:auto 0 0 0;height:60%;background:radial-gradient(ellipse at 50% 100%,#ffb02aaa,transparent 70%)}
+.fx-fire{position:absolute;left:0;right:0;bottom:0;height:26%}
+.fx-fl{bottom:0;width:15%;border-radius:50% 50% 0 0/85% 85% 0 0;background:linear-gradient(#ffe94a,#ff7a30 50%,#c8281e);transform-origin:bottom;animation:ktFl .9s ease-in-out infinite alternate;opacity:.9}
+@keyframes ktFl{from{transform:scaleY(.8) skewX(-4deg)}to{transform:scaleY(1.1) skewX(4deg)}}
+#fillBox[data-sp=hou] .fx-ember{width:5px;height:5px;background:#ffe94a}
+</style>
+<style id="k48-css">
+/* ===== SSR 48x48: แอนิเมชันแยกเลเยอร์ ===== */
+.k48-br{transform-box:fill-box;transform-origin:50% 100%;animation:k48Br 2.6s ease-in-out infinite alternate}
+@keyframes k48Br{to{transform:scaleY(1.025)}}
+.k48-bk{transform-box:fill-box;transform-origin:50% 50%;animation:k48Bk 4.2s infinite}
+@keyframes k48Bk{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.k48-pw{transform-box:fill-box;transform-origin:50% 100%;animation:k48Pw .8s ease-in-out infinite alternate}
+@keyframes k48Pw{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+.k48-wl,.k48-wr{transform-box:fill-box;animation:k48Wl .7s ease-in-out infinite alternate}
+.k48-wl{transform-origin:100% 70%}.k48-wr{transform-origin:0% 70%;animation-name:k48Wr}
+@keyframes k48Wl{from{transform:rotate(-6deg)}to{transform:rotate(7deg)}}
+@keyframes k48Wr{from{transform:rotate(6deg)}to{transform:rotate(-7deg)}}
+.k48-cr{transform-box:fill-box;transform-origin:50% 100%;animation:k48Cr .5s ease-in-out infinite alternate}
+@keyframes k48Cr{from{transform:scaleY(.93)}to{transform:scaleY(1.07)}}
+.k48-tl{transform-box:fill-box;transform-origin:50% 0;animation:k48Tl 2.4s ease-in-out infinite alternate}
+@keyframes k48Tl{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+@media (prefers-reduced-motion:reduce){[class^=k48-],[class*=" k48-"]{animation:none!important}}
+</style>
+<style id="kt-home-theme">
+/* ===== หน้าบ้านสัตว์เลี้ยง SR/SSR: ธีมเฉพาะตัว ===== */
+.fx-ground{display:none;left:0;right:0;bottom:0;height:26%;border-top:4px solid var(--bd)}
+#fillBox[data-scr=home] .fx-ground{display:block}
+#fillBox[data-scr=home] .fx-torii{bottom:23%}
+#fillBox[data-scr=home] .fx-hill,#fillBox[data-scr=home] .fx-mt{bottom:25%}
+#fillBox[data-scr=home] .fx-fire{bottom:20%}
+#fillBox[data-scr=home] .fx-sun{bottom:16%}
+#fillBox[data-scr=home] .fx-heat{height:75%}
+#fillBox.kt-on .kth-room::before,#fillBox.kt-on .kth-room::after{display:none}
+#fillBox.kt-on .kth-rug{background:var(--c1);border-color:var(--bd);box-shadow:0 0 16px var(--ta)}
+#fillBox[data-sp=ryu].kt-on .kth-rug{background:#d8fff0;border-color:#7affc4}
+#fillBox[data-sp=unicorn].kt-on .kth-rug{background:#ffd0ec;border-color:#fff}
+#fillBox.kt-on .kth-chip,#fillBox.kt-on .kth-bars{background:var(--cd);border-color:var(--bd);box-shadow:0 3px 0 #0004,0 0 12px var(--ta)}
+#fillBox.kt-on .kth-act:not(.kth-gacha){background:linear-gradient(#fff,var(--cd));border-color:var(--cb);box-shadow:0 4px 0 var(--cs)}
+#fillBox[data-sp=kitsune] .fx-ground{background:repeating-linear-gradient(90deg,transparent 0 62px,#0005 62px 64px),linear-gradient(#4a1c2e,#220c18);box-shadow:0 -6px 18px #ff6a4a44}
+#fillBox[data-sp=ryu] .fx-ground{left:-8%;right:-8%;border:0;border-radius:50% 50% 0 0/36px 36px 0 0;background:linear-gradient(#f4fffb,#a8e8d0);box-shadow:0 -4px 22px #b6ffe088}
+#fillBox[data-sp=unicorn] .fx-ground{left:-8%;right:-8%;border:0;border-radius:50% 50% 0 0/30px 30px 0 0;background:radial-gradient(circle,#fff 0 2px,transparent 3px) 0 0/30px 24px,radial-gradient(circle,#ff9ad0 0 2px,transparent 3px) 15px 12px/30px 24px,linear-gradient(#a6ef94,#4fb56a)}
+#fillBox[data-sp=maneki] .fx-ground{background:repeating-linear-gradient(90deg,transparent 0 78px,#0004 78px 80px),linear-gradient(#e0ac26,#8a5a00)}
+#fillBox[data-sp=hou] .fx-ground{border-top-color:#ff7a30;background:repeating-linear-gradient(100deg,transparent 0 44px,#ff7a3066 44px 46px),linear-gradient(#3a1008,#150403);box-shadow:0 -6px 24px #ff7a3077}
+#fillBox[data-sp=kitsune] .fx-ground::before,#fillBox[data-sp=kitsune] .fx-ground::after{content:"";position:absolute;top:-52px;width:34px;height:52px;background:linear-gradient(#8a7a8a,#8a7a8a) 0 0/34px 9px no-repeat,linear-gradient(#ffb060,#ff7a30) 8px 11px/18px 14px no-repeat,linear-gradient(#6a5a6a,#6a5a6a) 13px 25px/8px 20px no-repeat,linear-gradient(#8a7a8a,#8a7a8a) 4px 44px/26px 8px no-repeat;filter:drop-shadow(0 0 8px #ff9a5a)}
+#fillBox[data-sp=kitsune] .fx-ground::before{left:6%}#fillBox[data-sp=kitsune] .fx-ground::after{right:6%}
+</style>
+<style id="kt-sakura-theme">
+/* ===== บ้านสัตว์ระดับ R: สวนซากุระ (วาดด้วยโค้ดตามภาพอ้างอิง) ===== */
+#fillBox[data-sp=sakura]{--c1:#c0507a;--c2:#7a2a4a;--cd:#fff3f6;--cb:#f0a0b8;--cs:#b8607a;--bd:#ffb0c8;--hill:#6ccb6a;--sky:linear-gradient(#4aa8f0,#8ed4ff 55%,#d4f2ff)}
+#fillBox[data-sp=sakura] .fx-hill{left:-20%;right:-20%;height:20%;clip-path:none;border-radius:50% 50% 0 0/100% 100% 0 0}
+#fillBox[data-sp=sakura] .fx-ground{left:-8%;right:-8%;border:0;border-radius:50% 50% 0 0/30px 30px 0 0;background:radial-gradient(circle,#fff 0 2px,transparent 3px) 0 0/34px 26px,radial-gradient(circle,#ffd84a 0 2px,transparent 3px) 17px 13px/34px 26px,radial-gradient(circle,#ff9ac0 0 2px,transparent 3px) 8px 20px/34px 26px,linear-gradient(#7fd86a,#3f9a4a)}
+#fillBox[data-sp=sakura].kt-on .kth-rug{background:#e8c070;border-color:#b8862a;box-shadow:0 0 0 #0000}
+.fx-fuji{left:50%;margin-left:-110px;bottom:25%;width:220px;height:90px;background:linear-gradient(#fff 0 22%,#6a8ac0 22%);clip-path:polygon(0 100%,38% 4%,62% 4%,100% 100%);opacity:.85}
+.fx-house{left:3%;bottom:24%;width:120px;height:84px;background:linear-gradient(#f4e6c8,#f4e6c8) 12px 36px/96px 44px no-repeat,linear-gradient(#7a4a2a,#7a4a2a) 50px 52px/18px 28px no-repeat,linear-gradient(#bfe4ff,#bfe4ff) 20px 46px/20px 14px no-repeat,linear-gradient(#bfe4ff,#bfe4ff) 80px 46px/20px 14px no-repeat}
+.fx-house::before{content:"";position:absolute;left:0;top:0;width:120px;height:40px;background:#2a4a9a;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.fx-trunk{left:4%;top:28%;bottom:25%;width:16px;background:linear-gradient(90deg,#5a3424,#8a5a3a)}
+.fx-sak{top:-4%;width:58%;height:40%;background:radial-gradient(circle at 25% 35%,#ffb6d0 0 24%,transparent 25%),radial-gradient(circle at 55% 25%,#ff9ec0 0 26%,transparent 27%),radial-gradient(circle at 78% 45%,#ffc9dc 0 22%,transparent 23%),radial-gradient(circle at 42% 62%,#ffd8e6 0 20%,transparent 21%),radial-gradient(circle at 12% 62%,#ff9ec0 0 16%,transparent 17%)}
+.fx-sak.l{left:-12%}.fx-sak.r{right:-12%}
+.fx-pet{top:-12px;width:9px;height:7px;border-radius:60% 0 60% 0;background:#ffb6d0;animation:ktPt linear infinite}
+@keyframes ktPt{from{transform:translate(0,0) rotate(0)}to{transform:translate(50px,108vh) rotate(420deg)}}
+</style>
+<style id="kt-shop-css">
+#ktShop{position:absolute;inset:0;z-index:60;display:none;flex-direction:column;background:#fbecc8;font-family:inherit;color:#3a2412}
+.shp-top{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:10px 12px;background:#000;color:#fff;border-bottom:4px solid #e0a63a}
+.shp-top b{flex:1;font-size:clamp(16px,3vw,22px);text-shadow:2px 2px 0 #c81d2a}
+.shp-x{background:#c81d2a;border:3px solid #ffd0d0;border-radius:8px;color:#fff;font-weight:700;padding:4px 10px;cursor:pointer}
+.shp-chip{background:#fbecc8;color:#4a2a00;border-radius:8px;padding:2px 10px;font-weight:700}
+.shp-body{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px;max-width:640px;width:100%;margin:0 auto}
+.shp-card{background:#fff8e6;border:4px solid #6a3a1a;box-shadow:0 4px 0 #6a3a1a;padding:10px 12px}
+.shp-lv{font-weight:800;font-size:18px}.shp-lv small{font-size:12px;color:#7a5a3a}.shp-big{font-size:22px;font-weight:800;margin:6px 0}
+.shp-bar{height:12px;background:#e6d2a8;border:2px solid #6a3a1a;margin:6px 0}.shp-bar i{display:block;height:100%;background:linear-gradient(#ffd24a,#e0901a)}
+.shp-note{font-size:13px;color:#6a4a2a;margin-top:4px}
+.shp-shop{display:block;width:100%;text-align:center;font-family:inherit;font-weight:800;font-size:18px;padding:14px 10px;background:linear-gradient(#e83a1a,#c81d0a);color:#fff;border:4px solid #000;box-shadow:inset 0 0 0 3px #ff9a7a,0 4px 0 #6a1208;cursor:pointer;text-shadow:2px 2px 0 #000}
+.shp-shop:active{transform:translateY(3px)}.shp-shop small{display:block;font-size:12px;font-weight:600;opacity:.9;text-shadow:none}
+.shp-shop span{font-size:22px}.shp-shop.alt{background:linear-gradient(#fff,#f0e0c0);color:#3a2412;text-shadow:none;border-color:#6a3a1a;box-shadow:0 4px 0 #6a3a1a}
+.shp-shop.lock{background:#fff8e6;color:#8a7a68;border:4px solid #8a8070;box-shadow:0 4px 0 #8a8070;text-shadow:none;cursor:default}
+.shp-scene{position:relative;flex:0 0 38%;min-height:190px;max-height:290px;overflow:hidden;background:linear-gradient(90deg,var(--w1),var(--w2) 50%,var(--w1));border-bottom:4px solid #000}
+.shp-scene>i,.shp-scene>div{position:absolute}
+.shp-aw{left:0;right:0;top:0;height:24px;background:repeating-linear-gradient(90deg,var(--a1) 0 30px,var(--a2) 30px 60px);border-bottom:4px solid #0004;z-index:5}
+.shp-win{left:5%;top:40px;width:84px;height:62px;border:5px solid #5a3018;background:linear-gradient(#bfe4ff 48%,#7cc0f0 48%)}
+.shp-win::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:5px;margin-left:-2px;background:#5a3018}
+.shp-sign{left:31%;top:36px;width:74px;height:64px;border:4px solid #5a3018;background:#fdeccc;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800}
+.shp-shelf{right:5%;top:46px;width:34%;height:30px;border-bottom:8px solid #5a3018;display:flex;gap:8px;align-items:flex-end;padding-left:6px}
+.shp-shelf i{position:static;width:22px;height:20px;border-top:5px solid #0003}
+.shp-prog{left:8px;bottom:8px;background:#000;color:#fff;font-size:12px;padding:2px 8px;border:2px solid #fff;z-index:6}
+.shp-scene::after{content:"";position:absolute;left:0;right:0;bottom:0;height:32%;background:repeating-linear-gradient(90deg,transparent 0 46px,#0002 46px 48px),var(--fl)}
+.shp-cust{left:9%;bottom:6%;width:82px;z-index:4;animation:shpBob 1.4s ease-in-out infinite alternate}
+.shp-cust.in{animation:shpIn .5s ease-out,shpBob 1.4s ease-in-out .5s infinite alternate}
+.shp-keep{right:10%;bottom:34%;width:92px;z-index:3}.shp-keep.hop{animation:shpHop .5s ease-out}
+.shp-cnt{right:0;bottom:0;width:58%;height:40%;z-index:4;background:linear-gradient(var(--ct) 0 14%,#0003 14% 17%,transparent 17%),repeating-linear-gradient(90deg,var(--ct) 0 44px,#0003 44px 48px);border-top:5px solid #fff3}
+.shp-scene svg{width:100%;height:auto;display:block;image-rendering:pixelated}
+@keyframes shpBob{to{transform:translateY(-4px)}}@keyframes shpIn{from{transform:translateX(-120px);opacity:0}}@keyframes shpHop{40%{transform:translateY(-16px)}}
+.shp-dlg{flex:0 0 auto;margin:8px;background:#000;border:3px solid #fff;outline:3px solid #000;padding:8px 12px;color:#fff;position:relative}
+.shp-nm{font-size:12px;color:#ffd24a}.shp-jp{font-size:clamp(20px,5vw,28px);font-weight:800;margin:2px 0;min-height:36px}.shp-th{font-size:14px;color:#9fe0ff;min-height:18px}
+.shp-bt{display:flex;gap:8px;justify-content:flex-end;margin-top:4px}.shp-bt button{background:#fff;border:0;border-bottom:4px solid #9aa;padding:4px 12px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.shp-grid{flex:1;overflow:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:4px 8px 12px;align-content:start}
+.shp-it{background:#fbeccd;border:4px solid #6a3a1a;box-shadow:0 3px 0 #6a3a1a;padding:6px 2px;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
+.shp-it span{font-size:clamp(24px,6vw,36px);line-height:1.1}.shp-it em{font-style:normal;font-size:clamp(9px,2.4vw,13px);font-weight:700;word-break:break-all;text-align:center;line-height:1.2}
+.shp-it:active{transform:translateY(2px)}.shp-it.ok{background:#b8f0a0;border-color:#2a8a2a;animation:shpHop .5s}.shp-it.ng{background:#f4b0a8;border-color:#a02a1a;opacity:.6;animation:shpSh .3s}
+@keyframes shpSh{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){#ktShop *{animation:none!important}}
+</style>
+<style id="kt-shop-css2">
+.shp-it{position:relative}.shp-n{position:absolute;right:2px;top:2px;background:#c81d2a;color:#fff;font-size:12px;padding:0 5px;border:2px solid #fff;border-radius:8px}
+.shp-it.in{background:#fff0a8;border-color:#e0901a}
+.shp-cart{flex:0 0 auto;display:flex;gap:6px;align-items:center;margin:0 8px 6px;padding:6px;background:#fff8e6;border:3px solid #6a3a1a}
+.shp-chips{flex:1;display:flex;flex-wrap:wrap;gap:4px;min-height:30px;align-items:center}
+.shp-emp{font-size:12px;color:#8a7a68}.shp-c2{font-family:inherit;font-weight:700;font-size:14px;background:#fff;border:2px solid #6a3a1a;padding:2px 6px;cursor:pointer}
+.shp-cart>button{font-family:inherit;font-weight:800;border:3px solid #000;background:#fff;padding:6px 10px;cursor:pointer}
+.shp-cart .go{background:linear-gradient(#3ac050,#1e8a30);color:#fff;text-shadow:1px 1px 0 #000}
+.shp-bad{color:#ff8a8a;font-weight:700}
+</style>
+<style id="kt-shop-css3">
+#ktShop.shp-scroll{overflow-y:auto}
+.shp-scroll .shp-scene{flex:0 0 165px;min-height:165px}
+.shp-scroll .shp-jp{font-size:clamp(17px,4.6vw,24px);min-height:0}
+.shp-scroll .shp-dlg{padding:6px 10px}
+.shp-scroll .shp-grid{flex:0 0 auto;overflow:visible}
+.shp-dock{position:sticky;bottom:0;z-index:8;margin-top:auto;padding:5px 0 3px;background:#fbecc8;border-top:4px solid #6a3a1a;box-shadow:0 -6px 10px #0002}
+.shp-dock .shp-cart{margin:0 8px 5px;padding:4px}
+.shp-opts{margin:0 8px;display:flex;flex-direction:column;gap:3px;padding:4px;background:#fff8e6;border:3px dashed #6a3a1a}
+.shp-og{display:flex;align-items:stretch;gap:5px;padding:1px 2px;border:2px solid transparent}
+.shp-og.ng{border-color:#c81d2a;background:#ffe3df;animation:shpSh .3s}
+.shp-ot{flex:0 0 60px;display:flex;align-items:center;font-size:11px;font-weight:800;color:#6a3a1a;line-height:1.15}
+.shp-ob{flex:1;min-width:0;font-family:inherit;font-weight:800;font-size:12px;line-height:1.2;color:#3a2412;background:#fff;border:3px solid #6a3a1a;box-shadow:0 3px 0 #6a3a1a;padding:3px 2px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.shp-ob small{font-weight:600;font-size:10px;color:#7a5a3a}
+.shp-ob.on{background:#fff0a8;border-color:#e0901a;box-shadow:0 3px 0 #e0901a}
+.shp-ob:active{transform:translateY(2px)}
+.shp-rc{margin:0 8px;padding:6px 12px;background:#fff;border:2px solid #333;color:#222;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;position:relative;animation:shpHop .5s ease-out}
+.shp-rc h4{margin:0 0 2px;text-align:center;letter-spacing:2px;font-size:13px}
+.shp-rc div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted #999;padding:1px 0}
+.shp-rc .o{justify-content:flex-start;color:#a02a1a}
+.shp-rc .t{justify-content:center;border:0;margin-top:3px;font-weight:700}
+.shp-shop.hard{background:linear-gradient(#8a3ae8,#4a1aa0);box-shadow:inset 0 0 0 3px #c9a0ff,0 4px 0 #2a0a60}
+.shp-shop.plc{background:linear-gradient(#3aa0e8,#1a6ab8);box-shadow:inset 0 0 0 3px #9ad0ff,0 4px 0 #0a3a68}
+</style>
 </head>
 <body>
 
@@ -11715,8 +11877,8 @@ function ktpRects(G, pal) {
   }
   return out;
 }
-const KTP_STAGES = [{ n: 'ทารก' }, { n: 'วัยเยาว์' }, { n: 'เต็มวัย' }, { n: 'สมบูรณ์' }], KTP_STAGE_LV = [1, 10, 20, 30], KTP_EVO_COIN = [0, 5, 10, 20];
-function ktpStage(lv) { return lv >= 30 ? 3 : lv >= 20 ? 2 : lv >= 10 ? 1 : 0; }
+const KTP_STAGES = [{ n: 'ทารก' }, { n: 'เด็กน้อย' }, { n: 'วัยเยาว์' }, { n: 'วัยรุ่น' }, { n: 'เต็มวัย' }, { n: 'ผู้เชี่ยวชาญ' }, { n: 'สมบูรณ์' }], KTP_STAGE_LV = [1, 5, 10, 15, 20, 25, 30], KTP_EVO_COIN = [0, 2, 3, 5, 6, 7, 12], KTP_VT = [0, 1, 1, 2, 2, 3, 3], KTP_SC = [.64, .72, .79, .86, .92, .96, 1];
+function ktpStage(lv) { return lv >= 30 ? 6 : lv >= 25 ? 5 : lv >= 20 ? 4 : lv >= 15 ? 3 : lv >= 10 ? 2 : lv >= 5 ? 1 : 0; }
 function ktpWing(side, f, fill, stroke, extra) {
   const ax = side < 0 ? 2.5 : 12.5, ay = 8, o = side < 0 ? -1 : 1, P = [[0, 0], [4.6, -8.2], [3.7, -2.6], [5.5, -.8], [3.2, 1.4], [4.6, 4.6], [0, 3.6]];
   return `<path ${extra || ''} d="M${P.map(([dx, dy]) => (ax + o * dx * f).toFixed(2) + ' ' + (ay + dy * f).toFixed(2)).join(' L')} Z" fill="${fill}" stroke="${stroke}" stroke-width=".3"/>`;
@@ -11727,11 +11889,11 @@ function ktpExtra(id, st, R) {
   const tail = (x, y) => `<g fill="#fbfbff" stroke="#6a4a58" stroke-width=".3">${R(x, y + 1.5, 2.4, 4, '#fbfbff')}${R(x + .8, y, 2.2, 3, '#fbfbff')}</g>${R(x + 1.6, y - .1, 1.4, 1.3, '#e0483a')}`;
   const flame = (x, y, c1, c2) => `<g class="ktp-flick">${R(x, y + 1, 1.4, 1.8, c1)}${R(x + .3, y, .8, 1.3, c2)}</g>`;
   if (id === 'kitsune') {
-    pre = tail(15, 0) + (st >= 2 ? tail(15.5, 9) : '') + (st >= 3 ? tail(13, -2.5) + tail(16.5, 4.5) : '');
+    pre = '';
     if (st >= 2) post += flame(1, -2.5, '#6fb8ff', '#bfe4ff');
     if (st >= 3) post += flame(8, -3.6, '#6fb8ff', '#bfe4ff') + flame(14, -2.5, '#6fb8ff', '#bfe4ff') + star(-1.5, 7, '#bfe4ff');
   } else if (id === 'ryu') {
-    pre = ktpWing(-1, f, '#3fae7a', '#1d4a35') + ktpWing(1, f, '#3fae7a', '#1d4a35');
+    pre = '';
     if (st >= 2) post += `<g class="ktp-float"><circle cx="17.5" cy="2.5" r="1.3" fill="#ffd24a" stroke="#c9a02a" stroke-width=".25"/><circle cx="17.1" cy="2.1" r=".4" fill="#fff"/></g>`;
     if (st >= 3) post += `<ellipse cx="4" cy="16.3" rx="2.8" ry=".9" fill="#fff" opacity=".9"/><ellipse cx="13" cy="16.3" rx="2.8" ry=".9" fill="#fff" opacity=".9"/><path class="ktp-flick" d="M0 -1 L-1.2 1.2 L0 1.2 L-.8 3.4 L1.4 .8 L.2 .8 Z" fill="#ffe94a"/>`;
   } else if (id === 'unicorn') {
@@ -11740,12 +11902,12 @@ function ktpExtra(id, st, R) {
     post = star(2, 0, '#ffd24a') + star(15, 1, '#ff9ad0') + (st >= 2 ? star(16.5, 10, '#ffd24a') : '') + (st >= 3 ? star(-1.5, 9, '#ff9ad0') + star(8, -3.6, '#fff6a0') : '');
   } else if (id === 'maneki') {
     if (st >= 3) pre += `<g class="ktp-spin" opacity=".4">${[...Array(12)].map((_, i) => `<line x1="8" y1="8" x2="${(8 + 14 * Math.cos(i * Math.PI / 6)).toFixed(2)}" y2="${(8 + 14 * Math.sin(i * Math.PI / 6)).toFixed(2)}" stroke="#ffd24a" stroke-width=".7"/>`).join('')}</g>`;
-    post = `<g class="ktp-wave" stroke="#7a4a10" stroke-width=".25">${R(14.8, 1, 2.4, 3.9, '#ffe27a')}${R(15.4, 2.4, 1.2, 1.2, '#ff9a8a')}</g>`;
+    post = '';
     const coin = (x, y) => `<g class="ktp-float"><ellipse cx="${x}" cy="${y}" rx="1" ry="1.5" fill="#ffd24a" stroke="#d9941a" stroke-width=".3"/><rect x="${x - .3}" y="${y - .7}" width=".6" height="1.4" fill="#d9941a"/></g>`;
     if (st >= 2) post += coin(0, 5) + coin(17.5, 11);
     if (st >= 3) post += coin(-1, 11) + coin(17, 15) + `<circle cx="8" cy="-1.6" r="1.9" fill="#c81e1e" stroke="#ffd24a" stroke-width=".35"/><text x="8" y="-.8" font-size="2.3" fill="#ffd24a" text-anchor="middle">福</text>`;
   } else if (id === 'hou') {
-    pre = `<g class="ktp-flick">${ktpWing(-1, f * 1.05, '#ff8a3a', '#c8281e') + ktpWing(1, f * 1.05, '#ff8a3a', '#c8281e') + ktpWing(-1, f * .6, '#ffe94a', 'none') + ktpWing(1, f * .6, '#ffe94a', 'none')}</g>`;
+    pre = '';
     if (st >= 3) pre = `<g class="ktp-spin"><circle cx="8" cy="8" r="10.2" fill="none" stroke="#ffb400" stroke-width=".5" stroke-dasharray="1.2 1"/></g>` + pre;
     if (st >= 2) post += flame(7.3, -2.8, '#ffb04a', '#ffe94a');
     if (st >= 3) post += flame(3.6, -2, '#ff6a3a', '#ffe94a') + flame(11, -2, '#ff6a3a', '#ffe94a') + [[-2, 10, 0], [17.5, 8, .6], [8, 16.5, 1.1]].map(([x, y, d]) => `<rect class="ktp-ember" style="animation-delay:${d}s" x="${x}" y="${y}" width=".8" height=".8" fill="#ffe94a"/>`).join('');
@@ -11754,9 +11916,9 @@ function ktpExtra(id, st, R) {
 }
 function ktpSvg(id, mood, cls, lv) {
   const sp = ktpSp(id); if (!sp) return '';
-  const body = ktpRects(ktpGrid(sp, mood), sp.pal), R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+  const body = ((sp.rar === 'SSR' || sp.rar === 'SR') && window.ktp48 && ktp48(id, mood, ktpStage(lv))) || ktpRects(ktpGrid(sp, mood), sp.pal), R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
   if (!(lv >= 1)) return `<svg class="kt-px ${cls || ''}" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
-  const st = ktpStage(lv), S = [.66, .82, .92, 1][st], tx = (9 * (1 - S)).toFixed(2), ty = (16 * (1 - S)).toFixed(2);
+  const sg = ktpStage(lv), st = KTP_VT[sg], S = KTP_SC[sg], tx = (9 * (1 - S)).toFixed(2), ty = (16 * (1 - S)).toFixed(2);
   const X = (sp.rar === 'SR' || sp.rar === 'SSR') && st >= 1 ? ktpExtra(id, st, R) : null;
   let pre = '', post = '';
   if (st === 0) post = R(8.5, 4.4, 1, 1, '#ffe27a') + R(8.5, 3.6, .6, .8, '#ffe27a');
@@ -11765,9 +11927,10 @@ function ktpSvg(id, mood, cls, lv) {
     if (st === 2) post = R(7.1, .2, 1.8, 1.2, '#4aa0ff') + R(9.1, .2, 1.8, 1.2, '#4aa0ff') + R(8.6, .5, .8, .7, '#ffd24a');
     if (st === 3) post = R(6.5, .6, 5, 1, '#ffd24a') + R(6.5, 0, 1, .7, '#ffd24a') + R(8.5, 0, 1, .7, '#ffd24a') + R(10.5, 0, 1, .7, '#ffd24a') + R(8.6, .8, .8, .6, '#e8334a') + R(1, 3, .9, .9, '#fff6a0') + R(16, 5, .9, .9, '#fff6a0') + R(2, 12, .9, .9, '#fff6a0') + R(15.5, 13, .9, .9, '#fff6a0');
   }
-  if (st === 3) { const pu = sp.rar === 'SR'; pre = `<defs><radialGradient id="ktpAura${pu ? 'S' : ''}"><stop offset="0" stop-color="${pu ? '#e0ccff' : '#fff3a0'}" stop-opacity=".9"/><stop offset="1" stop-color="${pu ? '#8a5cff' : '#ffb400'}" stop-opacity="0"/></radialGradient></defs><circle cx="9" cy="8.5" r="${X ? 11 : 9}" fill="url(#ktpAura${pu ? 'S' : ''})"/>`; }
+  if (sg === 6) { const pu = sp.rar === 'SR'; pre = `<defs><radialGradient id="ktpAura${pu ? 'S' : ''}"><stop offset="0" stop-color="${pu ? '#e0ccff' : '#fff3a0'}" stop-opacity=".9"/><stop offset="1" stop-color="${pu ? '#8a5cff' : '#ffb400'}" stop-opacity="0"/></radialGradient></defs><circle cx="9" cy="8.5" r="${X ? 11 : 9}" fill="url(#ktpAura${pu ? 'S' : ''})"/>`; }
+  if (sg === 2 || sg === 4 || sg === 5) pre += [[1, 3], [16, 5], [2, 12]].slice(0, sg === 2 ? 1 : sg === 4 ? 2 : 3).map(([x, y]) => R(x, y, .9, .9, '#fff6a0')).join('');
   const vb = X ? '-3.5 -4 25 21' : '0 0 18 16';
-  return `<svg class="kt-px ${cls || ''} ${st === 3 ? 'ktp-fin' : ''}" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${pre}<g transform="translate(${tx} ${ty}) scale(${S})">${X ? X.pre : ''}${body}${X ? X.post : ''}</g>${X ? '' : post}</svg>`;
+  return `<svg class="kt-px ${cls || ''} ${sg === 6 ? 'ktp-fin' : ''}" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${pre}<g transform="translate(${tx} ${ty}) scale(${S})">${X ? X.pre : ''}${body}${X ? X.post : ''}</g>${X ? '' : post}</svg>`;
 }
 function ktpEvoCheck(p, oldLv) { if (ktpStage(p.lv) > ktpStage(oldLv)) { ktp.evo = { sp: p.sp, from: ktpStage(oldLv), to: ktpStage(p.lv) }; ktpSave(); } }
 function ktpEvoSheet() {
@@ -11837,7 +12000,8 @@ const KTP_SP_TALK = {
 };
 function ktpPerk() { let r = 'N'; try { const p = ktpAct(); if (p) r = ktpSp(p.sp).rar; } catch (e) { } return KTP_PERK[r] || KTP_PERK.N; }
 function ktpRarNow() { try { const p = ktpAct(); return p ? ktpSp(p.sp).rar : 'N'; } catch (e) { return 'N'; } }
-function ktpHomeName() { return KTP_HOME[ktpRarNow()] || KTP_HOME.N; }
+const KTP_HOME_SP = { kitsune: '⛩️ ศาลเจ้าอินาริยามค่ำ', ryu: '🌫️ ขุนเขาหยกมังกร', unicorn: '🌈 ทุ่งสายรุ้งแสนฝัน', maneki: '🏮 วิหารโชคลาภ', hou: '🔥 ทะเลเพลิงฟีนิกซ์' };
+function ktpHomeName() { const p = ktpAct(); return (p && KTP_HOME_SP[p.sp] && ktpRarNow() !== 'N' && ktpRarNow() !== 'R' ? KTP_HOME_SP[p.sp] : null) || KTP_HOME[ktpRarNow()] || KTP_HOME.N; }
 function ktpDay() { return new Date().toISOString().slice(0, 10); }
 function ktpNew() { return { v: 1, hasEgg: false, pets: {}, active: null, hunger: 70, clean: 70, happy: 70, t: Date.now(), items: {}, free: { d: ktpDay(), feed: 0, bath: 0, play: 0 }, pity: 0, pulls: 0 }; }
 function ktpLoad() {
@@ -11912,7 +12076,7 @@ function ktRenderHome() {
       <button class="kth-act kth-gacha" onclick="ktpGachaSheet()"><b>🎰</b><span>กาชา</span><small>10 ⭐</small></button>
       <button class="kth-act" onclick="ktpBookSheet()"><b>📖</b><span>สมุดภาพ</span><small>${Object.keys(ktp.pets).length}/${KTP_SPECIES.length}</small></button>
     </div>`;
-  bot.innerHTML = `<button class="kt-btn kt-red" onclick="ktBack()">⬅ ออก</button><span class="sp"></span><button class="kt-btn kt-red kt-big" onclick="ktGoSelect()">📝 เริ่มเรียน (เติมคำ)</button>`;
+  bot.innerHTML = `<button class="kt-btn kt-red" onclick="ktBack()">⬅ ออก</button><button class="kt-btn kt-gold" onclick="ktShopOpen()">🏪 ร้านม่อน</button><span class="sp"></span><button class="kt-btn kt-red kt-big" onclick="ktGoSelect()">📝 เริ่มเรียน (เติมคำ)</button>`;
   setTimeout(() => ktpBubble(ktpTalkKey()), 300); if (ktp.evo) setTimeout(ktpEvoSheet, 700);
 }
 function ktpTap() { const e = document.getElementById('kthPet'); if (!e) return; e.classList.remove('hop'); void e.offsetWidth; e.classList.add('hop'); ktSfx('pop'); ktpBubble(ktpTalkKey()); ktpFx('💗'); }
@@ -13343,19 +13507,27 @@ const ACC={kitsune:['#ff6a4a','#ffc2b0'],ryu:['#2fd08a','#b6ffe0'],unicorn:['#ff
 const $=id=>document.getElementById(id);
 function cur(){try{const p=ktpAct();return p?{p:p,sp:ktpSp(p.sp)}:null}catch(e){return null}}
 function rarNow(){const c=cur();return c&&(c.sp.rar==='SR'||c.sp.rar==='SSR')?c.sp.rar:''}
-function fx(rar){
+function fx(id){
   const st=document.querySelector('#fillBox .kt-stage');let f=$('ktFx');
   if(!f){f=document.createElement('div');f.id='ktFx';f.className='kt-fx';st.insertBefore(f,$('ktMain'))}
-  if(f.dataset.r===rar)return;f.dataset.r=rar;let h='';
-  if(rar==='SR'){h='<i class="fx-moon"></i><i class="fx-hill"></i>';for(let i=0;i<22;i++)h+='<i class="fx-star" style="left:'+((i*37+11)%100)+'%;top:'+((i*23+5)%62)+'%;animation-delay:'+((i%7)*.45)+'s;--s:'+(i%4===0?4:2)+'px"></i>';h+='<i class="fx-shoot"></i>'}
-  else if(rar==='SSR'){h='<i class="fx-sun"></i><i class="fx-hill"></i><i class="fx-lan l1"></i><i class="fx-lan l2"></i>';for(let i=0;i<20;i++)h+='<i class="fx-ember" style="left:'+((i*29+7)%100)+'%;animation-delay:'+((i%9)*.7)+'s;animation-duration:'+(5+i%5)+'s"></i>'}
-  f.innerHTML=h;
+  if(f.dataset.r===id)return;f.dataset.r=id;
+  const stars=n=>{let s='';for(let i=0;i<n;i++)s+='<i class="fx-star" style="left:'+((i*37+11)%100)+'%;top:'+((i*23+5)%58)+'%;animation-delay:'+((i%7)*.45)+'s;--s:'+(i%4===0?4:2)+'px"></i>';return s};
+  const emb=n=>{let s='';for(let i=0;i<n;i++)s+='<i class="fx-ember" style="left:'+((i*29+7)%100)+'%;animation-delay:'+((i%9)*.7)+'s;animation-duration:'+(4+i%5)+'s"></i>';return s};
+  const cl=(n,a)=>{let s='';for(let i=0;i<n;i++)s+='<i class="fx-cloud" style="top:'+(8+i*17)+'%;--d:'+(50+i*18)+'s;animation-delay:-'+(i*19)+'s;--cc:'+a+'"></i>';return s};
+  let h='';
+  if(id==='kitsune'){h='<i class="fx-moon"></i>'+stars(10)+'<i class="fx-hill"></i><i class="fx-torii t1"></i><i class="fx-torii t2"></i><i class="fx-torii t3"></i>';for(let i=0;i<8;i++)h+='<i class="fx-wisp" style="left:'+((i*13+6)%94)+'%;top:'+(30+(i*17)%45)+'%;animation-delay:-'+(i*.7)+'s"></i>'}
+  else if(id==='ryu'){h='<i class="fx-moon fx-pearl"></i>'+cl(3,'#ffffff2e')+'<i class="fx-mt m1"></i><i class="fx-mt m2"></i><i class="fx-bolt"></i>'}
+  else if(id==='unicorn'){h=stars(8)+'<i class="fx-rainbow"></i>'+cl(3,'#ffffff55')+'<i class="fx-hill"></i>';for(let i=0;i<14;i++)h+='<i class="fx-spk" style="left:'+((i*31+9)%96)+'%;animation-delay:-'+((i%7)*.9)+'s;animation-duration:'+(5+i%4)+'s;--sc:'+['#fff','#ff9ad0','#ffe94a','#bfe4ff'][i%4]+'">'+(i%3?'✦':'♥')+'</i>'}
+  else if(id==='maneki'){h='<i class="fx-sun"></i><i class="fx-hill"></i><i class="fx-lan l1"></i><i class="fx-lan l2"></i>';for(let i=0;i<12;i++)h+='<i class="fx-coin" style="left:'+((i*23+8)%96)+'%;animation-delay:-'+((i%6)*1.3)+'s;animation-duration:'+(6+i%4)+'s"></i>'}
+  else if(id==='hou'){h='<i class="fx-heat"></i><i class="fx-sun"></i>'+emb(26)+'<div class="fx-fire">';for(let i=0;i<9;i++)h+='<i class="fx-fl" style="left:'+(i*11.5-3)+'%;height:'+(70+(i*37)%60)+'%;animation-delay:-'+(i*.23)+'s"></i>';h+='</div>'}
+  if(id==='sakura'){h='<i class="fx-fuji"></i>'+cl(3,'#ffffffd0')+'<i class="fx-hill"></i><i class="fx-house"></i><i class="fx-trunk"></i><i class="fx-torii t2"></i><i class="fx-sak l"></i><i class="fx-sak r"></i>';for(let i=0;i<14;i++)h+='<i class="fx-pet" style="left:'+((i*29+5)%98)+'%;animation-delay:-'+((i%7)*1.2)+'s;animation-duration:'+(8+i%4)+'s"></i>'}
+  h+='<i class="fx-ground"></i>';f.innerHTML=h;
 }
 function theme(){
-  const b=$('fillBox');if(!b)return;const rar=rarNow(),c=cur(),scr=ktS.screen;
-  if(rar){const a=ACC[c.sp.id]||['#a88bff','#e0d4ff'];b.dataset.rar=rar;b.style.setProperty('--ta',a[0]);b.style.setProperty('--tg',a[1]);fx(rar)}
-  else delete b.dataset.rar;
-  b.classList.toggle('kt-on',!!rar&&scr!=='home');b.dataset.scr=scr;
+  const b=$('fillBox');if(!b)return;const rar=rarNow(),c=cur(),scr=ktS.screen,isR=!rar&&!!c&&c.sp.rar==='R'&&scr==='home';
+  if(rar){const a=ACC[c.sp.id]||['#a88bff','#e0d4ff'];b.dataset.rar=rar;b.dataset.sp=c.sp.id;b.style.setProperty('--ta',a[0]);b.style.setProperty('--tg',a[1]);fx(c.sp.id)}
+  else if(isR){delete b.dataset.rar;b.dataset.sp='sakura';b.style.setProperty('--ta','#ff9ac0');b.style.setProperty('--tg','#ffd8e6');fx('sakura')}else{delete b.dataset.rar;delete b.dataset.sp}
+  b.classList.toggle('kt-on',!!rar||isR);b.dataset.scr=scr;
   if(!rar||scr==='home')return;
   if(scr==='play'&&(ktS.streak||0)>=3){const bar=$('ktCardBar'),e=document.createElement('span');e.className='kt-combo';e.textContent='🔥 ×'+ktS.streak;bar.insertBefore(e,bar.querySelector('.kt-seg'))}
   if(scr==='result'){
@@ -13369,7 +13541,7 @@ function burst(){
   const r=el.getBoundingClientRect(),s=st.getBoundingClientRect(),n=rar==='SSR'?18:12,w=document.createElement('div');
   w.className='kt-burst';w.style.left=(r.left-s.left+r.width/2)+'px';w.style.top=(r.top-s.top+r.height/2)+'px';
   let h=rar==='SSR'?'<b class="ring"></b>':'';
-  for(let i=0;i<n;i++){const a=i/n*6.283,d=60+(i%3)*28;h+='<i style="--dx:'+Math.cos(a)*d+'px;--dy:'+Math.sin(a)*d+'px">'+(rar==='SSR'&&i%2?'●':'✦')+'</i>'}
+  for(let i=0;i<n;i++){const a=i/n*6.283,d=60+(i%3)*28;h+='<i style="--dx:'+Math.cos(a)*d+'px;--dy:'+Math.sin(a)*d+'px">'+(({kitsune:'✦',ryu:'⚡',unicorn:'♥',maneki:'●',hou:'🔥'})[cur().sp.id]||'✦')+'</i>'}
   w.innerHTML=h;st.appendChild(w);setTimeout(()=>w.remove(),1000);
 }
 function intro(){
@@ -13379,11 +13551,333 @@ function intro(){
   e.innerHTML='<div class="pet">'+ktpSvg(c.p.sp,'happy','',c.p.lv)+'</div><div><b>'+rar+'</b><span>'+ktEsc(c.p.name)+' ออกโรง!</span><small>'+ktEsc(KTP_PERK[rar].tx)+'</small></div>';
   st.appendChild(e);setTimeout(()=>e.remove(),1900);
 }
+const _h=ktRenderHome;ktRenderHome=function(){_h.apply(this,arguments);try{theme()}catch(e){}};
 const _r=ktRender;ktRender=function(){_r.apply(this,arguments);try{theme()}catch(e){}};
 const _s=ktSubmit;ktSubmit=function(){const was=ktS.done;_s.apply(this,arguments);if(!was&&ktS.done&&ktS.res[ktS.i]===true)try{burst()}catch(e){}};
 const _a=ktStart;ktStart=function(){_a.apply(this,arguments);if(ktS.screen==='play')try{intro()}catch(e){}};
 const _b=ktStartReview;ktStartReview=function(){_b.apply(this,arguments);if(ktS.screen==='play')try{intro()}catch(e){}};
 })();
+</script>
+<script id="k48-js">
+(function(){
+const W=48,H=44,Z=()=>Array.from({length:H},()=>Array(W).fill(null));
+const ellD=(cx,cy,a,b,t)=>{const c=Math.cos(t||0),s=Math.sin(t||0),R=Math.max(a,b);return(x,y)=>{const dx=x+.5-cx,dy=y+.5-cy,u=(dx*c+dy*s)/a,v=(-dx*s+dy*c)/b;return u*u+v*v<=1?(-dx*.55-dy*.85)/R:null}};
+const ell=(cx,cy,rx,ry)=>ellD(cx,cy,rx,ry,0);
+const fea=(bx,by,tx,ty,w)=>ellD((bx+tx)/2,(by+ty)/2,Math.hypot(tx-bx,ty-by)/2,w,Math.atan2(ty-by,tx-bx));
+const poly=P=>{let sx=0,sy=0;P.forEach(p=>{sx+=p[0];sy+=p[1]});sx/=P.length;sy/=P.length;const R=Math.max(...P.map(p=>Math.hypot(p[0]-sx,p[1]-sy)));return(x,y)=>{const X=x+.5,Y=y+.5;let n=false;for(let i=0,j=P.length-1;i<P.length;j=i++){const a=P[i],c=P[j];if((a[1]>Y)!==(c[1]>Y)&&X<(c[0]-a[0])*(Y-a[1])/(c[1]-a[1])+a[0])n=!n}return n?(-(X-sx)*.55-(Y-sy)*.85)/R:null}};
+function fill(L,m,c,o){o=o||{};for(let y=0;y<H;y++)for(let x=0;x<W;x++){const d=m(x,y);if(d===null)continue;if(o.clip&&o.clip(x,y)===null)continue;let col=c[0];if(!o.flat&&c.length>2)col=d>.42?c[1]:d<-.38?c[2]:c[0];if(o.edge&&(m(x-1,y)===null||m(x+1,y)===null||m(x,y-1)===null||m(x,y+1)===null))col=o.edge;L[y][x]=col}}
+const px=(L,x,y,c)=>{if(x>=0&&x<W&&y>=0&&y<H)L[y][x]=c};
+const pts=(L,P,c)=>P.forEach(p=>px(L,p[0],p[1],c));
+const mir=P=>P.map(p=>[47-p[0],p[1]]);
+function line(L,a,b,c,d,col){const n=Math.max(Math.abs(c-a),Math.abs(d-b))||1;for(let i=0;i<=n;i++)px(L,Math.round(a+(c-a)*i/n),Math.round(b+(d-b)*i/n),col)}
+const both=(L,P,c)=>{pts(L,P,c);pts(L,mir(P),c)};
+const TEAR='#6fb8ff',BLUSH='#ff9a9a';
+function faceExtras(E,mood,o){ // o: arcs, brows[[x0,y0,x1,y1]], tear, hy
+  if(mood==='happy'){both(E,o.arcs,o.ink);both(E,o.arcs.map(p=>[p[0],p[1]+1]).filter((p,i,a)=>i>0&&i<a.length-1),o.ink);return true}
+  return false}
+function maneki(mood){
+  const O='#5a2e0e',G=['#ffe27a','#fff6c0','#e8b030'],OR=['#f4a83a','#ffc866','#d4801c'],CR=['#fff8dc','#ffffff','#f0dca0'],RD=['#e0282e','#ff6a5a','#a81220'],GD=['#ffcf33','#fff08a','#d89a10'];
+  const M=Z(),E=Z(),P=Z(),hd=ell(24,15,14,11.5),bd=ell(24,32,13,10);
+  fill(M,bd,G,{edge:O});fill(M,ell(34,31,5.5,5),OR,{clip:bd});fill(M,ell(24,34,8,6.5),CR,{});
+  fill(M,ell(17,41,5,2.6),G,{edge:O});fill(M,ell(31,41,5,2.6),G,{edge:O});
+  both(M,[[15,42],[18,42],[19,42]].slice(0,0),O);pts(M,[[15,41],[18,41]],O);pts(M,[[29,41],[32,41]],O);
+  fill(M,ell(12,36,4.8,6.5),GD,{edge:'#8a5a00'});for(let y=33;y<=39;y++)px(M,12,y,'#b8761a');pts(M,[[10,35],[14,35],[10,38],[14,38]],'#b8761a');
+  fill(M,ell(14,31,3.6,3.2),G,{edge:O});
+  fill(M,poly([[10.5,10],[11.5,.8],[20,4.8]]),G,{edge:O});fill(M,poly([[37.5,10],[36.5,.8],[28,4.8]]),G,{edge:O});
+  fill(M,poly([[13,8],[13.5,3.6],[17.6,5.4]]),['#ff9a9a'],{flat:1});fill(M,poly([[35,8],[34.5,3.6],[30.4,5.4]]),['#ff9a9a'],{flat:1});
+  fill(M,hd,G,{edge:O});fill(M,ell(15,8,5,3.5),OR,{clip:hd});
+  fill(M,ell(13,20.5,2.8,1.6),[BLUSH],{flat:1});fill(M,ell(35,20.5,2.8,1.6),[BLUSH],{flat:1});
+  pts(M,[[22,18],[23,18],[24,18],[25,18],[23,19],[24,19]],'#e06a6a');
+  pts(M,[[23,20],[24,20],[22,21],[21,21],[20,20],[25,21],[26,21],[27,20]],O);
+  line(M,9,18,4,17,'#7a5a30');line(M,9,21,4,22,'#7a5a30');line(M,38,18,43,17,'#7a5a30');line(M,38,21,43,22,'#7a5a30');
+  fill(M,ell(24,26.5,11.5,2.8),RD,{edge:'#6a0a14'});fill(M,ell(24,30,2.6,2.6),GD,{edge:'#8a5a00'});pts(M,[[23,31],[24,31]],'#8a5a00');
+  const INK='#3a1a08';
+  if(mood==='happy'){const A=[[14,16],[15,15],[16,14],[17,14],[18,14],[19,15],[20,16]];both(E,A,INK);both(E,A.map(p=>[p[0],p[1]+1]).slice(1,6),INK);
+    fill(M,ell(24,23.2,2.8,1.6),['#c81d2a'],{flat:1});pts(M,[[23,24],[24,24]],'#ff8a8a')}
+  else{fill(E,ell(17.5,15.5,2.4,3.3),[INK],{flat:1});fill(E,ell(30.5,15.5,2.4,3.3),[INK],{flat:1});
+    pts(E,[[16,14],[16,15],[29,14],[29,15]],'#ffffff');pts(E,[[18,17],[31,17]],'#d8e8ff')}
+  if(mood==='sad'){line(M,13,13,20,11,INK);line(M,34,13,27,11,INK);pts(M,[[23,20],[24,20],[22,21],[21,21],[20,20],[25,21],[26,21],[27,20]],G[0]);pts(M,[[23,21],[24,21],[22,22],[25,22],[21,23],[26,23]],O);pts(E,[[15,19],[15,20],[15,21]],TEAR)}
+  if(mood==='think')pts(M,[[4,6],[4,7],[3,8],[4,8],[5,8],[3,9],[4,9],[5,9]],'#9fd4ff');
+  fill(P,fea(39.5,30,42,9.5,4.4),G,{edge:O});fill(P,ell(42.3,15,2.3,2.5),['#ff9a9a'],{flat:1});pts(P,[[40,11],[42,10],[44,11]],'#e08a8a');
+  return[['',M],['k48-bk',E],['k48-pw',P]]}
+function hou(mood){
+  const O='#5a1a10',B=['#ff6a3a','#ff9a5a','#c8281e'],GL=['#ffd866','#fff3a0','#e0a020'],WG=['#e8482a','#ff8a4a','#a81e1e'],hd=ell(24,14,11,9.5),bd=ell(24,28,11,9.5);
+  const T=Z(),WL=Z(),WR=Z(),C=Z(),M=Z(),E=Z();
+  [[9,41],[39,41],[16,43],[32,43]].forEach(t=>fill(T,fea(24,31,t[0],t[1],3),WG,{edge:O}));fill(T,fea(24,31,24,43.5,3.2),GL,{edge:'#8a3a10'});
+  const wing=(L,s)=>{const X=v=>s?48-v:v,F=[[4,27],[1,17],[4,7]];F.forEach(t=>fill(L,fea(X(15),24,X(t[0]),t[1],3.5),WG,{edge:O}));
+    F.forEach(t=>{const tx=15+(t[0]-15)*.7,ty=24+(t[1]-24)*.7;fill(L,fea(X(15),24,X(tx),ty,1.5),['#ffd866'],{flat:1})})};
+  wing(WL,0);wing(WR,1);
+  const CC=['#ff9a3a','#ffc866','#e0601c'];fill(C,fea(20,11,12,3,2.4),CC,{edge:'#a81e1e'});fill(C,fea(28,11,36,3,2.4),CC,{edge:'#a81e1e'});fill(C,fea(24,11,24,.6,3),['#ffe94a','#fffbb0','#f0b820'],{edge:'#c8281e'});
+  fill(M,bd,B,{edge:O});fill(M,ell(24,31,7,6),GL,{});pts(M,[[20,28],[21,29],[22,28],[25,28],[26,29],[27,28],[22,32],[23,33],[24,33],[25,32]],'#d89a10');
+  fill(M,ell(19,38.5,3,1.6),['#ffb02a'],{edge:'#8a3a10',flat:1});fill(M,ell(29,38.5,3,1.6),['#ffb02a'],{edge:'#8a3a10',flat:1});
+  fill(M,hd,B,{edge:O});fill(M,ell(24,17.5,8,5.5),GL,{clip:hd});
+  fill(M,ell(15.5,18,2.2,1.4),['#ff8a6a'],{flat:1});fill(M,ell(32.5,18,2.2,1.4),['#ff8a6a'],{flat:1});
+  fill(M,poly([[21.5,15.5],[26.5,15.5],[24,20.5]]),['#ffb02a','#ffd866','#e07a10'],{edge:'#8a3a10'});
+  const INK='#3a1008';
+  if(mood==='happy'){const A=[[15,14],[16,13],[17,12],[18,12],[19,12],[20,13],[21,14]];both(E,A,INK);both(E,A.map(p=>[p[0],p[1]+1]).slice(1,6),INK)}
+  else{fill(E,ell(18.5,13.5,2.1,3),[INK],{flat:1});fill(E,ell(29.5,13.5,2.1,3),[INK],{flat:1});pts(E,[[17,12],[17,13],[28,12],[28,13]],'#ffffff');pts(E,[[19,15],[30,15]],'#ffd8b0')}
+  if(mood==='sad'){line(M,15,10,21,8,INK);line(M,32,10,26,8,INK);pts(E,[[16,17],[16,18],[16,19]],TEAR)}
+  if(mood==='think')pts(M,[[40,5],[40,6],[39,7],[40,7],[41,7],[39,8],[40,8],[41,8]],'#9fd4ff');
+  return[['k48-tl',T],['k48-wl',WL],['k48-wr',WR],['k48-cr',C],['',M],['k48-bk',E]]}
+
+function face(E,M,mood,o){const lx=Math.floor(o.cx),cy=Math.round(o.cy),I=o.ink;
+  if(mood==='happy'){const A=[[lx-3,cy+1],[lx-2,cy],[lx-1,cy-1],[lx,cy-1],[lx+1,cy-1],[lx+2,cy],[lx+3,cy+1]];both(E,A,I);both(E,A.slice(1,6).map(p=>[p[0],p[1]+1]),I);return}
+  fill(E,ell(o.cx,o.cy,o.rx,o.ry),[I],{flat:1});fill(E,ell(48-o.cx,o.cy,o.rx,o.ry),[I],{flat:1});
+  both(E,[[lx-1,cy-2],[lx-1,cy-1]],'#ffffff');
+  if(mood==='sad'){line(M,lx-3,cy-4,lx+3,cy-6,I);line(M,47-lx+3,cy-4,47-lx-3,cy-6,I);pts(E,[[lx-2,cy+4],[lx-2,cy+5],[lx-2,cy+6]],TEAR)}
+  if(mood==='think')pts(M,[[4,5],[4,6],[3,7],[4,7],[5,7],[3,8],[4,8],[5,8]],'#9fd4ff')}
+function kitsune(mood,sg){
+  const O='#6a4a58',W=['#ffffff','#ffffff','#dcd4ea'],R=['#e0483a','#ff7a5a','#a82a2a'],n=[1,1,2,3,4,6,9][sg||0],T=Z(),M=Z(),E=Z(),hd=ell(24,16,13.5,10.5),bd=ell(24,32,12,9.5);
+  for(let k=0;k<n;k++){const th=n===1?1.9*Math.PI:Math.PI*(1.06+.88*k/(n-1)),bx=24+9*Math.cos(th),by=35+5*Math.sin(th),tx=24+23*Math.cos(th),ty=31+28*Math.sin(th),w=n<3?4.4:n<5?3.8:n<7?3.3:2.8;
+    fill(T,fea(bx,by,tx,ty,w),W,{edge:O});fill(T,fea(bx+(tx-bx)*.66,by+(ty-by)*.66,tx,ty,w*.75),[R[0]],{flat:1,clip:fea(bx,by,tx,ty,w-.9)})}
+  fill(M,bd,W,{edge:O});fill(M,ell(24,34,7,6),['#ffe9ee'],{flat:1});
+  [18.5,29.5].forEach(x=>fill(M,ell(x,41,4,2.6),['#6a4a58','#8a6a78','#4a3040'],{edge:'#3a2030'}));
+  fill(M,ell(24,26.5,10.5,2.4),R,{edge:'#6a1a1a'});fill(M,poly([[27,27],[33,31],[30,35],[25,28.5]]),R,{edge:'#6a1a1a'});
+  fill(M,poly([[11,19],[6.5,24],[14,24]]),W,{edge:O});fill(M,poly([[37,19],[41.5,24],[34,24]]),W,{edge:O});
+  fill(M,poly([[11,11],[10,.8],[20,6]]),W,{edge:O});fill(M,poly([[37,11],[38,.8],[28,6]]),W,{edge:O});
+  fill(M,poly([[13,9],[12.4,4.2],[17.6,7]]),['#ff7a7a'],{flat:1});fill(M,poly([[35,9],[35.6,4.2],[30.4,7]]),['#ff7a7a'],{flat:1});
+  fill(M,poly([[10,4],[10,.8],[13.2,3]]),[O],{flat:1});fill(M,poly([[38,4],[38,.8],[34.8,3]]),[O],{flat:1});
+  fill(M,hd,W,{edge:O});both(M,[[12,17],[13,18],[14,19]],'#e0483a');pts(M,[[23,6],[24,6],[23,7],[24,7],[23,8],[24,8]],'#e0483a');
+  both(M,[[13,13],[14,12],[15,12],[16,12]],'#e0483a');
+  fill(M,ell(13,21,2.4,1.3),[BLUSH],{flat:1});fill(M,ell(35,21,2.4,1.3),[BLUSH],{flat:1});
+  pts(M,[[23,19],[24,19]],'#3a2030');pts(M,[[22,20],[25,20],[23,21],[24,21]],O);
+  if(mood==='happy')pts(M,[[23,22],[24,22]],'#ff7a8a');
+  face(E,M,mood,{cx:17.5,cy:16,rx:2.2,ry:3,ink:'#3a2030'});
+  return[['k48-tl',T],['',M],['k48-bk',E]]}
+function ryu(mood){
+  const O='#1d4a35',G=['#5cc98a','#8ee6b0','#2f8a5a'],CR=['#fff0b8','#fffbe0','#e8cf80'],GD=['#ffd24a','#fff0a0','#d89a10'],WL=Z(),WR=Z(),T=Z(),M=Z(),E=Z(),hd=ell(24,15,13,10),bd=ell(24,31,11.5,9.5);
+  const wing=(L,s)=>{const X=v=>s?48-v:v;fill(L,poly([[15,24],[5,11],[8,18],[2,20],[6,25],[3,28],[13,29]].map(p=>[X(p[0]),p[1]])),['#3fae7a','#6fd8a0','#1d6a4a'],{edge:O});[[5,11],[2,20],[3,28]].forEach(t=>line(L,X(15),24,X(t[0]),t[1],O))};
+  wing(WL,0);wing(WR,1);
+  fill(T,fea(32,37,44,35,3.2),G,{edge:O});fill(T,fea(41,35,45,27,2.5),G,{edge:O});fill(T,poly([[43,29],[47,26],[46,32]]),GD,{edge:'#8a5a00'});
+  fill(M,bd,G,{edge:O});fill(M,ell(24,33,7,6.5),CR,{});[30,33,36].forEach(y=>pts(M,[[21,y],[22,y],[23,y],[24,y],[25,y],[26,y]],'#e0c070'));
+  [18,30].forEach(x=>fill(M,ell(x,41,4,2.2),G,{edge:O}));
+  fill(M,fea(18,9,13,.8,2.1),GD,{edge:'#8a5a00'});fill(M,fea(30,9,35,.8,2.1),GD,{edge:'#8a5a00'});fill(M,poly([[21,8],[24,2.5],[27,8]]),GD,{edge:'#8a5a00'});
+  fill(M,hd,G,{edge:O});fill(M,ell(24,20,7,4.3),['#7fe0a8','#b0f4cc','#4ab07a'],{edge:'#2f8a5a'});
+  pts(M,[[22,19],[25,19]],O);pts(M,[[21,22],[22,23],[23,23],[24,23],[25,23],[26,22]],O);
+  line(M,17,21,10,23,'#ffd24a');line(M,10,23,7,29,'#ffd24a');line(M,30,21,37,23,'#ffd24a');line(M,37,23,40,29,'#ffd24a');
+  both(M,[[15,10],[16,9],[17,9],[18,10]],'#2f8a5a');fill(M,ell(13.5,19,2.2,1.3),[BLUSH],{flat:1});fill(M,ell(34.5,19,2.2,1.3),[BLUSH],{flat:1});
+  if(mood==='happy')fill(M,ell(24,22.8,2.6,1.2),['#c81d2a'],{flat:1});
+  face(E,M,mood,{cx:18.5,cy:14.5,rx:2.3,ry:3.1,ink:'#1d3a2a'});
+  return[['k48-wl',WL],['k48-wr',WR],['k48-tl',T],['',M],['k48-bk',E]]}
+function unicorn(mood){
+  const O='#6a4a7a',W=['#fdfdff','#ffffff','#cfc6ea'],PK=['#ffa6d4','#ffd0ec','#e070b0'],HR=['#ffd24a','#fff6a0','#d89a10'],PE='#a04a88',T=Z(),M=Z(),E=Z(),hd=ell(24,15,12.5,10.5),bd=ell(24,32,12,9);
+  fill(T,fea(34,29,45,38,3.4),PK,{edge:PE});fill(T,fea(34,33,44,42,2.6),['#ffd0ec','#ffffff','#ffa6d4'],{edge:PE});
+  fill(M,bd,W,{edge:O});fill(M,ell(24,35,7,5.5),['#fff0fa'],{flat:1});
+  fill(M,fea(13,12,10,27,2.8),PK,{edge:PE});fill(M,fea(35,12,38,27,2.8),PK,{edge:PE});
+  [18.5,29.5].forEach(x=>{fill(M,ell(x,38.5,3.4,4.5),W,{edge:O});fill(M,ell(x,42,3.4,1.5),['#c9a6e0'],{edge:O,flat:1})});
+  fill(M,poly([[13,10],[12.5,1.8],[19.5,6.5]]),W,{edge:O});fill(M,poly([[35,10],[35.5,1.8],[28.5,6.5]]),W,{edge:O});
+  fill(M,poly([[14.2,8.5],[14,4.5],[17.6,7]]),['#ffb0d0'],{flat:1});fill(M,poly([[33.8,8.5],[34,4.5],[30.4,7]]),['#ffb0d0'],{flat:1});
+  fill(M,hd,W,{edge:O});fill(M,ell(24,20.5,6,4),['#fff0fa'],{edge:'#d8b8d8',flat:1});
+  pts(M,[[22,21],[25,21]],'#c890b0');pts(M,[[23,23],[24,23]],O);
+  fill(M,ell(19,8,5,3.4),PK,{edge:PE});fill(M,ell(29,7.5,4,3),PK,{edge:PE});
+  fill(M,fea(24,9,24.5,.8,2.1),HR,{edge:'#8a5a00'});pts(M,[[23,7],[24,7],[25,6],[23,5],[24,5],[25,4],[24,3],[25,2]],'#d89a10');
+  fill(M,ell(13.5,20.5,2.4,1.3),[BLUSH],{flat:1});fill(M,ell(34.5,20.5,2.4,1.3),[BLUSH],{flat:1});both(M,[[15,13],[14,12]],'#4a2a6a');
+  if(mood==='happy')fill(M,ell(24,23.5,2.4,1.2),['#c81d2a'],{flat:1});
+  face(E,M,mood,{cx:18,cy:16,rx:2.5,ry:3.4,ink:'#4a2a6a'});
+  return[['k48-tl',T],['',M],['k48-bk',E]]}
+const CH={maneki,hou,kitsune,ryu,unicorn},cache={};
+function svgOf(L){let s='';for(let y=0;y<H;y++){let x=0;while(x<W){const c=L[y][x];if(!c){x++;continue}let e=x;while(e<W&&L[y][e]===c)e++;s+='<rect x="'+x+'" y="'+y+'" width="'+(e-x)+'" height="1" fill="'+c+'"/>';x=e}}return s}
+window.ktp48Parts=(id,mood,sg)=>CH[id]?CH[id](mood,sg):null;
+window.ktp48=function(id,mood,sg){if(!CH[id])return null;const m=mood==='happy'||mood==='sad'||mood==='think'?mood:'',k=id+'|'+m+'|'+(id==='kitsune'?sg|0:0);if(cache[k])return cache[k];
+  return cache[k]='<g transform="scale(.375)"><g class="k48-br">'+CH[id](m,sg).map(p=>'<g'+(p[0]?' class="'+p[0]+'"':'')+'>'+svgOf(p[1])+'</g>').join('')+'</g></g>'};
+})();
+
+</script>
+<script id="kt-shop-js">
+/* ===== ร้านของม่อน: โหมดฝึกฟัง-อ่านประโยคสั่งของ (เสียบเข้า KOTOMON) ===== */
+(function(){
+const $=id=>document.getElementById(id);
+const SHOPS=[
+ {id:'fruit',n:'แผงผลไม้',e:'🍎',lv:1,c:['#e03a3a','#fff3dc','#8a5a3a','#6e4528','#c9a070','#c98a4a'],
+  pat:[['{x}を ください。','ขอ{t}หน่อย'],['{x}を おねがいします。','ขอ{t}หน่อยนะคะ/ครับ']],
+  it:[['りんご','แอปเปิล','🍎'],['みかん','ส้ม','🍊'],['バナナ','กล้วย','🍌'],['すいか','แตงโม','🍉'],['たまご','ไข่','🥚'],['にんじん','แครอท','🥕'],['トマト','มะเขือเทศ','🍅'],['ぶどう','องุ่น','🍇'],['ぎゅうにゅう','นม','🥛'],['パン','ขนมปัง','🍞']]},
+ {id:'sweet',n:'ร้านขนมปัง',e:'🍰',lv:4,c:['#ff8ab0','#fff6ee','#e8c8a0','#c9a070','#f0d8b0','#e0a070'],
+  pat:[['{x}を ひとつ ください。','ขอ{t}หนึ่งชิ้น/อัน'],['{x}は ありますか。','มี{t}ไหมคะ/ครับ']],
+  it:[['ケーキ','เค้ก','🍰'],['クッキー','คุกกี้','🍪'],['ドーナツ','โดนัท','🍩'],['アイスクリーム','ไอศกรีม','🍦'],['チョコレート','ช็อกโกแลต','🍫'],['キャンディー','ลูกอม','🍬'],['ピザ','พิซซ่า','🍕'],['ハンバーガー','แฮมเบอร์เกอร์','🍔'],['おにぎり','ข้าวปั้น','🍙'],['ホットドッグ','ฮอตดอก','🌭']]},
+ {id:'stat',n:'ร้านเครื่องเขียน',e:'✏️',lv:6,c:['#3a8ae0','#eef6ff','#4a7a5a','#356248','#b8a078','#a08050'],
+  pat:[['{x}は ありますか。','มี{t}ไหมคะ/ครับ'],['{x}が ほしいです。','อยากได้{t}']],
+  it:[['えんぴつ','ดินสอ','✏️'],['ノート','สมุด','📓'],['ほん','หนังสือ','📖'],['はさみ','กรรไกร','✂️'],['かばん','กระเป๋า','🎒'],['かさ','ร่ม','🌂'],['とけい','นาฬิกา','⏰'],['めがね','แว่นตา','👓'],['てがみ','จดหมาย','✉️'],['ペン','ปากกา','🖊️']]},
+ {id:'cafe',n:'คาเฟ่',e:'☕',lv:8,c:['#8a5a3a','#f6e8d0','#5a3a28','#40281a','#a07850','#7a5030'],
+  pat:[['{x}を おねがいします。','ขอ{t}หน่อย'],['{x}を いただけますか。','ขอ{t}ได้ไหมคะ/ครับ (สุภาพ)']],
+  it:[['コーヒー','กาแฟ','☕'],['おちゃ','ชา','🍵'],['カレー','แกงกะหรี่','🍛'],['ラーメン','ราเมน','🍜'],['すし','ซูชิ','🍣'],['サラダ','สลัด','🥗'],['スープ','ซุป','🍲'],['ステーキ','สเต็ก','🥩'],['パスタ','พาสต้า','🍝'],['おべんとう','กล่องข้าว','🍱']]},
+ {id:'pet',n:'ร้านสัตว์เลี้ยง',e:'🐾',lv:10,c:['#3aaa6a','#f0fff4','#e8d8a8','#c8b078','#d8c090','#b89850'],
+  pat:[['{x}を いただけませんか。','ขอ{t}ได้ไหมคะ/ครับ (สุภาพมาก)'],['{x}を かいたいです。','อยากซื้อ{t}']],
+  it:[['おにぎり','ข้าวปั้น','🍙','onigiri'],['だんご','ดังโงะ','🍡','dango'],['ラーメン','ราเมน','🍜','ramen'],['すし','ซูชิ','🍣','sushi'],['せっけん','สบู่','🧼','soap'],['おふろ','อ่างอาบน้ำ','🛁','bubble'],['ボール','ลูกบอล','🎾','ball'],['ぬいぐるみ','ตุ๊กตา','🧸','teddy'],['たこ','ว่าว','🎏','kite'],['おかし','ขนมหวาน','🍬','candy']]},
+ {id:'konbini',n:'ร้านสะดวกซื้อ (コンビニ)',e:'🏪',lv:3,sub:'มีตัวเลือก: อุ่นไมโครเวฟ・ตะเกียบ・ถุง・ทานที่นี่/กลับบ้าน',c:['#2aa05a','#f4fff4','#dfe8ee','#c4d2dc','#e8e8e8','#8aa0b0'],
+  end:[['ください。','ขอ{L}'],['おねがいします。','ขอ{L}']],
+  hx:[['ハンバーグ','แฮมเบิร์กสเต็ก','🍖','h','tsu','ชิ้น'],['グラタン','กราแต็ง','🧀','h','tsu','ถ้วย'],['からあげ','ไก่ทอด','🍗','','tsu','กล่อง'],['みず','น้ำเปล่า','💧','','hon','ขวด'],['コーヒー','กาแฟกระป๋อง','🥫','','hon','กระป๋อง'],['チョコレート','ช็อกโกแลต','🍫','','tsu','แท่ง']],
+  hopt:[
+   {id:'heat',t:'อุ่นไหม?',need:'h',ch:[['あたためて いただけますか','อุ่นด้วย (ไมโครเวฟ)','♨️','あたためて'],['あたためなくて けっこうです','ไม่ต้องอุ่น','❄️','あたためない']]},
+   {id:'nuki',t:'ไม่ใส่?',nuki:1},
+   {id:'chop',t:'ตะเกียบ?',ch:[['おはしを いれて いただけますか','ขอตะเกียบ','🥢','おはし あり'],['おはしは けっこうです','ไม่เอาตะเกียบ','🙅','おはし なし']]},
+   {id:'bag',t:'ถุง?',ch:[['ふくろは わけて いただけますか','แยกถุง','🛍️','わけて'],['ふくろは ひとつに まとめて ください','รวมถุงเดียว','👜','まとめて'],['ふくろは けっこうです','ไม่เอาถุง','🙅','いらない']]},
+   {id:'eat',t:'ทานที่ไหน?',ch:[['こちらで いただきます','ทานที่นี่','🪑','こちらで'],['もちかえりで おねがいします','ซื้อกลับบ้าน','🚶','もちかえり']]}],
+  it:[['おべんとう','กล่องข้าว','🍱','h','tsu','ชิ้น'],['おにぎり','ข้าวปั้น','🍙','','tsu','ชิ้น'],['サンドイッチ','แซนด์วิช','🥪','','tsu','ชิ้น'],['パスタ','พาสต้า','🍝','h','tsu','ถาด'],['カレー','แกงกะหรี่','🍛','h','tsu','กล่อง'],['サラダ','สลัด','🥗','','tsu','ถ้วย'],['おちゃ','ชา (ขวด)','🍵','','hon','ขวด'],['ジュース','น้ำผลไม้','🧃','','hon','ขวด'],['ぎゅうにゅう','นม','🥛','','tsu','กล่อง'],['アイスクリーム','ไอศกรีม','🍦','','tsu','ถ้วย']],
+  opt:[
+   {id:'heat',t:'อุ่นไหม?',need:'h',ch:[['あたためて ください','อุ่นด้วย (ไมโครเวฟ)','♨️','あたためて'],['そのままで いいです','ไม่ต้องอุ่น','❄️','そのまま']]},
+   {id:'chop',t:'ตะเกียบ?',ch:[['おはしを ください','ขอตะเกียบ','🥢'],['おはしは いりません','ไม่เอาตะเกียบ','🙅']]},
+   {id:'bag',t:'ถุง?',ch:[['ふくろに いれて ください','ใส่ถุงให้ด้วย','🛍️','ふくろに いれて'],['ふくろは いりません','ไม่เอาถุง','🙅']]},
+   {id:'eat',t:'ทานที่ไหน?',ch:[['ここで たべます','ทานที่นี่ (มุมอีทอิน)','🪑'],['もちかえります','ซื้อกลับบ้าน','🚶']]}]},
+ {id:'diner',n:'ร้านอาหารญี่ปุ่น (しょくどう)',e:'🍜',lv:5,sub:'มีตัวเลือก: ร้อน/เย็น・ขนาด・ทานที่ร้าน/ห่อกลับ',c:['#c81d2a','#fff3dc','#d8b078','#b88c50','#a07850','#6e4528'],
+  end:[['おねがいします。','ขอ{L}'],['ください。','ขอ{L}']],
+  hx:[['うどん','อุด้ง','🍜','n','hai','ชาม'],['やきとり','ยากิโทริ','🍢','','hon','ไม้'],['おにぎり','ข้าวปั้น','🍙','','tsu','ชิ้น'],['サラダ','สลัด','🥗','','tsu','จาน'],['ケーキ','เค้ก','🍰','','tsu','ชิ้น'],['ぎゅうにゅう','นม','🥛','','hai','แก้ว']],
+  hopt:[
+   {id:'size',t:'ขนาด?',need:'n',ch:[['おおもりに していただけますか','ใหญ่พิเศษ (大盛り)','🔼','おおもり'],['ふつうで けっこうです','ขนาดปกติ','🍽️','ふつう']]},
+   {id:'nuki',t:'ไม่ใส่?',nuki:1},
+   {id:'temp',t:'ร้อน/เย็น?',need:'d',ch:[['あたたかいのを おねがいできますか','แบบร้อน','♨️','あたたかい'],['つめたいのを おねがいできますか','แบบเย็น','🧊','つめたい']]},
+   {id:'eat',t:'ทานที่ไหน?',ch:[['こちらで いただきます','ทานที่ร้าน','🪑','こちらで'],['もちかえりに していただけますか','ห่อกลับบ้าน','🥡','もちかえり']]}],
+  it:[['ラーメン','ราเมน','🍜','n','hai','ชาม'],['カレー','แกงกะหรี่','🍛','n','tsu','จาน'],['かつどん','ข้าวหน้าหมูทอด','🍚','n','tsu','ชาม'],['てんぷら','เทมปุระ','🍤','','tsu','ชุด'],['ぎょうざ','เกี๊ยวซ่า','🥟','','tsu','จาน'],['すし','ซูชิ','🍣','','tsu','ชุด'],['みそしる','ซุปมิโซะ','🥣','','hai','ถ้วย'],['おちゃ','ชา','🍵','d','hai','ถ้วย'],['コーヒー','กาแฟ','☕','d','hai','แก้ว'],['ジュース','น้ำผลไม้','🧃','','hai','แก้ว']],
+  opt:[
+   {id:'size',t:'ขนาด?',need:'n',ch:[['おおもりで おねがいします','ใหญ่พิเศษ (大盛り)','🔼','おおもり'],['ふつうで いいです','ขนาดปกติ','🍽️','ふつう']]},
+   {id:'temp',t:'ร้อน/เย็น?',need:'d',ch:[['あたたかいのを おねがいします','แบบร้อน','♨️','あたたかいの'],['つめたいのを おねがいします','แบบเย็น','🧊','つめたいの']]},
+   {id:'eat',t:'ทานที่ไหน?',ch:[['ここで たべます','ทานที่ร้าน','🪑'],['もちかえりで おねがいします','ห่อกลับบ้าน','🥡','もちかえり']]}]}
+];
+const TH=[0,20,50,90,140,200,270,350,440,540];
+const P=()=>{ktProg.shop=ktProg.shop||{pts:0};return ktProg.shop};
+const lvOf=p=>TH.filter(t=>p>=t).length;
+const day=()=>ktLocalDay();
+let S=null,box=null;
+const shuf=a=>a.slice().sort(()=>Math.random()-.5);
+function keeper(){const p=ktpAct();return p?{id:p.sp,lv:p.lv}:{id:KTP_SPECIES[0].id,lv:0}}
+function ensure(){const f=$('fillBox');if(!f)return null;if(!box||!box.isConnected){box=document.createElement('div');box.id='ktShop';f.appendChild(box)}box.style.display='flex';return box}
+window.ktShopOpen=function(){ensure();menu()};
+window.ktShopClose=function(){if(box)box.style.display='none';try{ktRender()}catch(e){}};
+function head(t,back){return '<div class="shp-top"><button class="shp-x" onclick="'+(back||'ktShopClose()')+'">⬅</button><b>'+t+'</b><span class="shp-chip">⭐ '+gachaState.coins+'</span></div>'}
+window.ktShopMenu=menu;
+function menu(){
+  S=null;box.classList.remove('shp-scroll');const p=P(),lv=lvOf(p.pts),hardOK=lvOf(p.pts)>=7,nx=TH[lv],d=p.d&&p.d.d===day()?p.d.n:0;
+  const prog=nx==null?'<div class="shp-note">⭐ ระดับสูงสุดแล้ว!</div>':'<div class="shp-bar"><i style="width:'+Math.round((p.pts-TH[lv-1])/(nx-TH[lv-1])*100)+'%"></i></div><div class="shp-note">อีก '+(nx-p.pts)+' แต้มถึงระดับ ★'+(lv+1)+'</div>';
+  box.innerHTML=head('🏪 ร้านของม่อน')+'<div class="shp-body"><div class="shp-card"><div class="shp-lv">ระดับร้าน '+'★'.repeat(lv)+'<small> '+lv+'/10</small></div>'+prog+'<div class="shp-note">รอบที่ได้เหรียญวันนี้ '+d+'/5 · ตอบถูกในครั้งแรกได้แต้มเพิ่ม</div><div class="shp-note">ลูกค้าในร้านระดับสูงสั่งหลายชิ้น/หลายอย่าง ต้องฟังตัวนับ つ・本・冊・杯 ให้ออก · ร้านสะดวกซื้อและร้านอาหารมีตัวเลือกพิเศษ (อุ่นไมโครเวฟ・ร้อน/เย็น・ทานที่นี่/กลับบ้าน)</div></div>'+
+   ('<button class="shp-shop plc" onclick="ktShopPlace()"><span>🎯</span> ทดสอบวัดระดับ (5 ข้อ)<small>'+(p.pl?'เคยทำแล้ว '+p.pl.s+'/5 · ทำซ้ำได้ (ไม่ลดระดับ)':'รู้ภาษาญี่ปุ่นอยู่แล้ว? ข้ามด่านง่าย ๆ ได้')+'</small></button>')+SHOPS.map((s,i)=>[s,i]).sort((a,b)=>a[0].lv-b[0].lv).map(x=>{const s=x[0],i=x[1];return lv>=s.lv?'<button class="shp-shop" onclick="ktShopStart('+i+')"><span>'+s.e+'</span> '+s.n+'<small>'+(s.id==='pet'?'ได้ของแถมไปเลี้ยงม่อน':s.sub||'เริ่มรับลูกค้า')+'</small></button>'+(s.hopt?(hardOK?'<button class="shp-shop hard" onclick="ktShopStart('+i+',1)"><span>🔥</span> โหมดยาก N3–N2 (敬語)<small>ประโยคยาว・ภาษาสุภาพ・เปลี่ยน/ยกเลิกออเดอร์・ไม่ใส่…</small></button>':'<div class="shp-shop lock">🔒 โหมดยาก N3–N2 (敬語)<small>ปลดล็อกที่ ★7 หรือทำแบบทดสอบได้ตั้งแต่ 4/5</small></div>'):''):'<div class="shp-shop lock">🔒 '+s.n+'<small>ปลดล็อกที่ ★ '+s.lv+'</small></div>'}).join('')+'</div>';
+}
+const CT={tsu:['','ひとつ','ふたつ','みっつ','よっつ','いつつ'],hon:['','いっぽん','にほん','さんぼん','よんほん','ごほん'],satsu:['','いっさつ','にさつ','さんさつ','よんさつ','ごさつ'],hai:['','いっぱい','にはい','さんばい','よんはい','ごはい']};
+const UN={tsu:'ชิ้น',hon:'แท่ง',satsu:'เล่ม',hai:'แก้ว'};
+const PLAN=[[[4,1,1],[8,1,3],[10,2,2]],[[3,1,1],[7,1,4],[10,2,3]],[[3,1,1],[7,1,4],[10,2,3]],[[2,1,1],[5,1,3],[8,2,3],[10,3,2]],[[2,1,1],[4,1,3],[8,2,3],[10,3,2]]];
+const END=[[['ください。','ขอ{L}หน่อย'],['おねがいします。','ขอ{L}หน่อยนะคะ/ครับ']],0,0,[['おねがいします。','ขอ{L}หน่อย'],['いただけますか。','ขอ{L}ได้ไหมคะ/ครับ (สุภาพ)']],[['いただけませんか。','ขอ{L}ได้ไหมคะ/ครับ (สุภาพมาก)'],['かいたいです。','อยากซื้อ{L}']]];END[1]=END[2]=END[0];
+function ctr(s,k){if(s.opt){const x=s.it.find(a=>a[0]===k);return x[4]}if(s.id==='stat')return /^(えんぴつ|ペン)$/.test(k)?'hon':/^(ノート|ほん)$/.test(k)?'satsu':'tsu';if(s.id==='cafe')return /^(コーヒー|おちゃ)$/.test(k)?'hai':'tsu';return'tsu'}
+const rnd=n=>Math.floor(Math.random()*n);
+function mkOptOrder(si,k,s,others){
+  const gc=Math.min(s.opt.length,k<3?1:k<7?2:3),nl=k<3?2:k<7?2+rnd(2):3,mq=k<3?2:3;
+  const gs=shuf(s.opt).slice(0,gc),needF=gs.filter(g=>g.need).map(g=>g.need),J=s.it.map((_,j)=>j),pn={},lines=[];
+  gs.forEach(g=>{if(!g.need)return;const j=shuf(J.filter(j=>s.it[j][3].indexOf(g.need)>-1))[0];pn[g.id]=j;lines.push({j:j,it:s.it[j],c:s.it[j][4],q:1})});
+  const free=shuf(J.filter(j=>!lines.some(l=>l.j===j)&&!needF.some(f=>s.it[j][3].indexOf(f)>-1)));
+  while(lines.length<nl&&free.length){const j=free.pop();lines.push({j:j,it:s.it[j],c:s.it[j][4],q:1+rnd(mq)})}
+  const L=shuf(lines);
+  const opts=gs.slice().sort((a,b)=>s.opt.indexOf(a)-s.opt.indexOf(b)).map(g=>({g:g,v:rnd(2),fl:rnd(2),tn:g.need?s.it[pn[g.id]]:null}));
+  const e=s.end[rnd(2)],cu=others[rnd(others.length)];
+  const jp=L.map(l=>l.it[0]+'を '+CT[l.c][l.q]).join('と ')+' '+e[0]+opts.map(o=>' '+(o.tn?o.tn[0]+'は ':'')+o.g.ch[o.v][0]+'。').join('');
+  const th=e[1].replace('{L}',L.map(l=>l.it[1]+' '+l.q+' '+l.it[5]).join(' กับ '))+opts.map(o=>' · '+(o.tn?o.tn[1]+': ':'')+o.g.ch[o.v][1]).join('');
+  return{lines:L,simple:false,jp:jp,th:th,cu:cu,first:true,opts:opts};
+}
+const NGP=[['たまねぎ','หัวหอม','🧅'],['ねぎ','ต้นหอม','🌿'],['トマト','มะเขือเทศ','🍅'],['きゅうり','แตงกวา','🥒'],['にんじん','แครอท','🥕'],['わさび','วาซาบิ','🟢'],['にんにく','กระเทียม','🧄'],['もやし','ถั่วงอก','🌱'],['コーン','ข้าวโพด','🌽']];
+const NGI={'サンドイッチ':['トマト','きゅうり','たまねぎ'],'サラダ':['たまねぎ','トマト','コーン'],'ラーメン':['ねぎ','もやし','にんにく'],'カレー':['たまねぎ','にんじん'],'すし':['わさび'],'ぎょうざ':['にんにく'],'うどん':['ねぎ'],'かつどん':['たまねぎ','ねぎ']};
+function mkHardOrder(si,k,s,others){
+  const its=s.it.concat(s.hx),J=its.map((_,j)=>j),gc=k<3?2:3,nl=k<5?3:4;
+  const gs=shuf(s.hopt).slice(0,gc),needF=gs.filter(g=>g.need).map(g=>g.need),pn={},tgt={},lines=[];
+  const mkl=(j,q)=>({j:j,it:its[j],c:its[j][4],q:q}),nf=j=>needF.some(f=>its[j][3].indexOf(f)>-1);
+  gs.forEach(g=>{if(g.need){const j=shuf(J.filter(j=>its[j][3].indexOf(g.need)>-1))[0];pn[g.id]=j;tgt[j]=1;lines.push(mkl(j,1))}});
+  gs.forEach(g=>{if(!g.nuki)return;const cand=J.filter(j=>NGI[its[j][0]]&&(!nf(j)||lines.some(l=>l.j===j))),j=shuf(cand)[0];pn[g.id]=j;tgt[j]=1;if(!lines.some(l=>l.j===j))lines.push(mkl(j,1+rnd(2)))});
+  const free=shuf(J.filter(j=>!lines.some(l=>l.j===j)&&!nf(j)));
+  while(lines.length<nl&&free.length)lines.push(mkl(free.pop(),1+rnd(3)));
+  let chg=null;
+  if(k>=2){
+    let plain=lines.filter(l=>!tgt[l.j]);
+    if(!plain.length&&free.length){const l=mkl(free.pop(),1+rnd(3));lines.push(l);plain=[l]}
+    if(plain.length){const x=plain[rnd(plain.length)],ty=['cancel','swap','add'][rnd(3)];
+      if(ty==='swap'&&free.length)chg={t:'swap',x:x,y:mkl(free.pop(),x.q)};
+      else if(ty==='add'&&x.q<4)chg={t:'add',x:x};
+      else chg={t:'cancel',x:x}}
+  }
+  const fin=!chg?lines.slice():chg.t==='cancel'?lines.filter(l=>l!==chg.x):chg.t==='swap'?lines.map(l=>l===chg.x?chg.y:l):lines.map(l=>l===chg.x?{j:l.j,it:l.it,c:l.c,q:l.q+1}:l);
+  const opts=gs.slice().sort((a,b)=>s.hopt.indexOf(a)-s.hopt.indexOf(b)).map(g=>{
+    if(g.nuki){const it=its[pn[g.id]],nm=shuf(NGI[it[0]])[0],c=NGP.find(x=>x[0]===nm),arr=shuf([c].concat(shuf(NGP.filter(x=>x!==c)).slice(0,2))),pol=rnd(2);
+      return{g:g,chs:arr.map(x=>[pol?x[0]+'ぬきで おねがいします':x[0]+'を ぬいて いただけますか','ไม่ใส่'+x[1],x[2],x[0]+'ぬき']),v:arr.indexOf(c),ord:[0,1,2],tn:it}}
+    return{g:g,v:rnd(g.ch.length),ord:shuf(g.ch.map((_,i)=>i)),tn:g.need?its[pn[g.id]]:null}});
+  const op=['すみません。 ','あの、 すみません。 ','しつれいします。 '][rnd(3)],en=[['いただけますか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)'],['いただけませんか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพมาก)'],['おねがいできますか。','ขอ{L} ได้ไหมคะ/ครับ (สุภาพ)']][rnd(3)],L0=shuf(lines),cu=others[rnd(others.length)];
+  let jp=op+L0.map(l=>l.it[0]+'を '+CT[l.c][l.q]).join('と ')+' '+en[0]+opts.map(o=>' '+(o.tn?o.tn[0]+'は ':'')+(o.chs||o.g.ch)[o.v][0]+'。').join('');
+  let th=en[1].replace('{L}',L0.map(l=>l.it[1]+' '+l.q+' '+l.it[5]).join(' กับ '))+opts.map(o=>' · '+(o.tn?o.tn[1]+': ':'')+(o.chs||o.g.ch)[o.v][1]).join('');
+  let chgTh=null;
+  if(chg){const x=chg.x;
+    if(chg.t==='cancel'){jp+=' あ、 やっぱり '+x.it[0]+'は けっこうです。';chgTh='ยกเลิก '+x.it[1]}
+    else if(chg.t==='swap'){jp+=' あ、 すみません、 '+x.it[0]+'を '+chg.y.it[0]+'に かえて いただけますか。';chgTh='เปลี่ยน '+x.it[1]+' เป็น '+chg.y.it[1]+' (จำนวนเท่าเดิม)'}
+    else{jp+=' あ、 '+x.it[0]+'は もう ひとつ ふやして いただけますか。';chgTh='เพิ่ม '+x.it[1]+' อีก 1'}
+    th+=' · 🔄 '+chgTh}
+  return{lines:shuf(fin),simple:false,jp:jp,th:th,cu:cu,first:true,opts:opts,its:its,chgTh:chgTh,chg:chg};
+}
+window.ktShopPlace=function(){
+  const k=keeper(),others=KTP_SPECIES.filter(x=>x.id!==k.id);
+  const mk=(si,kk,hard)=>{const sh=SHOPS[si],q=hard?mkHardOrder(si,kk,sh,others):mkOrder(si,kk,sh,others);q.sh=si;return q};
+  S={i:0,s:SHOPS[0],k:k,first:0,place:true,hard:false,qs:[mk(0,0),mk(2,7),mk(5,5),mk(6,9),mk(5,6,1)],i2:0,wrong:false,hint:false,done:false,lock:false,ng:{},cart:{},sel:{},og:{},why:''};
+  render(true);ktShopSay();
+};
+function pfinish(){
+  box.classList.remove('shp-scroll');
+  const p=P(),old=lvOf(p.pts),sc=S.first,tg=[1,1,3,5,7,8][sc];
+  p.pl={d:day(),s:sc};if(TH[tg-1]>p.pts)p.pts=TH[tg-1];
+  const nw=lvOf(p.pts),unlock=SHOPS.filter(x=>x.lv>old&&x.lv<=nw);
+  ktSave();try{ktSfx('pass')}catch(e){}
+  box.innerHTML=head('🎯 ผลวัดระดับ','ktShopMenu()')+'<div class="shp-body"><div class="shp-card shp-res"><div class="shp-lv">ตอบถูก '+sc+'/5</div><div class="shp-big">ระดับร้าน ★'+nw+'</div><div class="shp-note">'+(nw>old?'🎉 ข้ามระดับจาก ★'+old+' เป็น ★'+nw:'ระดับเดิมของคุณ ★'+old+' สูงพออยู่แล้ว (แบบทดสอบไม่ลดระดับ)')+'</div>'+(unlock.length?'<div class="shp-note">🔓 ปลดล็อก: '+unlock.map(x=>x.n).join(', ')+'</div>':'')+(nw>=7?'<div class="shp-note">🔥 ปลดล็อกโหมดยาก N3–N2 แล้ว (ร้านสะดวกซื้อ / ร้านอาหารญี่ปุ่น)</div>':'')+'</div><button class="shp-shop" onclick="ktShopMenu()">ไปเลือกร้าน</button></div>';
+}
+function mkOrder(si,k,s,others){
+  if(s.opt)return mkOptOrder(si,k,s,others);
+  const t=PLAN[si].find(x=>k<x[0]),nl=t[1],mq=t[2],pick=shuf(s.it.map((it,j)=>j)).slice(0,nl);
+  const lines=pick.map(j=>{const it=s.it[j];return{j:j,it:it,c:ctr(s,it[0]),q:nl===1&&mq>1?2+rnd(mq-1):1+rnd(mq)}});
+  const cu=others[rnd(others.length)];
+  if(nl===1&&mq===1){const pt=s.pat[rnd(s.pat.length)],it=lines[0].it;return{lines:lines,simple:true,jp:pt[0].replace('{x}',it[0]),th:pt[1].replace('{t}',it[1]),cu:cu,first:true}}
+  const e=END[si][rnd(2)];
+  return{lines:lines,simple:false,jp:lines.map(l=>l.it[0]+'を '+CT[l.c][l.q]).join('と ')+' '+e[0],th:e[1].replace('{L}',lines.map(l=>l.it[1]+' '+l.q+UN[l.c]).join(' กับ ')),cu:cu,first:true}
+}
+window.ktShopStart=function(i,hard){
+  const s=SHOPS[i],k=keeper(),others=KTP_SPECIES.filter(x=>x.id!==k.id);
+  S={i:i,s:s,k:k,first:0,qs:Array.from({length:10},(_,n)=>hard&&s.hopt?mkHardOrder(i,n,s,others):mkOrder(i,n,s,others)),i2:0,wrong:false,hint:false,done:false,lock:false,ng:{},cart:{},sel:{},og:{},why:'',hard:!!(hard&&s.hopt),place:false};
+  render(true);ktShopSay();
+};
+function render(fresh){
+  const q=S.qs[S.i2],s=q.sh!=null?SHOPS[q.sh]:S.s,its=q.its||s.it,c=s.c,cm=S.done?'happy':S.wrong?'sad':null,tag=q.simple?'':(q.lines.length>1?' · 🧺 หลายอย่าง':' · 🔢 จำนวน');
+  const cards=its.map((it,j)=>'<button class="shp-it'+(S.cart[j]?' in':'')+(S.done&&q.lines.some(l=>l.j===j)?' ok':'')+(S.ng[j]?' ng':'')+'" onclick="ktShopPick('+j+')">'+(S.cart[j]?'<b class="shp-n">×'+S.cart[j]+'</b>':'')+'<span>'+it[2]+'</span><em>'+it[0]+'</em></button>').join('');
+  const chips=Object.keys(S.cart).map(j=>'<button class="shp-c2" onclick="ktShopDec('+j+')">'+its[j][2]+'×'+S.cart[j]+' ➖</button>').join('');
+  const cart=q.simple?'':'<div class="shp-cart"><div class="shp-chips">'+(chips||'<span class="shp-emp">แตะสินค้าเพื่อใส่ตะกร้า (แตะซ้ำ = เพิ่มจำนวน)</span>')+'</div><button onclick="ktShopClear()">🗑</button><button class="go" onclick="ktShopSubmit()">✔ ส่งของ</button></div>';
+  const st=(S.wrong?'<span class="shp-bad">✖ ちがいます…'+(S.place?' ข้อนี้ผิด (ไปข้อต่อไป)':' ลองฟังอีกครั้ง'+(S.why?' ('+S.why+')':''))+'</span> ':'')+(S.hint||S.done?'💡 '+ktEsc(q.th):'');
+  let optsHtml='';
+  if(q.opts){
+    if(S.done)optsHtml='<div class="shp-rc"><h4>🧾 レシート</h4>'+q.lines.map(l=>'<div><span>'+l.it[2]+' '+l.it[0]+'</span><b>× '+l.q+'</b></div>').join('')+q.opts.map(o=>'<div class="o"><span>'+(o.chs||o.g.ch)[o.v][2]+' '+(o.tn?o.tn[0]+' → ':'')+(o.chs||o.g.ch)[o.v][1]+'</span></div>').join('')+(q.chgTh?'<div class="o">🔄 '+q.chgTh+'</div>':'')+'<div class="t">ありがとうございました！</div></div>';
+    else optsHtml='<div class="shp-opts">'+q.opts.map(o=>{const g=o.g,chs=o.chs||g.ch,ord=o.ord||(o.fl?[1,0]:[0,1]);return '<div class="shp-og'+(S.og[g.id]?' ng':'')+'"><span class="shp-ot">'+g.t+(o.tn?' '+o.tn[2]:'')+'</span>'+ord.map(v=>'<button class="shp-ob'+(S.sel[g.id]===v?' on':'')+'" onclick="ktShopOpt(\''+g.id+'\','+v+')">'+chs[v][2]+' '+(chs[v][3]||chs[v][0])+'<small>'+chs[v][1]+'</small></button>').join('')+'</div>'}).join('')+'</div>';
+  }
+  box.classList.toggle('shp-scroll',!!q.opts);
+  box.innerHTML=head(S.place?'🎯 วัดระดับ '+(S.i2+1)+'/5':s.e+' '+s.n,'ktShopMenu()')+'<div class="shp-scene" style="--a1:'+c[0]+';--a2:'+c[1]+';--w1:'+c[2]+';--w2:'+c[3]+';--fl:'+c[4]+';--ct:'+c[5]+'"><i class="shp-aw"></i><i class="shp-win"></i><div class="shp-sign"'+(S.done&&q.lines.length>1?' style="font-size:'+(q.lines.length>2?17:24)+'px;line-height:1.1;flex-wrap:wrap;align-content:center"':'')+'>'+(S.done?q.lines.map(l=>l.it[2]).join(''):'？')+'</div><div class="shp-shelf"><i style="background:#f27a7a"></i><i style="background:#ffd24a"></i><i style="background:#8ad47a"></i><i style="background:#a98ae8"></i></div><div class="shp-prog">ลูกค้า '+(S.i2+1)+'/'+S.qs.length+tag+(S.hard?' · 🔥 N3–N2':'')+'</div>'+
+   '<div class="shp-cust'+(fresh?' in':'')+'">'+ktpSvg(q.cu.id,cm,'')+'</div><div class="shp-keep'+(S.done?' hop':'')+'">'+ktpSvg(S.k.id,S.done?'happy':S.wrong?'sad':null,'',S.k.lv)+'</div><i class="shp-cnt"></i></div>'+
+   '<div class="shp-dlg"><div class="shp-nm">'+ktEsc(q.cu.name)+' ('+q.cu.jp+')</div><div class="shp-jp">'+(S.done?'ありがとう！':q.jp)+'</div><div class="shp-th">'+st+'</div><div class="shp-bt"><button onclick="ktShopSay()">🔊</button>'+(S.place?'':'<button onclick="ktShopHint()">💡 คำใบ้</button>')+'</div></div>'+(q.opts?'<div class="shp-grid">'+cards+'</div><div class="shp-dock">'+cart+optsHtml+'</div>':cart+'<div class="shp-grid">'+cards+'</div>');
+}
+window.ktShopSay=function(){if(!S||S.done)return;try{playJapaneseAudio(S.qs[S.i2].jp.replace(/\s/g,''))}catch(e){}};
+window.ktShopHint=function(){if(!S||S.done||S.place)return;S.hint=true;S.qs[S.i2].first=false;render(false)};
+function good(q){S.done=true;S.lock=true;if(q.first&&!S.wrong)S.first++;else q.first=false;try{ktSfx('care')}catch(e){}render(false);setTimeout(next,q.opts?2600:1400)}
+function bad(q){S.wrong=true;q.first=false;try{ktSfx('shake')}catch(e){}if(S.place)S.lock=true;render(false);if(S.place)setTimeout(next,2200)}
+window.ktShopPick=function(j){
+  if(!S||S.done||S.lock)return;const q=S.qs[S.i2];
+  if(q.simple){if(S.ng[j])return;if(q.lines[0].j===j)good(q);else{S.ng[j]=1;bad(q)}}
+  else{S.cart[j]=Math.min(5,(S.cart[j]||0)+1);S.wrong=false;render(false)}
+};
+window.ktShopDec=function(j){if(!S||S.done||S.lock)return;if(--S.cart[j]<=0)delete S.cart[j];S.wrong=false;render(false)};
+window.ktShopClear=function(){if(!S||S.done||S.lock)return;S.cart={};S.wrong=false;render(false)};
+window.ktShopOpt=function(g,v){if(!S||S.done||S.lock)return;S.sel[g]=v;delete S.og[g];S.wrong=false;S.why='';render(false)};
+window.ktShopSubmit=function(){
+  if(!S||S.done||S.lock)return;const q=S.qs[S.i2],ks=Object.keys(S.cart);if(!ks.length)return;
+  const iok=ks.length===q.lines.length&&q.lines.every(l=>S.cart[l.j]===l.q);let ook=true;S.og={};(q.opts||[]).forEach(o=>{if(S.sel[o.g.id]!==o.v){S.og[o.g.id]=1;ook=false}});S.why=q.opts?(iok?'':'เช็คของในตะกร้า')+(!iok&&!ook?' + ':'')+(ook?'':'เช็คช่องที่ขึ้นแดง'):'';if(iok&&ook)good(q);else bad(q);
+};
+function next(){if(!S)return;S.i2++;if(S.i2>=S.qs.length)return S.place?pfinish():finish();S.done=false;S.wrong=false;S.hint=false;S.ng={};S.cart={};S.sel={};S.og={};S.why='';S.lock=false;render(true);ktShopSay()}
+function finish(){
+  const p=P(),old=lvOf(p.pts),pts=S.hard?14+S.first*2:10+S.first;p.pts+=pts;const nw=lvOf(p.pts);
+  const dd=p.d&&p.d.d===day()?p.d:{d:day(),n:0};let coin=0;
+  if(dd.n<5){coin=2+(S.first>=8?1:0)+(S.first===10?2:0)+(S.hard?2:0);try{coin+=ktpPerk().coin||0}catch(e){}try{addPracticeCoins(coin,'fill')}catch(e){coin=0}dd.n++}
+  p.d=dd;let tips=[];
+  if(S.s.id==='pet'){const t=p.t&&p.t.d===day()?p.t:{d:day(),n:0};S.qs.forEach(q=>{if(q.first&&t.n<3&&Math.random()<.35&&ktp){const l=q.lines[rnd(q.lines.length)];ktp.items[l.it[3]]=(ktp.items[l.it[3]]||0)+1;t.n++;tips.push(l.it[2]+' '+l.it[1])}});p.t=t;try{ktpSave()}catch(e){}}
+  try{ktpGain(8)}catch(e){}ktSave();try{ktSfx('pass')}catch(e){}
+  box.classList.remove('shp-scroll');const unlock=SHOPS.filter(s=>s.lv>old&&s.lv<=nw);
+  box.innerHTML=head('🏪 ร้านของม่อน','ktShopMenu()')+'<div class="shp-body"><div class="shp-card shp-res"><div class="shp-lv">ปิดร้านแล้ว! '+S.s.e+'</div><div class="shp-big">ตอบถูกครั้งแรก '+S.first+'/10</div><div class="shp-note">แต้มร้าน +'+pts+(nw>old?' · 🎉 ระดับร้านขึ้นเป็น ★'+nw:'')+'</div><div class="shp-note">'+(coin?'⭐ รับเหรียญ +'+coin:'รอบที่ได้เหรียญวันนี้ครบ 5 แล้ว แต่แต้มร้านยังได้')+'</div>'+
+   (tips.length?'<div class="shp-note">🎁 ลูกค้าให้ของแถม: '+tips.join(', ')+'</div>':'')+(unlock.length?'<div class="shp-note">🔓 ปลดล็อก: '+unlock.map(s=>s.n).join(', ')+'</div>':'')+'</div><button class="shp-shop" onclick="ktShopStart('+S.i+','+(S.hard?1:0)+')">🔁 เปิดร้านอีกรอบ</button><button class="shp-shop alt" onclick="ktShopMenu()">เลือกร้านอื่น</button></div>';
+}
+})();
+
 </script>
 </body>
 </html>
