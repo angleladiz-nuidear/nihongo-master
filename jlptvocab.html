@@ -13814,7 +13814,7 @@ function kj(h){
   const m=P().kj;if(m===0||h==null)return h;
   return String(h).replace(KJRE,(a,pre,w)=>{const k=KJM[w];if(k===w)return a;return pre+(m===2?k:'<ruby>'+k+'<rt>'+w+'</rt></ruby>')});
 }
-window.ktShopKj=function(){const p=P();p.kj=p.kj===undefined?2:p.kj===2?0:1;ktSave();menu()};
+window.ktShopKj=function(){const p=P();const c=p.kj===undefined?1:p.kj;p.kj=c===1?2:c===2?0:1;ktSave();menu()};
 
 /* ---- เพิ่มเติม: บันทึกประโยคที่พลาด / สมุดทวน / ตารางตัวนับ / โหมดฟังล้วน ---- */
 function rec(q){if(S&&!q.m){q.m=1;S.missed.push(q)}}
